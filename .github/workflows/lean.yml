@@ -1,0 +1,53 @@
+name: Build & Verify HomotopyCRM Lean 4
+
+"on":
+  push:
+    branches:
+      - main
+    paths:
+      - HomotopyCRM.lean
+      - HomotopyCRM/**
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
+      - scripts/verify_monograph.py
+      - .github/workflows/lean.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - HomotopyCRM.lean
+      - HomotopyCRM/**
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
+      - scripts/verify_monograph.py
+      - .github/workflows/lean.yml
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-lean:
+    name: Cached Lake Build & 4-Layer Kernel Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build HomotopyCRM with Mathlib4 & GitHub .olean caches
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          use-github-cache: true
+          build: true
+          test: false
+          lint: false
+
+      - name: Run 4-layer static definition & axiom gate audit
+        run: python3 scripts/verify_monograph.py --lean-only --no-build

@@ -1,0 +1,51 @@
+# Lean 4 / Lake build outputs & caches
+.lake/
+build/
+*.olean
+*.ilean
+*.c
+*.ir
+*.trace
+*.hash
+
+# LaTeX build outputs & compiled PDFs
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.pdf
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.xdv
+
+# Local authoring, scratchpad, and Markdown mirror files (not part of source release)
+/categorical_reverse_mathematics.tex
+/.agent/
+/AGENTS.md
+/FINISH_LINE_ROADMAP.md
+/Persistent_Research_Scratchpad.md
+/Scratchpad_Latest_Delta.md
+/archive/
+/docs/*.md
+/docs/preface_invitation.tex
+/docs/reviews/
+
+# Python, OS, and editor temporary files
+__pycache__/
+*.py[cod]
+.DS_Store
+*.swp
+*.swo
+*~

@@ -1,0 +1,56 @@
+name: Build Monograph PDF
+
+"on":
+  push:
+    branches:
+      - main
+    paths:
+      - docs/categorical_reverse_mathematics.tex
+      - scripts/verify_monograph.py
+      - .github/workflows/book.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - docs/categorical_reverse_mathematics.tex
+      - scripts/verify_monograph.py
+      - .github/workflows/book.yml
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-pdf:
+    name: Compile & Verify Royal Octavo PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-pictures \
+            texlive-science \
+            tex-gyre \
+            lmodern
+
+      - name: Compile LaTeX monograph and run apparatus gate
+        run: python3 scripts/verify_monograph.py --tex-only
+
+      - name: Upload compiled PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: categorical-reverse-mathematics-pdf
+          path: docs/categorical_reverse_mathematics.pdf
+          if-no-files-found: error
