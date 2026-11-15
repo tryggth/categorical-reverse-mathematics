@@ -1,9 +1,16 @@
 # Categorical Reverse Mathematics with Applications: The Structure of Necessity
 
+[![Build Monograph PDF](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/book.yml/badge.svg?branch=main)](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/book.yml)
+[![Build & Verify HomotopyCRM Lean 4](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/lean.yml)
+[![Download Monograph PDF (v1.0.0)](https://img.shields.io/badge/Monograph_PDF-Download_(v1.0.0)-1B365D)](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf)
+[![Lean 4 v4.28.0](https://img.shields.io/badge/Lean_4-v4.28.0-blue)](lean-toolchain)
+
 **Author:** James F. Walters (Port Townsend, Washington)  
 **Edition:** First Edition (November 2026)  
 **Licenses:** CC BY 4.0 (Monograph) & Apache 2.0 (Lean 4 Formalization)  
 **MSC 2020:** `18B25` (Topoi), `03B30` (Foundations & Reverse Mathematics), `03G30` (Categorical Logic), `18N60` ($\infty$-Categories), `18N70` ($(\infty,\infty)$-Categories), `68V15` (Formal Proof in Lean 4)
+
+> **Read the Book (PDF):** [**Download `categorical_reverse_mathematics.pdf` (Latest Release — 150 pp., Royal Octavo)**](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf) · [All GitHub Releases (`v1.0.0`)](https://github.com/tryggth/categorical-reverse-mathematics/releases)
 
 ---
 
@@ -88,7 +95,7 @@ This repository contains the complete LaTeX source for the 150-page Royal Octavo
 
 ## Building the Book (PDF from LaTeX Source)
 
-Pre-built PDFs are attached automatically to tagged releases on the **GitHub Releases** page (and uploaded as build artifacts on CI runs). To compile `docs/categorical_reverse_mathematics.pdf` locally from source:
+Pre-built PDFs are attached automatically to tagged releases on the [**GitHub Releases**](https://github.com/tryggth/categorical-reverse-mathematics/releases) page ([direct PDF download](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf)) and uploaded as build artifacts on CI runs. To compile `docs/categorical_reverse_mathematics.pdf` locally from source:
 
 ### Prerequisites (TeX Live)
 
@@ -222,6 +229,7 @@ Three path-filtered workflows under [`.github/workflows/`](.github/workflows) ke
   year      = {2026},
   month     = nov,
   address   = {Port Townsend, Washington},
+  url       = {https://github.com/tryggth/categorical-reverse-mathematics},
   note      = {Open-access treatise (CC BY 4.0) with accompanying Lean 4 / mathlib4 formalization \texttt{HomotopyCRM}},
 }
 ```
