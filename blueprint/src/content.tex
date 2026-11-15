@@ -1,7 +1,7 @@
 \part{Foundations of Necessity and the Residuum Calculus}
 
 \chapter{Foundations of Categorical Reverse Mathematics}
-\chaptermark{Foundations of Categorical Reverse Mathematics}
+
 \label{ch:foundations}
 
 \section{From Syntactic Axioms to Geometric Universes}
@@ -24,7 +24,7 @@ A \textbf{categorical doctrine} is a category, $2$-category, or $(\infty, 2)$-ca
   \mathfrak{T} \;=\; \bigl(\mathcal{D}_0 \supseteq \mathcal{D}_1, \quad \kappa : \Phi \Longrightarrow \Psi\bigr)
 \]
 consisting of:
-\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.0em]
+\begin{enumerate}
   \item an ambient base doctrine $\mathcal{D}_0 \in \mathbf{Doct}$;
   \item a distinguished subdoctrine $\mathcal{D}_1 \subseteq \mathcal{D}_0$ carved out by a foundational axiom, universal construction, or exactness property;
   \item two categorical functors $\Phi, \Psi : \mathcal{D}_0 \to \mathcal{C}$ into a target doctrine $\mathcal{C}$; and
@@ -61,7 +61,7 @@ In the specialization to satisfaction subclasses over $\mathbf{Topos}$, the cate
 
 Placing general comparison triples on equal footing organizes Categorical Reverse Mathematics along \textbf{Five Foundational Coordinate Axes}:
 
-\begin{enumerate}[label=\textbf{Axis \Roman*.},leftmargin=2.6em]
+\begin{enumerate}
   \item \textbf{Choice / Splitting ($\mathrm{EAC}, \mathrm{IAC}, \mathrm{IDC}_\omega$):} $\mathcal{D}_0 = \mathbf{Topos}$ (or $\mathbf{GTop}$), $\mathcal{D}_1 = \mathbf{Topos}_{\mathrm{AC}}$, comparing global sections of bundles $\kappa_e : \Gamma(E \twoheadrightarrow B) \to *$ or coinductive witness-stream images $\mathrm{im}(\mathrm{InvStr}) \hookrightarrow E_{\mathrm{rel}}$. Residua include non-abelian torsor cohomology $H^1(\mathcal{E}/Y; G)$ ($\mathcal{T}_{\mathrm{odd}}$ in $\mathbf{Nom}$), definable $\varprojlim^1_{\mathrm{def}}$, and the \texttt{ICaTT} witness-stream gap (Chapter~\ref{ch:realizability-sites}, Theorem~\ref{thm:coinductive-stream-choice}).
   \item \textbf{Constructive Logic ($\mathrm{LEM}, \mathrm{WLEM}$):} $\mathcal{D}_0 = \mathbf{HeytingCat}$, $\mathcal{D}_1 = \mathbf{BooleanCat}$, comparing classical truth values to the subobject classifier via $\kappa : 1+1 \hookrightarrow \Omega$ and $\mathrm{Sub}_{\mathrm{dec}}(X) \hookrightarrow \mathrm{Sub}(X)$. Residua isolate boundary sheaves $\partial X$, $\neg\neg$-dense nuclei, and Dedekind--MacNeille monicity failure.
   \item \textbf{Arithmetic Infinity ($\mathrm{NNO}$, $\mu F$ vs.\ $\nu F$):} $\mathcal{D}_0 = \mathbf{LexCat}$ ($\mathbf{FinSet}$), $\mathcal{D}_1 = \mathbf{Pretopos}_{\mathrm{NNO}}$, comparing $\kappa : \mu(\mathrm{Id}+1) \Rightarrow \nu(\mathrm{Id}+1)$, $\bigoplus_{\mathbb{N}} A \hookrightarrow \prod_{\mathbb{N}} A$, and $\mathcal{Q} \hookrightarrow RL(\mathcal{Q})$. Residua include profinite lassos $\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$, tail quotients $\prod_{\mathbb{N}} A / \bigoplus_{\mathbb{N}} A$, Casson ends, and the step-product Postnikov phantom $X_\bullet$ (Theorem~\ref{thm:step-product-counterexample}).
@@ -71,7 +71,7 @@ Placing general comparison triples on equal footing organizes Categorical Revers
 
 \begin{remark}[Grounding the Five Axes in Five Anchor Witnesses]\label{rem:anchor-witnesses}
 To prevent the residuum calculus from remaining abstract formalism, every coordinate axis in Categorical Reverse Mathematics is calibrated against five concrete, self-contained \emph{anchor witnesses} previewed in the Preface:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{The Parity Torsor $\mathcal{T}_{\mathrm{odd}}$ (Axes I \& II):} Inside Schanuel's nominal topos $\mathbf{Nom} = \mathbf{Cont}(\mathrm{Sym}(\mathbb{N}))$, the set of odd-sized finite subsets of $\mathbb{N}$ has no global invariant element ($\Gamma(\mathcal{T}_{\mathrm{odd}}) = \emptyset$), yet splits locally as soon as any single atom $a \in \mathbb{N}$ is named. It represents a non-zero cohomology class $[\mathcal{T}_{\mathrm{odd}}] = \partial(1) \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$, witnessing the exact obstruction separating $\mathrm{IAC}$ from $\mathrm{AC}$ in a Boolean, two-valued universe despite pro-discrete blindness ($H^1(\mathbf{Nom}; \mathbb{Z}/2\mathbb{Z}) = 0$).
   \item \textbf{The $2$-Torsion Ring $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ (Axis IV):} In the doctrine of $\delta$-rings at $p = 2$, $R_2$ is isomorphic as an additive abelian group to $\mathbb{Z} \oplus \mathbb{F}_2$ (though \emph{not} as commutative rings to $\mathbb{Z} \times \mathbb{F}_2$, because $\eta \neq 0$ while $\eta^2 = 0$), and $2\eta = 0$ blocks naive division by $2$. Joyal's binomial identity $\delta(x + y) = \delta(x) + \delta(y) - xy$ reveals two distinct $\delta$-structures $\delta_0(\eta) = 0$ and $\delta_1(\eta) = \eta$ lifting the \textbf{augmentation Frobenius endomorphism} $\phi(a + b\eta) = a$ (where $\phi(\eta) = 0$), proving that $\mathrm{Res}(\kappa)$ over $p$-torsion rings is a non-trivial torsor of liftings, while the torsion-free dual-integer ring \texttt{DualInt} ($\mathbb{Z}[\varepsilon]/(\varepsilon^2)$) witnesses the collapse of the Nygaard filtration under relative colimit perfection.
   \item \textbf{The Step-Product $\mathcal{Q}$ on $[1] = \{0 < 1\}$ (Axes III \& V):} In weak $(\infty, \infty)$-categories, build the finite gaunt $k$-categories $\mathcal{A}_k = \mathcal{M}_{k+1}$ with two objects $\{0_k, 1_k\}$ such that $\mathrm{Hom}(0_k, 0_k) \simeq \mathrm{Hom}(0_k, 1_k) \simeq \mathrm{Hom}(1_k, 0_k) \simeq *$ whereas the diagonal hom-object $\mathrm{Hom}(1_k, 1_k) = \mathcal{M}_k \not\simeq *$ carries non-trivial $k$-dimensional structure. Inside $\prod_{k \ge 1} \mathcal{A}_k$, the restricted-tail step-product $\mathcal{Q}$ spanned by finite-prefix indicator sequences $e^{(m)} = (1_1, \dots, 1_m, 0_{m+1}, \dots)$ satisfies $\mathrm{Hom}_{\mathcal{Q}}(e^{(m)}, e^{(r)}) \simeq \prod_{k=1}^{\min(m, r)} \mathcal{M}_k$ of rank $\min(m, r)$, yet its $n$-truncations $y_n := \ell_n(e^{(n-1)}) \in \pi_{\le n}(\mathcal{Q})$ assemble into a pure Postnikov phantom $X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$, separating $\mathrm{Cat}^\omega_{(\infty,\infty)}$ from $\mathrm{Cat}^L_{(\infty,\infty)}$ without topological spheres (Theorem~\ref{thm:step-product-counterexample}).
@@ -86,7 +86,7 @@ At the heart of Categorical Reverse Mathematics lies a subtle methodological haz
 
 To prevent tautological restatements, $\mathrm{CRM}$ enforces an \emph{Admissibility Criterion}: the residuum $\mathrm{Res}(\kappa)$ must be formulated purely in terms of \emph{orthogonal structural invariants} of the ambient doctrine $X \in \mathcal{D}_0$ rather than the specific sentences or instances appearing in $\mathcal{D}_1$. In a general elementary or Grothendieck topos $\mathcal{E}$, admissible invariants fall into four foundational families (supplemented on Axes~III--V by initial-algebra/tail quotients, $\delta$-torsor and Nygaard invariants, and Postnikov/amalgamation obstructions):
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Subobject Classifier Geometry:} Order-theoretic and algebraic properties of the truth-value object $\Omega$, such as Booleanness ($\Omega \simeq 1+1$), Stone/De Morgan structure ($\neg\phi \vee \neg\neg\phi = \top$), G\"odel--Dummett linearity, or internal compactness of $\Omega$.
 
@@ -108,7 +108,7 @@ In any elementary topos $\mathcal{E}$, the \emph{External Axiom of Choice} ($\ma
 
 Computing the categorical residuum $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$ across the hierarchy of weak choice principles yields five foundational theorems and conjectures of the $\mathrm{CRM}$ Atlas:
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
 
   \item \textbf{From Trivial Base ($A = \top$) to $\mathrm{AC}$ (The Barr--Diaconescu--Freyd Residuum).} By Radu Diaconescu's theorem~\cite{Diaconescu75}, $\mathrm{IAC}$ in any elementary topos $\mathcal{E}$ implies that $\mathcal{E}$ is \emph{Boolean} ($\Omega \simeq 1+1$, so internal $\mathrm{LEM}$ holds). Consequently, Booleanness is a necessary factor of $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$ whenever $A$ is consistent with non-Boolean intuitionistic logic. Yet as Peter Freyd~\cite{Freyd72} demonstrated via his double-negation sheaf topos $\mathcal{F} = \mathbf{Sh}_{\neg\neg}(\mathbb{A})$, a Grothendieck topos can be two-valued, Boolean, and possess a Natural Numbers Object ($\mathrm{NNO}$) while still failing $\mathrm{AC}$. Over $\mathbf{Set}$ (with $\mathrm{AC}$), the Barr--Diaconescu--Freyd theorem~\cite{Barr74,Diaconescu75,Freyd72} establishes that a Grothendieck topos $\mathcal{E}$ satisfies $\mathrm{AC}$ if and only if $\mathcal{E} \simeq \mathbf{Sh}(B)$ is the category of sheaves on a complete Boolean algebra $B$. Thus, the exact categorical residuum separating a general Boolean Grothendieck topos from $\mathrm{AC}$ is \emph{localicity} (being generated by subobjects of $1$):
 
@@ -156,7 +156,7 @@ Although the Axiom of Choice (Axis~I) provides the archetypal historical arena f
 
 Whenever a classical theorem bifurcates in general categories, algebraic doctrines, or higher categories, $\mathrm{CRM}$ isolates the exact structural invariant responsible for the split across seven major non-$\mathrm{AC}$ theorem lattices:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{The Internal Continuum Lattice (Axes II \& III):} Inside an elementary topos with an $\mathrm{NNO}$, the real numbers split into Cauchy reals ($\mathbb{R}_C$), Dedekind reals ($\mathbb{R}_D$), and MacNeille reals ($\mathbb{R}_M$). Solving $\top + \mathcal{R}(\mathcal{E}) \iff \mathbb{R}_C \simeq \mathbb{R}_D$ or $\varepsilon\text{-}\mathrm{IVT} + \mathcal{R}(\mathcal{E}) \iff \mathrm{IVT}$ measures $\omega$-completeness and local connectedness of the ambient site without invoking Countable Choice.
 
@@ -187,7 +187,7 @@ Before relativizing Choice in Chapter~\ref{ch:choice-atlas}, the comparison-trip
 
 Consider the elementary topos $\mathcal{E} = \mathbf{FinSet} \in \mathbf{Topos}$ of finite sets and maps (internally modeling hereditarily finite sets $V_\omega$, i.e., $\mathsf{ZFC} - \mathsf{Inf} + \neg\mathsf{Inf}$). Inside $\mathbf{FinSet}$, the subobject classifier is strictly Boolean ($\Omega \simeq 1+1$), $1$ is externally projective, and every epimorphism $e : X \twoheadrightarrow Y$ admits a global section: \emph{every Choice residuum vanishes identically}. Yet because $\mathbf{FinSet}$ lacks a Natural Numbers Object ($\mathrm{NNO}$), comparing finitary constructions against infinitary doctrines along Axis~III precipitates three distinct, sharp Axiom-of-Infinity residuums---each machine-checked in \texttt{HomotopyCRM/ InfinityResiduum.lean} (949 lines, 20 \texttt{\#print axioms} checks under the 4-Layer Definition Check Gate):
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
 
   \item \textbf{The Profinite Lasso Initial-Algebra Phantom ($\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$).} Consider the polynomial successor endofunctor $S(X) = 1 \amalg X$. Inside any doctrine possessing an $\mathrm{NNO}$ ($\mathbf{Pretopos}_{\mathrm{NNO}}$), the initial algebra $\mu S = \mathbb{N}$ exists. Inside $\mathbf{FinSet}$, every $S$-algebra $(X, x_0 : 1 \to X, s : X \to X)$ generated by $x_0$ must eventually collide, forming a finite \emph{lasso} $L_{p,q}$ ($p \ge 0$ stem length, $q \ge 1$ cycle period, formalized as \texttt{lassoDynSys}) satisfying $s^{p+q}(x_0) = s^p(x_0)$ and $|L_{p,q}| = p + q$; no finite carrier $A$ admits a pointed dynamical homomorphism into $L_{|A|, 1}$ (\texttt{isEmpty\_ hom\_ of\_ fintype\_ to\_ succ\_ lasso}). Passing to the profinite completion $\mathrm{Pro}(\mathbf{FinSet})$ along the coherent surjective transition system $L_{p', q'} \twoheadrightarrow L_{p, q}$ for $p \le p'$ and $q \mid q'$ (\texttt{lassoTransition}) precipitates the initial-algebra failure residuum as the profinite lasso inverse limit
   \[
@@ -237,7 +237,7 @@ For any external mathematical theorem $B$ evaluated in a relative topos $\gamma:
 For example, if $\mathrm{BPI}$ is dropped in the base $\mathcal{S}$, coherent $\mathcal{S}$-topoi lose spatiality, and the residuum required to bridge pointfree localic theorems to spatial theorems must upgrade from \emph{finitary coherence} (every cover has a finite subcover) to \emph{supercompactness} (every cover refines to a single element), bypassing the need for base ultrafilters. Through this conservation principle (developed quantitatively in Chapter~\ref{ch:base-fiber}), Categorical Reverse Mathematics unifies the internal logic of topoi, the geometry of sites, and the metamathematics of set theory into a single structural framework.
 
 \chapter{The Choice-Geometry Residuum Atlas and Cohomological Obstruction Theory}
-\chaptermark{Choice-Geometry Atlas and Cohomological Obstructions}
+
 \label{ch:choice-atlas}
 
 \section{The Anatomy of Choice in Topos Theory}
@@ -246,7 +246,7 @@ Interpreting Axis~I of the doctrinal comparison framework (Definitions~\ref{def:
 
 To construct the \emph{Choice-Geometry Residuum Atlas}, we establish the precise categorical definitions of the choice hierarchy inside an ambient universe $\mathcal{E}$:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{External Axiom of Choice ($\mathrm{AC}$):} Every epimorphism $e: X \twoheadrightarrow Y$ in $\mathcal{E}$ admits a global section $s: Y \to X$ satisfying $e \circ s = \mathrm{id}_Y$, meaning every object $Y \in \mathcal{E}$ is externally projective.
 
@@ -346,7 +346,7 @@ where $\mathrm{SVC}_{\mathrm{ret}}$ guarantees a parameter $S$ with projective c
 Under $\mathrm{AC}$, every object (including $1_{\mathcal{E}}$) is externally projective (so $\mathrm{COSHEP}$ holds), Theorem~\ref{thm:diaconescu} yields Booleanness, and $S = P = 1_{\mathcal{E}}$ with $C = X$ witnesses $\mathrm{SVC}_{\mathrm{ret}}$ ($X \cong X \times 1_{\mathcal{E}}$).
 
 Conversely, assume $\mathrm{COSHEP}$, $\mathrm{SVC}_{\mathrm{ret}}$, Booleanness ($\Omega \simeq 1+1$), and external projectivity of $1_{\mathcal{E}}$. We first prove two exact closure lemmas for externally projective objects:
-\begin{enumerate}[label=(\alph*),leftmargin=1.8em]
+\begin{enumerate}
   \item \emph{Boolean Subobject Lemma:} Every subobject $m : U \rightarrowtail Q$ of an externally projective object $Q$ is externally projective. Indeed, Booleanness furnishes a complement $\neg U \rightarrowtail Q$ such that $Q \cong U \amalg \neg U$. Given any epimorphism $e : E \twoheadrightarrow U$, the coproduct morphism $e \amalg \mathrm{id}_{\neg U} : E \amalg \neg U \twoheadrightarrow U \amalg \neg U \cong Q$ is an epimorphism, hence admits a section $\sigma : Q \to E \amalg \neg U$ because $Q$ is projective. Consider the composite $\sigma \circ \mathrm{in}_1 : U \to E \amalg \neg U$, and decompose $U = U_E \amalg U_{\neg U}$ by pulling back along the coproduct summands $\mathrm{in}_1 : E \rightarrowtail E \amalg \neg U$ and $\mathrm{in}_2 : \neg U \rightarrowtail E \amalg \neg U$. On $U_{\neg U}$, $(e \amalg \mathrm{id}_{\neg U}) \circ \sigma \circ \mathrm{in}_1|_{U_{\neg U}}$ simultaneously factors through $\mathrm{in}_2 : \neg U \rightarrowtail U \amalg \neg U$ and equals $\mathrm{in}_1|_{U_{\neg U}} : U_{\neg U} \to U \rightarrowtail U \amalg \neg U$. By disjointness of coproducts in any elementary topos ($U \times_{U \amalg \neg U} \neg U \cong \emptyset$), $U_{\neg U} \cong \emptyset$, so $\sigma \circ \mathrm{in}_1$ factors uniquely through $E$ via a morphism $s : U \to E$ satisfying $e \circ s = \mathrm{id}_U$.
   \item \emph{Retract Preservation Lemma:} Every retract $r : U \twoheadrightarrow X$ ($r \circ i = \mathrm{id}_X$) of an externally projective object $U$ is externally projective. For any epimorphism $e : E \twoheadrightarrow X$, pulling back $e$ along $r$ yields an epimorphism $e' : E \times_X U \twoheadrightarrow U$ (universality of epimorphisms in a topos), which splits via $s' : U \to E \times_X U$; setting $s := \mathrm{pr}_1 \circ s' \circ i : X \to E$ satisfies $e \circ s = r \circ e' \circ s' \circ i = r \circ i = \mathrm{id}_X$.
 \end{enumerate}
@@ -435,7 +435,7 @@ For every standard weak choice axiom $A$ (such as $\top$, $\mathrm{BPI}$, $\math
 
 Specifically, the dictionary between weak choice principles $A$ and their cohomological obstruction classes $\mathcal{G}_A$ stratifies as follows:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Universal Local Choice ($A = \top$):} $\mathcal{G}_\top$ consists of all internal group objects $G \in \mathbf{Grp}(\mathcal{E}/Y)$, since no non-trivial gluing obstructions are killed a priori.
 
@@ -459,7 +459,7 @@ Restricting therefore to $0$-truncated codomains $Y \in \tau_{\le 0}\mathcal{X}$
 
 Let $\mathcal{X}$ be an $(\infty, 1)$-topos.
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item For each integer $n \ge 0$, $\mathcal{X}$ satisfies the Axiom of $n$-Choice ($\mathrm{AC}_n$) if every $n$-truncated effective epimorphism $e: X \twoheadrightarrow Y$ with a $0$-truncated codomain $Y$ admits a section $s: Y \to X$.
 
@@ -518,7 +518,7 @@ is the condition that for every $0$-truncated object $Y \in \tau_{\le 0}\mathcal
 \part{Iterative Fixed Points, $\delta$-Rings, and Infinite Towers}
 
 \chapter{Non-AC Theorem Lattices: Continuum Analysis, Pointfree Spatiality, and Homological Exactness}
-\chaptermark{Non-AC Theorem Lattices}
+
 \label{ch:non-ac-lattices}
 
 \section{The Internal Continuum and Real Analysis Lattice}
@@ -535,7 +535,7 @@ Here $\mathbb{R}_C$ denotes the \emph{Cauchy reals} (quotients of modulated Cauc
 
 Calibrating classical real analysis via the categorical residuum $(A \Rightarrow_{\mathbf{Topos}} B)$ isolates three fundamental geometric bridges:
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
 
   \item \textbf{The Cauchy-to-Dedekind Continuum Collapse ($\mathbb{R}_C \Rightarrow \mathbb{R}_D$).} In any topos $\mathcal{E}$ satisfying Countable Choice ($\mathrm{CC}$), one can extract a modulated rational Cauchy sequence from the locatedness of any Dedekind cut, forcing $\mathbb{R}_C \simeq \mathbb{R}_D$. However, $\mathrm{CC}$ is a choice principle rather than a pure geometric property of a site. If we forbid $\mathrm{CC}$ and ask for the purely topological residuum $\mathcal{R}(\mathcal{E})$ over a Grothendieck sheaf topos $\mathcal{E} \simeq \mathbf{Sh}(\mathbb{C}, J)$ with an $\mathrm{NNO}$ such that the canonical inclusion $\mathbb{R}_C \rightarrowtail \mathbb{R}_D$ is an isomorphism, $\mathrm{CRM}$ isolates $\omega$-completeness (open-cover refinement) of the site:
 
@@ -565,7 +565,7 @@ A \emph{frame} $L$ in a topos $\mathcal{E}$ is a complete lattice satisfying the
 
 When we compare a pointfree localic theorem ($A$) to its classical spatial counterpart ($B$), $\mathrm{CRM}$ factors out set-theoretic choice and isolates \emph{internal spatiality} as the exact geometric residuum:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Localic versus Spatial Tychonoff Theorem:} Peter Johnstone~\cite{Johnstone81,Johnstone82} proved that the arbitrary product of compact locales $\prod_{i \in I} L_i$ is compact in \emph{any} elementary topos $\mathcal{E}$ without using $\mathrm{AC}$ or $\mathrm{BPI}$. Taking $A$ to be Johnstone's localic Tychonoff theorem and $B$ to be the classical point-set Tychonoff theorem for topological spaces in $\mathcal{E}$, the residuum $\mathcal{R}(\mathcal{E})$ is precisely the \emph{spatiality of compact product locales} (which, by Deligne's theorem~\cite{Deligne72}, is equivalent to internal $\mathrm{BPI}$ / logical compactness of $\Omega$).
 
@@ -584,7 +584,7 @@ In Constructive Reverse Mathematics over $\mathrm{BISH}$~\cite{Bishop67,Ishihara
 
 Let $\mathcal{E}$ be an elementary topos with subobject classifier $\Omega$, and in the spatial case let $\mathcal{E} = \mathbf{Sh}(X)$ be sheaves on a topological space $X$. Then the residuums of semi-classical logical principles correspond to the following geometric invariants:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{De Morgan's Law ($\mathrm{WLEM}$:} $\neg\phi \vee \neg\neg\phi = \top$): Holds internally in $\mathcal{E}$ if and only if $\Omega_{\mathcal{E}}$ is an internal Stone (De Morgan) lattice (a Heyting algebra satisfying $\neg\phi \vee \neg\neg\phi = \top$, not to be confused with a topological Stone space); in $\mathbf{Sh}(X)$, this holds if and only if $X$ is \emph{extremally disconnected} (the closure of every open set is open)~\cite{Johnstone82}.
 
@@ -598,7 +598,7 @@ Let $\mathcal{E}$ be an elementary topos with subobject classifier $\Omega$, and
 
 This dictionary precisely calibrates the internal order-algebraic properties of the Dedekind reals $\mathbb{R}_D$ in a sheaf topos $\mathcal{E} = \mathbf{Sh}(X)$ (Johnstone, \emph{Sketches of an Elephant}, Section~D4.7~\cite{Johnstone02}). In any sheaf topos $\mathbf{Sh}(X)$, $\mathbb{R}_D$ constructively forms a commutative local ring ($x$ invertible or $1-x$ invertible) and an archimedean $f$-ring. However, two stronger classical properties of the continuum bifurcate along the $\Omega_{\mathcal{E}}$-geometry lattice:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Weak Order Linearity and the MacNeille Collapse ($\mathbb{R}_D \simeq \mathbb{R}_M$):} Taking $A$ as the baseline theory of $\mathbb{R}_D$ and $B$ as \emph{weak order linearity} $\forall x \in \mathbb{R}_D\,(x \le 0 \vee x \ge 0)$ together with the order-completion isomorphism $\mathbb{R}_D \simeq \mathbb{R}_M$ with the MacNeille reals, the exact categorical residuum $(A \Rightarrow_{\mathbf{Sh}(X)} B)$ is the De Morgan (Stone) lattice structure of $\Omega_{\mathcal{E}}$ ($\mathrm{WLEM}: \neg\phi \vee \neg\neg\phi = \top$, i.e., $X$ is extremally disconnected)~\cite{Johnstone02}.
 
@@ -616,10 +616,10 @@ In classical homological algebra, diagram lemmas such as the Five Lemma, the $3 
 
 Here downward arrows denote strict doctrine specialization ($\mathcal{D}_{\mathrm{top}} \supsetneq \mathcal{D}_{\mathrm{bot}}$). Applying the $\mathrm{CRM}$ residuum framework to diagram chasing and infinite limits reveals the exact structural cost separating each tier in Figure~\ref{fig:homological-lattice}:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Orthogonality of Barr-Exactness and Bourn Protomodularity:} A category $\mathcal{A}$ is \emph{regular} if it has finite limits, coequalizers of kernel pairs, and pullback-stable regular epimorphisms. From $\mathbf{RegCat}$, exactness bifurcates along two genuinely incomparable axes:
-  \begin{enumerate}[label=\textup{(\alph*)},leftmargin=1.6em]
+  \begin{enumerate}
     \item \emph{Barr-exactness} demands that every internal equivalence relation is effective (a kernel pair). Every elementary topos ($\mathbf{Set}$, $\mathbf{Sh}(\mathbb{C}, J)$), pointed sets $\mathbf{Set}_*$, and commutative monoids $\mathbf{CMon}$ is Barr-exact, yet fails Bourn protomodularity (in $\mathbf{Set}_*$, the inclusion $\{*, a\} \hookrightarrow \{*, a, b\}$ pulls back to an isomorphism along the split epimorphism $\{*, a, b\} \twoheadrightarrow \{*, a\}$ sending $b \mapsto *$, violating the Split Short Five Lemma).
     \item \emph{Bourn protomodularity}~\cite{Bourn91} asserts for pointed regular categories that the Split Short Five Lemma holds for split extensions (equivalently, pullback functors along split epimorphisms reflect isomorphisms). Group-like categories ($\mathbf{Grp}$, $\mathbf{Loop}$ with inverses), torsion-free abelian groups $\mathbf{TFAB}$, and Hausdorff topological groups $\mathbf{HausGrp}$ are all pointed, regular, and Bourn protomodular, so the Short Five Lemma holds without abelianness. Yet neither $\mathbf{TFAB}$ nor $\mathbf{HausGrp}$ is Barr-exact: in $\mathbf{TFAB}$, the congruence $x \equiv y \pmod 2$ on $\mathbb{Z}$ is an internal equivalence relation whose coequalizer is $\mathbb{Z} \to 0$ (whose kernel pair is all of $\mathbb{Z} \times \mathbb{Z}$), while in $\mathbf{HausGrp}$ any non-closed normal subgroup defines a non-effective equivalence relation.
   \end{enumerate}
@@ -634,7 +634,7 @@ Here downward arrows denote strict doctrine specialization ($\mathcal{D}_{\mathr
   While the Short Five Lemma ($A$) holds in any pointed protomodular category, the full \emph{Snake Lemma} ($B$---constructing the connecting homomorphism $\delta: \mathrm{Ker}(c) \to \mathrm{Coker}(a)$ and proving exactness of the six-term sequence) fails in general protomodular categories. Computing the homological residuum isolates \emph{Barr-exactness and normality/subobject modularity} ($\mathbf{SemiAbelian}$) for naturality of $\delta$, and full \emph{additivity} ($\mathbf{Ab}$-enrichment, where every monomorphism is normal) to ascend to $\mathbf{Abelian}$.
 
   \item \textbf{Divergence of Infinite Abelian Exactness ($\mathbf{AB5}$ vs.\ $\mathbf{AB4}^*$):} Within $\mathbf{Abelian}$, Grothendieck's two higher exactness axioms bifurcate along dual infinitary directions:
-  \begin{enumerate}[label=\textup{(\alph*)},leftmargin=1.6em]
+  \begin{enumerate}
     \item \emph{Axiom $\mathbf{AB5}$} asserts that filtered colimits are exact (commute with finite limits). Together with a generator, $\mathbf{AB5}$ guarantees enough injectives for injective resolutions and right derived functors $R^q F$.
     \item \emph{Axiom $\mathbf{AB4}^*$} asserts that small (in particular countable) products of epimorphisms remain epimorphic (exactness of small products), which is the dual exactness condition governing inverse limits and the vanishing of derived inverse limits $\varprojlim^1$.
   \end{enumerate}
@@ -654,7 +654,7 @@ In Categorical Reverse Mathematics, this proof-theoretic climb maps directly ont
 
 As formulated in Chapter~\ref{ch:foundations} (Section~1.5), each adjacent tier in this hierarchy is bridged by a universal adjoint or initial-algebra residuum:
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
 
   \item \textbf{Primitive Recursion to Arithmetical Comprehension ($\mathrm{RCA}_0 \to \mathrm{ACA}_0$).} An \emph{Arithmetic Universe} (in the sense of Andr\'e Joyal and Maria Emilia Maietti~\cite{Maietti05}) is a predicative list-arithmetic pretopos possessing a parameterized Natural Numbers Object ($\mathrm{NNO}$), disjoint stable sums, and effective quotients, but lacking function spaces $Y^X$ and a subobject classifier $\Omega$. Bridging finitary recursive arithmetic ($\mathrm{RCA}_0$) to full arithmetical quantification ($\mathrm{ACA}_0$) is governed by \emph{local Cartesian closure} ($\Pi$-types / dependent products $\Pi_{x:A} B(x)$ right adjoint to pullback $f^*$), elevating an Arithmetic Universe to a locally Cartesian closed $\Pi$-pretopos.
 
@@ -687,7 +687,7 @@ is an isomorphism in $\mathcal{E}$, meaning every curve on the infinitesimal tan
 
 Within this non-Boolean smooth universe $\mathcal{E}$, $\mathrm{CRM}$ calibrates the deductive hierarchy of differential geometry and cohomology via two exact geometric residuums:
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
 
   \item \textbf{First-Order Calculus to Jet Bundles and Curvature (The Microlinearity Residuum).} While the Kock--Lawvere axiom ($A$) suffices for elementary single-variable derivatives on $R$, it does not guarantee that general smooth manifolds $M \in \mathcal{E}$ possess well-behaved tangent bundles $M^D$, Lie brackets of vector fields, affine connections, or Riemann curvature tensors ($B$). In a general smooth topos, higher infinitesimal objects---such as $D(2) = \{(d_1, d_2) \in D \times D \mid d_1 d_2 = 0\}$---form finite colimits of Weil algebras in the opposite category of infinitesimal spaces. Computing the categorical residuum $(A \Rightarrow_{\mathbf{SmoothTopos}} B)$ isolates \emph{microlinearity}~\cite{Kock06,MoerdijkReyes91}: the exactness condition that the functor $M^{(-)}$ sends canonical finite colimits of infinitesimal varieties (such as $D \amalg_{\{0\}} D \to D(2)$) to finite limits (pullbacks $M^{D(2)} \xrightarrow{\sim} M^D \times_M M^D$):
 
@@ -700,7 +700,7 @@ Within this non-Boolean smooth universe $\mathcal{E}$, $\mathrm{CRM}$ calibrates
 
   \item \textbf{Local Infinitesimal Calculus to Global Cohomology (Cohesion vs.\ Tinyness Across Smooth Regimes).} Even when a smooth topos $\mathcal{E}$ satisfies the Kock--Lawvere axiom and microlinearity (supporting local differential forms and infinitesimal simplices $D^n$), global theorems such as Stokes' Theorem and the de Rham isomorphism between synthetic singular cohomology and differential-form cohomology ($B$) can fail. Following Moerdijk and Reyes~\cite{MoerdijkReyes91}, solving $A + \mathcal{R}(\mathcal{E}) \iff B$ bifurcates into two distinct geometric residuum regimes depending on the presentation site of $\mathcal{E}$:
 
-  \begin{itemize}[leftmargin=1.5em]
+  \begin{itemize}
 
     \item \textbf{Manifold and Analytic Smooth Topoi (Integration, Archimedean Glueing, and Cohesion):} In well-adapted Grothendieck smooth topoi equipped with open-cover topologies---such as Dubuc's topos $\mathcal{G}$ and the Cahiers topos---the infinitesimal disk $D$ is \emph{not} tiny, since a right adjoint $(-)^D \dashv (-)_D$ would force $(-)^D$ to preserve open covers. In this regime, global Stokes' and de Rham theorems require the \emph{Integration Axiom}, \emph{Archimedean open-cover glueing}, and \emph{Lawvere's cohesive adjoint quadruple}~\cite{Lawvere07,Schreiber13}, where over the base topos $\mathcal{S}$, the canonical geometric morphism $\gamma: \mathcal{E} \to \mathcal{S}$ (with direct image $\Gamma = \gamma_*$) extends to a \emph{cohesive quadruple of adjoint functors}:
 
@@ -737,7 +737,7 @@ At $p = 2$, $C_2(x, y) = -xy$, simplifying the additive axiom to $\delta(x + y) 
 
 When a commutative ring possesses $p$-torsion, the comparison $\kappa : \delta(x) \mapsto \frac{\phi(x) - x^p}{p}$ breaks down, precipitating two complementary phenomena:
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
   \item \textbf{Non-Trivial Lift Torsors on $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$:} As an underlying additive abelian group, $R_2$ decomposes as $\mathbb{Z} \oplus \mathbb{F}_2$ (every element writes uniquely as $a + b\eta$ with $a \in \mathbb{Z}$ and $b \in \mathbb{F}_2$). Crucially, $R_2$ is \emph{not} isomorphic as a commutative ring to the reduced product $\mathbb{Z} \times \mathbb{F}_2$, because $R_2$ is connected and non-reduced ($\eta \neq 0$, $\eta^2 = 0$). Because $2\eta = 0$, naive division by $2$ loses all $\eta$-information. Fixing the \textbf{augmentation Frobenius endomorphism} $\phi(a + b\eta) := a$ (so $\phi(\eta) = 0$; never $\phi = \mathrm{id}_{R_2}$), Joyal's identities determine $\delta(a + b\eta) = \frac{a - a^2}{2} + (ab + c\cdot b)\eta$ modulo the free parameter $c = \delta(\eta) \in \mathrm{Ann}_{R_2}(2) = \{0, \eta\} \cong \mathbb{F}_2$. Thus there exist \emph{precisely two} distinct $\delta$-ring structures
   \[
     \begin{aligned}
@@ -755,7 +755,7 @@ When a commutative ring possesses $p$-torsion, the comparison $\kappa : \delta(x
 Inside any category $\mathcal{C}$ equipped with an endofunctor $F : \mathcal{C} \to \mathcal{C}$ and a coalgebra $c = (V, \mathrm{str} : V \to F(V))$, Goldthorpe's~\cite{Goldthorpe23} (Proposition~2.3.13) slice endofunctor \texttt{sliceEndofunctor F c} on the coslice $\mathcal{C}_{c.V/}$ (\texttt{Under c.V}) sends $(X, \eta : V \to X)$ to $(F(X), \mathrm{str} \gg F(\eta))$. By Lambek's Lemma (\texttt{lambek\_isIso}), any initial algebra $\mathrm{initAlg}$ of \texttt{sliceEndofunctor F c} has an invertible structure morphism $\nu_\infty : F(A_{\mathrm{init}}) \xrightarrow{\sim} A_{\mathrm{init}}$ (\texttt{sliceLambek\_right\_isIso}), making $A_{\mathrm{init}}$ initial among fixed-point $F$-coalgebras under $c$ (\textbf{Theorem~A}: \texttt{theoremA\_homEquiv}, \texttt{theoremA\_isInitial\_fixedPointCoalgebraUnder}).
 
 Specializing to $F = \mathbf{1}_{\mathcal{C}}$ and a natural endomorphism $\varphi : \mathbf{1}_{\mathcal{C}} \Rightarrow \mathbf{1}_{\mathcal{C}}$ (specifically $\varphi = \texttt{DeltaRing2Cat. frobeniusNatEndo}$ on $\mathbf{DeltaRing}_2$, \texttt{DeltaRing2Cat}) on $c = \langle A, \varphi_A \rangle$, let $A_{\mathrm{perf}} := \varinjlim \bigl(A \xrightarrow{\varphi_A} A \xrightarrow{\varphi_A} \cdots\bigr)$ denote any sequential colimit (\texttt{endomorphismChain}). Shifting cocone legs forward by $+1$ (\texttt{ι\_ comp\_ shiftIso\_ hom}) and precomposing backward by $\varphi_A$ (\texttt{ι\_ comp\_ shiftIso\_ inv}) construct mutually inverse shift automorphisms $s : A_{\mathrm{perf}} \xrightarrow{\sim} A_{\mathrm{perf}}$ (\texttt{endomorphismColimitShiftIso}). This certifies \textbf{Theorem~B} with an intrinsic \textbf{$+1$/$-1$ shift chirality}:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{Initial Slice-Algebra ($+1$ Shift):} Pairing $(A_{\mathrm{perf}}, \iota_0)$ with the forward shift $s$ (\texttt{perfection SliceAlg}) yields the initial algebra of \texttt{slice Endofunctor} $(\mathbf{1}_{\mathcal{C}}, \langle A, \varphi_A \rangle)$ (\texttt{theoremB\_ perfection SliceAlg\_ isInitial}), sending any slice algebra $(B, f, \psi)$ via the iterated cocone legs $n \mapsto \psi^n \circ f$ (\texttt{comp\_ endomorphism Pow\_ eq\_ iterate}).
   \item \textbf{Induced Frobenius ($-1$ Shift):} Naturality forces the induced Frobenius endomorphism $\varphi_{A_{\mathrm{perf}}}$ to coincide with the \emph{inverse} shift $s^{-1}$ (\texttt{theoremB\_ natEndo\_app\_ eq\_shift\_inv}), making $\varphi_{A_{\mathrm{perf}}}$ an isomorphism (\texttt{theoremB\_ isIso\_ natEndo\_app}).
 \end{itemize}
@@ -773,7 +773,7 @@ The sequential colimit construction $A_{\mathrm{perf}} = \varinjlim_\varphi A$ o
 \begin{center}\emph{[Summary ledger table omitted in blueprint edition; see Royal Octavo monograph PDF.]}\end{center}
 
 \chapter{Base-Topos Variation, Geometric Morphisms, and the Base-Fiber Conservation Principle}
-\chaptermark{Base-Topos Variation and Base-Fiber Conservation}
+
 \label{ch:base-fiber}
 
 \section{The Two-Axis Relativization of Categorical Reverse Mathematics}\label{sec:two-axis-relativization}
@@ -784,7 +784,7 @@ Having calibrated the internal non-$\mathrm{AC}$ theorem lattices of analysis, t
 \]
 in the sense of Chapter~\ref{ch:foundations} (Definitions~\ref{def:comparison-triple}--\ref{def:residuum}, Sections~\ref{sec:finset-infinity}--\ref{sec:base-fiber}, and Table~\ref{tab:five-axis-master}), where $\mathrm{Res}(\kappa)$ measures the universal obstruction to the canonical comparison $\kappa$ restricting to an equivalence outside the stronger subdoctrine $\mathcal{D}_1$. Because $\mathrm{Dom}(\mathrm{Res})$ ranges over structured categorical doctrines equipped with comparisons across ambient and base universes, we can deform any residuum along two orthogonal axes:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Axis~1 (Structural Deformation of the Ambient Universe $\mathcal{E}$):} We weaken or strengthen the Lawvere--Tierney categorical axioms of $\mathcal{E}$ itself---dropping impredicativity ($\Omega$), local Cartesian closure ($Y^X$ and $\Pi_f$), arithmetic infinity ($\mathrm{NNO}$), or $0$-truncation (into $(\infty,1)$-topoi)---to observe how $\mathcal{R}(\mathcal{E})$ fractures across doctrinal boundaries.
 
@@ -817,7 +817,7 @@ In any locally Cartesian closed pretopos $\mathcal{E}$ lacking a subobject class
 
 Dropping local Cartesian closure ($Y^X$ and dependent products $\Pi_f$) descends from pretopoi to \emph{coherent} and \emph{regular categories}~\cite{Johnstone02}. Two structural deformations occur in this regime:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Loss of Internal Choice ($\mathrm{IAC}$):} Because $\mathrm{IAC}$ is defined by preservation of epimorphisms under $\Pi_f$ (or exponentiation $(-)^Z : X^Z \to Y^Z$), $\mathrm{IAC}$ cannot even be formulated internally without function objects. Consequently, bridging local splitting of covers to internal choice in a coherent category $\mathcal{E}$ forces \emph{local Cartesian closure} directly into the residuum $\mathcal{R}(\mathcal{E})$.
 
@@ -851,7 +851,7 @@ Let $\mathcal{S}$ be an elementary base topos, and let $\gamma: \mathcal{E} \to 
 
 Let $A$ and $B$ be structural or internal principles evaluated across relative topoi $\gamma: \mathcal{E} \to \mathcal{S}$.
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item A categorical residuum $\mathcal{R} = (A \Rightarrow B)$ is \emph{absolute (base-invariant)} if the equivalence $\mathcal{E} \models A \wedge \mathcal{R}(\mathcal{E}) \iff \mathcal{E} \models B$ holds internally for every topos $\mathcal{E}$ over $\mathcal{S}$ regardless of which logical or choice axioms hold in the base topos $\mathcal{S}$.
 
@@ -870,7 +870,7 @@ Over a classical base $\mathcal{S} = \mathbf{Set}$ satisfying $\mathrm{AC}$, The
   \top + \bigl(\text{Booleanness } \wedge \text{ Localicity over } \mathbf{Set}_{\mathrm{AC}}\bigr) \iff \mathrm{AC}.
 \]
 When we drop $\mathrm{AC}$ in $\mathcal{S}$ ($\mathcal{S} \not\models \mathrm{AC}$), two fundamental constraints govern $\mathcal{E} \models \mathrm{AC}$:
-\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.0em]
+\begin{enumerate}
   \item \textbf{Connected-Base Reflection Obstruction:} Suppose $\gamma : \mathcal{E} \to \mathcal{S}$ is \emph{connected} ($\gamma^*$ is fully faithful, so $\gamma_* \gamma^* \simeq \mathrm{id}_{\mathcal{S}}$) and $\mathcal{E} \models \mathrm{AC}$. Given any epimorphism $e : X \twoheadrightarrow Y$ in $\mathcal{S}$, the pullback $\gamma^* e$ is an epimorphism in $\mathcal{E}$ (since the left adjoint $\gamma^*$ preserves all colimits and hence epimorphisms) and therefore admits a section $\sigma : \gamma^* Y \to \gamma^* X$ in $\mathcal{E}$. Fullness of $\gamma^*$ reflects $\sigma$ back to a section $s : Y \to X$ of $e$ in $\mathcal{S}$, forcing $\mathcal{S} \models \mathrm{AC}$. Consequently, over a base $\mathcal{S} \not\models \mathrm{AC}$, no connected $\mathcal{S}$-topos---not even $\mathrm{id} : \mathcal{S} \to \mathcal{S}$ on a Boolean Cohen--Halpern--Läuchli model---can satisfy $\mathrm{AC}$; $\gamma$ must factor through a non-trivial \emph{choice slice} $\mathcal{S}/U \models \mathrm{AC}$ (or an $\omega$-choice slice when $\mathcal{S} \models \mathrm{DC}$).
   \item \textbf{Atomic Permutation Collapse (Non-Projectivity of $1$):} Inside any connected two-valued atomic permutation topos $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ ($\mathrm{Sub}(1) = \{0,1\}$) for a topological group $\mathcal{G}$, the terminal object $1$ is \emph{not} externally projective whenever a proper open subgroup $U \subsetneq \mathcal{G}$ exists, because the quotient $\mathcal{G}/U \twoheadrightarrow 1$ is an epimorphism whose global sections vanish ($\Gamma(\mathcal{G}/U) = (\mathcal{G}/U)^{\mathcal{G}} = \emptyset$). Thus external projectivity of $1$, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, and $\mathrm{AC}$ in $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ all collapse simultaneously to the trivial filter of open subgroups $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$ ($\mathbf{Cont}_{\mathcal{S}}(\mathcal{G}) \simeq \mathcal{S}$)~\cite{Johnstone02}.
 \end{enumerate}
@@ -882,7 +882,7 @@ To recover $\mathcal{E} \models \mathrm{AC}$ over $\mathcal{S} \not\models \math
 
 Let $\gamma: \mathcal{E} \to \mathcal{S}$ be a Grothendieck topos over a base topos $\mathcal{S}$ in which $\mathrm{AC}$ is not assumed.
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Arbitrary Base ($\mathcal{S} \models \top$):} $\mathcal{E}$ satisfies external $\mathrm{AC}$ if and only if $\gamma$ factors through a non-trivial choice slice $\mathcal{S}/U \models \mathrm{AC}$ over which $\mathcal{E}$ is Boolean and localic, and its underlying complete Boolean algebra $B$ is an \emph{internally projective atomic Boolean locale} over a projective generating family in $\mathcal{S}/U$ (so every cover refines to disjoint projective atoms whose global sections split in $\mathcal{S}/U$). In particular, if $\gamma$ is connected (for example $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ over $\mathcal{S} \not\models \mathrm{AC}$), $\mathcal{E} \models \mathrm{AC}$ is impossible, and in any two-valued atomic permutation topos $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ any proper open subgroup $U \subsetneq \mathcal{G}$ forces $\Gamma(\mathcal{G}/U) = \emptyset$ and breaks external projectivity of $1$, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, and $\mathrm{AC}$.
 
@@ -956,7 +956,7 @@ The Base-Fiber Conservation Principle is not confined to classical topos extensi
 \subsection{Compactness vs.\ Infinite Ends ($=_{\mathbb{N}}$ vs.\ $E_0$)}
 
 Comparing closed smooth manifolds to open $4$-manifolds isolates a dramatic phase transition along Axis~III ($\mathrm{Inf}$) and Axis~I ($\neg\mathrm{AC}$):
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{Compact Smooth Manifolds ($\neg\mathrm{Inf}$ on charts $\implies \, =_{\mathbb{N}}$):} Bergfalk and Smythe~\cite[Theorem~A]{BergfalkSmythe25} prove that diffeomorphism of \emph{compact} smooth $n$-manifolds ($n \ge 0$) is Borel equivalent to equality $=_{\mathbb{N}}$ on $\mathbb{N}$---represented internally by the discrete $0$-sheaf $\Delta(\mathbb{N})$ with vanishing residuum.
   \item \textbf{Radial Exotic $\mathbb{R}^4$'s vs.\ Full $\mathcal{R}^4$ ($\mathrm{Inf} + \neg\mathrm{AC} \implies E_0$):} In stark contrast, on Gompf and Panagiotopoulos's~\cite{GompfPanagiotopoulos26} explicit radial family $\{M_x\}_{x \in 2^{\mathbb{N}}}$ parameterized along a compact exhaustion $K_0 \Subset K_1 \Subset \cdots \subset \mathbb{R}^4$, oriented diffeomorphism satisfies $M_x \cong_{\mathrm{Diff}} M_y \iff x \,E_0\, y$. On the full moduli space $\mathcal{R}^4$ of all smoothings of $\mathbb{R}^4$, eventual tail equality $E_0$ Borel-reduces into oriented diffeomorphism ($E_0 \le_B \mathrm{Diff}(\mathcal{R}^4)$), embedding $2^{\mathbb{N}}/E_0$ as a Borel sub-moduli problem (climbing further above $=^+$ on general open $4$-manifolds, while remaining bounded above by continuous $S_\infty = \mathrm{Sym}(\mathbb{N})$ orbit equivalence). By the Harrington--Kechris--Louveau $E_0$-dichotomy~\cite{HKL90,Kechris95}, no Borel Polish or real-valued invariant can classify smooth structures on $\mathbb{R}^4$.
 \end{itemize}
@@ -979,7 +979,7 @@ In the light condensed topos $\mathbf{Sh}(\mathrm{Prof}_{\aleph_0})$, the $E_0$ 
   \mathbf{Top}(\mathbb{R}^4) \simeq * \;\longleftarrow\; \Bigl[\prod_{n \in \mathbb{N}} \mathbb{F}_2 \;\sslash\; \bigoplus_{n \in \mathbb{N}} \mathbb{F}_2\Bigr]_{\mathrm{Cond}} \;\xrightarrow{\;\mathrm{AC}\;}\; \mathbf{Set}_{\mathrm{ZFC}}(\pi_0) \cong \mathbb{R},
 \]
 according to three complementary regimes:
-\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.0em]
+\begin{enumerate}
   \item \textbf{Left Solvent (Freedman $\nu F_{\mathrm{CH}}$ Collapse):} Passing from finite smooth handlebody trees ($\mu F$) to topological Casson handles absorbs infinitely many stages simultaneously, collapsing $\mathcal{Q}_{E_0}$ to $*$ in $\mathbf{Top}(\mathbb{R}^4)$.
   \item \textbf{Right Solvent ($\mathrm{ZFC}$ Vitali Collapse):} Invoking full external $\mathrm{AC}$ (Zorn's Lemma) splits $q$ via a discontinuous $\mathbb{F}_2$-linear Hamel section $s_{\mathrm{AC}}$, producing an artificial cardinal classifier $|\mathcal{Q}_{E_0}| = |\mathbb{R}|$ that destroys smooth-invariant definability.
   \item \textbf{Light Condensed / Baire Topos Residuum:} Over $\mathbf{Sh}(\mathrm{Prof}_{\aleph_0})$, compact interior isotopies absorb $\bigoplus_{n \in \mathbb{N}} \mathbb{F}_2$. Density of $\bigoplus_{n \in \mathbb{N}} \mathbb{F}_2$ forces separated Polish reflection collapse $\pi_0^{\mathrm{Pol}}(\mathcal{Q}_{E_0}) \simeq 1$ (Baire/sheaf blindness of Polish real invariants), while Base--Fiber Conservation precipitates the non-splitting condensed torsor class
@@ -1000,7 +1000,7 @@ The Polish blindness $\pi_0^{\mathrm{Pol}}(\mathcal{Q}_{E_0}) \simeq 1$ admits a
   C(2^{\mathbb{N}})^{\bigoplus_{n \in \mathbb{N}} \mathbb{F}_2} \;=\; \mathbb{C}\cdot 1,
 \]
 reflecting $\pi_0^{\mathrm{Pol}}(\mathcal{Q}_{E_0}) \simeq 1$. In Connes's noncommutative geometry, rather than discarding the equivalences, one forms the étale groupoid $\mathcal{G}_{E_0} := 2^{\mathbb{N}} \rtimes \bigoplus_{n \in \mathbb{N}} \mathbb{F}_2$ and evaluates its groupoid convolution $C^*$-algebra in two elementary steps:
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
   \item At each collar stage $n \in \mathbb{N}$, diagonal functions $C(\mathbb{F}_2)$ together with the Pauli-$X$ flip unitary $U_n = \bigl(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\bigr)$ satisfy the covariant crossed-product relations generating $C(\mathbb{F}_2) \rtimes \mathbb{F}_2 \cong M_2(\mathbb{C})$.
   \item Forming the infinite inductive tensor product across all collar stages $n \in \mathbb{N}$ identifies the groupoid $C^*$-algebra of $\mathcal{G}_{E_0}$ with Glimm's \textbf{uniformly hyperfinite CAR algebra} $\mathrm{UHF}(2^\infty)$:
   \[
@@ -1053,7 +1053,7 @@ Embedding Borel equivalence relations as condensed and nominal quotient stacks c
 \part{Applications to $(\infty,\infty)$-Categories, Fra\"iss\'e Topoi, and Formal Verification}
 
 \chapter{Higher Categorical Reverse Mathematics in $(\infty, 1)$-Topoi, Univalent Foundations, and Postnikov Obstruction Towers}
-\chaptermark{Higher CRM in $(\infty, 1)$-Topoi and Postnikov Towers}
+
 \label{ch:higher-crm}
 
 \section{From 1-Topoi to $(\infty, 1)$-Topoi and Univalent Universes}\label{sec:higher-topoi-intro}
@@ -1062,7 +1062,7 @@ In the first four chapters of this book, our ambient mathematical universes were
 
 An $(\infty, 1)$-topos $\mathcal{X}$ is a locally presentable (or elementary) $(\infty, 1)$-category equipped with homotopy limits and colimits, universal colimits (pullback-stable effective epimorphisms), descent (van Kampen colimits), and a hierarchy of \emph{object classifiers} $\mathcal{U}$. Its internal language is \emph{Homotopy Type Theory (HoTT)} and Voevodsky's \emph{Univalent Foundations}, in which objects $X \in \mathcal{X}$ are interpreted not as static sets, but as homotopy types ($\infty$-groupoids) stratified by their \emph{truncation level}:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{$(-2)$-Truncated Objects:} Contractible types $X \simeq 1$, possessing a unique point up to coherent higher homotopy.
 
@@ -1108,7 +1108,7 @@ Proposition~\ref{prop:untruncated-degeneracy} proves that demanding sections ove
 
 with strictly shrinking classes of models $\mathbf{Mod}(\mathrm{AC}_\infty) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_n) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_0)$, where $\mathrm{AC}_n := \mathrm{AC}_{n, 0}$ and $\mathrm{AC}_\infty := \mathrm{AC}_{\infty, 0}$.
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Set-Level Choice ($\mathrm{AC}_0$):} Every $0$-truncated effective epimorphism $X \twoheadrightarrow Y$ onto a $0$-truncated set $Y$ splits; this is equivalent to the classical External Axiom of Choice ($\mathrm{AC}$) in the underlying 1-topos $\tau_{\le 0}\mathcal{X}$.
 
@@ -1154,7 +1154,7 @@ To elevate $\mathrm{AC}_n$ to $\mathrm{AC}_{n+1}$, we must determine the exact o
 \]
 
 By higher topos cohort theory (Lurie~\cite{Lurie09}, \emph{Higher Topos Theory}, Section~7.2), the pullback fibration $\pi_{n+1}: E_{n+1} \twoheadrightarrow Y$ is an $(n+1)$-gerbe over $Y$ banded by the internal homotopy group object $\Pi_{n+1} = s_n^*\bigl(\pi_{n+1}(X/Y)\bigr)$. Here we must explicitly separate the non-abelian base rung $n = 0$ from the higher abelian rungs $n \ge 1$:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{For $n = 0$ (Non-Abelian Bands):} The band $\Pi_1 = s_0^*\bigl(\pi_1(X/Y)\bigr)$ is a general (possibly non-abelian) group object in $\tau_{\le 0}(\mathcal{X}/Y)$, for which a second delooping $B^2\Pi_1$ need not exist; the pullback $1$-gerbe $E_1 \twoheadrightarrow Y$ is instead classified by Giraud's non-abelian gerbe cohomology $H^2_{\mathrm{gerbe}}(\mathcal{X}/Y, \Pi_1)$~\cite{Giraud71}.
   \item \textbf{For $n \ge 1$ (Abelian Bands):} The band $\Pi_{n+1} = s_n^*\bigl(\pi_{n+1}(X/Y)\bigr)$ is an abelian group object in $\tau_{\le 0}(\mathcal{X}/Y)$, so the Eilenberg--MacLane delooping $K(\Pi_{n+1}, n+2) = B^{n+2}\Pi_{n+1}$ exists and classifies the $(n+1)$-gerbe obstruction via a unique Postnikov $k$-invariant:
   \[
@@ -1178,7 +1178,7 @@ is equivalent to the cohomological vanishing condition that for every $0$-trunca
 
 In particular, the first two rungs of the Postnikov ladder specialize to classical geometric invariants:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Rung 0 ($\top \Rightarrow \mathrm{AC}_0$):} Splitting $0$-truncated surjections of sets in $\tau_{\le 0}\mathcal{X}$, governed by 1-topos Booleanness, localicity, and vanishing of torsor cohomology $H^1(\tau_{\le 0}\mathcal{X}/Y, G) = 0$.
 
@@ -1200,7 +1200,7 @@ A morphism $f: X \to Z$ in an $(\infty, 1)$-topos $\mathcal{X}$ is called $\inft
 
 Let $\mathcal{X}$ be an $(\infty, 1)$-topos.
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item $\mathcal{X}$ is \emph{hypercomplete} (satisfies the internal Whitehead Principle) if every $\infty$-connected morphism $f: X \to Z$ in $\mathcal{X}$ is an equivalence.
 
@@ -1271,7 +1271,7 @@ Instead, inside the ambient right-truncation tower limit $\mathrm{Cat}^R_{(\inft
   \mathrm{Cat}^L_{(\infty, \infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty, \infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)} \subsetneq \mathrm{Cat}^R_{(\infty, \infty)}
 \]
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Inductive / Postnikov-Complete Tier ($\mathrm{Cat}^L_{(\infty, \infty)}$):} Left-generated $(\infty, \infty)$-categories ($\mathcal{C} \xrightarrow{\sim} RL(\mathcal{C}) \simeq \varprojlim_{k \in \omega^{\mathrm{op}}} i_k \pi_{\le k}(\mathcal{C})$) equipped with inductively generated equivalences built bottom-up from finite-dimensional truncations and identity morphisms.
 
@@ -1285,7 +1285,7 @@ Instead, inside the ambient right-truncation tower limit $\mathrm{Cat}^R_{(\inft
 
 Within this four-tier reflective hierarchy, two verified placement results calibrate the exact scope of Noetherian tower termination relative to inductive and coinductive hypercompleteness:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Noetherian Coinductive Hypercompleteness ($\mathrm{Cat}^{\mathrm{Noeth}}_{(\infty, \infty)} \subseteq \mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)}$):} Vanishing of infinite non-trivial parallel cell towers ($\mathrm{Cell}_\infty(\mathcal{C}) \simeq \emptyset$) implies coinductive hypercompleteness, embedding $\mathrm{Cat}^{\mathrm{Noeth}}_{(\infty, \infty)}$ inside $\mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)}$.
 
@@ -1304,7 +1304,7 @@ Finer calibrations sharpen the geometric mechanisms separating Tiers~1, 2, and~3
 \leanok%
 \uses{def:comparison-triple}%
 Let $l : \mathcal{A} \rightleftarrows \mathcal{D} : r$ be a Gray-enriched left-adjoint-left-inverse (\emph{Lali}) adjunction in the sense of Gepner--Heine~\cite[Definition~3.5.1]{GepnerHeine26} with idempotent endofunctor $E := l \circ r : \mathcal{D} \to \mathcal{D}$, over objects $x, y \in \mathcal{D}$ possessing finite local hom cell-stabilization heights $K_x = \mathrm{height}(\mathrm{Hom}_{\mathcal{D}}(x, y)) < \omega$ and $K_y = \mathrm{height}(\mathrm{Hom}_{\mathcal{D}}(E x, E y)) < \omega$ (\texttt{HasHomCellHeight}).
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
   \item \textbf{Finite-Rank Split-Idempotent Stabilization:} For every pair of parallel $(m-1)$-cell boundaries $(\Phi, \Psi)$ over $\mathrm{Hom}_{\mathcal{D}}(x, y)$ (\texttt{HomBoundary}) in ambient dimension $m > \max(K_x, K_y) + 2$, the Lali idempotent $E$ induces equivalences on ambient $m$-cell animae
   \[
     \mathrm{Hom}_{\mathcal{D}}(\Phi, \Psi) \xrightarrow{\;\sim\;} \mathrm{Hom}_{\mathcal{D}}(E(\Phi), E(\Psi)) \simeq *,
@@ -1315,7 +1315,7 @@ Let $l : \mathcal{A} \rightleftarrows \mathcal{D} : r$ be a Gray-enriched left-a
 \end{proposition}
 
 Why do both Henry--Loubaton's wide pushout $E^{(\omega)}$ (separating $\mathrm{Cat}^\omega_{(\infty, \infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)}$ in~\cite[Corollary~5.56]{ORW26}) and Ozornova--Rovelli--Walde's full subcategory $W \hookrightarrow V(\infty) := * \amalg_{\coprod_{n \in \mathbb{N}} \{1\}} \coprod_{n \in \mathbb{N}} E^{(n+1)}$ (separating $\mathrm{Cat}^L_{(\infty, \infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty, \infty)}$ in~\cite[Lemma~5.57]{ORW26}) evade Proposition~\ref{prop:lali-ceiling} ($\sup K_x = \infty$) and exit $\mathrm{Cat}^{\mathrm{Noeth}}_{(\infty, \infty)}$? Two independent mechanisms force $\mathrm{Cell}_\infty \not\simeq \emptyset$:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{$\mathbb{E}_3$ Configuration-Space Spheres in Weak Cellular Pushouts:} Attaching weak cells at codimension $k \ge 3$ over loop boundaries activates Eckmann--Hilton / syllepsis braiding on $\Omega^3_x$, whose $2$-strand component has underlying anima $\mathrm{Conf}_2(\mathbb{R}^3)_{/\Sigma_2} \simeq \mathbb{R}\mathbb{P}^2$ with $\pi_m(\mathbb{R}\mathbb{P}^2) \cong \pi_m(S^2) \neq 0$ for infinitely many $m \ge 2$.
   \item \textbf{Hub Excursions in $W \subseteq V(\infty)$:} Even on skeletal cell heights, each wedge summand $E^{(n+1)}$ identifies $0 \mapsto n \in \mathrm{Ob}(W)$ and $1 \mapsto *$, contributing $\eta_n : n \to *$ and candidate inverses $v_n : * \to n$. Already at object $1 \in \mathrm{Ob}(W)$, the hub excursion $f_1 := v_1 \circ \eta_1 : 1 \to * \to 1$ and iterated loops $f_{1, n} := v_1 \circ (\eta_n \circ v_n) \circ \eta_1 \in W(1, 1)$ embed unbounded $(n+1)$-cell towers into the single hom-object $W(1, 1)$, forcing $\mathrm{rank}(W(1, 1)) \ge \omega$ and $\mathrm{rank}(W) \ge \omega + 1$.
 \end{itemize}
@@ -1350,7 +1350,7 @@ By definition of recursive hom-rank, $\mathrm{rk}_S(\mathcal{C}) \le \omega$ hol
 \leanok%
 \uses{thm:ordinal-rank-completeness}%
 Let $\mathcal{C} \in \mathrm{Cat}^R_{(\infty, \infty)}$, and define $1$-cell reachability $a \preceq_1 b$ on $\mathrm{Ob}(\mathcal{C})$ by $\mathrm{Hom}_{\mathcal{C}}(a, b) \neq \emptyset$.
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
   \item \textbf{Reachability SCC Trapping:} For every Postnikov-compatible tower $X_\bullet = (x_n)_{n \ge 1} \in RL(\mathcal{C})$ (satisfying $\ell_n(x_{n+1}) \simeq \ell_n(x_n)$ for all $n \ge 1$), all stage representatives $x_n$ are trapped inside a single strongly connected component (SCC) of $(\mathrm{Ob}(\mathcal{C}), \preceq_1)$.
   \item \textbf{Grading Rigidity:} On any infinite $1$-SCC $\mathcal{S}$ lacking strict absorbing/zero-like morphisms under composition, local finite hom-dimensions $d(a, b) < \omega$ cannot grow unboundedly compatibly with $1$-cell composition whiskering under $\pi_{\le M(a,b)}$ or coreflective $\kappa_{\le M(a,b)}$; hence any counterexample in $\mathrm{Cat}_{\le \omega} \setminus \mathrm{Cat}^L_{(\infty, \infty)}$ must decouple an infinite chain of objects via an absorbing hierarchy rather than an infinite non-absorbing $1$-SCC or homotopy spheres.
 \end{enumerate}
@@ -1369,7 +1369,7 @@ Setting $n = 1$ along $\ell_1(x_m) \simeq \ell_1(x_1)$ places every $x_m$ in the
 \leanok%
 \uses{thm:classifier-scc-trapping}%
 For every locally finite-dimensional $(\infty, \infty)$-category $\mathcal{C} \in \mathrm{Cat}_{\le \omega}$:
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
   \item For all $x, y \in \mathrm{Ob}(\mathcal{C})$ and every $n \ge d(x, y) + 1$, $\mathrm{Hom}_{\pi_{\le n}(\mathcal{C})}(\ell_n x, \ell_n y) \simeq \pi_{\le n-1}(\mathrm{Hom}_{\mathcal{C}}(x, y)) \simeq \mathrm{Hom}_{\mathcal{C}}(x, y)$, so the Postnikov unit $\eta_{\mathcal{C}} : \mathcal{C} \hookrightarrow RL(\mathcal{C}) = \varprojlim_n i_n \pi_{\le n}(\mathcal{C})$ is always fully faithful.
   \item Every Postnikov-compatible tower $X_\bullet \in RL(\mathcal{C})$ with an eventually constant representative $X_n \simeq \ell_n(x)$ for $n \gg 0$ has stabilizing equivalence bonding maps on $\mathrm{Isom}_{\pi_{\le n}\mathcal{C}}(\ell_n x, X_n)$ for $n \ge d(x, x) + 1$; hence all constant-tower $\varprojlim^1$ twists vanish ($X_\bullet \simeq \eta_{\mathcal{C}}(x)$).
   \item If $\preceq_1$ is $1$-acyclic (antisymmetric up to equivalence in $\mathcal{C}$: $x \preceq_1 y \land y \preceq_1 x \implies x \simeq y$), then $\mathcal{C} \in \mathrm{Cat}^L_{(\infty, \infty)}$.
@@ -1418,7 +1418,7 @@ Comparing $\mathcal{Q} \subset \prod_{k \ge 1} \mathcal{A}_k$ with the smooth-$4
 \begin{center}\emph{[Figure omitted in blueprint edition; see Royal Octavo monograph PDF.]}\label{fig:inf-inf-ladder-phantom}\end{center}
 
 On the type-theoretic and algebraic fixed-point fronts, two complementary calibrations anchor Tier~3 ($\mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)}$) and relative undercategory perfection:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{Grothendieck--Maltsiniotis Weak-$\omega$ Clan Calibration of Infinitely Coherent Type Theory (\texttt{ICaTT}):} Benjamin, Champin, and Markakis~\cite{BCM26} formulate Finster--Mimram's weak $\omega$-categorical type theory $\mathbf{CaTT}$~\cite{FinsterMimram17} and its coinductive-invertibility extension $\mathbf{ICaTT}$ via syntactic clans $\mathcal{S}_{\mathbf{CaTT}} \hookrightarrow \mathcal{S}_{\mathbf{ICaTT}}$ whose models in $\mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathbf{Set})$ and over a Grothendieck $1$-topos $\mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathcal{E})$ are \emph{Grothendieck--Maltsiniotis weak $\omega$-category / clan models}~\cite{BCM26,ORW26} (distinct from strict $\omega$-categories). Extending the 3-variable walking-arrow context $(d_0^- : \star) \rhd (d_0^+ : \star) \rhd (d_1 : d_0^- \to d_0^+)$ by a single coinductive witness stream $e_1 : \mathrm{Inv}(d_1)$ under suspension-substitution yields the finite walking-equivalence context $\Gamma_E \equiv \mathcal{E}_1$, whose clan semantics evaluates strictly to Ozornova--Rovelli's walking coinductive equivalence computad ($\mathcal{J}^*[\![\mathcal{E}_1]\!] \cong \mathcal{E}_1^{\mathrm{OR}}$, Theorem~6.5). Bounded-$\eta$ plus $\beta$-rewriting proves $\mathbf{ICaTT}$ syntactically conservative over $\mathbf{CaTT}$ (Proposition~4.6, Theorem~6.2), while localness with respect to $\Sigma^{n-1}\mathcal{E}_1^{\mathrm{OR}} \to \mathbf{D}^{n-1}$ cuts out \emph{exact Tier~3} ($\mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)}$, failing to reach Tier~2 since $E^{(\omega)}$ is $\mathcal{E}_1$-local); internally over Grothendieck $1$-topoi $\mathcal{E}$, Theorem~\ref{thm:coinductive-stream-choice} isolates $\mathrm{IDC}_\omega$ as the exact choice residuum for witness-stream adequacy on Grothendieck--Maltsiniotis weak $\omega$-category / clan models $\mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathcal{E})$.
 
   \item \textbf{Kernel-Verified Relative Slice-Algebra Perfection (\texttt{HomotopyCRM/ DeltaRing Perfection.lean}):} Goldthorpe's relative undercategory fixed-point construction~\cite[Proposition~2.3.13]{Goldthorpe23}---machine-checked in Lean~4 (\texttt{HomotopyCRM/ DeltaRing Perfection.lean}, 1,398 lines, 4-Layer Gate verified) via \texttt{slice Endofunctor F c} on \texttt{Under c.V}, \texttt{lambek\_ isIso}, \texttt{FixedPoint CoalgebraUnder}, and universal fixed-point coalgebra equivalence (\texttt{initFixedPoint CoalgebraUnder}, \texttt{theoremA\_ homEquiv}, \texttt{theoremA\_ isInitial\_ fixedPointCoalgebraUnder})---realizes the sequential perfection colimit $A_{\mathrm{perf}} = \varinjlim(A \xrightarrow{\phi} A \xrightarrow{\phi} \cdots)$ of a Joyal $\delta$-ring~\cite{Joyal85} in \texttt{DeltaRing2Cat} as the initial slice algebra in \texttt{Under A} (\texttt{perfection SliceAlg}, \texttt{theoremB\_ perfectionSliceAlg\_ isInitial}). Crucially, \emph{shift chirality} sets the Lambek structural isomorphism to the forward colimit shift $\psi_\infty = s$ while forcing the induced Frobenius endomorphism on $A_{\mathrm{perf}}$ to equal its inverse $\phi_{A_{\mathrm{perf}}} = s^{-1}$ (\texttt{theoremB\_ natEndo\_ app\_ eq\_ shift\_ inv}). Moreover, on $p$-torsion commutative rings, Joyal's integral polynomial cofactor $C_p(x, y) = \frac{x^p + y^p - (x+y)^p}{p} = -\sum_{k=1}^{p-1} \frac{1}{p}\binom{p}{k} x^k y^{p-k} \in \mathbb{Z}[x, y]$ ($C_2(x, y) = -xy$) is strictly required: on the $2$-torsion witness $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ (decomposing as $\mathbb{Z} \oplus \mathbb{F}_2$ as an additive abelian group only, whereas $R_2 \not\cong \mathbb{Z} \times \mathbb{F}_2$ as rings since $\eta^2 = 0$), the augmentation Frobenius lift $\phi(a + b\eta) = a$ ($\phi(\eta) = 0$) annihilates $2$-torsion yet admits two distinct valid $\delta$-structures $\delta_0(a + b\eta) = \frac{a - a^2}{2} + ab\,\eta$ ($\delta_0(\eta) = 0$) and $\delta_1(a + b\eta) = \frac{a - a^2}{2} + (a + 1)b\,\eta$ ($\delta_1(\eta) = \eta$), alongside the torsion-free dual-integer witness \texttt{DualInt} ($\mathbb{Z}[\varepsilon]/(\varepsilon^2)$, with 1-step perfection $\mathbb{Z}$). As a strict guardrail, this slice initial-algebra model constructs \emph{relative perfection $A_{\mathrm{perf}}$ only}, and never models general non-perfect prisms $(A, I)$ or the absolute prismatic site $(R)_{\Prism}$~\cite{BhattScholze22}, where forcing a Lambek initial-algebra isomorphism inverts $\phi$ and destroys the Nygaard filtration (\texttt{Checks. dualInt\_ nygaard\_ separation}).
@@ -1447,7 +1447,7 @@ In classical algebraic topology, the Freudenthal Suspension Theorem ($\pi_{k+n}(
 In Higher $\mathrm{CRM}$, these theorems hold constructively inside any $(\infty, 1)$-topos $\mathcal{X}$ without invoking $\mathrm{LEM}$ or $\mathrm{AC}$. When we weaken the ambient universe $\mathcal{X}$ to a general lex $(\infty, 1)$-category with pushouts and ask for the categorical residuum $\mathcal{R}(\mathcal{X})$ that bridges basic homotopy pushouts ($A$) to the \emph{Blakers--Massey Excision and Freudenthal Suspension Theorems} ($B$), Anel--Biedermann--Finster--Joyal~\cite{ABFJ20} proved that the exact residuum is \emph{universality of colimits and modality descent} (the $(\infty, 1)$-pretopos exactness axioms).
 
 When passing to stable and directed stable homotopy, a fundamental Giraud exactness obstruction governs the ambient meta-domain: because Giraud universality of colimits makes the initial object $\emptyset$ strict ($\emptyset \times X \simeq \emptyset$) in every $(\infty, 1)$-topos $\mathcal{X}$, adjoining a zero object ($\emptyset \simeq 1$) collapses $\mathcal{X} \simeq *$, so no non-trivial ``stable $(\infty, 1)$-topos'' exists, and symmetric monoidal stabilization $\Sigma^\infty_+ : \mathcal{S} \to \mathrm{Sp}$ in $\mathrm{Pr}^L$ sends the terminal space $*$ (never an object classifier $\mathcal{U}$ or general object $U$) to the sphere spectrum $\Sigma^\infty_+(*) \simeq \mathbb{S}$. Likewise, in the directed setting, stabilizing pointed $(\infty, \infty)$-categories $\mathrm{Cat}^R_* := (\mathrm{Cat}^R_{(\infty, \infty)})_{*/}$ along reduced directed suspension and directed looping $\Sigma_{\mathrm{red}} \dashv \Omega_{\mathrm{dir}}$ forms the presentable $(\infty, 1)$-category of \emph{categorical spectra} $\mathrm{CatSp} := \mathrm{Sp}(\mathrm{Cat}^R_*)$ across the lifted four-tier chain $\mathrm{CatSp}^L \subsetneq \mathrm{CatSp}^\omega \subsetneq \mathrm{CatSp}^{\mathrm{coind}} \subsetneq \mathrm{CatSp}^R$~\cite{Masuda26,Heine26,ORW26}:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{Masuda v2 Steiner Partial-Duality Correction and 3-Periodic Lax/Bifiber Triad:} In~\cite[Section~2.4, Footnote~5]{Masuda26} (crediting Marcus Nicolas), Masuda withdraws v1's Proposition~2.4.17 regarding odd/even partial duals $(-)^{\mathrm{op}}, (-)^{\mathrm{co}}$ on strong Steiner complexes---refuted by the pinched $2$-cube $\square^2 \cup_{\{10, 01\}} \square^1$---retaining monoidal preservation of $\infty\mathbf{Gaunt}_{\mathrm{Ste}}$ under the total dual $(-)^{\circ} = (-)^{\mathrm{coop}}$ and establishing a \emph{3-periodic lax/bifiber triad} in $\mathrm{CatSp}$ (Theorem~5.3.1 and Remark~5.3.4): any morphism $f : \Omega_{\mathrm{dir}} X \to Y$ induces $\overrightarrow{\mathrm{cof}}(f) \xrightarrow{\sim} Z \xrightarrow{\sim} \overrightarrow{\mathrm{fib}}(\Sigma_{\mathrm{dir}} f)$ with $Y \to Z \to \Sigma_{\mathrm{dir}} X$ a non-lax \emph{bifiber sequence}, cycling with strict period~$3$ through lax cofiber sequences ($\overrightarrow{\mathrm{cof}}$), bifiber sequences, and lax fiber sequences ($\overrightarrow{\mathrm{fib}}$).
   \item \textbf{Gei\ss's Oriented Freudenthal Suspension Theorem:} Extending Freudenthal stability to directed $\omega$-categories without group-completion collapse, Gei\ss~\cite[Theorem~5.1 and Corollary~5.14]{Geiss26} proves that for every pointed $n$-connected $\omega$-category $\mathcal{C}$, the directed unit $\mathcal{C} \to \Omega_{\mathrm{dir}}\Sigma_{\mathrm{red}}\mathcal{C}$ is $2n$-connected---established via a $2$-shifted $T^2$ comparison and the $(n + m + 2)$-connected Cartesian/Gray pushout-product bound (Theorem~4.13) on the directed James construction $\Omega_{\mathrm{dir}}\Sigma_{\mathrm{red}}\mathcal{C} \simeq \mathcal{J}(\mathcal{C}) = \varinjlim_k J_k(\mathcal{C})$---stabilizing $\pi_{r+k}(\Sigma_{\mathrm{red}}^k \mathcal{C})$ for all $k \ge \max(0, r - 2n)$ without inverting directed $1$-cells ($\tau_0(\Sigma^\infty_{\mathrm{dir}} S^0) \cong \mathbb{N}$ vs.\ $\pi_0(\mathbb{S}) \cong \mathbb{Z}$).
 \end{itemize}
@@ -1456,7 +1456,7 @@ When passing to stable and directed stable homotopy, a fundamental Giraud exactn
 
 In Chapter~\ref{ch:non-ac-lattices} (\S\ref{sec:cohesive-lattice}), we saw that Lawvere's cohesive adjoint quadruple $\CohesiveQuad$ over a 1-topos $\mathcal{E} \to \mathcal{S}$ bridges local infinitesimal calculus to global de Rham cohomology. Passing to an $(\infty, 1)$-topos $\mathcal{X} \to \infty\text{-}\mathbf{Grpd}$ equipped with Urs Schreiber's \emph{differential cohesion}~\cite{Schreiber13} ($\CohesiveQuad$ combined with an infinitesimal shape modality $\mathrm{Im} \dashv \mathrm{Inf}$) unlocks the categorical reverse mathematics of \emph{higher gauge theory and Chern--Weil theory}:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Local $n$-Connections to Global Principal $\infty$-Bundles:} Taking $A$ as local Lie $\infty$-algebra valued differential forms on coordinate charts and $B$ as global principal $\infty$-bundles with connection (such as $B^2 U(1)$ bundle gerbes in string and M-theory), the residuum $\mathcal{R}(\mathcal{X})$ is cohesive descent and $\Pi$-product preservation.
 
@@ -1469,13 +1469,13 @@ In Chapter~\ref{ch:non-ac-lattices} (\S\ref{sec:cohesive-lattice}), we saw that 
 \begin{center}\emph{[Summary ledger table omitted in blueprint edition; see Royal Octavo monograph PDF.]}\end{center}
 
 \chapter{Site-Level Combinatorics, Realizability Topoi, and Computational Reverse Mathematics}
-\chaptermark{Site Combinatorics and Realizability Topoi}
+
 \label{ch:realizability-sites}
 
 \section{From Sheaf Topoi to Realizability Universes}\label{sec:kleene-eff}
 
 Having calibrated the summit of higher categorical Reverse Mathematics in $(\infty, 1)$-topoi and weak $(\infty, \infty)$-categories in Chapter~\ref{ch:higher-crm}, we now investigate the combinatorial and computational engines that generate them. Base $1$-topoi furnish the foundational universes inside which weak $\omega$-categories, relational coinductive streams, and discrete or profinite symmetry invariants are internalized. Chapter~\ref{ch:realizability-sites} unites three distinct combinatorial pillars:
-\begin{enumerate}[label=\textup{(\Roman*)},leftmargin=2.0em]
+\begin{enumerate}
   \item \textbf{Computability and Realizability Topoi (\S\ref{sec:kleene-eff}--\S\ref{sec:ltt-topologies}):} Calibrating constructive reverse mathematics ($\mathrm{WKL}_0, \mathrm{FAN}$) over Partial Combinatory Algebras via Lawvere--Tierney modal operators in $\mathbf{LTT}(\Eff)$.
   \item \textbf{Site Combinatorics and Fra\"iss\'e Permutation Topoi (\S\ref{sec:site-combinatorics}--\S\ref{subsec:kihara-choice-nominal}):} Discovering the Fra\"iss\'e atomic-topology escape from Left Bousfield groupoidification, classifying Kihara's five-rung atomic choice spectrum, and computing nominal parity Galois cohomology.
   \item \textbf{Directed Combinatorial Geometry and Higher Coinductive Streams (\S\ref{subsec:cubical-amalgamation}--\S\ref{subsec:coinductive-streams-choice}):} Machine-checking binary Strong Amalgamation ($\mathrm{SAP}$) along flow-convex embeddings, proving the all-$n \ge 3$ cubical amalgamation phase transition obstructed by facet cycle diagrams $F_n$, and calibrating internal coinductive invertibility streams ($\mathbf{ICaTT}$) against internal Dependent Choice ($\mathrm{IDC}_\omega$).
@@ -1494,7 +1494,7 @@ where $\downarrow$ indicates definedness (termination of the partial application
 
 Three canonical PCAs anchor computational reverse mathematics:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Kleene's First Algebra ($\mathcal{K}_1$):} The underlying set is $\mathbb{N}$, and $e \cdot n \simeq \varphi_e(n)$ is the result of applying the $e$-th Turing machine (partial recursive function) to input $n \in \mathbb{N}$.
 
@@ -1508,7 +1508,7 @@ Via the Hyland--Johnstone--Pitts~\cite{HJP80} \emph{tripos-to-topos construction
 
 When $\mathcal{A} = \mathcal{K}_1$, $\mathbf{RT}(\mathcal{K}_1)$ is Martin Hyland's Effective Topos ($\Eff$)~\cite{Hyland82,vanOosten08}. From the perspective of Categorical Reverse Mathematics, $\Eff$ exhibits a striking combination of structural invariants that cannot occur in any spatial Grothendieck topos:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Two-Valuedness Without Booleanness:} The terminal object $1 \in \Eff$ is externally projective and indecomposable ($\Eff$ is two-valued), yet $\Eff$ is strongly non-Boolean ($\Omega \not\simeq 1+1$) because a proposition $\phi$ is true in $\Eff$ if and only if it possesses a computable realizer.
 
@@ -1537,7 +1537,7 @@ What is the categorical residuum $\mathcal{R}(\mathcal{E})$ that bridges constru
 
 Let $\mathcal{E} = \mathbf{RT}(\mathcal{A})$ be the realizability topos over a Partial Combinatory Algebra $\mathcal{A}$.
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{The Compactness / Fan Residuum ($\mathrm{RCA}_0 \Rightarrow \mathrm{FAN}$):} Elevating basic recursive arithmetic ($A$) to internal Cantor compactness / the Fan Theorem ($B = \mathrm{FAN}$, sufficient for uniform continuity and the Extreme Value Theorem on $[0,1]$) isolates the \emph{Baire-continuity / fan-functional structure} of the PCA $\mathcal{A}$ (passing from discrete Turing application $\mathcal{K}_1$ to continuous Kleene application $\mathcal{K}_2$, or restricting to the localic reflection of $2^{\mathbb{N}}$).
 
@@ -1567,7 +1567,7 @@ Let $\mathcal{E}$ be an elementary topos (such as $\Eff = \mathbf{RT}(\mathcal{K
 
 In accordance with the Admissibility Criterion of Chapter~\ref{ch:foundations} (\S\ref{sec:admissibility}), while $j_{(A \Rightarrow B)}: \Omega \to \Omega$ is abstractly the relative pseudocomplement in $\mathbf{LTT}(\Eff)$, genuinely solving the $\mathrm{CRM}$ problem requires characterizing $j_{(A \Rightarrow B)}$ as an explicit computational or oracle modality on the underlying PCA (such as the Lifschitz operator $j_{\mathrm{Lif}}$ or a Turing-jump operator $j_d$). Specifically, ascending the Lawvere--Tierney lattice inside $\Eff$ calibrates the exact computational cost of classical reversals:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Identity Topology ($j = \mathrm{id}_\Omega$):} Validates $\mathrm{CT}$, $\mathrm{MP}$, $\mathrm{DC}_{\mathbb{N}}$, and the Cauchy real line $\mathbb{R}_C \simeq \mathbb{R}_D$ (because $\mathrm{CC}_{\mathbb{N}}$ holds in $\Eff$), while refuting $\mathrm{WKL}$, $\mathrm{LLPO}$, and $\mathrm{LEM}$.
 
@@ -1590,7 +1590,7 @@ Drawing on Peter Johnstone's \emph{Sketches of an Elephant} and Olivia Caramello
 
 Let $\mathcal{E} \simeq \mathbf{Sh}(\mathbb{C}, J)$ be the Grothendieck topos of sheaves on a site $(\mathbb{C}, J)$. Then the primary structural residuums $\mathcal{R}(\mathcal{E})$ pull back to the following combinatorial properties on $(\mathbb{C}, J)$:
 
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
 
   \item \textbf{The De Morgan ($\mathrm{WLEM}$) Site Residuum (The $J$-Amalgamation / Ore Condition):} The subobject classifier $\Omega_{\mathcal{E}}$ is an internal De Morgan (Stone) lattice ($\mathcal{E} \models \neg\phi \vee \neg\neg\phi$) if and only if for every object $U \in \mathbb{C}$ and every pair of $J$-closed sieves $R_1, R_2$ on $U$ whose intersection $R_1 \cap R_2$ contains only $J$-empty morphisms, there exists a $J$-covering sieve $S \in J(U)$ such that for every $f: V \to U$ in $S$, either $f^*(R_1)$ is $J$-empty or $f^*(R_2)$ is $J$-empty. In a contravariant presheaf topos $\mathbf{Set}^{\mathbb{C}^{\mathrm{op}}}$ ($J$ trivial), this holds if and only if $\mathbb{C}$ satisfies the \emph{Right Ore condition on cospans}: every cospan $V_1 \xrightarrow{f_1} U \xleftarrow{f_2} V_2$ in $\mathbb{C}$ can be completed to a commutative square $V_1 \xleftarrow{g_1} W \xrightarrow{g_2} V_2$ with $f_1 g_1 = f_2 g_2$ (note that completing spans $V_1 \leftarrow U \rightarrow V_2$ is the dual condition for covariant presheaves $\mathbf{Set}^{\mathbb{C}}$; see Johnstone, \emph{Sketches of an Elephant}, Example A4.6.9).
 
@@ -1610,7 +1610,7 @@ Theorem~\ref{thm:site-dictionary}(3) identifies an important family of Boolean u
 
 In foundational logic, continuous group-action topoi $\mathbf{Cont}(\mathcal{G})$ are the exact categorical incarnation of \emph{Fraenkel--Mostowski--Specker permutation models} of set theory with atoms ($\mathrm{ZFA} + \neg\mathrm{AC}$) and \emph{Fraïssé homogeneous model theory}, exhibiting a sharp dichotomy between discrete groups possessing a minimal open subgroup $\{1\}$ and non-discrete oligomorphic Polish groups possessing no minimal open subgroup (Kihara~\cite[Theorems~6.2 and~6.19]{Kihara26}):
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Discrete Group Topoi ($\mathbf{Set}^G$):} For any non-trivial discrete group $G \neq \{1\}$, the trivial subgroup $\{1\} \subsetneq G$ \emph{is} open, so the principal torsor $G = G/\{1\}$ is a minimal-stabilizer atom and an internally projective generator ($G \times A \twoheadrightarrow A_{\mathrm{triv}} \cong A$). Consequently, over $\mathbf{Set}_{\mathrm{AC}}$, $\mathbf{Set}^G$ is Boolean and satisfies both the Internal Axiom of Choice ($\mathrm{IAC}$) and $\mathrm{COSHEP}$ (Kihara~\cite{Kihara26}, Theorem~6.2). However, $\mathbf{Set}^G$ still fails External Choice ($\mathrm{EAC}$ / $\mathrm{AC}$) and localicity because the terminal object $1$ is \emph{not} externally projective: the unique map $G \twoheadrightarrow 1$ from the free transitive $G$-set $G$ onto the trivial $G$-set $1$ is an epimorphism with empty global sections $\Gamma(G) = G^G = \emptyset$ (Kihara~\cite{Kihara26}, Theorem~6.19).
 
@@ -1629,7 +1629,7 @@ Calibrating the hierarchy of weak choice principles inside permutation topoi $\m
 
 Let $\mathcal{G} = \mathrm{Aut}(\mathcal{M})$ be the topological automorphism group of a Fraïssé structure $\mathcal{M}$ over $\mathbf{Set}_{\mathrm{AC}}$, and let $\mathcal{E} = \mathbf{Cont}(\mathcal{G})$ be the atomic Boolean Grothendieck topos of continuous $\mathcal{G}$-sets:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Small Violations of Choice ($\mathcal{E} \models \mathrm{SVC}$):} Every Fraïssé permutation topos $\mathbf{Cont}(\mathcal{G})$ unconditionally satisfies Blass's Small Violations of Choice ($\mathrm{SVC}$), because every continuous $\mathcal{G}$-set is a subquotient of $C \times S$ where $C$ is a trivial (choice) $\mathcal{G}$-set and $S = \coprod_{F \subseteq_{\mathrm{fin}} \mathcal{M}} \mathcal{G}/\mathcal{G}_{(F)}$ is the universal object of finite supports.
 
@@ -1650,7 +1650,7 @@ Combining the Site-Combinatorial Dictionary (Theorem~\ref{thm:site-dictionary}) 
 \leanok%
 \uses{thm:permutation-topos}%
 Let $\mathcal{K}$ be a countable Fraïssé class of finite relational structures and strict embeddings satisfying the Joint Embedding Property ($\mathrm{JEP}$) and the Amalgamation Property ($\mathrm{AP}$), with countable ultrahomogeneous Fraïssé limit $\mathcal{M}$, and write $\mathbb{C} = \mathcal{K}^{\mathrm{op}}$ so that covariant diagrams $\mathbf{Set}^{\mathcal{K}}$ coincide with contravariant presheaves $\mathbf{Set}^{\mathbb{C}^{\mathrm{op}}}$.
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
   \item \textbf{The Presheaf Groupoidification Obstruction:} By Theorem~\ref{thm:site-dictionary}(3), the bare presheaf topos $\mathbf{Set}^{\mathcal{K}} = \mathbf{Set}^{\mathbb{C}^{\mathrm{op}}}$ (with the trivial topology) is Boolean ($\Omega \simeq 1+1$) if and only if $\mathcal{K}$ is a groupoid; forcing classical logic onto $\mathbf{Set}^{\mathcal{K}}$ without a non-trivial Grothendieck topology---or applying groupoidification $\pi_{\le 0}(\mathcal{K})$---inverts all embeddings $A \hookrightarrow B$ into isomorphisms.
   \item \textbf{Amalgamation as the Right Ore Residuum for $\mathrm{WLEM}$:} Under $\mathbb{C} = \mathcal{K}^{\mathrm{op}}$, a cospan $B_1 \to A \leftarrow B_2$ in $\mathbb{C}$ is a span of embeddings $B_1 \hookleftarrow A \hookrightarrow B_2$ in $\mathcal{K}$, so the Fraïssé Amalgamation Property ($\mathrm{AP}$) on $\mathcal{K}$ is equivalent to the Right Ore condition on cospans in $\mathbb{C}$, validating De Morgan's Law ($\mathrm{WLEM}$) in $\mathbf{Set}^{\mathcal{K}}$ by Theorem~\ref{thm:site-dictionary}(1).
   \item \textbf{Atomic Sheafification Preserves Directed Embeddings:} Because $\mathbb{C} = \mathcal{K}^{\mathrm{op}}$ satisfies the Right Ore condition, every non-empty sieve on $\mathbb{C}$ is $\neg\neg$-dense, so $J_{\neg\neg}$ coincides with the atomic Grothendieck topology $J_{\mathrm{at}}$ (generated by single morphisms). Passing to the sheaf subtopos $\mathbf{Sh}(\mathcal{K}^{\mathrm{op}}, J_{\mathrm{at}}) \simeq \mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$~\cite{Caramello18} achieves full Booleanness ($\mathrm{LEM}$) and two-valuedness (via $\mathrm{JEP}$) without inverting the embeddings of $\mathcal{K}$, trading morphism invertibility for the non-localic stabilizer obstructions of Theorem~\ref{thm:permutation-topos}.
@@ -1663,7 +1663,7 @@ Calibrating internal and external choice principles across Boolean atomic Grothe
 \[
   \mathrm{LEM} \;\subsetneq\; \mathrm{DC}_\omega + \mathrm{AC}_{\le \lambda} \;\subsetneq\; \mathrm{AC}_{\mathrm{Set}} \;\subsetneq\; \mathrm{IAC} + \mathrm{COSHEP} \;\subsetneq\; \mathrm{EAC}.
 \]
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \textbf{Rung~0 ($\mathrm{LEM}$ holds; $\mathrm{DC}_\omega + \mathrm{AC}_{\le \lambda}$ fails):} Schanuel's nominal topos $\mathbf{Nom} = \mathbf{Sh}(\mathbf{Set}_{\mathrm{fin}}^{\mathrm{op}}, J_{\mathrm{at}}) \simeq \mathbf{Cont}(\mathrm{Sym}(\mathbb{N}))$ validates $\mathrm{LEM}$, $\mathrm{SVC}$, and constant-fiber $\mathrm{FAC}_k$, yet refutes both $\mathrm{AC}_\omega$ and $\mathrm{DC}_\omega$ ($\mathrm{IDC}_\omega$) because $\mathbf{Set}_{\mathrm{fin}}$ has unbounded finite cardinalities (Theorem~7.9); similarly, $\mathbf{Sh}(\mathrm{WO}_\lambda^{\mathrm{op}}, J_{\mathrm{at}})$ validates $\mathrm{LEM} + \mathrm{AC}_\lambda$ (Proposition~7.8) while refuting $\mathrm{DC}_\omega$ via the shift $s(n) = n + 1 : \omega \hookrightarrow \omega$ (Proposition~7.5) and refuting $\mathrm{AC}_{\lambda^+}$ (Proposition~7.7).
   \item \textbf{Rung~1 ($\mathrm{DC}_\omega + \mathrm{AC}_{\le \lambda}$ holds; $\mathrm{AC}_{\mathrm{Set}}$ fails):} Unstable classes admitting $\omega$-chain and $\le \lambda$-fan cocones at $\lambda^{<\lambda} = \lambda$---linear orders $\mathrm{LO}_\lambda$, groups $\mathrm{Grp}_\lambda$, Boolean algebras $\mathrm{BA}_\lambda$, and graphs $\mathrm{Graph}_\lambda$---validate $\mathrm{DC}_\omega$ and $\mathrm{AC}_{\le \lambda}$ (Theorems~3.3--3.4), yet refute $\mathrm{AC}_{\mathrm{Set}} \equiv \forall \kappa, \mathrm{AC}_\kappa$: under $\lambda$-$\mathrm{TV}$ ($\lambda$-two-valuedness, meaning every non-trivial slice over a $\mathcal{K}_\lambda$-object splits into at most $\lambda$ pieces, ensuring $\mathcal{K}_\lambda$ generates without hyper-split obstructions), $\mathrm{AC}_{\mathrm{Set}} \iff \mathrm{AC}_{\lambda^+} \iff$ \emph{Galois $\lambda$-stability} $s(\mathcal{K}; \lambda) = \lambda$, where $s(\mathcal{K}; \lambda)$ denotes the cardinality of the space of Galois $1$-types over a base structure of size $\lambda$ (Theorems~5.6 and~5.10; see also Theorem~6.34 for Polish groups).
   \item \textbf{Rung~2 ($\mathrm{AC}_{\mathrm{Set}} + \mathrm{DC}_\omega$ holds; $\mathrm{IAC} + \mathrm{COSHEP}$ fails):} Unbounded Galois-stable ($\omega$-stable) classes---$\mathrm{Set}_\lambda$, $\mathrm{Vec}_{F, \lambda}$, $\mathrm{AbGrp}_\lambda$, and $\mathrm{Mod}(\mathrm{ACF}_0)_\lambda$ ($\lambda \ge \aleph_0$)---validate $\mathrm{DC}_\omega + \mathrm{AC}_{\mathrm{Set}}$ (Theorem~5.6, Corollary~7.1), yet lack maximal structures, refuting $\mathrm{COSHEP} \iff \mathrm{AtPAx} \iff \mathrm{IAC} \iff$ \emph{Maximal Extension Property}, where $\mathrm{AtPAx}$ is the Atomic Presentation / Projectivity Axiom asserting that every object is covered by a projective atom (Proposition~6.6 and Theorems~6.2, 6.7, and~6.8).
@@ -1701,7 +1701,7 @@ In directed combinatorial geometry (\texttt{HomotopyCRM/ Directed Fraisse SAP.le
 \leanok%
 \uses{prop:matching-amalgamation,thm:fraisse-atomic-escape}%
 \leavevmode
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
   \item \textbf{All-$n$ Disjoint $n$-Amalgamation on $\mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$:} Every punctured $n$-cube $D : \mathcal{P}^-(n) \to \mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$ ($n \ge 2$) of finite oriented graded posets and closed cellular embeddings satisfying exact face intersections admits a finite oriented graded poset cocone $(j_S : D(S) \hookrightarrow Q)_{S \subsetneq [n]}$ of closed cellular embeddings satisfying global $n$-$\mathrm{DAP}$ ($j_S(D(S)) \cap j_T(D(T)) = j_{S \cap T}(D(S \cap T))$) and downward closure preservation $\mathrm{cl}_Q(j_S(x)) \simeq_o \mathrm{cl}_{D(S)}(x)$.
   \item \textbf{All-$n \ge 3$ Failure on $\mathbf{DirComp}_{\mathrm{acyc}}^{\mathrm{convex}}$:} For every $n \ge 3$, the facet-supported directed $n$-cycle $F_n$ : $\mathcal{P}^-(n) \to \mathbf{DirComp}_{\mathrm{acyc}}^{\mathrm{convex}}$---assigning vertex $v_i$ of the directed $n$-cycle $C_n$ support $A_i = [n] \setminus \{i, i+1\}$ ($|A_i| = n - 2$) and directed edge $e_i : v_i \to v_{i+1}$ support $M_i = A_i \cup A_{i+1} = [n] \setminus \{i+1\}$ over $\mathbb{Z}/n\mathbb{Z}$---consists strictly of flow-acyclic proper faces ($\emptyset$, $*$, or \texttt{WalkingArrow}) and flow-convex embeddings, yet admits \emph{no} flow-acyclic oriented graded poset cocone $(j_S : F_n(S) \hookrightarrow Q)_{S \subsetneq [n]}$.
 \end{enumerate}
@@ -1720,7 +1720,7 @@ Connecting Kihara's Rung~0 $\to$ Rung~1 choice threshold ($\mathrm{IDC}_\omega \
 \leanok%
 \uses{thm:ordinal-rank-completeness,thm:permutation-topos}%
 \leavevmode
-\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\begin{enumerate}
   \item \textbf{$\mathrm{IDC}_\omega$ Adequacy at Rung~$\ge 1$:} If $\mathcal{E} \models \mathrm{IDC}_\omega$ ($\mathrm{DC}_\omega$), then $E_{\mathrm{rel}} = \mathrm{im}(\mathrm{InvStr})$ for every internal Grothendieck--Maltsiniotis weak $\omega$-category / clan model $\mathcal{C} \in \mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathcal{E})$.
   \item \textbf{Rung~0 Failure on $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$ in $\mathbf{Nom}$:} In Schanuel's Boolean atomic topos $\mathbf{Nom} = \mathbf{Cont}(\mathrm{Sym}(\mathbb{A}))$ ($\mathbb{A} = \mathbb{N}$, validating $\mathrm{LEM} + \neg\mathrm{DC}_\omega$), let $E[\mathbb{A}]$ be the explicit internal fresh-atom computad whose depth-$(d+1)$ cancellation witnesses $\eta_\epsilon(a_1, \dots, a_{d+1})$ are indexed strictly by fresh atoms $a_{d+1} \in \mathbb{A} \setminus \{a_1, \dots, a_d\}$, and evaluate $\Phi$ and $\mathrm{InvStr}_1$ on the free Grothendieck--Maltsiniotis weak $\omega$-category / clan model $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}]) \in \mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathbf{Nom})$. Because finitary polynomial $\mathbf{CaTT}$ syntax preserves finite atom supports, Knaster--Tarski coinduction yields $u \in \Gamma(E_{\mathrm{rel}, 1})$, whereas any candidate witness stream $\xi$ would select an infinite spine of pairwise distinct fresh atoms $(a_1, a_2, \dots) \in \mathbb{A}^{\#(\omega)}$ broken over every finite support $F$ by a transposition $(a_m \; b) \cdot \xi \neq \xi$, forcing $\mathrm{InvStr}_1(\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}]))_u = \emptyset$ ($\mathrm{im}(\mathrm{InvStr})_1 \subsetneq E_{\mathrm{rel}, 1}$).
 \end{enumerate}
@@ -1733,7 +1733,7 @@ Theorem~\ref{thm:coinductive-stream-choice} is machine-checked in Lean~4 (\textt
 \begin{center}\emph{[Summary ledger table omitted in blueprint edition; see Royal Octavo monograph PDF.]}\end{center}
 
 \chapter{Master Atlas of Open Problems, Methodological Blueprints, and Research Horizons}
-\chaptermark{Master Atlas of Open Problems and Research Horizons}
+
 \label{ch:master-atlas}
 
 \section{The Unified Architecture of Categorical Reverse Mathematics}
@@ -1752,7 +1752,7 @@ Equivalently, $\mathcal{R}(\mathcal{E})$ is the weakest orthogonal structural in
 
 To prevent the Triviality Trap---where the material implication $A \to B$ is offered as a tautological solution---every valid residuum $\mathcal{R}(\mathcal{E})$ must obey the Admissibility Criterion by belonging to one of four orthogonal structural families:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 
   \item \textbf{Classifier Geometry:} Order-theoretic and modal properties of $\Omega$, including Booleanness ($\Omega \simeq 1+1$), De Morgan/Stone lattices, Gödel--Dummett linearity, compactness, and Lawvere--Tierney topologies $j: \Omega \to \Omega$.
 
@@ -1768,7 +1768,7 @@ To prevent the Triviality Trap---where the material implication $A \to B$ is off
 
 Solving the residuum equivalence $A + \mathcal{R}(\mathcal{E}) \iff B$ for a new pair of mathematical theorems follows a five-step analytical protocol distilled from our case studies across Chapters 1--6:
 
-\begin{enumerate}[label=\textbf{Step \arabic*:},leftmargin=4.2em]
+\begin{enumerate}
 
   \item \textbf{Internalization:} Cast $A$ and $B$ in the internal language of $\mathcal{E}$ to fix universe classes $\mathbf{Mod}(B) \subsetneq \mathbf{Mod}(A)$.
 
@@ -1792,7 +1792,7 @@ transferring the missing metamathematical strength into heightened topological, 
 
 At the core of the Categorical Reverse Mathematics research agenda stand five core conjectures that connect topos geometry, sheaf cohomology, locale theory, and higher homotopy theory:
 
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em]
+\begin{enumerate}
 
   \item \textbf{Cohomological Vanishing:} Characterize internal group classes $\mathcal{G}_A$ where $(A \Rightarrow \mathrm{AC})$ reduces to Booleanness, external projectivity of $1_{\mathcal{E}}$, and $H^1(\mathcal{E}/Y, G) = 0$.
 
@@ -1889,7 +1889,7 @@ Calibrate the Borel complexity transition separating Rung~4 countably classifiab
 \section{Machine-Checked Lean~4 Formalization Ledger (\texttt{HomotopyCRM})}\label{subsec:lean4-verification-ledger}
 
 To anchor these categorical, algebraic, and combinatorial separations against vacuous definitions or hidden metamathematical assumptions, core components of Chapters~\ref{ch:foundations}, \ref{ch:non-ac-lattices}, \ref{ch:base-fiber}, \ref{ch:higher-crm}, and~\ref{ch:realizability-sites} are formalized in Lean~4 over \texttt{mathlib4} inside the \texttt{HomotopyCRM} library under a strict four-layer kernel verification gate (concrete \texttt{Nontrivial} carrier inhabitation, bidirectional positive/negative predicate separation, stock \texttt{mathlib4} typeclass projection with derived boundary lemmas, and \texttt{\#guard\_msgs in \#print axioms} permitting only \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound} with zero \texttt{sorry}, custom axioms, or \texttt{opaque} terms; 14,583 verified lines across nine production modules, audited via 166 \texttt{\#guard\_msgs in \#print axioms} checks):
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
   \item \texttt{HomotopyCRM/ InfinityResiduum.lean} (949 lines, 20 checks): Formalizes Chapter~1 (\S\ref{sec:finset-infinity}) finite dynamical lassos \texttt{LassoCarrier p q} / \texttt{lassoDynSys}, non-initiality in $\mathbf{FinSet}$ (\texttt{isEmpty\_ hom\_ of\_ fintype\_ to\_ succ\_ lasso}), coherent transition maps \texttt{lassoTransition}, profinite surjection \texttt{profiniteLassoToZHat\_ surjective} ($\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$) with non-natural $-1$ separation (\texttt{zHatToProfiniteLasso\_ neg\_ one\_ not\_ mem\_ range\_ nat}), Pigeonhole triviality vs.\ nominal atom crossing (\texttt{dedekindResiduum\_ eq\_ empty\_ of\_ fintype}, \texttt{nominalDedekindResiduum\_ eq\_ empty}, \texttt{not\_ hasFiniteSupportMap\_ nat\_ succ}), and biproduct-tail cokernels (\texttt{TailCokernel}, \texttt{subsingleton\_ tailCokernel\_ of\_ fintype}, \texttt{nontrivial\_ tailCokernel\_ nat}).
   \item \texttt{HomotopyCRM/ DeltaRingPerfection.lean} (1,398 lines, 21 checks): Formalizes Goldthorpe's slice endofunctor \texttt{sliceEndofunctor F c}, Lambek's isomorphism \texttt{lambek\_ isIso}, fixed-point coalgebra equivalence (\texttt{FixedPoint CoalgebraUnder}, \texttt{theoremA\_ homEquiv}), sequential colimit relative perfection $A_{\mathrm{perf}} = \varinjlim_\phi A$ with shift chirality $\phi_{A_{\mathrm{perf}}} = s^{-1}$ (\texttt{theoremB\_ natEndo\_ app\_ eq\_ shift\_ inv}), \texttt{DeltaRing2Cat} with Joyal's polynomial cofactor $C_2(x, y) = -xy$ on $2$-torsion rings, and Nygaard filtration separation on \texttt{DualInt} ($\mathbb{Z}[\varepsilon]/(\varepsilon^2)$).
   \item \texttt{HomotopyCRM/ BorelTailResiduum.lean} (682 lines, 19 checks): Formalizes Chapter~4 (\S\ref{sec:exotic-r4-e0}) $E_0$ Cantor tail exact sequence $0 \to (\mathbb{N} \to_0 \mathrm{ZMod}\;2) \to (\mathbb{N} \to \mathrm{ZMod}\;2) \xrightarrow{q} \mathcal{Q}_{E_0} \to 0$ (\texttt{exact\_ finFlipIncl\_ e0QuotientMk}), classical $\mathsf{ZFC}$ right-inverse Hamel splitting via \texttt{Submodule.exists\_ isCompl} (\texttt{exists\_ zfc\_ linear\_ section\_ e0Quotient}), basis-free Cantor product-topology coset density (\texttt{dense\_ evenE0Coset}, \texttt{dense\_ e0Coset}) forcing $T_1$ invariant constancy (\texttt{continuous\_ e0Invariant\_ const}, \texttt{not\_ exists\_ continuous\_ t1\_ e0Separator}), and the $E_0^{\mathrm{even}}$ parity torsor dichotomy separating continuity impossibility (\texttt{not\_ exists\_ continuous\_ flipAlternating}) from discontinuous \texttt{Classical.choice} linear extension (\texttt{exists\_ zfc\_ linear\_ flipAlternating}, \texttt{exists\_ zfc\_ linear\_ section\_ evenToE0Quotient}).

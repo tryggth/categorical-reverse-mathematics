@@ -196,6 +196,7 @@ def transform_content(body: str) -> str:
     for macro, nargs in [
         (r"\index", 1),
         (r"\chapterepigraph", 2),
+        (r"\chaptermark", 1),
         (r"\markboth", 2),
         (r"\addcontentsline", 3),
         (r"\bookmarksetup", 1),
@@ -203,6 +204,7 @@ def transform_content(body: str) -> str:
     ]:
         text = replace_macro_calls(text, macro, nargs, lambda _args: "")
 
+    text = re.sub(r"\\begin\{(enumerate|itemize)\}\[[^\]]*\]", r"\\begin{\1}", text)
     text = text.replace(r"\allowbreak", "")
     text = text.replace(r"\backmatter", "")
     text = text.replace(r"\printindex", "")
