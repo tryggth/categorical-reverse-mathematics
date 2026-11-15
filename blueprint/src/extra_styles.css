@@ -1,0 +1,29 @@
+/* Styling harmonized with the CRMBlue (#1B365D) Royal Octavo monograph edition */
+div.theorem_thmcontent,
+div.proposition_thmcontent,
+div.principle_thmcontent {
+	border-left: .18rem solid #1B365D;
+	padding-left: .65rem;
+}
+
+div.lemma_thmcontent,
+div.conjecture_thmcontent,
+div.problem_thmcontent {
+	border-left: .12rem solid #1B365D;
+	padding-left: .65rem;
+}
+
+div.definition_thmcontent {
+	border-left: .15rem solid #2B5B84;
+	padding-left: .65rem;
+}
+
+div.remark_thmcontent {
+	border-left: .10rem solid #64748B;
+	padding-left: .65rem;
+}
+
+div.proof_content {
+	border-left: .08rem solid #94A3B8;
+	padding-left: .65rem;
+}

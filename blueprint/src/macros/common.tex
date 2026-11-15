@@ -1,0 +1,22 @@
+% Shared theorem environments and mathematical macros for blueprint print and web builds
+
+% Theorems
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{principle}[theorem]{Principle}
+\newtheorem{problem}{Problem}[chapter]
+
+% Definitions and Remarks
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Monograph Domain Macros
+\newcommand{\Eff}{\mathcal{E}\mathrm{ff}}
+\newcommand{\Prism}{\mathbf{\Delta}}
+\newcommand{\CohesiveQuad}{\Pi \dashv \mathrm{Disc} \dashv \Gamma \dashv \mathrm{Codisc}}
+\providecommand{\sslash}{\mathbin{/\mkern-5mu/}}

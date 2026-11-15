@@ -1,0 +1,106 @@
+name: Compile Blueprint & Docs
+
+"on":
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.lean'
+      - docs/categorical_reverse_mathematics.tex
+      - blueprint/**
+      - home_page/**
+      - references.bib
+      - scripts/sync_blueprint.py
+      - scripts/verify_monograph.py
+      - lean-toolchain
+      - lakefile.toml
+      - lake-manifest.json
+      - .github/workflows/blueprint.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.lean'
+      - docs/categorical_reverse_mathematics.tex
+      - blueprint/**
+      - home_page/**
+      - references.bib
+      - scripts/sync_blueprint.py
+      - scripts/verify_monograph.py
+      - lean-toolchain
+      - lakefile.toml
+      - lake-manifest.json
+      - .github/workflows/blueprint.yml
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  build_project:
+    runs-on: ubuntu-latest
+    name: Build Blueprint & API Docs
+    steps:
+      - name: Cleanup to free disk space
+        uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v2.0.0
+        with:
+          tool-cache: false
+          android: true
+          dotnet: false
+          haskell: false
+          large-packages: false
+          docker-images: false
+          swap-storage: false
+
+      - name: Checkout project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install TeX Live packages for monograph PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-pictures \
+            texlive-science \
+            tex-gyre \
+            lmodern
+
+      - name: Compile monograph PDF and stage GitHub Pages site
+        run: |
+          python3 scripts/verify_monograph.py --tex-only
+          mkdir -p site
+          cp home_page/index.html site/index.html
+          cp docs/categorical_reverse_mathematics.pdf site/categorical_reverse_mathematics.pdf
+
+      - name: Build HomotopyCRM and checkdecls
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          use-github-cache: true
+          build: true
+          build-args: HomotopyCRM checkdecls
+          test: false
+          lint: false
+
+      - name: Compile blueprint, check declarations, build API docs, and deploy Pages
+        uses: leanprover-community/docgen-action@10db47458f91456d87804787d3dfcd914b9a19e3
+        with:
+          blueprint: "true"
+          api-docs: "true"
+          build-page: "false"
+          homepage: site
+          references: references.bib
+          deploy: "true"

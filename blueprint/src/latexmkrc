@@ -1,0 +1,4 @@
+# Configure latexmk for building the printable blueprint PDF
+$pdf_mode = 1;
+$pdflatex = 'pdflatex -interaction=nonstopmode -halt-on-error %O %S';
+@default_files = ('print.tex');

@@ -48,4 +48,12 @@ __pycache__/
 .DS_Store
 *.swp
 *.swo
+
+# Credentials, transient Zenodo drafts, and generated blueprint/Pages build outputs
+.env
+.zenodo_draft.json
+blueprint/print/
+blueprint/web/
+docbuild/
+site/
 *~

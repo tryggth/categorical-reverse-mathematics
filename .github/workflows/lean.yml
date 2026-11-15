@@ -7,6 +7,10 @@ name: Build & Verify HomotopyCRM Lean 4
     paths:
       - HomotopyCRM.lean
       - HomotopyCRM/**
+      - CheckDecls.lean
+      - blueprint/lean_decls
+      - docs/categorical_reverse_mathematics.tex
+      - scripts/sync_blueprint.py
       - lakefile.toml
       - lake-manifest.json
       - lean-toolchain
@@ -18,6 +22,10 @@ name: Build & Verify HomotopyCRM Lean 4
     paths:
       - HomotopyCRM.lean
       - HomotopyCRM/**
+      - CheckDecls.lean
+      - blueprint/lean_decls
+      - docs/categorical_reverse_mathematics.tex
+      - scripts/sync_blueprint.py
       - lakefile.toml
       - lake-manifest.json
       - lean-toolchain
@@ -40,14 +48,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build HomotopyCRM with Mathlib4 & GitHub .olean caches
+      - name: Build HomotopyCRM and checkdecls with Mathlib4 & GitHub .olean caches
         uses: leanprover/lean-action@v1
         with:
           use-mathlib-cache: true
           use-github-cache: true
           build: true
+          build-args: HomotopyCRM checkdecls
           test: false
           lint: false
+
+      - name: Verify blueprint synchronization
+        run: python3 scripts/sync_blueprint.py --check
+
+      - name: Verify cited Lean declarations via checkdecls
+        run: ~/.elan/bin/lake exe checkdecls blueprint/lean_decls
 
       - name: Run 4-layer static definition & axiom gate audit
         run: python3 scripts/verify_monograph.py --lean-only --no-build

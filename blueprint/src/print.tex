@@ -1,0 +1,34 @@
+% Printable blueprint compiled via pdflatex (see blueprint/src/latexmkrc)
+
+\documentclass{amsbook}
+
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2081}{\textsubscript{1}}
+\DeclareUnicodeCharacter{2082}{\textsubscript{2}}
+\DeclareUnicodeCharacter{03B9}{\ensuremath{\iota}}
+\DeclareUnicodeCharacter{010C}{\v{C}}
+\usepackage[T1]{fontenc}
+
+\usepackage{geometry}
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\definecolor{CRMBlue}{HTML}{1B365D}
+\usepackage{booktabs}
+\usepackage{expl3}
+\usepackage{amssymb,amsthm,mathtools}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=blue]{hyperref}
+
+\input{macros/common}
+\input{macros/print}
+
+\title{Categorical Reverse Mathematics with Applications: Blueprint}
+\author{James F. Walters}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{content}
+
+\end{document}

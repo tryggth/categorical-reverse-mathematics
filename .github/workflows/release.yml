@@ -46,3 +46,14 @@ jobs:
         with:
           files: docs/categorical_reverse_mathematics.pdf
           generate_release_notes: true
+
+      - name: Mint and Publish New Zenodo Version
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+        run: |
+          if [ -n "${ZENODO_TOKEN:-}" ]; then
+            python3 scripts/publish_zenodo.py --new-version --version "${GITHUB_REF_NAME}"
+          else
+            echo "ZENODO_TOKEN not configured; skipping Zenodo release."
+          fi

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorical Reverse Mathematics with Applications</title>
+  <style>
+    :root {
+      --crm-blue: #1B365D;
+      --crm-accent: #2B5B84;
+      --crm-bg: #F8FAFC;
+      --crm-card: #FFFFFF;
+      --crm-border: #CBD5E1;
+      --crm-text: #0F172A;
+      --crm-muted: #475569;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+      background: var(--crm-bg);
+      color: var(--crm-text);
+      margin: 0;
+      padding: 2.5rem 1.25rem;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--crm-card);
+      border: 1px solid var(--crm-border);
+      border-top: 5px solid var(--crm-blue);
+      border-radius: 8px;
+      padding: 2.25rem 2.5rem;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+    }
+    h1 {
+      color: var(--crm-blue);
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+      font-size: 1.9rem;
+      line-height: 1.25;
+    }
+    .subtitle {
+      color: var(--crm-muted);
+      font-style: italic;
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .meta {
+      font-size: 0.95rem;
+      color: var(--crm-muted);
+      border-bottom: 1px solid var(--crm-border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--crm-border);
+      border-left: 4px solid var(--crm-blue);
+      border-radius: 6px;
+      padding: 1rem 1.1rem;
+      background: #FDFEFF;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .card:hover {
+      border-color: var(--crm-accent);
+      transform: translateY(-1px);
+    }
+    .card strong {
+      display: block;
+      color: var(--crm-blue);
+      margin-bottom: 0.25rem;
+    }
+    .card span {
+      font-size: 0.9rem;
+      color: var(--crm-muted);
+    }
+    a {
+      color: var(--crm-accent);
+    }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--crm-border);
+      font-size: 0.85rem;
+      color: var(--crm-muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Categorical Reverse Mathematics with Applications</h1>
+    <p class="subtitle">The Structure of Necessity</p>
+    <div class="meta">
+      <strong>Author:</strong> James F. Walters (Port Townsend, Washington) &bull;
+      <strong>Archival DOI:</strong> <a href="https://doi.org/10.5281/zenodo.24238087">10.5281/zenodo.24238087</a> &bull;
+      <strong>Lean Toolchain:</strong> Lean 4.28.0 / Mathlib
+    </div>
+    <p>
+      This site hosts the live-synced Royal Octavo monograph PDF, interactive Lean 4 Blueprint,
+      theorem dependency graph, and auto-generated <code>doc-gen4</code> API documentation for the
+      <code>HomotopyCRM</code> formalization library, kept synchronized on every push to <code>main</code>.
+    </p>
+    <div class="grid">
+      <a class="card" href="./categorical_reverse_mathematics.pdf">
+        <strong>Monograph PDF (Royal Octavo)</strong>
+        <span>Download the typeset LaTeX book compiled from the current source.</span>
+      </a>
+      <a class="card" href="./blueprint/">
+        <strong>Interactive Web Blueprint</strong>
+        <span>Browse prose statements paired directly with verified Lean 4 declarations.</span>
+      </a>
+      <a class="card" href="./blueprint/dep_graph_document.html">
+        <strong>Dependency Graph</strong>
+        <span>Inspect the deductive dependency structure and Lean verification status.</span>
+      </a>
+      <a class="card" href="./docs/">
+        <strong>Lean 4 API Documentation</strong>
+        <span>Explore modules, definitions, and theorems across the 9-module <code>HomotopyCRM</code> library.</span>
+      </a>
+      <a class="card" href="./blueprint.pdf">
+        <strong>Blueprint PDF</strong>
+        <span>Download the minimal blueprint reference edition.</span>
+      </a>
+      <a class="card" href="https://github.com/tryggth/categorical-reverse-mathematics">
+        <strong>GitHub Repository</strong>
+        <span>View LaTeX sources, Lean 4 formalizations, CI workflows, and releases.</span>
+      </a>
+    </div>
+    <footer>
+      Monograph text licensed under CC BY 4.0; Lean 4 formalization licensed under Apache 2.0.
+    </footer>
+  </main>
+</body>
+</html>

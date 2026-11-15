@@ -7,6 +7,10 @@ name: Build Monograph PDF
     paths:
       - docs/categorical_reverse_mathematics.tex
       - scripts/verify_monograph.py
+      - scripts/sync_blueprint.py
+      - blueprint/src/content.tex
+      - blueprint/lean_decls
+      - references.bib
       - .github/workflows/book.yml
   pull_request:
     branches:
@@ -14,11 +18,15 @@ name: Build Monograph PDF
     paths:
       - docs/categorical_reverse_mathematics.tex
       - scripts/verify_monograph.py
+      - scripts/sync_blueprint.py
+      - blueprint/src/content.tex
+      - blueprint/lean_decls
+      - references.bib
       - .github/workflows/book.yml
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -54,3 +62,11 @@ jobs:
           name: categorical-reverse-mathematics-pdf
           path: docs/categorical_reverse_mathematics.pdf
           if-no-files-found: error
+
+      - name: Update Latest GitHub Release PDF
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG=$(gh release view --json tagName --jq .tagName)
+          gh release upload "$TAG" docs/categorical_reverse_mathematics.pdf --clobber

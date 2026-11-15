@@ -46,6 +46,15 @@ def strip_lean_comments(src: str) -> str:
 
 def check_tex() -> list[str]:
     errs = []
+    sync_res = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "sync_blueprint.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if sync_res.returncode != 0:
+        errs.append("Blueprint out of sync:\n" + (sync_res.stdout + sync_res.stderr).strip())
+
     txt = TEX.read_text(encoding="utf-8")
     for bad in FORBIDDEN:
         if bad.lower() in txt.lower():
@@ -99,6 +108,24 @@ def check_lean(run_build: bool = True) -> list[str]:
     errs = []
     if not (ROOT / "HomotopyCRM.lean").exists():
         errs.append("Missing root entry module HomotopyCRM.lean")
+    checkdecls_file = ROOT / "CheckDecls.lean"
+    if not checkdecls_file.exists():
+        errs.append("Missing CheckDecls.lean blueprint checker")
+    else:
+        chk_raw = checkdecls_file.read_text(encoding="utf-8")
+        chk_code = strip_lean_comments(chk_raw)
+        for bad in FORBIDDEN:
+            if bad.lower() in chk_raw.lower():
+                errs.append(f"Forbidden string in CheckDecls.lean: {bad!r}")
+        if re.search(r"\bsorry\b", chk_code):
+            errs.append("CheckDecls.lean: contains 'sorry'")
+        if re.search(r"(?m)^\s*(?:private\s+|protected\s+|noncomputable\s+)*axiom\b", chk_code):
+            errs.append("CheckDecls.lean: contains custom 'axiom'")
+        if re.search(r"(?m)^\s*(?:private\s+|protected\s+|noncomputable\s+)*opaque\b", chk_code):
+            errs.append("CheckDecls.lean: contains 'opaque'")
+    decls_file = ROOT / "blueprint" / "lean_decls"
+    if not decls_file.exists() or not [ln for ln in decls_file.read_text(encoding="utf-8").splitlines() if ln.strip()]:
+        errs.append("Missing or empty blueprint/lean_decls")
     files = sorted(LEAN_DIR.glob("*.lean"))
     prod = [f for f in files if f.name != "Basic.lean"]
     if not prod:
@@ -117,9 +144,13 @@ def check_lean(run_build: bool = True) -> list[str]:
             if "namespace Checks" not in code or "#print axioms" not in code:
                 errs.append(f"{f.name}: missing 'namespace Checks' or '#print axioms' gate")
     if run_build:
-        r = subprocess.run([resolve_lake(), "build"], cwd=ROOT, capture_output=True, text=True)
+        r = subprocess.run([resolve_lake(), "build", "HomotopyCRM", "checkdecls"], cwd=ROOT, capture_output=True, text=True)
         if r.returncode != 0:
-            errs.append("lake build failed:\n" + "\n".join((r.stdout + "\n" + r.stderr).splitlines()[-30:]))
+            errs.append("lake build HomotopyCRM checkdecls failed:\n" + "\n".join((r.stdout + "\n" + r.stderr).splitlines()[-30:]))
+        elif decls_file.exists():
+            rc = subprocess.run([resolve_lake(), "exe", "checkdecls", str(decls_file)], cwd=ROOT, capture_output=True, text=True)
+            if rc.returncode != 0:
+                errs.append("lake exe checkdecls failed:\n" + "\n".join((rc.stdout + "\n" + rc.stderr).splitlines()[-20:]))
     print(f"Lean modules checked: {len(prod)} production modules ({sum(len(f.read_text().splitlines()) for f in prod)} lines)")
     return errs
 

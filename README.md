@@ -2,15 +2,19 @@
 
 [![Build Monograph PDF](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/book.yml/badge.svg?branch=main)](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/book.yml)
 [![Build & Verify HomotopyCRM Lean 4](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/lean.yml)
-[![Download Monograph PDF (v1.0.0)](https://img.shields.io/badge/Monograph_PDF-Download_(v1.0.0)-1B365D)](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf)
+[![Compile Blueprint & Docs](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/blueprint.yml/badge.svg?branch=main)](https://github.com/tryggth/categorical-reverse-mathematics/actions/workflows/blueprint.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24238087.svg)](https://doi.org/10.5281/zenodo.24238087)
+[![Download Monograph PDF (Latest)](https://img.shields.io/badge/Monograph_PDF-Latest-1B365D)](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf)
 [![Lean 4 v4.28.0](https://img.shields.io/badge/Lean_4-v4.28.0-blue)](lean-toolchain)
 
 **Author:** James F. Walters (Port Townsend, Washington)  
 **Edition:** First Edition (November 2026)  
+**Archival DOI (Zenodo):** [`10.5281/zenodo.24238087`](https://doi.org/10.5281/zenodo.24238087) (All versions Concept DOI: [`10.5281/zenodo.24238086`](https://doi.org/10.5281/zenodo.24238086))  
 **Licenses:** CC BY 4.0 (Monograph) & Apache 2.0 (Lean 4 Formalization)  
 **MSC 2020:** `18B25` (Topoi), `03B30` (Foundations & Reverse Mathematics), `03G30` (Categorical Logic), `18N60` ($\infty$-Categories), `18N70` ($(\infty,\infty)$-Categories), `68V15` (Formal Proof in Lean 4)
 
-> **Read the Book (PDF):** [**Download `categorical_reverse_mathematics.pdf` (Latest Release — 150 pp., Royal Octavo)**](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf) · [All GitHub Releases (`v1.0.0`)](https://github.com/tryggth/categorical-reverse-mathematics/releases)
+> **Live Editions & Formal Verification Portal:**  
+> [**Download Current PDF (GitHub Release — 152 pp., Royal Octavo)**](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf) · [**GitHub Pages PDF**](https://tryggth.github.io/categorical-reverse-mathematics/categorical_reverse_mathematics.pdf) · [**Zenodo Archive**](https://doi.org/10.5281/zenodo.24238087) · [**Interactive Web Blueprint**](https://tryggth.github.io/categorical-reverse-mathematics/blueprint/) · [**Dependency Graph**](https://tryggth.github.io/categorical-reverse-mathematics/blueprint/dep_graph_document.html) · [**Lean 4 API Docs**](https://tryggth.github.io/categorical-reverse-mathematics/docs/)
 
 ---
 
@@ -38,7 +42,7 @@ Two structural principles organize the treatise:
   4. The **punctured facet-cycle complex** $F_n = \partial\Delta^{n-1}$ obstructing directed cubical $n$-amalgamation for $n \ge 3$ while $n = 2$ splits cleanly (Ch. 6);
   5. The **Cantor tail quotient** $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}/E_0$, the parity torsor $E_0^{\mathrm{even}}$, and $\mathrm{UHF}(2^\infty)$ $C^*$-moduli classifying exotic $\mathbb{R}^4$'s (Ch. 4).
 
-This repository contains the complete LaTeX source for the 150-page Royal Octavo ($6.14\,\mathrm{in} \times 9.21\,\mathrm{in}$) monograph **and** the companion Lean 4 / `mathlib4` formalization library `HomotopyCRM` (14,583 lines across 9 production modules, kernel-verified under a 4-layer gate with 0 `sorry` and 0 custom axioms).
+This repository contains the complete LaTeX source for the 152-page Royal Octavo ($6.14\,\mathrm{in} \times 9.21\,\mathrm{in}$) monograph **and** the companion Lean 4 / `mathlib4` formalization library `HomotopyCRM` (14,583 lines across 9 production modules, kernel-verified under a 4-layer gate with 0 `sorry` and 0 custom axioms), synchronized via a `leanblueprint` + `checkdecls` + `doc-gen4` pipeline linking prose theorems directly to checked Lean 4 declarations.
 
 ---
 
@@ -64,10 +68,13 @@ This repository contains the complete LaTeX source for the 150-page Royal Octavo
 .
 ├── .github/
 │   └── workflows/
-│       ├── book.yml            # CI: Royal Octavo LaTeX PDF build & verification on TeX changes
-│       ├── lean.yml            # CI: Cached Lean 4 + mathlib4 build & 4-layer gate on Lean changes
-│       └── release.yml         # CI: Automated PDF compilation & attachment on v* GitHub Releases
-├── .gitignore                  # Ignores LaTeX aux/PDF build outputs and .lake/ builds
+│       ├── blueprint.yml       # CI: Web Blueprint, Dependency Graph, API Docs, & GitHub Pages deploy
+│       ├── book.yml            # CI: Royal Octavo PDF build + auto-update Latest GitHub Release PDF
+│       ├── lean.yml            # CI: Cached Lean 4 build, blueprint sync, checkdecls, & 4-layer gate
+│       └── release.yml         # CI: Tagged v* GitHub Release PDF + automated Zenodo new version
+├── .gitignore                  # Ignores LaTeX aux/PDF build outputs, .lake/, site/, and secrets
+├── .zenodo.json                # Published Zenodo record metadata (DOI 10.5281/zenodo.24238087)
+├── CheckDecls.lean             # Lake executable checking all cited book declarations in HomotopyCRM
 ├── HomotopyCRM.lean            # Root Lean 4 entry module importing all HomotopyCRM submodules
 ├── HomotopyCRM/
 │   ├── Basic.lean              # Shared 4-tier (∞,∞) localization ladder enum (19 lines)
@@ -80,26 +87,32 @@ This repository contains the complete LaTeX source for the 150-page Royal Octavo
 │   ├── NominalSimplicity.lean  # Ch. 6 §6.6: Sym(N) simplicity & odd-finset parity torsor (1,275 lines)
 │   ├── CubicalAmalgamation.lean# Ch. 6 §6.7: n=2 vs n≥3 cubical amalgamation & F_n cycle (1,636 lines)
 │   └── NominalICaTT.lean       # Ch. 6 §6.8: Theorem 9B DC_ω stream adequacy vs Nom failure (1,239 lines)
-├── LICENSE                     # Dual open license (CC BY 4.0 Monograph + Apache 2.0 Code)
-├── README.md                   # This file
+├── blueprint/
+│   ├── lean_decls              # Auto-generated list of 89 cited Lean 4 declarations checked by checkdecls
+│   └── src/                    # leanblueprint templates & synced content.tex
 ├── docs/
-│   └── categorical_reverse_mathematics.tex   # Single LaTeX source of truth (3,067 lines)
+│   └── categorical_reverse_mathematics.tex   # Single LaTeX source of truth (3,136 lines)
+├── home_page/
+│   └── index.html              # GitHub Pages landing page linking PDF, Blueprint, Graph, & Docs
 ├── lake-manifest.json          # Exact pinned dependencies (mathlib4 v4.28.0, doc-gen4 v4.28.0)
-├── lakefile.toml               # Lake project configuration for HomotopyCRM
+├── lakefile.toml               # Lake project configuration for HomotopyCRM and checkdecls
 ├── lean-toolchain              # Pinned toolchain: leanprover/lean4:v4.28.0
+├── references.bib              # Auto-generated BibTeX entries synced from bibliography
 └── scripts/
-    └── verify_monograph.py     # Portable automated TeX + Lean 4 verification harness
+    ├── publish_zenodo.py       # Zenodo draft/DOI/publish & version automation via REST API
+    ├── sync_blueprint.py       # Deterministic LaTeX -> blueprint/ & references.bib sync (--check)
+    └── verify_monograph.py     # Portable automated TeX + Blueprint + Lean 4 verification harness
 ```
 
 ---
 
 ## Building the Book (PDF from LaTeX Source)
 
-Pre-built PDFs are attached automatically to tagged releases on the [**GitHub Releases**](https://github.com/tryggth/categorical-reverse-mathematics/releases) page ([direct PDF download](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf)) and uploaded as build artifacts on CI runs. To compile `docs/categorical_reverse_mathematics.pdf` locally from source:
+Every push to `main` touching [`docs/categorical_reverse_mathematics.tex`](docs/categorical_reverse_mathematics.tex) compiles a fresh PDF, updates the [**Latest GitHub Release PDF**](https://github.com/tryggth/categorical-reverse-mathematics/releases/latest/download/categorical_reverse_mathematics.pdf), and republishes the [**GitHub Pages PDF**](https://tryggth.github.io/categorical-reverse-mathematics/categorical_reverse_mathematics.pdf) alongside the interactive blueprint. To compile `docs/categorical_reverse_mathematics.pdf` locally from source:
 
 ### Prerequisites (TeX Live)
 
-On **Ubuntu / Debian**, install the verified lightweight TeX Live package set (uses `tgpagella`, `mathpazo`, `tgcursor`, `microtype`, `TikZ`/`tikz-cd`, and `makeindex` for exact 150-page, 0-overfull reproduction):
+On **Ubuntu / Debian**, install the verified lightweight TeX Live package set (uses `tgpagella`, `mathpazo`, `tgcursor`, `microtype`, `TikZ`/`tikz-cd`, and `makeindex` for exact 152-page, 0-overfull reproduction):
 
 ```bash
 sudo apt-get update
@@ -210,13 +223,24 @@ Supporting root/base modules: `HomotopyCRM.lean` (10 lines; root library importe
 
 ---
 
-## GitHub Actions CI & Releases
+## Paper ↔ Lean Synchronization, GitHub Actions CI & Zenodo Releases
 
-Three path-filtered workflows under [`.github/workflows/`](.github/workflows) keep CI fast and decoupled:
+### Paper ↔ Lean Blueprint Synchronization
 
-- **[`book.yml`](.github/workflows/book.yml) (`Build Monograph PDF`):** Runs on `push` to `main` and `pull_request` when [`docs/categorical_reverse_mathematics.tex`](docs/categorical_reverse_mathematics.tex), [`scripts/verify_monograph.py`](scripts/verify_monograph.py), or the workflow itself changes. Compiles the 150-page PDF, enforces zero errors and zero overfull boxes via `verify_monograph.py --tex-only`, and uploads `categorical_reverse_mathematics.pdf` as a build artifact.
-- **[`lean.yml`](.github/workflows/lean.yml) (`Build & Verify HomotopyCRM Lean 4`):** Runs on `push` to `main` and `pull_request` when Lean sources, [`lean-toolchain`](lean-toolchain), [`lakefile.toml`](lakefile.toml), [`lake-manifest.json`](lake-manifest.json), or [`scripts/verify_monograph.py`](scripts/verify_monograph.py) change. Uses [`leanprover/lean-action@v1`](https://github.com/leanprover/lean-action) with both `use-mathlib-cache: true` (pre-built `mathlib4` `.olean` archives) and `use-github-cache: true` (caching `.lake/` across runs), then runs `python3 scripts/verify_monograph.py --lean-only --no-build`.
-- **[`release.yml`](.github/workflows/release.yml) (`Release Monograph PDF`):** Triggered on `v*` tag pushes (`git tag -a v1.0.0 ... && git push origin v1.0.0`); compiles `docs/categorical_reverse_mathematics.pdf` cleanly from the tagged source and publishes it to the corresponding GitHub Release.
+Following the [`infinity-cosmos`](https://github.com/emilyriehl/infinity-cosmos) `leanblueprint` + `checkdecls` + `doc-gen4` architecture, formal theorems and definitions in [`docs/categorical_reverse_mathematics.tex`](docs/categorical_reverse_mathematics.tex) are annotated directly with `\lean{...}`, `\leanok`, and `\uses{...}` macros:
+
+- Running `python3 scripts/sync_blueprint.py` deterministically updates [`blueprint/src/content.tex`](blueprint/src/content.tex), [`blueprint/lean_decls`](blueprint/lean_decls) (89 cited declarations), and [`references.bib`](references.bib) without affecting the Royal Octavo PDF layout.
+- Running `python3 scripts/sync_blueprint.py --check` enforces zero drift between the monograph LaTeX source and blueprint files.
+- Running `lake exe checkdecls blueprint/lean_decls` ([`CheckDecls.lean`](CheckDecls.lean)) imports the compiled `HomotopyCRM` environment and rejects any missing, renamed, or `sorry`-tainted declaration cited by the book.
+
+### Workflows & Archival Publishing
+
+Four automated workflows under [`.github/workflows/`](.github/workflows) keep the PDF, interactive documentation, Lean checks, and Zenodo archive synchronized:
+
+- **[`book.yml`](.github/workflows/book.yml) (`Build Monograph PDF`):** Runs on `push` to `main` and `pull_request` when monograph or blueprint sources change. Compiles the 152-page Royal Octavo PDF, enforces `verify_monograph.py --tex-only`, uploads a workflow artifact, and clobber-uploads the fresh `categorical_reverse_mathematics.pdf` directly to the Latest GitHub Release on `main` pushes.
+- **[`lean.yml`](.github/workflows/lean.yml) (`Build & Verify HomotopyCRM Lean 4`):** Runs on `push` to `main` and `pull_request` on Lean or monograph declaration changes. Uses [`leanprover/lean-action@v1`](https://github.com/leanprover/lean-action) with Mathlib4 & GitHub `.olean` caches to build `HomotopyCRM` and `checkdecls`, then runs `sync_blueprint.py --check`, `lake exe checkdecls blueprint/lean_decls`, and `verify_monograph.py --lean-only --no-build`.
+- **[`blueprint.yml`](.github/workflows/blueprint.yml) (`Compile Blueprint & Docs`):** Builds the monograph PDF, compiles `HomotopyCRM`, runs [`leanprover-community/docgen-action`](https://github.com/leanprover-community/docgen-action) to generate the `leanblueprint` Web Blueprint, SVG Dependency Graph, and `doc-gen4` API documentation, and deploys the combined portal to [GitHub Pages](https://tryggth.github.io/categorical-reverse-mathematics/).
+- **[`release.yml`](.github/workflows/release.yml) (`Release Monograph PDF`):** Triggered on `v*` tag pushes; compiles `docs/categorical_reverse_mathematics.pdf`, attaches it to the GitHub Release, and (when `ZENODO_TOKEN` is configured) mints and publishes a new versioned record on Zenodo via [`scripts/publish_zenodo.py`](scripts/publish_zenodo.py).
 
 ---
 
@@ -229,6 +253,7 @@ Three path-filtered workflows under [`.github/workflows/`](.github/workflows) ke
   year      = {2026},
   month     = nov,
   address   = {Port Townsend, Washington},
+  doi       = {10.5281/zenodo.24238087},
   url       = {https://github.com/tryggth/categorical-reverse-mathematics},
   note      = {Open-access treatise (CC BY 4.0) with accompanying Lean 4 / mathlib4 formalization \texttt{HomotopyCRM}},
 }
