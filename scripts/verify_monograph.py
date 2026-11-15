@@ -55,6 +55,15 @@ def check_tex() -> list[str]:
     if sync_res.returncode != 0:
         errs.append("Blueprint out of sync:\n" + (sync_res.stdout + sync_res.stderr).strip())
 
+    claims_res = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "verify_technical_claims.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if claims_res.returncode != 0:
+        errs.append("Technical claims verification failed:\n" + (claims_res.stdout + claims_res.stderr).strip())
+
     txt = TEX.read_text(encoding="utf-8")
     for bad in FORBIDDEN:
         if bad.lower() in txt.lower():

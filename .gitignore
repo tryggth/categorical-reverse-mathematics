@@ -39,6 +39,7 @@ build/
 /Scratchpad_Latest_Delta.md
 /archive/
 /docs/*.md
+!/docs/technical_claims_foundations.md
 /docs/preface_invitation.tex
 /docs/reviews/
 

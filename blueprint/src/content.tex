@@ -1303,7 +1303,7 @@ Finer calibrations sharpen the geometric mechanisms separating Tiers~1, 2, and~3
 \lean{HomotopyCRM.prop11A_lali_stabilization_above_ceiling, HomotopyCRM.prop11A_ceiling_sharp_at_max_add_two}%
 \leanok%
 \uses{def:comparison-triple}%
-Let $l : \mathcal{A} \rightleftarrows \mathcal{D} : r$ be a Gray-enriched left-adjoint-left-inverse (\emph{Lali}) adjunction in the sense of Gepner--Heine~\cite[Definition~3.5.1]{GepnerHeine26} with idempotent endofunctor $E := l \circ r : \mathcal{D} \to \mathcal{D}$, over objects $x, y \in \mathcal{D}$ possessing finite local hom cell-stabilization heights $K_x = \mathrm{height}(\mathrm{Hom}_{\mathcal{D}}(x, y)) < \omega$ and $K_y = \mathrm{height}(\mathrm{Hom}_{\mathcal{D}}(E x, E y)) < \omega$ (\texttt{HasHomCellHeight}).
+Let $l : \mathcal{A} \rightleftarrows \mathcal{D} : r$ be a Gray-enriched (oriented~\cite[Definition~3.5.1]{GepnerHeine26}) left-adjoint-left-inverse (\emph{Lali}) adjunction with idempotent endofunctor $E := l \circ r : \mathcal{D} \to \mathcal{D}$, over objects $x, y \in \mathcal{D}$ possessing finite local hom cell-stabilization heights $K_x = \mathrm{height}(\mathrm{Hom}_{\mathcal{D}}(x, y)) < \omega$ and $K_y = \mathrm{height}(\mathrm{Hom}_{\mathcal{D}}(E x, E y)) < \omega$ (\texttt{HasHomCellHeight}).
 \begin{enumerate}
   \item \textbf{Finite-Rank Split-Idempotent Stabilization:} For every pair of parallel $(m-1)$-cell boundaries $(\Phi, \Psi)$ over $\mathrm{Hom}_{\mathcal{D}}(x, y)$ (\texttt{HomBoundary}) in ambient dimension $m > \max(K_x, K_y) + 2$, the Lali idempotent $E$ induces equivalences on ambient $m$-cell animae
   \[
@@ -1551,7 +1551,7 @@ Let $\mathcal{E} = \mathbf{RT}(\mathcal{A})$ be the realizability topos over a P
 
 In modern computable analysis, the finer structure of reverse mathematics is calibrated by \emph{Weihrauch reducibility} ($f \le_W g$): a computational problem (multi-valued map) $f: \subseteq X \rightrightarrows Y$ is Weihrauch reducible to $g: \subseteq Z \rightrightarrows W$ if there exist computable pre- and post-processors $\Phi, \Psi$ such that $f(x)$ is solved by a single oracle call to $g(\Phi(x))$.
 
-In Categorical Reverse Mathematics, Peter Lietz, Thomas Streicher, and Jaap van Oosten~\cite{LietzStreicher02,vanOosten08} demonstrated that the lattice of computational and semi-classical principles inside a realizability topos $\mathbf{RT}(\mathcal{A})$ is governed by the lattice of \emph{Lawvere--Tierney topologies (local operators)} $j: \Omega \to \Omega$. Every Lawvere--Tierney topology $j$ on $\mathbf{RT}(\mathcal{A})$ defines a full reflective \emph{sheaf subtopos} $\mathbf{Sh}_j(\mathbf{RT}(\mathcal{A})) \hookrightarrow \mathbf{RT}(\mathcal{A})$ whose internal logic forces all $j$-dense propositions to become true.
+In Categorical Reverse Mathematics, Peter Lietz, Thomas Streicher, Sori Lee, and Jaap van Oosten~\cite{LietzStreicher12,LeeVanOosten13,vanOosten08} demonstrated that the lattice of computational and semi-classical principles inside a realizability topos $\mathbf{RT}(\mathcal{A})$ is governed by the lattice of \emph{Lawvere--Tierney topologies (local operators)} $j: \Omega \to \Omega$. Every Lawvere--Tierney topology $j$ on $\mathbf{RT}(\mathcal{A})$ defines a full reflective \emph{sheaf subtopos} $\mathbf{Sh}_j(\mathbf{RT}(\mathcal{A})) \hookrightarrow \mathbf{RT}(\mathcal{A})$ whose internal logic forces all $j$-dense propositions to become true.
 
 \begin{theorem}[The Lawvere--Tierney Subtopos Residuum Principle]\label{thm:ltt-residuum}%
 \uses{thm:realizability-fan-wkl,thm:omega-dictionary}%
@@ -1825,7 +1825,7 @@ Extend the Base--Fiber Conservation Principle (Principle~\ref{thm:conservation-l
 \subsection*{Horizon II: Computability, Realizability, and Lawvere--Tierney Modalities}
 
 \begin{problem}[Weihrauch-Degree and Lawvere--Tierney Topology Duality]\label{prob:open-3}
-Construct an exact order-embedding or Galois duality relating the Weihrauch lattice $\mathcal{W}$ of computable analysis problems ($f \le_W g$) to the lattice $\mathbf{LTT}(\Eff) \simeq \mathbf{SubTopos}(\Eff)^{\mathrm{op}}$ of Lawvere--Tierney modal operators $j : \Omega \to \Omega$ on Hyland's Effective Topos $\Eff = \mathbf{RT}(\mathcal{K}_1)$ (Theorem~\ref{thm:ltt-residuum}, \cite{Hyland82,LietzStreicher02,vanOosten08}), identifying which Weihrauch cones correspond to $j$-hereditary subtopos conditions.
+Construct an exact order-embedding or Galois duality relating the Weihrauch lattice $\mathcal{W}$ of computable analysis problems ($f \le_W g$) to the lattice $\mathbf{LTT}(\Eff) \simeq \mathbf{SubTopos}(\Eff)^{\mathrm{op}}$ of Lawvere--Tierney modal operators $j : \Omega \to \Omega$ on Hyland's Effective Topos $\Eff = \mathbf{RT}(\mathcal{K}_1)$ (Theorem~\ref{thm:ltt-residuum}, \cite{Hyland82,LietzStreicher12,LeeVanOosten13,vanOosten08}), identifying which Weihrauch cones correspond to $j$-hereditary subtopos conditions.
 \end{problem}
 
 \begin{problem}[Minimal Oracle and Non-Standard Modalities Beyond $j_{\mathrm{Lif}}$]\label{prob:open-4}
@@ -1932,7 +1932,7 @@ T.~Benjamin, C.~Champin, and I.~Markakis,
 
 \bibitem{BergfalkSmythe25}
 J.~Bergfalk and I.~B.~Smythe,
-\emph{The Borel complexity of smooth manifolds and their invariants},
+\emph{Manifold classification from the descriptive viewpoint},
 preprint (2025), \href{https://arxiv.org/abs/2512.24996}{\texttt{arXiv:2512.24996}}.
 
 \bibitem{BhattScholze22}
@@ -1967,8 +1967,8 @@ Academic Press, San Diego, 1994.
 
 \bibitem{Deligne72}
 P.~Deligne,
-\emph{Cohomologie \`a supports propres},
-Th\'eorie des Topos et Cohomologie \'Etale des Sch\'emas (SGA 4), Tome 3, Exp.~XVII, Lecture Notes in Mathematics, vol.~305, Springer, Berlin, 1973, pp.~250--461.
+\emph{Cohomologie des topos, Appendice~: Crit\`ere d'existence de points},
+Exp.~VI, \S9, Th\'eorie des Topos et Cohomologie \'Etale des Sch\'emas (SGA 4), Tome 2, Lecture Notes in Mathematics, vol.~270, Springer, Berlin, 1972.
 
 \bibitem{Diaconescu75}
 R.~Diaconescu,
@@ -2002,7 +2002,7 @@ Advances in Mathematics \textbf{279} (2015), 575--716.
 
 \bibitem{GepnerHeine26}
 D.~Gepner and H.~Heine,
-\emph{Enriched $(\infty, \infty)$-categories and reflective localizations},
+\emph{Homotopy posets, Postnikov towers, and hypercompletions of $\infty$-categories},
 \href{https://arxiv.org/abs/2603.09903}{\texttt{arXiv:2603.09903}}, 2026.
 
 \bibitem{Giraud71}
@@ -2037,7 +2037,7 @@ Journal of the American Mathematical Society \textbf{3} (1990), 903--928.
 
 \bibitem{Heine26}
 H.~Heine,
-\emph{Stabilization of $(\infty, \infty)$-categories and categorical spectra},
+\emph{Stable homotopy theory of higher categories},
 \href{https://arxiv.org/abs/2605.05195v2}{\texttt{arXiv:2605.05195v2}}, 2026.
 
 \bibitem{HJP80}
@@ -2100,10 +2100,15 @@ F.~W.~Lawvere,
 \emph{Axiomatic cohesion},
 Theory and Applications of Categories \textbf{19} (2007), no.~3, 41--49.
 
-\bibitem{LietzStreicher02}
+\bibitem{LeeVanOosten13}
+S.~Lee and J.~van~Oosten,
+\emph{Basic subtoposes of the effective topos},
+Annals of Pure and Applied Logic \textbf{164} (2013), no.~9, 866--883.
+
+\bibitem{LietzStreicher12}
 P.~Lietz and T.~Streicher,
-\emph{Impredicativity entails untypedness},
-Mathematical Structures in Computer Science \textbf{12} (2002), no.~3, 335--347.
+\emph{Realizability models refuting Ishihara's boundedness principle},
+Annals of Pure and Applied Logic \textbf{163} (2012), no.~12, 1803--1807.
 
 \bibitem{Lurie09}
 J.~Lurie,
@@ -2137,8 +2142,9 @@ Advances in Mathematics \textbf{89} (1991), no.~1, 1--59.
 
 \bibitem{ORW26}
 V.~Ozornova, M.~Rovelli, and T.~Walde,
-\emph{Reflective localizations and homotopy theories of $(\infty, \infty)$-categories},
-\href{https://arxiv.org/abs/2603.11005v2}{\texttt{arXiv:2603.11005v2}}, \href{https://arxiv.org/abs/2608.28355}{\texttt{arXiv:2608.28355}}, and \href{https://arxiv.org/abs/2610.38698}{\texttt{arXiv:2610.38698}}, 2026.
+\emph{Cores and localizations of $(\infty, \infty)$-categories} (\href{https://arxiv.org/abs/2603.11005v2}{\texttt{arXiv:2603.11005v2}}),
+\emph{About the contractibility of the walking coinductive equivalence} (\href{https://arxiv.org/abs/2608.28355}{\texttt{arXiv:2608.28355}}), and
+\emph{Models of $n$-dimensional categories as $n \to \infty$} (\href{https://arxiv.org/abs/2610.38698}{\texttt{arXiv:2610.38698}}), 2026.
 
 \bibitem{Schreiber13}
 U.~Schreiber,
@@ -2147,7 +2153,7 @@ U.~Schreiber,
 
 \bibitem{Serafin23}
 L.~Serafin,
-\emph{Choice principles, ultrafilters, and infinite hat problems},
+\emph{Ultrafilters, transversals, and the hat game},
 preprint (2023), \href{https://arxiv.org/abs/2311.07886}{\texttt{arXiv:2311.07886}}.
 
 \bibitem{Simpson09}

@@ -7,11 +7,13 @@ name: Compile Blueprint & Docs
     paths:
       - '**/*.lean'
       - docs/categorical_reverse_mathematics.tex
+      - docs/technical_claims_foundations.md
       - blueprint/**
       - home_page/**
       - references.bib
       - scripts/sync_blueprint.py
       - scripts/verify_monograph.py
+      - scripts/verify_technical_claims.py
       - lean-toolchain
       - lakefile.toml
       - lake-manifest.json
@@ -22,11 +24,13 @@ name: Compile Blueprint & Docs
     paths:
       - '**/*.lean'
       - docs/categorical_reverse_mathematics.tex
+      - docs/technical_claims_foundations.md
       - blueprint/**
       - home_page/**
       - references.bib
       - scripts/sync_blueprint.py
       - scripts/verify_monograph.py
+      - scripts/verify_technical_claims.py
       - lean-toolchain
       - lakefile.toml
       - lake-manifest.json

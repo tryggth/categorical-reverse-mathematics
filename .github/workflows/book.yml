@@ -6,7 +6,9 @@ name: Build Monograph PDF
       - main
     paths:
       - docs/categorical_reverse_mathematics.tex
+      - docs/technical_claims_foundations.md
       - scripts/verify_monograph.py
+      - scripts/verify_technical_claims.py
       - scripts/sync_blueprint.py
       - blueprint/src/content.tex
       - blueprint/lean_decls
@@ -17,7 +19,9 @@ name: Build Monograph PDF
       - main
     paths:
       - docs/categorical_reverse_mathematics.tex
+      - docs/technical_claims_foundations.md
       - scripts/verify_monograph.py
+      - scripts/verify_technical_claims.py
       - scripts/sync_blueprint.py
       - blueprint/src/content.tex
       - blueprint/lean_decls
