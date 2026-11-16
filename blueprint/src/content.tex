@@ -421,23 +421,23 @@ Taking global sections $H^0(\mathbf{Nom}; -) = \Gamma$, every singleton $\{a\} \
 \]
 No permutation-invariant global element of $\mathcal{T}_{\mathrm{odd}}$ exists ($\Gamma(\mathcal{T}_{\mathrm{odd}}) = \emptyset$, since any transposition $(a\; b)$ moving $a \in S$ to $b \notin S$ moves $S$), whereas Schreier--Ulam rigidity kills all constant-coefficient cohomology ($H^1(\mathbf{Nom}; \mathbb{Z}/2\mathbb{Z}) = 0$, \emph{pro-discrete blindness}). Thus $\mathcal{T}_{\mathrm{odd}}$ proves concretely why the class $\mathcal{G}_{\top}$ below must include non-constant internal group objects (Chapter~\ref{ch:realizability-sites}, \S\ref{subsec:kihara-choice-nominal}).
 
-When a topos $\mathcal{E}$ already satisfies a weak choice principle $A$, the cohomology classes $\omega(e)$ for certain families of structure groups already vanish, leaving a restricted class of internal groups $\mathcal{G}_A$ to account for the remaining gap $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$. This leads to the overarching cohomological principle of the $\mathrm{CRM}$ program:
+Generalizing Andreas Blass's theorem that first cohomology detects failures of $\mathrm{AC}$ over discrete sets in $\mathrm{ZF}$~\cite{Blass83}, when a Grothendieck topos $\mathcal{E}$ already satisfies a weak choice principle $A$, the classes $\omega(e)$ for certain structure-group families already vanish, leaving a restricted slice assignment $\mathcal{G}_A$ to govern $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$:
 
 \begin{conjecture}[The Cohomological Vanishing Conjecture for Choice Residuums]\label{conj:cohom-vanishing}
 
-For every standard weak choice axiom $A$ (such as $\top$, $\mathrm{BPI}$, $\mathrm{DC}$, or $\mathrm{SVC}$), there exists a canonical class of internal structure groups $\mathcal{G}_A$ such that the categorical residuum $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$ in a Grothendieck topos $\mathcal{E}$ is equivalent to internal Booleanness ($\Omega \simeq 1+1$), external projectivity of $1$, and the cohomological vanishing condition:
+For every standard weak choice axiom $A$ (such as $\top$, $\mathrm{BPI}$, $\mathrm{DC}$, or $\mathrm{SVC}$), there exists a canonical assignment $Y \mapsto \mathcal{G}_A(Y) \subseteq \mathbf{Grp}(\mathcal{E}/Y)$ of internal structure groups such that $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$ in a Grothendieck topos $\mathcal{E}$ (with an $\mathrm{NNO}$) is equivalent to internal Booleanness ($\Omega_{\mathcal{E}} \simeq 1+1$), external projectivity of $1_{\mathcal{E}}$, and the cohomological vanishing condition:
 
 \[
-  H^1(\mathcal{E}/Y, G) = 0 \quad \text{for all } Y \in \mathcal{E} \text{ and all } G \in \mathcal{G}_A
+  H^1(\mathcal{E}/Y, G) = 0 \quad \text{for all } Y \in \mathcal{E} \text{ and all } G \in \mathcal{G}_A(Y).
 \]
 
 \end{conjecture}
 
-Specifically, the dictionary between weak choice principles $A$ and their cohomological obstruction classes $\mathcal{G}_A$ stratifies as follows:
+While the baseline $A = \top$ holds unconditionally, for weaker choice axioms $A$ the candidate obstruction classes $\mathcal{G}_A(Y)$ stratify conjecturally as follows:
 
 \begin{itemize}
 
-  \item \textbf{Universal Local Choice ($A = \top$):} $\mathcal{G}_\top$ consists of all internal group objects $G \in \mathbf{Grp}(\mathcal{E}/Y)$, since no non-trivial gluing obstructions are killed a priori.
+  \item \textbf{Universal Local Choice ($A = \top$, Unconditional Baseline):} Taking $\mathcal{G}_\top(Y) = \mathbf{Grp}(\mathcal{E}/Y)$, Conjecture~\ref{conj:cohom-vanishing} holds unconditionally (and in fact requires only free-abelian augmentation kernels and finite symmetric groups). Necessity is immediate: $\mathrm{AC}$ implies $\Omega_{\mathcal{E}} \simeq 1+1$ and external projectivity of $1_{\mathcal{E}}$ (Theorems~\ref{thm:diaconescu} and~\ref{thm:iac-to-ac}), and splits every $G$-torsor $P \twoheadrightarrow Y$~\cite{Giraud71}. Conversely, let $e : X \twoheadrightarrow Y$ be epic in $\mathcal{E}$, i.e.\ $X \twoheadrightarrow 1_{\mathcal{E}'}$ in the Boolean slice topos $\mathcal{E}' := \mathcal{E}/Y$ (where equality is decidable). Inside $\mathbb{Z}^X$, the subgroup $\mathbb{Z}^{(X)}$ of functions bounded by a Kuratowski-finite $S \in K(X)$ has decidable, cardinal-finite supports $\mathrm{supp}(f) = \{x \in X \mid f(x) \neq 0\} \in K(X)$~\cite[\S\S D5.2,~D5.4]{Johnstone02}, inducing an augmentation epimorphism $\varepsilon : \mathbb{Z}^{(X)} \twoheadrightarrow \mathbb{Z}_{\mathcal{E}'}$ ($\delta_x \mapsto 1$) with abelian kernel $K_X := \ker(\varepsilon) \in \mathbf{Ab}(\mathcal{E}')$. Since $H^1(\mathcal{E}/Y, K_X) = 0$, the $K_X$-torsor $\varepsilon^{-1}(1) \twoheadrightarrow 1_{\mathcal{E}'}$ admits a global section $\sigma$, whose support $F := \mathrm{supp}(\sigma) \rightarrowtail X$ is inhabited ($\varepsilon(\sigma) = 1$) of unique finite cardinal $c : 1_{\mathcal{E}'} \to \mathbb{N}_{\ge 1}$. Vanishing of $H^1(\mathcal{E}/Y, \underline{\mathrm{Aut}}_{\mathcal{E}'}([c]))$ then splits the finite-frame torsor $\underline{\mathrm{Iso}}_{\mathcal{E}'}([c], F) \twoheadrightarrow 1_{\mathcal{E}'}$ via $\varphi$, and $s := \varphi(0) : Y \to F \rightarrowtail X$ splits $e$ (forcing external projectivity of $1_{\mathcal{E}}$ at $Y = 1_{\mathcal{E}}$, whereas for $A = \mathrm{IAC}$ with $\mathcal{G}_{\mathrm{IAC}}(Y) = \emptyset$, external projectivity of $1_{\mathcal{E}}$ remains independent by $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$).
 
   \item \textbf{Boolean Prime Ideal Theorem ($A = \mathrm{BPI}$):} Compactness of $\Omega$ kills finitary/profinite \v{C}ech obstructions, restricting $\mathcal{G}_{\mathrm{BPI}}$ to non-compact discrete and infinitary sheaf groups.
 
@@ -1794,7 +1794,7 @@ At the core of the Categorical Reverse Mathematics research agenda stand five co
 
 \begin{enumerate}
 
-  \item \textbf{Cohomological Vanishing:} Characterize internal group classes $\mathcal{G}_A$ where $(A \Rightarrow \mathrm{AC})$ reduces to Booleanness, external projectivity of $1_{\mathcal{E}}$, and $H^1(\mathcal{E}/Y, G) = 0$.
+  \item \textbf{Cohomological Vanishing:} Beyond the unconditionally proved baseline $A = \top$, characterize canonical slice-group classes $\mathcal{G}_A(Y) \subseteq \mathbf{Grp}(\mathcal{E}/Y)$ for weak choice axioms $A$ ($\mathrm{BPI}, \mathrm{DC}, \mathrm{SVC}$) where $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$ reduces to Booleanness, external projectivity of $1_{\mathcal{E}}$, and $H^1(\mathcal{E}/Y, G) = 0$.
 
   \item \textbf{Sequential Presentability:} Prove that internal $\omega$-presentability of epimorphisms is the minimal residuum bridging $\mathrm{IDC}$ to $\mathrm{IAC}$ in a Boolean topos with an $\mathrm{NNO}$ (and over $\mathcal{S} \models \mathrm{DC}$, characterize $\mathrm{DC} \Rightarrow \mathrm{AC}$ via $\omega$-presentable Boolean locales over $\omega$-choice slices).
 
@@ -1954,6 +1954,11 @@ McGraw-Hill, New York, 1967.
 A.~Blass,
 \emph{Injectivity, projectivity, and the axiom of choice},
 Transactions of the American Mathematical Society \textbf{255} (1979), 31--59.
+
+\bibitem{Blass83}
+A.~Blass,
+\emph{Cohomology detects failures of the axiom of choice},
+Transactions of the American Mathematical Society \textbf{279} (1983), no.~1, 257--269.
 
 \bibitem{Bourn91}
 D.~Bourn,
