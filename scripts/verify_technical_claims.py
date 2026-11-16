@@ -250,6 +250,7 @@ def parse_markdown_catalog(md_file: pathlib.Path) -> Dict[str, Any]:
     part4: List[Dict[str, Any]] = []
     ledger72: Dict[str, Tuple[int, int, int, int]] = {}
     ledger73: Dict[str, Tuple[int, int, int, int]] = {}
+    malformed_rows: List[str] = []
 
     sec = None
     subsec = None
@@ -315,6 +316,8 @@ def parse_markdown_catalog(md_file: pathlib.Path) -> Dict[str, Any]:
                 part2.append(row)
             else:
                 part3.append(row)
+        elif sec in ("P1", "P2", "P3"):
+            malformed_rows.append(f"Line {idx} ({sec}): expected 8 table columns, found {len(cells)} (unescaped '|'?).")
         elif sec == "P4" and len(cells) == 5:
             part4.append(
                 {
@@ -326,6 +329,8 @@ def parse_markdown_catalog(md_file: pathlib.Path) -> Dict[str, Any]:
                     "source_line": idx,
                 }
             )
+        elif sec == "P4":
+            malformed_rows.append(f"Line {idx} (P4): expected 5 table columns, found {len(cells)} (unescaped '|'?).")
         elif sec == "P5" and subsec == "7.2" and len(cells) == 5:
             cat = cells[0].strip("*").strip("`")
             try:
@@ -348,6 +353,7 @@ def parse_markdown_catalog(md_file: pathlib.Path) -> Dict[str, Any]:
         "part4": part4,
         "ledger72": ledger72,
         "ledger73": ledger73,
+        "malformed_rows": malformed_rows,
     }
 
 
@@ -384,6 +390,7 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
     all_bib_keys = bib_keys | tex_bib_keys
     available_decls, blueprint_decls = get_available_lean_decls()
     catalog = parse_markdown_catalog(MD_PATH)
+    errors.extend(catalog.get("malformed_rows", []))
 
     md_text = MD_PATH.read_text(encoding="utf-8")
     tex_text = TEX_PATH.read_text(encoding="utf-8")
