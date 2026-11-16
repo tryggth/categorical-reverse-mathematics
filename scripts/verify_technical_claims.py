@@ -79,6 +79,17 @@ BANNED_CITATIONS = [
     "pp. 45-90",
     "LietzStreicher02",
     "§C3.4",
+    "v5, Theorem~3.2.6",
+    "v5 Theorem 3.2.6",
+    "Lemma~5.57",
+    "Lemma 5.57",
+    "Theorems~2.20",
+    "Theorems 2.20",
+    "A2.2.12",
+    "A4.6.9",
+    "§C2.5",
+    "§C3.3",
+    "Theorem D3.3.12",
 ]
 
 
@@ -546,6 +557,27 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
         if recorded_ax != expected_ax:
             errors.append(f"Ledger §7.3 mismatch for '{ax}': recorded={recorded_ax} vs computed={expected_ax}.")
 
+    # 8. Validate Part III and §7.1 heading / table census counts
+    m_p3_hdr = re.search(r"^##\s+5\.\s+Part III:[^\n]*\((\d+)\s+Claims\)", md_text, re.MULTILINE)
+    if not m_p3_hdr or int(m_p3_hdr.group(1)) != len(part3):
+        rec_hdr = m_p3_hdr.group(1) if m_p3_hdr else None
+        errors.append(f"Heading §5 Part III count mismatch: recorded={rec_hdr} vs computed={len(part3)}.")
+
+    m_71_hdr = re.search(r"^###\s+7\.1\s+Overall Census Coverage\s*\((\d+)\s+Entries", md_text, re.MULTILINE)
+    if not m_71_hdr or int(m_71_hdr.group(1)) != len(all_rows):
+        rec_71 = m_71_hdr.group(1) if m_71_hdr else None
+        errors.append(f"Heading §7.1 total count mismatch: recorded={rec_71} vs computed={len(all_rows)}.")
+
+    m_71_p3 = re.search(r"^\|\s*\*\*Part III:[^|]*\*\*\s*\|\s*[^|]*\s*\|\s*\*\*(\d+)\*\*\s*\|", md_text, re.MULTILINE)
+    if not m_71_p3 or int(m_71_p3.group(1)) != len(part3):
+        rec_71_p3 = m_71_p3.group(1) if m_71_p3 else None
+        errors.append(f"Ledger §7.1 Part III row mismatch: recorded={rec_71_p3} vs computed={len(part3)}.")
+
+    m_71_tot = re.search(r"^\|\s*\*\*Total Claim / Environment Rows\*\*\s*\|\s*[^|]*\s*\|\s*\*\*(\d+)\*\*\s*\|", md_text, re.MULTILINE)
+    if not m_71_tot or int(m_71_tot.group(1)) != len(all_rows):
+        rec_71_tot = m_71_tot.group(1) if m_71_tot else None
+        errors.append(f"Ledger §7.1 total row mismatch: recorded={rec_71_tot} vs computed={len(all_rows)}.")
+
     summary = {
         "total_catalog_entries": len(all_rows),
         "part1_formal_results": len(part1),
@@ -583,8 +615,10 @@ def main() -> int:
         print(f"  Part III (inline)   : {summary.get('part3_inline_claims', 0)}")
         print(f"  Part IV (tables)    : {summary.get('part4_tables', 0)}")
         print(f"Blueprint Lean decls  : {summary.get('blueprint_decls_covered', '0/0')}")
-        print(f"Grounding totals (88) : {summary.get('grounding_breakdown_total', {})}")
-        print(f"Axis totals (108)     : {summary.get('axis_breakdown_total', {})}")
+        eval_cnt = summary.get("evaluated_result_assertions", 0)
+        tot_cnt = summary.get("total_catalog_entries", 0)
+        print(f"Grounding totals ({eval_cnt}) : {summary.get('grounding_breakdown_total', {})}")
+        print(f"Axis totals ({tot_cnt})     : {summary.get('axis_breakdown_total', {})}")
         print(f"Distinct citations    : {summary.get('distinct_citations_verified', 0)}")
         if passed:
             print("STATUS: PASS")
