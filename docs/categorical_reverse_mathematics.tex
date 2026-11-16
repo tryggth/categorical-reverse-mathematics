@@ -1065,12 +1065,12 @@ Let $\mathcal{X}$ be an $(\infty, 1)$-topos.
 
 \end{definition}
 
-Because every $n$-truncated morphism is $(n+1)$-truncated, full infinity-choice $\mathrm{AC}_\infty$ is strictly the \emph{strongest} principle in the ladder while set-level choice $\mathrm{AC}_0$ is the \emph{weakest}, forming a strictly descending deductive chain with shrinking satisfaction classes:
+Because every $n$-truncated morphism is $(n+1)$-truncated, full infinity-choice $\mathrm{AC}_\infty$ is the \emph{strongest} principle in the ladder while set-level choice $\mathrm{AC}_0$ is the \emph{weakest}, forming a descending deductive chain with strictly shrinking finite-stage satisfaction classes (proved via Eilenberg--MacLane slice $(\infty,1)$-topoi in Chapter~\ref{ch:higher-crm}, \S\ref{sec:higher-choice}):
 \[
   \mathrm{AC}_\infty \implies \cdots \implies \mathrm{AC}_{n+1} \implies \mathrm{AC}_n \implies \cdots \implies \mathrm{AC}_0,
 \]
 \[
-  \mathbf{Mod}(\mathrm{AC}_\infty) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_{n+1}) \subsetneq \mathbf{Mod}(\mathrm{AC}_n) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_0).
+  \begin{aligned}\mathbf{Mod}(\mathrm{AC}_\infty) \subseteq \bigcap_{k < \infty} \mathbf{Mod}(\mathrm{AC}_k) &\subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_{n+1}) \\ &\subsetneq \mathbf{Mod}(\mathrm{AC}_n) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_0).\end{aligned}
 \]
 Here $\mathrm{AC}_0$ is ordinary 1-topos choice for $0$-truncated objects (sets) in the underlying 1-topos $\tau_{\le 0}\mathcal{X}$, whereas $\mathrm{AC}_1$ requires splitting groupoid-fibration epimorphisms over sets.
 
@@ -1501,7 +1501,7 @@ Finally, dropping $0$-truncation of mapping spaces elevates $\mathrm{CRM}$ from 
 \[
   \mathrm{AC}_\infty \implies \cdots \implies \mathrm{AC}_n \implies \cdots \implies \mathrm{AC}_1 \implies \mathrm{AC}_0,
 \]
-with strictly shrinking classes of models $\mathbf{Mod}(\mathrm{AC}_\infty) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_n) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_0)$. The residuum bridging set-level choice $\mathrm{AC}_0$ to $\mathrm{AC}_\infty$ is precisely the geometric condition that $0$-truncated objects generate $\mathcal{X}$ under effective epimorphisms, while each adjacent step $(\mathrm{AC}_n \Rightarrow \mathrm{AC}_{n+1})$ is governed by the vanishing of Giraud non-abelian gerbe cohomology $H^2_{\mathrm{gerbe}}$ ($n=0$) and degree-$(n+2)$ Eilenberg--MacLane obstructions $H^{n+2}$ ($n \ge 1$).
+with model classes satisfying $\mathbf{Mod}(\mathrm{AC}_\infty) \subseteq \bigcap_{k < \infty} \mathbf{Mod}(\mathrm{AC}_k)$ and $\mathbf{Mod}(\mathrm{AC}_{n+1}) \subsetneq \mathbf{Mod}(\mathrm{AC}_n)$ for every $n \ge 0$ (Chapter~\ref{ch:higher-crm}, \S\ref{sec:higher-choice}). The residuum bridging set-level choice $\mathrm{AC}_0$ to $\mathrm{AC}_\infty$ is precisely the geometric condition that $0$-truncated objects generate $\mathcal{X}$ under effective epimorphisms, while each adjacent step $(\mathrm{AC}_n \Rightarrow \mathrm{AC}_{n+1})$ is governed by the vanishing of Giraud non-abelian gerbe cohomology $H^2_{\mathrm{gerbe}}$ ($n=0$) and degree-$(n+2)$ Eilenberg--MacLane obstructions $H^{n+2}$ ($n \ge 1$).
 
 \section{Axis 2 Relativization and Deforming Classical Residuums Without Base Choice or Ultrafilters}
 
@@ -1823,7 +1823,7 @@ Proposition~\ref{prop:untruncated-degeneracy} proves that demanding sections ove
   \mathrm{AC}_\infty \implies \cdots \implies \mathrm{AC}_{n+1} \implies \mathrm{AC}_n \implies \cdots \implies \mathrm{AC}_1 \implies \mathrm{AC}_0,
 \]
 
-with strictly shrinking classes of models $\mathbf{Mod}(\mathrm{AC}_\infty) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_n) \subsetneq \cdots \subsetneq \mathbf{Mod}(\mathrm{AC}_0)$, where $\mathrm{AC}_n := \mathrm{AC}_{n, 0}$ and $\mathrm{AC}_\infty := \mathrm{AC}_{\infty, 0}$.
+yielding the model hierarchy $\mathbf{Mod}(\mathrm{AC}_\infty) \subseteq \allowbreak \bigcap_{k < \infty} \mathbf{Mod}(\mathrm{AC}_k) \subsetneq \allowbreak \cdots \subsetneq \allowbreak \mathbf{Mod}(\mathrm{AC}_{n+1}) \subsetneq \allowbreak \mathbf{Mod}(\mathrm{AC}_n) \subsetneq \allowbreak \cdots \subsetneq \allowbreak \mathbf{Mod}(\mathrm{AC}_0)$, where $\mathrm{AC}_n := \mathrm{AC}_{n, 0}$ and $\mathrm{AC}_\infty := \mathrm{AC}_{\infty, 0}$. Indeed, over $\mathbf{Set}_{\mathrm{ZFC}}$, for each integer $n \ge 0$ let $K_{n+2} := K(\mathbb{Z}/2\mathbb{Z}, n+2) \in \mathcal{S}$ be the unstable Eilenberg--MacLane classifying space and consider the slice $(\infty,1)$-topos $\mathcal{X}^{(n)} := \mathcal{S}_{/K_{n+2}} \simeq \mathbf{Fun}(K_{n+2}, \mathcal{S})$~\cite[Proposition~6.3.5.1]{Lurie09}. Because $K_{n+2}$ is $(n+1)$-connected ($\tau_{\le n+1}K_{n+2} \simeq *$) while the core $(\tau_{\le n}\mathcal{S})^{\simeq}$ is $(n+1)$-truncated and mapping spaces in $\tau_{\le n}\mathcal{S}$ are $n$-truncated, the constant-functor embedding $\Delta : \tau_{\le n}\mathcal{S} \xrightarrow{\sim} \tau_{\le n}(\mathcal{X}^{(n)})$ is an equivalence~\cite[Proposition~5.5.6.18]{Lurie09} preserving and reflecting effective epimorphisms. Any $n$-truncated effective epimorphism $e : X \twoheadrightarrow Y$ in $\mathcal{X}^{(n)}$ with $Y \in \tau_{\le 0}(\mathcal{X}^{(n)})$ has $X \in \tau_{\le n}(\mathcal{X}^{(n)})$~\cite[Lemma~5.5.6.14]{Lurie09} and therefore corresponds under $\Delta$ to an effective epimorphism onto a discrete set in $\mathcal{S}$, which splits over $\mathbf{Set}_{\mathrm{ZFC}}$; hence $\mathcal{X}^{(n)} \models \mathrm{AC}_n$. Conversely, in $\mathcal{S}_{/K_{n+2}}$, the basepoint map $x_0 : * \twoheadrightarrow K_{n+2}$ ($n+2 \ge 2$) is $(-1)$-connected---hence an effective epimorphism onto $1_{\mathcal{X}^{(n)}} \in \tau_{\le 0}(\mathcal{X}^{(n)})$~\cite[Proposition~7.2.1.14]{Lurie09}---with $(n+1)$-truncated homotopy fiber $\Omega K_{n+2} \simeq K(\mathbb{Z}/2\mathbb{Z}, n+1)$, yet admits no section in $\mathcal{S}_{/K_{n+2}}$ since $\pi_{n+2}(K_{n+2}) \cong \mathbb{Z}/2\mathbb{Z} \neq 0$; thus $\mathcal{X}^{(n)} \in \mathbf{Mod}(\mathrm{AC}_n) \setminus \mathbf{Mod}(\mathrm{AC}_{n+1})$. At the transfinite limit, $\mathbf{Mod}(\mathrm{AC}_\infty) = \bigcap_{n < \infty} \mathbf{Mod}(\mathrm{AC}_n)$ on hypercomplete $(\infty,1)$-topoi over $\mathbf{Set}_{\mathrm{ZFC}}$ by Theorem~\ref{thm:limit-residuum}, whereas non-hypercomplete separation is governed by Problem~\ref{prob:open-9}.
 
 \begin{itemize}[leftmargin=1.5em]
 
