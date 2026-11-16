@@ -216,6 +216,7 @@ def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
     extra_by_prio: dict[str, list[int]] = {p: [] for p in PRIORITY_LABELS}
     p3a_after_5: list[int] = []
     p3b_after_60: list[int] = []
+    p3b_after_53: list[int] = []
 
     if issues_by_num:
         for num in sorted(issues_by_num):
@@ -229,6 +230,8 @@ def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
                 p3a_after_5.append(num)
             elif cid == "prose:ch5-acn-strict-model-separation" and prio == "priority: P3":
                 p3b_after_60.append(num)
+            elif cid == "prose:ch2-ga-bpi-noncompact-groups" and prio == "priority: P3":
+                p3b_after_53.append(num)
             else:
                 extra_by_prio[prio].append(num)
 
@@ -241,6 +244,8 @@ def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
                 expanded_nums.extend(p3a_after_5)
             elif subtier == "P3b" and num == 60:
                 expanded_nums.extend(p3b_after_60)
+            elif subtier == "P3b" and num == 53:
+                expanded_nums.extend(p3b_after_53)
         if subtier in ("P0", "P1", "P2c", "P3c", "P4"):
             expanded_nums.extend(extra_by_prio[prio_label])
             extra_by_prio[prio_label] = []
