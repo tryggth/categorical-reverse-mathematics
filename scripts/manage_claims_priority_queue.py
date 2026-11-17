@@ -227,7 +227,7 @@ def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
             cid = extract_claim_id(issue) or ""
             labels = {lbl["name"] for lbl in issue.get("labels", [])}
             prio = next((p for p in PRIORITY_LABELS if p in labels), "priority: P3")
-            if cid == "prose:ch4-coshep-to-iac-absoluteness" and prio == "priority: P3":
+            if cid in ("prose:ch4-coshep-to-iac-absoluteness", "prose:ch2-ga-svc-subquotient-groups") and prio == "priority: P3":
                 p3a_after_5.append(num)
             elif cid == "prose:ch5-acn-strict-model-separation" and prio == "priority: P3":
                 p3b_after_60.append(num)
