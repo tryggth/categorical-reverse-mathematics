@@ -6,10 +6,46 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TEX_PATH = ROOT / "docs" / "categorical_reverse_mathematics.tex"
+DOCS = ROOT / "docs"
+TEX_PATH = DOCS / "categorical_reverse_mathematics.tex"
 LEAN_DECLS_PATH = ROOT / "blueprint" / "lean_decls"
 CONTENT_PATH = ROOT / "blueprint" / "src" / "content.tex"
 BIB_PATH = ROOT / "references.bib"
+
+
+def _resolve_input_target(target: str) -> pathlib.Path:
+    rel = target.strip()
+    if not rel.endswith(".tex"):
+        rel = rel + ".tex"
+    for base in (DOCS, ROOT):
+        cand = (base / rel).resolve()
+        if cand.exists():
+            return cand
+    raise FileNotFoundError(f"Could not resolve \\input{{{target}}} under {DOCS} or {ROOT}")
+
+
+def expand_tex_inputs(text: str) -> str:
+    """Inline CWD-safe \\IfFileExists{...}{\\input{...}}{\\input{...}} and \\input{...} modules (excluding glyphtounicode)."""
+    cond_pat = re.compile(
+        r"\\IfFileExists\{[^}]+\}\{\\input\{([^}]+)\}\}\{\\input\{([^}]+)\}\}"
+    )
+
+    def _sub_cond(m: re.Match[str]) -> str:
+        p = _resolve_input_target(m.group(1))
+        return expand_tex_inputs(p.read_text(encoding="utf-8"))
+
+    text = cond_pat.sub(_sub_cond, text)
+
+    inp_pat = re.compile(r"(?<!%)\\input\{([^}]+)\}")
+
+    def _sub_inp(m: re.Match[str]) -> str:
+        name = m.group(1).strip()
+        if name == "glyphtounicode":
+            return m.group(0)
+        p = _resolve_input_target(name)
+        return expand_tex_inputs(p.read_text(encoding="utf-8"))
+
+    return inp_pat.sub(_sub_inp, text)
 
 
 def skip_ws_and_comments(text: str, pos: int) -> int:
@@ -86,28 +122,37 @@ def replace_macro_calls(text: str, macro: str, nargs: int, replacer) -> str:
     return "".join(out)
 
 
-def extract_lean_decls(body: str) -> str:
+def extract_lean_decls(content: str) -> str:
+    """Extract all `\\lean{...}` declarations inside `\\leanok`-verified environments of content.tex."""
     decls = set()
-    i = 0
-    n = len(body)
-    macro = r"\lean"
-    while i < n:
-        idx = body.find(macro, i)
-        if idx == -1:
-            break
-        after = idx + len(macro)
-        if after < n and (body[after].isalpha() or body[after] == "@"):
-            i = after
+    env_pat = re.compile(
+        r"\\begin\{(theorem|proposition|lemma|definition|remark|conjecture|principle|problem)\}(.*?)\\end\{\1\}",
+        flags=re.S,
+    )
+    for m in env_pat.finditer(content):
+        block = m.group(2)
+        if not re.search(r"\\leanok(?![a-zA-Z@])", block):
             continue
-        res = read_brace_group(body, after)
-        if res is None:
-            i = after
-            continue
-        arg, i = res
-        for piece in arg.split(","):
-            name = piece.strip()
-            if name:
-                decls.add(name)
+        i = 0
+        n = len(block)
+        macro = r"\lean"
+        while i < n:
+            idx = block.find(macro, i)
+            if idx == -1:
+                break
+            after = idx + len(macro)
+            if after < n and (block[after].isalpha() or block[after] == "@"):
+                i = after
+                continue
+            res = read_brace_group(block, after)
+            if res is None:
+                i = after
+                continue
+            arg, i = res
+            for piece in arg.split(","):
+                name = piece.strip()
+                if name:
+                    decls.add(name)
     return "\n".join(sorted(decls)) + ("\n" if decls else "")
 
 
@@ -213,16 +258,16 @@ def transform_content(body: str) -> str:
 
 
 def build_outputs() -> dict[pathlib.Path, str]:
-    src = TEX_PATH.read_text(encoding="utf-8")
+    src = expand_tex_inputs(TEX_PATH.read_text(encoding="utf-8"))
     main_idx = src.find(r"\mainmatter")
     end_idx = src.rfind(r"\end{document}")
     if main_idx == -1 or end_idx == -1 or end_idx <= main_idx:
         raise RuntimeError("Could not locate \\mainmatter ... \\end{document} span in LaTeX source")
     body = src[main_idx + len(r"\mainmatter") : end_idx]
 
-    lean_decls = extract_lean_decls(body)
     bib = extract_bib(body)
     content = transform_content(body)
+    lean_decls = extract_lean_decls(content)
     return {
         LEAN_DECLS_PATH: lean_decls,
         BIB_PATH: bib,

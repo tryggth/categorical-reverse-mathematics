@@ -6,6 +6,7 @@ name: Build Monograph PDF
       - main
     paths:
       - docs/categorical_reverse_mathematics.tex
+      - docs/ch07_sets_residuum.tex
       - docs/technical_claims_foundations.md
       - scripts/verify_monograph.py
       - scripts/verify_technical_claims.py
@@ -19,6 +20,7 @@ name: Build Monograph PDF
       - main
     paths:
       - docs/categorical_reverse_mathematics.tex
+      - docs/ch07_sets_residuum.tex
       - docs/technical_claims_foundations.md
       - scripts/verify_monograph.py
       - scripts/verify_technical_claims.py

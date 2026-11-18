@@ -64,7 +64,26 @@ def check_tex() -> list[str]:
     if claims_res.returncode != 0:
         errs.append("Technical claims verification failed:\n" + (claims_res.stdout + claims_res.stderr).strip())
 
-    txt = TEX.read_text(encoding="utf-8")
+    raw_txt = TEX.read_text(encoding="utf-8")
+    cond_pat = re.compile(r"\\IfFileExists\{[^}]+\}\{\\input\{([^}]+)\}\}\{\\input\{[^}]+\}\}")
+    inp_pat = re.compile(r"(?<!%)\\input\{([^}]+)\}")
+
+    def _expand_inputs(s: str) -> str:
+        def _load(name: str) -> str:
+            rel = name.strip()
+            if rel == "glyphtounicode":
+                return ""
+            if not rel.endswith(".tex"):
+                rel += ".tex"
+            for base in (DOCS, ROOT):
+                p = base / rel
+                if p.exists():
+                    return _expand_inputs(p.read_text(encoding="utf-8"))
+            return ""
+        s = cond_pat.sub(lambda m: _load(m.group(1)), s)
+        return inp_pat.sub(lambda m: m.group(0) if m.group(1).strip() == "glyphtounicode" else _load(m.group(1)), s)
+
+    txt = _expand_inputs(raw_txt)
     for bad in FORBIDDEN:
         if bad.lower() in txt.lower():
             errs.append(f"Forbidden string in .tex: {bad!r}")

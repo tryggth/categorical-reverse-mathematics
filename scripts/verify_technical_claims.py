@@ -53,6 +53,8 @@ CANONICAL_AXES = {
     "Axis III",
     "Axis IV",
     "Axis V",
+    "Axis VI",
+    "Axis VII",
     "Cross-Axis",
 }
 
@@ -125,21 +127,78 @@ def normalize_title(t: str) -> str:
     return re.sub(r"\s+", " ", t_clean).strip()
 
 
-def parse_tex_structure(tex_file: pathlib.Path) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], int]:
-    """Parse post-\\begin{document} formal environments and all xltabular/tabularx tables."""
+INPUT_PREFIX_MAP = {
+    "ch07_sets_residuum": ("ch07", DOCS / "ch07_sets_residuum.tex"),
+    "ch07_sets_residuum.tex": ("ch07", DOCS / "ch07_sets_residuum.tex"),
+    "docs/ch07_sets_residuum": ("ch07", DOCS / "ch07_sets_residuum.tex"),
+    "docs/ch07_sets_residuum.tex": ("ch07", DOCS / "ch07_sets_residuum.tex"),
+}
+
+
+def parse_locator(loc_str: str) -> Tuple[str, int]:
+    """Parse `<line>` -> `('', int)` or `<prefix>:<line>` -> `(prefix, int)`."""
+    s = loc_str.strip()
+    if ":" in s:
+        pfx, num_s = s.split(":", 1)
+        return pfx.strip(), int(num_s.strip())
+    return "", int(s)
+
+
+def format_locator(prefix: str, line: int) -> str:
+    return f"{prefix}:{line}" if prefix else str(line)
+
+
+def _parse_single_tex_file(
+    tex_file: pathlib.Path,
+    prefix: str,
+    start_at_begin_doc: bool,
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, int]]:
+    """Parse formal environments and tables recursively across \\input modules in document order."""
     lines = tex_file.read_text(encoding="utf-8").splitlines()
-    doc_start = next((idx for idx, l in enumerate(lines) if l.strip() == "\\begin{document}"), 0)
+    doc_start = (
+        next((idx for idx, l in enumerate(lines) if l.strip() == "\\begin{document}"), 0)
+        if start_at_begin_doc
+        else 0
+    )
 
     env_names = "|".join(sorted(ALL_ENVS))
     env_pat = re.compile(r"\\begin\{(" + env_names + r")\}")
+    table_pat = re.compile(r"\\begin\{(xltabular|tabularx)\}")
+    cond_input_pat = re.compile(r"\\IfFileExists\{[^}]+\}\{\\input\{([^}]+)\}\}\{\\input\{[^}]+\}\}")
+    plain_input_pat = re.compile(r"(?<!%)\\input\{([^}]+)\}")
+
     envs: List[Dict[str, Any]] = []
+    tables: List[Dict[str, Any]] = []
+    line_counts: Dict[str, int] = {prefix: len(lines)}
 
     i = doc_start
     while i < len(lines):
-        m = env_pat.search(lines[i])
+        line_str = lines[i]
+
+        # Follow modular chapter inputs in exact document order
+        cm = cond_input_pat.search(line_str)
+        im = plain_input_pat.search(line_str) if not cm else None
+        target_key = cm.group(1).strip() if cm else (im.group(1).strip() if im else "")
+        if target_key and target_key != "glyphtounicode":
+            if target_key in INPUT_PREFIX_MAP:
+                sub_pfx, sub_path = INPUT_PREFIX_MAP[target_key]
+            else:
+                rel = target_key if target_key.endswith(".tex") else target_key + ".tex"
+                sub_path = (DOCS / rel) if (DOCS / rel).exists() else (ROOT / rel)
+                sub_pfx = sub_path.stem.split("_")[0]
+            sub_envs, sub_tables, sub_counts = _parse_single_tex_file(
+                sub_path, prefix=sub_pfx, start_at_begin_doc=False
+            )
+            envs.extend(sub_envs)
+            tables.extend(sub_tables)
+            line_counts.update(sub_counts)
+            i += 1
+            continue
+
+        m = env_pat.search(line_str)
         if m:
             etype = m.group(1)
-            title = _extract_opt_arg(lines[i], m.end())
+            title = _extract_opt_arg(line_str, m.end())
             start_line = i + 1
             end_line = start_line
             end_tag = "\\end{" + etype + "}"
@@ -150,10 +209,17 @@ def parse_tex_structure(tex_file: pathlib.Path) -> Tuple[List[Dict[str, Any]], L
             label = lbl_m.group(1) if lbl_m else ""
             lean_m = re.search(r"\\lean\{([^}]+)\}", blob)
             lean_decls = [d.strip() for d in lean_m.group(1).split(",") if d.strip()] if lean_m else []
+            # Record any tables nested inside or skipped? Formal envs never contain xltabular/tabularx,
+            # but check lines inside just in case.
+            for k in range(i, end_line):
+                tm_in = table_pat.search(lines[k])
+                if tm_in:
+                    tables.append({"prefix": prefix, "line": k + 1, "env": tm_in.group(1)})
             envs.append(
                 {
                     "type": etype,
                     "title": title,
+                    "prefix": prefix,
                     "line": start_line,
                     "end_line": end_line,
                     "label": label,
@@ -162,16 +228,17 @@ def parse_tex_structure(tex_file: pathlib.Path) -> Tuple[List[Dict[str, Any]], L
             )
             i = end_line
         else:
+            tm = table_pat.search(line_str)
+            if tm:
+                tables.append({"prefix": prefix, "line": i + 1, "env": tm.group(1)})
             i += 1
 
-    table_pat = re.compile(r"\\begin\{(xltabular|tabularx)\}")
-    tables: List[Dict[str, Any]] = []
-    for idx in range(doc_start, len(lines)):
-        tm = table_pat.search(lines[idx])
-        if tm:
-            tables.append({"line": idx + 1, "env": tm.group(1)})
+    return envs, tables, line_counts
 
-    return envs, tables, len(lines)
+
+def parse_tex_structure(tex_file: pathlib.Path) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, int]]:
+    """Parse post-\\begin{document} formal environments and all xltabular/tabularx tables across modular TeX."""
+    return _parse_single_tex_file(tex_file, prefix="", start_at_begin_doc=True)
 
 
 def get_bib_keys(bib_file: pathlib.Path, tex_file: pathlib.Path) -> Tuple[Set[str], Set[str]]:
@@ -385,7 +452,7 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
         if not p.exists():
             return False, [f"Missing required file: {p}"], {}
 
-    tex_envs, tex_tables, tex_line_count = parse_tex_structure(TEX_PATH)
+    tex_envs, tex_tables, tex_line_counts = parse_tex_structure(TEX_PATH)
     bib_keys, tex_bib_keys = get_bib_keys(BIB_PATH, TEX_PATH)
     all_bib_keys = bib_keys | tex_bib_keys
     available_decls, blueprint_decls = get_available_lean_decls()
@@ -393,30 +460,34 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
     errors.extend(catalog.get("malformed_rows", []))
 
     md_text = MD_PATH.read_text(encoding="utf-8")
-    tex_text = TEX_PATH.read_text(encoding="utf-8")
+    tex_texts = {TEX_PATH.name: TEX_PATH.read_text(encoding="utf-8")}
+    for _, (_, sub_p) in INPUT_PREFIX_MAP.items():
+        if sub_p.exists():
+            tex_texts[sub_p.name] = sub_p.read_text(encoding="utf-8")
 
-    # 1. Anti-hallucination and placeholder scan across both .md and .tex
+    # 1. Anti-hallucination and placeholder scan across .md and all .tex modules
     for ph in PLACEHOLDER_STRINGS:
         if ph in md_text:
             errors.append(f"Placeholder or draft string '{ph}' found in {MD_PATH.name}.")
     for banned in BANNED_CITATIONS:
         if banned in md_text:
             errors.append(f"Banned/rectified citation artifact '{banned}' found in {MD_PATH.name}.")
-        if banned in tex_text:
-            errors.append(f"Banned/rectified citation artifact '{banned}' found in {TEX_PATH.name}.")
+        for tname, tcontent in tex_texts.items():
+            if banned in tcontent:
+                errors.append(f"Banned/rectified citation artifact '{banned}' found in {tname}.")
 
     part1 = catalog["part1"]
     part2 = catalog["part2"]
     part3 = catalog["part3"]
     part4 = catalog["part4"]
 
-    # 2. Validate Part I & Part II 1-to-1 bijection with all 59 formal LaTeX environments
+    # 2. Validate Part I & Part II 1-to-1 bijection with all 78 formal LaTeX environments
     tex_result_envs = [e for e in tex_envs if e["type"] in RESULT_ENVS]
     tex_struct_envs = [e for e in tex_envs if e["type"] in STRUCTURAL_ENVS]
-    if len(tex_result_envs) != 35:
-        errors.append(f"Expected 35 formal result environments in LaTeX, found {len(tex_result_envs)}.")
-    if len(tex_struct_envs) != 24:
-        errors.append(f"Expected 24 structural/open environments in LaTeX, found {len(tex_struct_envs)}.")
+    if len(tex_result_envs) != 45:
+        errors.append(f"Expected 45 formal result environments in LaTeX, found {len(tex_result_envs)}.")
+    if len(tex_struct_envs) != 33:
+        errors.append(f"Expected 33 structural/open environments in LaTeX, found {len(tex_struct_envs)}.")
     if len(part1) != len(tex_result_envs):
         errors.append(f"Part I row count ({len(part1)}) != LaTeX formal results ({len(tex_result_envs)}).")
     if len(part2) != len(tex_struct_envs):
@@ -436,21 +507,22 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
 
     for env in tex_envs:
         lbl = env["label"]
+        tex_loc = format_locator(env["prefix"], env["line"])
         if not lbl:
-            errors.append(f"Formal {env['type']} at LaTeX line {env['line']} lacks \\label{{...}}.")
+            errors.append(f"Formal {env['type']} at LaTeX {tex_loc} lacks \\label{{...}}.")
             continue
         if lbl not in formal_md_by_id:
-            errors.append(f"Formal {env['type']} '{lbl}' (L{env['line']}) missing from Parts I/II.")
+            errors.append(f"Formal {env['type']} '{lbl}' ({tex_loc}) missing from Parts I/II.")
             continue
         row = formal_md_by_id[lbl]
         if row["type"].lower() != env["type"].lower():
             errors.append(f"{lbl}: type mismatch tex='{env['type']}' vs md='{row['type']}'.")
         try:
-            md_line = int(row["line"])
-            if abs(md_line - env["line"]) > 2:
-                errors.append(f"{lbl}: line number drift tex={env['line']} vs md={md_line}.")
+            md_pfx, md_line = parse_locator(row["line"])
+            if md_pfx != env["prefix"] or abs(md_line - env["line"]) > 2:
+                errors.append(f"{lbl}: locator drift tex={tex_loc} vs md={row['line']}.")
         except ValueError:
-            errors.append(f"{lbl}: non-integer line '{row['line']}'.")
+            errors.append(f"{lbl}: invalid locator '{row['line']}'.")
         nt_tex = normalize_title(env["title"])
         nt_md = normalize_title(row["title"])
         if nt_tex and nt_tex != nt_md:
@@ -472,7 +544,7 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
         if required_id not in part3_ids:
             errors.append(f"Missing required Part III entry '{required_id}'.")
 
-    # 4. Row-level checks across Parts I, II, and III (108 rows)
+    # 4. Row-level checks across Parts I, II, and III
     lean_covered: Set[str] = set()
     grounding_counts = {"P1": Counter(), "P2_remark": Counter(), "P3": Counter()}
     axis_counts = {"P1": Counter(), "P2": Counter(), "P3": Counter()}
@@ -484,11 +556,13 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
                 if not row[field].strip():
                     errors.append(f"{cid}: empty '{field}' cell.")
             try:
-                line_num = int(row["line"])
-                if not (1 <= line_num <= tex_line_count):
-                    errors.append(f"{cid}: line {line_num} out of bounds 1..{tex_line_count}.")
+                pfx, line_num = parse_locator(row["line"])
+                if pfx not in tex_line_counts:
+                    errors.append(f"{cid}: unknown file prefix '{pfx}' in locator '{row['line']}'.")
+                elif not (1 <= line_num <= tex_line_counts[pfx]):
+                    errors.append(f"{cid}: line {row['line']} out of bounds 1..{tex_line_counts[pfx]}.")
             except ValueError:
-                errors.append(f"{cid}: invalid line number '{row['line']}'.")
+                errors.append(f"{cid}: invalid line locator '{row['line']}'.")
             if row["axis"] not in CANONICAL_AXES:
                 errors.append(f"{cid}: non-canonical axis '{row['axis']}'.")
             axis_counts[cohort][row["axis"]] += 1
@@ -524,17 +598,18 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
     if missing_bp:
         errors.append(f"blueprint/lean_decls declarations missing from catalog ({len(missing_bp)}): {missing_bp[:5]}")
 
-    # 6. Validate Part IV table matrix (all 14 tables)
+    # 6. Validate Part IV table matrix (all 17 tables)
     if len(part4) != len(tex_tables):
         errors.append(f"Part IV table count ({len(part4)}) != LaTeX tables ({len(tex_tables)}).")
     else:
         for t_idx, (tex_t, md_t) in enumerate(zip(tex_tables, part4), 1):
+            tex_t_loc = format_locator(tex_t["prefix"], tex_t["line"])
             try:
-                md_t_line = int(md_t["line"])
-                if abs(md_t_line - tex_t["line"]) > 2:
-                    errors.append(f"Part IV table #{t_idx}: line drift tex={tex_t['line']} vs md={md_t_line}.")
+                md_t_pfx, md_t_line = parse_locator(md_t["line"])
+                if md_t_pfx != tex_t["prefix"] or abs(md_t_line - tex_t["line"]) > 2:
+                    errors.append(f"Part IV table #{t_idx}: locator drift tex={tex_t_loc} vs md={md_t['line']}.")
             except ValueError:
-                errors.append(f"Part IV table #{t_idx}: non-integer line '{md_t['line']}'.")
+                errors.append(f"Part IV table #{t_idx}: invalid locator '{md_t['line']}'.")
             if not md_t["claim_ids"]:
                 errors.append(f"Part IV table #{t_idx}: empty Cataloged Claim IDs cell.")
             for cid in md_t["claim_ids"]:

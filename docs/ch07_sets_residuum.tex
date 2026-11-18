@@ -1,0 +1,377 @@
+\chapter{\texorpdfstring{Residuums and ``$\mathbf{Sets}$''}{Residuums and "Sets"}}
+\chaptermark{Residuums and ``Sets''}
+\label{ch:sets-residuum}
+\chapterepigraph{``The inequalities in the world are like the combinations in a kaleidoscope; at every turn a fresh picture strikes the eye; and yet, in reality, you see only the same bits of glass as you saw before.''}{Arthur Schopenhauer, \emph{Counsels and Maxims}, \S 47}
+
+Throughout Chapters~\ref{ch:foundations}--\ref{ch:realizability-sites}, Categorical Reverse Mathematics ($\mathrm{CRM}$) has calibrated mathematical necessity \emph{inside} variable universes of small maps~\cite{Lawvere69,Johnstone02}. Across all Five Foundational Coordinate Axes established in Chapter~\ref{ch:foundations} (Definitions~\ref{def:comparison-triple}--\ref{def:residuum} and Table~\ref{tab:five-axis-master})---Choice/Splitting (\textbf{Axis~I}), Constructive Logic (\textbf{Axis~II}), Arithmetic Infinity (\textbf{Axis~III}), Characteristic/$p$-Torsion (\textbf{Axis~IV}), and Directional Invertibility (\textbf{Axis~V})---doctrinal comparison triples $\mathfrak{T} = (\mathcal{D}_0 \supseteq \mathcal{D}_1,\; \kappa : \Phi \Rightarrow \Psi) \in \mathrm{Dom}(\mathrm{Res})$ were measured through concrete internal invariants: non-abelian torsor cohomology $H^1(\mathcal{E}/Y; G)$, derived limit phantoms $\varprojlim^1$, Heyting boundary lattices, $\delta$-ring lift torsors, and Postnikov obstructions. Throughout those calibrations, the background doctrine of ``$\mathbf{Sets}$'' remained quietly offstage---even though Thoralf Skolem had long complained how ``disagreeable'' it is to review mathematical works ``where set theoretic notions and theorems are used without any explanation of what kind of set theory is meant''~\cite{Skolem55}---shielded by the folkloric consensus that Zermelo--Fraenkel set theory ($\mathsf{ZFC}$) and von Neumann--Bernays--G\"odel class theory ($\mathsf{NBG}$) are functionally interchangeable ways of naming the same mathematical bedrock.
+
+Turning the residuum operator $\mathrm{Res}(\kappa)$ onto ``$\mathbf{Sets}$'' itself---via Andr\'e Joyal and Ieke Moerdijk's \textbf{Algebraic Set Theory}\index{Algebraic Set Theory} of class categories equipped with small-map ideals $(\mathcal{C}, \mathcal{S})$~\cite{JoyalMoerdijk95}---shatters that consensus along two orthogonal directions. First, holding an underlying universe of small sets completely rigid still leaves an entire vertical kaleidoscope of $2$-categorical class residua overhead. Second, and far more subversively, weakening the horizontal set axioms below full $\mathsf{ZFC}$ breaks class-to-set conservativity outright---exposing the structural plot twist that Lawvere's Elementary Theory of the Category of Sets ($\mathsf{ETCS}$)\index{ETCS@$\mathsf{ETCS}$ (Elementary Theory of the Category of Sets)}~\cite{Lawvere64}, the Boolean elementary-topos baseline inhabited across Chapters~\ref{ch:foundations}--\ref{ch:realizability-sites}, is bi-interpretable with Bounded Zermelo / Mac~Lane set theory ($\mathsf{Mac}$) rather than $\mathsf{ZFC}$ and has quietly operated without Replacement (and even without unbounded $\mathcal{L}_\in$-Separation) from page one.
+
+\section{\texorpdfstring{The Conservativity Illusion and the Fixed-Set Kaleidoscope}{The Conservativity Illusion and the Fixed-Set Kaleidoscope}}\label{sec:conservativity-kaleidoscope}
+
+As Saunders Mac~Lane cautioned in \emph{Categories for the Working Mathematician}, ``our present assumption of `one universe' is an adequate stopgap, not a forecast of the future''~\cite[Ch.~I, \S 6]{MacLane98}. Yet foundational folklore routinely dismisses the gap between set theory and class theory on the strength of Ulrich Felgner's 1971 class-forcing theorem~\cite{Felgner71}: $\mathsf{NBG}$\index{NBG@$\mathsf{NBG}$ (von Neumann--Bernays--G\"odel class theory)}---formulated as Bernays--G\"odel class theory $\mathsf{GBC}$ augmented with Global Choice ($\mathsf{GC}$)---proves the exact same first-order $\mathcal{L}_\in$-sentences about \emph{sets} as $\mathsf{ZFC}$. Proof-theoretically, $\mathsf{NBG}$ stands to $\mathsf{ZFC}$ just as arithmetical comprehension $\mathrm{ACA}_0$ stands to Peano Arithmetic $\mathsf{PA}$ in classical Reverse Mathematics~\cite{Simpson09}.
+
+The catch is that \textbf{first-order conservativity is strictly weaker than bi-interpretability} or categorical Morita equivalence~\cite{Caramello18}. To track class-to-set projections across both $\mathsf{ZFC}$ and weaker Replacement-free bases without circularity, we distinguish Replacement-free class algebra from full Bernays--G\"odel class theory at the outset.
+
+\begin{definition}[Class-Set Model Spaces and the Baseline Adjunction $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$]\label{def:set-projection-fibration}%
+\lean{HomotopyCRM.SetsResiduum.defSetProjAdjunction, HomotopyCRM.SetsResiduum.naive_pullback_breaks_subclass_separation}%
+\leanok%
+\uses{def:comparison-triple,def:residuum}%
+Let $\mathsf{GB}_0$\index{GB0@$\mathsf{GB}_0$ (Replacement-free class theory)} denote \emph{Replacement-free Bernays--G\"odel class theory}: the two-sorted $(\mathcal{L}_\in, \mathcal{C})$-theory over Zermelo set theory $\mathsf{Z}$ (Empty Set, Pairing, Union, Power Set, Infinity, Foundation, and Extensionality) whose class sort $\mathcal{C}$ is closed under G\"odel's eight finite predicative class operations \textbf{G1--G8} together with Subclass Separation ($C \subseteq A \in \mathcal{S} \implies C \in \mathcal{S}$, inducing full $\mathcal{L}_\in$-Separation on sets), \emph{omitting} Bernays--G\"odel Axiom~D (Class Replacement). Write:
+\[
+  \begin{aligned}
+    \mathsf{GBC}_0 &:= \mathsf{GB}_0 + \mathrm{AC}, &\qquad
+    \mathsf{GB} &:= \mathsf{GB}_0 + \mathrm{Rep}, \\
+    \mathsf{GBC} &:= \mathsf{GB} + \mathrm{AC}, &\qquad
+    \mathsf{NBG} &:= \mathsf{GBC} + \mathsf{GC}.
+  \end{aligned}
+\]
+Following Definitions~\ref{def:comparison-triple}--\ref{def:residuum} of Chapter~\ref{ch:foundations}, let $\mathbf{Mod}(\mathsf{GB}_0)$ denote the category whose objects are two-sorted models $(M, \mathcal{C}) \models \mathsf{GB}_0$ and whose $1$-morphisms $(f, F) : (M, \mathcal{C}) \to (N, \mathcal{D})$ consist of an $\mathcal{L}_\in$-elementary embedding $f : M \hookrightarrow N$ paired with a $\Sigma^1_0$-elementary class map $F : \mathcal{C} \to \mathcal{D}$ preserving singleton parameters ($\{p\} \mapsto \{f(p)\}$), G\"odel operations \textbf{G1--G8}, and membership ($m \in C \iff f(m) \in F(C)$, restricting over $f = \mathrm{id}_M$ to fixed-set class inclusions $\mathcal{C} \subseteq \mathcal{C}'$), and let $\mathbf{Mod}(\mathsf{Z})$ be the category of models of $\mathsf{Z}$ and $\mathcal{L}_\in$-elementary embeddings.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item The forgetful functor $\pi_{\mathrm{Set}} : \mathbf{Mod}(\mathsf{GB}_0) \twoheadrightarrow \mathbf{Mod}(\mathsf{Z})$ sending $(M, \mathcal{C}) \mapsto M$ is surjective on objects, with vertical fiber $\pi_{\mathrm{Set}}^{-1}(M)$ over $\mathrm{id}_M$ consisting of the poset of all $\mathsf{GB}_0$-realizations $(M, \mathcal{C})$ sharing the exact same underlying set universe $M$. (Note that naive class pullback $f^*\mathcal{D} := \{f^{-1}[D] \mid D \in \mathcal{D}\}$ along a proper $\mathcal{L}_\in$-elementary embedding $f : M \hookrightarrow V_\kappa$ does \emph{not} make $\pi_{\mathrm{Set}}$ a model-space Grothendieck fibration, as any small set $r \in \mathcal{P}(\omega)^{V_\kappa} \setminus M$ over countable $M \prec V_\kappa$ satisfies $f^{-1}[r] = r \notin M$, violating Subclass Separation while failing to commute with \textbf{G4} domain projection on $\{(n, r) \mid n \in r\}$; syntactically, however, deductive theory pairs $(T_{\mathrm{Set}}, T_{\mathrm{Class}}) \mapsto T_{\mathrm{Set}}$ do form a base-change opfibration via $T_{\mathrm{Class}} \mapsto T_{\mathrm{Class}} + \sigma$.)
+  \item Sending each set model $M \models \mathsf{Z}$ to its first-order parameter-definable class expansion $\mathrm{Def}(M)$ defines a full coreflective baseline embedding $\mathrm{Def} : \mathbf{Mod}(\mathsf{Z}) \hookrightarrow \mathbf{Mod}(\mathsf{GB}_0)$ ($\pi_{\mathrm{Set}} \circ \mathrm{Def} = \mathrm{Id}_{\mathbf{Mod}(\mathsf{Z})}$) left adjoint to $\pi_{\mathrm{Set}}$:
+  \[
+    \mathrm{Def} \;\dashv\; \pi_{\mathrm{Set}} : \mathbf{Mod}(\mathsf{GB}_0) \twoheadrightarrow \mathbf{Mod}(\mathsf{Z}).
+  \]
+  Indeed, for any $(N, \mathcal{D}) \models \mathsf{GB}_0$ and $\mathcal{L}_\in$-elementary $f : M \hookrightarrow N$, $\mathcal{L}_\in$-elementarity and G\"odel's Class Existence Theorem send each definable class $\varphi^M(-, p) \in \mathrm{Def}(M)$ to a unique well-defined class $\varphi^N(-, f(p)) \in \mathrm{Def}(N) \subseteq \mathcal{D}$. Over $\mathbf{Mod}(\mathsf{ZFC}) \hookrightarrow \mathbf{Mod}(\mathsf{ZC})$, $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ restricts to $\mathbf{Mod}(\mathsf{GBC}) \twoheadrightarrow \mathbf{Mod}(\mathsf{ZFC})$.
+\end{enumerate}
+\end{definition}
+
+Suppose we clamp an underlying countable model $M \models \mathsf{ZFC}$ completely rigid, freezing every set-level $\mathsf{ZFC}$ residuum to zero so that not a single element, ordinal, real number, or small morphism can vary. Even above this frozen set floor, the vertical fiber $\pi_{\mathrm{Set}}^{-1}(M)$ opens into an intricate second-order poset governing which proper classes $\mathcal{C}$ exist above $M$.
+
+\begin{theorem}[Fixed-Set Class Kaleidoscope; Williams~2018~\cite{Williams18}]\label{thm:williams-kaleidoscope}%
+\uses{def:set-projection-fibration}%
+Fix any countable model $M \models \mathsf{ZFC}$. The partial order of $\mathsf{GBC}$-realizations $(M, \mathcal{C})$ having the exact same underlying set universe $M$, ordered by class inclusion $\mathcal{C} \subseteq \mathcal{C}'$, embeds every countable partial order.
+\end{theorem}
+
+Standing inside a fixed model $M \models \mathsf{ZFC}$ while varying $\mathcal{C}$ realizes Schopenhauer's kaleidoscope literally: the set-level bits of glass never move, yet turning through admissible class skies $(M, \mathcal{C})$ reconfigures which large categorical constructions succeed or obstruct.
+
+Recall how Choice appears categorically at the small scale: complementing Chapter~\ref{ch:choice-atlas}'s epimorphism-splitting Choice-Geometry Atlas along Axis~I, Michael Makkai~\cite{Makkai96} observed that inside the $2$-category $\mathbf{Cat}(\mathcal{S})$ of small categories over $\mathbf{Set}$, $\mathrm{AC}$ is equivalent to requiring every \emph{weak categorical equivalence} (every functor that is fully faithful and essentially surjective on objects) to admit a strong quasi-inverse functor without passing to anafunctors. Crucially, the very first step up our vertical class fiber ($\mathsf{GBC} \subsetneq \mathsf{NBG}$) is this exact equivalence-splitting residuum shifted one universe upward from internal small categories $\mathbf{Cat}(\mathcal{S})$ to large categories $\mathbf{Cat}(\mathcal{C})$.
+
+\begin{proposition}[Large Equivalence-Splitting Calibrates Global Choice]\label{prop:large-equiv-splitting}%
+\lean{HomotopyCRM.SetsResiduum.card_split_iff_global_choice, HomotopyCRM.SetsResiduum.type_equiv_splitting_global_choice}%
+\leanok%
+\uses{def:set-projection-fibration}%
+Work over $\mathsf{GBC}$\index{Global Choice ($\mathsf{GC}$)} in a class-set model $(M, \mathcal{C})$, and let $I : \mathbf{Card} \hookrightarrow \mathbf{Set}$ denote the full inclusion in $\mathbf{Cat}(\mathcal{C})$ of the skeletal subcategory of small von Neumann cardinals into small sets. Then:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item $I : \mathbf{Card} \hookrightarrow \mathbf{Set}$ is a weak categorical equivalence (fully faithful and essentially surjective on objects).
+  \item The existence of a quasi-inverse class functor $F : \mathbf{Set} \to \mathbf{Card}$ equipped with a class natural isomorphism $\eta : \mathrm{Id}_{\mathbf{Set}} \xrightarrow{\sim} I \circ F$ is strictly equivalent over $\mathsf{GBC}$ to Global Choice ($\mathsf{NBG} := \mathsf{GBC} + \mathsf{GC}$).
+  \item Whenever $M \models \mathsf{ZFC} + (V \neq \mathrm{HOD})$, as realized in Easton's class-forcing models~\cite{Easton70}, the minimal baseline fiber $(M, \mathrm{Def}(M)) \models \mathsf{GBC}$ violates $\mathsf{GC}$ and therefore leaves $I : \mathbf{Card} \hookrightarrow \mathbf{Set}$ unsplit.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Under set-level $\mathrm{AC}$ and Replacement in $\mathsf{GBC}$, every small set $X \in \mathbf{Set}$ admits a bijection with a unique von Neumann initial ordinal $|X| \in \mathbf{Card}$. Because $\mathbf{Card}$ is a full subcategory of $\mathbf{Set}$, $I$ is fully faithful and essentially surjective, proving~(i).
+
+For~(ii), suppose first that $I$ splits via a class functor $F : \mathbf{Set} \to \mathbf{Card}$ and a class natural isomorphism $\eta : \mathrm{Id}_{\mathbf{Set}} \xrightarrow{\sim} I \circ F$. Since cardinals are skeletal, $F(X) = |X|$ for every set $X$. Whenever $X \neq \emptyset$, its cardinal $|X|$ is a nonzero von Neumann ordinal and hence satisfies $\emptyset \in |X|$. Because $\eta_X : X \xrightarrow{\sim} |X|$ is a bijection for each set $X$, the predicative class assignment
+\[
+  G(X) \;:=\; \eta_X^{-1}(\emptyset) \;\in\; X
+\]
+selects a uniform element of every nonempty small set $X \in \mathcal{S}$. Over $\mathsf{GBC}$, Foundation decomposes $V = \bigcup_{\alpha \in \mathrm{Ord}} V_\alpha$, so setting $\tilde{G}(C) := G(C \cap V_{\alpha_0})$ for $\alpha_0 := \min\{\alpha \in \mathrm{Ord} \mid C \cap V_\alpha \neq \emptyset\}$ immediately extends $G$ to a class-form Global Choice selector on all nonempty classes $C \in \mathcal{C}$, establishing $\mathsf{GC}$. Conversely, assume $\mathsf{GC}$. Applying global choice to the class family of nonempty bijection sets $\{\mathrm{Bij}(X, |X|)\}_{X \in \mathbf{Set}}$ simultaneously selects one canonical bijection $\eta_X : X \xrightarrow{\sim} |X|$ for every small set $X$. Defining $F(X) := |X|$ on objects and $F(f) := \eta_Y \circ f \circ \eta_X^{-1} : |X| \to |Y|$ on morphisms $f : X \to Y$ assembles $F : \mathbf{Set} \to \mathbf{Card}$ into a genuine class functor with natural isomorphism $\eta : \mathrm{Id}_{\mathbf{Set}} \xrightarrow{\sim} I \circ F$.
+
+Finally, for~(iii), any Global Choice selector $G \in \mathrm{Def}(M)$ definable over $M$ with set parameters $p \in M$ induces a parameter-definable well-ordering of each $V_\alpha$ and hence $M \models V = \mathrm{HOD}$. In William Easton's models~\cite{Easton70} satisfying $M \models \mathsf{ZFC} + (V \neq \mathrm{HOD})$, no such definable class exists in $\mathrm{Def}(M)$, so $I : \mathbf{Card} \hookrightarrow \mathbf{Set}$ cannot split in $(M, \mathrm{Def}(M))$.
+\end{proof}
+
+Climbing above $\mathsf{NBG}$ along the vertical fiber calibrates the implicit class commitments invoked across modern $2$-category theory and homotopy theory:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Class Forcing and Transfinite Ad\'amek Chains ($\mathsf{NBG} \subsetneq \mathsf{GBC} + \mathsf{ETR}_{\mathrm{Ord}}$):} Gitman, Hamkins, Holy, Schlicht, and Williams~\cite{Gitman20} proved that the Class Forcing Theorem (definability of $\Vdash_{\mathbb{P}}$ for proper-class posets), Tarski truth predicates for $V$, and $\mathrm{Ord}$-length Ad\'amek initial-algebra chains~\cite{Goldthorpe23} ($\mu F$ for large endofunctors $F : \mathcal{C} \to \mathcal{C}$) fail in $\mathsf{NBG}$ and calibrate Elementary Transfinite Recursion along $\mathrm{Ord}$ ($\mathsf{ETR}_{\mathrm{Ord}}$)---while remaining syntactically $\mathcal{L}_\in$-conservative over $\mathsf{ZFC}$.
+  \item \textbf{Impredicative Classes and Pointwise Large Kan Extensions ($\mathsf{GBC} + \mathsf{ETR}_{\mathrm{Ord}} \subsetneq \mathsf{GBC} + \Pi^1_1\text{-}\mathsf{CA} \subsetneq \mathsf{KM}$):}\index{Kelley--Morse class theory ($\mathsf{KM}$)} Computing unrestricted pointwise Kan extensions along large functors without smallness or accessibility hypotheses requires limits and colimits indexed by proper-class diagrams via impredicative class comprehension in Kelley--Morse ($\mathsf{KM}$). Here the vertical fiber breaks $\mathcal{L}_\in$-conservativity outright, proving $\mathrm{Con}(\mathsf{ZFC})$ and iterated consistency hierarchies as modeled by two-sorted $(V_\kappa, V_{\kappa+1})$ for inaccessible $\kappa$, mirroring the classical climb from $\mathrm{ACA}_0$ through $\Pi^1_1\text{-}\mathrm{CA}_0$ to full second-order arithmetic $\mathsf{Z}_2$~\cite{Simpson09}.
+\end{itemize}
+
+\section{\texorpdfstring{Cracks in the Floor: Why ``$\mathbf{Sets}$'' Cannot Hold the Base}{Cracks in the Floor: Why "Sets" Cannot Hold the Base}}\label{sec:cracks-in-the-floor}
+
+At this juncture, a pragmatic category theorist might still hope to quarantine the entire phenomenon upstairs: let specialists pay vertical class tolls in $\mathsf{NBG}$, $\mathsf{ETR}_{\mathrm{Ord}}$, or $\mathsf{KM}$ whenever they split large equivalences, iterate $\mathrm{Ord}$-chains, or compute large Kan extensions, while ordinary small-map mathematics proceeds undisturbed inside a canonical ground floor of ``$\mathbf{Sets}$.''
+
+Yet our \textbf{Base--Fiber Conservation Principle} (Chapter~\ref{ch:foundations}, Principle~\ref{prin:conservation}, and Chapter~\ref{ch:base-fiber}, Principle~\ref{thm:conservation-law}) prompts a pointed structural question about Felgner's 1971 conservativity theorem~\cite{Felgner71}: \emph{what prevented proper-class Global Choice from leaking down into set-level theorems in the first place?} Inspecting Felgner's forcing proof reveals two load-bearing set axioms acting as an insulating gasket underneath $\pi_{\mathrm{Set}}$: \textbf{Replacement}, which keeps the class forcing of set-sized partial well-orderings of $V$ $\kappa$-closed for every cardinal $\kappa$ so that no new small sets are added, and \textbf{Foundation}, which anchors cumulative rank induction across $V$.
+
+Syntactic $\mathcal{L}_\in$-conservativity across $\pi_{\mathrm{Set}}$ is consequently not an intrinsic harmlessness of proper classes; it is a \emph{local flatness property} over $\mathbf{Mod}(\mathsf{ZFC})$ that shatters on wider small-set bases where Replacement fails:
+\[
+\begin{tikzcd}[row sep=2.2em, column sep=2.8em, font=\footnotesize]
+\mathbf{Mod}(\mathsf{NBG})
+  \arrow[r, hook, "\tilde{\iota}"]
+  \arrow[d, two heads, "\substack{\pi_{\mathrm{Set}}|_{\mathsf{ZFC}}\\ \text{($\mathcal{L}_\in$-conserv.: Felgner 1971)}}"']
+&
+\mathbf{Mod}(\mathsf{GBC}_0 + \mathsf{GC})
+  \arrow[d, two heads, "\substack{\pi_{\mathrm{Set}}|_{\mathsf{ZC}}\\ \text{(non-conserv.: Glazer 2023)}}"]
+\\
+\mathbf{Mod}(\mathsf{ZFC})
+  \arrow[r, hook, "\iota"]
+&
+\mathbf{Mod}(\mathsf{ZC})
+\end{tikzcd}
+\]
+Here horizontal inclusions run contravariantly to syntactic theory strength ($\mathsf{ZC} \subsetneq \mathsf{ZFC}$ induces $\mathbf{Mod}(\mathsf{ZFC}) \hookrightarrow \mathbf{Mod}(\mathsf{ZC})$). As soon as $\mathrm{CRM}$ relaxes the set base below $\mathsf{ZFC}$, class principles stop tracking the set base along three independent fault lines.
+
+\begin{remark}[Set-Theoretic Notation Alignment: $\mathsf{Mac}$ vs.\ $\mathsf{ZC}$ and $\mathsf{ZFC}^-$ vs.\ $\mathsf{ZFC}_{\neg\mathrm{Reg}}$]\label{rem:zfc-minus-notation}%
+\uses{def:set-projection-fibration}%
+Two standard terminology collisions must be fixed cleanly before dissecting weaker set bases:
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=1.8em]
+  \item \textbf{Bounded Zermelo ($\mathsf{Mac}$) versus Full Zermelo ($\mathsf{ZC}$):}\index{Mac Lane set theory ($\mathsf{Mac}$)} Following Adrian Mathias~\cite{Mathias01}, $\mathsf{ZC}$ denotes \emph{full Zermelo set theory with Choice}, including the \emph{unbounded} first-order $\mathcal{L}_\in$-Separation schema, whereas \emph{Bounded Zermelo / Mac~Lane set theory} ($\mathsf{Mac}$, also denoted $\mathsf{ZBQC}$) restricts Separation to bounded ($\Delta_0$) formulas. Crucially, the Cole--Mitchell--Osius equivalence~\cite{Cole73,Osius74,Johnstone02} proves that Lawvere's $\mathsf{ETCS}$ is bi-interpretable with $\mathsf{Mac}$ ($\Delta_0$-Separation), \emph{not} full $\mathsf{ZC}$, and Mathias~\cite{Mathias01} proved that $\mathsf{ZC}$ has strictly greater consistency strength than $\mathsf{Mac} \simeq \mathsf{ETCS}$.
+  \item \textbf{Disambiguating $\mathsf{ZFC}^-$ versus $\mathsf{ZFC}_{\neg\mathrm{Reg}}$:} Set-theoretic literature overloads $\mathsf{ZFC}^-$ for both Power-Set-free $\mathsf{ZFC}$ and Foundation-free $\mathsf{ZFC}$~\cite{Felgner76}. Throughout this chapter and Chapter~\ref{ch:master-atlas}, we reserve $\mathsf{ZFC}^-$ strictly for \textbf{Power-Set-free} $\mathsf{ZFC}$ (formulated with Collection in place of functional Replacement), and write $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ and $\mathsf{NBG}_{\neg\mathrm{Reg}}$ when \textbf{Foundation (Regularity)} is dropped.
+\end{enumerate}
+\end{remark}
+
+\begin{theorem}[Syntactic $\mathcal{L}_\in$-Non-Conservativity of Global Choice Over $\mathsf{ZC}$; Glazer~2023~\cite{Glazer23}]\label{thm:glazer-nonconservativity}%
+\uses{def:set-projection-fibration,rem:zfc-minus-notation}%
+Global Choice is \emph{not} syntactically $\mathcal{L}_\in$-conservative over Zermelo set theory with Choice ($\mathsf{ZC}$, with or without Foundation, nor over $\mathsf{Mac} \simeq \mathsf{ETCS}$): there exists an explicit first-order $\mathcal{L}_\in$-sentence $\theta_{\mathrm{Glz}} := (\mathsf{CH} \wedge \psi_{\mathrm{fnd}})$ consistent with $\mathsf{ZC}$ (realized in a symmetric extension model satisfying the Generalized Continuum Hypothesis $\mathsf{GCH}$) such that $\mathsf{GBC}_0 + \mathsf{GC} \vdash \neg\theta_{\mathrm{Glz}}$. Explicitly, $\psi_{\mathrm{fnd}}$ asserts that parameterless $\mathcal{L}_\in$-definable classes encode:
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=1.8em]
+  \item an $\omega$-indexed sequence $\langle X_n \rangle_{n < \omega}$ of nonempty countable sets (admitting no small uniform enumeration sequence in the absence of Replacement);
+  \item a class $A$ separated via a binary relation $R$ by subsets of $\bigcup_{n < \omega} X_n$ (so $\{x \in \bigcup_n X_n \mid x \mathrel{R} a_0\} = \{x \in \bigcup_n X_n \mid x \mathrel{R} a_1\} \implies a_0 = a_1$ for $a_0, a_1 \in A$); and
+  \item a class surjection $P_2 : A \twoheadrightarrow W_2$ onto the canonical small prewellordering $W_2 \in \mathcal{P}^5(\omega)$ of $\mathcal{P}^2(\omega)$ of second uncountable order type $\omega_2$ (``$\aleph_2$'').
+\end{enumerate}
+In $\mathsf{GBC}_0 + \mathsf{GC}$, Global Choice simultaneously selects bijections $f_n : \omega \xrightarrow{\sim} X_n$ for all $n < \omega$, allowing Subclass Separation to carve out a small-set partial surjection $\mathcal{P}(\omega \times \omega) \rightharpoonup W_2$ sending $\{(m, n) \mid f_n(m) \mathrel{R} a\} \mapsto P_2(a)$ ($a \in A$), refuting $\mathsf{CH}$.
+\end{theorem}
+
+Notice two structural subtleties highlighted by Theorem~\ref{thm:glazer-nonconservativity}. First, syntactic $\mathcal{L}_\in$-non-conservativity is strictly stronger than mere \emph{model non-expandability}: even for $\mathcal{L}_\in$-conservative $\mathsf{GBC} + \mathsf{ETR}_{\mathrm{Ord}}$ over $\mathsf{ZFC}$, many countable models $M \models \mathsf{ZFC}$ fail to expand to $\mathsf{ETR}_{\mathrm{Ord}}$~\cite{Gitman20}, whereas over $\mathsf{ZC}$, $\mathsf{GBC}_0 + \mathsf{GC}$ refutes the explicit first-order $\mathcal{L}_\in$-sentence $\theta_{\mathrm{Glz}}$ consistent with $\mathsf{ZC}$~\cite{Glazer23}. Second, inside any model $M$ of ordinal height $\mathrm{Ord}^M = \omega + \omega$, uncountable von Neumann initial ordinals do not exist at all (so Proposition~\ref{prop:large-equiv-splitting}(i)'s inclusion $I : \mathbf{Card} \hookrightarrow \mathbf{Set}$ also loses essential surjectivity once Replacement is dropped!), requiring uncountable cardinalities such as $\aleph_n$ to be represented via canonical small prewellorderings inside $\mathcal{P}^{n+3}(\omega)$.
+
+Alongside Glazer's Replacement-free leak, dropping either Foundation or Choice exposes two further horizontal cracks:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Dropping Foundation ($\mathsf{ZFC}_{\neg\mathrm{Reg}}$; Felgner~1976~\cite{Felgner76}):} Over Foundation-free set theory $\mathsf{ZFC}_{\neg\mathrm{Reg}} + \mathrm{Collection}$, Ulrich Felgner proved that $\mathsf{NBG}_{\neg\mathrm{Reg}}$ augmented with class Equipollence is non-conservative, forcing a strictly stronger set-level $\mathrm{Ord}$-indexed Dependent Choice schema $\mathsf{DC}_{\mathrm{Ord}}$.
+  \item \textbf{Dropping Choice ($\mathsf{GB}_0$ vs.\ Limitation of Size $\mathsf{LoS}$):}\index{Limitation of Size ($\mathsf{LoS}$)} In von Neumann's original 1925 axiomatization of class theory, Replacement and Global Choice were fused into a single mega-axiom, \textbf{Limitation of Size} ($\mathsf{LoS}$): \emph{a class $C \in \mathcal{C}$ fails to belong to the smallness ideal $\mathcal{S}$ if and only if $C$ surjects onto the universe $V$}.
+\end{itemize}
+
+\begin{proposition}[Unbundling Limitation of Size Over $\mathsf{GB}_0$]\label{prop:los-smuggles-gc}%
+\uses{def:set-projection-fibration}%
+Over Replacement-free, Choice-free class theory $\mathsf{GB}_0$, von Neumann's Limitation of Size ($\mathsf{LoS}$) is strictly equivalent to the conjunction of Class Replacement ($\mathrm{Rep}$) and Global Choice ($\mathsf{GC}$):
+\[
+  \mathsf{GB}_0 \;\vdash\; \mathsf{LoS} \;\Longleftrightarrow\; (\mathrm{Rep} \wedge \mathsf{GC}).
+\]
+In particular, $\mathsf{GB}_0 + \mathsf{LoS}$ coincides with full $\mathsf{NBG}$ ($\mathrm{Ord} \xrightarrow{\sim} V$), smuggling Global Choice across Choice-free bases and satisfying $\mathsf{GB} + \mathsf{GC} \vdash \mathsf{LoS}$ whenever Replacement holds; conversely, over $\mathsf{GB}_0$ without Replacement, $\mathsf{GB}_0 + \mathsf{GC} \not\vdash \mathsf{LoS}$.
+\end{proposition}
+
+\begin{proof}
+Work first in $\mathsf{GB}_0 + \mathsf{LoS}$. By predicative class comprehension, the class $\mathrm{Ord}$ of von Neumann ordinals is well-ordered by $\in$, and by the Burali-Forti paradox $\mathrm{Ord} \notin \mathcal{S}$ (otherwise $\mathrm{Ord} \in \mathrm{Ord}$). Applying $\mathsf{LoS}$ yields a class surjection $p : \mathrm{Ord} \twoheadrightarrow V$. Because $\mathrm{Ord}$ is well-ordered, setting $\mu(x) := \min\{\alpha \in \mathrm{Ord} \mid p(\alpha) = x\}$ defines a class injection $\mu : V \hookrightarrow \mathrm{Ord}$, which pulls the canonical well-ordering of $\mathrm{Ord}$ back to a global well-ordering of $V$, establishing $\mathsf{GC}$. To deduce $\mathrm{Rep}$ without invoking Hartogs ordinals, let $A \in \mathcal{S}$ and let $F : A \to V$ be a class function. If $F[A] \notin \mathcal{S}$, then $\mathsf{LoS}$ would furnish a class surjection $q : F[A] \twoheadrightarrow V$ and hence a composite class surjection $h := q \circ F : A \twoheadrightarrow V$. By G1--G8 and Subclass Separation on $A \in \mathcal{S}$, the diagonal subclass $D := \{a \in A \mid a \notin h(a)\} \subseteq A$ is a small set $D \in \mathcal{S} = V$, so $h(a_0) = D$ for some $a_0 \in A$, yielding the Russell--Cantor contradiction $a_0 \in D \iff a_0 \notin D$. Thus $F[A] \in \mathcal{S}$, proving $\mathrm{Rep}$ (whereupon Mostowski collapse of $\mu[V] \subseteq \mathrm{Ord}$ yields $\mathrm{Ord} \xrightarrow{\sim} V$).
+
+Conversely, work in $\mathsf{GB}_0 + \mathrm{Rep} + \mathsf{GC} = \mathsf{NBG}$. If $C \in \mathcal{S}$, the Russell--Cantor diagonal argument just given shows no class surjection $C \twoheadrightarrow V$ can exist. If $C \notin \mathcal{S}$, Foundation and $\mathrm{Rep}$ give $V = \bigcup_{\alpha \in \mathrm{Ord}} V_\alpha$, and restricting $\mathsf{GC}$ to each set-sized power slice $\mathcal{P}(V_{\alpha+1} \setminus V_\alpha) \in \mathcal{S}$ assembles a global bijection $\Phi : V \xrightarrow{\sim} \mathrm{Ord}$. Then $\Phi[C] \subseteq \mathrm{Ord}$ is a proper class, hence unbounded in $\mathrm{Ord}$ (by Subclass Separation on bounded segments) and not order-isomorphic to any $\delta \in \mathrm{Ord}$ (by $\mathrm{Rep}$); sending each $\xi \in \Phi[C]$ to the order type of its set-sized initial segment $\Phi[C] \cap \xi \in \mathcal{S}$ (requiring no $\mathsf{ETR}_{\mathrm{Ord}}$) maps $C \xrightarrow{\sim} \mathrm{Ord} \xrightarrow{\Phi^{-1}} V$ bijectively onto $V$, verifying $\mathsf{LoS}$.
+
+Finally, for $\mathsf{GB}_0 + \mathsf{GC} \not\vdash \mathsf{LoS}$, consider G\"odel's constructible rank $L_{\omega_\omega}$ with its definable classes $\mathrm{Def}(L_{\omega_\omega})$. By G\"odel's condensation lemma, every constructible subset of $x \in L_{\omega_n}$ lies in $L_{\omega_{n+1}} \subset L_{\omega_\omega}$, verifying Power Set alongside $\mathsf{Z}$, while the global $<_L$-order gives $\mathsf{GC}$ on a universe of external cardinality $\aleph_\omega$. Yet the cofinal sequence $\{\omega_n : n \in \omega\}$ is a countable definable proper class admitting no surjection onto $L_{\omega_\omega}$, refuting both $\mathrm{Rep}$ and $\mathsf{LoS}$.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Base-Fiber Map of Set-Level vs.\ Class-Level Spectra Along $\pi_{\mathrm{Set}}$}\label{tab:fibration-map}
+\vspace{0.3em}
+{\scriptsize\setlength{\tabcolsep}{2.5pt}\renewcommand{\arraystretch}{1.12}%
+\begin{tabularx}{\textwidth}{@{}P{0.18\textwidth}P{0.11\textwidth}P{0.15\textwidth}YY@{}}
+\toprule
+\textbf{Class Theory} & \textbf{Set Base $\pi_{\mathrm{Set}}$} & \textbf{$\mathcal{L}_\in$-Conservative?} & \textbf{Separating Model} & \textbf{Categorical Residuum} \\
+\midrule
+$\mathsf{GBC}$ & $\mathsf{ZFC}$ & Yes ($\mathrm{Def}(M)$) & $M \models V \neq \mathrm{HOD}$ & Baseline left adjoint $\mathrm{Def}$ \\
+$\mathsf{NBG}$ ($\mathsf{GBC}+\mathsf{GC}$) & $\mathsf{ZFC}$ & Yes (Felgner~1971) & $(M,\mathrm{Def}(M))$ vs.\ $M[G]$ & Unsplit $\mathbf{Card} \hookrightarrow \mathbf{Set}$ \\
+$\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$ & $\mathsf{ZFC}$ & Yes (Gitman+~2020) & Minimal $\mathrm{Def}(M)$ & Class forcing $\Vdash_{\mathbb{P}}$; large $\mu F$ \\
+Kelley--Morse ($\mathsf{KM}$) & $\mathsf{ZFC}+\mathrm{Con}(\mathsf{ZFC})$ & \textbf{No} (new $\mathcal{L}_\in$) & $(V_\kappa, V_{\kappa+1})$ ($\kappa$ inacc.) & Pointwise large Kan extensions \\
+$\mathsf{GBC}_0+\mathsf{GC}$ / $\mathsf{NBG}_{\neg\mathrm{Reg}}$ & $\mathsf{ZC}$ / $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ & \textbf{No} (Glazer; Felgner) & Symmetric $V_{\omega+\omega}$ & Leaks $\mathcal{P}(\omega)\twoheadrightarrow W_2$ / $\mathsf{DC}_{\mathrm{Ord}}$ \\
+\bottomrule
+\end{tabularx}\par}
+\end{table}
+
+Table~\ref{tab:fibration-map} triggers an immediate plot twist for Volume~I itself.
+
+\begin{proposition}[Countable Colimit Escape in $V_{\omega+\omega}$ Over $\mathsf{ZC}$ and $\mathsf{ETCS}$]\label{prop:etcs-colimit-escape}%
+\uses{rem:zfc-minus-notation}%
+Zermelo's cumulative rank universe $V_{\omega+\omega}$ models full Zermelo set theory with Choice $\mathsf{ZC}$ (including unbounded $\mathcal{L}_\in$-Separation, and \emph{a fortiori} its category of sets and functions models $\mathsf{Mac} \simeq \mathsf{ETCS}$), in which the countable tower $n \mapsto \mathcal{P}^n(\mathbb{N})$ is first-order definable over $\mathbb{N}$ yet its colimit $\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N}) = V_{\omega+\omega}$ fails to exist as a small object.
+\end{proposition}
+
+\begin{proof}
+Because $\omega + \omega$ is a limit ordinal strictly above $\omega$, $V_{\omega+\omega}$ contains $\omega = \mathbb{N}$ and is closed under pairing, union, and power sets ($A \in V_{\omega+k} \implies \mathcal{P}(A) \in V_{\omega+k+1} \subset V_{\omega+\omega}$), inheriting $\mathrm{AC}$ from the metatheory. Moreover, for any $A \in V_{\omega+k}$ and \emph{any} subset $B \subseteq A$ carved out by an arbitrary unbounded $\mathcal{L}_\in$-formula over $(V_{\omega+\omega}, \in)$, we already have $B \in \mathcal{P}(A) \in V_{\omega+k+1} \subset V_{\omega+\omega}$, so $V_{\omega+\omega} \models \mathsf{ZC}$ (and hence models $\mathsf{Mac} \simeq \mathsf{ETCS}$). Inside $V_{\omega+\omega}$, each finite iterate $\mathcal{P}^n(\mathbb{N})$ has rank $\omega + n < \omega + \omega$ and $y = \mathcal{P}^n(\mathbb{N})$ is $\mathcal{L}_\in$-definable. However, every element $x \in V_{\omega+\omega}$ lies in some $V_{\omega+k}$ ($k < \omega$) of rank strictly below $\omega + \omega$, whereas $\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})$ contains sets of rank $\omega + n$ for all $n \in \mathbb{N}$ and therefore escapes through the roof of the topos.
+\end{proof}
+
+One might suspect that losing rank $\omega + \omega$ and $\aleph_\omega$ affects only esoteric transfinite cardinal arithmetic. Harvey Friedman demolished that comfort in 1971~\cite{Friedman71} by proving that \textbf{Borel Determinacy}\index{Borel Determinacy}---whether every infinite two-player game on a Borel subset of Cantor space $2^{\mathbb{N}}$, an arena completely specified down at rank $\omega + 3$ inside $V_{\omega+\omega}$, admits a winning strategy---\textbf{cannot be proved in Zermelo set theory $\mathsf{ZC}$ (and hence cannot be proved in $\mathsf{ETCS}$)}. Synthesizing a winning strategy for a concrete game on trees over $\mathbb{N}$ requires $\aleph_\omega$ iterated power sets supplied by Replacement.
+
+Look at the resulting predicament on our supposedly settled ground floor: working over $\mathsf{ETCS}$ ($\mathsf{Mac}$) or $\mathsf{ZC}$ while casually invoking Global Choice overhead (``because $\mathsf{NBG}$ is conservative over $\mathsf{ZFC}$'') mutates small-set cardinal arithmetic underneath via Theorem~\ref{thm:glazer-nonconservativity}; yet remaining strictly inside $\mathsf{ETCS}$ or $\mathsf{ZC}$ leaves countable definable colimits escaping the universe and concrete rank-$(\omega + 3)$ Borel games undecided. ``$\mathbf{Sets}$'' was never an indivisible atom---compelling us to place ``$\mathbf{Sets}$'' directly on the $(\mathcal{C}, \mathcal{S})$ dissecting table.
+
+\section{\texorpdfstring{Dissecting ``$\mathbf{Sets}$'' in $(\mathcal{C}, \mathcal{S})$: Plumbing vs.\ Over-Compressed Existence}{Dissecting "Sets" in (C, S): Plumbing vs. Over-Compressed Existence}}\label{sec:ast-plumbing-compression}
+
+As F.~William Lawvere insisted in his foundational remarks to the Categories-List, ``[t]he formal system may need to be changed. It would be one-sided to only `work in' a system, accepting it as a divine condemnation that we have to endure.'' In single-sorted $\mathsf{ZF}$, Separation and Replacement must be stated as infinite first-order schemata because they tangle two distinct jobs together: \textbf{logical carving} (intersections, complements, pullbacks, and relational images) and \textbf{size compression} (certifying that a carved-out collection is small enough to belong to further collections). Passing to Joyal and Moerdijk's \textbf{Algebraic Set Theory (AST)}~\cite{JoyalMoerdijk95} separates those two jobs cleanly into an ambient class category $\mathcal{C}$ and a small-map ideal $\mathcal{S}$---provided we do not bake Replacement into $\mathcal{S}$ prematurely.
+
+\begin{definition}[Predicative Class-Set Ambient $(\mathcal{C}, \mathcal{S})$ and Contravariant Powerclasses]\label{def:small-map-ambient}%
+\uses{def:comparison-triple}%
+A baseline \emph{predicative class-set ambient} $(\mathcal{C}, \mathcal{S})$ consists of:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item an ambient Boolean regular (or, constructively, Heyting regular) category $\mathcal{C}$ of \emph{classes}, finitely generated in the two-sorted set/class case by G\"odel's eight predicative relational combinators \textbf{G1--G8}; and
+  \item a stable subcategory $\mathcal{S} \subseteq \mathcal{C}$ of \emph{small maps} containing isomorphisms and terminal projections $0 \to 1$, $1 + 1 \to 1$, closed under composition, pullbacks along arbitrary morphisms of $\mathcal{C}$ (inducing Subclass Separation), diagonals $\Delta_C : C \rightarrowtail C \times C$ for small-element equality, and finite disjoint sums---\emph{without} assuming quotient or regular-image descent.
+\end{enumerate}
+An object $X \in \mathcal{C}$ is \emph{small} (a \emph{set}, written $X \in \mathcal{S}$) if $X \to 1$ belongs to $\mathcal{S}$. Pullback stability of $\mathcal{S}$ induces a \emph{contravariant} small-powerset functor $\mathcal{P}_{\mathcal{S}} : \mathcal{C}^{\mathrm{op}} \to \mathcal{C}$, $f \mapsto f^*$, where $\mathcal{P}_{\mathcal{S}}(C)$ classifies $\mathcal{S}$-small subobjects of $C$ and $\Omega := \mathcal{P}_{\mathcal{S}}(1)$ is the small subobject classifier.
+\end{definition}
+
+Because G\"odel's operations G1--G8 replace infinite comprehension schemata by finite relational algebra, $\mathcal{C}$ carries zero hidden ``overweight existence'' commitments. Running the existence axioms of set theory through $(\mathcal{C}, \mathcal{S})$ splits them into two sharply contrasting strata.
+
+\subsection{\texorpdfstring{Stratum~I: Honest Lightweight Plumbing (\emph{Empty Set, Pairing, Finite Union})}{Stratum I: Honest Lightweight Plumbing (Empty Set, Pairing, Finite Union)}}\label{subsec:ast-stratum-i}
+
+Categorically, Empty Set, Pairing, and Finite Union assert that $\mathcal{C}$ and $\mathcal{S}$ possess a strict initial object $0$, binary coproduct $1 + 1$, pushouts, and disjoint finite sums---the basic grammar of a \textbf{lextensive regular category} (or, adjoining a Natural Numbers Object $\mathrm{NNO}$, Maietti and Joyal's \textbf{Arithmetic Universe}~\cite{Maietti05}, calibrated along Arabic Axis~1, ambient universe deformation, in Chapter~\ref{ch:base-fiber}, \S\ref{sec:axis1-deformations}, and along Roman Axes~II--III in Chapter~\ref{ch:non-ac-lattices}, \S\ref{sec:predicativity-wtypes}). Weakening Stratum~I precipitates no cohomological or topological residua; it merely dismantles the ambient doctrine's ability to state comparison cells $\kappa : \Phi \Rightarrow \Psi$. These axioms pull their exact syntactic weight.
+
+\subsection{\texorpdfstring{Stratum~II: Overweight Size-Compression Valves (\emph{Power Set, Replacement, Unbounded Separation})}{Stratum II: Overweight Size-Compression Valves (Power Set, Replacement, Unbounded Separation)}}\label{subsec:ast-stratum-ii}
+
+Inside $(\mathcal{C}, \mathcal{S})$, every class $C$ \emph{already} possesses a powerclass $\mathcal{P}_{\mathcal{S}}(C) \in \mathcal{C}$, and every class morphism $f : I \to C$ \emph{already} possesses a regular image $\mathrm{im}(f) \rightarrowtail C$ in $\mathcal{C}$. The heavyweight existence axioms of $\mathsf{ZF}$ act strictly as \textbf{size-compression valves} forcing these class-sized constructions back down into $\mathcal{S}$.
+
+\begin{proposition}[Pointillist Continuum in $H(\aleph_1)$ and Constructive $\Omega^X / 2^X$ Split]\label{prop:pointillist-continuum}%
+\uses{def:small-map-ambient,rem:zfc-minus-notation}%
+Consider the Power Set compression principle $X \in \mathcal{S} \implies \mathcal{P}_{\mathcal{S}}(X) \in \mathcal{S}$ inside $(\mathcal{C}, \mathcal{S})$:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item Let $H(\aleph_1)$ be the universe of hereditarily countable sets equipped with its definable classes. Then $H(\aleph_1) \models \mathsf{ZFC}^-$ (satisfying Infinity, Collection/Replacement, and Choice while refuting Power Set): every individual real number $r \subseteq \mathbb{N}$ lies in $\mathcal{S}$, whereas Cantor space $2^{\mathbb{N}} = \mathcal{P}_{\mathcal{S}}(\mathbb{N})$ and the continuum $\mathbb{R}$ remain proper classes ($2^{\mathbb{N}} \notin \mathcal{S}$).
+  \item Over constructive Aczel--Myhill set theory $\mathsf{CZF}$~\cite{Aczel78} (dropping Excluded Middle $\mathrm{LEM}$ along \textbf{Axis~II}, Constructive Logic), \emph{Exponentiation} ($2^X \in \mathcal{S}$, classifying decidable subobjects $\mathrm{Sub}_{\mathrm{dec}}(X)$) is strictly weaker than \emph{Power Set} ($\Omega^X = \mathcal{P}_{\mathcal{S}}(X) \in \mathcal{S}$, classifying arbitrary subobjects $\mathrm{Sub}(X)$), precipitating a nontrivial subobject-classifier size residuum $\Omega^X / 2^X$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For~(i), $\mathbb{N} = \omega \in H(\aleph_1)$, and for every $r \subseteq \mathbb{N}$ its transitive closure $r \cup \omega$ is countable, so $r \in H(\aleph_1)$. Likewise, any countable family of hereditarily countable sets has countable union and transitive closure, verifying Collection/Replacement in $H(\aleph_1)$. By Cantor's diagonal theorem, however, $\mathcal{P}_{\mathcal{S}}(\mathbb{N})$ is uncountable and cannot lie in $H(\aleph_1)$, remaining an honest proper class in $\mathcal{C} \setminus \mathcal{S}$.
+
+For~(ii), inside a constructive Heyting $(\mathcal{C}, \mathcal{S})$ without $\mathrm{LEM}$, $2 = 1 + 1 \in \mathcal{S}$ embeds properly into $\Omega = \mathcal{P}_{\mathcal{S}}(1)$ along Axis~II ($\kappa : 1 + 1 \hookrightarrow \Omega$). Subset Collection in $\mathsf{CZF}$ implies Exponentiation ($Y^X \in \mathcal{S}$ for all $X, Y \in \mathcal{S}$, so $2^X \in \mathcal{S}$) while staying proof-theoretically conservative over Kripke--Platek set theory $\mathsf{KP}$ via Aczel's Martin-L\"of type-universe interpretation~\cite{Aczel78}. Forcing $\Omega \in \mathcal{S}$ ($\Omega^X \in \mathcal{S}$) impredicatively compresses all unbounded subobject predicates into $\mathcal{S}$, jumping far past $\mathsf{KP}$ and full second-order arithmetic $\mathsf{Z}_2$.
+\end{proof}
+
+Next, Joyal and Moerdijk~\cite{JoyalMoerdijk95} showed that \textbf{Replacement} corresponds precisely to closing $\mathcal{S}$ under quotients and regular images---the exact operation needed to make $\mathcal{P}_{\mathcal{S}}$ covariantly functorial!
+
+\begin{definition}[Axis~VI Doctrinal Comparison Triple: Quotient-Image Descent and Cofinality]\label{def:axis-vi-replacement}%
+\uses{def:comparison-triple,def:small-map-ambient}%
+Over a baseline predicative class-set ambient $(\mathcal{C}, \mathcal{S})$ (Definition~\ref{def:small-map-ambient}), where an $I$-indexed family of small objects over $I \in \mathcal{S}$ is represented internally as a small map $p : E \to I$ in $\mathcal{S}$, \textbf{Axis~VI (Small-Indexed Cofinality / Replacement)}\index{Axis VI (Quotient-Image Descent / Replacement)} compares the class regular image $\Phi_{\mathrm{Im}}(I, f) := \mathrm{im}(f) \in \mathcal{C}$ of any morphism $f : I \to C$ with small domain $I \in \mathcal{S}$ against the smallness reflector $\mathcal{S} \hookrightarrow \mathcal{C}$, via the descent condition $\kappa_{\mathrm{Rep}} : \mathrm{im}(f) \in \mathcal{S}$ (inducing regular-quotient / coequalizer descent along regular epimorphisms $q : I \twoheadrightarrow Q$ in $\mathcal{C}$). Equivalently, Axis~VI asserts that covariant direct-image pushforward $\exists_g : \mathcal{P}_{\mathcal{S}}(C) \to \mathcal{P}_{\mathcal{S}}(D)$ lands in small subobjects for every $g : C \to D$ in $\mathcal{C}$ (promoting $\mathcal{P}_{\mathcal{S}} : \mathcal{C} \to \mathcal{C}$ to a covariant endofunctor) and, combined with Small Union ($I \in \mathcal{S} \wedge (p : E \to I) \in \mathcal{S} \implies E \in \mathcal{S}$) and coequalizer descent, compresses every small-diagram colimit $\varinjlim_{i \in I} F_i$ into $\mathcal{S}$.
+\end{definition}
+
+\begin{remark}[The Borel Determinacy Pincer and Martin's Proper-Class Unraveling Coalgebra]\label{rem:martin-borel-coalgebra}%
+\uses{prop:pointillist-continuum,prop:etcs-colimit-escape,def:axis-vi-replacement}%
+Comparing Proposition~\ref{prop:pointillist-continuum}(i) against Proposition~\ref{prop:etcs-colimit-escape} exposes a striking reverse-mathematical pincer across Stratum~II. In $H(\aleph_1) \models \mathsf{ZFC}^-$ (Replacement without Power Set), Borel Determinacy fails already at finite Borel rank $\boldsymbol{\Sigma}^0_4$ because $\mathcal{P}_{\mathcal{S}}(\mathbb{N}) \notin \mathcal{S}$. Conversely, in $(V_{\omega+\omega}, \mathrm{Def}(V_{\omega+\omega})) \models \mathsf{ZC}$ (Power Set without Replacement), each finite iterate $\mathcal{P}^k(\mathbb{N})$ lies in $\mathcal{S}$---validating $\boldsymbol{\Sigma}^0_k$-determinacy for every fixed meta-integer $k < \omega$~\cite{Martin75}---and Determinacy breaks sharply at $\boldsymbol{\Sigma}^0_{\omega+1}$, where the countable family $\{\mathcal{P}^n(\mathbb{N})\}_{n \in \mathbb{N}}$ escapes $\mathcal{S}$~\cite{Friedman71}. Crucially, inside $(\mathcal{C}, \mathcal{S})$, Tony Martin's inductive clopen unraveling of a $\boldsymbol{\Sigma}^0_{\omega+1}$ game still assembles into a well-defined \emph{proper-class covering tree in $\mathcal{C} \setminus \mathcal{S}$}, framing the class-to-set strategy-descent obstruction $\mathrm{Res}(\kappa_{\mathrm{Det}})$ as a flagship Volume~II problem. Meanwhile, \textbf{Separation / Reflection} stratifies into four distinct rungs: $\Delta_0$-pullbacks along $\top : 1 \to \Omega$ in $\mathsf{ETCS} \simeq \mathsf{Mac}$, full unbounded $\mathcal{L}_\in$-Separation in $\mathsf{ZC}$ (strictly stronger than $\mathsf{Mac}$ by Mathias~\cite{Mathias01}, yet satisfied in $V_{\omega+\omega}$ without Replacement), $\Sigma_2$-Reflection upgrading $\mathsf{ZC}$ to $\mathsf{ZFC}$, and impredicative class comprehension jumping from conservative $\mathsf{NBG}$ to $\mathsf{KM}$ ($\mathrm{Con}(\mathsf{ZFC})$).
+\end{remark}
+
+\section{\texorpdfstring{Over-Quotienting Structure: The Anti-Existence Residua}{Over-Quotienting Structure: The Anti-Existence Residua}}\label{sec:anti-existence-residua}
+
+Where Stratum~II manufactures residua by over-compressing proper-class constructions downward into $\mathcal{S}$, \textbf{Stratum~III} inverts the polarity completely. \textbf{Foundation (Regularity)} and \textbf{Extensionality} assert the existence of no sets whatsoever; they are \emph{structural prohibitions} that quotient away circular $\in$-graphs and internal symmetries. Relaxing either clamp uncovers universe-scale instances of the exact fixed-point ($\mu F \Rightarrow \nu F$) and truncation operators studied in Chapters~\ref{ch:non-ac-lattices}, \ref{ch:higher-crm}, and~\ref{ch:realizability-sites}.
+
+\begin{theorem}[Axis~VII Comparison: Foundation vs.\ Anti-Foundation as $\mu \mathcal{P}_{\mathcal{S}} \hookrightarrow \nu \mathcal{P}_{\mathcal{S}}$]\label{thm:axis-vii-foundation}%
+\lean{HomotopyCRM.SetsResiduum.pset_equiv_iff_bisimilar, HomotopyCRM.SetsResiduum.quine_atom_outside_wf}%
+\leanok%
+\uses{def:small-map-ambient,def:axis-vi-replacement}%
+Let $(\mathcal{C}, \mathcal{S})$ be a Barr-exact class-set ambient with $\mathbb{N} \in \mathcal{S}$, Small Union, and Axis~VI image descent (Definition~\ref{def:axis-vi-replacement}), so that $\mathcal{P}_{\mathcal{S}} : \mathcal{C} \to \mathcal{C}$ acts covariantly by direct image $\exists_g$, and assume $\mathcal{P}_{\mathcal{S}}$ admits both an initial algebra $(\mu \mathcal{P}_{\mathcal{S}}, \mathrm{sup})$ and a terminal coalgebra $(\nu \mathcal{P}_{\mathcal{S}}, \mathrm{des})$. Then:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item The cumulative well-founded universe $V_{\mathsf{ZF}}$ satisfying Foundation\index{Axis VII (Foundation vs.\ Anti-Foundation)} is canonically isomorphic to the initial algebra $\mu \mathcal{P}_{\mathcal{S}}$.
+  \item Peter Aczel's Anti-Foundation universe $V_{\mathsf{AFA}}$\index{Anti-Foundation Axiom ($\mathsf{AFA}$)}~\cite{Aczel88}---in which every accessible pointed $\mathcal{S}$-small-branching graph $(G, \to, r)$ admits a unique decoration $d : G \to V$ satisfying $d(x) = \{d(y) \mid x \to y\}$---is canonically isomorphic to the terminal coalgebra $\nu \mathcal{P}_{\mathcal{S}}$.
+  \item The canonical comparison morphism $\kappa_{\mathrm{Reg}} : \mu \mathcal{P}_{\mathcal{S}} \hookrightarrow \nu \mathcal{P}_{\mathcal{S}}$ is a monomorphism; Foundation holds if and only if $\kappa_{\mathrm{Reg}}$ is an isomorphism, with residuum $\mathrm{Res}(\kappa_{\mathrm{Reg}}) = \nu \mathcal{P}_{\mathcal{S}} \setminus \mu \mathcal{P}_{\mathcal{S}}$ consisting of non-well-founded bisimulation classes anchored by the unique Quine atom\index{Quine atom ($q = \{q\}$)} $q = \{q\}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Lambek's Lemma (formalized as \texttt{lambek\_isIso} in Chapter~\ref{ch:non-ac-lattices}, \S\ref{sec:delta-rings}), $\mathrm{sup} : \mathcal{P}_{\mathcal{S}}(\mu \mathcal{P}_{\mathcal{S}}) \xrightarrow{\sim} \mu \mathcal{P}_{\mathcal{S}}$ and $\mathrm{des} : \nu \mathcal{P}_{\mathcal{S}} \xrightarrow{\sim} \mathcal{P}_{\mathcal{S}}(\nu \mathcal{P}_{\mathcal{S}})$ are isomorphisms, modeling extensional membership via $x \in y \iff x \in \mathrm{sup}^{-1}(y)$ (respectively $x \in \mathrm{des}(y)$). Initiality of $\mu \mathcal{P}_{\mathcal{S}}$ yields the $\in$-induction principle characterizing $V_{\mathsf{ZF}}$, proving~(i), and induces a unique homomorphism $\kappa_{\mathrm{Reg}} : (\mu \mathcal{P}_{\mathcal{S}}, \mathrm{sup}) \to (\nu \mathcal{P}_{\mathcal{S}}, \mathrm{des}^{-1})$ satisfying $\mathrm{des}(\kappa_{\mathrm{Reg}}(x)) = \exists_{\kappa_{\mathrm{Reg}}}(\mathrm{sup}^{-1}(x))$. By $\in$-induction on $x \in \mu \mathcal{P}_{\mathcal{S}}$, if $\kappa_{\mathrm{Reg}}(u) = \kappa_{\mathrm{Reg}}(z) \implies u = z$ holds for all $u \in \mathrm{sup}^{-1}(x)$ and all $z \in \mu \mathcal{P}_{\mathcal{S}}$, then $\kappa_{\mathrm{Reg}}(x) = \kappa_{\mathrm{Reg}}(y)$ implies $\exists_{\kappa_{\mathrm{Reg}}}(\mathrm{sup}^{-1}(x)) = \exists_{\kappa_{\mathrm{Reg}}}(\mathrm{sup}^{-1}(y))$, whence $\mathrm{sup}^{-1}(x) = \mathrm{sup}^{-1}(y)$ and $x = y$, proving $\kappa_{\mathrm{Reg}}$ is monic.
+
+For~(ii) and~(iii), any accessible pointed small-branching graph $(G, \to, r)$ defines a $\mathcal{P}_{\mathcal{S}}$-coalgebra $\gamma : G \to \mathcal{P}_{\mathcal{S}}(G)$ by $\gamma(x) := \{y \in G \mid x \to y\}$: here $\mathbb{N} \in \mathcal{S}$, Small Union, and Axis~VI Replacement ensure that for any class coalgebra $G$, every reachable transitive subgraph $G_x = \bigcup_{n \in \mathbb{N}} \gamma^n(\{x\})$ remains small in $\mathcal{S}$, while Barr-exactness of $\mathcal{C}$ (cf.\ Chapter~\ref{ch:non-ac-lattices}, Figure~\ref{fig:homological-lattice}; or Scott's trick when Foundation holds on a core) quotients small APGs by maximum bisimulation to realize $\nu \mathcal{P}_{\mathcal{S}}$. Terminality of $(\nu \mathcal{P}_{\mathcal{S}}, \mathrm{des})$ states precisely that every $(G, \gamma)$ admits a unique homomorphism $d : (G, \gamma) \to (\nu \mathcal{P}_{\mathcal{S}}, \mathrm{des})$, unwinding to $d(x) = \{d(y) \mid x \to y\}$ (Aczel's $\mathsf{AFA}$). Applying $d$ to the one-vertex self-loop graph $(\{\bullet\}, \{(\bullet, \bullet)\}, \bullet)$ produces a unique fixed point $q = d(\bullet) \in \nu \mathcal{P}_{\mathcal{S}}$ satisfying $q = \{q\}$, refuting $\in$-induction and witnessing $\nu \mathcal{P}_{\mathcal{S}} \setminus \mu \mathcal{P}_{\mathcal{S}} \neq \emptyset$.
+\end{proof}
+
+\begin{proposition}[Boffa Hypersets and Rieger--Bernays Slice vs.\ Global Torsors]\label{prop:boffa-torsors}%
+\lean{HomotopyCRM.SetsResiduum.quineAPG_bisimilar_and_nonIso_twoCycle, HomotopyCRM.SetsResiduum.boffa_twin_torsor, HomotopyCRM.SetsResiduum.boffa_twin_addTorsor}%
+\leanok%
+\uses{thm:axis-vii-foundation}%
+Weakening Aczel's $\mathsf{AFA}$ (which quotients coalgebras by maximum bisimulation) to Maurice Boffa's Anti-Foundation Axiom ($\mathsf{BAFA}$\index{BAFA@$\mathsf{BAFA}$ (Boffa Anti-Foundation Axiom)}~\cite{Boffa69}, requiring every injective decoration of a subgraph to extend injectively to supergraphs) lifts $\nu \mathcal{P}_{\mathcal{S}}$ to a universe $V_{\mathsf{BAFA}}$ admitting a proper class of distinct Quine atoms $a = \{a\} \neq b = \{b\}$. Then:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item \textbf{Isomorphism vs.\ Bisimulation Fibers:} Mere bisimilarity $[A] = [B] \in \nu \mathcal{P}_{\mathcal{S}}$ does not imply $\in$-isomorphism (for instance, a Quine singleton $a = \{a\}$ with $|\mathrm{tc}(\{a\})| = 1$ and a mutual $2$-cycle $u = \{v\}, v = \{u\}$ with $|\mathrm{tc}(\{u\})| = 2$ share the same bisimulation image $q \in \nu \mathcal{P}_{\mathcal{S}}$ while $\mathrm{Iso}_\in(\mathrm{tc}(\{a\}), \mathrm{tc}(\{u\})) = \emptyset$). Restricted to hypersets $A, B \in V_{\mathsf{BAFA}}$ with $\in$-isomorphic transitive closures, $\mathrm{Iso}_\in(\mathrm{tc}(\{A\}), \mathrm{tc}(\{B\}))$ carries a free and transitive right $\mathrm{Aut}_\in(\mathrm{tc}(\{A\}))$-action.
+  \item \textbf{Slice Twin Torsors vs.\ Global Parity Torsors Over $Q_0$:}\index{Boffa hyperset torsor} Fix any countably infinite small set $Q_0 \in \mathcal{S}$ of distinct Quine atoms in $V_{\mathsf{BAFA}}$ (obtained by decorating $\omega$ disjoint self-loops), and pass via Rieger--Bernays $\in$-permutations fixing $V_{\mathsf{ZF}}$ pointwise to the equivariant permutation topos $\mathcal{E}_{Q_0} := \mathbf{Cont}(\mathrm{Sym}(Q_0)) \simeq \mathbf{Nom}$ (Chapter~\ref{ch:realizability-sites}, \S\ref{subsec:kihara-choice-nominal}). Over the unordered-pair orbit sheaf $[Q_0]^2 \in \mathcal{E}_{Q_0}$, the ordered-twin cover $Q_0^{\#(2)} \twoheadrightarrow [Q_0]^2$ is a pointless $\Delta(\mathbb{Z}/2\mathbb{Z})$-torsor in the \textbf{slice topos} $\mathcal{E}_{Q_0}/[Q_0]^2$,
+  \[
+    [Q_0^{\#(2)}] \;\neq\; 0 \;\in\; H^1\bigl(\mathcal{E}_{Q_0}/[Q_0]^2;\, \Delta(\mathbb{Z}/2\mathbb{Z})\bigr)
+  \]
+  (restricting on a single isolated twin pair $Q_2 = \{a, b\}$ to $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$, Chapter~\ref{ch:choice-atlas}, Theorem~\ref{thm:coshep-svc}). Over the \textbf{global terminal object} $1_{\mathcal{E}_{Q_0}}$, Schreier--Ulam pro-discrete blindness forces $H^1(\mathcal{E}_{Q_0}; \Delta(\mathbb{Z}/2\mathbb{Z})) = 0$, and the non-vanishing global obstruction lifts to the odd-Quine-finset parity torsor $[\mathcal{T}_{\mathrm{odd}}(Q_0)] \neq 0 \in H^1(\mathcal{E}_{Q_0}; \mathrm{EvenFinset}(Q_0))$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Under $\mathsf{BAFA}$, extending the empty decoration to disjoint self-loops or to a directed $2$-cycle produces distinct Quine atoms $a = \{a\} \neq b = \{b\}$ and $u = \{v\} \neq v = \{u\}$; cardinality $|\mathrm{tc}(\{a\})| = 1 \neq 2 = |\mathrm{tc}(\{u\})|$ separates their $\in$-isomorphism classes inside $[q] \in \nu \mathcal{P}_{\mathcal{S}}$, whereas for $\in$-isomorphic closures composition gives a free transitive $\mathrm{Aut}_\in(\mathrm{tc}(\{A\}))$-action, proving~(i). For~(ii), Boffa~\cite{Boffa69} showed that every permutation $\sigma \in \mathrm{Sym}(Q_0)$ extends to an $\in$-automorphism of $V_{\mathsf{BAFA}}$ fixing $V_{\mathsf{ZF}}$ pointwise. For any $\{a, b\} \in [Q_0]^2$, the transposition $(a\;b) \in \mathrm{Sym}(Q_0)$ stabilizes $\{a, b\}$ while swapping $(a, b) \leftrightarrow (b, a)$ in $Q_0^{\#(2)}$, blocking any $\mathrm{Sym}(Q_0)$-equivariant section $[Q_0]^2 \to Q_0^{\#(2)}$ and proving $[Q_0^{\#(2)}] \neq 0$ in $H^1(\mathcal{E}_{Q_0}/[Q_0]^2; \Delta(\mathbb{Z}/2\mathbb{Z}))$, while Chapter~\ref{ch:realizability-sites} (\S\ref{subsec:kihara-choice-nominal}, \texttt{NominalSimplicity.lean}) establishes both $H^1(\mathcal{E}_{Q_0}; \Delta(\mathbb{Z}/2\mathbb{Z})) = 0$ and $[\mathcal{T}_{\mathrm{odd}}(Q_0)] \neq 0 \in H^1(\mathcal{E}_{Q_0}; \mathrm{EvenFinset}(Q_0))$.
+\end{proof}
+
+Proposition~\ref{prop:boffa-torsors} acquires an illuminating homotopy-theoretic explanation as soon as we examine the companion Stratum~III clamp: \textbf{Extensionality}.
+
+\begin{proposition}[Material Extensionality, Quotient Elimination, and Hereditary Truncation]\label{prop:extensionality-truncation}%
+\lean{HomotopyCRM.SetsResiduum.zfset_ext_quot_gate}%
+\leanok%
+\uses{thm:axis-vii-foundation,prop:boffa-torsors}%
+Material Extensionality ($\forall z\,(z \in X \leftrightarrow z \in Y) \implies X = Y$) enforces both constructive quotient collapse and homotopical symmetry truncation:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
+  \item \textbf{Constructive Equiconsistency vs.\ Direct Quotient Cost (Friedman~1973~\cite{Friedman73}):} Classical $\mathsf{ZF}$, intuitionistic $\mathsf{IZF}$, and Friedman's non-extensional intuitionistic set theory $\mathsf{IZF}_{\mathrm{non\text{-}ext}}$ are \emph{equiconsistent} ($\mathrm{Con}(\mathsf{IZF}_{\mathrm{non\text{-}ext}}) \implies \mathrm{Con}(\mathsf{ZF})$ via Friedman's recursive double-negation extensionality translation). Nevertheless, $\mathsf{IZF}$ is not directly set-interpretable in $\mathsf{IZF}_{\mathrm{non\text{-}ext}}$ without Collection or primitive quotients: Scott's classical trick of selecting minimal-rank representatives fails constructively because inhabited sets of ordinals need not have $\in$-least elements.
+  \item \textbf{Univalent Iterative Multisets vs.\ Hereditary $(-1)$-Truncation (Gylterud~2018~\cite{Gylterud18}):}\index{Iterative multisets ($\mu \mathcal{P}_{\mathrm{Anima}}$)} Inside an $(\infty, 1)$-topos $\mathcal{X}$ with univalent universe $\mathcal{U}$~\cite{Lurie09}, let $M := \mu \mathcal{P}_{\mathrm{Anima}}$ be the initial algebra ($W$-type) of the polynomial endofunctor $\mathcal{P}_{\mathrm{Anima}}(X) := \sum_{A : \mathcal{U}} (A \to X)$ of \emph{iterative multisets}. Embedding any small $0$-type $A : \mathcal{U}_{\le 0}$ as the flat multiset $\underline{A} := \mathrm{sup}(A, \mathrm{const}_{\emptyset_M}) : M$ preserves internal symmetries via loop groups
+  \[
+    \pi_1(M, \underline{A}) \;\simeq\; \mathrm{Aut}(A).
+  \]
+  Applying naive outer $0$-truncation $\tau_{\le 0}(M)$ kills $\pi_1$ but \emph{retains element multiplicities} (since $X_1 := \mathrm{sup}(\mathbf{1}, \mathrm{const}_{\emptyset_M})$ and $X_2 := \mathrm{sup}(\mathbf{2}, \mathrm{const}_{\emptyset_M})$ satisfy $(X_1 =_M X_2) \simeq (\mathbf{1} \simeq \mathbf{2}) \simeq \emptyset$). Recovering the flat cumulative hierarchy of iterative sets $V_0 \hookrightarrow M$ requires \textbf{hereditary fiberwise $(-1)$-truncation}---restricting each branching map $f : A \to M$ to be a $(-1)$-truncated embedding $A \hookrightarrow M$ (or quotienting recursively by bisimulation)---which simultaneously eliminates multiplicities and forces $V_0$ to be $0$-truncated.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}[Unifying Boffa Twin Torsors and Loop Groups via $\nu \mathcal{P}_{\mathrm{Anima}}$]\label{rem:nu-anima-fossil}%
+\uses{prop:boffa-torsors,prop:extensionality-truncation}%
+Propositions~\ref{prop:boffa-torsors} and~\ref{prop:extensionality-truncation} exhibit Boffa's twin Quine set $T = \{a, b\}$ as the \emph{$0$-truncated $1$-categorical fossil of higher homotopy loop groups}. In well-founded $M = \mu \mathcal{P}_{\mathrm{Anima}}$, even $\underline{\mathbf{2}}$ carries $\pi_1(M, \underline{\mathbf{2}}) \cong \mathbb{Z}/2\mathbb{Z}$, whereas in $V_{\mathsf{BAFA}}$ well-founded sets are rigid and symmetry survives only on non-well-founded twins $a = \{a\} \neq b = \{b\}$ whose Aczel quotient $\{q, q\} = \{q\} \in \nu \mathcal{P}_{\mathcal{S}}$ collapses multiplicity via $(-1)$-truncated image $\exists_d$. Passing to the \textbf{terminal coalgebra $\nu \mathcal{P}_{\mathrm{Anima}}$ of non-well-founded univalent multisets} sends $T = \{a, b\}$ without $(-1)$-truncation to the $2$-fold Quine multiset $[q, q] := (\mathbf{2}, \mathrm{const}_q) \in \nu \mathcal{P}_{\mathrm{Anima}}$, whose loop group $\Omega(\nu \mathcal{P}_{\mathrm{Anima}}, [q, q]) \simeq \mathrm{Aut}(\mathbf{2}) \cong \mathbb{Z}/2\mathbb{Z}$ directly unites Axis~V with Axis~VII.
+\end{remark}
+
+\begin{table}[htbp]
+\centering
+\caption{Master Algebraic Set Theory Residuum Ledger Across $(\mathcal{C}, \mathcal{S})$}\label{tab:master-ast-ledger}
+\vspace{0.3em}
+{\scriptsize\setlength{\tabcolsep}{2.5pt}\renewcommand{\arraystretch}{1.12}%
+\begin{tabularx}{\textwidth}{@{}P{0.16\textwidth}P{0.19\textwidth}P{0.12\textwidth}YY@{}}
+\toprule
+\textbf{Axiom Family} & \textbf{Role in $(\mathcal{C}, \mathcal{S})$} & \textbf{Polarity} & \textbf{Separating Model} & \textbf{Residuum $\mathrm{Res}(\kappa)$} \\
+\midrule
+Empty, Pair, Union & $0, 1+1$, finite sums in $\mathcal{C},\mathcal{S}$ & Plumbing & Non-extensive cats & None (ambient grammar) \\
+Bernays G1--G8, $\Delta_0$-Sep & Finite limits + $\Delta_0$-pullbacks & Carving & Pre-regular categories & Missing subobject pullbacks \\
+Unbounded Sep / $\mathsf{KM}$ & $\mathcal{L}_\in$ / class reflection to $\mathcal{S}$ & Compression & Mathias $\mathsf{Mac} \subsetneq \mathsf{ZC}$; $\mathsf{NBG}$ vs.\ $\mathsf{KM}$ & Unreflected $\Pi_n^V$ / $\Pi^1_1$ invariants \\
+Power Set & $\mathcal{P}_{\mathcal{S}}(X) \in \mathcal{S}$ ($\Omega^X$ small) & Compression & $H(\aleph_1)$ ($\mathsf{ZFC}^-$); $\mathsf{CZF}$ & Proper-class $2^{\mathbb{N}} \notin \mathcal{S}$; $\Omega^X / 2^X$ \\
+Replacement (Axis~VI) & Image descent $\mathrm{im}(f) \in \mathcal{S}$ ($\exists_g$) & Compression & Zermelo $V_{\omega+\omega}$ ($\mathsf{ZC}$ / $\mathsf{ETCS}$) & Colimit escape; $\boldsymbol{\Sigma}^0_{\omega+1}$ Borel gap \\
+Limitation of Size ($\mathsf{LoS}$) & $C \notin \mathcal{S} \iff C \twoheadrightarrow V$ & Mega-Axiom & $(L_{\omega_\omega}, \mathrm{Def})$ over $\mathsf{GB}_0$; Easton & Bundles $\mathrm{Rep} + \mathsf{GC}$ ($\mathrm{Ord}\cong V$) \\
+Foundation (Axis~VII) & $\kappa_{\mathrm{Reg}} : \mu \mathcal{P}_{\mathcal{S}} \xrightarrow{\sim} V$ & Anti-Cycle & Aczel $V_{\mathsf{AFA}}$; Boffa $V_{\mathsf{BAFA}}$ & $\nu \mathcal{P}_{\mathcal{S}} \setminus \mu \mathcal{P}_{\mathcal{S}}$; slice/parity torsors \\
+Extensionality & Hereditary $(-1)$-truncation & Anti-Symmetry & $\mathsf{IZF}_{\mathrm{non\text{-}ext}}$; Gylterud $M$ & Quotient cost; loops $\pi_1(M,\underline{A})$ \\
+\bottomrule
+\end{tabularx}\par}
+\end{table}
+
+\section{\texorpdfstring{Scale-Invariance, the Double-Clamped Universe, and Horizons Beyond ``$\mathbf{Sets}$''}{Scale-Invariance, the Double-Clamped Universe, and Horizons Beyond "Sets"}}\label{sec:scale-invariance-synthesis}
+
+Up through Chapter~\ref{ch:realizability-sites}, a foundational skeptic could still raise a ``turtles all the way down'' objection: Categorical Reverse Mathematics might measure obstructions \emph{inside} an ambient topos or $(\infty, 1)$-category while leaving the meta-theoretic bedrock of ``$\mathbf{Sets}$'' to classical syntactic proof theory. Passing to Joyal--Moerdijk small-map pairs $(\mathcal{C}, \mathcal{S})$ and the baseline adjunction $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ closes that loop completely by establishing \textbf{reflexive scale-invariance} across the universe boundary.
+
+\begin{theorem}[Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$]\label{thm:scale-invariance}%
+\uses{def:set-projection-fibration,prop:large-equiv-splitting,def:small-map-ambient,def:axis-vi-replacement,thm:axis-vii-foundation,prop:extensionality-truncation}%
+Inside an unconstrained $(\infty, 1)$-categorical class-anima ambient $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ (inducing a $1$-categorical AST pair $(\mathcal{C}, \mathcal{S})$ on $0$-truncated objects), the classical category of small sets $\mathbf{Set}_{\mathsf{ZFC}}$ is carved out as the joint vanishing locus where upper existence/logic compression clamps along Axes~I--III and~VI meet lower structural truncation clamps along Axes~V and~VII---and where additionally splitting large weak equivalences ($\mathbf{Card} \hookrightarrow \mathbf{Set}$ in $\mathbf{Cat}(\mathcal{C})$) pins down its $\mathsf{NBG}$ class envelope:
+\[
+  {\small\begin{aligned}
+    \text{\textbf{Upper Clamps:}}\quad &\mathbb{N} \in \mathcal{S},\;\; 1+1 \xrightarrow{\sim} \Omega,\;\; \mathcal{P}_{\mathcal{S}}(\mathcal{S}) \subseteq \mathcal{S}, \\
+    &\mathrm{im}(I \xrightarrow{f} C) \in \mathcal{S},\;\; \mathrm{AC}_{\mathcal{S}}\; (\text{+\;}\mathbf{Card} \hookrightarrow \mathbf{Set}\text{ for }\mathsf{NBG}) \\[0.25em]
+    &\Downarrow \;\; \text{\emph{pinches $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ into}}\;\; \mathbf{Set}_{\mathsf{ZFC}} \;\;\Uparrow \\[0.25em]
+    \text{\textbf{Lower Clamps:}}\quad &\kappa_{\mathrm{Reg}} : \mu \mathcal{P}_{\mathcal{S}} \xrightarrow{\sim} \nu \mathcal{P}_{\mathcal{S}}, \\
+    &V_0 \hookrightarrow M = \mu \mathcal{P}_{\mathrm{Anima}}\; (\text{hereditary }(-1)\text{-truncation})
+  \end{aligned}}
+\]
+That is, set-theoretic foundations obey the scale-invariance identity $\mathrm{Res}_{\mathsf{Set}} = \mathrm{Res}_{\mathrm{CRM}}\big|_{V \in (\mathcal{C}_\infty, \mathcal{S}_\infty)}$.
+\end{theorem}
+
+Classical $\mathbf{Set}_{\mathsf{ZFC}}$ is therefore neither minimal nor canonical; it is a \textbf{double-clamped subquotient} carved out inside $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ by a clean \textbf{duality of axiomatic excess}:
+\begin{enumerate}[label=\textup{\arabic*.},leftmargin=1.8em]
+  \item \textbf{Over-Compressing Existence and Logic (\emph{Infinity, Excluded Middle, Power Set, Replacement, Choice}):} Forcing infinite initial algebras $\mathbb{N}$, classical truth values $1 + 1 \xrightarrow{\sim} \Omega$, powerclasses $\mathcal{P}_{\mathcal{S}}(X)$, small-indexed images and countable colimits $\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})$, and epimorphism sections back down into $\mathcal{S}$ (and into $\mathcal{C}$ for $\mathsf{NBG}$).
+  \item \textbf{Over-Quotienting Structure (\emph{Foundation, Extensionality}):} Collapsing terminal coalgebras ($\nu \mathcal{P}_{\mathcal{S}} \to \mu \mathcal{P}_{\mathcal{S}}$) and enforcing hereditary fiberwise $(-1)$-truncation on iterative multisets ($V_0 \hookrightarrow \mu \mathcal{P}_{\mathrm{Anima}}$, inducing $0$-truncation of $V_0$) until the universe sits flat and acyclic.
+\end{enumerate}
+
+\subsection{\texorpdfstring{The Kernel Audit Gate: \texttt{HomotopyCRM.SetsResiduum}}{The Kernel Audit Gate: HomotopyCRM.SetsResiduum}}\label{subsec:sets-residuum-kernel-gate}
+
+This double-clamped geometry\index{SetsResiduum@\texttt{HomotopyCRM.SetsResiduum}} maps directly onto the \texttt{\#print axioms} kernel audit gate enforced throughout our Lean~4 formalization suite \texttt{HomotopyCRM} (\texttt{leanprover/lean4:v4.28.0} over \texttt{mathlib4}). Inside Lean's Calculus of Inductive Constructions, universe-polymorphic \texttt{Classical.choice} realizes uniform global equivalence-splitting across cumulative universes \texttt{Type u}, while propositional extensionality (\texttt{propext}) and quotient soundness (\texttt{Quot.sound}, from which Lean derives function extensionality \texttt{funext}) implement $0$-truncated extensionality and recursive bisimulation quotienting---collapsing intensional tree presentations (\texttt{PSet}, modeling $\mu \mathcal{P}_{\mathrm{Anima}}$ at $0$-types) into extensional sets (\texttt{ZFSet}).
+
+To separate all three kernel primitives cleanly under the monograph's \textbf{4-Layer Definition Check Gate} (matching the \texttt{\#guard\_msgs in \#print axioms} standard of the earlier formalization modules), our companion module \texttt{HomotopyCRM/\allowbreak SetsResiduum.lean} implements three deliberate design guardrails (Table~\ref{tab:sets-residuum-audit}): (1)~\texttt{card\_\allowbreak split\_\allowbreak iff\_\allowbreak global\_\allowbreak choice} avoids hidden \texttt{funext} (\texttt{Quot.sound}) dependencies by using pointwise homotopy-functor equalities (\texttt{forall x, ...}) over an abstract skeletal carrier, paired with \texttt{type\_\allowbreak equiv\_\allowbreak splitting\_\allowbreak global\_\allowbreak choice} on \texttt{CategoryTheory.Functor} over \texttt{Type u}; (2)~because every term of Lean's inductive \texttt{PSet} is well-founded, \texttt{quine\_\allowbreak atom\_\allowbreak outside\_\allowbreak wf} embeds \texttt{PSet} into a pointed-graph coalgebra carrier \texttt{APG} and uses \texttt{PSet.rec} (\texttt{axiom}-free) to refute bisimilarity between the self-loop coalgebra \texttt{quineAPG} ($q = \{q\}$) and any \texttt{x : PSet}; and (3)~\texttt{zfset\_\allowbreak ext\_\allowbreak quot\_\allowbreak gate} invokes \texttt{Quotient.sound} directly over \texttt{PSet.Equiv} so its kernel footprint stays strictly \texttt{propext, Quot.sound} without pulling \texttt{Classical.choice}.
+
+\begin{table}[htbp]
+\centering
+\caption{Kernel Axiom Audit Ledger for \texttt{HomotopyCRM.SetsResiduum}}\label{tab:sets-residuum-audit}
+\vspace{0.3em}
+{\scriptsize\setlength{\tabcolsep}{2.5pt}\renewcommand{\arraystretch}{1.12}%
+\begin{tabularx}{\textwidth}{@{}P{0.27\textwidth}YP{0.21\textwidth}@{}}
+\toprule
+\textbf{Lean 4 Declaration} & \textbf{Calibrated Universe Clamp / Residuum} & \textbf{\texttt{\#print axioms} Gate} \\
+\midrule
+\texttt{card\_\allowbreak split\_\allowbreak iff\_\allowbreak global\_\allowbreak choice} & Proposition~\ref{prop:large-equiv-splitting}: pointwise homotopy-functor splitting of skeletal $\mathbf{Card} \hookrightarrow \mathbf{Set}$ is equivalent to uniform small-set choice $G(X)=\eta_X^{-1}(\emptyset)$ & \texttt{(axiom-free)} \\
+\texttt{type\_\allowbreak equiv\_\allowbreak splitting\_\allowbreak global\_\allowbreak choice} & Proposition~\ref{prop:large-equiv-splitting} + \texttt{CategoryTheory.Functor}: global functorial skeleton splitting of \texttt{Type u} via \texttt{Classical.choice} & \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound} \\
+\texttt{pset\_\allowbreak equiv\_\allowbreak iff\_\allowbreak bisimilar} \& \texttt{quine\_\allowbreak atom\_\allowbreak outside\_\allowbreak wf} & Theorem~\ref{thm:axis-vii-foundation}: \texttt{PSet.Equiv} embeds faithfully into \texttt{APG} bisimulation while \texttt{quineAPG} ($q=\{q\}$) lies outside the image of \texttt{PSet} & \texttt{(axiom-free)} \\
+\texttt{boffa\_\allowbreak twin\_\allowbreak torsor} (and \texttt{boffa\_\allowbreak twin\_\allowbreak addTorsor}) & Proposition~\ref{prop:boffa-torsors}: ordered vs.\ unordered twin Quine coalgebra swap torsor (\texttt{Bool} core vs.\ Layer-3 \texttt{AddTorsor (ZMod 2)} projection) & \texttt{(axiom-free)} (Layer~3: \texttt{propext}, \texttt{Quot.sound}) \\
+\texttt{zfset\_\allowbreak ext\_\allowbreak quot\_\allowbreak gate} & Proposition~\ref{prop:extensionality-truncation}: \texttt{Quotient.sound} over \texttt{PSet.Equiv} collapsing branch permutations and multiplicity $[\emptyset,\emptyset] \sim [\emptyset]$ & \texttt{propext}, \texttt{Quot.sound} \\
+\bottomrule
+\end{tabularx}\par}
+\end{table}
+
+\subsection{\texorpdfstring{Bridge to Chapter~\ref{ch:master-atlas} and Volume~II}{Bridge to Chapter 8 and Volume II}}\label{subsec:sets-bridge-ch8}
+
+Above all, dissecting ``$\mathbf{Sets}$'' closes the constructive and topos-theoretic arc of Volume~I by naming what lay just beyond its elementary-topos horizon. Recording these universe clamps prepares the registration of two new foundational coordinate axes in Chapter~\ref{ch:master-atlas}'s Master Reference Atlas and defines the four-part research program of Volume~II (\emph{Universes, Classes, and Higher Fixed Points}):
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Axis~VI (Quotient-Image Descent and Borel Proof Unwinding):} Calibrates small-indexed image descent separating $\mathsf{ETCS} \simeq \mathsf{Mac}$ and $\mathsf{ZC}$ ($V_{\omega+\omega}$) from $\mathsf{ZFC}$, extracting the explicit strategy-descent residuum $\mathrm{Res}(\kappa_{\mathrm{Det}})$ on Martin's proper-class unraveling coalgebra in $\mathcal{C} \setminus \mathcal{S}$ at $\boldsymbol{\Sigma}^0_{\omega+1}$~\cite{Friedman71,Martin75} (Remark~\ref{rem:martin-borel-coalgebra}).
+  \item \textbf{Axis~VII (Coalgebraic and Univalent Universe Fixed Points):} Develops the full spectrum between $V_{\mathsf{ZF}} = \mu \mathcal{P}_{\mathcal{S}}$, Aczel's $V_{\mathsf{AFA}} = \nu \mathcal{P}_{\mathcal{S}}$, Boffa's Rieger--Bernays torsors over $V_{\mathsf{BAFA}}$~\cite{Boffa69}, Gylterud's $M = \mu \mathcal{P}_{\mathrm{Anima}}$~\cite{Gylterud18}, and the terminal univalent multiset coalgebra $\nu \mathcal{P}_{\mathrm{Anima}}$ where $\Omega(\nu \mathcal{P}_{\mathrm{Anima}}, [q, q]) \cong \mathbb{Z}/2\mathbb{Z}$ unites Axes~V and~VII (Remark~\ref{rem:nu-anima-fossil}).
+  \item \textbf{$2$-Categorical Calibration of the $(\infty, \infty)$-Ladder Without Universes:} Replaces Grothendieck universes ($V_\kappa$) across Chapter~\ref{ch:higher-crm}'s four-tier hierarchy $\mathrm{Cat}^L_{(\infty,\infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty,\infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \subsetneq \mathrm{Cat}^R_{(\infty,\infty)}$~\cite{ORW26} with exact class calibrations across $\mathsf{GBC} \subsetneq \mathsf{NBG} \subsetneq \mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}} \subsetneq \mathsf{KM}$~\cite{Gitman20}---testing where $\alpha = 0$ stabilization on $\mathrm{Cat}_{\le \omega}$ (Theorem~\ref{thm:ordinal-rank-completeness}, including $\mathcal{Q}$) drops transfinite $\mathsf{ETR}_{\mathrm{Ord}}$ recursion down to $\mathsf{GBC}$ versus where general localizations cross $\mathrm{Con}(\mathsf{ZFC})$.
+  \item \textbf{Non-Conservative Base-Change Transgression:} Formulates a quantitative Leray-style transgression map along $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ (mirroring Chapter~\ref{ch:base-fiber}, Theorem~\ref{thm:quantitative-conservation}) whose target vanishes under Replacement + Foundation over $\mathsf{ZFC}$ and becomes non-trivial precisely on Glazer's $\mathcal{P}(\omega) \twoheadrightarrow W_2$ leak over $\mathsf{ZC}$~\cite{Glazer23} and Felgner's $\mathsf{DC}_{\mathrm{Ord}}$ leak over $\mathsf{ZFC}_{\neg\mathrm{Reg}}$~\cite{Felgner76}.
+\end{itemize}
+
+The scare quotes around ``$\mathbf{Sets}$'' may now come off---not because a single monolithic foundation has prevailed, but because its hidden joints lie fully in view. What once appeared to be an unanalyzable meta-theoretic floor is simply the double-clamped locus inside $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ where existence-compression from above meets hereditary symmetry-truncation from below, and where every turn of the class kaleidoscope overhead obeys the exact same laws of necessity that govern the mathematics within.

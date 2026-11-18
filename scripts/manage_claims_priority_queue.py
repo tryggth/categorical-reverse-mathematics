@@ -70,6 +70,8 @@ AXIS_LABELS: dict[str, str] = {
     "Axis III": "axis: III-infinity",
     "Axis IV": "axis: IV-torsion-geometry",
     "Axis V": "axis: V-directed-higher-cat",
+    "Axis VI": "axis: VI-replacement-descent",
+    "Axis VII": "axis: VII-foundation-truncation",
     "Cross-Axis": "axis: cross-axis",
 }
 
@@ -268,6 +270,21 @@ def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
     return entries
 
 
+def resolve_manuscript_links(line_spec: str, blob_ref: str) -> tuple[str, str, str, str]:
+    """Resolve `<line>` or `ch07:<line>` into `(disp_ref, tex_file, blob_url, main_url)`."""
+    s = line_spec.strip()
+    if s.startswith("ch07:"):
+        tex_file = "docs/ch07_sets_residuum.tex"
+        line_num = s.split(":", 1)[1].strip()
+    else:
+        tex_file = "docs/categorical_reverse_mathematics.tex"
+        line_num = s
+    disp_ref = f"{tex_file}#L{line_num}"
+    blob_url = f"https://github.com/{REPO}/blob/{blob_ref}/{disp_ref}"
+    main_url = f"https://github.com/{REPO}/blob/main/{disp_ref}"
+    return disp_ref, tex_file, blob_url, main_url
+
+
 def build_lean_followup_payload(
     claim_id: str,
     excel_row: int,
@@ -275,6 +292,7 @@ def build_lean_followup_payload(
     parent_issue: dict,
     commit_sha: str | None,
     reviewed_comment_url: str,
+    total_master_rows: int = 208,
 ) -> dict:
     """Build a `[Lean Proof]` GitHub issue payload with an explicit back-pointer to `parent_issue`."""
     line = row["Line"]
@@ -293,14 +311,7 @@ def build_lean_followup_payload(
         else "`main`"
     )
     blob_ref = commit_sha if commit_sha else "main"
-    tex_blob = (
-        f"https://github.com/{REPO}/blob/{blob_ref}"
-        f"/docs/categorical_reverse_mathematics.tex#L{line}"
-    )
-    tex_main = (
-        f"https://github.com/{REPO}/blob/main"
-        f"/docs/categorical_reverse_mathematics.tex#L{line}"
-    )
+    disp_ref, tex_file, tex_blob, tex_main = resolve_manuscript_links(line, blob_ref)
 
     body = "\n".join(
         [
@@ -317,21 +328,21 @@ def build_lean_followup_payload(
             "| Field | Value |",
             "| :--- | :--- |",
             f"| **Claim ID / Label** | `{claim_id}` |",
-            f"| **Spreadsheet Location** | `docs/technical_claims_foundations.xlsx` → `Master All Claims (208)`, Excel Row {excel_row} |",
+            f"| **Spreadsheet Location** | `docs/technical_claims_foundations.xlsx` → `Master All Claims ({total_master_rows})`, Excel Row {excel_row} |",
             f"| **Part & Environment Type** | {md_table_escape(part)} · {md_table_escape(row['Type'])} (`Evaluated Claim?`: {md_table_escape(row['Evaluated Claim?'])}) |",
             f"| **Coordinate Axis** | {md_table_escape(axis)} |",
             f"| **Foundational Grounding** | `{row['Foundational Grounding']}` |",
             f"| **Characterization Types** | {md_table_escape(row['Characterization Types'])} |",
-            f"| **Manuscript Location** | [`docs/categorical_reverse_mathematics.tex#L{line}`]({tex_blob}) ([`main`]({tex_main})) |",
+            f"| **Manuscript Location** | [`{disp_ref}`]({tex_blob}) ([`main`]({tex_main})) |",
             "",
             "### Cataloged Grounding Evidence / Context",
             f"> {row['Grounding Evidence / Location']}",
             "",
             "### Action Checklist — Lean 4 Mechanization Needed",
-            f"- [ ] Design faithful Lean 4 definitions/statement in `HomotopyCRM/<Module>.lean` (`leanprover/lean4:v4.28.0`) matching the monograph claim at `L{line}`.",
+            f"- [ ] Design faithful Lean 4 definitions/statement in `HomotopyCRM/<Module>.lean` (`leanprover/lean4:v4.28.0`) matching the monograph claim at `{disp_ref}`.",
             "- [ ] Complete kernel-verified proof (`0 sorry`, `0` custom `axiom`, `0 opaque`).",
             "- [ ] Add `namespace Checks` satisfying the 4-Layer Lean 4 Definition Check Gate (Carrier Inhabitation, Bidirectional Separation, `mathlib4` Projections & Derived Sanity, `#guard_msgs in #print axioms`).",
-            "- [ ] Link via `\\lean{...}` in `docs/categorical_reverse_mathematics.tex` and update `Foundational Grounding` to `Proved by Lean code` in `docs/technical_claims_foundations.{md,xlsx}`.",
+            f"- [ ] Link via `\\lean{{...}}` in `{tex_file}` and update `Foundational Grounding` to `Proved by Lean code` in `docs/technical_claims_foundations.{{md,xlsx}}`.",
         ]
     )
 
@@ -434,6 +445,7 @@ def cmd_process_reviewed() -> int:
                     parent_issue=iss,
                     commit_sha=commit_sha,
                     reviewed_comment_url=rev_url,
+                    total_master_rows=len(rows_by_id),
                 )
                 create_proc = run_gh_with_retry(
                     ["api", f"repos/{REPO}/issues", "--method", "POST", "--input", "-"],

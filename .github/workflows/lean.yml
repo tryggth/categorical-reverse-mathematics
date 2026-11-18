@@ -10,6 +10,7 @@ name: Build & Verify HomotopyCRM Lean 4
       - CheckDecls.lean
       - blueprint/lean_decls
       - docs/categorical_reverse_mathematics.tex
+      - docs/ch07_sets_residuum.tex
       - scripts/sync_blueprint.py
       - lakefile.toml
       - lake-manifest.json
@@ -25,6 +26,7 @@ name: Build & Verify HomotopyCRM Lean 4
       - CheckDecls.lean
       - blueprint/lean_decls
       - docs/categorical_reverse_mathematics.tex
+      - docs/ch07_sets_residuum.tex
       - scripts/sync_blueprint.py
       - lakefile.toml
       - lake-manifest.json

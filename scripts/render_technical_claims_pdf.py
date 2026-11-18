@@ -117,9 +117,9 @@ def pick_colspec(headers: list[str]) -> str:
     ncols = len(headers)
     first = headers[0].strip()
     if ncols == 8:
-        return "@{}P{1.48in}P{0.58in}C{0.34in}P{1.78in}P{0.50in}P{0.92in}P{2.92in}P{0.98in}@{}"
+        return "@{}P{1.48in}P{0.58in}C{0.46in}P{1.78in}P{0.50in}P{0.92in}P{2.80in}P{0.98in}@{}"
     if ncols == 5 and first == "Table #":
-        return "@{}C{0.42in}C{0.40in}P{1.42in}P{2.30in}P{5.20in}@{}"
+        return "@{}C{0.42in}C{0.50in}P{1.42in}P{2.30in}P{5.10in}@{}"
     if ncols == 4:
         return "@{}P{2.15in}P{2.65in}C{0.85in}P{4.15in}@{}"
     if ncols == 5:

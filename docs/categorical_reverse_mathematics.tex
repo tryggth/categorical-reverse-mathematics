@@ -246,7 +246,7 @@ Archival DOI (Zenodo): \href{https://doi.org/10.5281/zenodo.24238087}{\texttt{10
 
 \vspace{0.12em}
 \noindent\textbf{Machine-Checked Formalization Ledger}\\
-Verified in Lean~4 (\texttt{leanprover/lean4:v4.28.0}) over \texttt{mathlib4} across 14,583 lines of kernel-checked code in nine production modules in \texttt{HomotopyCRM}:
+Verified in Lean~4 (\texttt{leanprover/lean4:v4.28.0}) over \texttt{mathlib4} across 15,577 lines of kernel-checked code in ten production modules in \texttt{HomotopyCRM}:
 \begin{itemize}[leftmargin=1.2em,noitemsep,topsep=1pt]
   \item \texttt{InfinityResiduum.lean} (949 lines; profinite lassos $\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$, nominal Dedekind crossing, and tail cokernels; 20 checks)
   \item \texttt{DeltaRingPerfection.lean} (1,398 lines; Joyal $\delta$-rings and relative perfection; 21 checks)
@@ -257,8 +257,9 @@ Verified in Lean~4 (\texttt{leanprover/lean4:v4.28.0}) over \texttt{mathlib4} ac
   \item \texttt{NominalSimplicity.lean} (1,275 lines; non-projectivity and $[\mathcal{T}_{\mathrm{odd}}] \neq 0$; 20 checks)
   \item \texttt{CubicalAmalgamation.lean} (1,636 lines; cubical $n$-amalgamation and $F_n$ obstruction; 15 checks)
   \item \texttt{NominalICaTT.lean} (1,239 lines; $\mathsf{DC}_\omega$ coinductive stream adequacy vs.\ $\mathbf{Nom}$ fresh-atom failure; 18 checks)
+  \item \texttt{SetsResiduum.lean} (994 lines; $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$, $\mathbf{Card} \hookrightarrow \mathbf{Set}$ splitting, Quine coalgebra, Boffa twin torsor, and \texttt{ZFSet} quotient gate; 16 checks)
 \end{itemize}
-All nine modules pass the 4-layer check gate with zero \texttt{sorry}, zero custom \texttt{axiom}, and zero \texttt{opaque} declarations, audited via 166 \texttt{\#guard\_msgs in \#print axioms} checks using solely Lean's core logical primitives (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}).
+All ten modules pass the 4-layer check gate with zero \texttt{sorry}, zero custom \texttt{axiom}, and zero \texttt{opaque} declarations, audited via 182 \texttt{\#guard\_msgs in \#print axioms} checks using solely Lean's core logical primitives (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}).
 
 \vspace{0.12em}
 \noindent\textbf{Typographic Colophon}\\
@@ -328,7 +329,7 @@ Although Parts~I--III of this monograph engage contemporary tools---categorical 
 
 \section*{3. A Guided Tour of the Book}
 
-With that dictionary in hand, the seven chapters of this monograph unfold along a single governing law, which we call \textbf{Base--Fiber Conservation}:
+With that dictionary in hand, the eight chapters of Volume~I of this monograph unfold along a single governing law, which we call \textbf{Base--Fiber Conservation}:
 
 \begin{quote}
 \emph{Mathematical complexity is conserved. Whenever a strong foundational axiom (such as discontinuous Choice or algebraic group-completion) flattens an obstruction to zero in the foreground, that complexity has merely been absorbed into unconstructible choices or formal inverses in the background; conversely, switching that axiom off makes the background constructive and forces the conserved complexity back into view as an explicit geometric residuum.}
@@ -397,11 +398,20 @@ Certainly not: if $S$ is non-empty and finite, pick some $a \in S$ and let $b = 
 
 Consequently, $\mathcal{T}_{\mathrm{odd}}$ is a non-trivial $\mathrm{EvenFinset}$-torsor representing a non-zero cohomology class $[\mathcal{T}_{\mathrm{odd}}] \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$---even though a classic theorem of Schreier and Ulam implies that $\mathrm{Sym}(\mathbb{N})$ has \emph{zero} cohomology with coefficients in any constant discrete group ($H^1(\mathbf{Nom}; \mathbb{Z}/2\mathbb{Z}) = 0$, \textbf{Pro-Discrete Blindness})! Chapter~6 situates $\mathbf{Nom}$ at the base of Takayuki Kihara's \textbf{strict 5-rung Choice Spectrum} for Fra\"iss\'e permutation topoi, contrasts finite discrete symmetry groups $G$ (where $\{1\}$ is open) against infinite oligomorphic groups $\mathrm{Aut}(\mathcal{M})$ (where stabilizers shrink endlessly without bottoming out), and proves a sharp \textbf{dimensional amalgamation wall} for directed cell complexes: gluing two acyclic directed complexes along a flow-convex overlap always stays acyclic ($n = 2$), whereas gluing around the boundary of the facet-supported directed triangle $F_3 = \partial\Delta^2$ or a directed $n$-cube fails for \emph{every} $n \ge 3$ by closing a global directed cycle.
 
-\subsection*{Chapter 7: Machine-Checked Proofs and the Four-Layer Honesty Gate}
+\subsection*{Chapter 7: Residuums and ``$\mathbf{Sets}$''}
+
+Up through Chapter~6, the ambient doctrine of ``$\mathbf{Sets}$'' itself stands quietly offstage behind folkloric appeals to $\mathsf{ZFC}$--$\mathsf{NBG}$ conservativity. Chapter~7 turns the residuum operator directly onto ``$\mathbf{Sets}$'':
+\begin{itemize}
+  \item \textbf{The Baseline Adjunction and Fixed-Set Class Kaleidoscope:} Above Zermelo models $\mathbf{Mod}(\mathsf{Z})$, parameter-definable classes furnish a minimal coreflective left adjoint $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ into Replacement-free class models $\mathbf{Mod}(\mathsf{GB}_0)$, while Kameryn Williams's~\cite{Williams18} theorem shows that even over a completely frozen countable model $M \models \mathsf{ZFC}$, the vertical fiber $\pi_{\mathrm{Set}}^{-1}(M)$ of $\mathsf{GBC}$-realizations embeds every countable partial order---with Global Choice ($\mathsf{NBG}$) calibrated precisely by splitting the large weak equivalence $\mathbf{Card} \hookrightarrow \mathbf{Set}$.
+  \item \textbf{The $\mathsf{ETCS} \simeq \mathsf{Mac}$ Plot Twist, Glazer's Leak, and Borel Determinacy:} Lawvere's Elementary Theory of the Category of Sets ($\mathsf{ETCS}$~\cite{Lawvere64})---the Boolean elementary-topos baseline of Chapters~1--6---is bi-interpretable with Bounded Zermelo / Mac~Lane set theory ($\mathsf{Mac}$~\cite{Cole73,Osius74,Mathias01}), quietly lacking both Replacement and Unbounded $\mathcal{L}_\in$-Separation. Once Replacement drops out from under Felgner's~\cite{Felgner71} insulating gasket, Global Choice ceases to be $\mathcal{L}_\in$-conservative over $\mathsf{ZC}$ (Elliot Glazer~\cite{Glazer23}), while inside $V_{\omega+\omega} \models \mathsf{ZC}$ the countable colimit $\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})$ escapes the universe and blocks Harvey Friedman's~\cite{Friedman71} rank-$(\omega + 3)$ Borel Determinacy.
+  \item \textbf{Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ Along Axes~VI and~VII:} Inside Joyal--Moerdijk~\cite{JoyalMoerdijk95} small-map class ambients $(\mathcal{C}, \mathcal{S})$ and univalent $(\mathcal{C}_\infty, \mathcal{S}_\infty)$, $\mathbf{Set}_{\mathsf{ZFC}}$ emerges as a six-clamp subquotient where upper existence/logic compressions (Infinity, $\mathrm{LEM}$, Power Set, Choice, and \textbf{Axis~VI} Replacement / quotient-image descent $\mathrm{im}(f) \in \mathcal{S}$) meet lower structural truncations along \textbf{Axis~VII}: Foundation as $\kappa_{\mathrm{Reg}} : \mu\mathcal{P}_{\mathcal{S}} \hookrightarrow \nu\mathcal{P}_{\mathcal{S}}$~\cite{Aczel88}, Maurice Boffa's~\cite{Boffa69} Quine-atom Rieger--Bernays slice and parity torsors, and H\aa kon Gylterud's~\cite{Gylterud18} hereditary fiberwise $(-1)$-truncation $V_0 \hookrightarrow M = \mu\mathcal{P}_{\mathrm{Anima}}$ enforcing Extensionality.
+\end{itemize}
+
+\subsection*{Chapter 8: Master Atlas, Open Horizons, and the Four-Layer Honesty Gate}
 
 When a mathematical program deliberately works \emph{without} familiar crutches like the Axiom of Choice or arrow invertibility, hidden assumptions become doubly dangerous: a human author's muscle memory silently invokes $\mathsf{DC}_\omega$, divides by $2$ in a ring with $2$-torsion, or states a theorem $P(X) \implies Q(X)$ whose hypotheses are subtly vacuous on the intended examples.
 
-Chapter~7 synthesizes the open problems of the program alongside the architecture of our accompanying \textbf{Lean~4} formalization library (\texttt{HomotopyCRM}). Rather than treating formal verification merely as a stamp of approval after the fact, every formalized module is subjected to a \textbf{4-Layer Definition Check Gate}\index{Four-Layer Definition Check Gate}:
+Chapter~8 synthesizes the open problems of the program alongside the architecture of our accompanying \textbf{Lean~4} formalization library (\texttt{HomotopyCRM}). Rather than treating formal verification merely as a stamp of approval after the fact, every formalized module is subjected to a \textbf{4-Layer Definition Check Gate}\index{Four-Layer Definition Check Gate}:
 \begin{enumerate}
   \item \textbf{Inhabitation:} Prove a genuinely non-trivial example exists (ruling out vacuous theorems about the empty set).
   \item \textbf{Bidirectional Separation:} Exhibit both an object satisfying each core property and a concrete counterexample violating it (ruling out collapsed or tautological definitions).
@@ -462,6 +472,9 @@ $\mathrm{CatSp}$ & Directed spectrum category $\mathrm{Sp}(\mathrm{Cat}^R_*)$ av
 $\mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$ & Finite closed oriented graded posets with closed embeddings & Ch.~6, \S\ref{subsec:cubical-amalgamation} \\
 $\mathbf{DirComp}_{\mathrm{acyc}}^{\mathrm{convex}}$ & Finite flow-acyclic convex directed complexes & Ch.~6, \S\ref{subsec:cubical-amalgamation} \\
 $\mathbf{Clan}(\mathcal{S}, \mathbf{Nom})$ & Grothendieck--Maltsiniotis weak $\omega$-category / clan models & Ch.~6, \S\ref{subsec:coinductive-streams-choice} \\
+$(\mathcal{C}, \mathcal{S})$,\, $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ & $1$-categorical and univalent $(\infty, 1)$ small-map class ambients (Algebraic Set Theory) & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:ast-plumbing-compression}, \S\ref{sec:scale-invariance-synthesis} \\
+$\mathbf{Cat}(\mathcal{S})$,\, $\mathbf{Cat}(\mathcal{C})$ & $2$-categories of internal small categories vs.\ large class categories & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:conservativity-kaleidoscope} \\
+$V_{\mathsf{ZF}} = \mu\mathcal{P}_{\mathcal{S}}$, $V_{\mathsf{AFA}} = \nu\mathcal{P}_{\mathcal{S}}$, $M = \mu\mathcal{P}_{\mathrm{Anima}}$ & Well-founded, Aczel coalgebraic anti-foundation, and Gylterud multiset hierarchies & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:anti-existence-residua} \\
 \end{xltabular}\par}
 
 \vspace{1.0em}
@@ -493,6 +506,8 @@ $H^{n+2}(\mathcal{X}/Y, \Pi_{n+1})$ & Postnikov $k$-invariant obstruction classi
 $\tau_{\le n}, \pi_{\le n}$ & Postnikov $n$-truncation operator and homotopy group sheaves & Ch.~2, \S2.5; Ch.~5, \S\ref{sec:postnikov-residuum} \\
 $\pi_{\le 0}$ & Directed $0$-truncation / Left Bousfield groupoidification functor & Preface; Ch.~5, \S\ref{subsec:directed-inf-inf} \\
 $\Sigma_{\mathrm{red}} \dashv \Omega_{\mathrm{dir}}$ & Pointed directed suspension--loop adjunction on $\mathrm{Cat}^R_*$ & Ch.~5, \S\ref{subsec:crm-discovery-engine-inf-inf} \\
+$\mathcal{P}_{\mathcal{S}}$ & Small-powerset functor (contravariant on $(\mathcal{C}, \mathcal{S})$; covariant via $\exists_g$ under Axis~VI Replacement) & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:ast-plumbing-compression} \\
+$\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ & Minimal definable-class left adjoint to set projection on $\mathbf{Mod}(\mathsf{GB}_0)$ & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:conservativity-kaleidoscope} \\
 \end{xltabular}\par}
 
 \vspace{1.0em}
@@ -522,6 +537,12 @@ $\mathrm{LEM}, \mathrm{WLEM}$ & Law of Excluded Middle and Weak LEM ($\neg P \lo
 $\mathrm{LLPO}$ & Lesser Limited Principle of Omniscience & Ch.~1, \S1.1 \\
 $\mathrm{NNO}$ & Natural Numbers Object (initial algebra $\mu(\mathrm{Id}+1)$) & Ch.~1, \S\ref{sec:finset-infinity}; Ch.~2, \S2.1 \\
 $\mathrm{RCA}_0$--$\Pi^1_1\text{-}\mathrm{CA}_0$ & The classical Friedman--Simpson ``Big Five'' subsystems & Ch.~1, \S1.1 \\
+$\mathsf{Mac}$ ($\mathsf{ZBQC} \simeq \mathsf{ETCS}$), $\mathsf{ZC}$ & Bounded Zermelo / Mac~Lane set theory ($\Delta_0$-Separation) and full Zermelo set theory with Choice & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:cracks-in-the-floor} \\
+$\mathsf{ZFC}^-$,\, $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ & Power-Set-free $\mathsf{ZFC}$ (with Collection) and Foundation-free $\mathsf{ZFC}$ & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:cracks-in-the-floor}--\S\ref{sec:ast-plumbing-compression} \\
+$\mathsf{GB}_0$, $\mathsf{GBC}_0$, $\mathsf{GB}$, $\mathsf{GBC}$, $\mathsf{NBG}$ & Replacement-free ($\mathsf{GB}_0, \mathsf{GBC}_0$), Bernays--G\"odel ($\mathsf{GB}, \mathsf{GBC}$), and Global-Choice ($\mathsf{NBG}$) class theories & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:conservativity-kaleidoscope} \\
+$\mathsf{LoS}$ & Von Neumann's Limitation of Size ($C \notin \mathcal{S} \iff C \twoheadrightarrow V$; equivalent over $\mathsf{GB}_0$ to $\mathrm{Rep} \wedge \mathsf{GC}$) & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:cracks-in-the-floor} \\
+$\mathsf{ETR}_{\mathrm{Ord}}$,\, $\mathsf{KM}$ & Elementary Transfinite Recursion along $\mathrm{Ord}$ and impredicative Kelley--Morse class theory & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:conservativity-kaleidoscope} \\
+$\mathsf{AFA}$,\, $\mathsf{BAFA}$ & Aczel's and Boffa's Anti-Foundation Axioms ($\nu\mathcal{P}_{\mathcal{S}}$ bisimulation vs.\ distinct Quine-atom extensions) & Ch.~\ref{ch:sets-residuum}, \S\ref{sec:anti-existence-residua} \\
 \end{xltabular}\par}
 
 \vspace{1.0em}
@@ -1766,7 +1787,7 @@ Smooth $\mathbb{R}^4$ Classification & $\mathbf{Set}_{\mathrm{ZFC}}$ & Vitali Ha
 \bottomrule
 \end{tabularx}\par}
 
-\part{\texorpdfstring{Applications to $(\infty,\infty)$-Categories, Fra\"iss\'e Topoi, and Formal Verification}{Applications to (infinity,infinity)-Categories, Fraisse Topoi, and Formal Verification}}
+\part{\texorpdfstring{Applications to $(\infty,\infty)$-Categories, Fra\"iss\'e Topoi, Set Foundations, and Formal Verification}{Applications to (infinity,infinity)-Categories, Fraisse Topoi, Set Foundations, and Formal Verification}}
 
 \chapter{\texorpdfstring{Higher Categorical Reverse Mathematics in $(\infty, 1)$-Topoi, Univalent Foundations, and Postnikov Obstruction Towers}{Higher Categorical Reverse Mathematics in (infinity, 1)-Topoi, Univalent Foundations, and Postnikov Obstruction Towers}}
 \chaptermark{Higher CRM in $(\infty, 1)$-Topoi and Postnikov Towers}
@@ -2661,6 +2682,8 @@ Directed Posets vs.\ Complexes & Binary ($n = 2$) \texttt{sap\_\allowbreak flowC
 Internal Weak-$\omega$ Clans $\mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathcal{E})$ & Relational coinduction $E_{\mathrm{rel}} = \nu\Phi$ & Stream adequacy $E_{\mathrm{rel}} = \mathrm{im}(\mathrm{InvStr})$ & Internal Dependent Choice $\mathrm{IDC}_\omega$ (fails at Rung~0 on $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$ in $\mathbf{Nom}$, Theorem~\ref{thm:coinductive-stream-choice}) \\
 \end{xltabular}\par}
 
+\IfFileExists{ch07_sets_residuum.tex}{\input{ch07_sets_residuum}}{\input{docs/ch07_sets_residuum}}
+
 \chapter{Master Atlas of Open Problems, Methodological Blueprints, and Research Horizons}
 \chaptermark{Master Atlas of Open Problems and Research Horizons}
 \label{ch:master-atlas}
@@ -2668,7 +2691,7 @@ Internal Weak-$\omega$ Clans $\mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathca
 
 \section{The Unified Architecture of Categorical Reverse Mathematics}
 
-Across the preceding six chapters, Categorical Reverse Mathematics ($\mathrm{CRM}$) has been developed as a structural framework that measures the deductive gap between mathematical theorems in terms of the geometry of abstract universes and doctrinal comparisons. Where classical Friedman--Simpson reverse mathematics fixes the single formal subsystem $\mathrm{RCA}_0$ and projects theorems onto a one-dimensional ladder of set-existence axioms, and Ishihara's constructive reverse mathematics decomposes theorems over $\mathrm{BISH}$ into constructive cores plus logical or choice principles, $\mathrm{CRM}$ evaluates the residuum operator $\mathrm{Res}$ across arbitrary doctrinal comparison triples
+Across the preceding seven chapters, Categorical Reverse Mathematics ($\mathrm{CRM}$) has been developed as a structural framework that measures the deductive gap between mathematical theorems in terms of the geometry of abstract universes and doctrinal comparisons. Where classical Friedman--Simpson reverse mathematics fixes the single formal subsystem $\mathrm{RCA}_0$ and projects theorems onto a one-dimensional ladder of set-existence axioms, and Ishihara's constructive reverse mathematics decomposes theorems over $\mathrm{BISH}$ into constructive cores plus logical or choice principles, $\mathrm{CRM}$ evaluates the residuum operator $\mathrm{Res}$ across arbitrary doctrinal comparison triples
 \[
   \mathfrak{T} = \bigl(\mathcal{D}_0 \supseteq \mathcal{D}_1,\; \kappa : \Phi \Longrightarrow \Psi\bigr) \;\in\; \mathrm{Dom}(\mathrm{Res})
 \]
@@ -2678,7 +2701,7 @@ in the sense of Chapter~\ref{ch:foundations} (Definitions~\ref{def:comparison-tr
   \mathbf{Mod}(A) \cap \mathbf{Mod}(\mathcal{R}) = \mathbf{Mod}(B)
 \]
 
-Equivalently, $\mathcal{R}(\mathcal{E})$ is the weakest orthogonal structural invariant on $\mathcal{E}$ validating the Fundamental Equivalence $A + \mathcal{R}(\mathcal{E}) \iff B$. Because $\mathcal{R}(\mathcal{E})$ is formulated via universal categorical properties rather than second-order arithmetic syntax, any proven reversal transfers functorially across the major domains of topos and higher category theory: Grothendieck sheaf and localic topoi (Chapters 1--4), higher $(\infty, 1)$-topoi, univalent type universes, and directed $(\infty, \infty)$-categories (Chapter 5), and computational realizability and Fraïssé permutation topoi (Chapter 6).
+Equivalently, $\mathcal{R}(\mathcal{E})$ is the weakest orthogonal structural invariant on $\mathcal{E}$ validating the Fundamental Equivalence $A + \mathcal{R}(\mathcal{E}) \iff B$. Because $\mathcal{R}(\mathcal{E})$ is formulated via universal categorical properties rather than second-order arithmetic syntax, any proven reversal transfers functorially across the major domains of topos and higher category theory: Grothendieck sheaf and localic topoi (Chapters 1--4), higher $(\infty, 1)$-topoi, univalent type universes, and directed $(\infty, \infty)$-categories (Chapter 5), computational realizability and Fraïssé permutation topoi (Chapter 6), and algebraic set-theoretic small-map ambients $(\mathcal{C}, \mathcal{S})$ and $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ (Chapter~\ref{ch:sets-residuum}).
 
 To prevent the Triviality Trap---where the material implication $A \to B$ is offered as a tautological solution---every valid residuum $\mathcal{R}(\mathcal{E})$ must obey the Admissibility Criterion by belonging to one of four orthogonal structural families:
 
@@ -2696,7 +2719,7 @@ To prevent the Triviality Trap---where the material implication $A \to B$ is off
 
 \section{Methodological Blueprint for Computing a Categorical Residuum}
 
-Solving the residuum equivalence $A + \mathcal{R}(\mathcal{E}) \iff B$ for a new pair of mathematical theorems follows a five-step analytical protocol distilled from our case studies across Chapters 1--6:
+Solving the residuum equivalence $A + \mathcal{R}(\mathcal{E}) \iff B$ for a new pair of mathematical theorems follows a five-step analytical protocol distilled from our case studies across Chapters 1--7:
 
 \begin{enumerate}[label=\textbf{Step \arabic*:},leftmargin=4.2em]
 
@@ -2738,9 +2761,9 @@ At the core of the Categorical Reverse Mathematics research agenda stand five co
 
 Resolving these five conjectures will complete the structural dictionary between classical set-theoretic axioms and categorical geometry. In particular, Conjecture~\ref{conj:cohom-vanishing} (Cohomological Vanishing) and Conjecture~\ref{conj:postnikov-stepwise} (Postnikov Stepwise Vanishing) unify 1-categorical and $(\infty, 1)$-categorical choice principles into a single obstruction theory governed by \v{C}ech torsors $H^1(\mathcal{E}/Y, G)$ at level $0$, Giraud non-abelian gerbes $H^2_{\mathrm{gerbe}}(\mathcal{X}/Y, \Pi_1)$ for $n = 0$, and Eilenberg--MacLane classifying spaces $K(\Pi_{n+1}, n+2)$ classifying $H^{n+2}(\mathcal{X}/Y, \Pi_{n+1})$ for all $n \ge 1$.
 
-\section{The Fourteen Open Problems of Categorical Reverse Mathematics}\label{sec:fourteen-open-problems}
+\section{The Seventeen Open Problems of Categorical Reverse Mathematics}\label{sec:fourteen-open-problems}
 
-Beyond the five core conjectures, the structural vulnerabilities, kernel-verified witnesses, and multi-axis bridges uncovered across Chapters~\ref{ch:foundations}--\ref{ch:realizability-sites} organize into fourteen open problems\index{Fourteen Open Problems (Horizons I--VII)} spanning seven research horizons:
+Beyond the five core conjectures, the structural vulnerabilities, kernel-verified witnesses, and multi-axis bridges uncovered across Chapters~\ref{ch:foundations}--\ref{ch:sets-residuum} organize into seventeen open problems\index{Seventeen Open Problems (Horizons I--VIII)} spanning eight research horizons:
 
 \subsection*{Horizon I: Topos Choice Geometry and Multi-Axis Residuum Trade-Offs}
 
@@ -2816,9 +2839,23 @@ Compare the non-splitting light condensed torsor class $[q] \neq 0 \in \mathrm{E
 Calibrate the Borel complexity transition separating Rung~4 countably classifiable moduli ($E_\infty \le_B E \le_B E_{S_\infty}$, reduced via $S_\infty$ logic actions~\cite{BeckerKechris96,BergfalkSmythe25} to nominal / Fra\"iss\'e quotient stacks over $\mathbf{Nom} \simeq \mathbf{Cont}(\mathrm{Sym}(\mathbb{N}))$) from Rung~5 turbulent moduli ($\not\le_B E_{S_\infty}$, such as complex $n$-manifolds for $n \ge 2$ up to biholomorphism, Table~\ref{tab:crm-borel-dictionary};~\cite{HjorthKechris00,Kechris95,GompfPanagiotopoulos26,Kihara26}): determine what condensed, cohesive, or $(\infty, 1)$-topos invariants replace continuous $\mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ classifying functors once pro-oligomorphic blindness collapses every definable nominal invariant.
 \end{problem}
 
+\subsection*{Horizon VIII: Algebraic Set Theory, Proper-Class Unraveling, and Universe Fixed Points}
+
+\begin{problem}[Explicit Class-Coalgebra Residuum of Borel Determinacy]\label{prob:open-15}
+Extract the explicit class-level obstruction invariant $\mathrm{Res}(\kappa_{\mathrm{Det}})$ blocking small strategy descent on Tony Martin's~\cite{Martin75} proper-class inductive unraveling coalgebras inside Joyal--Moerdijk~\cite{JoyalMoerdijk95} $(\mathcal{C}, \mathcal{S})$ (Chapter~\ref{ch:sets-residuum}, Remark~\ref{rem:martin-borel-coalgebra}), calibrating the sharp pincer between $H(\aleph_1) \models \mathsf{ZFC}^-$ (failing at $\boldsymbol{\Sigma}^0_4$ via $\mathcal{P}(\mathbb{N}) \notin \mathcal{S}$, Proposition~\ref{prop:pointillist-continuum}) and $(V_{\omega+\omega}, \mathrm{Def}(V_{\omega+\omega})) \models \mathsf{ZC}$ (failing at $\boldsymbol{\Sigma}^0_{\omega+1}$ via $\{\mathcal{P}^n(\mathbb{N})\}_{n \in \mathbb{N}} \notin \mathcal{S}$~\cite{Friedman71}, Proposition~\ref{prop:etcs-colimit-escape}).
+\end{problem}
+
+\begin{problem}[Class-Theoretic Calibration of the Four-Tier $(\infty, \infty)$-\allowbreak Localization Ladder]\label{prob:open-16}
+Calibrate Ozornova--Rovelli--Walde and Gepner--Heine's four-tier reflective localization chain $\mathrm{Cat}^L_{(\infty,\infty)} \subsetneq\allowbreak \mathrm{Cat}^\omega_{(\infty,\infty)} \subsetneq\allowbreak \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \subsetneq\allowbreak \mathrm{Cat}^R_{(\infty,\infty)}$ \cite{ORW26,GepnerHeine26} and Goldthorpe's~\cite{Goldthorpe23} inductive $\Lambda$-iterated enrichment initial algebras along $\mathsf{GBC} \subsetneq\allowbreak \mathsf{NBG} \subsetneq\allowbreak \mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}} \subsetneq\allowbreak \mathsf{KM}$~\cite{Gitman20} without Grothendieck universes, testing whether $\alpha = 0$ stabilization on locally finite-dimensional $\mathrm{Cat}_{\le \omega}$ (Theorem~\ref{thm:ordinal-rank-completeness}) drops the metatheoretic cost from $\mathsf{ETR}_{\mathrm{Ord}}$ down to $\mathsf{GBC}$ and pinpointing where $\mathrm{Con}(\mathsf{ZFC})$ ($\mathsf{KM}$) is crossed.
+\end{problem}
+
+\begin{problem}[Leray Transgression for $\pi_{\mathrm{Set}}$ and Univalent Coalgebras $\nu\mathcal{P}_{\mathrm{Anima}}$]\label{prob:open-17}
+Construct a quantitative transgression differential on $\pi_{\mathrm{Set}}$ (Definition~\ref{def:set-projection-fibration}) governing when vertical class torsors ($\mathbf{Card} \hookrightarrow \mathbf{Set}$ splitting, Proposition~\ref{prop:large-equiv-splitting}) remain $\mathcal{L}_\in$-conservative~\cite{Felgner71} versus leaking small-set theorems over $\mathsf{ZC}$~\cite{Glazer23} (Theorem~\ref{thm:glazer-nonconservativity}) and $\mathsf{ZFC}_{\neg\mathrm{Reg}}$~\cite{Felgner76}, and construct the d\'ecalage functor from the terminal coalgebra $\nu\mathcal{P}_{\mathrm{Anima}}$ of non-well-founded univalent multisets ($\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q,q]) \cong \mathbb{Z}/2\mathbb{Z}$, Remark~\ref{rem:nu-anima-fossil}) to Rieger--Bernays permutation topoi $\mathbf{Cont}(\mathrm{Sym}(Q_0))$~\cite{Boffa69} (Proposition~\ref{prop:boffa-torsors}).
+\end{problem}
+
 \section{\texorpdfstring{Machine-Checked Lean~4 Formalization Ledger (\texttt{HomotopyCRM})}{Machine-Checked Lean 4 Formalization Ledger (HomotopyCRM)}}\label{subsec:lean4-verification-ledger}
 
-To anchor these categorical, algebraic, and combinatorial separations against vacuous definitions or hidden metamathematical assumptions, core components of Chapters~\ref{ch:foundations}, \ref{ch:non-ac-lattices}, \ref{ch:base-fiber}, \ref{ch:higher-crm}, and~\ref{ch:realizability-sites} are formalized in Lean~4 over \texttt{mathlib4} inside the \texttt{HomotopyCRM}\index{HomotopyCRM@\texttt{HomotopyCRM} Lean~4 library} library under a strict four-layer kernel verification gate (concrete \texttt{Nontrivial} carrier inhabitation, bidirectional positive/negative predicate separation, stock \texttt{mathlib4} typeclass projection with derived boundary lemmas, and \texttt{\#guard\_msgs in \#print axioms} permitting only \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound} with zero \texttt{sorry}, custom axioms, or \texttt{opaque} terms; 14,583 verified lines across nine production modules, audited via 166 \texttt{\#guard\_msgs in \#print axioms} checks):
+To anchor these categorical, algebraic, and combinatorial separations against vacuous definitions or hidden metamathematical assumptions, core components of Chapters~\ref{ch:foundations}, \ref{ch:non-ac-lattices}, \ref{ch:base-fiber}, \ref{ch:higher-crm}, \ref{ch:realizability-sites}, and~\ref{ch:sets-residuum} are formalized in Lean~4 over \texttt{mathlib4} inside the \texttt{HomotopyCRM}\index{HomotopyCRM@\texttt{HomotopyCRM} Lean~4 library} library under a strict four-layer kernel verification gate (concrete \texttt{Nontrivial} carrier inhabitation, bidirectional positive/negative predicate separation, stock \texttt{mathlib4} typeclass projection with derived boundary lemmas, and \texttt{\#guard\_msgs in \#print axioms} permitting only \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound} with zero \texttt{sorry}, custom axioms, or \texttt{opaque} terms; 15,577 verified lines across ten production modules, audited via 182 \texttt{\#guard\_msgs in \#print axioms} checks):
 \begin{itemize}[leftmargin=1.5em]
   \item \texttt{HomotopyCRM/\allowbreak InfinityResiduum.lean} (949 lines, 20 checks): Formalizes Chapter~1 (\S\ref{sec:finset-infinity}) finite dynamical lassos \texttt{LassoCarrier p q} / \texttt{lassoDynSys}, non-initiality in $\mathbf{FinSet}$ (\texttt{isEmpty\_\allowbreak hom\_\allowbreak of\_\allowbreak fintype\_\allowbreak to\_\allowbreak succ\_\allowbreak lasso}), coherent transition maps \texttt{lassoTransition}, profinite surjection \texttt{profiniteLassoToZHat\_\allowbreak surjective} ($\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$) with non-natural $-1$ separation (\texttt{zHatToProfiniteLasso\_\allowbreak neg\_\allowbreak one\_\allowbreak not\_\allowbreak mem\_\allowbreak range\_\allowbreak nat}), Pigeonhole triviality vs.\ nominal atom crossing (\texttt{dedekindResiduum\_\allowbreak eq\_\allowbreak empty\_\allowbreak of\_\allowbreak fintype}, \texttt{nominalDedekindResiduum\_\allowbreak eq\_\allowbreak empty}, \texttt{not\_\allowbreak hasFiniteSupportMap\_\allowbreak nat\_\allowbreak succ}), and biproduct-tail cokernels (\texttt{TailCokernel}, \texttt{subsingleton\_\allowbreak tailCokernel\_\allowbreak of\_\allowbreak fintype}, \texttt{nontrivial\_\allowbreak tailCokernel\_\allowbreak nat}).
   \item \texttt{HomotopyCRM/\allowbreak DeltaRingPerfection.lean} (1,398 lines, 21 checks): Formalizes Goldthorpe's slice endofunctor \texttt{sliceEndofunctor F c}, Lambek's isomorphism \texttt{lambek\_\allowbreak isIso}, fixed-point coalgebra equivalence (\texttt{FixedPoint\allowbreak CoalgebraUnder}, \texttt{theoremA\_\allowbreak homEquiv}), sequential colimit relative perfection $A_{\mathrm{perf}} = \varinjlim_\phi A$ with shift chirality $\phi_{A_{\mathrm{perf}}} = s^{-1}$ (\texttt{theoremB\_\allowbreak natEndo\_\allowbreak app\_\allowbreak eq\_\allowbreak shift\_\allowbreak inv}), \texttt{DeltaRing2Cat} with Joyal's polynomial cofactor $C_2(x, y) = -xy$ on $2$-torsion rings, and Nygaard filtration separation on \texttt{DualInt} ($\mathbb{Z}[\varepsilon]/(\varepsilon^2)$).
@@ -2829,6 +2866,7 @@ To anchor these categorical, algebraic, and combinatorial separations against va
   \item \texttt{HomotopyCRM/\allowbreak Nominal\allowbreak Simplicity.lean} (1,275 lines, 20 checks): Formalizes proper-open coset global-section emptiness (\texttt{isEmpty\_\allowbreak global\allowbreak Sections\_\allowbreak quotient\_\allowbreak of\_\allowbreak lt\_\allowbreak top}, \texttt{Checks.\allowbreak layer2\_\allowbreak sep\_\allowbreak guardrail5\_\allowbreak coset\_\allowbreak global\allowbreak Sections}), open-normal simplicity of $\mathrm{Sym}(\mathbb{N})$ (\texttt{open\_\allowbreak normal\_\allowbreak eq\_\allowbreak top}, \texttt{open\_\allowbreak finite\allowbreak Index\_\allowbreak eq\_\allowbreak top}), and non-vanishing odd-finset parity torsor cohomology $[\mathcal{T}_{\mathrm{odd}}] = \delta(1) \neq 0 \in \allowbreak H^1(\mathbf{Nom}; \allowbreak \mathrm{Even\allowbreak Finset})$ (\texttt{isEmpty\_\allowbreak t\_\allowbreak odd\_\allowbreak sections\_\allowbreak empty}, \v{C}ech $1$-cocycle \texttt{Checks.\allowbreak derived\_\allowbreak cech\_\allowbreak cocycle\_\allowbreak atom\allowbreak Section}).
   \item \texttt{HomotopyCRM/\allowbreak Cubical\allowbreak Amalgamation.lean} (1,636 lines, 15 checks): Formalizes \texttt{Punctured\allowbreak Cube n}, the quotient-free \texttt{Nat.find} minimal-support carrier \texttt{Cubical\allowbreak Amalgam D} (\texttt{Cubical\allowbreak Poset\allowbreak Diagram.\allowbreak IsMinimal\allowbreak Cell}, \texttt{Cubical\allowbreak Amalgam.\allowbreak exists\_\allowbreak minimal\allowbreak Ancestor}), all-$n$ disjoint $n$-amalgamation on $\mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$ (\texttt{cubical\_\allowbreak ndap\_\allowbreak closed\_\allowbreak oriented\_\allowbreak poset}, \texttt{hasCubical\allowbreak NDAP\_\allowbreak iff\_\allowbreak is\allowbreak Intersective}), and the all-$n \ge 3$ flow-acyclic convex obstruction $F_n$ (Theorem~\ref{thm:directed-cubical-amalgamation}: \texttt{facet\allowbreak Cycle\allowbreak Diagram}, \texttt{no\_\allowbreak flow\allowbreak Acyclic\_\allowbreak cubical\_\allowbreak amalgam\_\allowbreak of\_\allowbreak three\_\allowbreak le}, \texttt{theorem10B\_\allowbreak cubical\_\allowbreak amalgamation\_\allowbreak dichotomy}, \texttt{Checks.\allowbreak cubical\allowbreak Amalgam\allowbreak Facet\allowbreak Cycle\allowbreak Order\allowbreak Iso}).
   \item \texttt{HomotopyCRM/\allowbreak NominalICaTT.lean} (1,239 lines, 18 checks): Formalizes Theorem~\ref{thm:coinductive-stream-choice} calibrating $\mathbf{ICaTT}$ coinductive invertibility streams: classical Dependent Choice surjectivity onto step-sound relations (\texttt{surjective\_\allowbreak toRel\_\allowbreak of\_\allowbreak stepSound}, \texttt{globularInvTree\_\allowbreak isCoindEquiv}) versus Schanuel's nominal permutation model on $\mathbb{A} = \mathbb{N}$ where every finite stage \texttt{FreshChain n} splits locally (\texttt{exists\_\allowbreak freshChain\_\allowbreak supported\_\allowbreak of\_\allowbreak card\_\allowbreak le}, \texttt{hasFiniteSupport\_\allowbreak freshChain}) while no infinite fresh stream or root witness stream admits finite support (\texttt{not\_\allowbreak hasFiniteSupport\_\allowbreak freshStream}, \texttt{isEmpty\_\allowbreak nominal\_\allowbreak freshRootStream}, \texttt{theorem9B\_\allowbreak choice\_\allowbreak calibration\_\allowbreak of\_\allowbreak coinductive\_\allowbreak streams}).
+  \item \texttt{HomotopyCRM/\allowbreak SetsResiduum.lean} (994 lines, 16 checks): Formalizes Chapter~\ref{ch:sets-residuum} universe clamps and class-set residua: the baseline definable-class coreflection $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ and naive pullback separation (\texttt{defSetProjAdjunction}, \texttt{naive\_\allowbreak pullback\_\allowbreak breaks\_\allowbreak subclass\_\allowbreak separation}), axiom-free equivalence between pointwise homotopy-functorial $\mathbf{Card} \hookrightarrow \mathbf{Set}$ splitting and uniform small-set choice alongside \texttt{CategoryTheory.Skeleton} functorial realization (\texttt{card\_\allowbreak split\_\allowbreak iff\_\allowbreak global\_\allowbreak choice}, \texttt{type\_\allowbreak equiv\_\allowbreak splitting\_\allowbreak global\_\allowbreak choice}), faithful embedding of \texttt{PSet} into pointed coalgebras \texttt{APG} with non-bisimilarity of \texttt{quineAPG} ($q = \{q\}$) (\texttt{pset\_\allowbreak equiv\_\allowbreak iff\_\allowbreak bisimilar}, \texttt{quine\_\allowbreak atom\_\allowbreak outside\_\allowbreak wf}), Boffa's $2$-cycle non-isomorphic bisimulation witness and ordered twin Quine $\mathbb{Z}/2\mathbb{Z}$-torsor (\texttt{quineAPG\_\allowbreak bisimilar\_\allowbreak and\_\allowbreak nonIso\_\allowbreak twoCycle}, \texttt{boffa\_\allowbreak twin\_\allowbreak torsor}, \texttt{boffa\_\allowbreak twin\_\allowbreak addTorsor}), and the \texttt{ZFSet} extensional quotient gate collapsing multiplicity and branch permutations (\texttt{zfset\_\allowbreak ext\_\allowbreak quot\_\allowbreak gate}).
 \end{itemize}
 
 \section{Master Reference Atlas of Categorical Reverse Mathematics}
@@ -2868,15 +2906,19 @@ Ch.~5 / Ch.~6 & Directed Combinatorial Sites \& Clan Topoi & Relational $E_{\mat
 Ch.~6 & Subtopoi of $\Eff$ & Computable Principle $A$ & Stronger Principle $B$ & Minimal operator $j_{(A \Rightarrow B)}$ \\
 Ch.~6 & Atomic Topos $\mathbf{Cont}(\mathcal{G})$ & Kihara 5-Rung Choice Spectrum~\cite{Kihara26} & $\mathrm{IAC} + \mathrm{COSHEP}$ (Rung~3) vs.\ $\mathrm{EAC}$ (Rung~4) & Minimal open $\{1\} \le G$ in discrete $\mathbf{Set}^G$ vs.\ collapse of $\mathrm{EAC}$, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, $\mathrm{AC}$ to $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$ in non-discrete $\mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ \\
 Ch.~6 & Fraïssé / Nominal Topos & Constant $\mathrm{FAC}_k$ ($H^1(\mathbf{Nom};\allowbreak \Delta(\mathbb{Z}/2\mathbb{Z})) = 0$) & Non-constant torsor splitting / stream adequacy & Vanishing of $H^1(\mathbf{Nom}; \mathrm{EvenFinset})$ ($[\mathcal{T}_{\mathrm{odd}}] = \delta(1) \neq 0$) and $\mathrm{IDC}_\omega$ (Theorem~\ref{thm:coinductive-stream-choice}) \\
+Ch.~\ref{ch:sets-residuum} & Class-Set Fiber $\mathbf{Mod}(\mathsf{GBC})$ & Set-Level $\mathsf{ZFC}$ ($\mathrm{Def} \dashv \pi_{\mathrm{Set}}$) & Global Choice $\mathsf{NBG}$ & Large equivalence splitting $\mathbf{Card} \hookrightarrow \mathbf{Set}$ in $\mathbf{Cat}(\mathcal{C})$ (Prop.~\ref{prop:large-equiv-splitting}; $\mathsf{LoS} \iff \mathrm{Rep} \wedge \mathsf{GC}$ over $\mathsf{GB}_0$, Prop.~\ref{prop:los-smuggles-gc}; leaks over $\mathsf{ZC}$ via~\cite{Glazer23}) \\
+Ch.~\ref{ch:sets-residuum} & Predicative AST $(\mathcal{C}, \mathcal{S})$ & $\mathsf{ETCS} \simeq \mathsf{Mac}$ or $\mathsf{ZC}$ ($V_{\omega+\omega}$) & Full $\mathsf{ZFC}$ & Axis~VI quotient/image descent $\mathrm{im}(f) \in \mathcal{S}$ ($\exists_g$ covariant; colimit $\bigcup_n \mathcal{P}^n(\mathbb{N}) \notin V_{\omega+\omega}$ and $\boldsymbol{\Sigma}^0_{\omega+1}$ Borel Determinacy gap~\cite{Friedman71}) \\
+Ch.~\ref{ch:sets-residuum} & Barr-Exact AST $(\mathcal{C}, \mathcal{S})$ & Foundation-Free $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ & Well-Founded $V_{\mathsf{ZF}}$ ($\mathsf{ZFC}$) & Axis~VII $\kappa_{\mathrm{Reg}} : \mu\mathcal{P}_{\mathcal{S}} \hookrightarrow \nu\mathcal{P}_{\mathcal{S}}$ (Quine atom $q = \{q\}$; Boffa slice twin $[Q_0^{\#(2)}] \neq 0$ \& parity $[\mathcal{T}_{\mathrm{odd}}(Q_0)] \neq 0$ torsors in $\mathbf{Cont}(\mathrm{Sym}(Q_0))$, Prop.~\ref{prop:boffa-torsors}) \\
+Ch.~\ref{ch:sets-residuum} & Univalent AST $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ & $\mathsf{IZF}_{\mathrm{non\text{-}ext}}$ / $M = \mu\mathcal{P}_{\mathrm{Anima}}$ & Iterative Sets $V_0$ ($\mathbf{Set}_{\mathsf{ZFC}}$) & Fiberwise $(-1)$-truncation $V_0 \hookrightarrow M$ killing $\pi_1(M, \underline{A}) \simeq \mathrm{Aut}(A)$~\cite{Gylterud18} \& \texttt{Quot.sound} bisimulation gate (Prop.~\ref{prop:extensionality-truncation}, Thm.~\ref{thm:scale-invariance}) \\
 \end{xltabular}\par}
 
 \section{Epilogue: Mathematical Truth as Obstruction Invariant}\label{sec:epilogue-truth}
 
 To read mathematics through the lens of Categorical Reverse Mathematics is to abandon a one-dimensional picture of axiomatic truth in favor of structural covariance. What separates intuitionistic arithmetic from classical analysis, constructive locales from Stone spatiality, finite-rank $(\infty,\infty)$-categories from Postnikov completeness, or compact smooth $n$-manifolds from radial exotic $\mathbb{R}^4$'s is never a single undifferentiated ``extra axiom.'' Rather, every theorem $B$ relative to a weaker core $A$ over a doctrinal comparison triple $\mathfrak{T} = (\mathcal{D}_0 \supseteq \mathcal{D}_1, \kappa) \in \mathrm{Dom}(\mathrm{Res})$ projects a sharp geometric, cohomological, or modal shadow---the residuum $\mathrm{Res}(\kappa)$---measuring precisely where ambient symmetry or missing completeness blocks global gluing.
 
-Across seven chapters, five canonical anchor witnesses have materialized this obstruction calculus on the page and in the kernel of Lean~4: the odd-finset parity torsor $[\mathcal{T}_{\mathrm{odd}}] = \delta(1) \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$ blocking external projectivity of $1_{\mathbf{Nom}}$ even in a Boolean atomic topos; the $2$-torsion $\delta$-ring $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ ($\mathbb{Z}\oplus\mathbb{F}_2$ additively) and torsion-free \texttt{DualInt} pinning relative slice perfection $A_{\mathrm{perf}}$ precisely against the Nygaard filtration; the gaunt Noetherian rank-$\omega$ step-product $\mathcal{Q} \subset \prod_{k \ge 1}\mathcal{A}_k$ whose absorbing off-diagonals birth the pure Postnikov phantom $X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ refuting Conjecture~C1; the directed facet cycles $F_n$ erecting an uncrossable $n \ge 3$ cubical amalgamation wall past binary two-clause flow-convexity; and the light condensed smooth-$4$-manifold modulus $\mathcal{Q}_{E_0} = 2^{\mathbb{N}} \sslash E_0$ with CAR convolution algebra $\mathrm{UHF}(2^\infty)$ ($K_0 \cong \mathbb{Z}[\tfrac{1}{2}]$), whose $\mathrm{Ext}^1_{\mathrm{CondAb}}$ tail class mirrors $X_\bullet$ between Freedman topological collapse and $\mathrm{ZFC}$ Vitali splitting.
+Across eight chapters, five canonical anchor witnesses have materialized this obstruction calculus on the page and in the kernel of Lean~4: the odd-finset parity torsor $[\mathcal{T}_{\mathrm{odd}}] = \delta(1) \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$ blocking external projectivity of $1_{\mathbf{Nom}}$ even in a Boolean atomic topos; the $2$-torsion $\delta$-ring $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ ($\mathbb{Z}\oplus\mathbb{F}_2$ additively) and torsion-free \texttt{DualInt} pinning relative slice perfection $A_{\mathrm{perf}}$ precisely against the Nygaard filtration; the gaunt Noetherian rank-$\omega$ step-product $\mathcal{Q} \subset \prod_{k \ge 1}\mathcal{A}_k$ whose absorbing off-diagonals birth the pure Postnikov phantom $X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ refuting Conjecture~C1; the directed facet cycles $F_n$ erecting an uncrossable $n \ge 3$ cubical amalgamation wall past binary two-clause flow-convexity; and the light condensed smooth-$4$-manifold modulus $\mathcal{Q}_{E_0} = 2^{\mathbb{N}} \sslash E_0$ with CAR convolution algebra $\mathrm{UHF}(2^\infty)$ ($K_0 \cong \mathbb{Z}[\tfrac{1}{2}]$), whose $\mathrm{Ext}^1_{\mathrm{CondAb}}$ tail class mirrors $X_\bullet$ between Freedman topological collapse and $\mathrm{ZFC}$ Vitali splitting.
 
-Backing these theorems stands the 14,583-line, nine-module \texttt{HomotopyCRM} library in Lean~4 (\texttt{leanprover/lean4:v4.28.0}) over \texttt{mathlib4}, audited under a strict four-layer kernel verification gate with zero \texttt{sorry}, zero custom axioms, and zero \texttt{opaque} declarations across 166 \texttt{\#guard\_msgs in \#print axioms} checks. Whether the fourteen open problems across Horizons~I--VII yield new Pareto frontiers, Weihrauch--Lawvere--Tierney dualities, higher cubical invariants, or condensed exotic-$\mathbb{R}^4$ obstructions, the guiding principle remains unchanged: mathematical necessity is never an accident of syntax, but the geometry of the obstructions that vanish when universes align.
+Backing these theorems stands the 15,577-line, ten-module \texttt{HomotopyCRM} library in Lean~4 (\texttt{leanprover/lean4:v4.28.0}) over \texttt{mathlib4}, audited under a strict four-layer kernel verification gate with zero \texttt{sorry}, zero custom axioms, and zero \texttt{opaque} declarations across 182 \texttt{\#guard\_msgs in \#print axioms} checks. Whether the seventeen open problems across Horizons~I--VIII yield new Pareto frontiers, Weihrauch--Lawvere--Tierney dualities, higher cubical invariants, or condensed exotic-$\mathbb{R}^4$ obstructions, the guiding principle remains unchanged: mathematical necessity is never an accident of syntax, but the geometry of the obstructions that vanish when universes align. Dissecting ``$\mathbf{Sets}$'' itself as a double-clamped subquotient inside $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ thus completes the foundational arc of Volume~I and launches Volume~II (\emph{Universes, Classes, and Higher Fixed Points}).
 
 \backmatter
 \setcounter{secnumdepth}{-1}
@@ -2888,6 +2930,16 @@ Backing these theorems stands the 14,583-line, nine-module \texttt{HomotopyCRM} 
 M.~Anel, G.~Biedermann, E.~Finster, and A.~Joyal,
 \emph{A generalized Blakers--Massey theorem},
 Journal of Topology \textbf{13} (2020), no.~4, 1521--1553.
+
+\bibitem{Aczel78}
+P.~Aczel,
+\emph{The type theoretic interpretation of constructive set theory},
+in \emph{Logic Colloquium '77}, Studies in Logic and the Foundations of Mathematics, vol.~96, North-Holland, Amsterdam, 1978, pp.~55--66.
+
+\bibitem{Aczel88}
+P.~Aczel,
+\emph{Non-Well-Founded Sets},
+CSLI Lecture Notes, vol.~14, Stanford University, Stanford, CA, 1988.
 
 \bibitem{Barr74}
 M.~Barr,
@@ -2929,6 +2981,11 @@ A.~Blass,
 \emph{Cohomology detects failures of the axiom of choice},
 Transactions of the American Mathematical Society \textbf{279} (1983), no.~1, 257--269.
 
+\bibitem{Boffa69}
+M.~Boffa,
+\emph{Sur la th\'eorie des ensembles sans axiome de fondement},
+Bulletin de la Soci\'et\'e Math\'ematique de Belgique \textbf{21} (1969), 16--56.
+
 \bibitem{Bourn91}
 D.~Bourn,
 \emph{Normalization equivalence, kernel equivalence and affine categories},
@@ -2938,6 +2995,11 @@ Category Theory (Como, 1990), Lecture Notes in Mathematics, vol.~1488, Springer,
 O.~Caramello,
 \emph{Theories, Sites, Toposes: Relating and Studying Mathematical Theories through Topos-Theoretic `Bridges'},
 Oxford University Press, Oxford, 2018.
+
+\bibitem{Cole73}
+J.~C.~Cole,
+\emph{Categories of sets and models of set theory},
+in \emph{The Proceedings of the Bertrand Russell Memorial Logic Conference} (Uldum, 1971), Leeds, 1973, pp.~351--399.
 
 \bibitem{Connes94}
 A.~Connes,
@@ -2954,6 +3016,21 @@ R.~Diaconescu,
 \emph{Axiom of choice and complementation},
 Proceedings of the American Mathematical Society \textbf{51} (1975), 176--178.
 
+\bibitem{Easton70}
+W.~B.~Easton,
+\emph{Powers of regular cardinals},
+Annals of Mathematical Logic \textbf{1} (1970), no.~2, 139--178 (Ph.D.\ thesis, Princeton University, 1964).
+
+\bibitem{Felgner71}
+U.~Felgner,
+\emph{Comparison of the axioms of local and universal choice},
+Fundamenta Mathematicae \textbf{71} (1971), 43--62.
+
+\bibitem{Felgner76}
+U.~Felgner,
+\emph{Choice functions on sets and classes},
+in \emph{Sets and Classes: On the Work by Paul Bernays}, Studies in Logic and the Foundations of Mathematics, vol.~84, North-Holland, Amsterdam, 1976, pp.~217--255.
+
 \bibitem{FinsterMimram17}
 E.~Finster and S.~Mimram,
 \emph{A type-theoretical definition of weak $\omega$-categories},
@@ -2963,6 +3040,16 @@ Proceedings of the 32nd Annual ACM/IEEE Symposium on Logic in Computer Science (
 P.~J.~Freyd,
 \emph{Aspects of topoi},
 Bulletin of the Australian Mathematical Society \textbf{7} (1972), 1--76.
+
+\bibitem{Friedman71}
+H.~Friedman,
+\emph{Higher set theory and mathematical practice},
+Annals of Mathematical Logic \textbf{2} (1971), no.~3, 325--357.
+
+\bibitem{Friedman73}
+H.~Friedman,
+\emph{The consistency of classical set theory relative to a set theory with intuitionistic logic},
+Journal of Symbolic Logic \textbf{38} (1973), no.~2, 315--319.
 
 \bibitem{Friedman75}
 H.~Friedman,
@@ -2989,6 +3076,16 @@ J.~Giraud,
 \emph{Cohomologie non ab\'elienne},
 Grundlehren der mathematischen Wissenschaften, vol.~179, Springer, Berlin, 1971.
 
+\bibitem{Gitman20}
+V.~Gitman, J.~D.~Hamkins, P.~Holy, P.~Schlicht, and K.~Williams,
+\emph{The exact strength of the class forcing theorem},
+Journal of Symbolic Logic \textbf{85} (2020), no.~3, 869--905.
+
+\bibitem{Glazer23}
+E.~Glazer,
+\emph{Global choice is not conservative over local choice for Zermelo set theory},
+preprint (2023; rev.\ v3 2024), \href{https://arxiv.org/abs/2312.11902}{\texttt{arXiv:2312.11902}}.
+
 \bibitem{Glimm61}
 J.~Glimm,
 \emph{Type~I $C^*$-algebras},
@@ -3008,6 +3105,11 @@ J.\ Math.\ Logic \textbf{15} (2015), no.~1, 1550004 (\href{https://arxiv.org/abs
 R.~E.~Gompf and A.~Panagiotopoulos,
 \emph{On classifying smoothings of $\mathbb{R}^4$---from the beginning to the present} and \emph{On the difficulty of classifying open manifolds},
 ETH Z\"urich / Harvard CMSA Michael Freedman Topology Seminar announcements (2025--2026).
+
+\bibitem{Gylterud18}
+H.~R.~Gylterud,
+\emph{From multisets to sets in homotopy type theory},
+Journal of Symbolic Logic \textbf{83} (2018), no.~3, 1132--1146 (\href{https://arxiv.org/abs/1612.05468}{\texttt{arXiv:1612.05468}}).
 
 \bibitem{HKL90}
 L.~A.~Harrington, A.~S.~Kechris, and A.~Louveau,
@@ -3059,6 +3161,11 @@ A.~Joyal,
 \emph{$\delta$-anneaux et vecteurs de Witt},
 Comptes Rendus Math\'ematiques de l'Acad\'emie des Sciences, La Soci\'et\'e Royale du Canada \textbf{7} (1985), no.~3, 177--182.
 
+\bibitem{JoyalMoerdijk95}
+A.~Joyal and I.~Moerdijk,
+\emph{Algebraic Set Theory},
+London Mathematical Society Lecture Note Series, vol.~220, Cambridge University Press, Cambridge, 1995.
+
 \bibitem{Kechris95}
 A.~S.~Kechris,
 \emph{Classical Descriptive Set Theory},
@@ -3073,6 +3180,11 @@ T.~Kihara,
 A.~Kock,
 \emph{Synthetic Differential Geometry},
 2nd ed., London Mathematical Society Lecture Note Series, vol.~333, Cambridge University Press, Cambridge, 2006.
+
+\bibitem{Lawvere64}
+F.~W.~Lawvere,
+\emph{An elementary theory of the category of sets},
+Proceedings of the National Academy of Sciences \textbf{52} (1964), no.~6, 1506--1511.
 
 \bibitem{Lawvere69}
 F.~W.~Lawvere,
@@ -3099,6 +3211,11 @@ J.~Lurie,
 \emph{Higher Topos Theory},
 Annals of Mathematics Studies, vol.~170, Princeton University Press, Princeton, NJ, 2009.
 
+\bibitem{MacLane98}
+S.~Mac~Lane,
+\emph{Categories for the Working Mathematician},
+2nd ed., Graduate Texts in Mathematics, vol.~5, Springer, New York, 1998 (1st ed., 1971).
+
 \bibitem{MacLaneMoerdijk92}
 S.~Mac~Lane and I.~Moerdijk,
 \emph{Sheaves in Geometry and Logic: A First Introduction to Topos Theory},
@@ -3109,10 +3226,25 @@ M.~E.~Maietti,
 \emph{Modular correspondence between dependent type theories and categories including pretopoi and topoi},
 Mathematical Structures in Computer Science \textbf{15} (2005), no.~6, 1089--1149.
 
+\bibitem{Makkai96}
+M.~Makkai,
+\emph{Avoiding the axiom of choice in general category theory},
+Journal of Pure and Applied Algebra \textbf{108} (1996), no.~2, 109--173.
+
+\bibitem{Martin75}
+D.~A.~Martin,
+\emph{Borel determinacy},
+Annals of Mathematics (2) \textbf{102} (1975), no.~2, 363--371.
+
 \bibitem{Masuda26}
 N.~Masuda,
 \emph{The algebra of categorical spectra},
 \href{https://arxiv.org/abs/2605.03114v2}{\texttt{arXiv:2605.03114v2}}, 2026.
+
+\bibitem{Mathias01}
+A.~R.~D.~Mathias,
+\emph{The strength of Mac~Lane set theory},
+Annals of Pure and Applied Logic \textbf{110} (2001), no.~1--3, 107--234.
 
 \bibitem{MoerdijkReyes91}
 I.~Moerdijk and G.~E.~Reyes,
@@ -3123,6 +3255,11 @@ Springer, New York, 1991.
 C.~J.~Mulvey and J.~W.~Pelletier,
 \emph{A globalization of the Hahn--Banach theorem},
 Advances in Mathematics \textbf{89} (1991), no.~1, 1--59.
+
+\bibitem{Osius74}
+G.~Osius,
+\emph{Categorical set theory: a characterization of the category of sets},
+Journal of Pure and Applied Algebra \textbf{4} (1974), no.~1, 79--119.
 
 \bibitem{ORW26}
 V.~Ozornova, M.~Rovelli, and T.~Walde,
@@ -3145,10 +3282,20 @@ S.~G.~Simpson,
 \emph{Subsystems of Second Order Arithmetic},
 2nd ed., Perspectives in Logic, Cambridge University Press, Cambridge, 2009.
 
+\bibitem{Skolem55}
+T.~Skolem,
+\emph{A critical remark on foundational research} (1955),
+in \emph{Selected Works in Logic}, Universitetsforlaget, Oslo, 1970, pp.~581--586.
+
 \bibitem{vanOosten08}
 J.~van~Oosten,
 \emph{Realizability: An Introduction to its Categorical Side},
 Studies in Logic and the Foundations of Mathematics, vol.~152, Elsevier, Amsterdam, 2008.
+
+\bibitem{Williams18}
+K.~J.~Williams,
+\emph{The Structure of Models of Second-Order Set Theories},
+Ph.D.\ Dissertation, CUNY Graduate Center, New York, 2018.
 
 \end{thebibliography}
 

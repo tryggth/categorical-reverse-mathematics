@@ -23,9 +23,36 @@ LEDGER_PATH = Path(
     "9e153dcc-5e91-41c1-8d51-49c3028223d5/scratch/created_github_issues.json"
 )
 REPO = "tryggth/categorical-reverse-mathematics"
-COMMIT_SHA = "d3a6e61a94df1454304cc1d5ffd26dabd43985e6"
 SPREADSHEET_NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 MARKER_RE = re.compile(r"<!--\s*crm-claim-id:\s*([^\s>]+)\s*-->")
+
+
+def resolve_head_sha() -> str:
+    """Resolve current git HEAD SHA for pinning newly minted issues."""
+    proc = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    sha = proc.stdout.strip()
+    return sha if len(sha) == 40 else "d3a6e61a94df1454304cc1d5ffd26dabd43985e6"
+
+
+def resolve_manuscript_links(line_spec: str, commit_sha: str) -> tuple[str, str, str]:
+    """Resolve `<line>` or `ch07:<line>` into `(display_ref, blob_url, main_url)`."""
+    s = line_spec.strip()
+    if s.startswith("ch07:"):
+        rel_path = "docs/ch07_sets_residuum.tex"
+        line_num = s.split(":", 1)[1].strip()
+    else:
+        rel_path = "docs/categorical_reverse_mathematics.tex"
+        line_num = s
+    disp = f"{rel_path}#L{line_num}"
+    blob_url = f"https://github.com/{REPO}/blob/{commit_sha}/{disp}"
+    main_url = f"https://github.com/{REPO}/blob/main/{disp}"
+    return disp, blob_url, main_url
 
 
 @dataclass(frozen=True)
@@ -38,7 +65,6 @@ class GroundingSpec:
     title_prefix: str
     summary_banner: str
     checklist: str
-    expected_count: int
 
 
 GROUNDING_SPECS: dict[str, GroundingSpec] = {
@@ -55,15 +81,14 @@ GROUNDING_SPECS: dict[str, GroundingSpec] = {
         checklist=(
             "### Action Checklist — Lean 4 Mechanization Needed\n"
             "- [ ] Design faithful Lean 4 definitions/statement in `HomotopyCRM/<Module>.lean` "
-            "(`leanprover/lean4:v4.28.0`) matching the monograph claim at `L{line}`.\n"
+            "(`leanprover/lean4:v4.28.0`) matching the monograph claim at `{disp_ref}`.\n"
             "- [ ] Complete kernel-verified proof (`0 sorry`, `0` custom `axiom`, `0 opaque`).\n"
             "- [ ] Add `namespace Checks` satisfying the 4-Layer Lean 4 Definition Check Gate "
             "(Carrier Inhabitation, Bidirectional Separation, `mathlib4` Projections & Derived Sanity, "
             "`#guard_msgs in #print axioms`).\n"
-            "- [ ] Link via `\\lean{{...}}` in `docs/categorical_reverse_mathematics.tex` and update "
+            "- [ ] Link via `\\lean{{...}}` in `{tex_file}` and update "
             "`Foundational Grounding` to `Proved by Lean code` in `docs/technical_claims_foundations.{{md,xlsx}}`."
         ),
-        expected_count=34,
     ),
     "External theorem": GroundingSpec(
         label="grounding: verify-first-citation",
@@ -77,17 +102,15 @@ GROUNDING_SPECS: dict[str, GroundingSpec] = {
         ),
         checklist=(
             "### Action Checklist — First-Mention Citation Verification\n"
-            "- [ ] Search `docs/categorical_reverse_mathematics.tex` (including Preface, Glossary, "
-            "chapter openings, summary tables, and `L{line}`) to identify the **very first instance** "
-            "where this theorem/result is referenced in the monograph text.\n"
+            "- [ ] Search `docs/categorical_reverse_mathematics.tex` and `docs/ch07_sets_residuum.tex` "
+            "(including Preface, Glossary, chapter openings, summary tables, and `{disp_ref}`) to identify "
+            "the **very first instance** where this theorem/result is referenced in the monograph text.\n"
             "- [ ] Confirm that the **first instance** carries an explicit, on-the-nose `\\cite{{...}}` "
             "citation (with theorem/section/page pinpoint where appropriate), rather than deferring the "
             "citation only to a later occurrence.\n"
-            "- [ ] If missing or imprecise at first mention, add/refine `\\cite{{...}}` in "
-            "`docs/categorical_reverse_mathematics.tex` and verify clean build via "
-            "`python3 scripts/verify_monograph.py --tex-only`."
+            "- [ ] If missing or imprecise at first mention, add/refine `\\cite{{...}}` in `{tex_file}` "
+            "and verify clean build via `python3 scripts/verify_monograph.py --tex-only`."
         ),
-        expected_count=81,
     ),
     "Open problem": GroundingSpec(
         label="grounding: future-research",
@@ -102,13 +125,12 @@ GROUNDING_SPECS: dict[str, GroundingSpec] = {
             "### Action Checklist — Future Research Direction\n"
             "- [ ] Formulate precise target theorems, candidate Doctrinal Comparison Triples "
             "$\\mathfrak{{T}} = (\\mathcal{{D}}_0 \\supseteq \\mathcal{{D}}_1, \\kappa)$, and test "
-            "countermodels building on the Chapter 7 Horizon statement at `L{line}`.\n"
+            "countermodels building on the Chapter 8 Horizon statement at `{disp_ref}`.\n"
             "- [ ] Map dependencies against existing CRM results and external literature noted in "
             "Grounding Evidence above.\n"
             "- [ ] Prototype tractable special cases / toy witnesses (in prose or Lean 4) and document "
             "progress or spinout milestones (cf. `docs/11_FUTURE_VISTAS_AND_SPINOUTS.md`)."
         ),
-        expected_count=14,
     ),
     "Unfounded": GroundingSpec(
         label="grounding: unfounded-needs-analysis",
@@ -122,7 +144,7 @@ GROUNDING_SPECS: dict[str, GroundingSpec] = {
         ),
         checklist=(
             "### Action Checklist — Deeper Mathematical Analysis & Plan of Action Needed\n"
-            "- [ ] Conduct a deep mathematical audit of the claim/conjecture at `L{line}` and every "
+            "- [ ] Conduct a deep mathematical audit of the claim/conjecture at `{disp_ref}` and every "
             "prose/table cross-reference identified in Grounding Evidence above.\n"
             "- [ ] Establish and record a concrete **Plan of Action** selecting the appropriate "
             "resolution path:\n"
@@ -131,11 +153,10 @@ GROUNDING_SPECS: dict[str, GroundingSpec] = {
             "  - *(c)* Narrow/rectify hypotheses if an obstruction or countermodel applies; **or**\n"
             "  - *(d)* Explicitly frame and label as an open conjecture / heuristic specification "
             "everywhere it appears (including summary tables) so no unproved assertion reads as established fact.\n"
-            "- [ ] Execute the chosen resolution in `docs/categorical_reverse_mathematics.tex`, verify via "
+            "- [ ] Execute the chosen resolution in `{tex_file}`, verify via "
             "`python3 scripts/verify_monograph.py --tex-only`, and update "
             "`docs/technical_claims_foundations.{{md,xlsx}}`."
         ),
-        expected_count=13,
     ),
 }
 
@@ -174,6 +195,16 @@ AXIS_LABELS: dict[str, tuple[str, str, str]] = {
         "axis: V-directed-higher-cat",
         "c5def5",
         "Axis V: Directional Invertibility / Higher Category Theory",
+    ),
+    "Axis VI": (
+        "axis: VI-replacement-descent",
+        "bde0fe",
+        "Axis VI: Quotient-Image Descent / Replacement",
+    ),
+    "Axis VII": (
+        "axis: VII-foundation-truncation",
+        "e2c6ff",
+        "Axis VII: Foundation vs. Anti-Foundation / Structural Truncation",
     ),
     "Cross-Axis": ("axis: cross-axis", "ededed", "Cross-Axis / Metamathematical"),
 }
@@ -230,7 +261,12 @@ def read_master_rows(xlsx_path: Path) -> list[tuple[int, dict[str, str]]]:
     ]
 
 
-def build_work_item(excel_row: int, row: dict[str, str]) -> ClaimWorkItem:
+def build_work_item(
+    excel_row: int,
+    row: dict[str, str],
+    total_master_rows: int,
+    commit_sha: str,
+) -> ClaimWorkItem:
     """Build GitHub issue title, Markdown body, and labels for one catalog row."""
     grounding = row["Foundational Grounding"]
     spec = GROUNDING_SPECS[grounding]
@@ -247,14 +283,8 @@ def build_work_item(excel_row: int, row: dict[str, str]) -> ClaimWorkItem:
     axis_label = AXIS_LABELS[axis][0]
     labels = [spec.label, part_label, axis_label]
 
-    tex_blob = (
-        f"https://github.com/{REPO}/blob/{COMMIT_SHA}"
-        f"/docs/categorical_reverse_mathematics.tex#L{line}"
-    )
-    tex_main = (
-        f"https://github.com/{REPO}/blob/main"
-        f"/docs/categorical_reverse_mathematics.tex#L{line}"
-    )
+    disp_ref, tex_blob, tex_main = resolve_manuscript_links(line, commit_sha)
+    tex_file = disp_ref.split("#", 1)[0]
 
     body = "\n".join(
         [
@@ -265,17 +295,17 @@ def build_work_item(excel_row: int, row: dict[str, str]) -> ClaimWorkItem:
             "| Field | Value |",
             "| :--- | :--- |",
             f"| **Claim ID / Label** | `{claim_id}` |",
-            f"| **Spreadsheet Location** | `docs/technical_claims_foundations.xlsx` → `Master All Claims (208)`, Excel Row {excel_row} |",
+            f"| **Spreadsheet Location** | `docs/technical_claims_foundations.xlsx` → `Master All Claims ({total_master_rows})`, Excel Row {excel_row} |",
             f"| **Part & Environment Type** | {md_table_escape(part)} · {md_table_escape(row['Type'])} (`Evaluated Claim?`: {md_table_escape(row['Evaluated Claim?'])}) |",
             f"| **Coordinate Axis** | {md_table_escape(axis)} |",
             f"| **Foundational Grounding** | `{grounding}` |",
             f"| **Characterization Types** | {md_table_escape(row['Characterization Types'])} |",
-            f"| **Manuscript Location** | [`docs/categorical_reverse_mathematics.tex#L{line}`]({tex_blob}) ([`main`]({tex_main})) |",
+            f"| **Manuscript Location** | [`{disp_ref}`]({tex_blob}) ([`main`]({tex_main})) |",
             "",
             "### Cataloged Grounding Evidence / Context",
             f"> {row['Grounding Evidence / Location']}",
             "",
-            spec.checklist.format(line=line),
+            spec.checklist.format(disp_ref=disp_ref, tex_file=tex_file),
         ]
     )
 
@@ -297,11 +327,13 @@ def build_work_item(excel_row: int, row: dict[str, str]) -> ClaimWorkItem:
     )
 
 
-def load_target_items(xlsx_path: Path) -> list[ClaimWorkItem]:
-    """Load, validate, and build all 142 target issue work items."""
+def load_target_items(xlsx_path: Path, commit_sha: str | None = None) -> list[ClaimWorkItem]:
+    """Load, validate, and build all target issue work items from Sheet 1."""
+    sha = commit_sha or resolve_head_sha()
     all_rows = read_master_rows(xlsx_path)
+    total_master_rows = len(all_rows)
     items = [
-        build_work_item(excel_row, row)
+        build_work_item(excel_row, row, total_master_rows=total_master_rows, commit_sha=sha)
         for excel_row, row in all_rows
         if row["Foundational Grounding"] in GROUNDING_SPECS
     ]
@@ -309,16 +341,6 @@ def load_target_items(xlsx_path: Path) -> list[ClaimWorkItem]:
     ids = [item.claim_id for item in items]
     if len(ids) != len(set(ids)):
         raise AssertionError("Duplicate Claim ID / Label found in target rows.")
-
-    counts = Counter(item.foundational_grounding for item in items)
-    expected_total = sum(spec.expected_count for spec in GROUNDING_SPECS.values())
-    for grounding, spec in GROUNDING_SPECS.items():
-        if counts[grounding] != spec.expected_count:
-            raise AssertionError(
-                f"Expected {spec.expected_count} rows for {grounding!r}, found {counts[grounding]}"
-            )
-    if len(items) != expected_total:
-        raise AssertionError(f"Expected {expected_total} total items, found {len(items)}")
 
     for item in items:
         if len(item.title) > 256:
@@ -447,7 +469,7 @@ def cmd_dry_run(items: list[ClaimWorkItem]) -> int:
 
 def cmd_apply(items: list[ClaimWorkItem], delay_seconds: float) -> int:
     """Idempotently ensure labels and create missing GitHub issues for all 142 items."""
-    print(f"Ensuring 13 labels on {REPO}...", flush=True)
+    print(f"Ensuring 15 labels on {REPO}...", flush=True)
     ensure_labels(dry_run=False)
 
     existing_issues = fetch_all_issues(state="all")
@@ -520,52 +542,44 @@ def cmd_apply(items: list[ClaimWorkItem], delay_seconds: float) -> int:
 
 
 def cmd_verify(items: list[ClaimWorkItem]) -> int:
-    """Verify live GitHub open issues match the 142 spreadsheet items 1-to-1."""
-    open_issues = fetch_all_issues(state="open")
+    """Verify every active target spreadsheet item has a matching GitHub issue (across open/closed + follow-ups)."""
+    all_issues = fetch_all_issues(state="all")
     expected_ids = {item.claim_id for item in items}
 
-    id_to_numbers: dict[str, list[int]] = {}
-    label_counts: Counter[str] = Counter()
+    id_to_issues: dict[str, list[dict]] = {}
     untagged: list[int] = []
 
-    for issue in open_issues:
+    for issue in all_issues:
         cid = extract_claim_id(issue)
         if cid is None:
             untagged.append(issue["number"])
         else:
-            id_to_numbers.setdefault(cid, []).append(issue["number"])
-        for lbl in issue.get("labels", []):
-            label_counts[lbl["name"]] += 1
+            id_to_issues.setdefault(cid, []).append(issue)
 
-    duplicates = {cid: nums for cid, nums in id_to_numbers.items() if len(nums) > 1}
-    missing = sorted(expected_ids - set(id_to_numbers))
-    extra = sorted(set(id_to_numbers) - expected_ids)
+    missing = sorted(expected_ids - set(id_to_issues))
+    duplicate_open = {
+        cid: [i["number"] for i in iss_list if i["state"] == "open"]
+        for cid, iss_list in id_to_issues.items()
+        if sum(1 for i in iss_list if i["state"] == "open") > 1
+    }
 
-    print(f"Open issues on {REPO}: {len(open_issues)} (untagged={len(untagged)})")
-    print(f"Matched unique claim IDs: {len(id_to_numbers)}/{len(expected_ids)}")
-    print(f"Missing: {len(missing)}, Extra: {len(extra)}, Duplicates: {len(duplicates)}")
+    print(f"Total GitHub issues on {REPO}: {len(all_issues)} (untagged={len(untagged)})")
+    print(f"Matched target claim IDs: {len(expected_ids - set(missing))}/{len(expected_ids)}")
+    print(f"Missing target IDs: {len(missing)}, Duplicate open IDs: {len(duplicate_open)}")
 
     for grounding, spec in GROUNDING_SPECS.items():
         matched_nums = sorted(
-            id_to_numbers[it.claim_id][0]
+            id_to_issues[it.claim_id][-1]["number"]
             for it in items
-            if it.foundational_grounding == grounding and it.claim_id in id_to_numbers
+            if it.foundational_grounding == grounding and it.claim_id in id_to_issues
         )
-        lbl_cnt = label_counts[spec.label]
-        sample_url = f"https://github.com/{REPO}/issues/{matched_nums[0]}" if matched_nums else "none"
         lo_hi = f"#{matched_nums[0]}..#{matched_nums[-1]}" if matched_nums else "none"
-        print(
-            f"  {grounding} ({spec.label}): label_count={lbl_cnt}, "
-            f"range={lo_hi}, sample={sample_url}"
-        )
-        assert lbl_cnt == spec.expected_count, f"{spec.label}: got {lbl_cnt}, expected {spec.expected_count}"
+        print(f"  {grounding} ({spec.label}): matched={len(matched_nums)}, range={lo_hi}")
 
-    assert len(open_issues) == len(items), f"Expected {len(items)} open issues, found {len(open_issues)}"
     assert not untagged, f"Found untagged issues: {untagged}"
-    assert not duplicates, f"Found duplicate claim IDs: {duplicates}"
+    assert not duplicate_open, f"Found duplicate open claim IDs: {duplicate_open}"
     assert not missing, f"Missing claim IDs: {missing}"
-    assert not extra, f"Extra claim IDs: {extra}"
-    print("VERIFICATION PASSED: 142/142 open issues matched 1-to-1.")
+    print(f"VERIFICATION PASSED: all {len(expected_ids)} target claims tracked on GitHub.")
     return 0
 
 

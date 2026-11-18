@@ -7,4 +7,5 @@ import HomotopyCRM.InfinityResiduum
 import HomotopyCRM.NominalICaTT
 import HomotopyCRM.NominalSimplicity
 import HomotopyCRM.OrdinalRankCompleteness
+import HomotopyCRM.SetsResiduum
 import HomotopyCRM.StepProductPhantom

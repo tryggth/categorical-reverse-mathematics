@@ -21,10 +21,10 @@ SENTINEL_LBRACE = "\ue001"
 SENTINEL_RBRACE = "\ue002"
 
 TABLE_SECTIONS: list[tuple[str, str, bool]] = [
-    ("## 3.", "Part I Formal Results (35)", True),
-    ("## 4.", "Part II Def-Rem-Prob (24)", True),
-    ("## 5.", "Part III Inline Claims (149)", True),
-    ("## 6.", "Part IV 14 Tables Matrix", True),
+    ("## 3.", "Part I Formal Results ({n})", True),
+    ("## 4.", "Part II Def-Rem-Prob ({n})", True),
+    ("## 5.", "Part III Inline Claims ({n})", True),
+    ("## 6.", "Part IV {n} Tables Matrix", True),
     ("### 7.1", "7.1 Census Coverage", False),
     ("### 7.2", "7.2 Grounding Categories", False),
     ("### 7.3", "7.3 Coordinate Axes", False),
@@ -132,7 +132,13 @@ BINARY_SPACED_OPS = (
 SYMBOL_MACROS: dict[str, str] = {
     "Eff": "Eff",
     "S": "§",
+    "Uparrow": "⇑",
+    "Downarrow": "⇓",
+    "Vdash": "⊩",
+    "aa": "å",
+    "AA": "Å",
     "amalg": "∐",
+    "bigcup": "⋃",
     "bigoplus": "⊕",
     "boxtimes": "⊠",
     "bullet": "•",
@@ -170,7 +176,9 @@ SYMBOL_MACROS: dict[str, str] = {
     "notin": "∉",
     "oplus": "⊕",
     "partial": "∂",
+    "prec": "≺",
     "prod": "∏",
+    "rightharpoonup": "⇀",
     "rightarrowtail": "↣",
     "rightleftarrows": "⇄",
     "rtimes": "⋊",
@@ -685,8 +693,9 @@ def build_all_sheets(md_path: Path) -> list[SheetData]:
         "## 5.": "Part III",
     }
 
-    for prefix, sheet_name, autofilter in TABLE_SECTIONS:
+    for prefix, sheet_template, autofilter in TABLE_SECTIONS:
         raw_headers, raw_rows = tables[prefix]
+        sheet_name = sheet_template.format(n=len(raw_rows))
         if prefix in part_tag_map:
             part_label = part_tag_map[prefix]
             type_idx = raw_headers.index("Type")
@@ -711,7 +720,7 @@ def build_all_sheets(md_path: Path) -> list[SheetData]:
     p1_headers = tables["## 3."][0]
     master_headers = ["Part", "Evaluated Claim?", *p1_headers]
     master_sheet = build_cleaned_sheet(
-        "Master All Claims (208)",
+        f"Master All Claims ({len(master_raw_rows)})",
         master_headers,
         master_raw_rows,
         autofilter=True,
@@ -837,7 +846,7 @@ def make_worksheet_xml(sheet: SheetData, is_first_tab: bool) -> str:
     )
     row_xml_parts.append(f'<row r="1" ht="28" customHeight="1">{header_cells}</row>')
 
-    numeric_col_flags = [h in NUMERIC_HEADERS for h in sheet.headers]
+    numeric_col_flags = [h in NUMERIC_HEADERS or h.startswith("Total (") for h in sheet.headers]
     for r_idx, row in enumerate(sheet.rows):
         excel_row = r_idx + 2
         is_total = r_idx in sheet.total_row_indices
