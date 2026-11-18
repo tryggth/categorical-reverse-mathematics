@@ -41,6 +41,7 @@ build/
 /docs/*.md
 !/docs/technical_claims_foundations.md
 !/docs/11_FUTURE_VISTAS_AND_SPINOUTS.md
+!/docs/concept_curriculum.md
 /docs/preface_invitation.tex
 /docs/reviews/
 

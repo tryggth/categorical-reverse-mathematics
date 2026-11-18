@@ -1,0 +1,2271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "metadata": {
+    "title": "Categorical Reverse Mathematics: Directed Concept Dependency Graph",
+    "author": "James F. Walters",
+    "location": "Port Townsend, Washington",
+    "monograph": "Categorical Reverse Mathematics with Applications: The Structure of Necessity",
+    "version": "1.1.0",
+    "total_nodes": 61,
+    "total_edges": 147,
+    "is_acyclic": true,
+    "directed_edge_convention": "A -> B strictly denotes: A is a prerequisite for B"
+  },
+  "stages": [
+    {
+      "id": "stage_ug",
+      "name": "Stage 0: Undergraduate Mathematical Foundations",
+      "color": "#E1F5FE",
+      "border": "#0288D1"
+    },
+    {
+      "id": "stage_grad",
+      "name": "Stage 1: Graduate Foundations & Prerequisite Bridges",
+      "color": "#EDE7F6",
+      "border": "#7E57C2"
+    },
+    {
+      "id": "stage_core",
+      "name": "Stage 2: Monograph Core Framework & Residuum Calculus",
+      "color": "#E8F5E9",
+      "border": "#388E3C"
+    },
+    {
+      "id": "stage_witness",
+      "name": "Stage 3: The Five Foundational Anchor Witnesses",
+      "color": "#FFF3E0",
+      "border": "#F57C00"
+    },
+    {
+      "id": "stage_adv",
+      "name": "Stage 4: Advanced Synthesis, Lean Formalization & Research Horizons",
+      "color": "#FCE4EC",
+      "border": "#C2185B"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "UG_LOGIC",
+      "label": "Classical Logic & Proof Theory",
+      "stage": "stage_ug",
+      "cluster": "logic_and_order",
+      "description": "Syntax, semantics, soundness, completeness, first-order theories, Peano arithmetic, and classical reverse mathematics (RCA_0).",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P01",
+        "C001",
+        "C002"
+      ],
+      "topological_rank": 1,
+      "prerequisites": [],
+      "dependents": [
+        "CORE_CRM_PARADIGM",
+        "GRAD_CLASS_SET_THEORY",
+        "GRAD_HYPERDOCTRINE",
+        "UG_COMPUTABILITY",
+        "UG_ORDER"
+      ]
+    },
+    {
+      "id": "UG_ALGEBRA",
+      "label": "Abstract Algebra (Groups, Rings, Modules)",
+      "stage": "stage_ug",
+      "cluster": "algebra",
+      "description": "Groups, rings, fields, ideals, quotient structures, modules over commutative rings, homomorphisms, and exact sequences.",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P02",
+        "P06",
+        "P07",
+        "P08"
+      ],
+      "topological_rank": 2,
+      "prerequisites": [],
+      "dependents": [
+        "GRAD_AFFINE_SCHEME",
+        "GRAD_CHAIN_COMPLEX",
+        "GRAD_LAWVERE_THEORY",
+        "UG_CATEGORY"
+      ]
+    },
+    {
+      "id": "UG_TOPOLOGY",
+      "label": "Point-Set Topology",
+      "stage": "stage_ug",
+      "cluster": "topology_and_analysis",
+      "description": "Topological spaces, open/closed sets, continuity, compactness, connectedness, Hausdorff separation (T_2), and product topologies.",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P04"
+      ],
+      "topological_rank": 3,
+      "prerequisites": [],
+      "dependents": [
+        "GRAD_CLASS_SET_THEORY",
+        "GRAD_SHEAF",
+        "GRAD_SIMPLICIAL_SET",
+        "UG_ANALYSIS"
+      ]
+    },
+    {
+      "id": "UG_ORDER",
+      "label": "Posets, Lattices & Choice",
+      "stage": "stage_ug",
+      "cluster": "logic_and_order",
+      "description": "Partially ordered sets, complete lattices, Heyting algebras, Boolean algebras, Zorn's Lemma, and the Axiom of Choice (AC).",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P03",
+        "P09",
+        "C014"
+      ],
+      "topological_rank": 4,
+      "prerequisites": [
+        "UG_LOGIC"
+      ],
+      "dependents": [
+        "GRAD_CLASS_SET_THEORY",
+        "GRAD_ELEM_TOPOS",
+        "GRAD_HYPERDOCTRINE",
+        "UG_CATEGORY"
+      ]
+    },
+    {
+      "id": "UG_COMPUTABILITY",
+      "label": "Computability & Recursion Theory",
+      "stage": "stage_ug",
+      "cluster": "logic_and_order",
+      "description": "Turing machines, computable partial functions, decidability, halting problem, Kleene S-m-n theorem, and Turing reducibility.",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P40",
+        "C122"
+      ],
+      "topological_rank": 5,
+      "prerequisites": [
+        "UG_LOGIC"
+      ],
+      "dependents": [
+        "CORE_AXIS_3",
+        "GRAD_REALIZABILITY_TOPOS"
+      ]
+    },
+    {
+      "id": "UG_ANALYSIS",
+      "label": "Real Analysis & Metric Spaces",
+      "stage": "stage_ug",
+      "cluster": "topology_and_analysis",
+      "description": "Metric spaces, Cauchy sequences, completeness, Intermediate Value Theorem (IVT), Extreme Value Theorem (EVT), and Heine-Borel compactness.",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P05",
+        "C047",
+        "C048",
+        "C049",
+        "C050"
+      ],
+      "topological_rank": 6,
+      "prerequisites": [
+        "UG_TOPOLOGY"
+      ],
+      "dependents": [
+        "ADV_NON_AC_LATTICES"
+      ]
+    },
+    {
+      "id": "UG_CATEGORY",
+      "label": "First-Course Category Theory",
+      "stage": "stage_ug",
+      "cluster": "category_theory",
+      "description": "Categories, functors, natural transformations, limits and colimits, adjunctions, and universal properties.",
+      "monograph_chapter": "Undergraduate Foundation",
+      "concepts_covered": [
+        "P10",
+        "P11",
+        "P12"
+      ],
+      "topological_rank": 7,
+      "prerequisites": [
+        "UG_ALGEBRA",
+        "UG_ORDER"
+      ],
+      "dependents": [
+        "GRAD_CHAIN_COMPLEX",
+        "GRAD_COALGEBRA_BISIM",
+        "GRAD_ELEM_TOPOS",
+        "GRAD_HYPERDOCTRINE",
+        "GRAD_LAWVERE_THEORY",
+        "GRAD_MONAD_2DOCTRINE",
+        "GRAD_PRESHEAF"
+      ]
+    },
+    {
+      "id": "GRAD_PRESHEAF",
+      "label": "Presheaves & Yoneda Lemma",
+      "stage": "stage_grad",
+      "cluster": "categories_and_doctrines",
+      "description": "Presheaf category Set^(C^op), Yoneda embedding, representability, and colimits of representable presheaves.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P13",
+        "P14"
+      ],
+      "topological_rank": 8,
+      "prerequisites": [
+        "UG_CATEGORY"
+      ],
+      "dependents": [
+        "GRAD_ELEM_TOPOS",
+        "GRAD_SHEAF",
+        "GRAD_SIMPLICIAL_SET",
+        "GRAD_SITE"
+      ]
+    },
+    {
+      "id": "GRAD_LAWVERE_THEORY",
+      "label": "Lawvere Theories & Algebras",
+      "stage": "stage_grad",
+      "cluster": "categories_and_doctrines",
+      "description": "Categories with finite products representing algebraic theories, models in arbitrary categories, and algebraic functors.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P15"
+      ],
+      "topological_rank": 9,
+      "prerequisites": [
+        "UG_ALGEBRA",
+        "UG_CATEGORY"
+      ],
+      "dependents": [
+        "CORE_DOCTRINE",
+        "GRAD_HYPERDOCTRINE"
+      ]
+    },
+    {
+      "id": "GRAD_MONAD_2DOCTRINE",
+      "label": "2-Categories & 2-Monadic Doctrines",
+      "stage": "stage_grad",
+      "cluster": "doctrines_and_logic",
+      "description": "2-categories, 2-functors, monads on categories, algebras for a monad, and 2-monadic doctrines over Cat.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P16",
+        "C004"
+      ],
+      "topological_rank": 10,
+      "prerequisites": [
+        "UG_CATEGORY"
+      ],
+      "dependents": [
+        "CORE_CRM_PARADIGM",
+        "CORE_DOCTRINE"
+      ]
+    },
+    {
+      "id": "GRAD_CHAIN_COMPLEX",
+      "label": "Chain Complexes & Homological Algebra",
+      "stage": "stage_grad",
+      "cluster": "homological_algebra",
+      "description": "Additive and abelian categories, chain complexes, homology, exact sequences, Snake Lemma, and 5-lemma.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P31",
+        "P32",
+        "C057",
+        "C059"
+      ],
+      "topological_rank": 11,
+      "prerequisites": [
+        "UG_ALGEBRA",
+        "UG_CATEGORY"
+      ],
+      "dependents": [
+        "GRAD_DERIVED_CAT"
+      ]
+    },
+    {
+      "id": "GRAD_SHEAF",
+      "label": "Sheaves on Topological Spaces",
+      "stage": "stage_grad",
+      "cluster": "sheaves_and_schemes",
+      "description": "Presheaves of rings/modules, sheaf gluing condition, stalks, germs, and sheafification.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P23"
+      ],
+      "topological_rank": 12,
+      "prerequisites": [
+        "GRAD_PRESHEAF",
+        "UG_TOPOLOGY"
+      ],
+      "dependents": [
+        "GRAD_AFFINE_SCHEME",
+        "GRAD_SITE"
+      ]
+    },
+    {
+      "id": "GRAD_ELEM_TOPOS",
+      "label": "Elementary Topoi & Subobject Classifier",
+      "stage": "stage_grad",
+      "cluster": "topoi_and_logic",
+      "description": "Cartesian closed categories with finite limits, subobject classifier Omega, power objects, and internal logic.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P20",
+        "P22",
+        "C013",
+        "C026"
+      ],
+      "topological_rank": 13,
+      "prerequisites": [
+        "GRAD_PRESHEAF",
+        "UG_CATEGORY",
+        "UG_ORDER"
+      ],
+      "dependents": [
+        "GRAD_CLASS_SET_THEORY",
+        "GRAD_COALGEBRA_BISIM",
+        "GRAD_GROTH_TOPOS",
+        "GRAD_INTERNAL_LOGIC",
+        "GRAD_REALIZABILITY_TOPOS"
+      ]
+    },
+    {
+      "id": "GRAD_SIMPLICIAL_SET",
+      "label": "Simplicial Sets & Model Categories",
+      "stage": "stage_grad",
+      "cluster": "higher_categories",
+      "description": "Simplex category Delta, simplicial sets Set^(Delta^op), Kan complexes, horn filling, and geometric realization.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P44"
+      ],
+      "topological_rank": 14,
+      "prerequisites": [
+        "GRAD_PRESHEAF",
+        "UG_TOPOLOGY"
+      ],
+      "dependents": [
+        "GRAD_INFINITY_CAT",
+        "WITNESS_4_FACET_CYCLE"
+      ]
+    },
+    {
+      "id": "GRAD_HYPERDOCTRINE",
+      "label": "Lawvere Hyperdoctrines",
+      "stage": "stage_grad",
+      "cluster": "doctrines_and_logic",
+      "description": "First-order logic as adjoints to substitution (exists_f -| f^* -| forall_f), Beck-Chevalley condition, and equality predicates.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P17",
+        "P18",
+        "C004"
+      ],
+      "topological_rank": 15,
+      "prerequisites": [
+        "GRAD_LAWVERE_THEORY",
+        "UG_CATEGORY",
+        "UG_LOGIC",
+        "UG_ORDER"
+      ],
+      "dependents": [
+        "CORE_DOCTRINE",
+        "GRAD_INTERNAL_LOGIC"
+      ]
+    },
+    {
+      "id": "GRAD_DERIVED_CAT",
+      "label": "Derived Categories & Spectral Sequences",
+      "stage": "stage_grad",
+      "cluster": "homological_algebra",
+      "description": "Derived functors Ext and Tor, triangulated categories, derived category D(A), and Grothendieck-Leray spectral sequences.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P33",
+        "P36",
+        "C088"
+      ],
+      "topological_rank": 16,
+      "prerequisites": [
+        "GRAD_CHAIN_COMPLEX"
+      ],
+      "dependents": [
+        "CORE_BASE_FIBER",
+        "GRAD_STABLE_INFINITY"
+      ]
+    },
+    {
+      "id": "GRAD_AFFINE_SCHEME",
+      "label": "Affine Schemes (Spec R)",
+      "stage": "stage_grad",
+      "cluster": "sheaves_and_schemes",
+      "description": "Prime spectrum of a commutative ring, Zariski topology, structure sheaf O_Spec(R), and localization at prime ideals.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P28"
+      ],
+      "topological_rank": 17,
+      "prerequisites": [
+        "GRAD_SHEAF",
+        "UG_ALGEBRA"
+      ],
+      "dependents": [
+        "CORE_AXIS_4",
+        "GRAD_SCHEME",
+        "WITNESS_2_R2_DUALINT"
+      ]
+    },
+    {
+      "id": "GRAD_SITE",
+      "label": "Grothendieck Topologies & Sites",
+      "stage": "stage_grad",
+      "cluster": "topoi_and_logic",
+      "description": "Covering sieves, Grothendieck topologies J, axioms for a site (C, J), and sheaves on a site.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P24",
+        "C129"
+      ],
+      "topological_rank": 18,
+      "prerequisites": [
+        "GRAD_PRESHEAF",
+        "GRAD_SHEAF"
+      ],
+      "dependents": [
+        "GRAD_GROTH_TOPOS"
+      ]
+    },
+    {
+      "id": "GRAD_INTERNAL_LOGIC",
+      "label": "Internal Logic & Kripke-Joyal Semantics",
+      "stage": "stage_grad",
+      "cluster": "topoi_and_logic",
+      "description": "Mitchell-Bénabou language, internal interpretation of connectives and quantifiers, and Kripke-Joyal sheaf forcing.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P19",
+        "C055",
+        "C056"
+      ],
+      "topological_rank": 19,
+      "prerequisites": [
+        "GRAD_ELEM_TOPOS",
+        "GRAD_HYPERDOCTRINE"
+      ],
+      "dependents": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_2",
+        "GRAD_REALIZABILITY_TOPOS"
+      ]
+    },
+    {
+      "id": "GRAD_SCHEME",
+      "label": "General Schemes & Locally Ringed Spaces",
+      "stage": "stage_grad",
+      "cluster": "sheaves_and_schemes",
+      "description": "Locally ringed spaces, morphisms of locally ringed spaces, gluing affine schemes, and relative schemes.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P29",
+        "P30"
+      ],
+      "topological_rank": 20,
+      "prerequisites": [
+        "GRAD_AFFINE_SCHEME"
+      ],
+      "dependents": [
+        "ADV_NON_AC_LATTICES",
+        "CORE_RELATIVIZATION"
+      ]
+    },
+    {
+      "id": "GRAD_GROTH_TOPOS",
+      "label": "Grothendieck Topoi & Geometric Morphisms",
+      "stage": "stage_grad",
+      "cluster": "topoi_and_logic",
+      "description": "Sheaves on a site, Giraud's theorem, geometric morphisms f = (f^* -| f_*), and bounded geometric morphisms.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P25",
+        "P26",
+        "C015",
+        "C080"
+      ],
+      "topological_rank": 21,
+      "prerequisites": [
+        "GRAD_ELEM_TOPOS",
+        "GRAD_SITE"
+      ],
+      "dependents": [
+        "CORE_RELATIVIZATION",
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_INFINITY_CAT",
+        "WITNESS_1_T_ODD"
+      ]
+    },
+    {
+      "id": "GRAD_REALIZABILITY_TOPOS",
+      "label": "Triposes & Realizability Topoi (RT/Eff)",
+      "stage": "stage_grad",
+      "cluster": "computability_and_realizability",
+      "description": "Partial combinatory algebras (PCAs), Hyland's tripos-to-topos construction, and the Effective Topos Eff = RT(K_1).",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P41",
+        "P42",
+        "C122",
+        "C123",
+        "C124"
+      ],
+      "topological_rank": 22,
+      "prerequisites": [
+        "GRAD_ELEM_TOPOS",
+        "GRAD_INTERNAL_LOGIC",
+        "UG_COMPUTABILITY"
+      ],
+      "dependents": [
+        "ADV_SITE_REALIZABILITY"
+      ]
+    },
+    {
+      "id": "GRAD_INFINITY_CAT",
+      "label": "(inf, 1)-Categories & Quasicategories",
+      "stage": "stage_grad",
+      "cluster": "higher_categories",
+      "description": "Joyal quasicategories, Lurie's HTT, higher limits and colimits, and Grothendieck (inf, 1)-topoi.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P45",
+        "P46",
+        "C079",
+        "C096"
+      ],
+      "topological_rank": 23,
+      "prerequisites": [
+        "GRAD_GROTH_TOPOS",
+        "GRAD_SIMPLICIAL_SET"
+      ],
+      "dependents": [
+        "ADV_POSTNIKOV_CHOICE",
+        "CORE_AXIS_5",
+        "GRAD_COALGEBRA_BISIM",
+        "GRAD_STABLE_INFINITY",
+        "WITNESS_3_STEP_PROD_Q"
+      ]
+    },
+    {
+      "id": "GRAD_STABLE_INFINITY",
+      "label": "Stable (inf, 1)-Categories & Spectra",
+      "stage": "stage_grad",
+      "cluster": "higher_categories",
+      "description": "Zero objects, fiber/cofiber sequences, suspension-loop equivalence Sigma = Omega, and spectrum objects Sp.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P47",
+        "C120"
+      ],
+      "topological_rank": 24,
+      "prerequisites": [
+        "GRAD_DERIVED_CAT",
+        "GRAD_INFINITY_CAT"
+      ],
+      "dependents": [
+        "ADV_CATSP_SPECTRA"
+      ]
+    },
+    {
+      "id": "GRAD_CLASS_SET_THEORY",
+      "label": "Weak Set Subsystems & Class Theories (ETCS, ZC, NBG)",
+      "stage": "stage_grad",
+      "cluster": "doctrines_and_logic",
+      "description": "Two-sorted Bernays-Godel and Kelley-Morse class theories (GB_0, GBC, NBG, ETR_Ord, KM) with Godel operations G1-G8, Mac Lane set theory (Mac ~= ETCS) vs. Zermelo ZC vs. ZFC^-, and Gale-Stewart Borel games.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P51",
+        "P52",
+        "P55"
+      ],
+      "topological_rank": 25,
+      "prerequisites": [
+        "GRAD_ELEM_TOPOS",
+        "UG_LOGIC",
+        "UG_ORDER",
+        "UG_TOPOLOGY"
+      ],
+      "dependents": [
+        "ADV_CLASS_FIBRATION_GC",
+        "CORE_AXIS_6"
+      ]
+    },
+    {
+      "id": "GRAD_COALGEBRA_BISIM",
+      "label": "Endofunctor Coalgebras, Bisimulation & Truncations",
+      "stage": "stage_grad",
+      "cluster": "categories_and_doctrines",
+      "description": "Initial algebras (mu F) vs. terminal coalgebras (nu F), Lambek's isomorphism, accessible pointed graphs (APGs) and maximum bisimulation, quotient types (Quot.sound), and (-1)- vs. 0-truncations in univalent universes.",
+      "monograph_chapter": "Graduate Prerequisite",
+      "concepts_covered": [
+        "P53",
+        "P54"
+      ],
+      "topological_rank": 26,
+      "prerequisites": [
+        "GRAD_ELEM_TOPOS",
+        "GRAD_INFINITY_CAT",
+        "UG_CATEGORY"
+      ],
+      "dependents": [
+        "ADV_BOFFA_ANIMA_TORSORS",
+        "CORE_AXIS_7"
+      ]
+    },
+    {
+      "id": "CORE_CRM_PARADIGM",
+      "label": "CRM Paradigm: Geometry Over Syntax",
+      "stage": "stage_core",
+      "cluster": "crm_foundations",
+      "description": "Transitioning reverse mathematics from syntactic arithmetic (RCA_0) to structural, topological, and cohomological geometry of doctrines.",
+      "monograph_chapter": "Chapter 1",
+      "concepts_covered": [
+        "C003",
+        "C010",
+        "C011"
+      ],
+      "topological_rank": 27,
+      "prerequisites": [
+        "GRAD_MONAD_2DOCTRINE",
+        "UG_LOGIC"
+      ],
+      "dependents": [
+        "CORE_DOCTRINE"
+      ]
+    },
+    {
+      "id": "CORE_DOCTRINE",
+      "label": "Categorical Doctrine (D in Doct)",
+      "stage": "stage_core",
+      "cluster": "crm_foundations",
+      "description": "2-monadic and hyperdoctrinal specifications of mathematical universes equipped with operations, limits, and quantifiers.",
+      "monograph_chapter": "Chapter 1",
+      "concepts_covered": [
+        "C004"
+      ],
+      "topological_rank": 28,
+      "prerequisites": [
+        "CORE_CRM_PARADIGM",
+        "GRAD_HYPERDOCTRINE",
+        "GRAD_LAWVERE_THEORY",
+        "GRAD_MONAD_2DOCTRINE"
+      ],
+      "dependents": [
+        "CORE_TRIPLE"
+      ]
+    },
+    {
+      "id": "CORE_TRIPLE",
+      "label": "Doctrinal Comparison Triple (T)",
+      "stage": "stage_core",
+      "cluster": "crm_foundations",
+      "description": "Tuple T = (D_0 >= D_1, kappa: Phi => Psi) with base doctrine D_0, subdoctrine D_1, and comparison transformation kappa.",
+      "monograph_chapter": "Chapter 1",
+      "concepts_covered": [
+        "C005",
+        "C006"
+      ],
+      "topological_rank": 29,
+      "prerequisites": [
+        "CORE_DOCTRINE"
+      ],
+      "dependents": [
+        "CORE_RESIDUUM"
+      ]
+    },
+    {
+      "id": "CORE_RESIDUUM",
+      "label": "Categorical Residuum Operator (Res)",
+      "stage": "stage_core",
+      "cluster": "crm_foundations",
+      "description": "Obstruction assignment Res(kappa): D_0 -> Obstr obeying the Admissibility Criterion (orthogonal structural invariants).",
+      "monograph_chapter": "Chapter 1",
+      "concepts_covered": [
+        "C007",
+        "C012",
+        "C013",
+        "C158",
+        "C160",
+        "C161"
+      ],
+      "topological_rank": 30,
+      "prerequisites": [
+        "CORE_TRIPLE"
+      ],
+      "dependents": [
+        "CORE_FUND_EQUIV"
+      ]
+    },
+    {
+      "id": "CORE_FUND_EQUIV",
+      "label": "Fundamental Equivalence of CRM",
+      "stage": "stage_core",
+      "cluster": "crm_foundations",
+      "description": "The foundational equivalence D_0 + Res(kappa) <=> D_1 asserting exact gap calibration by the residuum.",
+      "monograph_chapter": "Chapter 1",
+      "concepts_covered": [
+        "C008"
+      ],
+      "topological_rank": 31,
+      "prerequisites": [
+        "CORE_RESIDUUM"
+      ],
+      "dependents": [
+        "CORE_TOPOS_RESIDUUM"
+      ]
+    },
+    {
+      "id": "CORE_TOPOS_RESIDUUM",
+      "label": "Topos-Logical Relative Pseudocomplement",
+      "stage": "stage_core",
+      "cluster": "crm_foundations",
+      "description": "Residuum specialization (A =>_Topos B) acting as an order-theoretic relative pseudocomplement in universe lattices.",
+      "monograph_chapter": "Chapter 1",
+      "concepts_covered": [
+        "C009",
+        "C159"
+      ],
+      "topological_rank": 32,
+      "prerequisites": [
+        "CORE_FUND_EQUIV",
+        "GRAD_GROTH_TOPOS"
+      ],
+      "dependents": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_2",
+        "CORE_AXIS_3",
+        "CORE_AXIS_4",
+        "CORE_AXIS_5",
+        "CORE_AXIS_6",
+        "CORE_AXIS_7"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_1",
+      "label": "Axis I: Choice / Splitting Coordinate Axis",
+      "stage": "stage_core",
+      "cluster": "coordinate_axes",
+      "description": "External AC, internal IAC, COSHEP, WISC, SVC, Diaconescu theorem, and projectivity of 1_E.",
+      "monograph_chapter": "Chapter 1 & 2",
+      "concepts_covered": [
+        "P38",
+        "C010",
+        "C014",
+        "C015",
+        "C016",
+        "C017",
+        "C018",
+        "C019",
+        "C026",
+        "C027",
+        "C028",
+        "C029",
+        "C030",
+        "C031",
+        "C032",
+        "C033",
+        "C034",
+        "C035",
+        "C036",
+        "C037",
+        "C038",
+        "C039"
+      ],
+      "topological_rank": 33,
+      "prerequisites": [
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_INTERNAL_LOGIC"
+      ],
+      "dependents": [
+        "ADV_CHOICE_ATLAS",
+        "ADV_CLASS_FIBRATION_GC",
+        "ADV_NON_AC_LATTICES",
+        "ADV_POSTNIKOV_CHOICE",
+        "CORE_RELATIVIZATION",
+        "WITNESS_1_T_ODD"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_2",
+      "label": "Axis II: Constructive Logic & Omega-Geometry",
+      "stage": "stage_core",
+      "cluster": "coordinate_axes",
+      "description": "Geometry of subobject classifier: De Morgan Stone lattices, Gödel-Dummett linearity, and Boolean collapse Omega = 1+1.",
+      "monograph_chapter": "Chapter 1 & 3",
+      "concepts_covered": [
+        "C010",
+        "C055",
+        "C056"
+      ],
+      "topological_rank": 34,
+      "prerequisites": [
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_INTERNAL_LOGIC"
+      ],
+      "dependents": [
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_NON_AC_LATTICES",
+        "CORE_RELATIVIZATION",
+        "WITNESS_1_T_ODD"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_3",
+      "label": "Axis III: Arithmetic Infinity & Rigidity",
+      "stage": "stage_core",
+      "cluster": "coordinate_axes",
+      "description": "NNO existence, finite dynamical lassos, Dedekind vs Kuratowski infinity, and biproduct tail cokernels.",
+      "monograph_chapter": "Chapter 1 & 3",
+      "concepts_covered": [
+        "P21",
+        "C010",
+        "C021",
+        "C022",
+        "C023",
+        "C078"
+      ],
+      "topological_rank": 35,
+      "prerequisites": [
+        "CORE_TOPOS_RESIDUUM",
+        "UG_COMPUTABILITY"
+      ],
+      "dependents": [
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_NON_AC_LATTICES",
+        "WITNESS_3_STEP_PROD_Q",
+        "WITNESS_5_Q_E0_UHF"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_4",
+      "label": "Axis IV: Characteristic & p-Torsion",
+      "stage": "stage_core",
+      "cluster": "coordinate_axes",
+      "description": "Joyal p-typical delta-rings, lift torsors, relative slice perfection A -> A_perf, and polynomial cofactors.",
+      "monograph_chapter": "Chapter 1 & 3",
+      "concepts_covered": [
+        "P49",
+        "C010",
+        "C069",
+        "C072",
+        "C073",
+        "C117"
+      ],
+      "topological_rank": 36,
+      "prerequisites": [
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_AFFINE_SCHEME"
+      ],
+      "dependents": [
+        "CORE_AXIS_7",
+        "WITNESS_2_R2_DUALINT",
+        "WITNESS_4_FACET_CYCLE"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_5",
+      "label": "Axis V: Directional Invertibility & Higher Cells",
+      "stage": "stage_core",
+      "cluster": "coordinate_axes",
+      "description": "Invertibility spectra, cellular directed complexes, 4-tier ladder, and categorical spectra CatSp.",
+      "monograph_chapter": "Chapter 1 & 5",
+      "concepts_covered": [
+        "C010",
+        "C106",
+        "C107",
+        "C120"
+      ],
+      "topological_rank": 37,
+      "prerequisites": [
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_INFINITY_CAT"
+      ],
+      "dependents": [
+        "ADV_BOFFA_ANIMA_TORSORS",
+        "ADV_INFTY_INFTY_LADDER",
+        "ADV_POSTNIKOV_CHOICE",
+        "WITNESS_3_STEP_PROD_Q",
+        "WITNESS_4_FACET_CYCLE",
+        "WITNESS_5_Q_E0_UHF"
+      ]
+    },
+    {
+      "id": "CORE_RELATIVIZATION",
+      "label": "Two-Axis Relativization Framework",
+      "stage": "stage_core",
+      "cluster": "conservation_and_relativization",
+      "description": "Axis 1 (ambient fiber deformation) vs Axis 2 (metamathematical base deformation gamma: E -> S); absolute vs relative residua.",
+      "monograph_chapter": "Chapter 1 & 4",
+      "concepts_covered": [
+        "C024",
+        "C075",
+        "C076",
+        "C077",
+        "C081",
+        "C082",
+        "C083",
+        "C084",
+        "C085",
+        "C086",
+        "C162"
+      ],
+      "topological_rank": 38,
+      "prerequisites": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_2",
+        "GRAD_GROTH_TOPOS",
+        "GRAD_SCHEME"
+      ],
+      "dependents": [
+        "CORE_BASE_FIBER"
+      ]
+    },
+    {
+      "id": "CORE_BASE_FIBER",
+      "label": "Base-Fiber Conservation Principle",
+      "stage": "stage_core",
+      "cluster": "conservation_and_relativization",
+      "description": "Order-theoretic logical strength conservation; quantitative 5-term Grothendieck-Leray spectral sequence Ext^1 conservation.",
+      "monograph_chapter": "Chapter 1 & 4",
+      "concepts_covered": [
+        "C025",
+        "C087",
+        "C088",
+        "C089"
+      ],
+      "topological_rank": 39,
+      "prerequisites": [
+        "CORE_RELATIVIZATION",
+        "GRAD_DERIVED_CAT"
+      ],
+      "dependents": [
+        "ADV_CLASS_FIBRATION_GC",
+        "ADV_DOUBLE_SOLVENT",
+        "WITNESS_5_Q_E0_UHF"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_6",
+      "label": "Axis VI: Quotient-Image Descent & Small-Map AST (C, S)",
+      "stage": "stage_core",
+      "cluster": "residuum_axes",
+      "description": "Joyal-Moerdijk predicative class-set ambients (C, S), contravariant small powerclasses P_S, pointillist continuum H(aleph_1) |= ZFC^-, CZF Omega^X / 2^X split, and Axis VI quotient-image descent im(f) in S.",
+      "monograph_chapter": "Chapter 7",
+      "concepts_covered": [
+        "C148",
+        "C149",
+        "C150"
+      ],
+      "topological_rank": 40,
+      "prerequisites": [
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_CLASS_SET_THEORY"
+      ],
+      "dependents": [
+        "ADV_CLASS_FIBRATION_GC",
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "CORE_AXIS_7"
+      ]
+    },
+    {
+      "id": "CORE_AXIS_7",
+      "label": "Axis VII: Foundation vs. Anti-Foundation (mu P_S -> nu P_S)",
+      "stage": "stage_core",
+      "cluster": "residuum_axes",
+      "description": "Axis VII comparison kappa_Reg : mu P_S -> nu P_S separating well-founded V_ZF from Aczel's V_AFA (Quine atom q = {q}), Friedman's IZF_non-ext quotient cost, and Gylterud's hereditary (-1)-truncation V_0 -> mu P_Anima.",
+      "monograph_chapter": "Chapter 7",
+      "concepts_covered": [
+        "C152",
+        "C154"
+      ],
+      "topological_rank": 41,
+      "prerequisites": [
+        "CORE_AXIS_4",
+        "CORE_AXIS_6",
+        "CORE_TOPOS_RESIDUUM",
+        "GRAD_COALGEBRA_BISIM"
+      ],
+      "dependents": [
+        "ADV_BOFFA_ANIMA_TORSORS",
+        "ADV_DOUBLE_CLAMPED_SETS"
+      ]
+    },
+    {
+      "id": "WITNESS_1_T_ODD",
+      "label": "Witness I: Parity Torsor T_odd in Nom",
+      "stage": "stage_witness",
+      "cluster": "anchor_witnesses",
+      "description": "Odd-finset parity torsor [T_odd] = delta(1) != 0 in H^1(Nom; EvenFinset) witnessing non-projectivity of 1_Nom and AC failure.",
+      "monograph_chapter": "Chapter 1, 2, 6, 7, 8",
+      "concepts_covered": [
+        "P34",
+        "P39",
+        "C011",
+        "C040",
+        "C093",
+        "C134",
+        "C189"
+      ],
+      "topological_rank": 42,
+      "prerequisites": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_2",
+        "GRAD_GROTH_TOPOS"
+      ],
+      "dependents": [
+        "ADV_BOFFA_ANIMA_TORSORS",
+        "ADV_CHOICE_ATLAS",
+        "ADV_SITE_REALIZABILITY"
+      ]
+    },
+    {
+      "id": "WITNESS_2_R2_DUALINT",
+      "label": "Witness II: 2-Torsion delta-Ring R_2 & DualInt",
+      "stage": "stage_witness",
+      "cluster": "anchor_witnesses",
+      "description": "R_2 = Z[eta]/(2eta, eta^2) with delta_0(eta)=0, delta_1(eta)=eta and DualInt = Z[eps]/(eps^2) pinning relative slice perfection.",
+      "monograph_chapter": "Chapter 1, 3, 8",
+      "concepts_covered": [
+        "C011",
+        "C070",
+        "C071",
+        "C189"
+      ],
+      "topological_rank": 43,
+      "prerequisites": [
+        "CORE_AXIS_4",
+        "GRAD_AFFINE_SCHEME"
+      ],
+      "dependents": [
+        "ADV_HOMOTOPY_CRM"
+      ]
+    },
+    {
+      "id": "WITNESS_3_STEP_PROD_Q",
+      "label": "Witness III: Gaunt Step-Product Q & Phantom",
+      "stage": "stage_witness",
+      "cluster": "anchor_witnesses",
+      "description": "Noetherian rank-omega step-product Q in prod A_k with pure Postnikov phantom X_bullet in RL(Q) \\ Q disproving Conjecture C1.",
+      "monograph_chapter": "Chapter 1, 5, 8",
+      "concepts_covered": [
+        "C011",
+        "C114",
+        "C115",
+        "C189"
+      ],
+      "topological_rank": 44,
+      "prerequisites": [
+        "CORE_AXIS_3",
+        "CORE_AXIS_5",
+        "GRAD_INFINITY_CAT"
+      ],
+      "dependents": [
+        "ADV_INFTY_INFTY_LADDER"
+      ]
+    },
+    {
+      "id": "WITNESS_4_FACET_CYCLE",
+      "label": "Witness IV: Directed Facet Cycles F_3 / F_n",
+      "stage": "stage_witness",
+      "cluster": "anchor_witnesses",
+      "description": "Facet-supported directed triangle F_3 = partial Delta^2 and F_n = partial Delta^(n-1) erecting the n >= 3 cubical amalgamation wall.",
+      "monograph_chapter": "Chapter 1, 6, 8",
+      "concepts_covered": [
+        "C011",
+        "C138",
+        "C189"
+      ],
+      "topological_rank": 45,
+      "prerequisites": [
+        "CORE_AXIS_4",
+        "CORE_AXIS_5",
+        "GRAD_SIMPLICIAL_SET"
+      ],
+      "dependents": [
+        "ADV_CUBICAL_AMALGAMATION"
+      ]
+    },
+    {
+      "id": "WITNESS_5_Q_E0_UHF",
+      "label": "Witness V: Light Condensed Q_E0 & UHF(2^inf)",
+      "stage": "stage_witness",
+      "cluster": "anchor_witnesses",
+      "description": "Light condensed smooth-end quotient Q_E0 = 2^N // E0 with UHF(2^inf) and non-splitting [q] != 0 in Ext^1_CondAb for exotic R^4 smoothings.",
+      "monograph_chapter": "Chapter 1, 4, 8",
+      "concepts_covered": [
+        "P50",
+        "C011",
+        "C091",
+        "C092",
+        "C189"
+      ],
+      "topological_rank": 46,
+      "prerequisites": [
+        "CORE_AXIS_3",
+        "CORE_AXIS_5",
+        "CORE_BASE_FIBER"
+      ],
+      "dependents": [
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_DOUBLE_SOLVENT"
+      ]
+    },
+    {
+      "id": "ADV_NON_AC_LATTICES",
+      "label": "Seven Multi-Dimensional Non-AC Lattices",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Continuum trichotomy, pointfree/spatial duality (Tychonoff, Hahn-Banach), homological exactness bifurcation, and Categorical Big Five.",
+      "monograph_chapter": "Chapter 3",
+      "concepts_covered": [
+        "P37",
+        "C020",
+        "C047",
+        "C048",
+        "C049",
+        "C050",
+        "C051",
+        "C052",
+        "C053",
+        "C054",
+        "C057",
+        "C058",
+        "C059",
+        "C060",
+        "C061",
+        "C062",
+        "C063",
+        "C064",
+        "C065",
+        "C066",
+        "C067",
+        "C068",
+        "C074"
+      ],
+      "topological_rank": 47,
+      "prerequisites": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_2",
+        "CORE_AXIS_3",
+        "GRAD_SCHEME",
+        "UG_ANALYSIS"
+      ],
+      "dependents": [
+        "ADV_HOMOTOPY_CRM"
+      ]
+    },
+    {
+      "id": "ADV_POSTNIKOV_CHOICE",
+      "label": "Higher Choice AC_(n,m) & Postnikov Gerbes",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Bigraded higher choice, un-truncated choice collapse, Postnikov gerbe obstructions, and hypercompleteness.",
+      "monograph_chapter": "Chapter 5",
+      "concepts_covered": [
+        "P35",
+        "C042",
+        "C043",
+        "C044",
+        "C097",
+        "C098",
+        "C099",
+        "C100",
+        "C101",
+        "C102",
+        "C103",
+        "C104",
+        "C105",
+        "C118",
+        "C119"
+      ],
+      "topological_rank": 48,
+      "prerequisites": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_5",
+        "GRAD_INFINITY_CAT"
+      ],
+      "dependents": [
+        "ADV_CORE_CONJECTURES"
+      ]
+    },
+    {
+      "id": "ADV_CHOICE_ATLAS",
+      "label": "Choice-Geometry Residuum Atlas",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Complete classification of Barr-Diaconescu-Freyd, Internal-to-External choice, COSHEP-SVC, and localic decompositions.",
+      "monograph_chapter": "Chapter 2",
+      "concepts_covered": [
+        "C046"
+      ],
+      "topological_rank": 49,
+      "prerequisites": [
+        "CORE_AXIS_1",
+        "WITNESS_1_T_ODD"
+      ],
+      "dependents": [
+        "ADV_CORE_CONJECTURES",
+        "ADV_HOMOTOPY_CRM"
+      ]
+    },
+    {
+      "id": "ADV_SITE_REALIZABILITY",
+      "label": "Site Combinatorics & Kihara Atomic Spectrum",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Fraïssé permutation topoi Cont(G), 5-rung atomic choice spectrum, Lawvere-Tierney subtopoi, and Weihrauch degrees.",
+      "monograph_chapter": "Chapter 6",
+      "concepts_covered": [
+        "P27",
+        "C125",
+        "C126",
+        "C127",
+        "C128",
+        "C130",
+        "C131",
+        "C132",
+        "C133"
+      ],
+      "topological_rank": 50,
+      "prerequisites": [
+        "GRAD_REALIZABILITY_TOPOS",
+        "WITNESS_1_T_ODD"
+      ],
+      "dependents": [
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_INFTY_INFTY_LADDER",
+      "label": "Four-Tier (inf, inf)-Ladder & Hom-Rank",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Strict chain Cat^L subset Cat^omega subset Cat^coind subset Cat^R, ordinal hom-rank, and LALI ceiling +2.",
+      "monograph_chapter": "Chapter 5",
+      "concepts_covered": [
+        "P48",
+        "C107",
+        "C108",
+        "C109",
+        "C110",
+        "C111",
+        "C112",
+        "C113",
+        "C116"
+      ],
+      "topological_rank": 51,
+      "prerequisites": [
+        "CORE_AXIS_5",
+        "WITNESS_3_STEP_PROD_Q"
+      ],
+      "dependents": [
+        "ADV_CATSP_SPECTRA",
+        "ADV_HOMOTOPY_CRM",
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_CUBICAL_AMALGAMATION",
+      "label": "Cubical Disjoint n-Amalgamation Dichotomy",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Two-clause flow-convex embeddings (IsFlowConvex), minimal-support amalgams, and higher n-amalgamation phase transition.",
+      "monograph_chapter": "Chapter 6",
+      "concepts_covered": [
+        "P43",
+        "C135",
+        "C136",
+        "C137",
+        "C138",
+        "C139"
+      ],
+      "topological_rank": 52,
+      "prerequisites": [
+        "WITNESS_4_FACET_CYCLE"
+      ],
+      "dependents": [
+        "ADV_HOMOTOPY_CRM",
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_CORE_CONJECTURES",
+      "label": "The Five Core Conjectures of CRM",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Five program-defining conjectures: Cohomological Vanishing (proved on top, IBPI, IDC, SVC), Etale omega-Presentability, Etale Zero-Dimensionality, Postnikov Stepwise Effacement (proved for n >= 1, liens, nilpotent & etale bands), and Two-Sorted Big-Five Adjoint/Fixed-Point Hierarchy.",
+      "monograph_chapter": "Chapter 2, 3, 5, 8",
+      "concepts_covered": [
+        "C041",
+        "C045",
+        "C163",
+        "C164",
+        "C165",
+        "C166",
+        "C167"
+      ],
+      "topological_rank": 53,
+      "prerequisites": [
+        "ADV_CHOICE_ATLAS",
+        "ADV_POSTNIKOV_CHOICE"
+      ],
+      "dependents": [
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_CATSP_SPECTRA",
+      "label": "Categorical Spectra CatSp & Stabilization",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "CatSp = Sp(Cat^R_*), directed loop-suspension stabilization without Wall diffeomorphism or Giraud initiality collapse.",
+      "monograph_chapter": "Chapter 5",
+      "concepts_covered": [
+        "C120",
+        "C121",
+        "C179"
+      ],
+      "topological_rank": 54,
+      "prerequisites": [
+        "ADV_INFTY_INFTY_LADDER",
+        "GRAD_STABLE_INFINITY"
+      ],
+      "dependents": [
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_DOUBLE_SOLVENT",
+      "label": "Double-Solvent Theorem for 4-Smoothings",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Radial exotic R^4 smoothings, suspension collapse of light condensed torsor Q_E0, and Connes groupoid G_E0.",
+      "monograph_chapter": "Chapter 4",
+      "concepts_covered": [
+        "C090",
+        "C091",
+        "C094",
+        "C095"
+      ],
+      "topological_rank": 55,
+      "prerequisites": [
+        "CORE_BASE_FIBER",
+        "WITNESS_5_Q_E0_UHF"
+      ],
+      "dependents": [
+        "ADV_HOMOTOPY_CRM",
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_CLASS_FIBRATION_GC",
+      "label": "Class Kaleidoscope Def -| pi_Set & GC Non-Conservativity",
+      "stage": "stage_adv",
+      "cluster": "set_foundations",
+      "description": "Coreflective baseline Def -| pi_Set, Williams's fixed-set class kaleidoscope, skeletal splitting Card -> Set <=> GC, ETR_Ord vs. KM, LoS <=> Rep & GC, V_(omega+omega) colimit escape, and Glazer's ZC non-conservativity.",
+      "monograph_chapter": "Chapter 7",
+      "concepts_covered": [
+        "C140",
+        "C141",
+        "C142",
+        "C143",
+        "C144",
+        "C145",
+        "C146",
+        "C147"
+      ],
+      "topological_rank": 56,
+      "prerequisites": [
+        "CORE_AXIS_1",
+        "CORE_AXIS_6",
+        "CORE_BASE_FIBER",
+        "GRAD_CLASS_SET_THEORY"
+      ],
+      "dependents": [
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_BOFFA_ANIMA_TORSORS",
+      "label": "Boffa Hyperset Torsors & Univalent nu P_Anima Loops",
+      "stage": "stage_adv",
+      "cluster": "set_foundations",
+      "description": "Boffa hypersets V_BAFA, non-isomorphic bisimulation fibers (2-cycle vs. q), Rieger-Bernays slice twin [Q_0^(2)] and global parity [T_odd(Q_0)] torsors, and terminal univalent multisets nu P_Anima uniting Axes V and VII.",
+      "monograph_chapter": "Chapter 7",
+      "concepts_covered": [
+        "C153",
+        "C155"
+      ],
+      "topological_rank": 57,
+      "prerequisites": [
+        "CORE_AXIS_5",
+        "CORE_AXIS_7",
+        "GRAD_COALGEBRA_BISIM",
+        "WITNESS_1_T_ODD"
+      ],
+      "dependents": [
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_DOUBLE_CLAMPED_SETS",
+      "label": "Double-Clamped Set_ZFC Scale-Invariance & SetsResiduum",
+      "stage": "stage_adv",
+      "cluster": "set_foundations",
+      "description": "Borel determinacy pincer (H(aleph_1) at Sigma^0_4 vs. V_(omega+omega) at Sigma^0_(omega+1)), reflexive scale-invariance pinching (C_inf, S_inf) into Set_ZFC, and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
+      "monograph_chapter": "Chapter 7",
+      "concepts_covered": [
+        "C151",
+        "C156",
+        "C157"
+      ],
+      "topological_rank": 58,
+      "prerequisites": [
+        "ADV_BOFFA_ANIMA_TORSORS",
+        "ADV_CLASS_FIBRATION_GC",
+        "CORE_AXIS_2",
+        "CORE_AXIS_3",
+        "CORE_AXIS_6",
+        "CORE_AXIS_7",
+        "WITNESS_5_Q_E0_UHF"
+      ],
+      "dependents": [
+        "ADV_HOMOTOPY_CRM",
+        "ADV_OPEN_HORIZONS"
+      ]
+    },
+    {
+      "id": "ADV_HOMOTOPY_CRM",
+      "label": "Lean 4 HomotopyCRM Production Ledger",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Four-layer Lean 4 honesty gate and ten-module production verification suite (15,577 lines, 182 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, and SetsResiduum).",
+      "monograph_chapter": "Chapter 7 & 8",
+      "concepts_covered": [
+        "C185",
+        "C186"
+      ],
+      "topological_rank": 59,
+      "prerequisites": [
+        "ADV_CHOICE_ATLAS",
+        "ADV_CUBICAL_AMALGAMATION",
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_DOUBLE_SOLVENT",
+        "ADV_INFTY_INFTY_LADDER",
+        "ADV_NON_AC_LATTICES",
+        "WITNESS_2_R2_DUALINT"
+      ],
+      "dependents": [
+        "ADV_EPILOGUE_SYNTHESIS"
+      ]
+    },
+    {
+      "id": "ADV_OPEN_HORIZONS",
+      "label": "17 Open Problems across Eight Horizons",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Seventeen open research problems across Horizons I-VIII: Pareto residuum frontiers, Weihrauch-Lawvere-Tierney duality, Kihara higher-cardinal stability, cubical phase transitions, Postnikov representation 1-gerbes, CatSp stabilization, exotic R^4 condensations, Borel determinacy class coalgebras, class calibration of the (inf, inf)-ladder, and pi_Set transgression.",
+      "monograph_chapter": "Chapter 8",
+      "concepts_covered": [
+        "C168",
+        "C169",
+        "C170",
+        "C171",
+        "C172",
+        "C173",
+        "C174",
+        "C175",
+        "C176",
+        "C177",
+        "C178",
+        "C179",
+        "C180",
+        "C181",
+        "C182",
+        "C183",
+        "C184"
+      ],
+      "topological_rank": 60,
+      "prerequisites": [
+        "ADV_BOFFA_ANIMA_TORSORS",
+        "ADV_CATSP_SPECTRA",
+        "ADV_CLASS_FIBRATION_GC",
+        "ADV_CORE_CONJECTURES",
+        "ADV_CUBICAL_AMALGAMATION",
+        "ADV_DOUBLE_CLAMPED_SETS",
+        "ADV_DOUBLE_SOLVENT",
+        "ADV_INFTY_INFTY_LADDER",
+        "ADV_SITE_REALIZABILITY"
+      ],
+      "dependents": [
+        "ADV_EPILOGUE_SYNTHESIS"
+      ]
+    },
+    {
+      "id": "ADV_EPILOGUE_SYNTHESIS",
+      "label": "Epilogue: Truth as Obstruction Invariant",
+      "stage": "stage_adv",
+      "cluster": "synthesis_and_horizons",
+      "description": "Master 27-row Reference Atlas across Axes I-VII, reflexive scale-invariance of double-clamped Set_ZFC inside (C_inf, S_inf), the five anchor witnesses, and truth as universal obstruction invariant.",
+      "monograph_chapter": "Chapter 8",
+      "concepts_covered": [
+        "C187",
+        "C188",
+        "C189"
+      ],
+      "topological_rank": 61,
+      "prerequisites": [
+        "ADV_HOMOTOPY_CRM",
+        "ADV_OPEN_HORIZONS"
+      ],
+      "dependents": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "UG_LOGIC",
+      "target": "UG_ORDER",
+      "rationale": "Order-theoretic structures formalize logical consequence and lattice operations."
+    },
+    {
+      "source": "UG_LOGIC",
+      "target": "UG_COMPUTABILITY",
+      "rationale": "Computability formalizes effective proof procedures and formal systems."
+    },
+    {
+      "source": "UG_LOGIC",
+      "target": "GRAD_HYPERDOCTRINE",
+      "rationale": "First-order predicate logic is the structural content modeled by hyperdoctrines."
+    },
+    {
+      "source": "UG_LOGIC",
+      "target": "GRAD_CLASS_SET_THEORY",
+      "rationale": "First-order vs. two-sorted set/class syntax and Separation/Replacement schemata build on classical predicate logic."
+    },
+    {
+      "source": "UG_LOGIC",
+      "target": "CORE_CRM_PARADIGM",
+      "rationale": "Classical reverse mathematics provides the baseline paradigm being generalized."
+    },
+    {
+      "source": "UG_ALGEBRA",
+      "target": "UG_CATEGORY",
+      "rationale": "Concrete algebraic categories (Grp, Ring, Mod) motivate abstract categorical axioms."
+    },
+    {
+      "source": "UG_ALGEBRA",
+      "target": "GRAD_LAWVERE_THEORY",
+      "rationale": "Universal algebra signatures and equational laws define Lawvere theories."
+    },
+    {
+      "source": "UG_ALGEBRA",
+      "target": "GRAD_CHAIN_COMPLEX",
+      "rationale": "Modules and module homomorphisms are the basic objects of homological complexes."
+    },
+    {
+      "source": "UG_ALGEBRA",
+      "target": "GRAD_AFFINE_SCHEME",
+      "rationale": "Commutative rings and prime ideals form the foundational carrier of Spec R."
+    },
+    {
+      "source": "UG_TOPOLOGY",
+      "target": "UG_ANALYSIS",
+      "rationale": "Point-set topological properties ground convergence, compactness, and metric continuity."
+    },
+    {
+      "source": "UG_TOPOLOGY",
+      "target": "GRAD_SHEAF",
+      "rationale": "Sheaf condition is defined on open sets of a topological space."
+    },
+    {
+      "source": "UG_TOPOLOGY",
+      "target": "GRAD_SIMPLICIAL_SET",
+      "rationale": "Geometric realization links combinatorial simplices to topological spaces."
+    },
+    {
+      "source": "UG_TOPOLOGY",
+      "target": "GRAD_CLASS_SET_THEORY",
+      "rationale": "Cantor/Baire tree topologies ground Gale-Stewart infinite games and Borel determinacy payoff ranks."
+    },
+    {
+      "source": "UG_ORDER",
+      "target": "UG_CATEGORY",
+      "rationale": "Posets and thin categories provide the primary bridge to abstract category theory."
+    },
+    {
+      "source": "UG_ORDER",
+      "target": "GRAD_ELEM_TOPOS",
+      "rationale": "Subobject lattices and power objects generalize Boolean and Heyting algebras."
+    },
+    {
+      "source": "UG_ORDER",
+      "target": "GRAD_HYPERDOCTRINE",
+      "rationale": "Lattices of predicates form the fiber categories in Lawvere hyperdoctrines."
+    },
+    {
+      "source": "UG_ORDER",
+      "target": "GRAD_CLASS_SET_THEORY",
+      "rationale": "Von Neumann ordinals, cumulative ranks V_alpha, and well-ordering Choice anchor ZC, ZFC^-, and NBG."
+    },
+    {
+      "source": "UG_COMPUTABILITY",
+      "target": "GRAD_REALIZABILITY_TOPOS",
+      "rationale": "Partial combinatory algebras (PCAs) formalize Turing computability categorically."
+    },
+    {
+      "source": "UG_COMPUTABILITY",
+      "target": "CORE_AXIS_3",
+      "rationale": "Recursion theory grounds the arithmetic hierarchy and NNO finitary rigidity."
+    },
+    {
+      "source": "UG_ANALYSIS",
+      "target": "ADV_NON_AC_LATTICES",
+      "rationale": "Classical real analysis theorems (IVT, EVT, Cauchy) form the non-AC testbed."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_PRESHEAF",
+      "rationale": "Presheaves are contravariant functors from a base category to Set."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_LAWVERE_THEORY",
+      "rationale": "Lawvere theories are categories with finite products."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_MONAD_2DOCTRINE",
+      "rationale": "Monads and 2-categories build directly on categorical adjunctions and functor categories."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_CHAIN_COMPLEX",
+      "rationale": "Additive and abelian categories formalize exact sequences and homology."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_ELEM_TOPOS",
+      "rationale": "Topoi are Cartesian closed categories with finite limits and subobject classifiers."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_HYPERDOCTRINE",
+      "rationale": "Hyperdoctrines are functors from a base category to Poset/Heyting."
+    },
+    {
+      "source": "UG_CATEGORY",
+      "target": "GRAD_COALGEBRA_BISIM",
+      "rationale": "Endofunctor F-algebras, F-coalgebras, and Lambek's isomorphism are formulated via universal arrows."
+    },
+    {
+      "source": "GRAD_PRESHEAF",
+      "target": "GRAD_SHEAF",
+      "rationale": "Sheaves are presheaves satisfying the local gluing condition."
+    },
+    {
+      "source": "GRAD_PRESHEAF",
+      "target": "GRAD_ELEM_TOPOS",
+      "rationale": "Presheaf categories Set^(C^op) form the prototype elementary topos."
+    },
+    {
+      "source": "GRAD_PRESHEAF",
+      "target": "GRAD_SIMPLICIAL_SET",
+      "rationale": "Simplicial sets are presheaves on the simplex category Delta."
+    },
+    {
+      "source": "GRAD_PRESHEAF",
+      "target": "GRAD_SITE",
+      "rationale": "Sieves on a category are subfunctors of representable presheaves."
+    },
+    {
+      "source": "GRAD_LAWVERE_THEORY",
+      "target": "GRAD_HYPERDOCTRINE",
+      "rationale": "Lawvere theories provide the algebraic base and functorial semantics for categorical hyperdoctrines."
+    },
+    {
+      "source": "GRAD_LAWVERE_THEORY",
+      "target": "CORE_DOCTRINE",
+      "rationale": "Functorial semantics of algebraic theories formalizes categorical doctrines (D in Doct)."
+    },
+    {
+      "source": "GRAD_MONAD_2DOCTRINE",
+      "target": "CORE_CRM_PARADIGM",
+      "rationale": "2-monadic doctrines formalize the universe classes across which CRM operates."
+    },
+    {
+      "source": "GRAD_MONAD_2DOCTRINE",
+      "target": "CORE_DOCTRINE",
+      "rationale": "Doctrines in CRM are formalized as 2-monadic algebras or hyperdoctrines."
+    },
+    {
+      "source": "GRAD_CHAIN_COMPLEX",
+      "target": "GRAD_DERIVED_CAT",
+      "rationale": "Derived categories inverting quasi-isomorphisms build on chain complexes."
+    },
+    {
+      "source": "GRAD_SHEAF",
+      "target": "GRAD_AFFINE_SCHEME",
+      "rationale": "Spec R is equipped with the structure sheaf of localized rings."
+    },
+    {
+      "source": "GRAD_SHEAF",
+      "target": "GRAD_SITE",
+      "rationale": "Grothendieck sites generalize topological spaces to categories with coverage."
+    },
+    {
+      "source": "GRAD_ELEM_TOPOS",
+      "target": "GRAD_INTERNAL_LOGIC",
+      "rationale": "The subobject classifier Omega interprets the Mitchell-Bénabou internal logic."
+    },
+    {
+      "source": "GRAD_ELEM_TOPOS",
+      "target": "GRAD_GROTH_TOPOS",
+      "rationale": "Every Grothendieck topos is an elementary topos with colimits and a site."
+    },
+    {
+      "source": "GRAD_ELEM_TOPOS",
+      "target": "GRAD_REALIZABILITY_TOPOS",
+      "rationale": "Realizability topoi are elementary topoi constructed via tripos fibrations."
+    },
+    {
+      "source": "GRAD_ELEM_TOPOS",
+      "target": "GRAD_CLASS_SET_THEORY",
+      "rationale": "Cole-Mitchell-Osius bi-interpretability identifies Lawvere's Boolean elementary-topos ETCS with Mac Lane set theory (Mac)."
+    },
+    {
+      "source": "GRAD_ELEM_TOPOS",
+      "target": "GRAD_COALGEBRA_BISIM",
+      "rationale": "Power-object coalgebras, internal equivalence relations, and subobject monomorphisms generalize set membership."
+    },
+    {
+      "source": "GRAD_SIMPLICIAL_SET",
+      "target": "GRAD_INFINITY_CAT",
+      "rationale": "Quasicategories are simplicial sets satisfying inner horn filling conditions."
+    },
+    {
+      "source": "GRAD_SIMPLICIAL_SET",
+      "target": "WITNESS_4_FACET_CYCLE",
+      "rationale": "The facet complex F_n = partial Delta^(n-1) is a combinatorial simplicial sphere."
+    },
+    {
+      "source": "GRAD_HYPERDOCTRINE",
+      "target": "GRAD_INTERNAL_LOGIC",
+      "rationale": "Adjoint quantifiers in hyperdoctrines ground internal topos logic."
+    },
+    {
+      "source": "GRAD_HYPERDOCTRINE",
+      "target": "CORE_DOCTRINE",
+      "rationale": "Categorical doctrines generalize Lawvere hyperdoctrines to arbitrary universes."
+    },
+    {
+      "source": "GRAD_DERIVED_CAT",
+      "target": "GRAD_STABLE_INFINITY",
+      "rationale": "Derived categories are the homotopy categories of stable (inf, 1)-categories."
+    },
+    {
+      "source": "GRAD_DERIVED_CAT",
+      "target": "CORE_BASE_FIBER",
+      "rationale": "The 5-term Grothendieck-Leray sequence comes from spectral sequences of derived functors."
+    },
+    {
+      "source": "GRAD_AFFINE_SCHEME",
+      "target": "GRAD_SCHEME",
+      "rationale": "General schemes are locally ringed spaces obtained by gluing affine schemes."
+    },
+    {
+      "source": "GRAD_AFFINE_SCHEME",
+      "target": "CORE_AXIS_4",
+      "rationale": "Delta-rings and Frobenius lifts operate natively on affine schemes and their rings."
+    },
+    {
+      "source": "GRAD_AFFINE_SCHEME",
+      "target": "WITNESS_2_R2_DUALINT",
+      "rationale": "Spec R_2 and Spec DualInt are concrete affine schemes exhibiting lift obstructions."
+    },
+    {
+      "source": "GRAD_SITE",
+      "target": "GRAD_GROTH_TOPOS",
+      "rationale": "A Grothendieck topos is the category of sheaves on a Grothendieck site."
+    },
+    {
+      "source": "GRAD_INTERNAL_LOGIC",
+      "target": "GRAD_REALIZABILITY_TOPOS",
+      "rationale": "Kripke-Joyal semantics generalize to realizability interpretation in Eff."
+    },
+    {
+      "source": "GRAD_INTERNAL_LOGIC",
+      "target": "CORE_AXIS_1",
+      "rationale": "Internal choice IAC is expressed directly in the internal Mitchell-Bénabou language."
+    },
+    {
+      "source": "GRAD_INTERNAL_LOGIC",
+      "target": "CORE_AXIS_2",
+      "rationale": "Omega-geometry determines the intuitionistic vs classical truth values internally."
+    },
+    {
+      "source": "GRAD_SCHEME",
+      "target": "CORE_RELATIVIZATION",
+      "rationale": "Relative schemes X -> S provide the geometric foundation for two-axis relativization and fibered category base-change."
+    },
+    {
+      "source": "GRAD_SCHEME",
+      "target": "ADV_NON_AC_LATTICES",
+      "rationale": "Schemes and locally ringed spaces provide geometric models for synthetic differential geometry (Lattice VI) and localic spectrum constructions."
+    },
+    {
+      "source": "GRAD_GROTH_TOPOS",
+      "target": "GRAD_INFINITY_CAT",
+      "rationale": "Grothendieck (inf, 1)-topoi are the higher-categorical generalization of Grothendieck topoi."
+    },
+    {
+      "source": "GRAD_GROTH_TOPOS",
+      "target": "CORE_TOPOS_RESIDUUM",
+      "rationale": "Geometric morphisms between Grothendieck topoi calibrate the relative pseudocomplement."
+    },
+    {
+      "source": "GRAD_GROTH_TOPOS",
+      "target": "CORE_RELATIVIZATION",
+      "rationale": "Base-topos variation relies on bounded geometric morphisms gamma: E -> S."
+    },
+    {
+      "source": "GRAD_GROTH_TOPOS",
+      "target": "WITNESS_1_T_ODD",
+      "rationale": "Nominal topos Nom is a Grothendieck topos of continuous G-sets."
+    },
+    {
+      "source": "GRAD_REALIZABILITY_TOPOS",
+      "target": "ADV_SITE_REALIZABILITY",
+      "rationale": "The effective topos Eff houses realizability residuums for WKL and FAN."
+    },
+    {
+      "source": "GRAD_INFINITY_CAT",
+      "target": "GRAD_STABLE_INFINITY",
+      "rationale": "Stable (inf, 1)-categories are (inf, 1)-categories with zero objects and exact triangles."
+    },
+    {
+      "source": "GRAD_INFINITY_CAT",
+      "target": "GRAD_COALGEBRA_BISIM",
+      "rationale": "Homotopy (-1)- and 0-truncations and loop groups pi_1(M, x) ~= Aut(x) require univalent (inf, 1)-categories."
+    },
+    {
+      "source": "GRAD_INFINITY_CAT",
+      "target": "CORE_AXIS_5",
+      "rationale": "Directional invertibility and cell stabilization operate in (inf, 1)-categories."
+    },
+    {
+      "source": "GRAD_INFINITY_CAT",
+      "target": "WITNESS_3_STEP_PROD_Q",
+      "rationale": "Step-product Q is an (inf, inf)-category constructed from globular and complicial nerves."
+    },
+    {
+      "source": "GRAD_INFINITY_CAT",
+      "target": "ADV_POSTNIKOV_CHOICE",
+      "rationale": "Higher choice AC_(n,m) is formulated across truncation levels in (inf, 1)-topoi."
+    },
+    {
+      "source": "GRAD_STABLE_INFINITY",
+      "target": "ADV_CATSP_SPECTRA",
+      "rationale": "Categorical spectra CatSp generalize stable homotopy theory to directed categories."
+    },
+    {
+      "source": "GRAD_CLASS_SET_THEORY",
+      "target": "CORE_AXIS_6",
+      "rationale": "Godel operations G1-G8 and weak subsystems (Mac, ZC, ZFC^-) motivate predicative AST ambients (C, S)."
+    },
+    {
+      "source": "GRAD_CLASS_SET_THEORY",
+      "target": "ADV_CLASS_FIBRATION_GC",
+      "rationale": "Two-sorted GB_0/GBC/NBG/KM hierarchies and Mac/ZC models underlie Def -| pi_Set and Glazer's non-conservativity."
+    },
+    {
+      "source": "GRAD_COALGEBRA_BISIM",
+      "target": "CORE_AXIS_7",
+      "rationale": "Initial algebras, terminal APG coalgebras, and (-1)-truncation directly define V_ZF = mu P_S, V_AFA = nu P_S, and V_0 -> mu P_Anima."
+    },
+    {
+      "source": "GRAD_COALGEBRA_BISIM",
+      "target": "ADV_BOFFA_ANIMA_TORSORS",
+      "rationale": "Distinguishing APG in-isomorphism fibers from maximum bisimulation classes separates Boffa's V_BAFA from Aczel's V_AFA."
+    },
+    {
+      "source": "CORE_CRM_PARADIGM",
+      "target": "CORE_DOCTRINE",
+      "rationale": "The CRM paradigm is formalized through the category of doctrines Doct."
+    },
+    {
+      "source": "CORE_DOCTRINE",
+      "target": "CORE_TRIPLE",
+      "rationale": "Comparison triples compare an ambient doctrine D_0 with a subdoctrine D_1."
+    },
+    {
+      "source": "CORE_TRIPLE",
+      "target": "CORE_RESIDUUM",
+      "rationale": "The residuum operator Res assigns an obstruction to each comparison triple."
+    },
+    {
+      "source": "CORE_RESIDUUM",
+      "target": "CORE_FUND_EQUIV",
+      "rationale": "The fundamental equivalence establishes D_0 + Res(kappa) <=> D_1."
+    },
+    {
+      "source": "CORE_FUND_EQUIV",
+      "target": "CORE_TOPOS_RESIDUUM",
+      "rationale": "Specializing the fundamental equivalence to topoi gives the relative pseudocomplement."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_1",
+      "rationale": "Axis I choice residua are computed via topos-logical relative pseudocomplements."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_2",
+      "rationale": "Axis II constructive logic residua classify subobject classifier degenerations."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_3",
+      "rationale": "Axis III arithmetic infinity residua measure finitary-to-infinitary doctrine gaps."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_4",
+      "rationale": "Axis IV characteristic residua measure Frobenius and delta-ring lift obstructions."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_5",
+      "rationale": "Axis V directional residua measure cell invertibility and stabilization barriers."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_6",
+      "rationale": "Axis VI calibrates small-map quotient-image descent im(f) in S as a doctrinal comparison residuum on (C, S)."
+    },
+    {
+      "source": "CORE_TOPOS_RESIDUUM",
+      "target": "CORE_AXIS_7",
+      "rationale": "Axis VII measures anti-cycle and anti-symmetry universe clamps via doctrinal comparison triples."
+    },
+    {
+      "source": "CORE_AXIS_1",
+      "target": "CORE_RELATIVIZATION",
+      "rationale": "Choice principles deform non-trivially when relativized over non-AC base topoi."
+    },
+    {
+      "source": "CORE_AXIS_1",
+      "target": "WITNESS_1_T_ODD",
+      "rationale": "Witness I provides the canonical countermodel to epimorphism splitting."
+    },
+    {
+      "source": "CORE_AXIS_1",
+      "target": "ADV_NON_AC_LATTICES",
+      "rationale": "Non-AC lattices measure the strength of theorems when Axis I choice is dropped."
+    },
+    {
+      "source": "CORE_AXIS_1",
+      "target": "ADV_POSTNIKOV_CHOICE",
+      "rationale": "Higher choice AC_(n,m) generalizes Axis I choice to higher homotopy levels."
+    },
+    {
+      "source": "CORE_AXIS_1",
+      "target": "ADV_CHOICE_ATLAS",
+      "rationale": "The Choice-Geometry Residuum Atlas unifies all Axis I choice results."
+    },
+    {
+      "source": "CORE_AXIS_1",
+      "target": "ADV_CLASS_FIBRATION_GC",
+      "rationale": "Splitting the large skeletal inclusion Card -> Set shifts Axis I equivalence-splitting one universe upward to Global Choice."
+    },
+    {
+      "source": "CORE_AXIS_2",
+      "target": "CORE_RELATIVIZATION",
+      "rationale": "Base-topos logic deforms fiber subobject classifier geometries."
+    },
+    {
+      "source": "CORE_AXIS_2",
+      "target": "WITNESS_1_T_ODD",
+      "rationale": "Witness I separates two-valuedness Sub(1) = 2 from external projectivity."
+    },
+    {
+      "source": "CORE_AXIS_2",
+      "target": "ADV_NON_AC_LATTICES",
+      "rationale": "Intermediate logics and pointfree topologies form core non-AC lattices."
+    },
+    {
+      "source": "CORE_AXIS_2",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Classical Boolean clamping 1 + 1 -> Omega closes the constructive Omega^X / 2^X gap in double-clamped Set_ZFC."
+    },
+    {
+      "source": "CORE_AXIS_3",
+      "target": "WITNESS_3_STEP_PROD_Q",
+      "rationale": "Witness III step-product relies on rank-omega infinite product towers."
+    },
+    {
+      "source": "CORE_AXIS_3",
+      "target": "WITNESS_5_Q_E0_UHF",
+      "rationale": "Witness V Cantor tail quotient Q_E0 originates from biproduct-tail cokernels."
+    },
+    {
+      "source": "CORE_AXIS_3",
+      "target": "ADV_NON_AC_LATTICES",
+      "rationale": "Categorical Big Five and W-types depend on arithmetic infinity calibrations."
+    },
+    {
+      "source": "CORE_AXIS_3",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Smallness of the natural numbers object N in S supplies the arithmetic infinity clamp in Set_ZFC."
+    },
+    {
+      "source": "CORE_AXIS_4",
+      "target": "CORE_AXIS_7",
+      "rationale": "Lambek's Lemma (lambek_isIso from Chapter 3 Section 3.7) underpins the structural membership isomorphisms on mu P_S and nu P_S."
+    },
+    {
+      "source": "CORE_AXIS_4",
+      "target": "WITNESS_2_R2_DUALINT",
+      "rationale": "Witness II anchors Axis IV delta-ring lift torsors and slice perfection."
+    },
+    {
+      "source": "CORE_AXIS_4",
+      "target": "WITNESS_4_FACET_CYCLE",
+      "rationale": "Witness IV directed facet cycles erect combinatorial characteristic obstructions."
+    },
+    {
+      "source": "CORE_AXIS_5",
+      "target": "WITNESS_3_STEP_PROD_Q",
+      "rationale": "Witness III provides the primary non-invertible higher category phantom."
+    },
+    {
+      "source": "CORE_AXIS_5",
+      "target": "WITNESS_4_FACET_CYCLE",
+      "rationale": "Witness IV establishes the non-invertible directed cubical amalgamation obstruction."
+    },
+    {
+      "source": "CORE_AXIS_5",
+      "target": "WITNESS_5_Q_E0_UHF",
+      "rationale": "Witness V models smooth 4-manifold directional end-quotients."
+    },
+    {
+      "source": "CORE_AXIS_5",
+      "target": "ADV_POSTNIKOV_CHOICE",
+      "rationale": "Higher cell invertibility governs Postnikov stepwise gerbe vanishing."
+    },
+    {
+      "source": "CORE_AXIS_5",
+      "target": "ADV_INFTY_INFTY_LADDER",
+      "rationale": "Axis V directional invertibility stratifies the four-tier (inf, inf)-ladder."
+    },
+    {
+      "source": "CORE_AXIS_5",
+      "target": "ADV_BOFFA_ANIMA_TORSORS",
+      "rationale": "Higher groupoid loop groups Omega(nu P_Anima, [q, q]) ~= Z/2Z directly unite Axis V with Axis VII."
+    },
+    {
+      "source": "CORE_RELATIVIZATION",
+      "target": "CORE_BASE_FIBER",
+      "rationale": "Two-axis relativization provides the framework for base-fiber conservation."
+    },
+    {
+      "source": "CORE_BASE_FIBER",
+      "target": "WITNESS_5_Q_E0_UHF",
+      "rationale": "Witness V exhibits the non-splitting light condensed class Ext^1_CondAb."
+    },
+    {
+      "source": "CORE_BASE_FIBER",
+      "target": "ADV_DOUBLE_SOLVENT",
+      "rationale": "Double-Solvent Theorem applies base-fiber conservation to 4-manifold smoothings."
+    },
+    {
+      "source": "CORE_BASE_FIBER",
+      "target": "ADV_CLASS_FIBRATION_GC",
+      "rationale": "Base-Fiber Conservation explains why Felgner L_in-conservativity over ZFC shatters into Glazer's leak when Replacement is dropped."
+    },
+    {
+      "source": "CORE_AXIS_6",
+      "target": "CORE_AXIS_7",
+      "rationale": "Axis VI direct-image descent exists_g promotes P_S to the covariant endofunctor whose fixed points mu P_S and nu P_S define Axis VII."
+    },
+    {
+      "source": "CORE_AXIS_6",
+      "target": "ADV_CLASS_FIBRATION_GC",
+      "rationale": "Failure of Axis VI Replacement in V_(omega+omega) precipitates countable colimit escape and breaks class-to-set flatness."
+    },
+    {
+      "source": "CORE_AXIS_6",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Axis VI image descent and Power Set form the upper size-compression clamps and frame the Borel determinacy pincer."
+    },
+    {
+      "source": "CORE_AXIS_7",
+      "target": "ADV_BOFFA_ANIMA_TORSORS",
+      "rationale": "Relaxing Aczel bisimulation and (-1)-truncation along Axis VII uncovers Boffa Quine torsors and nu P_Anima loop fossils."
+    },
+    {
+      "source": "CORE_AXIS_7",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Axis VII Foundation (mu P_S ~= nu P_S) and hereditary (-1)-truncation form the lower structural clamps of Set_ZFC."
+    },
+    {
+      "source": "WITNESS_1_T_ODD",
+      "target": "ADV_CHOICE_ATLAS",
+      "rationale": "T_odd is the primary witness in the Choice-Geometry Residuum Atlas."
+    },
+    {
+      "source": "WITNESS_1_T_ODD",
+      "target": "ADV_SITE_REALIZABILITY",
+      "rationale": "Nominal parity cohomology anchors Kihara's atomic choice spectrum."
+    },
+    {
+      "source": "WITNESS_1_T_ODD",
+      "target": "ADV_BOFFA_ANIMA_TORSORS",
+      "rationale": "Rieger-Bernays permutations of infinite Quine atoms Q_0 realize Cont(Sym(Q_0)) ~= Nom with slice twin [Q_0^(2)] and parity [T_odd(Q_0)] torsors."
+    },
+    {
+      "source": "WITNESS_2_R2_DUALINT",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "R_2 and DualInt are formally verified in DeltaRingPerfection.lean."
+    },
+    {
+      "source": "WITNESS_3_STEP_PROD_Q",
+      "target": "ADV_INFTY_INFTY_LADDER",
+      "rationale": "The step-product phantom refutes Conjecture C1 and separates Tier 1 from Tier 2."
+    },
+    {
+      "source": "WITNESS_4_FACET_CYCLE",
+      "target": "ADV_CUBICAL_AMALGAMATION",
+      "rationale": "F_n cycles prove the cubical n >= 3 disjoint amalgamation impossibility."
+    },
+    {
+      "source": "WITNESS_5_Q_E0_UHF",
+      "target": "ADV_DOUBLE_SOLVENT",
+      "rationale": "Q_E0 and UHF(2^inf) form the core invariant of the Double-Solvent Theorem."
+    },
+    {
+      "source": "WITNESS_5_Q_E0_UHF",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Cantor space 2^N Borel complexity connects H(aleph_1) pointillist continuum failure to Martin's proper-class unraveling coalgebra."
+    },
+    {
+      "source": "ADV_NON_AC_LATTICES",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "Non-AC continuum and exactness theorems ground Lean formalization checks."
+    },
+    {
+      "source": "ADV_POSTNIKOV_CHOICE",
+      "target": "ADV_CORE_CONJECTURES",
+      "rationale": "Higher choice bounds establish Core Conjecture 4 (Postnikov Stepwise)."
+    },
+    {
+      "source": "ADV_CHOICE_ATLAS",
+      "target": "ADV_CORE_CONJECTURES",
+      "rationale": "The choice atlas grounds Core Conjectures 1, 2, and 3."
+    },
+    {
+      "source": "ADV_CHOICE_ATLAS",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "Choice residuums are formalized in NominalSimplicity and InfinityResiduum."
+    },
+    {
+      "source": "ADV_SITE_REALIZABILITY",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "Atomic choice and Fraïssé topoi open Horizons III and IV (Problems 8.5-8.8)."
+    },
+    {
+      "source": "ADV_INFTY_INFTY_LADDER",
+      "target": "ADV_CATSP_SPECTRA",
+      "rationale": "Stabilization in CatSp is defined across the four tiers of the ladder."
+    },
+    {
+      "source": "ADV_INFTY_INFTY_LADDER",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "The 4-tier ladder and step-product are formalized in StepProductPhantom.lean."
+    },
+    {
+      "source": "ADV_INFTY_INFTY_LADDER",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "The four-tier (inf, inf)-localization ladder directly grounds Open Problems 8.11 (Horizon VI) and 8.16 (Horizon VIII class calibration)."
+    },
+    {
+      "source": "ADV_CUBICAL_AMALGAMATION",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "Cubical amalgamation walls are formalized in CubicalAmalgamation.lean."
+    },
+    {
+      "source": "ADV_CUBICAL_AMALGAMATION",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "Cubical phase transitions open Open Problems 8.7 and 8.8."
+    },
+    {
+      "source": "ADV_CORE_CONJECTURES",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "The 5 core conjectures define the theoretical targets for the 17 open problems."
+    },
+    {
+      "source": "ADV_CATSP_SPECTRA",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "CatSp stabilization barriers lead directly to Open Problem 8.12."
+    },
+    {
+      "source": "ADV_DOUBLE_SOLVENT",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "Double-Solvent invariants are formally verified in BorelTailResiduum.lean."
+    },
+    {
+      "source": "ADV_DOUBLE_SOLVENT",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "Double-Solvent bounds lead directly to Open Problem 8.13 (exotic R^4 moduli)."
+    },
+    {
+      "source": "ADV_CLASS_FIBRATION_GC",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Combining upper/lower ZFC clamps with Card -> Set equivalence-splitting pins down the NBG class envelope and Classical.choice gate."
+    },
+    {
+      "source": "ADV_CLASS_FIBRATION_GC",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "Vertical class hierarchies and pi_Set non-conservativity pose Open Problems 8.16 and 8.17 in Horizon VIII."
+    },
+    {
+      "source": "ADV_BOFFA_ANIMA_TORSORS",
+      "target": "ADV_DOUBLE_CLAMPED_SETS",
+      "rationale": "Quotienting Boffa twin torsors and multiset loop groups maps directly to Lean's propext + Quot.sound ZFSet quotient gate."
+    },
+    {
+      "source": "ADV_BOFFA_ANIMA_TORSORS",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "Decalage from terminal univalent multisets nu P_Anima to Rieger-Bernays permutation topoi forms Open Problem 8.17."
+    },
+    {
+      "source": "ADV_DOUBLE_CLAMPED_SETS",
+      "target": "ADV_HOMOTOPY_CRM",
+      "rationale": "Chapter 7's universe clamps are machine-checked in the tenth production module HomotopyCRM/SetsResiduum.lean (994 lines, 16 checks)."
+    },
+    {
+      "source": "ADV_DOUBLE_CLAMPED_SETS",
+      "target": "ADV_OPEN_HORIZONS",
+      "rationale": "Martin's proper-class Borel unraveling coalgebra and double-clamped scale-invariance launch Horizon VIII (Problems 8.15-8.17)."
+    },
+    {
+      "source": "ADV_HOMOTOPY_CRM",
+      "target": "ADV_EPILOGUE_SYNTHESIS",
+      "rationale": "Formal verification provides the verified foundation for the Epilogue Thesis."
+    },
+    {
+      "source": "ADV_OPEN_HORIZONS",
+      "target": "ADV_EPILOGUE_SYNTHESIS",
+      "rationale": "The open research horizons complete the master synthesis of CRM."
+    }
+  ]
+}
