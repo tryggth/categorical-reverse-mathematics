@@ -977,10 +977,10 @@
     },
     {
       "id": "CORE_AXIS_7",
-      "label": "Axis VII: Foundation vs. Anti-Foundation (mu P_S -> nu P_S)",
+      "label": "Axis VII: Foundation vs. Anti-Foundation (Coalg_wf -> Coalg)",
       "stage": "stage_core",
       "cluster": "residuum_axes",
-      "description": "Axis VII comparison kappa_Reg : mu P_S -> nu P_S separating well-founded V_ZF from Aczel's V_AFA (Quine atom q = {q}), Friedman's IZF_non-ext quotient cost, and Gylterud's hereditary (-1)-truncation V_0 -> mu P_Anima.",
+      "description": "Axis VII coalgebra-doctrine comparison Coalg_wf(P_S) -> Coalg(P_S) inducing strict kappa_Reg : nu^wf P_S ~= mu P_S -> nu P_S (separating well-founded V_ZF from Aczel's V_AFA and Quine atom q = {q}), Friedman's IZF_non-ext quotient cost, and Gylterud's hereditary (-1)-truncation V_0 -> mu P_Anima.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
         "C152",
@@ -2115,7 +2115,7 @@
     {
       "source": "CORE_AXIS_7",
       "target": "ADV_DOUBLE_CLAMPED_SETS",
-      "rationale": "Axis VII Foundation (iota_V : mu P_S ~= V inside mu P_S < nu P_S) and hereditary (-1)-truncation form the lower structural clamps of Set_ZFC."
+      "rationale": "Axis VII Foundation (Coalg_wf(P_S) -> Coalg(P_S) with nu^wf P_S ~= mu P_S < nu P_S) and hereditary (-1)-truncation form the lower structural clamps of Set_ZFC."
     },
     {
       "source": "WITNESS_1_T_ODD",

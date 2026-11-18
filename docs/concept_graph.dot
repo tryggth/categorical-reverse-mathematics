@@ -75,7 +75,7 @@ digraph CRM_Concept_Curriculum {
         "CORE_RELATIVIZATION" [label="Two-Axis Relativization Framework", fillcolor="#E8F5E9", color="#388E3C", penwidth=1.5];
         "CORE_BASE_FIBER" [label="Base-Fiber Conservation Principle", fillcolor="#E8F5E9", color="#388E3C", penwidth=1.5];
         "CORE_AXIS_6" [label="Axis VI: Quotient-Image Descent & Small-Map AST (C, S)", fillcolor="#E8F5E9", color="#388E3C", penwidth=1.5];
-        "CORE_AXIS_7" [label="Axis VII: Foundation vs. Anti-Foundation (mu P_S -> nu P_S)", fillcolor="#E8F5E9", color="#388E3C", penwidth=1.5];
+        "CORE_AXIS_7" [label="Axis VII: Foundation vs. Anti-Foundation (Coalg_wf -> Coalg)", fillcolor="#E8F5E9", color="#388E3C", penwidth=1.5];
     }
 
     subgraph cluster_stage_witness {
