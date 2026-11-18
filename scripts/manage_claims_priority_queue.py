@@ -76,8 +76,8 @@ AXIS_LABELS: dict[str, str] = {
 }
 
 P0_ISSUES = [90, 87, 92]
-P1_ISSUES = [8, 56, 57, 58, 6, 7, 10, 17, 141, 140]
-P2A_ISSUES = [2, 4, 12, 20]
+P1_ISSUES = [8, 56, 57, 58, 6, 7, 10, 17, 141, 140, 156, 159]
+P2A_ISSUES = [2, 4, 12, 20, 148, 149, 155]
 P2B_ISSUES = [
     38, 44, 45, 46, 51, 54, 72, 77, 91, 94, 95, 102, 111, 117,
     120, 121, 122, 123, 124, 125, 128, 129, 130, 131, 132, 133,
@@ -87,11 +87,12 @@ P2C_ISSUES = [
     75, 76, 81, 82, 83, 84, 85, 86, 88, 89, 93, 96, 97, 99, 100, 101, 103,
     104, 105, 107, 108, 109, 110, 112, 113, 114, 115, 116, 118, 119, 126,
     127, 134, 135,
+    157, 158, 163, 164, 165, 166, 167, 168, 170, 171, 172, 173, 174, 175, 176, 177,
 ]
-P3A_ISSUES = [78, 136, 37, 49, 50, 48, 47, 5, 3, 79, 13, 1]
-P3B_ISSUES = [14, 60, 15, 9, 16, 18, 19, 106, 11, 53, 80]
+P3A_ISSUES = [78, 136, 37, 49, 50, 48, 47, 5, 3, 79, 13, 1, 153, 154]
+P3B_ISSUES = [14, 60, 15, 9, 16, 18, 19, 106, 11, 53, 80, 150, 151, 169, 152]
 P3C_ISSUES = [21, 22, 43, 40, 41, 138, 42, 139, 137, 98, 142]
-P4_ISSUES = [29, 33, 28, 34, 24, 35, 23, 25, 26, 27, 30, 31, 32, 36]
+P4_ISSUES = [29, 33, 28, 34, 24, 35, 23, 25, 26, 27, 30, 31, 32, 36, 160, 161, 162]
 
 BASE_TIER_DEFINITIONS: list[tuple[str, str, list[int]]] = [
     ("P0", "priority: P0", P0_ISSUES),
@@ -210,10 +211,11 @@ def extract_claim_id(issue: dict) -> str | None:
 
 
 def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
-    """Build deterministic rank table for #1..#142 plus any follow-up tickets (#143+)."""
+    """Build deterministic rank table for static base issues (#1..#142 + Ch. 7 #148..#177) plus spawned follow-ups."""
     base_got = [num for _, _, nums in BASE_TIER_DEFINITIONS for num in nums]
-    if len(base_got) != 142 or set(base_got) != set(range(1, 143)):
-        raise AssertionError("BASE_TIER_DEFINITIONS must form a bijection onto #1..#142.")
+    expected_static = set(range(1, 143)) | set(range(148, 178))
+    if len(base_got) != len(expected_static) or set(base_got) != expected_static:
+        raise AssertionError("BASE_TIER_DEFINITIONS must form a bijection onto #1..#142 ∪ #148..#177.")
 
     extra_by_prio: dict[str, list[int]] = {p: [] for p in PRIORITY_LABELS}
     p3a_after_5: list[int] = []
@@ -223,7 +225,7 @@ def build_rank_map(issues_by_num: dict[int, dict] | None = None) -> list[dict]:
 
     if issues_by_num:
         for num in sorted(issues_by_num):
-            if num <= 142:
+            if num in expected_static:
                 continue
             issue = issues_by_num[num]
             cid = extract_claim_id(issue) or ""
