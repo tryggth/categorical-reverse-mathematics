@@ -2115,7 +2115,7 @@
     {
       "source": "CORE_AXIS_7",
       "target": "ADV_DOUBLE_CLAMPED_SETS",
-      "rationale": "Axis VII Foundation (mu P_S ~= nu P_S) and hereditary (-1)-truncation form the lower structural clamps of Set_ZFC."
+      "rationale": "Axis VII Foundation (iota_V : mu P_S ~= V inside mu P_S < nu P_S) and hereditary (-1)-truncation form the lower structural clamps of Set_ZFC."
     },
     {
       "source": "WITNESS_1_T_ODD",

@@ -4,7 +4,7 @@
 > **Monograph:** *Categorical Reverse Mathematics with Applications: The Structure of Necessity*  
 > **Author:** James F. Walters, *Port Townsend, Washington*  
 > **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
-> **Source:** `docs/categorical_reverse_mathematics.tex` (Lines 568–2918) & `docs/ch07_sets_residuum.tex` (Lines 1–377, included at Line 2682)  
+> **Source:** `docs/categorical_reverse_mathematics.tex` (Lines 568–2918) & `docs/ch07_sets_residuum.tex` (Lines 1–387, included at Line 2682)  
 > **Text Boundary Constraint:** Strictly Chapter 1 onward (`docs/categorical_reverse_mathematics.tex` Line 568+). Zero concepts from frontmatter/preface/glossary (Lines 1–567).  
 
 ---
@@ -1293,8 +1293,8 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 153 | **Boffa Hypersets ($V_{\mathsf{BAFA}}$) and Rieger--Bernays Slice vs. Global Torsors** | Chapter 7, §7.4, Proposition 7.4.2 (`prop:boffa-torsors`), `ch07_sets_residuum.tex` lines 256–273 | `ch07_sets_residuum.tex:256` | Chapter 7 |
 | 154 | **Material Extensionality, Quotient Cost, and Hereditary $(-1)$-Truncation ($V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$)** | Chapter 7, §7.4, Proposition 7.4.3 (`prop:extensionality-truncation`), `ch07_sets_residuum.tex` lines 277–290 | `ch07_sets_residuum.tex:277` | Chapter 7 |
 | 155 | **Non-Well-Founded Univalent Multisets ($\nu\mathcal{P}_{\mathrm{Anima}}$) and Master AST Residuum Ledger** | Chapter 7, §7.4, Remark 7.4.4 (`rem:nu-anima-fossil`) & Table 7.2 (`tab:master-ast-ledger`), `ch07_sets_residuum.tex` lines 292–316 | `ch07_sets_residuum.tex:292` | Chapter 7 |
-| 156 | **Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$** | Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 322–341 | `ch07_sets_residuum.tex:322` | Chapter 7 |
-| 157 | **Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`** | Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 343–365 | `ch07_sets_residuum.tex:343` | Chapter 7 |
+| 156 | **Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$** | Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 322–351 | `ch07_sets_residuum.tex:322` | Chapter 7 |
+| 157 | **Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`** | Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 353–375 | `ch07_sets_residuum.tex:353` | Chapter 7 |
 | 158 | **Unified CRM Residuum Operator Across Doctrinal Triples** | Chapter 8, Section 8.1, Paragraph 1, lines 2691–2695 | `2691` | Chapter 8 |
 | 159 | **Categorical Residuum as Relative Pseudocomplement** | Chapter 8, Section 8.1, Paragraph 1, lines 2695–2701 | `2695` | Chapter 8 |
 | 160 | **Admissibility Criterion (Four Structural Invariant Families)** | Chapter 8, Section 8.1, Paragraph 2 and Itemize, lines 2703–2715 | `2703` | Chapter 8 |
@@ -2575,7 +2575,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `ch07_sets_residuum.tex:238`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
-  In a Barr-exact AST ambient $(\mathcal{C}, \mathcal{S})$ with $\mathbb{N} \in \mathcal{S}$, Small Union, and Axis VI image descent, **Axis VII** identifies well-founded $V_{\mathsf{ZF}} \cong \mu\mathcal{P}_{\mathcal{S}}$ and Aczel's Anti-Foundation universe $V_{\mathsf{AFA}} \cong \nu\mathcal{P}_{\mathcal{S}}$ (quotienting small-branching APGs by maximum bisimulation) via the monomorphism $\kappa_{\mathrm{Reg}} : \mu\mathcal{P}_{\mathcal{S}} \hookrightarrow \nu\mathcal{P}_{\mathcal{S}}$, whose residuum $\nu\mathcal{P}_{\mathcal{S}} \setminus \mu\mathcal{P}_{\mathcal{S}}$ is anchored by the unique Quine atom $q = \{q\}$.
+  In a non-degenerate ($0 \not\cong 1$) Barr-exact AST ambient $(\mathcal{C}, \mathcal{S})$ with $\mathbb{N} \in \mathcal{S}$, Small Union, and Axis VI image descent, **Axis VII** identifies well-founded $V_{\mathsf{ZF}} \cong \mu\mathcal{P}_{\mathcal{S}}$ and Aczel's Anti-Foundation universe $V_{\mathsf{AFA}} \cong \nu\mathcal{P}_{\mathcal{S}}$ via the strict monomorphism $\kappa_{\mathrm{Reg}} : \mu\mathcal{P}_{\mathcal{S}} \hookrightarrow \nu\mathcal{P}_{\mathcal{S}}$ (whose residuum $\nu\mathcal{P}_{\mathcal{S}} \setminus \mu\mathcal{P}_{\mathcal{S}}$ is anchored by $q = \{q\}$), while for any membership fixed point $(V, \mathrm{ext})$ factoring $\mu\mathcal{P}_{\mathcal{S}} \xhookrightarrow{\iota_V} V \xrightarrow{q_V} \nu\mathcal{P}_{\mathcal{S}}$, Foundation holds on $(V, \in)$ iff $\iota_V : \mu\mathcal{P}_{\mathcal{S}} \xrightarrow{\sim} V$ is an isomorphism.
 
 ##### Concept 153: Boffa Hypersets ($V_{\mathsf{BAFA}}$) and Rieger--Bernays Slice vs. Global Torsors
 
@@ -2603,16 +2603,16 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 
 ##### Concept 156: Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$
 
-- **Location Reference:** Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 322–341
+- **Location Reference:** Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 322–351
 - **LaTeX Source Line:** `ch07_sets_residuum.tex:322`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
-  Establishes reflexive scale-invariance $\mathrm{Res}_{\mathsf{Set}} = \mathrm{Res}_{\mathrm{CRM}}|_{V \in (\mathcal{C}_\infty, \mathcal{S}_\infty)}$: classical $\mathbf{Set}_{\mathsf{ZFC}}$ is carved out inside an unconstrained $(\infty, 1)$-categorical class-anima ambient $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ as the double-clamped vanishing locus pinching upper existence/logic compressions ($\mathbb{N} \in \mathcal{S}$, $1+1 \xrightarrow{\sim} \Omega$, $\mathcal{P}_{\mathcal{S}}(\mathcal{S}) \subseteq \mathcal{S}$, $\mathrm{im}(f) \in \mathcal{S}$, $\mathrm{AC}_{\mathcal{S}}$, plus $\mathbf{Card} \hookrightarrow \mathbf{Set}$ for $\mathsf{NBG}$) against lower structural truncations ($\mu\mathcal{P}_{\mathcal{S}} \xrightarrow{\sim} \nu\mathcal{P}_{\mathcal{S}}$ and hereditary $(-1)$-truncation $V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$).
+  Proves reflexive scale-invariance $\mathrm{Res}_{\mathsf{Set}} = \mathrm{Res}_{\mathrm{CRM}}|_{V \in (\mathcal{C}_\infty, \mathcal{S}_\infty)}$ over a lextensive $(\infty, 1)$-pretopos $(\mathcal{C}_\infty, \mathcal{S}_\infty)$: (i) the five upper clamps ($\mathbb{N} \in \mathcal{S}$, $1+1 \xrightarrow{\sim} \Omega$, $\mathcal{P}_{\mathcal{S}}(\mathcal{S}) \subseteq \mathcal{S}$, Axis VI $\mathrm{im}(f) \in \mathcal{S}$, $\mathrm{IAC}_{\mathcal{S}}$) plus the two lower clamps (hereditary $(-1)$-truncation $V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$ and Foundation $\iota_V : \mu\mathcal{P}_{\mathcal{S}} \xrightarrow{\sim} V$ inside $\mu\mathcal{P}_{\mathcal{S}} \subsetneq \nu\mathcal{P}_{\mathcal{S}}$) force $\mathcal{E}_{\mathcal{S}} \simeq \mathbf{El}(V)$ via Mostowski collapse, $\mathcal{C} \models ((V, \in) \models \mathsf{ZFC})$, and $(V, \mathrm{Sub}_{\mathcal{C}}(V)) \models \mathsf{GBC}$ ($\mathsf{NBG}$ iff $\mathbf{Card}(V) \hookrightarrow \mathbf{El}(V)$ splits); (ii) $\mathcal{E}_{\mathcal{S}}$ pinches externally to well-pointed $\mathbf{Set}_{\mathsf{ZFC}}$ iff $\mathrm{Sub}_{\mathcal{C}}(1) \cong \{0, 1\}$ and $1$ is externally projective (separated by Boolean-valued $\mathbf{Sh}(B)$ and $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$).
 
 ##### Concept 157: Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`
 
-- **Location Reference:** Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 343–365
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:343`
+- **Location Reference:** Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 353–375
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:353`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Maps the double-clamped geometry of $\mathbf{Set}_{\mathsf{ZFC}}$ onto Lean 4's `#print axioms` audit gate in `HomotopyCRM/SetsResiduum.lean` (994 lines, 16 checks): separating axiom-free cores (`card_split_iff_global_choice`, `pset_equiv_iff_bisimilar`, `quine_atom_outside_wf`, `boffa_twin_torsor`) from `Classical.choice` functorial skeleton splitting (`type_equiv_splitting_global_choice`) and the Choice-free `[propext, Quot.sound]` extensional quotient gate (`zfset_ext_quot_gate`, `boffa_twin_addTorsor`).
