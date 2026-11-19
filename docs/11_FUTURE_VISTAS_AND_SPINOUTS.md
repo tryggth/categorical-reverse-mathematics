@@ -205,3 +205,63 @@ This companion research ledger records concrete multi-phase mathematical attack 
    - Develop a purely elementary higher-categorical axiomatization of $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ over an $(\infty, 1)$-pretopos equipped with a representable class of small maps $\mathcal{S}_\infty$ (extending `[JoyalMoerdijk95]` and Awodey--Warren / van den Berg--Moerdijk homotopy AST without appealing to external Grothendieck universes $\mathcal{U}_0 \in \mathcal{U}_1$ in `[Lurie09]`, §6.1.6), proving internal $(\infty, 1)$-descent and $W$-type existence for $M = \mu\mathcal{P}_{\mathrm{Anima}}$ from predication and Axis VI image descent alone.
 3. **Phase 3 — Functorial Base-Change Covariance Along AST Morphisms:**
    - Prove that logical small-map morphisms $(F, \varphi) : (\mathcal{C}, \mathcal{S}) \to (\mathcal{C}', \mathcal{S}')$ (and their Volume II higher analogues) induce natural transformations across all seven universe-clamp comparison triples $\mathfrak{T}_A \in \mathrm{Dom}(\mathrm{Res})$, connecting `thm:scale-invariance(iii)` directly to the Leray transgression differential on $\pi_{\mathrm{Set}}$ (`prob:open-17`).
+
+
+---
+
+## 8. Stratified Double-Categorical Admissibility and $\mathrm{Obstr}$ (`prob:open-1` & `ProbeSuite.lean`)
+
+### 8.1 Six Obstructions to a Monolithic $2$-Functor / $\mathbf{LTT}$ Quotient
+Deep red-team analysis of Problem 8.1 (`prob:open-1`, Chapter 8 §8.4, `docs/categorical_reverse_mathematics.tex#L2767`) shows why neither a single global $2$-functor $\mathrm{Res} : \mathbf{Doct}^{\mathrm{op}} \to \mathbf{Obstr}$ nor a universal quotient of $\mathbf{LTT}(\mathcal{E})$ can serve as a one-size-fits-all residuum calculus:
+1. **Multi-Dimensional Pareto Frontiers:** Even over Boolean Grothendieck topoi, $(A \Rightarrow_{\mathbf{Topos}} B)$ splits into incomparable geometric trade-offs (e.g., balancing localicity against cohomological vanishing, or Axis III finiteness against Axis I choice) admitting no canonical single minimum.
+2. **Mixed Base--Fiber Variance & Non-Duality:** Base change along geometric morphisms $\gamma : \mathcal{E} \to \mathcal{S}$ mixes covariant and contravariant functoriality; analogously, in higher algebraic K-theory / motives, Lehner (2026) proves non-duality $\mathcal{U}_{\mathrm{loc}}(\mathcal{C}) \not\simeq \mathcal{U}_{\mathrm{loc}}(\mathcal{C}^{\mathrm{op}})$ on localizing motives $\mathbf{Mot}_{\mathrm{loc}}$, refuting naive opposite-invariant functoriality.
+3. **The Triviality Trap on Universal Quotients:** Assigning $X \mapsto \kappa_X$ natively inside an ambient lattice collapses $(A \Rightarrow_{\mathbf{Topos}} B)$ into the tautological material implication $A \to B$ unless structural admissibility excludes syntactic encodings.
+4. **Anchor Blindness & Morphism-Class Sensitivity:** Coarse invariants cannot distinguish morphism classes that separate concrete witnesses (e.g., `IsClosedEmbedding` $\supsetneq$ `IsFlowReachReflecting` $\supsetneq$ `IsFlowConvex` on the directed $n \ge 3$ cubical obstruction $F_3 \to *$ in `HomotopyCRM/DirectedFraisseSAP.lean` and `CubicalAmalgamation.lean`).
+5. **$\mathbf{LTT}$ Limitations:** Lawvere--Tierney subtopos topologies $j : \Omega \to \Omega$ capture only $j$-hereditary sheaf reflections inside a fixed elementary topos; they miss cotopological hypercompletions (non-hypercomplete $(\infty, 1)$-topoi), non-topos axes (Joyal $\delta$-rings, $\mathrm{CatSp}$, $\mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$), and anti-classical non-$j$-hereditary principles ($\mathrm{CT}$).
+6. **Non-Compact Generation & Reflection Walls:** In non-presentable or large-cardinal settings, Ramzi (2026) establishes non-compact generation of $\mathbf{Mot}_{\mathrm{loc}}$, while Bagaria--Casacuberta--Mathias--Rosický expose Levy and Vopěnka reflection walls obstructing small-accessible localization presentations without large-cardinal axioms.
+
+### 8.2 Three Regime Architectures & Double-Categorical Mate Synthesis (Volume II Roadmap)
+To bypass these six obstructions, Volume II organizes admissibility by doctrinal regime rather than a monolithic target:
+- **Regime 1 (KZ-Doctrines & Kan Injectivity):** Di Liberti--Tarantino--Ye (2025/2026) model logical interpolation and doctrinal extensions via KZ-doctrines, Kan-injectivity orthogonality, and categorical Craig interpolation theorems, governing Axes I–II and hyperdoctrine transitions.
+- **Regime 2 (Rigid Dualizable & Prestable Motives):** Efimov (2024/2025) isolates rigid dualizable and prestable categories where localizing invariants and K-theoretic phantoms remain controlled without compact generation.
+- **Regime 3 (Extended Weihrauch Triposes):** Kihara (`[Kihara23]`) proves $\mathbf{LTT}(\mathbf{Eff}) \cong \mathcal{W}_{\mathrm{gen,ext}}$ (with $\cap$-preserving and $(\cup, \cap)$-preserving sublattices), paired with Maschio--Trotta (`[MaschioTrotta26]`) constructing the extended Weihrauch tripos $\mathsf{eW}$ whose topos $\mathbf{EW}[\mathcal{A}, \mathcal{A}']$ recovers relative realizability topoi as $\mathbf{Sh}_j$.
+- **Stratified Probe Suites & Double-Categorical Mates:** Using Haugseng--Hebestreit–Linskens–Nuiten (2023) curved orthofibrations and adequate triples for mixed variance, evaluate comparison triples $\mathfrak{T}$ against explicit **Structural Probe Suites** $\mathcal{P}$ via double-categorical mate squares, extracting minimal **Pareto residuum frontiers** $\mathrm{Res}_{\mathcal{P}}^{\min}(\mathfrak{T})$ rather than single universal objects.
+- **4-Stage `HomotopyCRM/ProbeSuite.lean` Plan:**
+  1. *Stage 1:* Formalize finite probe suites `ProbeSuite`, orthofibration mate squares, and the Pareto minimality order `Res_P^{min}` over finite lattices (`0` axioms / `[propext, Quot.sound]`).
+  2. *Stage 2:* Instantiate `ProbeSuite` on the 4-tier $(\infty, \infty)$-ladder (`OrdinalRankCompleteness.lean`), $F_3 \to *$ flow-convexity classes (`DirectedFraisseSAP.lean`), and finite $\delta$-ring lift torsors ($R_2$).
+  3. *Stage 3:* Mechanize the Triviality Trap separation (Layer-2 witness showing syntactic $A \to B$ fails orthogonality to $\mathcal{P}$).
+  4. *Stage 4:* Formalize finite sublattice embeddings modeling Kihara's $\cap$-preserving / $(\cup, \cap)$-preserving cutoffs in finite Heyting frames.
+
+---
+
+## 9. Two-Level Leray Transgression Carrier on $\pi_{\mathrm{Set}}$ Without Model Fibrations (`prob:open-17`)
+
+### 9.1 Three Model-Space Breakdowns & Three Homological Traps
+Because `naive_pullback_breaks_subclass_separation` (`HomotopyCRM/SetsResiduum.lean`, Definition 7.1.1) shows $\pi_{\mathrm{Set}} : \mathbf{Mod}(\mathsf{GB}_0) \twoheadrightarrow \mathbf{Mod}(\mathsf{Z})$ is *not* a model-space Grothendieck fibration, naive model-level Leray spectral sequences fail along six distinct fault lines:
+- **Three Model-Space Breakdowns:**
+  1. *Naive Class Pullback Breaks Subclass Separation:* Along $f : M \prec V_\kappa$, any $r \in \mathcal{P}(\omega)^{V_\kappa} \setminus M$ yields $f^{-1}[r] = r \notin M$ and fails **G4** domain projection on $\{(n, r) \mid n \in r\}$.
+  2. *Height Collapse ($\mathrm{Ord}^M = \omega + \omega$):* Below $\mathsf{ZFC}$ (e.g., $V_{\omega+\omega} \models \mathsf{ZC}$), von Neumann cardinals $\aleph_n$ vanish and must be recoded inside $\mathcal{P}^{n+3}(\omega)$, breaking literal $\mathbf{Card} \hookrightarrow \mathbf{Set}$ base-change.
+  3. *Non-Elementary Class Embeddings:* Varying $\mathcal{C}$ over fixed $M$ (`thm:williams-kaleidoscope`) has rich partial order structure, whereas arbitrary $\mathcal{L}_\in$-elementary embeddings $M \hookrightarrow N$ fail to preserve expandability (e.g., non-recursively-saturated countable models for $\mathsf{CT}^-[\mathsf{ZFC}]$ and $\mathsf{GBC} + \mathsf{ETR}_{\mathrm{Ord}}$).
+- **Three Homological Traps:**
+  1. *Stone-Space Vanishing:* Passing directly to the Stone classifying space of $\mathcal{L}_\in$-completions kills non-elementary model-expandability obstructions unless Morleyized and localized.
+  2. *Single-Model Local-AC Collapse:* Working inside a single fixed $(M, \mathcal{C}) \models \mathsf{GBC}$ where $M \models \mathsf{ZFC}$ hides Replacement leaks that appear only under base-theory deformation $\mathsf{ZC} \hookrightarrow \mathsf{ZFC}$.
+  3. *Hochschild--Serre False Positives:* Applying classical group-extension spectral sequences to $\mathrm{Aut}(M, \mathcal{C}) \to \mathrm{Aut}(M)$ conflates automorphism non-lifting (e.g., Easton $V \neq \mathrm{HOD}$) with syntactic $\mathcal{L}_\in$-non-conservativity (Glazer's $\theta_{\mathrm{Glz}}$).
+
+### 9.2 Macro / Micro Two-Level Architecture & 9-Row Diagnostic Atlas
+A rigorous transgression carrier on $\pi_{\mathrm{Set}}$ separates the **syntactic reflection / conservativity layer (Macro)** from the **internal class-forcing / small-set leak layer (Micro)**:
+- **Macro Level (Morleyized Classifying Topoi):** Form $\Sigma^1_0$-Morleyizations of the two-sorted theory pairs $(T_{\mathrm{Set}}, T_{\mathrm{Class}})$ and the induced geometric morphism $\gamma_I : \mathcal{E}[T_{\mathrm{Class}}] \to \mathcal{E}[T_{\mathrm{Set}}]$ between classifying topoi, tracking the closed image $\mathrm{Im}(\gamma_I) \hookrightarrow \mathcal{E}[T_{\mathrm{Set}}]$ and the open syntactic-leak complement $U_{\mathrm{leak}} := \mathcal{E}[T_{\mathrm{Set}}] \setminus \mathrm{Im}(\gamma_I)$ via compactly supported excision cohomology $H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ (detecting $\mathrm{Con}(\mathsf{ZFC})$ at $\mathsf{ETR}_{\mathrm{Ord}}$ and $\mathrm{Con}(\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}})$ at $\mathsf{KM}$).
+- **Micro Level (Internal AST Class-Forcing Sheaves):** Internally over an AST base $(\mathcal{C}, \mathcal{S})$ without Replacement, construct class-forcing extensions via ideal completion inside $\mathcal{C}$ ($\gamma_\Sigma$), probed by the **$\mathcal{S}$-distributivity invariant** $P_{\mathrm{dist}}$ detecting when a proper-class forcing poset breaks $\kappa$-distributivity / $\mathcal{S}$-smallness of power objects (Glazer's $\mathcal{P}(\omega) \rightharpoonup W_2$ leak over $\mathsf{ZC}$, Felgner's $\mathsf{DC}_{\mathrm{Ord}}$ leak over $\mathsf{ZFC}_{\neg\mathrm{Reg}}$).
+
+| Class-Set Extension | Base Theory | Gate 1: Macro Excision $H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ | Gate 2: Micro $P_{\mathrm{dist}}$ Leak | Gate 3: Countable Model Expandability |
+| :--- | :--- | :--- | :--- | :--- |
+| $\mathsf{GBC}$ over $\mathsf{ZFC}$ | $\mathsf{ZFC}$ | $0$ ($\mathcal{L}_\in$-conservative) | $0$ ($\mathrm{Def}(M)$ always expands) | $100\%$ expandable (`Def`) |
+| $\mathsf{NBG}$ ($\mathsf{GBC}+\mathsf{GC}$) | $\mathsf{ZFC}$ | $0$ (Felgner 1971) | $0$ ($\kappa$-closed class forcing) | Fails on some $M$; $\mathrm{Def}(M)$ when $V \neq \mathrm{HOD}$ |
+| $\mathsf{CT}^-[\mathsf{ZFC}]$ (`[Fujimoto12]`) | $\mathsf{ZFC}$ | $0$ ($\mathcal{L}_\in$-conservative) | $0$ (no new sets) | Fails on non-recursively-saturated $M$ |
+| $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$ | $\mathsf{ZFC}$ | $\neq 0$ (Tarski truth $\vdash \mathrm{Con}(\mathsf{ZFC})$) | $0$ (no new sets added) | Fails on $M \not\models T^*$ & non-rec.-sat. |
+| $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$ | Trace $T^*$ | $0$ ($\mathcal{L}_\in$-conservative over $T^*$) | $0$ (no new sets added) | Fails on non-recursively-saturated $M \models T^*$ |
+| $\mathsf{KM}$ (impredicative) | $\mathsf{ZFC}$ / $T^*$ | $\neq 0$ (proves $\mathrm{Con}(T^*)$) | $0$ (purely vertical reflection) | Fails unless $M$ realizes $\Pi^1_\infty$ sky |
+| $\mathsf{GBC}_0+\mathsf{GC}$ | $\mathsf{ZC}$ / $\mathsf{Mac}$ | $\neq 0$ (refutes $\theta_{\mathrm{Glz}}$; `[Glazer23]`) | $\neq 0$ ($\mathcal{P}(\omega\times\omega) \rightharpoonup W_2$) | Blocked in symmetric $V_{\omega+\omega}$ |
+| $\mathsf{NBG}_{\neg\mathrm{Reg}}$ + Equipollence | $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ | $\neq 0$ (forces $\mathsf{DC}_{\mathrm{Ord}}$; `[Felgner76]`) | $\neq 0$ ($\mathrm{Ord}$-chain leak) | Fails without $\mathsf{DC}_{\mathrm{Ord}}$ |
+| $\mathsf{GB}_0 + \mathsf{LoS}$ | $\mathsf{GB}_0$ | $\neq 0$ (forces $\mathrm{Rep} \wedge \mathsf{GC}$) | $\neq 0$ (smuggles $\mathrm{Rep}$ over $L_{\omega_\omega}$) | Refuted in $(L_{\omega_\omega}, \mathrm{Def}(L_{\omega_\omega}))$ |
+
+- **Connections:** Links the Micro $\mathcal{S}$-distributivity probe $P_{\mathrm{dist}}$ directly to Problem 8.15 (class-to-set strategy descent on Martin's proper-class Borel unraveling coalgebra in $\mathcal{C} \setminus \mathcal{S}$) and the Macro classifying-topos excision square directly to Problem 8.2 (iterated $n$-stage geometric morphism towers).

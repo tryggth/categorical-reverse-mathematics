@@ -4,7 +4,7 @@
 > **Monograph:** *Categorical Reverse Mathematics with Applications: The Structure of Necessity*  
 > **Author:** James F. Walters, *Port Townsend, Washington*  
 > **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
-> **Source:** `docs/categorical_reverse_mathematics.tex` (Lines 568–2918) & `docs/ch07_sets_residuum.tex` (Lines 1–387, included at Line 2682)  
+> **Source:** `docs/categorical_reverse_mathematics.tex` (Lines 568–2918) & `docs/ch07_sets_residuum.tex` (Lines 1–389, included at Line 2682)  
 > **Text Boundary Constraint:** Strictly Chapter 1 onward (`docs/categorical_reverse_mathematics.tex` Line 568+). Zero concepts from frontmatter/preface/glossary (Lines 1–567).  
 
 ---
@@ -1070,7 +1070,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **Canonical Graph Node:** `GRAD_CLASS_SET_THEORY`
 - **Graduate Domain:** Mathematical Logic & Class-Set Foundations
 - **Formal Definition:**
-  A **two-sorted class-set theory** over $(\mathcal{L}_\in, \mathcal{C})$ distinguishes small *sets* ($x, y \in M$) from *classes* ($C, D \in \mathcal{C}$), where sets are precisely classes belonging to further classes. By **Gödel's Finite Axiomatizability Theorem**, predicative first-order class comprehension (for formulas quantifying solely over sets) reduces finitely to eight relational combinators **G1–G8** (pairing, membership graph, complement/difference, domain projection, Cartesian product, and three coordinate permutations). Adding Subclass Separation ($C \subseteq A \in \mathcal{S} \implies C \in \mathcal{S}$) over Zermelo set theory $\mathsf{Z}$ yields **Replacement-free class theory $\mathsf{GB}_0$**; adding Class Replacement ($\mathrm{Rep}$) and set Choice ($\mathrm{AC}$) gives **Bernays--Gödel $\mathsf{GBC}$**; adjoining **Global Choice ($\mathsf{GC}$)** gives **von Neumann--Bernays--Gödel $\mathsf{NBG}$**; adjoining **Elementary Transfinite Recursion ($\mathsf{ETR}_{\mathrm{Ord}}$)** along $\mathrm{Ord}$ enables Tarski truth predicates and proper-class forcing; and adjoining impredicative class comprehension gives **Kelley--Morse ($\mathsf{KM}$)** (proving $\mathrm{Con}(\mathsf{ZFC})$).
+  A **two-sorted class-set theory** over $(\mathcal{L}_\in, \mathcal{C})$ distinguishes small *sets* ($x, y \in M$) from *classes* ($C, D \in \mathcal{C}$), where sets are precisely classes belonging to further classes. By **Gödel's Finite Axiomatizability Theorem**, predicative first-order class comprehension (for formulas quantifying solely over sets) reduces finitely to eight relational combinators **G1–G8** (pairing, membership graph, complement/difference, domain projection, Cartesian product, and three coordinate permutations). Adding Subclass Separation ($C \subseteq A \in \mathcal{S} \implies C \in \mathcal{S}$) over Zermelo set theory $\mathsf{Z}$ yields **Replacement-free class theory $\mathsf{GB}_0$**; adding Class Replacement ($\mathrm{Rep}$) and set Choice ($\mathrm{AC}$) gives **Bernays--Gödel $\mathsf{GBC}$**; adjoining **Global Choice ($\mathsf{GC}$)** gives **von Neumann--Bernays--Gödel $\mathsf{NBG}$**; adjoining **Elementary Transfinite Recursion ($\mathsf{ETR}_{\mathrm{Ord}}$)** along $\mathrm{Ord}$ enables Tarski truth predicates (already proving $\mathrm{Con}(\mathsf{ZFC})$ at $\mathsf{ETR}_\omega$) and proper-class forcing; and adjoining impredicative class comprehension gives **Kelley--Morse ($\mathsf{KM}$)** (proving $\mathrm{Con}(\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}})$).
 - **Intuitive Motivation & Concrete Example:**
   In undergraduate category theory, one immediately encounters collections like $\mathbf{Set}$, $\mathbf{Grp}$, and $\mathbf{Top}$ that are "too big to be sets" because of Russell's paradox. Two-sorted class theory lets us manipulate $\mathbf{Set}$ and functors $F : \mathbf{Set} \to \mathbf{Set}$ as genuine mathematical objects (classes) governed by finite algebraic operations **G1–G8**, without assuming inaccessible cardinals! Crucially, although Ulrich Felgner (1971) proved that $\mathsf{NBG}$ proves the exact same $\mathcal{L}_\in$-sentences about sets as $\mathsf{ZFC}$, first-order conservativity is strictly weaker than categorical equivalence: a fixed countable model $M \models \mathsf{ZFC}$ admits infinitely many incompatible class skies $(M, \mathcal{C}) \models \mathsf{GBC}$.
 - **Direct Role in CRM Progression:**
@@ -1283,18 +1283,18 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 143 | **Higher Vertical Class Spectrum: $\mathsf{ETR}_{\mathrm{Ord}}$ vs. Impredicative $\mathsf{KM}$** | Chapter 7, §7.1, Itemize, `ch07_sets_residuum.tex` lines 76–79 | `ch07_sets_residuum.tex:76` | Chapter 7 |
 | 144 | **Set-Theoretic Subsystem Alignment ($\mathsf{Mac} \simeq \mathsf{ETCS}$ vs. $\mathsf{ZC}$ and $\mathsf{ZFC}^-$ vs. $\mathsf{ZFC}_{\neg\mathrm{Reg}}$)** | Chapter 7, §7.2, Remark 7.2.1 (`rem:zfc-minus-notation`), `ch07_sets_residuum.tex` lines 105–112 | `ch07_sets_residuum.tex:105` | Chapter 7 |
 | 145 | **Syntactic $\mathcal{L}_\in$-Non-Conservativity of Global Choice Over $\mathsf{ZC}$ and $\mathsf{ETCS}$** | Chapter 7, §7.2, Theorem 7.2.2 (`thm:glazer-nonconservativity`) & Itemize, `ch07_sets_residuum.tex` lines 114–131 | `ch07_sets_residuum.tex:114` | Chapter 7 |
-| 146 | **Unbundling von Neumann's Limitation of Size ($\mathsf{LoS} \iff \mathrm{Rep} \wedge \mathsf{GC}$)** | Chapter 7, §7.2, Proposition 7.2.3 (`prop:los-smuggles-gc`) & Table 7.1 (`tab:fibration-map`), `ch07_sets_residuum.tex` lines 133–166 | `ch07_sets_residuum.tex:133` | Chapter 7 |
-| 147 | **Countable Colimit Escape in $V_{\omega+\omega}$ and Friedman's Borel Determinacy Wall** | Chapter 7, §7.2, Proposition 7.2.4 (`prop:etcs-colimit-escape`) & Para, `ch07_sets_residuum.tex` lines 170–181 | `ch07_sets_residuum.tex:170` | Chapter 7 |
-| 148 | **Predicative Class-Set Ambient $(\mathcal{C}, \mathcal{S})$ and Contravariant Powerclasses $\mathcal{P}_{\mathcal{S}}$** | Chapter 7, §7.3–7.3.1, Definition 7.3.1 (`def:small-map-ambient`), `ch07_sets_residuum.tex` lines 187–202 | `ch07_sets_residuum.tex:187` | Chapter 7 |
-| 149 | **Pointillist Continuum in $H(\aleph_1)$ and Constructive $\Omega^X / 2^X$ Classifier Split** | Chapter 7, §7.3.2, Proposition 7.3.2 (`prop:pointillist-continuum`), `ch07_sets_residuum.tex` lines 207–220 | `ch07_sets_residuum.tex:207` | Chapter 7 |
-| 150 | **Axis VI Doctrinal Comparison Triple: Quotient-Image Descent ($\kappa_{\mathrm{Rep}}$)** | Chapter 7, §7.3.2, Definition 7.3.3 (`def:axis-vi-replacement`), `ch07_sets_residuum.tex` lines 224–227 | `ch07_sets_residuum.tex:224` | Chapter 7 |
-| 151 | **The Borel Determinacy Pincer and Martin's Proper-Class Unraveling Coalgebra** | Chapter 7, §7.3.2, Remark 7.3.4 (`rem:martin-borel-coalgebra`), `ch07_sets_residuum.tex` lines 229–232 | `ch07_sets_residuum.tex:229` | Chapter 7 |
-| 152 | **Axis VII Comparison: Foundation vs. Anti-Foundation as $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$** | Chapter 7, §7.4, Theorem 7.4.1 (`thm:axis-vii-foundation`), `ch07_sets_residuum.tex` lines 238–254 | `ch07_sets_residuum.tex:238` | Chapter 7 |
-| 153 | **Boffa Hypersets ($V_{\mathsf{BAFA}}$) and Rieger--Bernays Slice vs. Global Torsors** | Chapter 7, §7.4, Proposition 7.4.2 (`prop:boffa-torsors`), `ch07_sets_residuum.tex` lines 256–273 | `ch07_sets_residuum.tex:256` | Chapter 7 |
-| 154 | **Material Extensionality, Quotient Cost, and Hereditary $(-1)$-Truncation ($V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$)** | Chapter 7, §7.4, Proposition 7.4.3 (`prop:extensionality-truncation`), `ch07_sets_residuum.tex` lines 277–290 | `ch07_sets_residuum.tex:277` | Chapter 7 |
-| 155 | **Non-Well-Founded Univalent Multisets ($\nu\mathcal{P}_{\mathrm{Anima}}$) and Master AST Residuum Ledger** | Chapter 7, §7.4, Remark 7.4.4 (`rem:nu-anima-fossil`) & Table 7.2 (`tab:master-ast-ledger`), `ch07_sets_residuum.tex` lines 292–316 | `ch07_sets_residuum.tex:292` | Chapter 7 |
-| 156 | **Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$** | Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 322–351 | `ch07_sets_residuum.tex:322` | Chapter 7 |
-| 157 | **Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`** | Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 353–375 | `ch07_sets_residuum.tex:353` | Chapter 7 |
+| 146 | **Unbundling von Neumann's Limitation of Size ($\mathsf{LoS} \iff \mathrm{Rep} \wedge \mathsf{GC}$)** | Chapter 7, §7.2, Proposition 7.2.3 (`prop:los-smuggles-gc`) & Table 7.1 (`tab:fibration-map`), `ch07_sets_residuum.tex` lines 133–167 | `ch07_sets_residuum.tex:133` | Chapter 7 |
+| 147 | **Countable Colimit Escape in $V_{\omega+\omega}$ and Friedman's Borel Determinacy Wall** | Chapter 7, §7.2, Proposition 7.2.4 (`prop:etcs-colimit-escape`) & Para, `ch07_sets_residuum.tex` lines 171–182 | `ch07_sets_residuum.tex:171` | Chapter 7 |
+| 148 | **Predicative Class-Set Ambient $(\mathcal{C}, \mathcal{S})$ and Contravariant Powerclasses $\mathcal{P}_{\mathcal{S}}$** | Chapter 7, §7.3–7.3.1, Definition 7.3.1 (`def:small-map-ambient`), `ch07_sets_residuum.tex` lines 188–203 | `ch07_sets_residuum.tex:188` | Chapter 7 |
+| 149 | **Pointillist Continuum in $H(\aleph_1)$ and Constructive $\Omega^X / 2^X$ Classifier Split** | Chapter 7, §7.3.2, Proposition 7.3.2 (`prop:pointillist-continuum`), `ch07_sets_residuum.tex` lines 208–221 | `ch07_sets_residuum.tex:208` | Chapter 7 |
+| 150 | **Axis VI Doctrinal Comparison Triple: Quotient-Image Descent ($\kappa_{\mathrm{Rep}}$)** | Chapter 7, §7.3.2, Definition 7.3.3 (`def:axis-vi-replacement`), `ch07_sets_residuum.tex` lines 225–228 | `ch07_sets_residuum.tex:225` | Chapter 7 |
+| 151 | **The Borel Determinacy Pincer and Martin's Proper-Class Unraveling Coalgebra** | Chapter 7, §7.3.2, Remark 7.3.4 (`rem:martin-borel-coalgebra`), `ch07_sets_residuum.tex` lines 230–233 | `ch07_sets_residuum.tex:230` | Chapter 7 |
+| 152 | **Axis VII Comparison: Foundation vs. Anti-Foundation as $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$** | Chapter 7, §7.4, Theorem 7.4.1 (`thm:axis-vii-foundation`), `ch07_sets_residuum.tex` lines 239–255 | `ch07_sets_residuum.tex:239` | Chapter 7 |
+| 153 | **Boffa Hypersets ($V_{\mathsf{BAFA}}$) and Rieger--Bernays Slice vs. Global Torsors** | Chapter 7, §7.4, Proposition 7.4.2 (`prop:boffa-torsors`), `ch07_sets_residuum.tex` lines 257–274 | `ch07_sets_residuum.tex:257` | Chapter 7 |
+| 154 | **Material Extensionality, Quotient Cost, and Hereditary $(-1)$-Truncation ($V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$)** | Chapter 7, §7.4, Proposition 7.4.3 (`prop:extensionality-truncation`), `ch07_sets_residuum.tex` lines 278–291 | `ch07_sets_residuum.tex:278` | Chapter 7 |
+| 155 | **Non-Well-Founded Univalent Multisets ($\nu\mathcal{P}_{\mathrm{Anima}}$) and Master AST Residuum Ledger** | Chapter 7, §7.4, Remark 7.4.4 (`rem:nu-anima-fossil`) & Table 7.2 (`tab:master-ast-ledger`), `ch07_sets_residuum.tex` lines 293–317 | `ch07_sets_residuum.tex:293` | Chapter 7 |
+| 156 | **Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$** | Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 323–352 | `ch07_sets_residuum.tex:323` | Chapter 7 |
+| 157 | **Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`** | Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 354–377 | `ch07_sets_residuum.tex:354` | Chapter 7 |
 | 158 | **Unified CRM Residuum Operator Across Doctrinal Triples** | Chapter 8, Section 8.1, Paragraph 1, lines 2691–2695 | `2691` | Chapter 8 |
 | 159 | **Categorical Residuum as Relative Pseudocomplement** | Chapter 8, Section 8.1, Paragraph 1, lines 2695–2701 | `2695` | Chapter 8 |
 | 160 | **Admissibility Criterion (Four Structural Invariant Families)** | Chapter 8, Section 8.1, Paragraph 2 and Itemize, lines 2703–2715 | `2703` | Chapter 8 |
@@ -2503,7 +2503,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `ch07_sets_residuum.tex:76`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
-  Calibrates categorical class commitments above $\mathsf{NBG}$: proper-class forcing ($\Vdash_{\mathbb{P}}$), Tarski truth predicates, and $\mathrm{Ord}$-length Adámek initial-algebra chains ($\mu F$ for large $F : \mathcal{C} \to \mathcal{C}$) require $\mathsf{GBC} + \mathsf{ETR}_{\mathrm{Ord}}$ (Gitman--Hamkins--Holy--Schlicht--Williams 2020, still $\mathcal{L}_\in$-conservative over $\mathsf{ZFC}$), whereas unrestricted pointwise large Kan extensions require impredicative Kelley--Morse ($\mathsf{KM}$), breaking $\mathcal{L}_\in$-conservativity via $\mathrm{Con}(\mathsf{ZFC})$.
+  Calibrates categorical class commitments above $\mathsf{GBC}/\mathsf{NBG}$: proper-class forcing ($\Vdash_{\mathbb{P}}$), full Tarski truth predicates, and $\mathrm{Ord}$-length Adámek initial-algebra chains ($\mu F$ for large $F : \mathcal{C} \to \mathcal{C}$) require Elementary Transfinite Recursion ($\mathsf{ETR}_{\mathrm{Ord}}$; Gitman--Hamkins--Holy--Schlicht--Williams 2020), which already at $\mathsf{ETR}_\omega$ proves $\mathrm{Con}(\mathsf{ZFC})$ and is $\mathcal{L}_\in$-conservative only over its own first-order trace $T^*$ (contrasting with genuinely $\mathcal{L}_\in$-conservative compositional truth $\mathsf{CT}^-[\mathsf{ZFC}]$ of Fujimoto 2012, which also fails countable non-recursively-saturated model expandability), whereas impredicative Kelley--Morse ($\mathsf{KM}$) for unrestricted pointwise large Kan extensions proves $\mathrm{Con}(\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}})$.
 
 ##### Concept 144: Set-Theoretic Subsystem Alignment ($\mathsf{Mac} \simeq \mathsf{ETCS}$ vs. $\mathsf{ZC}$ and $\mathsf{ZFC}^-$ vs. $\mathsf{ZFC}_{\neg\mathrm{Reg}}$)
 
@@ -2523,7 +2523,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 
 ##### Concept 146: Unbundling von Neumann's Limitation of Size ($\mathsf{LoS} \iff \mathrm{Rep} \wedge \mathsf{GC}$)
 
-- **Location Reference:** Chapter 7, §7.2, Proposition 7.2.3 (`prop:los-smuggles-gc`) & Table 7.1 (`tab:fibration-map`), `ch07_sets_residuum.tex` lines 133–166
+- **Location Reference:** Chapter 7, §7.2, Proposition 7.2.3 (`prop:los-smuggles-gc`) & Table 7.1 (`tab:fibration-map`), `ch07_sets_residuum.tex` lines 133–167
 - **LaTeX Source Line:** `ch07_sets_residuum.tex:133`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
@@ -2531,91 +2531,91 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 
 ##### Concept 147: Countable Colimit Escape in $V_{\omega+\omega}$ and Friedman's Borel Determinacy Wall
 
-- **Location Reference:** Chapter 7, §7.2, Proposition 7.2.4 (`prop:etcs-colimit-escape`) & Para, `ch07_sets_residuum.tex` lines 170–181
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:170`
+- **Location Reference:** Chapter 7, §7.2, Proposition 7.2.4 (`prop:etcs-colimit-escape`) & Para, `ch07_sets_residuum.tex` lines 171–182
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:171`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Zermelo's rank universe $V_{\omega+\omega}$ models full $\mathsf{ZC}$ (and its category of sets models $\mathsf{Mac} \simeq \mathsf{ETCS}$), where each finite iterate $\mathcal{P}^n(\mathbb{N})$ is $\mathcal{L}_\in$-definable yet $\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})$ escapes smallness—blocking Harvey Friedman's (1971) concrete rank-$(\omega+3)$ Borel games on $2^{\mathbb{N}}$ whose winning strategies require $\aleph_\omega$ iterated power sets.
 
 ##### Concept 148: Predicative Class-Set Ambient $(\mathcal{C}, \mathcal{S})$ and Contravariant Powerclasses $\mathcal{P}_{\mathcal{S}}$
 
-- **Location Reference:** Chapter 7, §7.3–7.3.1, Definition 7.3.1 (`def:small-map-ambient`), `ch07_sets_residuum.tex` lines 187–202
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:187`
+- **Location Reference:** Chapter 7, §7.3–7.3.1, Definition 7.3.1 (`def:small-map-ambient`), `ch07_sets_residuum.tex` lines 188–203
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:188`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Joyal--Moerdijk Algebraic Set Theory baseline $(\mathcal{C}, \mathcal{S})$ decoupling finite predicative carving ($\mathcal{C}$ regular via **G1–G8**, Stratum I lextensive/Arithmetic Universe plumbing $0, 1+1$) from size compression ($\mathcal{S} \subseteq \mathcal{C}$ pullback-stable small maps without image descent), inducing the contravariant small-powerset functor $\mathcal{P}_{\mathcal{S}} : \mathcal{C}^{\mathrm{op}} \to \mathcal{C}$ with $\Omega = \mathcal{P}_{\mathcal{S}}(1)$.
 
 ##### Concept 149: Pointillist Continuum in $H(\aleph_1)$ and Constructive $\Omega^X / 2^X$ Classifier Split
 
-- **Location Reference:** Chapter 7, §7.3.2, Proposition 7.3.2 (`prop:pointillist-continuum`), `ch07_sets_residuum.tex` lines 207–220
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:207`
+- **Location Reference:** Chapter 7, §7.3.2, Proposition 7.3.2 (`prop:pointillist-continuum`), `ch07_sets_residuum.tex` lines 208–221
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:208`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Calibrates Power Set size compression $\mathcal{P}_{\mathcal{S}}(X) \in \mathcal{S}$: (i) in hereditarily countable $H(\aleph_1) \models \mathsf{ZFC}^-$, every real $r \subseteq \mathbb{N}$ lies in $\mathcal{S}$ while Cantor space $2^{\mathbb{N}} = \mathcal{P}_{\mathcal{S}}(\mathbb{N})$ and $\mathbb{R}$ remain proper classes; (ii) over constructive $\mathsf{CZF}$ (proof-theoretically $\mathsf{KP}$), Exponentiation $2^X \in \mathcal{S}$ ($\mathrm{Sub}_{\mathrm{dec}}$) is strictly weaker than impredicative Power Set $\Omega^X \in \mathcal{S}$.
 
 ##### Concept 150: Axis VI Doctrinal Comparison Triple: Quotient-Image Descent ($\kappa_{\mathrm{Rep}}$)
 
-- **Location Reference:** Chapter 7, §7.3.2, Definition 7.3.3 (`def:axis-vi-replacement`), `ch07_sets_residuum.tex` lines 224–227
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:224`
+- **Location Reference:** Chapter 7, §7.3.2, Definition 7.3.3 (`def:axis-vi-replacement`), `ch07_sets_residuum.tex` lines 225–228
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:225`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Defines **Axis VI (Small-Indexed Cofinality / Replacement)** over $(\mathcal{C}, \mathcal{S})$ via smallness descent $\kappa_{\mathrm{Rep}} : \mathrm{im}(f : I \to C) \in \mathcal{S}$ for $I \in \mathcal{S}$, promoting $\mathcal{P}_{\mathcal{S}} : \mathcal{C} \to \mathcal{C}$ to a covariant endofunctor via direct image $\exists_g$ and compressing all small-diagram colimits $\varinjlim_{i \in I} F_i$ into $\mathcal{S}$ alongside Small Union.
 
 ##### Concept 151: The Borel Determinacy Pincer and Martin's Proper-Class Unraveling Coalgebra
 
-- **Location Reference:** Chapter 7, §7.3.2, Remark 7.3.4 (`rem:martin-borel-coalgebra`), `ch07_sets_residuum.tex` lines 229–232
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:229`
+- **Location Reference:** Chapter 7, §7.3.2, Remark 7.3.4 (`rem:martin-borel-coalgebra`), `ch07_sets_residuum.tex` lines 230–233
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:230`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Exposes the Stratum II pincer between $H(\aleph_1) \models \mathsf{ZFC}^-$ (failing Borel Determinacy at $\boldsymbol{\Sigma}^0_4$ via $2^{\mathbb{N}} \notin \mathcal{S}$) and $(V_{\omega+\omega}, \mathrm{Def}) \models \mathsf{ZC}$ (validating $\boldsymbol{\Sigma}^0_k$ for each $k < \omega$ via Martin 1975, breaking sharply at $\boldsymbol{\Sigma}^0_{\omega+1}$ where Martin's clopen unraveling forms a proper-class tree in $\mathcal{C} \setminus \mathcal{S}$), plus the four-rung Separation/Reflection ladder ($\Delta_0$-$\mathsf{Mac} \subsetneq \mathsf{ZC} \subsetneq \mathsf{ZFC} \subsetneq \mathsf{KM}$).
 
 ##### Concept 152: Axis VII Comparison: Foundation vs. Anti-Foundation as $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$
 
-- **Location Reference:** Chapter 7, §7.4, Theorem 7.4.1 (`thm:axis-vii-foundation`), `ch07_sets_residuum.tex` lines 238–254
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:238`
+- **Location Reference:** Chapter 7, §7.4, Theorem 7.4.1 (`thm:axis-vii-foundation`), `ch07_sets_residuum.tex` lines 239–255
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:239`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   In a non-degenerate ($0 \not\cong 1$) Barr-exact AST ambient $(\mathcal{C}, \mathcal{S})$ with $\mathbb{N} \in \mathcal{S}$, Small Union, and Axis VI image descent, **Axis VII** compares the full subdoctrine of well-founded coalgebras $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}})$—whose Osius terminal object is $\nu^{\mathrm{wf}}\mathcal{P}_{\mathcal{S}} \simeq \mu\mathcal{P}_{\mathcal{S}} \cong V_{\mathsf{ZF}}$—against all $\mathcal{S}$-small-branching coalgebras $\mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$—whose terminal bisimulation quotient is Aczel's $V_{\mathsf{AFA}} \cong \nu\mathcal{P}_{\mathcal{S}}$. Passing along $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$ induces the strict monomorphism $\kappa_{\mathrm{Reg}} : \nu^{\mathrm{wf}}\mathcal{P}_{\mathcal{S}} \simeq \mu\mathcal{P}_{\mathcal{S}} \hookrightarrow \nu\mathcal{P}_{\mathcal{S}}$ (with residuum $\nu\mathcal{P}_{\mathcal{S}} \setminus \mu\mathcal{P}_{\mathcal{S}}$ anchored by $q = \{q\}$), and $(X, \gamma) \in \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$ satisfies Foundation ($\in_\gamma$-induction) iff its $\mathsf{AFA}$ decoration $d_\gamma : X \to \nu\mathcal{P}_{\mathcal{S}}$ factors through $\kappa_{\mathrm{Reg}}$.
 
 ##### Concept 153: Boffa Hypersets ($V_{\mathsf{BAFA}}$) and Rieger--Bernays Slice vs. Global Torsors
 
-- **Location Reference:** Chapter 7, §7.4, Proposition 7.4.2 (`prop:boffa-torsors`), `ch07_sets_residuum.tex` lines 256–273
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:256`
+- **Location Reference:** Chapter 7, §7.4, Proposition 7.4.2 (`prop:boffa-torsors`), `ch07_sets_residuum.tex` lines 257–274
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:257`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Weakening $\mathsf{AFA}$ to Boffa's $\mathsf{BAFA}$ separates $\in$-isomorphism torsors ($\mathrm{Aut}_\in$-actions; $|\mathrm{tc}(\{a\})|=1$ vs. $2$-cycle $|\mathrm{tc}(\{u\})|=2$) inside bisimulation classes and embeds countable Quine atoms $Q_0$ via Rieger--Bernays permutations into $\mathcal{E}_{Q_0} = \mathbf{Cont}(\mathrm{Sym}(Q_0)) \simeq \mathbf{Nom}$, yielding a non-split slice $\Delta(\mathbb{Z}/2\mathbb{Z})$-torsor $[Q_0^{\#(2)}] \neq 0$ over $[Q_0]^2$ and global parity torsor $[\mathcal{T}_{\mathrm{odd}}(Q_0)] \neq 0 \in H^1(\mathcal{E}_{Q_0}; \mathrm{EvenFinset}(Q_0))$.
 
 ##### Concept 154: Material Extensionality, Quotient Cost, and Hereditary $(-1)$-Truncation ($V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$)
 
-- **Location Reference:** Chapter 7, §7.4, Proposition 7.4.3 (`prop:extensionality-truncation`), `ch07_sets_residuum.tex` lines 277–290
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:277`
+- **Location Reference:** Chapter 7, §7.4, Proposition 7.4.3 (`prop:extensionality-truncation`), `ch07_sets_residuum.tex` lines 278–291
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:278`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Calibrates Extensionality both constructively—separating Friedman's 1973 equiconsistency $\mathrm{Con}(\mathsf{IZF}_{\mathrm{non\text{-}ext}}) \implies \mathrm{Con}(\mathsf{ZF})$ from direct interpretability cost without Collection or primitive quotients—and homotopically via Gylterud's univalent $W$-type of iterative multisets $M = \mu\mathcal{P}_{\mathrm{Anima}}$ ($\pi_1(M, \underline{A}) \simeq \mathrm{Aut}(A)$), where carving out flat sets $V_0 \hookrightarrow M$ requires **hereditary fiberwise $(-1)$-truncation** rather than naive outer $\tau_{\le 0}(M)$.
 
 ##### Concept 155: Non-Well-Founded Univalent Multisets ($\nu\mathcal{P}_{\mathrm{Anima}}$) and Master AST Residuum Ledger
 
-- **Location Reference:** Chapter 7, §7.4, Remark 7.4.4 (`rem:nu-anima-fossil`) & Table 7.2 (`tab:master-ast-ledger`), `ch07_sets_residuum.tex` lines 292–316
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:292`
+- **Location Reference:** Chapter 7, §7.4, Remark 7.4.4 (`rem:nu-anima-fossil`) & Table 7.2 (`tab:master-ast-ledger`), `ch07_sets_residuum.tex` lines 293–317
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:293`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Exhibits Boffa's twin Quine set $T = \{a, b\}$ as the $0$-truncated $1$-categorical fossil of higher homotopy loop groups: in the terminal coalgebra $\nu\mathcal{P}_{\mathrm{Anima}}$ of non-well-founded univalent multisets, the $2$-fold Quine multiset $[q, q] := (\mathbf{2}, \mathrm{const}_q)$ carries loop group $\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q, q]) \simeq \mathrm{Aut}(\mathbf{2}) \cong \mathbb{Z}/2\mathbb{Z}$, uniting Axes V and VII across the 8-row Master AST Ledger.
 
 ##### Concept 156: Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$
 
-- **Location Reference:** Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 322–351
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:322`
+- **Location Reference:** Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 323–352
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:323`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
   Proves reflexive scale-invariance inside a non-degenerate Barr-exact $1$-categorical Joyal--Moerdijk AST ambient $(\mathcal{C}, \mathcal{S})$ with monomorphisms in $\mathcal{S}$: (i) the four Choice-free upper clamps ($\mathbb{N} \in \mathcal{S}$, $1+1 \xrightarrow{\sim} \Omega$, $\mathcal{P}_{\mathcal{S}}(\mathcal{S}) \subseteq \mathcal{S}$, Axis VI $\mathrm{im}(f) \in \mathcal{S}$) plus the lower clamps (extensional $\mathcal{P}_{\mathcal{S}}$ and Foundation $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$ selecting $V = \nu^{\mathrm{wf}}\mathcal{P}_{\mathcal{S}} \simeq \mu\mathcal{P}_{\mathcal{S}} \subsetneq \nu\mathcal{P}_{\mathcal{S}}$) force $\mathcal{C} \models ((V, \in) \models \mathsf{ZF})$ and $(V, \mathrm{Sub}_{\mathcal{C}}(V)) \models \mathsf{GB}$, with local pure-set embeddings characterized Choice-freely by local Osius pure-set fullness (failing on $\mathbb{A}$ in $\mathcal{V}_{\mathrm{FM}} \models \mathsf{ZFA} + \neg\mathrm{AC}$) and discharged automatically by internal Zermelo well-ordering under $\mathrm{IAC}_{\mathcal{S}}$ (yielding $\mathsf{ZFC}/\mathsf{GBC}$, and $\mathsf{NBG}$ iff $\mathbf{Card}(V) \hookrightarrow \mathbf{Set}(V)$ splits); (ii) $\mathcal{E}_{\mathcal{S}}$ pinches externally to well-pointed $\mathbf{Set}_{\mathsf{ZF}}/\mathbf{Set}_{\mathsf{ZFC}}$ with global $\mathcal{E}_{\mathcal{S}} \simeq \mathbf{El}(V)$ iff $\mathrm{Sub}_{\mathcal{C}}(1) \cong \{0, 1\}$ and $1$ is externally projective in $\mathcal{E}_{\mathcal{S}}$ (separated by Boolean-valued $\mathbf{Sh}(B)$ and $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$); (iii) each clamping axiom coincides with $\mathrm{Res}(\kappa_A) \simeq 0$ for an explicit comparison triple $\mathfrak{T}_A \in \mathrm{Dom}(\mathrm{Res})$, while Gylterud's $V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$ bridges via $(\mathcal{X}, \mathcal{U}_0 \in \mathcal{U}_1)$ and universe-free $(\mathcal{C}_\infty, \mathcal{S}_\infty)$ defines a Volume II horizon.
 
 ##### Concept 157: Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`
 
-- **Location Reference:** Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 353–375
-- **LaTeX Source Line:** `ch07_sets_residuum.tex:353`
+- **Location Reference:** Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 354–377
+- **LaTeX Source Line:** `ch07_sets_residuum.tex:354`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
-  Maps the double-clamped geometry of $\mathbf{Set}_{\mathsf{ZFC}}$ onto Lean 4's `#print axioms` audit gate in `HomotopyCRM/SetsResiduum.lean` (994 lines, 16 checks): separating axiom-free cores (`card_split_iff_global_choice`, `pset_equiv_iff_bisimilar`, `quine_atom_outside_wf`, `boffa_twin_torsor`) from `Classical.choice` functorial skeleton splitting (`type_equiv_splitting_global_choice`) and the Choice-free `[propext, Quot.sound]` extensional quotient gate (`zfset_ext_quot_gate`, `boffa_twin_addTorsor`).
+  Maps the double-clamped geometry of $\mathbf{Set}_{\mathsf{ZFC}}$ onto Lean 4's `#print axioms` audit gate in `HomotopyCRM/SetsResiduum.lean` (994 lines, 16 checks): separating axiom-free cores (`card_split_iff_global_choice`, `pset_equiv_iff_bisimilar`, `quine_atom_outside_wf`, `quineAPG_bisimilar_and_nonIso_twoCycle`, `boffa_twin_torsor`) from `Classical.choice` functorial skeleton splitting (`type_equiv_splitting_global_choice`, `defSetProjAdjunction`, `naive_pullback_breaks_subclass_separation`) and the Choice-free `[propext, Quot.sound]` extensional quotient gate (`zfset_ext_quot_gate`, `boffa_twin_addTorsor`).
 
 #### Chapter 8: Master Atlas of Open Problems, Methodological Blueprints, and Research Horizons
 
@@ -2714,7 +2714,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `2767`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
-  The problem of determining doctrinal criteria on comparison triples characterizing when $(A \Rightarrow_{\mathbf{Topos}} B)$ admits a unique weakest admissible invariant versus a multi-dimensional Pareto frontier of incomparable geometric trade-offs (e.g. balancing localicity against cohomological vanishing, or Axis III finiteness against Axis I internal choice).
+  The problem of determining doctrinal criteria on comparison triples characterizing when $(A \Rightarrow_{\mathbf{Topos}} B)$ admits a unique weakest admissible invariant versus a multi-dimensional Pareto frontier of incomparable geometric trade-offs (e.g. balancing localicity against cohomological vanishing, or Axis III finiteness against Axis I internal choice)—and, since Pareto frontiers, mixed base--fiber variance, cotopological hypercompletions, non-topos axes, and Levy/Vopěnka reflection walls obstruct a single monolithic $2$-functor or universal $\mathbf{LTT}$ quotient, formalizing admissibility via stratified structural probe suites $\mathcal{P}$ and double-categorical mate squares yielding minimal Pareto residua $\mathrm{Res}_{\mathcal{P}}^{\min}$.
 
 ##### Concept 169: Iterated Tower Conservation Across Composite Geometric Morphisms (Open Problem 8.2)
 
@@ -2730,7 +2730,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `2777`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
-  The construction of an exact order-embedding or Galois duality relating the Weihrauch lattice $\mathcal{W}$ of computable analysis ($f \le_W g$) to the lattice $\mathbf{LTT}(\mathbf{Eff}) \simeq \mathbf{SubTopos}(\mathbf{Eff})^{\mathrm{op}}$ of Lawvere--Tierney modal operators on Hyland's Effective Topos $\mathbf{Eff} = \mathbf{RT}(\mathcal{K}_1)$.
+  Given Kihara's (2023) lattice isomorphism $\mathbf{LTT}(\mathbf{Eff}) \cong \mathcal{W}_{\mathrm{gen,ext}}$ and Maschio--Trotta's (2026) extended Weihrauch tripos $\mathsf{eW}$ recovering relative realizability topoi as $\mathbf{Sh}_j$, the open problem of determining which single-call classical Weihrauch cones in $\mathcal{W}$ correspond to $j$-hereditary subtopos conditions and characterizing the explicit PCA-oracle, $\cap$-preserving, and $(\cup, \cap)$-preserving sublattices of $\mathbf{LTT}(\mathbf{Eff})$.
 
 ##### Concept 171: Minimal Intermediate Oracle Modalities Beyond $j_{\mathrm{Lif}}$ (Open Problem 8.4)
 
@@ -2834,7 +2834,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `2845`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
-  Calibration of Ozornova--Rovelli--Walde and Gepner--Heine's four-tier reflective localization chain $\mathrm{Cat}^L_{(\infty,\infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty,\infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \subsetneq \mathrm{Cat}^R_{(\infty,\infty)}$ and Goldthorpe's inductive $\Lambda$-iterated enrichment initial algebras along $\mathsf{GBC} \subsetneq \mathsf{NBG} \subsetneq \mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}} \subsetneq \mathsf{KM}$ without Grothendieck universes, testing whether $\alpha = 0$ stabilization on $\mathrm{Cat}_{\le \omega}$ drops $\mathsf{ETR}_{\mathrm{Ord}}$ down to $\mathsf{GBC}$ and pinpointing where $\mathrm{Con}(\mathsf{ZFC})$ ($\mathsf{KM}$) is crossed.
+  Calibration of Ozornova--Rovelli--Walde and Gepner--Heine's four-tier reflective localization chain $\mathrm{Cat}^L_{(\infty,\infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty,\infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \subsetneq \mathrm{Cat}^R_{(\infty,\infty)}$ and Goldthorpe's inductive $\Lambda$-iterated enrichment initial algebras along $\mathsf{GBC} \subsetneq \mathsf{NBG} \subsetneq \mathsf{NBG}+\mathsf{ETR}_{\mathrm{Ord}} \subsetneq \mathsf{KM}$ (and $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$) without Grothendieck universes, testing whether $\alpha = 0$ stabilization on $\mathrm{Cat}_{\le \omega}$ drops $\mathsf{ETR}_{\mathrm{Ord}}$ down to $\mathsf{GBC}$ and separating the $\mathrm{Con}(\mathsf{ZFC})$ threshold crossed already at $\mathsf{ETR}_{\mathrm{Ord}}$ from impredicative $\mathsf{KM}$ comprehension ($\mathrm{Con}(\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}})$).
 
 ##### Concept 184: Leray Transgression for $\pi_{\mathrm{Set}}$ and Univalent Coalgebras $\nu\mathcal{P}_{\mathrm{Anima}}$ (Open Problem 8.17)
 
@@ -2842,7 +2842,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `2849`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
-  Construction of a quantitative transgression differential on $\pi_{\mathrm{Set}}$ governing when vertical class torsors ($\mathbf{Card} \hookrightarrow \mathbf{Set}$ splitting) remain $\mathcal{L}_\in$-conservative (Felgner 1971) versus leaking small-set theorems over $\mathsf{ZC}$ (Glazer 2023) and $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ (Felgner 1976), paired with a décalage functor from $\nu\mathcal{P}_{\mathrm{Anima}}$ ($\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q,q]) \cong \mathbb{Z}/2\mathbb{Z}$) to Rieger--Bernays permutation topoi $\mathbf{Cont}(\mathrm{Sym}(Q_0))$.
+  Construction of a quantitative transgression differential on $\pi_{\mathrm{Set}}$ governing when vertical class torsors ($\mathbf{Card} \hookrightarrow \mathbf{Set}$ splitting) remain $\mathcal{L}_\in$-conservative (Felgner 1971) versus leaking small-set theorems over $\mathsf{ZC}$ (Glazer 2023) and $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ (Felgner 1976)—operating, because naive model-space pullbacks fail, via Macro $\Sigma^1_0$-Morleyized classifying topoi $\gamma_I : \mathcal{E}[T_{\mathrm{Class}}] \to \mathcal{E}[T_{\mathrm{Set}}]$ and excision $H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ coupled to Micro internal AST class-forcing sheaves $\gamma_\Sigma$ separating $\mathcal{S}$-distributivity leaks from $\mathsf{ETR}_{\mathrm{Ord}}/\mathsf{KM}$ reflection leaks—paired with a décalage functor from $\nu\mathcal{P}_{\mathrm{Anima}}$ ($\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q,q]) \cong \mathbb{Z}/2\mathbb{Z}$) to Rieger--Bernays permutation topoi $\mathbf{Cont}(\mathrm{Sym}(Q_0))$.
 
 ##### Concept 185: Four-Layer Kernel Verification Gate Protocol
 
