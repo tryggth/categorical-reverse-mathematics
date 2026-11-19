@@ -1422,7 +1422,7 @@
       "label": "Double-Clamped Set_ZFC Scale-Invariance & SetsResiduum",
       "stage": "stage_adv",
       "cluster": "set_foundations",
-      "description": "Borel determinacy pincer (H(aleph_1) at Sigma^0_4 vs. V_(omega+omega) at Sigma^0_(omega+1)), reflexive scale-invariance pinching (C_inf, S_inf) into Set_ZFC, and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
+      "description": "Borel determinacy pincer (H(aleph_1) at Sigma^0_4 vs. V_(omega+omega) at Sigma^0_(omega+1)), reflexive scale-invariance pinching 1-categorical AST (C, S) into Set_ZFC via Osius pure-set fullness & well-pointedness (bridging to (X, U_0 in U_1)), and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
         "C151",
@@ -1516,7 +1516,7 @@
       "label": "Epilogue: Truth as Obstruction Invariant",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Master 27-row Reference Atlas across Axes I-VII, reflexive scale-invariance of double-clamped Set_ZFC inside (C_inf, S_inf), the five anchor witnesses, and truth as universal obstruction invariant.",
+      "description": "Master 27-row Reference Atlas across Axes I-VII, reflexive scale-invariance of double-clamped Set_ZFC inside (C, S) bridging to univalent (X, U) and Volume II (C_inf, S_inf), the five anchor witnesses, and truth as universal obstruction invariant.",
       "monograph_chapter": "Chapter 8",
       "concepts_covered": [
         "C187",
