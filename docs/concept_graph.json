@@ -1399,7 +1399,7 @@
       "label": "Boffa Hyperset Torsors & Univalent nu P_Anima Loops",
       "stage": "stage_adv",
       "cluster": "set_foundations",
-      "description": "Boffa hypersets V_BAFA, non-isomorphic bisimulation fibers (2-cycle vs. q), Rieger-Bernays slice twin [Q_0^(2)] and global parity [T_odd(Q_0)] torsors, and terminal univalent multisets nu P_Anima uniting Axes V and VII.",
+      "description": "Boffa hypersets V_BAFA, non-isomorphic bisimulation fibers (2-cycle vs. q), Rieger-Bernays slice twin [Q_0^(2)] and global parity [T_odd(Q_0)] torsors, and sequential-limit M-types nu P_Anima (Omega(nu P_Anima, q) ~= 1, Omega(nu P_Anima, [q, q]) ~= Z/2Z) uniting Axes V and VII.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
         "C153",

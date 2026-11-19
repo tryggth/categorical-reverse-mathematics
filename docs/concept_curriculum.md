@@ -2599,7 +2599,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `ch07_sets_residuum.tex:293`
 - **Monograph Section:** Chapter 7
 - **Concise Definition / Context Summary:**
-  Exhibits Boffa's twin Quine set $T = \{a, b\}$ as the $0$-truncated $1$-categorical fossil of higher homotopy loop groups: in the terminal coalgebra $\nu\mathcal{P}_{\mathrm{Anima}}$ of non-well-founded univalent multisets, the $2$-fold Quine multiset $[q, q] := (\mathbf{2}, \mathrm{const}_q)$ carries loop group $\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q, q]) \simeq \mathrm{Aut}(\mathbf{2}) \cong \mathbb{Z}/2\mathbb{Z}$, uniting Axes V and VII across the 8-row Master AST Ledger.
+  Exhibits Boffa's twin Quine set $T = \{a, b\}$ as the $0$-truncated $1$-categorical fossil of higher homotopy loop groups: inside nested univalent universes $\mathcal{U}_0 \in \mathcal{U}_1$, Ahrens--Capriotti--Spadotti's sequential-limit $M$-type $\nu\mathcal{P}_{\mathrm{Anima}} := \varprojlim_{n \in \omega^{\mathrm{op}}} \mathcal{P}_{\mathrm{Anima}}^n(\mathbf{1})$ satisfies $\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, q) \simeq \mathbf{1}$ by finite-unrolling induction, whence $[q, q] := \mathrm{des}^{-1}(\mathbf{2}, \mathrm{const}_q)$ (distinct from the $2$-branching self-loop $c = \mathrm{des}^{-1}(\mathbf{2}, \mathrm{const}_c)$ with $\mathrm{Aut}(T_2)$) carries loop group $\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q, q]) \simeq \mathrm{Aut}(\mathbf{2}) \cong \mathbb{Z}/2\mathbb{Z}$ and receives $d_{\mathrm{Anima}}(T) = [q, q]$ from Boffa's twin Quine graph $G_T$, uniting Axes V and VII across the 8-row Master AST Ledger.
 
 ##### Concept 156: Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$
 
