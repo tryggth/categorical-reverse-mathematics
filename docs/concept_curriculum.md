@@ -1436,7 +1436,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `716`
 - **Monograph Section:** Chapter 1
 - **Concise Definition / Context Summary:**
-  Resolves the Triviality Trap ($A \to B$ tautologies) via orthogonal structural invariants and **Doctrinal Philosophies** $\mathfrak{P} = (\mathbb{D}, \mathcal{P}, \langle -, - \rangle)$ (Def 1.3.1, line 734) inspired by Shulman's 2-Chu-Dialectica pairing: a Galois connection $\mathrm{Th}_{\mathcal{P}} \dashv \mathrm{Ext}_{\mathcal{P}}$ generating Moore closure $\mathcal{M}(\mathcal{P})$ calibrates Pareto Residuum Frontiers $\mathrm{Res}_{\mathcal{P}}^{\min}(K \Rightarrow T)$ and five epistemic regimes—Dogma, Blindness, Schism, Heresy, and Chu Conversions / bi-interpretation.
+  Resolves the Triviality Trap ($A \to B$ tautologies) via orthogonal structural invariants and **Doctrinal Philosophies** $\mathfrak{P} = (\mathbb{D}, \mathcal{P}, \langle -, - \rangle)$ (Def 1.3.1, line 734) inspired by Shulman's 2-Chu-Dialectica pairing: a Galois connection $\mathrm{Th}_{\mathcal{P}} \dashv \mathrm{Ext}_{\mathcal{P}}$ generating Moore closure $\mathcal{M}(\mathcal{P})$ calibrates Pareto Residuum Frontiers $\mathrm{Res}_{\mathcal{P}}^{\min}(H \Rightarrow C)$ (with material-implication Dogma target $T := (\mathbb{D} \setminus H) \cup C$ and non-vacuity core $K \subseteq H \cap C$) and five epistemic regimes—Dogma, Blindness, Schism, Heresy, and Chu Conversions / bi-interpretation.
 
 ##### Concept 14: Four Admissible Invariant Families, Inquisitor's Impossibility, & Finite Pareto Schism
 
