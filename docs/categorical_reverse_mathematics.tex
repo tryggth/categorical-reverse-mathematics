@@ -107,19 +107,19 @@
 \renewcommand{\chaptermark}[1]{\markboth{\if@mainmatter Chapter\ \thechapter:\ #1\else #1\fi}{}}
 \makeatother
 
-% Chapter Epigraph Macro
+% Chapter & Section Epigraph Macros
 \newcommand{\chapterepigraph}[2]{%
-  \vspace{-0.4em}%
-  \begin{flushright}
-    \begin{minipage}{0.84\textwidth}
-      \raggedleft\small\itshape #1\par
-      \vspace{0.3em}%
-      \normalfont\footnotesize\upshape\color{CRMBlue}---\,#2
-    \end{minipage}
-  \end{flushright}
-  \vspace{1.05em}%
+  \vspace{-0.4em}\begin{flushright}\begin{minipage}{0.84\textwidth}%
+    \raggedleft\small\itshape #1\par\vspace{0.3em}%
+    \normalfont\footnotesize\upshape\color{CRMBlue}---\,#2%
+  \end{minipage}\end{flushright}\vspace{1.05em}%
 }
-
+\newcommand{\sectionepigraph}[2]{%
+  \nopagebreak\vspace{-0.15em}\begin{flushright}\begin{minipage}{0.82\textwidth}%
+    \raggedleft\footnotesize\itshape #1\par\vspace{0.2em}%
+    \normalfont\scriptsize\upshape\color{CRMBlue}---\,#2%
+  \end{minipage}\end{flushright}\vspace{0.55em}%
+}
 % Left-Ruled Theorems/Definitions & Diamond Remarks
 \newtheoremstyle{crmplain}{0pt}{0pt}{\itshape}{}{\bfseries\color{CRMBlue}}{.}{0.5em}{}
 \newtheoremstyle{crmdef}{0pt}{0pt}{\normalfont}{}{\bfseries\color{CRMBlue}}{.}{0.5em}{}
@@ -379,7 +379,7 @@ Asking our standard CRM questions immediately uncovers three hidden phenomena:
 
 \begin{enumerate}
   \item \textbf{The Dependent Choice Cost of Algebraic Witness Streams (Theorem~\ref{thm:coinductive-stream-choice}):} Syntactic type theories for $\omega$-categories (\texttt{ICaTT}) package coinductive invertibility into an explicit infinite stream of algebraic witness terms. Over $\mathbf{Set}_{\mathsf{ZFC}}$, having a relational post-fixed point and having a witness stream are identical. Varying the base topos proves they are separated by \textbf{Countable Dependent Choice ($\mathsf{IDC}_\omega$)}: inside a permutation topos where $\mathsf{DC}_\omega$ fails, we construct an explicit arrow $u : 0 \to 1$ that is relationally invertible at every finite stage yet possesses \emph{zero} symmetric witness streams.
-  \item \textbf{Pure Combinatorial Phantoms Without Homotopy Spheres (Theorems~\ref{thm:ordinal-rank-completeness}, \ref{thm:classifier-scc-trapping}--\ref{thm:step-product-counterexample}):} Published examples separating $\mathrm{Cat}^\omega_{(\infty,\infty)}$ from $\mathrm{Cat}^L_{(\infty,\infty)}$ rely on topological configuration spaces ($\mathbb{R}\mathbb{P}^2$) with infinitely many homotopy groups or infinite loop hubs~\cite{ORW26,HenryLoubaton25}. Stripping away all topological spheres, we restrict to categories where every mapping object between two points has \emph{finite} dimension ($\mathrm{Cat}_{\le \omega}$). We prove that finite mapping dimensions automatically prevent ``phantom arrows'' (the Postnikov comparison map is always fully faithful), and if $1$-arrows never form directed cycles, \emph{no phantom objects can exist either}. Yet the moment directed cycles are allowed---even in a completely rigid, sphere-free, Noetherian category built from finite posets with an absorbing minimum operation $\min(x, y)$---the restricted-tail step-product $\mathcal{Q} \subset \prod_{k \ge 1} \mathcal{A}_k$\index{Step-product Q@Step-product $\mathcal{Q}$} on the walking arrow $[1] = \{0 < 1\}$ (where each factor $\mathcal{A}_k = \mathcal{M}_{k+1}$ has contractible hom-objects $\mathrm{Hom}(0_k, 0_k) \simeq \mathrm{Hom}(0_k, 1_k) \simeq \mathrm{Hom}(1_k, 0_k) \simeq *$ while $\mathrm{Hom}(1_k, 1_k) = \mathcal{M}_k \not\simeq *$, producing $\mathrm{Hom}_{\mathcal{Q}}(e^{(m)}, e^{(r)}) \simeq \prod_{k=1}^{\min(m, r)} \mathcal{M}_k$ of rank $\min(m, r)$) glues finite-prefix indicator sequences $e^{(0)}, e^{(1)}, e^{(2)}, \dots$ via their $n$-truncations $y_n := \ell_n(e^{(n-1)}) \in \pi_{\le n}(\mathcal{Q})$ across dimensions into a pure Postnikov \textbf{phantom object} $X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ absent from $\mathcal{Q}$ itself, much like $3,\; 3.1,\; 3.14,\dots$ converging to $\pi \notin \mathbb{Q}$.
+  \item \textbf{Pure Combinatorial Phantoms Without Homotopy Spheres (Theorems~\ref{thm:ordinal-rank-completeness}, \ref{thm:classifier-scc-trapping}--\ref{thm:step-product-counterexample}):} Published examples separating the upper tiers rely on topological configuration spaces ($\mathbb{R}\mathbb{P}^2$, yielding $E^{(\omega)} \in \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \setminus \mathrm{Cat}^\omega_{(\infty,\infty)}$)~\cite{HenryLoubaton25,ORW26} or infinite loop hubs ($W \in \mathrm{Cat}^\omega_{(\infty,\infty)} \setminus \mathrm{Cat}^L_{(\infty,\infty)}$)~\cite{ORW26}. Stripping away all topological spheres, we restrict to categories where every mapping object between two points has \emph{finite} dimension ($\mathrm{Cat}_{\le \omega}$). We prove that finite mapping dimensions automatically prevent ``phantom arrows'' (the Postnikov comparison map is always fully faithful), and if $1$-arrows never form directed cycles, \emph{no phantom objects can exist either}. Yet the moment directed cycles are allowed---even in a completely rigid, sphere-free, Noetherian category built from finite posets with an absorbing minimum operation $\min(x, y)$---the restricted-tail step-product $\mathcal{Q} \subset \prod_{k \ge 1} \mathcal{A}_k$\index{Step-product Q@Step-product $\mathcal{Q}$} on the walking arrow $[1] = \{0 < 1\}$ (where each factor $\mathcal{A}_k = \mathcal{M}_{k+1}$ has contractible hom-objects $\mathrm{Hom}(0_k, 0_k) \simeq \mathrm{Hom}(0_k, 1_k) \simeq \mathrm{Hom}(1_k, 0_k) \simeq *$ while $\mathrm{Hom}(1_k, 1_k) = \mathcal{M}_k \not\simeq *$, producing $\mathrm{Hom}_{\mathcal{Q}}(e^{(m)}, e^{(r)}) \simeq \prod_{k=1}^{\min(m, r)} \mathcal{M}_k$ of rank $\min(m, r)$) glues finite-prefix indicator sequences $e^{(0)}, e^{(1)}, e^{(2)}, \dots$ via their $n$-truncations $y_n := \ell_n(e^{(n-1)}) \in \pi_{\le n}(\mathcal{Q})$ across dimensions into a pure Postnikov \textbf{phantom object} $X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ absent from $\mathcal{Q}$ itself, much like $3,\; 3.1,\; 3.14,\dots$ converging to $\pi \notin \mathbb{Q}$.
   \item \textbf{How Forgetting Direction Births the Homotopy Groups of Spheres (Chapter~\ref{ch:higher-crm}, \S\ref{subsec:crm-discovery-engine-inf-inf}):} Consider the category of finite sets and bijections, $\mathbf{FinSet}^{\simeq} = \bigsqcup_{m \ge 0} B\Sigma_m$, under disjoint union $\amalg$. Only the empty set ($m = 0$) has an inverse under $\amalg$: you cannot add a $3$-element set to another set to get $\emptyset$. When we stabilize this structure \emph{directedly} (keeping non-invertibility intact), every single level of the resulting categorical spectrum is finitely truncated and Noetherian---completely devoid of higher homotopy groups above its finite ceiling (cf.\ Gei\ss's Oriented Freudenthal Suspension Theorem~\cite{Geiss26}). What happens when we switch on the collapse functor $\pi_{\le 0}$ that forces all directed arrows to become invertible paths? Inverting non-empty finite sets forces $(\mathbb{N}, +)$ to group-complete into $(\mathbb{Z}, +)$ and triggers Quillen's plus-construction on the infinite symmetric group $B\Sigma_\infty$. By the celebrated \textbf{Barratt--Priddy--Quillen theorem}~\cite{BarrattPriddy72,Quillen71}, the result is the \textbf{classical sphere spectrum $\mathbb{S}_{\mathrm{top}}$}---meaning that the entire wild zoo of stable homotopy groups of spheres $\pi_*^s(\mathbb{S}_{\mathrm{top}})$ emerges purely as the \textbf{collapse residuum} of inverting directed morphisms!
 \end{enumerate}
 
@@ -1557,7 +1557,7 @@ Over a classical base $\mathcal{S} = \mathbf{Set}$ satisfying $\mathrm{AC}$, The
 When we drop $\mathrm{AC}$ in $\mathcal{S}$ ($\mathcal{S} \not\models \mathrm{AC}$), two fundamental constraints govern $\mathcal{E} \models \mathrm{AC}$:
 \begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.0em]
   \item \textbf{Connected-Base Reflection Obstruction:} Suppose $\gamma : \mathcal{E} \to \mathcal{S}$ is \emph{connected}\index{Geometric morphism!connected} ($\gamma^*$ is fully faithful, so $\gamma_* \gamma^* \simeq \mathrm{id}_{\mathcal{S}}$) and $\mathcal{E} \models \mathrm{AC}$. Given any epimorphism $e : X \twoheadrightarrow Y$ in $\mathcal{S}$, the pullback $\gamma^* e$ is an epimorphism in $\mathcal{E}$ (since the left adjoint $\gamma^*$ preserves all colimits and hence epimorphisms) and therefore admits a section $\sigma : \gamma^* Y \to \gamma^* X$ in $\mathcal{E}$. Fullness of $\gamma^*$ reflects $\sigma$ back to a section $s : Y \to X$ of $e$ in $\mathcal{S}$, forcing $\mathcal{S} \models \mathrm{AC}$. Consequently, over a base $\mathcal{S} \not\models \mathrm{AC}$, no connected $\mathcal{S}$-topos---not even $\mathrm{id} : \mathcal{S} \to \mathcal{S}$ on a Boolean Cohen--Halpern--Läuchli model---can satisfy $\mathrm{AC}$; $\gamma$ must factor through a non-trivial \emph{choice slice} $\mathcal{S}/U \models \mathrm{AC}$ (or an $\omega$-choice slice when $\mathcal{S} \models \mathrm{DC}$).
-  \item \textbf{Atomic Permutation Collapse (Non-Projectivity of $1$):} Inside any connected two-valued atomic permutation topos $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ ($\mathrm{Sub}(1) = \{0,1\}$) for a topological group $\mathcal{G}$, the terminal object $1$ is \emph{not} externally projective whenever a proper open subgroup $U \subsetneq \mathcal{G}$ exists, because the quotient $\mathcal{G}/U \twoheadrightarrow 1$ is an epimorphism whose global sections vanish ($\Gamma(\mathcal{G}/U) = (\mathcal{G}/U)^{\mathcal{G}} = \emptyset$). Thus external projectivity of $1$, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, and $\mathrm{AC}$ in $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ all collapse simultaneously to the trivial filter of open subgroups $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$ ($\mathbf{Cont}_{\mathcal{S}}(\mathcal{G}) \simeq \mathcal{S}$)~\cite{Johnstone02}.
+  \item \textbf{Atomic Permutation Collapse (Non-Projectivity of $1$):} Inside any connected two-valued atomic permutation topos $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ ($\mathrm{Sub}(1) = \{0,1\}$) for a topological group $\mathcal{G}$, the terminal object $1$ is \emph{not} externally projective whenever a proper open subgroup $U \subsetneq \mathcal{G}$ exists, because the quotient $\mathcal{G}/U \twoheadrightarrow 1$ is an epimorphism whose global sections vanish ($\Gamma(\mathcal{G}/U) = (\mathcal{G}/U)^{\mathcal{G}} = \emptyset$). Thus external projectivity of $1$, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, and $\mathrm{AC}$ in $\mathbf{Cont}_{\mathcal{S}}(\mathcal{G})$ all collapse simultaneously to the trivial filter of open subgroups $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$ ($\mathbf{Cont}_{\mathcal{S}}(\mathcal{G}) \simeq \mathcal{S}$)~\cite{Johnstone02,Kihara26}.
 \end{enumerate}
 
 To recover $\mathcal{E} \models \mathrm{AC}$ over $\mathcal{S} \not\models \mathrm{AC}$, $\gamma$ must therefore be non-connected over a choice slice and the fiber residuum $\mathcal{R}(\mathcal{E}/\mathcal{S})$ must absorb the missing base strength:
@@ -2268,7 +2268,7 @@ In Chapter~\ref{ch:non-ac-lattices} (\S\ref{sec:cohesive-lattice}), we saw that 
 
   \item \textbf{Local $n$-Connections to Global Principal $\infty$-Bundles:} Taking $A$ as local Lie $\infty$-algebra valued differential forms on coordinate charts and $B$ as global principal $\infty$-bundles with connection (such as $B^2 U(1)$ bundle gerbes in string and M-theory), the residuum $\mathcal{R}(\mathcal{X})$ is cohesive descent and $\Pi$-product preservation~\cite[\S 4]{Schreiber13}.
 
-  \item \textbf{Flat Connections to Differential Cohomology Hexagon:} Bridging local curvature $2$-forms ($A$) to the global Simons--Sullivan differential cohomology hexagon~\cite{SimonsSullivan08} ($B$) isolates the exactness of the cohesive fracture square between $\Pi$ (homotopy shape) and $\mathrm{Disc}$ (discrete underlying geometry)~\cite[\S 4]{Schreiber13}.
+  \item \textbf{Flat Connections to Differential Cohomology Hexagon:} Bridging local degree-$k$ curvature forms ($A$) to the global Simons--Sullivan differential cohomology hexagon~\cite{SimonsSullivan08} ($B$) isolates the exactness of the cohesive fracture square coupling the flat modality $\flat = \mathrm{Disc} \circ \Gamma$ to the de~Rham and infinitesimal shape modalities $\flat_{\mathrm{dR}}$ and $\mathrm{Im}$~\cite[\S 4]{Schreiber13}.
 
 \end{itemize}
 
@@ -2343,13 +2343,13 @@ When $\mathcal{A} = \mathcal{K}_1$, $\mathbf{RT}(\mathcal{K}_1)$ is Martin Hylan
 
 \begin{itemize}[leftmargin=1.5em]
 
-  \item \textbf{Two-Valuedness Without Booleanness:} The terminal object $1 \in \Eff$ is externally projective and indecomposable ($\Eff$ is two-valued), yet $\Eff$ is strongly non-Boolean ($\Omega \not\simeq 1+1$) because a proposition $\phi$ is true in $\Eff$ if and only if it possesses a computable realizer~\cite{Hyland82}, \cite[\S 3.1]{vanOosten08}.
+  \item \textbf{Two-Valuedness Without Booleanness:} The terminal object $1 \in \Eff$ is externally projective and indecomposable ($\Eff$ is two-valued), yet $\Eff$ is strongly non-Boolean ($\Omega \not\simeq 1+1$) because a closed sentence $\phi$ is true in $\Eff$ if and only if it possesses a computable realizer (with general propositions valued in $\Omega = \mathcal{P}(\mathbb{N})/{\sim}$)~\cite{Hyland82}, \cite[\S 3.1]{vanOosten08}.
 
   \item \textbf{Non-Grothendieck Exactness:} $\Eff$ is an elementary topos with a Natural Numbers Object ($\mathrm{NNO}$), but it has no points (no geometric morphisms $\mathbf{Set} \to \Eff$) and is not cocomplete over $\mathbf{Set}$~\cite{Hyland82}, \cite[\S\S 3.1--3.2]{vanOosten08}.
 
   \item \textbf{Internal Church's Thesis ($\mathrm{CT}$) and Markov's Principle ($\mathrm{MP}$):} Internally in $\Eff$, \emph{every} function $f: \mathbb{N} \to \mathbb{N}$ is computable ($\Eff \models \mathrm{CT}$), and double-negation elimination holds for decidable existential predicates over $\mathbb{N}$ ($\Eff \models \mathrm{MP}: \forall n\,(\phi(n) \vee \neg\phi(n)) \wedge \neg\neg\exists n\,\phi(n) \to \exists n\,\phi(n)$~\cite{Hyland82}, \cite[\S 3.2]{vanOosten08}).
 
-  \item \textbf{Countable and Dependent Choice Without Full Choice:} Because a realizer for $\forall n \in \mathbb{N}\,\exists x \in X\, R(n, x)$ is already a computable function extracting a witness for each $n$, $\Eff$ validates Countable Choice ($\mathrm{CC}_{\mathbb{N}}$) and Dependent Choice ($\mathrm{DC}_{\mathbb{N}}$) over $\mathbb{N}$ (and more generally over any modest/projective object), while refuting full $\mathrm{AC}$ (since $\mathrm{AC} \implies \mathrm{LEM}$ by Diaconescu's theorem, Chapter~\ref{ch:choice-atlas}, Theorem~\ref{thm:diaconescu}, \cite{Diaconescu75};~\cite{Hyland82}, \cite[\S 3.2]{vanOosten08}).
+  \item \textbf{Countable and Dependent Choice Without Full Choice:} Because a realizer for $\forall n \in \mathbb{N}\,\exists x \in X\, R(n, x)$ is already a computable function extracting a witness for each $n$, $\Eff$ validates Countable Choice ($\mathrm{CC}_{\mathbb{N}}$) and Dependent Choice ($\mathrm{DC}_{\mathbb{N}}$) over $\mathbb{N}$---and more generally over any projective object (partitioned assembly, such as $\mathbb{N}$)--- while refuting full $\mathrm{AC}$ (since $\mathrm{AC} \implies \mathrm{LEM}$ by Diaconescu's theorem, Chapter~\ref{ch:choice-atlas}, Theorem~\ref{thm:diaconescu}, \cite{Diaconescu75};~\cite{Hyland82}, \cite[\S 3.2]{vanOosten08}).
 
 \end{itemize}
 
@@ -2839,7 +2839,7 @@ Calibrate the Borel complexity transition separating Rung~4 countably classifiab
 \subsection*{Horizon VIII: Algebraic Set Theory, Proper-Class Unraveling, and Universe Fixed Points}
 
 \begin{problem}[Explicit Class-Coalgebra Residuum of Borel Determinacy]\label{prob:open-15}
-Extract the explicit class-level obstruction invariant $\mathrm{Res}(\kappa_{\mathrm{Det}})$ blocking small strategy descent on Tony Martin's~\cite{Martin75} proper-class inductive unraveling coalgebras inside Joyal--Moerdijk~\cite{JoyalMoerdijk95} $(\mathcal{C}, \mathcal{S})$ (Chapter~\ref{ch:sets-residuum}, Remark~\ref{rem:martin-borel-coalgebra}), calibrating the sharp pincer between $H(\aleph_1) \models \mathsf{ZFC}^-$ (failing at $\boldsymbol{\Sigma}^0_4$ via $\mathcal{P}(\mathbb{N}) \notin \mathcal{S}$, Proposition~\ref{prop:pointillist-continuum}) and $(V_{\omega+\omega}, \mathrm{Def}(V_{\omega+\omega})) \models \mathsf{ZC}$ (failing at $\boldsymbol{\Sigma}^0_{\omega+1}$ via $\{\mathcal{P}^n(\mathbb{N})\}_{n \in \mathbb{N}} \notin \mathcal{S}$~\cite{Friedman71}, Proposition~\ref{prop:etcs-colimit-escape}).
+Extract the explicit class-level obstruction invariant $\mathrm{Res}(\kappa_{\mathrm{Det}})$ blocking small strategy descent on Tony Martin's~\cite{Martin75} proper-class inductive unraveling coalgebras inside Joyal--Moerdijk~\cite{JoyalMoerdijk95} $(\mathcal{C}, \mathcal{S})$ (Chapter~\ref{ch:sets-residuum}, Remark~\ref{rem:martin-borel-coalgebra}), calibrating the sharp pincer between Power-Set-free $\mathsf{ZFC}^-$ (whose provability of Borel Determinacy breaks at $\boldsymbol{\Sigma}^0_4$ in minimal or non-standard $\beta$-models lacking $\mathcal{P}(\mathbb{N})$, in contrast to full ambient $H(\aleph_1) \subset V \models \mathsf{ZFC}$~\cite{Friedman71,MontalbanShore12,GitmanHamkinsJohnstone16}, Proposition~\ref{prop:pointillist-continuum}) and $(V_{\omega+\omega}, \mathrm{Def}(V_{\omega+\omega})) \models \mathsf{ZC}$ (failing at $\boldsymbol{\Sigma}^0_{\omega+1}$ via $\{\mathcal{P}^n(\mathbb{N})\}_{n \in \mathbb{N}} \notin \mathcal{S}$~\cite{Friedman71}, Proposition~\ref{prop:etcs-colimit-escape}).
 \end{problem}
 
 \begin{problem}[Class-Theoretic Calibration of the Four-Tier $(\infty, \infty)$-\allowbreak Localization Ladder]\label{prob:open-16}
@@ -3352,6 +3352,11 @@ Journal of Pure and Applied Algebra \textbf{2} (1972), no.~4, 261--274.
 I.~Moerdijk and G.~E.~Reyes,
 \emph{Models for Smooth Infinitesimal Analysis},
 Springer, New York, 1991.
+
+\bibitem{MontalbanShore12}
+A.~Montalb\'an and R.~A.~Shore,
+\emph{The limits of determinacy in second-order arithmetic},
+Proceedings of the London Mathematical Society (3) \textbf{104} (2012), no.~2, 223--252.
 
 \bibitem{MulveyPelletier91}
 C.~J.~Mulvey and J.~W.~Pelletier,

@@ -241,6 +241,7 @@ def transform_content(body: str) -> str:
     for macro, nargs in [
         (r"\index", 1),
         (r"\chapterepigraph", 2),
+        (r"\sectionepigraph", 2),
         (r"\chaptermark", 1),
         (r"\markboth", 2),
         (r"\addcontentsline", 3),
