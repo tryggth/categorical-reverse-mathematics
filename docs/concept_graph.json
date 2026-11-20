@@ -117,7 +117,7 @@
       "concepts_covered": [
         "P03",
         "P09",
-        "C014"
+        "C015"
       ],
       "topological_rank": 4,
       "prerequisites": [
@@ -139,7 +139,7 @@
       "monograph_chapter": "Undergraduate Foundation",
       "concepts_covered": [
         "P40",
-        "C122"
+        "C094"
       ],
       "topological_rank": 5,
       "prerequisites": [
@@ -159,10 +159,10 @@
       "monograph_chapter": "Undergraduate Foundation",
       "concepts_covered": [
         "P05",
-        "C047",
-        "C048",
-        "C049",
-        "C050"
+        "C132",
+        "C133",
+        "C134",
+        "C135"
       ],
       "topological_rank": 6,
       "prerequisites": [
@@ -250,7 +250,7 @@
       "monograph_chapter": "Graduate Prerequisite",
       "concepts_covered": [
         "P16",
-        "C004"
+        "C005"
       ],
       "topological_rank": 10,
       "prerequisites": [
@@ -271,8 +271,8 @@
       "concepts_covered": [
         "P31",
         "P32",
-        "C057",
-        "C059"
+        "C142",
+        "C144"
       ],
       "topological_rank": 11,
       "prerequisites": [
@@ -313,7 +313,7 @@
       "concepts_covered": [
         "P20",
         "P22",
-        "C013",
+        "C014",
         "C026"
       ],
       "topological_rank": 13,
@@ -360,7 +360,7 @@
       "concepts_covered": [
         "P17",
         "P18",
-        "C004"
+        "C005"
       ],
       "topological_rank": 15,
       "prerequisites": [
@@ -384,7 +384,7 @@
       "concepts_covered": [
         "P33",
         "P36",
-        "C088"
+        "C064"
       ],
       "topological_rank": 16,
       "prerequisites": [
@@ -425,7 +425,7 @@
       "monograph_chapter": "Graduate Prerequisite",
       "concepts_covered": [
         "P24",
-        "C129"
+        "C101"
       ],
       "topological_rank": 18,
       "prerequisites": [
@@ -445,8 +445,8 @@
       "monograph_chapter": "Graduate Prerequisite",
       "concepts_covered": [
         "P19",
-        "C055",
-        "C056"
+        "C140",
+        "C141"
       ],
       "topological_rank": 19,
       "prerequisites": [
@@ -489,8 +489,8 @@
       "concepts_covered": [
         "P25",
         "P26",
-        "C015",
-        "C080"
+        "C016",
+        "C056"
       ],
       "topological_rank": 21,
       "prerequisites": [
@@ -514,9 +514,9 @@
       "concepts_covered": [
         "P41",
         "P42",
-        "C122",
-        "C123",
-        "C124"
+        "C094",
+        "C095",
+        "C096"
       ],
       "topological_rank": 22,
       "prerequisites": [
@@ -538,8 +538,8 @@
       "concepts_covered": [
         "P45",
         "P46",
-        "C079",
-        "C096"
+        "C055",
+        "C071"
       ],
       "topological_rank": 23,
       "prerequisites": [
@@ -563,7 +563,7 @@
       "monograph_chapter": "Graduate Prerequisite",
       "concepts_covered": [
         "P47",
-        "C120"
+        "C152"
       ],
       "topological_rank": 24,
       "prerequisites": [
@@ -628,9 +628,9 @@
       "description": "Transitioning reverse mathematics from syntactic arithmetic (RCA_0) to structural, topological, and cohomological geometry of doctrines.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
-        "C003",
-        "C010",
-        "C011"
+        "C004",
+        "C011",
+        "C012"
       ],
       "topological_rank": 27,
       "prerequisites": [
@@ -649,7 +649,7 @@
       "description": "2-monadic and hyperdoctrinal specifications of mathematical universes equipped with operations, limits, and quantifiers.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
-        "C004"
+        "C005"
       ],
       "topological_rank": 28,
       "prerequisites": [
@@ -670,8 +670,8 @@
       "description": "Tuple T = (D_0 >= D_1, kappa: Phi => Psi) with base doctrine D_0, subdoctrine D_1, and comparison transformation kappa.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
-        "C005",
-        "C006"
+        "C006",
+        "C007"
       ],
       "topological_rank": 29,
       "prerequisites": [
@@ -689,9 +689,9 @@
       "description": "Obstruction assignment Res(kappa): D_0 -> Obstr obeying the Admissibility Criterion (orthogonal structural invariants).",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
-        "C007",
-        "C012",
+        "C008",
         "C013",
+        "C014",
         "C158",
         "C160",
         "C161"
@@ -712,7 +712,7 @@
       "description": "The foundational equivalence D_0 + Res(kappa) <=> D_1 asserting exact gap calibration by the residuum.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
-        "C008"
+        "C009"
       ],
       "topological_rank": 31,
       "prerequisites": [
@@ -730,7 +730,7 @@
       "description": "Residuum specialization (A =>_Topos B) acting as an order-theoretic relative pseudocomplement in universe lattices.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
-        "C009",
+        "C010",
         "C159"
       ],
       "topological_rank": 32,
@@ -757,8 +757,8 @@
       "monograph_chapter": "Chapter 1 & 2",
       "concepts_covered": [
         "P38",
-        "C010",
-        "C014",
+        "C003",
+        "C011",
         "C015",
         "C016",
         "C017",
@@ -777,7 +777,8 @@
         "C036",
         "C037",
         "C038",
-        "C039"
+        "C039",
+        "C043"
       ],
       "topological_rank": 33,
       "prerequisites": [
@@ -799,11 +800,11 @@
       "stage": "stage_core",
       "cluster": "coordinate_axes",
       "description": "Geometry of subobject classifier: De Morgan Stone lattices, Gödel-Dummett linearity, and Boolean collapse Omega = 1+1.",
-      "monograph_chapter": "Chapter 1 & 3",
+      "monograph_chapter": "Chapter 1 & 8",
       "concepts_covered": [
-        "C010",
-        "C055",
-        "C056"
+        "C011",
+        "C140",
+        "C141"
       ],
       "topological_rank": 34,
       "prerequisites": [
@@ -823,14 +824,14 @@
       "stage": "stage_core",
       "cluster": "coordinate_axes",
       "description": "NNO existence, finite dynamical lassos, Dedekind vs Kuratowski infinity, and biproduct tail cokernels.",
-      "monograph_chapter": "Chapter 1 & 3",
+      "monograph_chapter": "Chapter 1 & 8",
       "concepts_covered": [
         "P21",
-        "C010",
+        "C011",
         "C021",
         "C022",
         "C023",
-        "C078"
+        "C054"
       ],
       "topological_rank": 35,
       "prerequisites": [
@@ -853,11 +854,12 @@
       "monograph_chapter": "Chapter 1 & 3",
       "concepts_covered": [
         "P49",
-        "C010",
-        "C069",
-        "C072",
-        "C073",
-        "C117"
+        "C011",
+        "C045",
+        "C046",
+        "C049",
+        "C050",
+        "C093"
       ],
       "topological_rank": 36,
       "prerequisites": [
@@ -878,10 +880,10 @@
       "description": "Invertibility spectra, cellular directed complexes, 4-tier ladder, and categorical spectra CatSp.",
       "monograph_chapter": "Chapter 1 & 5",
       "concepts_covered": [
-        "C010",
-        "C106",
-        "C107",
-        "C120"
+        "C011",
+        "C082",
+        "C083",
+        "C152"
       ],
       "topological_rank": 37,
       "prerequisites": [
@@ -906,15 +908,15 @@
       "monograph_chapter": "Chapter 1 & 4",
       "concepts_covered": [
         "C024",
-        "C075",
-        "C076",
-        "C077",
-        "C081",
-        "C082",
-        "C083",
-        "C084",
-        "C085",
-        "C086",
+        "C051",
+        "C052",
+        "C053",
+        "C057",
+        "C058",
+        "C059",
+        "C060",
+        "C061",
+        "C062",
         "C162"
       ],
       "topological_rank": 38,
@@ -937,9 +939,9 @@
       "monograph_chapter": "Chapter 1 & 4",
       "concepts_covered": [
         "C025",
-        "C087",
-        "C088",
-        "C089"
+        "C063",
+        "C064",
+        "C065"
       ],
       "topological_rank": 39,
       "prerequisites": [
@@ -960,9 +962,9 @@
       "description": "Joyal-Moerdijk predicative class-set ambients (C, S), contravariant small powerclasses P_S, pointillist continuum H(aleph_1) |= ZFC^-, CZF Omega^X / 2^X split, and Axis VI quotient-image descent im(f) in S.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
-        "C148",
-        "C149",
-        "C150"
+        "C121",
+        "C122",
+        "C123"
       ],
       "topological_rank": 40,
       "prerequisites": [
@@ -983,8 +985,8 @@
       "description": "Axis VII coalgebra-doctrine comparison Coalg_wf(P_S) -> Coalg(P_S) inducing strict kappa_Reg : nu^wf P_S ~= mu P_S -> nu P_S (separating well-founded V_ZF from Aczel's V_AFA and Quine atom q = {q}), Friedman's IZF_non-ext quotient cost, and Gylterud's hereditary (-1)-truncation V_0 -> mu P_Anima.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
-        "C152",
-        "C154"
+        "C125",
+        "C127"
       ],
       "topological_rank": 41,
       "prerequisites": [
@@ -1004,14 +1006,14 @@
       "stage": "stage_witness",
       "cluster": "anchor_witnesses",
       "description": "Odd-finset parity torsor [T_odd] = delta(1) != 0 in H^1(Nom; EvenFinset) witnessing non-projectivity of 1_Nom and AC failure.",
-      "monograph_chapter": "Chapter 1, 2, 6, 7, 8",
+      "monograph_chapter": "Chapter 1, 2, 6, 7, 9",
       "concepts_covered": [
         "P34",
         "P39",
-        "C011",
+        "C012",
         "C040",
-        "C093",
-        "C134",
+        "C069",
+        "C106",
         "C189"
       ],
       "topological_rank": 42,
@@ -1032,11 +1034,12 @@
       "stage": "stage_witness",
       "cluster": "anchor_witnesses",
       "description": "R_2 = Z[eta]/(2eta, eta^2) with delta_0(eta)=0, delta_1(eta)=eta and DualInt = Z[eps]/(eps^2) pinning relative slice perfection.",
-      "monograph_chapter": "Chapter 1, 3, 8",
+      "monograph_chapter": "Chapter 1, 3, 9",
       "concepts_covered": [
-        "C011",
-        "C070",
-        "C071",
+        "C012",
+        "C046",
+        "C047",
+        "C048",
         "C189"
       ],
       "topological_rank": 43,
@@ -1054,11 +1057,11 @@
       "stage": "stage_witness",
       "cluster": "anchor_witnesses",
       "description": "Noetherian rank-omega step-product Q in prod A_k with pure Postnikov phantom X_bullet in RL(Q) \\ Q disproving Conjecture C1.",
-      "monograph_chapter": "Chapter 1, 5, 8",
+      "monograph_chapter": "Chapter 1, 5, 9",
       "concepts_covered": [
-        "C011",
-        "C114",
-        "C115",
+        "C012",
+        "C090",
+        "C091",
         "C189"
       ],
       "topological_rank": 44,
@@ -1077,10 +1080,10 @@
       "stage": "stage_witness",
       "cluster": "anchor_witnesses",
       "description": "Facet-supported directed triangle F_3 = partial Delta^2 and F_n = partial Delta^(n-1) erecting the n >= 3 cubical amalgamation wall.",
-      "monograph_chapter": "Chapter 1, 6, 8",
+      "monograph_chapter": "Chapter 1, 6, 9",
       "concepts_covered": [
-        "C011",
-        "C138",
+        "C012",
+        "C110",
         "C189"
       ],
       "topological_rank": 45,
@@ -1099,12 +1102,12 @@
       "stage": "stage_witness",
       "cluster": "anchor_witnesses",
       "description": "Light condensed smooth-end quotient Q_E0 = 2^N // E0 with UHF(2^inf) and non-splitting [q] != 0 in Ext^1_CondAb for exotic R^4 smoothings.",
-      "monograph_chapter": "Chapter 1, 4, 8",
+      "monograph_chapter": "Chapter 1, 4, 9",
       "concepts_covered": [
         "P50",
-        "C011",
-        "C091",
-        "C092",
+        "C012",
+        "C067",
+        "C068",
         "C189"
       ],
       "topological_rank": 46,
@@ -1124,31 +1127,31 @@
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
       "description": "Continuum trichotomy, pointfree/spatial duality (Tychonoff, Hahn-Banach), homological exactness bifurcation, and Categorical Big Five.",
-      "monograph_chapter": "Chapter 3",
+      "monograph_chapter": "Chapter 8",
       "concepts_covered": [
         "P37",
         "C020",
-        "C047",
-        "C048",
-        "C049",
-        "C050",
-        "C051",
-        "C052",
-        "C053",
-        "C054",
-        "C057",
-        "C058",
-        "C059",
-        "C060",
-        "C061",
-        "C062",
-        "C063",
-        "C064",
-        "C065",
-        "C066",
-        "C067",
-        "C068",
-        "C074"
+        "C131",
+        "C132",
+        "C133",
+        "C134",
+        "C135",
+        "C136",
+        "C137",
+        "C138",
+        "C139",
+        "C142",
+        "C143",
+        "C144",
+        "C145",
+        "C146",
+        "C147",
+        "C148",
+        "C149",
+        "C153",
+        "C154",
+        "C155",
+        "C156"
       ],
       "topological_rank": 47,
       "prerequisites": [
@@ -1171,20 +1174,18 @@
       "monograph_chapter": "Chapter 5",
       "concepts_covered": [
         "P35",
-        "C042",
-        "C043",
-        "C044",
-        "C097",
-        "C098",
-        "C099",
-        "C100",
-        "C101",
-        "C102",
-        "C103",
-        "C104",
-        "C105",
-        "C118",
-        "C119"
+        "C072",
+        "C073",
+        "C074",
+        "C075",
+        "C076",
+        "C077",
+        "C078",
+        "C079",
+        "C080",
+        "C081",
+        "C150",
+        "C151"
       ],
       "topological_rank": 48,
       "prerequisites": [
@@ -1204,7 +1205,9 @@
       "description": "Complete classification of Barr-Diaconescu-Freyd, Internal-to-External choice, COSHEP-SVC, and localic decompositions.",
       "monograph_chapter": "Chapter 2",
       "concepts_covered": [
-        "C046"
+        "C042",
+        "C043",
+        "C044"
       ],
       "topological_rank": 49,
       "prerequisites": [
@@ -1225,14 +1228,14 @@
       "monograph_chapter": "Chapter 6",
       "concepts_covered": [
         "P27",
-        "C125",
-        "C126",
-        "C127",
-        "C128",
-        "C130",
-        "C131",
-        "C132",
-        "C133"
+        "C097",
+        "C098",
+        "C099",
+        "C100",
+        "C102",
+        "C103",
+        "C104",
+        "C105"
       ],
       "topological_rank": 50,
       "prerequisites": [
@@ -1252,14 +1255,14 @@
       "monograph_chapter": "Chapter 5",
       "concepts_covered": [
         "P48",
-        "C107",
-        "C108",
-        "C109",
-        "C110",
-        "C111",
-        "C112",
-        "C113",
-        "C116"
+        "C083",
+        "C084",
+        "C085",
+        "C086",
+        "C087",
+        "C088",
+        "C089",
+        "C092"
       ],
       "topological_rank": 51,
       "prerequisites": [
@@ -1281,11 +1284,12 @@
       "monograph_chapter": "Chapter 6",
       "concepts_covered": [
         "P43",
-        "C135",
-        "C136",
-        "C137",
-        "C138",
-        "C139"
+        "C107",
+        "C108",
+        "C109",
+        "C110",
+        "C111",
+        "C112"
       ],
       "topological_rank": 52,
       "prerequisites": [
@@ -1302,10 +1306,10 @@
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
       "description": "Five program-defining conjectures: Cohomological Vanishing (proved on top, IBPI, IDC, SVC), Etale omega-Presentability, Etale Zero-Dimensionality, Postnikov Stepwise Effacement (proved for n >= 1, liens, nilpotent & etale bands), and Two-Sorted Big-Five Adjoint/Fixed-Point Hierarchy.",
-      "monograph_chapter": "Chapter 2, 3, 5, 8",
+      "monograph_chapter": "Chapter 2, 5, 8, 9",
       "concepts_covered": [
         "C041",
-        "C045",
+        "C077",
         "C163",
         "C164",
         "C165",
@@ -1329,8 +1333,8 @@
       "description": "CatSp = Sp(Cat^R_*), directed loop-suspension stabilization without Wall diffeomorphism or Giraud initiality collapse.",
       "monograph_chapter": "Chapter 5",
       "concepts_covered": [
-        "C120",
-        "C121",
+        "C152",
+        "C157",
         "C179"
       ],
       "topological_rank": 54,
@@ -1350,10 +1354,9 @@
       "description": "Radial exotic R^4 smoothings, suspension collapse of light condensed torsor Q_E0, and Connes groupoid G_E0.",
       "monograph_chapter": "Chapter 4",
       "concepts_covered": [
-        "C090",
-        "C091",
-        "C094",
-        "C095"
+        "C066",
+        "C067",
+        "C070"
       ],
       "topological_rank": 55,
       "prerequisites": [
@@ -1373,14 +1376,14 @@
       "description": "Coreflective baseline Def -| pi_Set, Williams's fixed-set class kaleidoscope, skeletal splitting Card -> Set <=> GC, CT^-[ZFC] vs. ETR_Ord (Con(ZFC)) vs. KM, LoS <=> Rep & GC, V_(omega+omega) colimit escape, and Glazer's ZC non-conservativity.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
-        "C140",
-        "C141",
-        "C142",
-        "C143",
-        "C144",
-        "C145",
-        "C146",
-        "C147"
+        "C113",
+        "C114",
+        "C115",
+        "C116",
+        "C117",
+        "C118",
+        "C119",
+        "C120"
       ],
       "topological_rank": 56,
       "prerequisites": [
@@ -1402,8 +1405,8 @@
       "description": "Boffa hypersets V_BAFA, non-isomorphic bisimulation fibers (2-cycle vs. q), Rieger-Bernays slice twin [Q_0^(2)] and global parity [T_odd(Q_0)] torsors, and sequential-limit M-types nu P_Anima (Omega(nu P_Anima, q) ~= 1, Omega(nu P_Anima, [q, q]) ~= Z/2Z) uniting Axes V and VII.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
-        "C153",
-        "C155"
+        "C126",
+        "C128"
       ],
       "topological_rank": 57,
       "prerequisites": [
@@ -1425,9 +1428,9 @@
       "description": "Borel determinacy pincer (ZFC^- unprovability at Sigma^0_4 in minimal/non-standard beta-models lacking P(N) vs. V_(omega+omega) at Sigma^0_(omega+1)), reflexive scale-invariance pinching 1-categorical AST (C, S) into Set_ZFC via Osius pure-set fullness & well-pointedness (bridging to (X, U_0 in U_1)), and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
-        "C151",
-        "C156",
-        "C157"
+        "C124",
+        "C129",
+        "C130"
       ],
       "topological_rank": 58,
       "prerequisites": [
@@ -1450,7 +1453,7 @@
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
       "description": "Four-layer Lean 4 honesty gate and ten-module production verification suite (15,577 lines, 182 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, and SetsResiduum).",
-      "monograph_chapter": "Chapter 7 & 8",
+      "monograph_chapter": "Chapter 7 & 9",
       "concepts_covered": [
         "C185",
         "C186"
@@ -1475,7 +1478,7 @@
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
       "description": "Seventeen open research problems across Horizons I-VIII: Pareto residuum frontiers, Weihrauch-Lawvere-Tierney duality, Kihara higher-cardinal stability, cubical phase transitions, Postnikov representation 1-gerbes, CatSp stabilization, exotic R^4 condensations, Borel determinacy class coalgebras, class calibration of the (inf, inf)-ladder, and pi_Set transgression.",
-      "monograph_chapter": "Chapter 8",
+      "monograph_chapter": "Chapter 9",
       "concepts_covered": [
         "C168",
         "C169",
@@ -1517,7 +1520,7 @@
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
       "description": "Master 27-row Reference Atlas across Axes I-VII, reflexive scale-invariance of double-clamped Set_ZFC inside (C, S) bridging to univalent (X, U) and Volume II (C_inf, S_inf), the five anchor witnesses, and truth as universal obstruction invariant.",
-      "monograph_chapter": "Chapter 8",
+      "monograph_chapter": "Chapter 9",
       "concepts_covered": [
         "C187",
         "C188",

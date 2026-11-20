@@ -481,13 +481,13 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
     part3 = catalog["part3"]
     part4 = catalog["part4"]
 
-    # 2. Validate Part I & Part II 1-to-1 bijection with all 78 formal LaTeX environments
+    # 2. Validate Part I & Part II 1-to-1 bijection with all 82 formal LaTeX environments
     tex_result_envs = [e for e in tex_envs if e["type"] in RESULT_ENVS]
     tex_struct_envs = [e for e in tex_envs if e["type"] in STRUCTURAL_ENVS]
-    if len(tex_result_envs) != 45:
-        errors.append(f"Expected 45 formal result environments in LaTeX, found {len(tex_result_envs)}.")
-    if len(tex_struct_envs) != 33:
-        errors.append(f"Expected 33 structural/open environments in LaTeX, found {len(tex_struct_envs)}.")
+    if len(tex_result_envs) != 48:
+        errors.append(f"Expected 48 formal result environments in LaTeX, found {len(tex_result_envs)}.")
+    if len(tex_struct_envs) != 34:
+        errors.append(f"Expected 34 structural/open environments in LaTeX, found {len(tex_struct_envs)}.")
     if len(part1) != len(tex_result_envs):
         errors.append(f"Part I row count ({len(part1)}) != LaTeX formal results ({len(tex_result_envs)}).")
     if len(part2) != len(tex_struct_envs):
