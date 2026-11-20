@@ -10,6 +10,7 @@ import Mathlib.CategoryTheory.Functor.OfSequence
 import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 import Mathlib.Data.Int.Cast.Lemmas
 import Mathlib.Data.Nat.Prime.Defs
+import Mathlib.Data.ZMod.Basic
 import Mathlib.RingTheory.Ideal.Maps
 import Mathlib.RingTheory.Ideal.Operations
 import Mathlib.RingTheory.Ideal.Span
@@ -1195,6 +1196,678 @@ def perfectionSliceAlgDualInt_isInitial :
 
 end DualInt
 
+/-! ## Section 5b: Torsion `δ`-Ring Counterwitness `R₂ = ℤ[η]/(2η, η²)` & `Der_φ`-Torsor -/
+
+section TwoTorsionR2
+
+/-- The concrete `2`-torsion `δ`-ring carrier `R₂ = ℤ[η]/(2η, η²)`, represented as pairs
+`⟨a, b⟩ : ℤ × ZMod 2` standing for `a + b η`. Note Guardrail 6: `R₂ ≅ ℤ ⊕ 𝔽₂` as additive
+groups ONLY, never as rings, and `η` is a non-zero square-zero `2`-torsion nilpotent. -/
+@[ext]
+structure R2Ring : Type where
+  /-- Integer part `a` of `a + b η`. -/
+  a : ℤ
+  /-- Nilpotent `2`-torsion coefficient `b ∈ 𝔽₂` of `a + b η`. -/
+  b : ZMod 2
+  deriving DecidableEq, Repr
+
+namespace R2Ring
+
+/-- The canonical square-zero `2`-torsion generator `η = 0 + 1·η ∈ R₂`. -/
+def eta : R2Ring := ⟨0, 1⟩
+
+instance : Zero R2Ring := ⟨⟨0, 0⟩⟩
+instance : One R2Ring := ⟨⟨1, 0⟩⟩
+instance : Add R2Ring := ⟨fun x y ↦ ⟨x.a + y.a, x.b + y.b⟩⟩
+instance : Neg R2Ring := ⟨fun x ↦ ⟨-x.a, -x.b⟩⟩
+instance : Sub R2Ring := ⟨fun x y ↦ ⟨x.a - y.a, x.b - y.b⟩⟩
+instance : Mul R2Ring :=
+  ⟨fun x y ↦ ⟨x.a * y.a, (x.a : ZMod 2) * y.b + (y.a : ZMod 2) * x.b⟩⟩
+instance : NatCast R2Ring := ⟨fun n ↦ ⟨n, 0⟩⟩
+instance : IntCast R2Ring := ⟨fun z ↦ ⟨z, 0⟩⟩
+
+@[simp] lemma zero_a : (0 : R2Ring).a = 0 := rfl
+@[simp] lemma zero_b : (0 : R2Ring).b = 0 := rfl
+@[simp] lemma one_a : (1 : R2Ring).a = 1 := rfl
+@[simp] lemma one_b : (1 : R2Ring).b = 0 := rfl
+@[simp] lemma add_a (x y : R2Ring) : (x + y).a = x.a + y.a := rfl
+@[simp] lemma add_b (x y : R2Ring) : (x + y).b = x.b + y.b := rfl
+@[simp] lemma neg_a (x : R2Ring) : (-x).a = -x.a := rfl
+@[simp] lemma neg_b (x : R2Ring) : (-x).b = -x.b := rfl
+@[simp] lemma sub_a (x y : R2Ring) : (x - y).a = x.a - y.a := rfl
+@[simp] lemma sub_b (x y : R2Ring) : (x - y).b = x.b - y.b := rfl
+@[simp] lemma mul_a (x y : R2Ring) : (x * y).a = x.a * y.a := rfl
+@[simp] lemma mul_b (x y : R2Ring) :
+    (x * y).b = (x.a : ZMod 2) * y.b + (y.a : ZMod 2) * x.b := rfl
+@[simp] lemma natCast_a (n : ℕ) : (n : R2Ring).a = n := rfl
+@[simp] lemma natCast_b (n : ℕ) : (n : R2Ring).b = 0 := rfl
+@[simp] lemma intCast_a (z : ℤ) : (z : R2Ring).a = z := rfl
+@[simp] lemma intCast_b (z : ℤ) : (z : R2Ring).b = 0 := rfl
+
+instance instCommRing : CommRing R2Ring where
+  add := (· + ·)
+  add_assoc x y z := by ext <;> simp [add_assoc]
+  zero := 0
+  zero_add x := by ext <;> simp
+  add_zero x := by ext <;> simp
+  nsmul := @nsmulRec R2Ring ⟨0⟩ ⟨(· + ·)⟩
+  neg := Neg.neg
+  sub := (· - ·)
+  sub_eq_add_neg x y := by ext <;> simp [sub_eq_add_neg]
+  zsmul := @zsmulRec R2Ring ⟨0⟩ ⟨(· + ·)⟩ ⟨Neg.neg⟩ (@nsmulRec R2Ring ⟨0⟩ ⟨(· + ·)⟩)
+  neg_add_cancel x := by
+    apply R2Ring.ext
+    · exact neg_add_cancel _
+    · exact neg_add_cancel _
+  add_comm x y := by ext <;> simp [add_comm]
+  mul := (· * ·)
+  left_distrib x y z := by
+    ext
+    · simp; ring
+    · simp [Int.cast_add]; ring
+  right_distrib x y z := by
+    ext
+    · simp; ring
+    · simp [Int.cast_add]; ring
+  zero_mul x := by ext <;> simp
+  mul_zero x := by ext <;> simp
+  mul_assoc x y z := by
+    ext
+    · simp; ring
+    · simp [Int.cast_mul]; ring
+  one := 1
+  one_mul x := by ext <;> simp
+  mul_one x := by ext <;> simp
+  natCast n := n
+  natCast_zero := by ext <;> simp
+  natCast_succ n := by ext <;> simp
+  intCast z := z
+  intCast_ofNat n := by ext <;> simp
+  intCast_negSucc n := by
+    ext
+    · rfl
+    · simp [Int.negSucc_eq]
+  npow := @npowRec R2Ring ⟨1⟩ ⟨(· * ·)⟩
+  mul_comm x y := by
+    ext
+    · simp [mul_comm]
+    · simp [add_comm]
+
+@[simp] lemma ofNat_two_a : ((2 : R2Ring)).a = 2 := rfl
+@[simp] lemma ofNat_two_b : ((2 : R2Ring)).b = 0 := rfl
+
+theorem eta_ne_zero : eta ≠ 0 := by decide
+
+theorem two_mul_eta : (2 : R2Ring) * eta = 0 := by decide
+
+theorem eta_sq : eta ^ 2 = 0 := by decide
+
+/-- Helper: every element of `ZMod 2` equals `0` or `1` (choice-free). -/
+lemma zmod2_eq_zero_or_one : ∀ z : ZMod 2, z = 0 ∨ z = 1
+  | ⟨0, _⟩ => Or.inl rfl
+  | ⟨1, _⟩ => Or.inr rfl
+
+/-- Helper: `z² = z` for all `z : ZMod 2` (choice-free). -/
+lemma zmod2_sq : ∀ z : ZMod 2, z ^ 2 = z
+  | ⟨0, _⟩ => rfl
+  | ⟨1, _⟩ => rfl
+
+/-- Helper: `z + z = 0` for all `z : ZMod 2` (choice-free). -/
+lemma zmod2_add_self : ∀ z : ZMod 2, z + z = 0
+  | ⟨0, _⟩ => rfl
+  | ⟨1, _⟩ => rfl
+
+/-- Helper: `2 * z = 0` for all `z : ZMod 2` (choice-free). -/
+lemma two_mul_zmod2 : ∀ z : ZMod 2, (2 : ZMod 2) * z = 0
+  | ⟨0, _⟩ => rfl
+  | ⟨1, _⟩ => rfl
+
+/-- Helper: `((2 : ℤ) : ZMod 2) = 0`. -/
+@[simp] lemma intCast_two_zmod2 : ((2 : ℤ) : ZMod 2) = 0 := rfl
+
+/-- Additive group decomposition `R₂ ≃+ ℤ × ZMod 2` (Guardrail 6). -/
+def addEquivIntProdZMod2 : R2Ring ≃+ ℤ × ZMod 2 where
+  toFun x := (x.a, x.b)
+  invFun p := ⟨p.1, p.2⟩
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_add' _ _ := rfl
+
+/-- Guardrail 6 separation: `R₂` is **not** ring-isomorphic to `ℤ × ZMod 2`, since `ℤ × ZMod 2`
+is reduced while `η ∈ R₂` satisfies `η ≠ 0` and `η² = 0`. -/
+theorem isEmpty_ringEquiv_intProdZMod2 : IsEmpty (R2Ring ≃+* ℤ × ZMod 2) := by
+  refine ⟨fun e ↦ ?_⟩
+  have hsq : (e eta) ^ 2 = 0 := by
+    calc
+      (e eta) ^ 2 = e (eta ^ 2) := (map_pow e eta 2).symm
+      _ = e 0 := by rw [eta_sq]
+      _ = 0 := map_zero e
+  have h1 : (e eta).1 ^ 2 = 0 := congrArg Prod.fst hsq
+  have h2 : (e eta).2 ^ 2 = 0 := congrArg Prod.snd hsq
+  have hf1 : (e eta).1 = 0 := sq_eq_zero_iff.mp h1
+  have hf2 : (e eta).2 = 0 := by
+    rcases zmod2_eq_zero_or_one (e eta).2 with h | h
+    · exact h
+    · rw [h] at h2; cases h2
+  have he0 : e eta = 0 := Prod.ext hf1 hf2
+  exact eta_ne_zero (e.injective (he0.trans (map_zero e).symm))
+
+/-- Characterization of `2`-torsion in `R₂`: `2 * x = 0 ↔ x.a = 0`. -/
+theorem two_mul_eq_zero_iff (x : R2Ring) : (2 : R2Ring) * x = 0 ↔ x.a = 0 := by
+  constructor
+  · intro h
+    have ha := congrArg R2Ring.a h
+    simp only [mul_a, ofNat_two_a, zero_a] at ha
+    omega
+  · intro ha
+    ext
+    · simp [ha]
+    · simp [ha, two_mul_zmod2]
+
+end R2Ring
+
+/-- Augmentation Frobenius lift `φ(a + bη) = a` on `R₂`, sending `η ↦ 0` (never `id`, per
+Guardrail 6). -/
+def r2AugFrob : R2Ring →+* R2Ring where
+  toFun x := ⟨x.a, 0⟩
+  map_one' := rfl
+  map_mul' _ _ := by ext <;> simp
+  map_zero' := rfl
+  map_add' _ _ := by ext <;> simp
+
+@[simp]
+theorem r2AugFrob_apply (x : R2Ring) : r2AugFrob x = ⟨x.a, 0⟩ := rfl
+
+@[simp]
+theorem r2AugFrob_eta : r2AugFrob R2Ring.eta = 0 := rfl
+
+/-- Automorphism rigidity of `R₂`: every ring automorphism of `R₂ = ℤ[η]/(2η, η²)` is the
+identity, because it fixes `ℤ` pointwise and must map the unique non-zero `2`-torsion element `η`
+to `η`. -/
+theorem r2_aut_unique (e : R2Ring ≃+* R2Ring) : e = RingEquiv.refl R2Ring := by
+  have heta : e R2Ring.eta = R2Ring.eta := by
+    have h2 : (2 : R2Ring) * e R2Ring.eta = 0 := by
+      calc
+        (2 : R2Ring) * e R2Ring.eta = e 2 * e R2Ring.eta := by rw [map_ofNat e 2]
+        _ = e ((2 : R2Ring) * R2Ring.eta) := (map_mul e 2 R2Ring.eta).symm
+        _ = e 0 := by rw [R2Ring.two_mul_eta]
+        _ = 0 := map_zero e
+    have ha0 : (e R2Ring.eta).a = 0 := (R2Ring.two_mul_eq_zero_iff _).mp h2
+    rcases R2Ring.zmod2_eq_zero_or_one (e R2Ring.eta).b with hb0 | hb1
+    · exfalso
+      have he0 : e R2Ring.eta = 0 := R2Ring.ext ha0 hb0
+      exact R2Ring.eta_ne_zero (e.injective (he0.trans (map_zero e).symm))
+    · exact R2Ring.ext ha0 hb1
+  apply RingEquiv.ext
+  intro x
+  rcases R2Ring.zmod2_eq_zero_or_one x.b with hb0 | hb1
+  · have hx : x = (x.a : R2Ring) := R2Ring.ext rfl hb0
+    conv_lhs => rw [hx, map_intCast]
+    exact hx.symm
+  · have hx : x = (x.a : R2Ring) + R2Ring.eta :=
+      R2Ring.ext (by simp [R2Ring.eta]) (by simp [R2Ring.eta, hb1])
+    conv_lhs => rw [hx, map_add, map_intCast, heta]
+    exact hx.symm
+
+instance instUniqueR2RingEquiv : Unique (R2Ring ≃+* R2Ring) where
+  default := RingEquiv.refl R2Ring
+  uniq := r2_aut_unique
+
+/-- A `2`-torsion `φ`-derivation `D ∈ Der_φ(R, Ann_R(2))`: additive, `2 * D x = 0`, and
+`D(xy) = φ(x) D(y) + φ(y) D(x)` with respect to a ring endomorphism `φ : R →+* R`. -/
+@[ext]
+structure FrobDerivation2 (R : Type u) [CommRing R] (phi : R →+* R) : Type u where
+  /-- Underlying derivation map `D : R → R`. -/
+  toFun : R → R
+  /-- `2`-torsion image condition `2 * D(x) = 0`. -/
+  two_torsion : ∀ x : R, (2 : R) * toFun x = 0
+  /-- Additivity `D(x + y) = D(x) + D(y)`. -/
+  map_add : ∀ x y : R, toFun (x + y) = toFun x + toFun y
+  /-- `φ`-twisted Leibniz rule `D(xy) = φ(x) D(y) + φ(y) D(x)`. -/
+  leibniz : ∀ x y : R, toFun (x * y) = phi x * toFun y + phi y * toFun x
+
+namespace FrobDerivation2
+
+theorem map_zero {R : Type u} [CommRing R] {phi : R →+* R} (D : FrobDerivation2 R phi) :
+    D.toFun 0 = 0 := by
+  have h := D.map_add 0 0
+  rw [zero_add] at h
+  exact left_eq_add.mp h
+
+theorem map_one {R : Type u} [CommRing R] {phi : R →+* R} (D : FrobDerivation2 R phi) :
+    D.toFun 1 = 0 := by
+  calc
+    D.toFun 1 = D.toFun (1 * 1) := by rw [one_mul]
+    _ = phi 1 * D.toFun 1 + phi 1 * D.toFun 1 := D.leibniz 1 1
+    _ = (2 : R) * D.toFun 1 := by rw [_root_.map_one]; ring
+    _ = 0 := D.two_torsion 1
+
+end FrobDerivation2
+
+/-- **Torsor Difference Theorem (`Der_φ`):** Any two `DeltaRing2` structures `d₀, d₁` lifting the
+same Frobenius endomorphism `φ : R →+* R` differ by a `FrobDerivation2 R phi`. -/
+def deltaRing2_sub_frobDerivation2 {R : Type u} [CommRing R] {phi : R →+* R}
+    (d₀ d₁ : DeltaRing2 R)
+    (h₀ : ∀ x : R, x ^ 2 + 2 * d₀.delta x = phi x)
+    (h₁ : ∀ x : R, x ^ 2 + 2 * d₁.delta x = phi x) :
+    FrobDerivation2 R phi where
+  toFun x := d₁.delta x - d₀.delta x
+  two_torsion x := by
+    have h0 := h₀ x
+    have h1 := h₁ x
+    calc
+      (2 : R) * (d₁.delta x - d₀.delta x)
+          = (x ^ 2 + 2 * d₁.delta x) - (x ^ 2 + 2 * d₀.delta x) := by ring
+      _ = phi x - phi x := by rw [h0, h1]
+      _ = 0 := sub_self _
+  map_add x y := by
+    rw [d₁.delta_add, d₀.delta_add]
+    ring
+  leibniz x y := by
+    rw [d₁.delta_mul, d₀.delta_mul, ← h₀ x, ← h₀ y]
+    have htor : (2 : R) * (d₁.delta x - d₀.delta x) = 0 := by
+      have h0 := h₀ x
+      have h1 := h₁ x
+      calc
+        (2 : R) * (d₁.delta x - d₀.delta x)
+            = (x ^ 2 + 2 * d₁.delta x) - (x ^ 2 + 2 * d₀.delta x) := by ring
+        _ = phi x - phi x := by rw [h0, h1]
+        _ = 0 := sub_self _
+    calc
+      (x ^ 2 * d₁.delta y + y ^ 2 * d₁.delta x + 2 * d₁.delta x * d₁.delta y) -
+          (x ^ 2 * d₀.delta y + y ^ 2 * d₀.delta x + 2 * d₀.delta x * d₀.delta y)
+          = (x ^ 2 + 2 * d₀.delta x) * (d₁.delta y - d₀.delta y) +
+              (y ^ 2 + 2 * d₀.delta y) * (d₁.delta x - d₀.delta x) +
+              ((2 : R) * (d₁.delta x - d₀.delta x)) * (d₁.delta y - d₀.delta y) := by ring
+      _ = (x ^ 2 + 2 * d₀.delta x) * (d₁.delta y - d₀.delta y) +
+              (y ^ 2 + 2 * d₀.delta y) * (d₁.delta x - d₀.delta x) := by
+            rw [htor, zero_mul, add_zero]
+
+/-- **Torsor Action Theorem (`Der_φ`):** Translating a `DeltaRing2` lift `d₀` of `φ` by any
+`D : FrobDerivation2 R phi` yields another valid `DeltaRing2` lifting `φ`. -/
+def deltaRing2_add_frobDerivation2 {R : Type u} [CommRing R] {phi : R →+* R}
+    (d₀ : DeltaRing2 R) (D : FrobDerivation2 R phi)
+    (h₀ : ∀ x : R, x ^ 2 + 2 * d₀.delta x = phi x) :
+    DeltaRing2 R where
+  delta x := d₀.delta x + D.toFun x
+  delta_zero := by rw [d₀.delta_zero, D.map_zero, add_zero]
+  delta_one := by rw [d₀.delta_one, D.map_one, add_zero]
+  delta_add x y := by
+    rw [d₀.delta_add, D.map_add]
+    ring
+  delta_mul x y := by
+    rw [d₀.delta_mul, D.leibniz, ← h₀ x, ← h₀ y]
+    have htor : (2 : R) * D.toFun x = 0 := D.two_torsion x
+    calc
+      (x ^ 2 * d₀.delta y + y ^ 2 * d₀.delta x + 2 * d₀.delta x * d₀.delta y) +
+          ((x ^ 2 + 2 * d₀.delta x) * D.toFun y + (y ^ 2 + 2 * d₀.delta y) * D.toFun x)
+          = x ^ 2 * (d₀.delta y + D.toFun y) + y ^ 2 * (d₀.delta x + D.toFun x) +
+              2 * (d₀.delta x + D.toFun x) * (d₀.delta y + D.toFun y) -
+              ((2 : R) * D.toFun x) * D.toFun y := by ring
+      _ = x ^ 2 * (d₀.delta y + D.toFun y) + y ^ 2 * (d₀.delta x + D.toFun x) +
+              2 * (d₀.delta x + D.toFun x) * (d₀.delta y + D.toFun y) := by
+            rw [htor, zero_mul, sub_zero]
+
+theorem deltaRing2_add_frobDerivation2_lift {R : Type u} [CommRing R] {phi : R →+* R}
+    (d₀ : DeltaRing2 R) (D : FrobDerivation2 R phi)
+    (h₀ : ∀ x : R, x ^ 2 + 2 * d₀.delta x = phi x) (x : R) :
+    x ^ 2 + 2 * (deltaRing2_add_frobDerivation2 d₀ D h₀).delta x = phi x := by
+  change x ^ 2 + 2 * (d₀.delta x + D.toFun x) = phi x
+  calc
+    x ^ 2 + 2 * (d₀.delta x + D.toFun x)
+        = (x ^ 2 + 2 * d₀.delta x) + (2 : R) * D.toFun x := by ring
+    _ = phi x + 0 := by rw [h₀ x, D.two_torsion x]
+    _ = phi x := add_zero _
+
+/-- First `δ`-operation `δ₀(a + bη) = (a - a²)/2 + (a mod 2)·b·η` on `R₂`, sending `δ₀(η) = 0`. -/
+def r2Delta0Map (x : R2Ring) : R2Ring :=
+  ⟨intDelta x.a, (x.a : ZMod 2) * x.b⟩
+
+/-- Second `δ`-operation `δ₁(a + bη) = (a - a²)/2 + ((a + 1) mod 2)·b·η` on `R₂`, sending
+`δ₁(η) = η`. -/
+def r2Delta1Map (x : R2Ring) : R2Ring :=
+  ⟨intDelta x.a, ((x.a : ZMod 2) + 1) * x.b⟩
+
+@[simp] theorem r2Delta0Map_eta : r2Delta0Map R2Ring.eta = 0 := by decide
+@[simp] theorem r2Delta1Map_eta : r2Delta1Map R2Ring.eta = R2Ring.eta := by decide
+
+/-- Canonical `FrobDerivation2 R₂ r2AugFrob` sending `a + bη ↦ bη`. -/
+def r2EtaDerivation : FrobDerivation2 R2Ring r2AugFrob where
+  toFun x := ⟨0, x.b⟩
+  two_torsion x := by
+    ext <;> simp [R2Ring.two_mul_zmod2]
+  map_add x y := by
+    ext <;> simp
+  leibniz x y := by
+    ext
+    · simp
+    · simp
+
+/-- Explicit `DeltaRing2 R2Ring` instance for `δ₀` (`δ₀(η) = 0`), lifting `r2AugFrob`. -/
+def instDeltaRing2R2_zero : DeltaRing2 R2Ring where
+  delta := r2Delta0Map
+  delta_zero := by decide
+  delta_one := by decide
+  delta_add x y := by
+    ext
+    · exact instDeltaRing2Int.delta_add x.a y.a
+    · simp only [r2Delta0Map, R2Ring.add_a, R2Ring.add_b, R2Ring.sub_b, R2Ring.mul_b,
+        Int.cast_add]
+      have hsub :
+          (x.a : ZMod 2) * x.b + (y.a : ZMod 2) * y.b -
+            ((x.a : ZMod 2) * y.b + (y.a : ZMod 2) * x.b) =
+          (x.a : ZMod 2) * x.b + (y.a : ZMod 2) * y.b +
+            ((x.a : ZMod 2) * y.b + (y.a : ZMod 2) * x.b) := by
+        rw [sub_eq_add_neg, CharTwo.neg_eq]
+      rw [hsub]
+      ring
+  delta_mul x y := by
+    ext
+    · have h := instDeltaRing2Int.delta_mul x.a y.a
+      change intDelta (x.a * y.a) =
+        x.a ^ 2 * intDelta y.a + y.a ^ 2 * intDelta x.a + 2 * intDelta x.a * intDelta y.a at h
+      simpa [r2Delta0Map, sq] using h
+    · have hb2 : (2 * r2Delta0Map x * r2Delta0Map y).b = 0 := by
+        have hmul : 2 * r2Delta0Map x * r2Delta0Map y =
+            (2 : R2Ring) * (r2Delta0Map x * r2Delta0Map y) := by
+          ring
+        rw [hmul]
+        simp [R2Ring.mul_b, R2Ring.two_mul_zmod2]
+      have hx2a : (x ^ 2).a = x.a ^ 2 := by simp [sq]
+      have hx2b : (x ^ 2).b = 0 := by
+        simp [sq, R2Ring.mul_b, R2Ring.zmod2_add_self]
+      have hy2a : (y ^ 2).a = y.a ^ 2 := by simp [sq]
+      have hy2b : (y ^ 2).b = 0 := by
+        simp [sq, R2Ring.mul_b, R2Ring.zmod2_add_self]
+      simp only [R2Ring.add_b]
+      rw [hb2, add_zero]
+      simp only [r2Delta0Map, R2Ring.mul_a, R2Ring.mul_b, Int.cast_mul]
+      rw [hx2a, hx2b, hy2a, hy2b]
+      simp only [Int.cast_pow, mul_zero, add_zero]
+      ring
+
+theorem r2Delta0Map_frobeniusLift (x : R2Ring) :
+    x ^ 2 + 2 * instDeltaRing2R2_zero.delta x = r2AugFrob x := by
+  ext
+  · simp [sq, instDeltaRing2R2_zero, r2Delta0Map, two_mul_intDelta]
+  · simp [sq, instDeltaRing2R2_zero, r2Delta0Map, R2Ring.zmod2_add_self, R2Ring.two_mul_zmod2]
+
+private lemma r2Delta1_eq_add_der (x : R2Ring) :
+    r2Delta1Map x = instDeltaRing2R2_zero.delta x + r2EtaDerivation.toFun x := by
+  ext
+  · simp [r2Delta1Map, instDeltaRing2R2_zero, r2Delta0Map, r2EtaDerivation]
+  · simp only [r2Delta1Map, instDeltaRing2R2_zero, r2Delta0Map, r2EtaDerivation, R2Ring.add_b]
+    ring
+
+/-- Explicit `DeltaRing2 R2Ring` instance for `δ₁` (`δ₁(η) = η`), obtained by translating `δ₀`
+along `r2EtaDerivation`. -/
+def instDeltaRing2R2_one : DeltaRing2 R2Ring where
+  delta := r2Delta1Map
+  delta_zero := by decide
+  delta_one := by decide
+  delta_add x y := by
+    simp only [r2Delta1_eq_add_der]
+    exact (deltaRing2_add_frobDerivation2 instDeltaRing2R2_zero r2EtaDerivation
+      r2Delta0Map_frobeniusLift).delta_add x y
+  delta_mul x y := by
+    simp only [r2Delta1_eq_add_der]
+    exact (deltaRing2_add_frobDerivation2 instDeltaRing2R2_zero r2EtaDerivation
+      r2Delta0Map_frobeniusLift).delta_mul x y
+
+theorem r2Delta1Map_frobeniusLift (x : R2Ring) :
+    x ^ 2 + 2 * instDeltaRing2R2_one.delta x = r2AugFrob x := by
+  ext
+  · simp [sq, instDeltaRing2R2_one, r2Delta1Map, two_mul_intDelta]
+  · simp [sq, instDeltaRing2R2_one, r2Delta1Map, R2Ring.zmod2_add_self, R2Ring.two_mul_zmod2]
+
+/-- Concrete wrapper `(R₂, δ₀)` enabling typeclass-safe registration in `DeltaRing2Cat`. -/
+@[ext]
+structure R2Delta0 : Type where
+  /-- Underlying `R₂` carrier element. -/
+  val : R2Ring
+  deriving DecidableEq, Repr
+
+/-- Concrete wrapper `(R₂, δ₁)` enabling typeclass-safe registration in `DeltaRing2Cat`. -/
+@[ext]
+structure R2Delta1 : Type where
+  /-- Underlying `R₂` carrier element. -/
+  val : R2Ring
+  deriving DecidableEq, Repr
+
+namespace R2Delta0
+
+instance : Zero R2Delta0 := ⟨⟨0⟩⟩
+instance : One R2Delta0 := ⟨⟨1⟩⟩
+instance : Add R2Delta0 := ⟨fun x y ↦ ⟨x.val + y.val⟩⟩
+instance : Neg R2Delta0 := ⟨fun x ↦ ⟨-x.val⟩⟩
+instance : Sub R2Delta0 := ⟨fun x y ↦ ⟨x.val - y.val⟩⟩
+instance : Mul R2Delta0 := ⟨fun x y ↦ ⟨x.val * y.val⟩⟩
+instance : NatCast R2Delta0 := ⟨fun n ↦ ⟨n⟩⟩
+instance : IntCast R2Delta0 := ⟨fun z ↦ ⟨z⟩⟩
+
+@[simp] lemma zero_val : (0 : R2Delta0).val = 0 := rfl
+@[simp] lemma one_val : (1 : R2Delta0).val = 1 := rfl
+@[simp] lemma add_val (x y : R2Delta0) : (x + y).val = x.val + y.val := rfl
+@[simp] lemma neg_val (x : R2Delta0) : (-x).val = -x.val := rfl
+@[simp] lemma sub_val (x y : R2Delta0) : (x - y).val = x.val - y.val := rfl
+@[simp] lemma mul_val (x y : R2Delta0) : (x * y).val = x.val * y.val := rfl
+@[simp] lemma natCast_val (n : ℕ) : (n : R2Delta0).val = n := rfl
+@[simp] lemma intCast_val (z : ℤ) : (z : R2Delta0).val = z := rfl
+
+instance instCommRing : CommRing R2Delta0 where
+  add := (· + ·)
+  add_assoc a b c := by apply R2Delta0.ext; exact add_assoc _ _ _
+  zero := 0
+  zero_add a := by apply R2Delta0.ext; exact zero_add _
+  add_zero a := by apply R2Delta0.ext; exact add_zero _
+  nsmul := @nsmulRec R2Delta0 ⟨0⟩ ⟨(· + ·)⟩
+  neg := Neg.neg
+  sub := (· - ·)
+  sub_eq_add_neg a b := by apply R2Delta0.ext; exact sub_eq_add_neg _ _
+  zsmul := @zsmulRec R2Delta0 ⟨0⟩ ⟨(· + ·)⟩ ⟨Neg.neg⟩ (@nsmulRec R2Delta0 ⟨0⟩ ⟨(· + ·)⟩)
+  neg_add_cancel a := by apply R2Delta0.ext; exact neg_add_cancel _
+  add_comm a b := by apply R2Delta0.ext; exact add_comm _ _
+  mul := (· * ·)
+  left_distrib a b c := by apply R2Delta0.ext; exact left_distrib _ _ _
+  right_distrib a b c := by apply R2Delta0.ext; exact right_distrib _ _ _
+  zero_mul a := by apply R2Delta0.ext; exact zero_mul _
+  mul_zero a := by apply R2Delta0.ext; exact mul_zero _
+  mul_assoc a b c := by apply R2Delta0.ext; exact mul_assoc _ _ _
+  one := 1
+  one_mul a := by apply R2Delta0.ext; exact one_mul _
+  mul_one a := by apply R2Delta0.ext; exact mul_one _
+  natCast n := n
+  natCast_zero := by apply R2Delta0.ext; exact Nat.cast_zero
+  natCast_succ n := by apply R2Delta0.ext; exact Nat.cast_succ n
+  intCast z := z
+  intCast_ofNat n := by apply R2Delta0.ext; exact Int.cast_natCast n
+  intCast_negSucc n := by
+    apply R2Delta0.ext
+    simp [Int.negSucc_eq]
+  npow := @npowRec R2Delta0 ⟨1⟩ ⟨(· * ·)⟩
+  mul_comm a b := by apply R2Delta0.ext; exact mul_comm _ _
+
+@[simp] lemma ofNat_two_val : ((2 : R2Delta0)).val = 2 := rfl
+
+@[simp]
+lemma sq_val (x : R2Delta0) : (x ^ 2).val = x.val ^ 2 := by
+  simp [sq]
+
+instance instDeltaRing2 : DeltaRing2 R2Delta0 where
+  delta x := ⟨r2Delta0Map x.val⟩
+  delta_zero := by apply R2Delta0.ext; exact instDeltaRing2R2_zero.delta_zero
+  delta_one := by apply R2Delta0.ext; exact instDeltaRing2R2_zero.delta_one
+  delta_add x y := by apply R2Delta0.ext; exact instDeltaRing2R2_zero.delta_add x.val y.val
+  delta_mul x y := by
+    apply R2Delta0.ext
+    simpa [mul_val, sq_val, ofNat_two_val] using instDeltaRing2R2_zero.delta_mul x.val y.val
+
+theorem not_injective_frobeniusLift : ¬ Function.Injective (frobeniusLift (R := R2Delta0)) := by
+  intro hinj
+  have heq : frobeniusLift (⟨R2Ring.eta⟩ : R2Delta0) = frobeniusLift (0 : R2Delta0) := by
+    apply R2Delta0.ext
+    change R2Ring.eta ^ 2 + 2 * r2Delta0Map R2Ring.eta = 0 ^ 2 + 2 * r2Delta0Map 0
+    decide
+  have h0 : (⟨R2Ring.eta⟩ : R2Delta0) = 0 := hinj heq
+  exact R2Ring.eta_ne_zero (congrArg R2Delta0.val h0)
+
+theorem not_isPerfectDeltaRing : ¬ IsPerfectDeltaRing R2Delta0 :=
+  fun h ↦ not_injective_frobeniusLift h.injective
+
+end R2Delta0
+
+namespace R2Delta1
+
+instance : Zero R2Delta1 := ⟨⟨0⟩⟩
+instance : One R2Delta1 := ⟨⟨1⟩⟩
+instance : Add R2Delta1 := ⟨fun x y ↦ ⟨x.val + y.val⟩⟩
+instance : Neg R2Delta1 := ⟨fun x ↦ ⟨-x.val⟩⟩
+instance : Sub R2Delta1 := ⟨fun x y ↦ ⟨x.val - y.val⟩⟩
+instance : Mul R2Delta1 := ⟨fun x y ↦ ⟨x.val * y.val⟩⟩
+instance : NatCast R2Delta1 := ⟨fun n ↦ ⟨n⟩⟩
+instance : IntCast R2Delta1 := ⟨fun z ↦ ⟨z⟩⟩
+
+@[simp] lemma zero_val : (0 : R2Delta1).val = 0 := rfl
+@[simp] lemma one_val : (1 : R2Delta1).val = 1 := rfl
+@[simp] lemma add_val (x y : R2Delta1) : (x + y).val = x.val + y.val := rfl
+@[simp] lemma neg_val (x : R2Delta1) : (-x).val = -x.val := rfl
+@[simp] lemma sub_val (x y : R2Delta1) : (x - y).val = x.val - y.val := rfl
+@[simp] lemma mul_val (x y : R2Delta1) : (x * y).val = x.val * y.val := rfl
+@[simp] lemma natCast_val (n : ℕ) : (n : R2Delta1).val = n := rfl
+@[simp] lemma intCast_val (z : ℤ) : (z : R2Delta1).val = z := rfl
+
+instance instCommRing : CommRing R2Delta1 where
+  add := (· + ·)
+  add_assoc a b c := by apply R2Delta1.ext; exact add_assoc _ _ _
+  zero := 0
+  zero_add a := by apply R2Delta1.ext; exact zero_add _
+  add_zero a := by apply R2Delta1.ext; exact add_zero _
+  nsmul := @nsmulRec R2Delta1 ⟨0⟩ ⟨(· + ·)⟩
+  neg := Neg.neg
+  sub := (· - ·)
+  sub_eq_add_neg a b := by apply R2Delta1.ext; exact sub_eq_add_neg _ _
+  zsmul := @zsmulRec R2Delta1 ⟨0⟩ ⟨(· + ·)⟩ ⟨Neg.neg⟩ (@nsmulRec R2Delta1 ⟨0⟩ ⟨(· + ·)⟩)
+  neg_add_cancel a := by apply R2Delta1.ext; exact neg_add_cancel _
+  add_comm a b := by apply R2Delta1.ext; exact add_comm _ _
+  mul := (· * ·)
+  left_distrib a b c := by apply R2Delta1.ext; exact left_distrib _ _ _
+  right_distrib a b c := by apply R2Delta1.ext; exact right_distrib _ _ _
+  zero_mul a := by apply R2Delta1.ext; exact zero_mul _
+  mul_zero a := by apply R2Delta1.ext; exact mul_zero _
+  mul_assoc a b c := by apply R2Delta1.ext; exact mul_assoc _ _ _
+  one := 1
+  one_mul a := by apply R2Delta1.ext; exact one_mul _
+  mul_one a := by apply R2Delta1.ext; exact mul_one _
+  natCast n := n
+  natCast_zero := by apply R2Delta1.ext; exact Nat.cast_zero
+  natCast_succ n := by apply R2Delta1.ext; exact Nat.cast_succ n
+  intCast z := z
+  intCast_ofNat n := by apply R2Delta1.ext; exact Int.cast_natCast n
+  intCast_negSucc n := by
+    apply R2Delta1.ext
+    simp [Int.negSucc_eq]
+  npow := @npowRec R2Delta1 ⟨1⟩ ⟨(· * ·)⟩
+  mul_comm a b := by apply R2Delta1.ext; exact mul_comm _ _
+
+@[simp] lemma ofNat_two_val : ((2 : R2Delta1)).val = 2 := rfl
+
+@[simp]
+lemma sq_val (x : R2Delta1) : (x ^ 2).val = x.val ^ 2 := by
+  simp [sq]
+
+instance instDeltaRing2 : DeltaRing2 R2Delta1 where
+  delta x := ⟨r2Delta1Map x.val⟩
+  delta_zero := by apply R2Delta1.ext; exact instDeltaRing2R2_one.delta_zero
+  delta_one := by apply R2Delta1.ext; exact instDeltaRing2R2_one.delta_one
+  delta_add x y := by apply R2Delta1.ext; exact instDeltaRing2R2_one.delta_add x.val y.val
+  delta_mul x y := by
+    apply R2Delta1.ext
+    simpa [mul_val, sq_val, ofNat_two_val] using instDeltaRing2R2_one.delta_mul x.val y.val
+
+theorem not_injective_frobeniusLift : ¬ Function.Injective (frobeniusLift (R := R2Delta1)) := by
+  intro hinj
+  have heq : frobeniusLift (⟨R2Ring.eta⟩ : R2Delta1) = frobeniusLift (0 : R2Delta1) := by
+    apply R2Delta1.ext
+    change R2Ring.eta ^ 2 + 2 * r2Delta1Map R2Ring.eta = 0 ^ 2 + 2 * r2Delta1Map 0
+    decide
+  have h0 : (⟨R2Ring.eta⟩ : R2Delta1) = 0 := hinj heq
+  exact R2Ring.eta_ne_zero (congrArg R2Delta1.val h0)
+
+theorem not_isPerfectDeltaRing : ¬ IsPerfectDeltaRing R2Delta1 :=
+  fun h ↦ not_injective_frobeniusLift h.injective
+
+end R2Delta1
+
+/-- Ring isomorphism between `R2Delta0` and `R2Ring`. -/
+def r2Delta0RingEquiv : R2Delta0 ≃+* R2Ring where
+  toFun x := x.val
+  invFun x := ⟨x⟩
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_mul' _ _ := rfl
+  map_add' _ _ := rfl
+
+/-- Ring isomorphism between `R2Delta1` and `R2Ring`. -/
+def r2Delta1RingEquiv : R2Delta1 ≃+* R2Ring where
+  toFun x := x.val
+  invFun x := ⟨x⟩
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_mul' _ _ := rfl
+  map_add' _ _ := rfl
+
+/-- **Non-Isomorphic `δ`-Lifts on `R₂`:** `(R₂, δ₀)` and `(R₂, δ₁)` share the identical
+underlying ring `R₂` and augmentation Frobenius `φ(a + bη) = a`, yet are **non-isomorphic** in
+`DeltaRing2Cat` (`δ₀(η) = 0 ≠ η = δ₁(η)` and `Aut(R₂) = {id}`). -/
+theorem r2Delta0_not_iso_r2Delta1 :
+    IsEmpty (DeltaRing2Cat.of R2Delta0 ≅ DeltaRing2Cat.of R2Delta1) := by
+  refine ⟨fun e ↦ ?_⟩
+  let eRing : R2Ring ≃+* R2Ring :=
+    { toFun := fun x ↦ (e.hom.toRingHom ⟨x⟩).val
+      invFun := fun y ↦ (e.inv.toRingHom ⟨y⟩).val
+      left_inv := fun x ↦ by
+        have hcomp :
+            DeltaRing2Hom.toRingHom (e.hom ≫ e.inv) ⟨x⟩ =
+              DeltaRing2Hom.toRingHom (𝟙 (DeltaRing2Cat.of R2Delta0)) ⟨x⟩ :=
+          congrArg (fun f : DeltaRing2Cat.of R2Delta0 ⟶ DeltaRing2Cat.of R2Delta0 ↦
+            f.toRingHom ⟨x⟩) e.hom_inv_id
+        exact congrArg R2Delta0.val hcomp
+      right_inv := fun y ↦ by
+        have hcomp :
+            DeltaRing2Hom.toRingHom (e.inv ≫ e.hom) ⟨y⟩ =
+              DeltaRing2Hom.toRingHom (𝟙 (DeltaRing2Cat.of R2Delta1)) ⟨y⟩ :=
+          congrArg (fun f : DeltaRing2Cat.of R2Delta1 ⟶ DeltaRing2Cat.of R2Delta1 ↦
+            f.toRingHom ⟨y⟩) e.inv_hom_id
+        exact congrArg R2Delta1.val hcomp
+      map_mul' := fun x y ↦ by
+        change (e.hom.toRingHom (⟨x⟩ * ⟨y⟩)).val = _
+        rw [map_mul]
+        rfl
+      map_add' := fun x y ↦ by
+        change (e.hom.toRingHom (⟨x⟩ + ⟨y⟩)).val = _
+        rw [map_add]
+        rfl }
+  have hid : eRing = RingEquiv.refl R2Ring := r2_aut_unique eRing
+  have heta : (e.hom.toRingHom ⟨R2Ring.eta⟩).val = R2Ring.eta :=
+    congrArg (fun f : R2Ring ≃+* R2Ring ↦ f R2Ring.eta) hid
+  have hdelta := congrArg R2Delta1.val (e.hom.map_delta' ⟨R2Ring.eta⟩)
+  have hlhs : (e.hom.toRingHom (delta (⟨R2Ring.eta⟩ : R2Delta0))).val = 0 := by
+    have hz : delta (⟨R2Ring.eta⟩ : R2Delta0) = 0 := by
+      apply R2Delta0.ext
+      change r2Delta0Map R2Ring.eta = 0
+      decide
+    rw [hz, map_zero]
+    rfl
+  have hrhs : (delta (e.hom.toRingHom ⟨R2Ring.eta⟩) : R2Delta1).val = R2Ring.eta := by
+    have hpt : e.hom.toRingHom ⟨R2Ring.eta⟩ = ⟨R2Ring.eta⟩ := R2Delta1.ext heta
+    rw [hpt]
+    change r2Delta1Map R2Ring.eta = R2Ring.eta
+    decide
+  rw [hlhs, hrhs] at hdelta
+  exact R2Ring.eta_ne_zero hdelta.symm
+
+end TwoTorsionR2
+
 /-! ## Section 6: Mandatory 4-Layer Lean 4 Definition Check Gate (`namespace Checks`) -/
 
 namespace Checks
@@ -1390,6 +2063,48 @@ set_option linter.hashCommand false
 /-- info: 'HomotopyCRM.Checks.not_isFixedPointSliceAlg_nonFixedDualInt' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.Checks.not_isFixedPointSliceAlg_nonFixedDualInt
+
+/-! ### `R₂ = ℤ[η]/(2η, η²)` & `Der_φ` Additional Checks (Wave 47A) -/
+
+instance instNontrivialR2Ring : Nontrivial R2Ring :=
+  ⟨⟨0, R2Ring.eta, fun h ↦ R2Ring.eta_ne_zero h.symm⟩⟩
+
+theorem layer3_r2Delta_separation :
+    delta (⟨R2Ring.eta⟩ : R2Delta0) = 0 ∧
+      delta (⟨R2Ring.eta⟩ : R2Delta1) = ⟨R2Ring.eta⟩ ∧
+      frobeniusLift (⟨R2Ring.eta⟩ : R2Delta0) = 0 ∧
+      frobeniusLift (⟨R2Ring.eta⟩ : R2Delta1) = 0 := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · apply R2Delta0.ext; decide
+  · apply R2Delta1.ext; decide
+  · apply R2Delta0.ext
+    change R2Ring.eta ^ 2 + 2 * r2Delta0Map R2Ring.eta = 0
+    decide
+  · apply R2Delta1.ext
+    change R2Ring.eta ^ 2 + 2 * r2Delta1Map R2Ring.eta = 0
+    decide
+
+/-- info: 'HomotopyCRM.r2_aut_unique' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.r2_aut_unique
+
+/-- info: 'HomotopyCRM.deltaRing2_sub_frobDerivation2' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.deltaRing2_sub_frobDerivation2
+
+/-- info: 'HomotopyCRM.deltaRing2_add_frobDerivation2' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.deltaRing2_add_frobDerivation2
+
+/-- info: 'HomotopyCRM.r2Delta0_not_iso_r2Delta1' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.r2Delta0_not_iso_r2Delta1
+
+/--
+info: 'HomotopyCRM.R2Ring.isEmpty_ringEquiv_intProdZMod2' depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs in
+#print axioms HomotopyCRM.R2Ring.isEmpty_ringEquiv_intProdZMod2
 
 end KernelAxiomGate
 

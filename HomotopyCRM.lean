@@ -3,6 +3,7 @@ import HomotopyCRM.BorelTailResiduum
 import HomotopyCRM.CubicalAmalgamation
 import HomotopyCRM.DeltaRingPerfection
 import HomotopyCRM.DirectedFraisseSAP
+import HomotopyCRM.DoctrinalFibration
 import HomotopyCRM.InfinityResiduum
 import HomotopyCRM.NominalICaTT
 import HomotopyCRM.NominalSimplicity

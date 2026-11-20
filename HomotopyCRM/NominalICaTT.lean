@@ -902,6 +902,231 @@ theorem theorem9B_choice_calibration_of_coinductive_streams :
   · exact fun n ↦ ⟨canonicalFreshChain n, supports_canonicalFreshChain_range n⟩
   · exact isEmpty_nominal_freshRootStream
 
+/-! ## Section 4b: Finitary `CaTTTerm` Polygraphs & Two-Sided Polygraphic Support Lemma -/
+
+section PolygraphicSupport
+
+instance : DecidableEq FreshCell :=
+  fun x y ↦ decidable_of_iff' (x.spine = y.spine) FreshCell.ext_iff
+
+/-- Nominal generator alphabet equipped with an exact least finite atom support map
+`genSupp : G → Finset ℕ`. -/
+class ExactNominalGen (G : Type u) extends MulAction (Equiv.Perm ℕ) G where
+  /-- Exact least finite atom support of a generator cell. -/
+  genSupp : G → Finset ℕ
+  /-- Equivariance of generator support (`supp(σ • g) = σ(supp(g))`). -/
+  genSupp_smul : ∀ (σ : Equiv.Perm ℕ) (g : G),
+    genSupp (σ • g) = (genSupp g).map σ.toEmbedding
+  /-- Two-sided exactness on generators: `S` supports `g` iff `genSupp g ⊆ S`. -/
+  supports_iff_genSupp_subset : ∀ (S : Finset ℕ) (g : G),
+    Supports S g ↔ genSupp g ⊆ S
+
+/-- Two-sided support characterization on `FreshCell`: `Supports S c ↔ c.spine.toFinset ⊆ S`. -/
+theorem supports_freshCell_iff (S : Finset ℕ) (c : FreshCell) :
+    Supports S c ↔ c.spine.toFinset ⊆ S := by
+  constructor
+  · intro hS a ha
+    rw [List.mem_toFinset] at ha
+    by_contra haS
+    let b : ℕ := (S ∪ c.spine.toFinset).sup id + 1
+    have hbS : b ∉ S := fun hb ↦ by
+      have hle : id b ≤ (S ∪ c.spine.toFinset).sup id :=
+        Finset.le_sup (f := id) (Finset.mem_union_left c.spine.toFinset hb)
+      dsimp only [id] at hle
+      omega
+    have hbc : b ∉ c.spine := fun hb ↦ by
+      have hle : id b ≤ (S ∪ c.spine.toFinset).sup id :=
+        Finset.le_sup (f := id) (Finset.mem_union_right S (List.mem_toFinset.mpr hb))
+      dsimp only [id] at hle
+      omega
+    have hmem : Equiv.swap a b ∈ pointwiseStabilizer S := fun x hx ↦
+      Equiv.swap_apply_of_ne_of_ne (fun h ↦ haS (h ▸ hx)) (fun h ↦ hbS (h ▸ hx))
+    have hfix := congrArg FreshCell.spine (hS (Equiv.swap a b) hmem)
+    have hb_in : b ∈ (Equiv.swap a b • c).spine := by
+      rw [freshCell_smul_spine, List.mem_map]
+      exact ⟨a, ha, Equiv.swap_apply_left a b⟩
+    rw [hfix] at hb_in
+    exact hbc hb_in
+  · intro hsub σ hσ
+    ext1
+    change c.spine.map ⇑σ = c.spine
+    exact list_map_eq_self_of_forall (⇑σ) c.spine
+      (fun a ha ↦ hσ a (hsub (List.mem_toFinset.mpr ha)))
+
+instance instExactNominalGenFreshCell : ExactNominalGen FreshCell where
+  genSupp c := c.spine.toFinset
+  genSupp_smul σ c := by
+    ext x
+    simp only [freshCell_smul_spine, List.mem_toFinset, List.mem_map, Finset.mem_map,
+      Equiv.coe_toEmbedding]
+  supports_iff_genSupp_subset S c := supports_freshCell_iff S c
+
+/-- Finitary inductive `CaTT` syntax tree over a generator cell alphabet `G`: either a generator
+cell `.gen g` or an `arity`-ary coherence operation `.coh ruleId arity args` indexed by the finite
+telescope `Fin arity`. -/
+inductive CaTTTerm (G : Type u) : Type u
+  | gen (g : G) : CaTTTerm G
+  | coh (ruleId : ℕ) (arity : ℕ) (args : Fin arity → CaTTTerm G) : CaTTTerm G
+
+namespace CaTTTerm
+
+/-- Recursive permutation action `Equiv.Perm ℕ` on `CaTTTerm G`. -/
+def smul {G : Type u} [MulAction (Equiv.Perm ℕ) G]
+    (σ : Equiv.Perm ℕ) : CaTTTerm G → CaTTTerm G
+  | .gen g => .gen (σ • g)
+  | .coh r n args => .coh r n (fun i ↦ smul σ (args i))
+
+instance {G : Type u} [MulAction (Equiv.Perm ℕ) G] : MulAction (Equiv.Perm ℕ) (CaTTTerm G) where
+  smul := CaTTTerm.smul
+  one_smul t := by
+    induction t with
+    | gen g => exact congrArg CaTTTerm.gen (one_smul (Equiv.Perm ℕ) g)
+    | coh r n args ih =>
+      change CaTTTerm.coh r n (fun i ↦ CaTTTerm.smul 1 (args i)) = CaTTTerm.coh r n args
+      congr 2
+      funext i
+      exact ih i
+  mul_smul σ τ t := by
+    induction t with
+    | gen g => exact congrArg CaTTTerm.gen (mul_smul σ τ g)
+    | coh r n args ih =>
+      change CaTTTerm.coh r n (fun i ↦ CaTTTerm.smul (σ * τ) (args i)) =
+        CaTTTerm.coh r n (fun i ↦ CaTTTerm.smul σ (CaTTTerm.smul τ (args i)))
+      congr 2
+      funext i
+      exact ih i
+
+@[simp]
+theorem smul_gen {G : Type u} [MulAction (Equiv.Perm ℕ) G]
+    (σ : Equiv.Perm ℕ) (g : G) : σ • (CaTTTerm.gen g) = CaTTTerm.gen (σ • g) := rfl
+
+@[simp]
+theorem smul_coh {G : Type u} [MulAction (Equiv.Perm ℕ) G]
+    (σ : Equiv.Perm ℕ) (r n : ℕ) (args : Fin n → CaTTTerm G) :
+    σ • (CaTTTerm.coh r n args) = CaTTTerm.coh r n (fun i ↦ σ • args i) := rfl
+
+/-- Finite set of generator leaves occurring in a `CaTTTerm G`. -/
+def genFinset {G : Type u} [DecidableEq G] : CaTTTerm G → Finset G
+  | .gen g => {g}
+  | .coh _ _ args => Finset.univ.biUnion (fun i ↦ (args i).genFinset)
+
+/-- Exact inductive atom support of a `CaTTTerm G`. -/
+def termSupp {G : Type u} [ExactNominalGen G] : CaTTTerm G → Finset ℕ
+  | .gen g => ExactNominalGen.genSupp g
+  | .coh _ _ args => Finset.univ.biUnion (fun i ↦ (args i).termSupp)
+
+/-- The inductive support `t.termSupp` equals the union `⋃ g ∈ t.genFinset, genSupp g`. -/
+theorem termSupp_eq_biUnion_genFinset {G : Type u} [DecidableEq G] [ExactNominalGen G]
+    (t : CaTTTerm G) :
+    t.termSupp = t.genFinset.biUnion ExactNominalGen.genSupp := by
+  induction t with
+  | gen g => simp [termSupp, genFinset]
+  | coh r n args ih =>
+    ext a
+    simp only [termSupp, genFinset, Finset.mem_biUnion, Finset.mem_univ, true_and]
+    constructor
+    · rintro ⟨i, hi⟩
+      rw [ih i, Finset.mem_biUnion] at hi
+      rcases hi with ⟨g, hg, hga⟩
+      exact ⟨g, ⟨i, hg⟩, hga⟩
+    · rintro ⟨g, ⟨i, hg⟩, hga⟩
+      refine ⟨i, ?_⟩
+      rw [ih i, Finset.mem_biUnion]
+      exact ⟨g, hg, hga⟩
+
+/-- Permutation equivariance of `CaTTTerm.termSupp`. -/
+theorem termSupp_smul {G : Type u} [ExactNominalGen G]
+    (σ : Equiv.Perm ℕ) (t : CaTTTerm G) :
+    (σ • t).termSupp = t.termSupp.map σ.toEmbedding := by
+  induction t with
+  | gen g =>
+    rw [smul_gen]
+    exact ExactNominalGen.genSupp_smul σ g
+  | coh r n args ih =>
+    ext a
+    simp only [smul_coh, termSupp, Finset.mem_map, Equiv.coe_toEmbedding,
+      Finset.mem_biUnion, Finset.mem_univ, true_and]
+    constructor
+    · rintro ⟨i, hi⟩
+      rw [ih i, Finset.mem_map] at hi
+      rcases hi with ⟨b, hb, hba⟩
+      exact ⟨b, ⟨i, hb⟩, hba⟩
+    · rintro ⟨b, ⟨i, hb⟩, hba⟩
+      refine ⟨i, ?_⟩
+      rw [ih i, Finset.mem_map]
+      exact ⟨b, hb, hba⟩
+
+end CaTTTerm
+
+private theorem supports_cattTerm_iff_termSupp {G : Type u} [ExactNominalGen G]
+    (S : Finset ℕ) (t : CaTTTerm G) :
+    Supports S t ↔ t.termSupp ⊆ S := by
+  constructor
+  · intro hS a ha
+    by_contra haS
+    let b : ℕ := (S ∪ t.termSupp).sup id + 1
+    have hbS : b ∉ S := fun hb ↦ by
+      have hle : id b ≤ (S ∪ t.termSupp).sup id :=
+        Finset.le_sup (f := id) (Finset.mem_union_left t.termSupp hb)
+      dsimp only [id] at hle
+      omega
+    have hbt : b ∉ t.termSupp := fun hb ↦ by
+      have hle : id b ≤ (S ∪ t.termSupp).sup id :=
+        Finset.le_sup (f := id) (Finset.mem_union_right S hb)
+      dsimp only [id] at hle
+      omega
+    have hmem : Equiv.swap a b ∈ pointwiseStabilizer S := fun x hx ↦
+      Equiv.swap_apply_of_ne_of_ne (fun h ↦ haS (h ▸ hx)) (fun h ↦ hbS (h ▸ hx))
+    have hfix := congrArg CaTTTerm.termSupp (hS (Equiv.swap a b) hmem)
+    rw [CaTTTerm.termSupp_smul] at hfix
+    have hbin : b ∈ t.termSupp := by
+      rw [← hfix, Finset.mem_map]
+      exact ⟨a, ha, Equiv.swap_apply_left a b⟩
+    exact hbt hbin
+  · intro hsub
+    induction t with
+    | gen g =>
+      have hg : Supports S g := (ExactNominalGen.supports_iff_genSupp_subset S g).mpr hsub
+      intro σ hσ
+      rw [CaTTTerm.smul_gen, hg σ hσ]
+    | coh r n args ih =>
+      intro σ hσ
+      rw [CaTTTerm.smul_coh]
+      congr 1
+      funext i
+      exact ih i (Finset.Subset.trans
+        (Finset.subset_biUnion_of_mem (fun j : Fin n ↦ (args j).termSupp) (Finset.mem_univ i))
+        hsub) σ hσ
+
+/-- **Polygraphic Support Lemma (`lem:polygraphic-support`):** A finite atom set `S` supports a
+finitary `CaTT`-term `t` iff `S` contains the union `⋃ g ∈ Gen(t), supp(g)` of its generator
+supports. -/
+theorem cattTerm_exact_support {G : Type u} [DecidableEq G] [ExactNominalGen G]
+    (S : Finset ℕ) (t : CaTTTerm G) :
+    Supports S t ↔ t.genFinset.biUnion ExactNominalGen.genSupp ⊆ S := by
+  rw [← CaTTTerm.termSupp_eq_biUnion_genFinset]
+  exact supports_cattTerm_iff_termSupp S t
+
+/-- Every finitary `CaTT`-term has finite support in `Nom`. -/
+theorem cattTerm_hasFiniteSupport {G : Type u} [ExactNominalGen G]
+    (t : CaTTTerm G) : HasFiniteSupport t :=
+  ⟨t.termSupp, (supports_cattTerm_iff_termSupp t.termSupp t).mpr (Finset.Subset.refl _)⟩
+
+/-- A finitary `CaTT`-term is globally equivariant iff all of its generator leaves have empty
+support. -/
+theorem cattTerm_isEquivariant_iff_empty {G : Type u} [DecidableEq G] [ExactNominalGen G]
+    (t : CaTTTerm G) :
+    IsEquivariant t ↔ t.genFinset.biUnion ExactNominalGen.genSupp = ∅ := by
+  change Supports ∅ t ↔ _
+  rw [cattTerm_exact_support, Finset.subset_empty]
+
+/-- Concrete `FreshCell` specialization of the two-sided Polygraphic Support Lemma. -/
+theorem cattTerm_freshCell_exact_support (S : Finset ℕ) (t : CaTTTerm FreshCell) :
+    Supports S t ↔ t.genFinset.biUnion (fun c ↦ c.spine.toFinset) ⊆ S :=
+  cattTerm_exact_support S t
+
+end PolygraphicSupport
+
 /-! ## Section 5: Mandatory 4-Layer Definition Check Gate (`namespace Checks`) -/
 
 namespace Checks
@@ -1231,6 +1456,66 @@ info: 'HomotopyCRM.Checks.icatt_not_hasFiniteSupport_atomValSeq_id' depends on a
 -/
 #guard_msgs in
 #print axioms HomotopyCRM.Checks.icatt_not_hasFiniteSupport_atomValSeq_id
+
+/-! ### Polygraphic Support Lemma Additional Checks (Wave 47A) -/
+
+instance icatt_instNontrivialCaTTTerm : Nontrivial (CaTTTerm FreshCell) :=
+  ⟨⟨CaTTTerm.gen FreshCell.root, CaTTTerm.gen (FreshCell.singleton 0), by
+    intro h
+    cases h⟩⟩
+
+theorem icatt_layer2_sep_cattTerm_equivariant :
+    IsEquivariant (CaTTTerm.coh 0 1 (fun _ ↦ CaTTTerm.gen FreshCell.root)) ∧
+      ¬ IsEquivariant (CaTTTerm.coh 0 1 (fun _ ↦ CaTTTerm.gen (FreshCell.singleton 0))) := by
+  constructor
+  · rw [cattTerm_isEquivariant_iff_empty]
+    ext a
+    simp [CaTTTerm.genFinset, ExactNominalGen.genSupp, FreshCell.root]
+  · rw [cattTerm_isEquivariant_iff_empty]
+    intro heq
+    have hmem : (0 : ℕ) ∈
+        (CaTTTerm.coh 0 1 (fun _ ↦ CaTTTerm.gen (FreshCell.singleton 0))).genFinset.biUnion
+          ExactNominalGen.genSupp := by
+      simp [CaTTTerm.genFinset, ExactNominalGen.genSupp, FreshCell.singleton]
+    rw [heq] at hmem
+    simp at hmem
+
+def icatt_exactNominalGenFreshCellCheck : ExactNominalGen FreshCell := inferInstance
+
+theorem icatt_cattTerm_concrete_two_gen_support :
+    Supports ({3, 7} : Finset ℕ)
+      (CaTTTerm.coh 1 2 (fun i : Fin 2 ↦
+        if i = 0 then CaTTTerm.gen (FreshCell.singleton 3)
+        else CaTTTerm.gen (FreshCell.singleton 7))) := by
+  rw [cattTerm_freshCell_exact_support]
+  intro a ha
+  rw [Finset.mem_biUnion] at ha
+  rcases ha with ⟨c, hc, ha⟩
+  rw [CaTTTerm.genFinset, Finset.mem_biUnion] at hc
+  rcases hc with ⟨i, _, hci⟩
+  split_ifs at hci
+  · rw [CaTTTerm.genFinset, Finset.mem_singleton] at hci
+    subst hci
+    simp only [FreshCell.singleton, List.mem_toFinset, List.mem_singleton] at ha
+    rw [ha]
+    decide
+  · rw [CaTTTerm.genFinset, Finset.mem_singleton] at hci
+    subst hci
+    simp only [FreshCell.singleton, List.mem_toFinset, List.mem_singleton] at ha
+    rw [ha]
+    decide
+
+/-- info: 'HomotopyCRM.supports_freshCell_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.supports_freshCell_iff
+
+/-- info: 'HomotopyCRM.cattTerm_exact_support' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.cattTerm_exact_support
+
+/-- info: 'HomotopyCRM.cattTerm_freshCell_exact_support' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.cattTerm_freshCell_exact_support
 
 end KernelAxiomGate
 
