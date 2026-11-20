@@ -667,7 +667,7 @@
       "label": "Doctrinal Comparison Triple (T)",
       "stage": "stage_core",
       "cluster": "crm_foundations",
-      "description": "Tuple T = (D_0 >= D_1, kappa: Phi => Psi) with base doctrine D_0, subdoctrine D_1, and comparison transformation kappa.",
+      "description": "Tuple T = (D_0 >= D_1, kappa: Phi => Psi) induced by a comparison square alpha and its involutive Beck-Chevalley mate mu_alpha in a cloven doctrinal fibration p : E -> B.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
         "C006",
@@ -686,7 +686,7 @@
       "label": "Categorical Residuum Operator (Res)",
       "stage": "stage_core",
       "cluster": "crm_foundations",
-      "description": "Obstruction assignment Res(kappa): D_0 -> Obstr obeying the Admissibility Criterion (orthogonal structural invariants).",
+      "description": "Universal Doctrinal Square Defect Def(alpha) / Res(kappa): D_0 -> Obstr projecting onto Modes (i)-(iii), calibrated via Doctrinal Philosophies P = (D, P) and the four-family Admissibility Criterion.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
         "C008",
@@ -1452,7 +1452,7 @@
       "label": "Lean 4 HomotopyCRM Production Ledger",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Four-layer Lean 4 honesty gate and ten-module production verification suite (15,577 lines, 182 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, and SetsResiduum).",
+      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (19,961 lines, 216 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
       "monograph_chapter": "Chapter 7 & 9",
       "concepts_covered": [
         "C185",
