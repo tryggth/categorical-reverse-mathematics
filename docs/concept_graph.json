@@ -686,7 +686,7 @@
       "label": "Categorical Residuum Operator (Res)",
       "stage": "stage_core",
       "cluster": "crm_foundations",
-      "description": "Universal Doctrinal Square Defect Def(alpha) / Res(kappa): D_0 -> Obstr projecting onto Modes (i)-(iii), calibrated via Doctrinal Philosophies P = (D, P) and the four-family Admissibility Criterion.",
+      "description": "Truncated Homotopy-Fiber Defect ||hofib_y(F_X)||_n and Res(kappa), with Modes (i)-(iii) (internal vs. external section splitting, specified J-completion phantoms, and rigidified vs. Aut(B)-orbit forgetful lifts), calibrated via Doctrinal Philosophies P = (D, P) and the four-family Admissibility Criterion.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
         "C008",
@@ -1452,7 +1452,7 @@
       "label": "Lean 4 HomotopyCRM Production Ledger",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (19,961 lines, 216 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
+      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (21,166 lines, 225 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
       "monograph_chapter": "Chapter 7 & 9",
       "concepts_covered": [
         "C185",
@@ -2253,7 +2253,7 @@
     {
       "source": "ADV_DOUBLE_CLAMPED_SETS",
       "target": "ADV_HOMOTOPY_CRM",
-      "rationale": "Chapter 7's universe clamps are machine-checked in the tenth production module HomotopyCRM/SetsResiduum.lean (994 lines, 16 checks)."
+      "rationale": "Chapter 7's universe clamps are machine-checked in the tenth production module HomotopyCRM/SetsResiduum.lean (1,232 lines, 17 checks)."
     },
     {
       "source": "ADV_DOUBLE_CLAMPED_SETS",

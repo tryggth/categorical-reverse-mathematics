@@ -10,7 +10,7 @@ and HomotopyCRM/*.lean against docs/technical_claims_foundations.md, enforcing:
 3. All 12 manuscript xltabular/tabularx tables mapped to valid catalog claim IDs in Part IV.
 4. Canonical grounding categories, valid coordinate axes, non-empty fields, zero placeholders,
    and Summary Ledger (§7) arithmetic consistency.
-5. 100% coverage of blueprint/lean_decls (132 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
+5. 100% coverage of blueprint/lean_decls (130 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
    and 100% valid literature citation keys against references.bib with anti-hallucination guards.
 """
 
