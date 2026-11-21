@@ -245,7 +245,7 @@ Because `naive_pullback_breaks_subclass_separation` (`HomotopyCRM/SetsResiduum.l
 - **Three Homological Traps:**
   1. *Stone-Space Vanishing:* Passing directly to the Stone classifying space of $\mathcal{L}_\in$-completions kills non-elementary model-expandability obstructions unless Morleyized and localized.
   2. *Single-Model Local-AC Collapse:* Working inside a single fixed $(M, \mathcal{C}) \models \mathsf{GBC}$ where $M \models \mathsf{ZFC}$ hides Replacement leaks that appear only under base-theory deformation $\mathsf{ZC} \hookrightarrow \mathsf{ZFC}$.
-  3. *Hochschild--Serre False Positives:* Applying classical group-extension spectral sequences to $\mathrm{Aut}(M, \mathcal{C}) \to \mathrm{Aut}(M)$ conflates automorphism non-lifting (e.g., Easton $V \neq \mathrm{HOD}$) with syntactic $\mathcal{L}_\in$-non-conservativity (Glazer's $\theta_{\mathrm{Glz}}$).
+  3. *Hochschild--Serre False Positives:* Applying classical group-extension spectral sequences to $\mathrm{Aut}(M, \mathcal{C}) \to \mathrm{Aut}(M)$ conflates automorphism non-lifting (e.g., Easton $\forall p\,(V \neq \mathrm{HOD}(\{p\}))$) with syntactic $\mathcal{L}_\in$-non-conservativity (Glazer's $\theta_{\mathrm{Glz}}$).
 
 ### 9.2 Macro / Micro Two-Level Architecture & 9-Row Diagnostic Atlas
 A rigorous transgression carrier on $\pi_{\mathrm{Set}}$ separates the **syntactic reflection / conservativity layer (Macro)** from the **internal class-forcing / small-set leak layer (Micro)**:
@@ -255,7 +255,7 @@ A rigorous transgression carrier on $\pi_{\mathrm{Set}}$ separates the **syntact
 | Class-Set Extension | Base Theory | Gate 1: Macro Excision $H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ | Gate 2: Micro $P_{\mathrm{dist}}$ Leak | Gate 3: Countable Model Expandability |
 | :--- | :--- | :--- | :--- | :--- |
 | $\mathsf{GBC}$ over $\mathsf{ZFC}$ | $\mathsf{ZFC}$ | $0$ ($\mathcal{L}_\in$-conservative) | $0$ ($\mathrm{Def}(M)$ always expands) | $100\%$ expandable (`Def`) |
-| $\mathsf{NBG}$ ($\mathsf{GBC}+\mathsf{GC}$) | $\mathsf{ZFC}$ | $0$ (Felgner 1971) | $0$ ($\kappa$-closed class forcing) | Fails on some $M$; $\mathrm{Def}(M)$ when $V \neq \mathrm{HOD}$ |
+| $\mathsf{NBG}$ ($\mathsf{GBC}+\mathsf{GC}$) | $\mathsf{ZFC}$ | $0$ (Felgner 1971) | $0$ ($\kappa$-closed class forcing) | Fails on some $M$; $\mathrm{Def}(M)$ when $\forall p\,(V \neq \mathrm{HOD}(\{p\}))$ |
 | $\mathsf{CT}^-[\mathsf{ZFC}]$ (`[Fujimoto12]`) | $\mathsf{ZFC}$ | $0$ ($\mathcal{L}_\in$-conservative) | $0$ (no new sets) | Fails on non-recursively-saturated $M$ |
 | $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$ | $\mathsf{ZFC}$ | $\neq 0$ (Tarski truth $\vdash \mathrm{Con}(\mathsf{ZFC})$) | $0$ (no new sets added) | Fails on $M \not\models T^*$ & non-rec.-sat. |
 | $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$ | Trace $T^*$ | $0$ ($\mathcal{L}_\in$-conservative over $T^*$) | $0$ (no new sets added) | Fails on non-recursively-saturated $M \models T^*$ |

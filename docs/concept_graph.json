@@ -1425,7 +1425,7 @@
       "label": "Double-Clamped Set_ZFC Scale-Invariance & SetsResiduum",
       "stage": "stage_adv",
       "cluster": "set_foundations",
-      "description": "Borel determinacy pincer (ZFC^- unprovability at Sigma^0_4 in minimal/non-standard beta-models lacking P(N) vs. V_(omega+omega) at Sigma^0_(omega+1)), reflexive scale-invariance pinching 1-categorical AST (C, S) into Set_ZFC via Osius pure-set fullness & well-pointedness (bridging to (X, U_0 in U_1)), and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
+      "description": "Borel determinacy pincer (ZFC^- unprovability at Sigma^0_4 in minimal/non-standard beta-models lacking P(N) vs. ZC unprovability at Sigma^0_(omega+1) and colimit escape in V_(omega+omega)), reflexive scale-invariance pinching 1-categorical AST (C, S) into Set_ZFC via Osius pure-set fullness & well-pointedness (bridging to (X, U_0 in U_1)), and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
         "C124",
