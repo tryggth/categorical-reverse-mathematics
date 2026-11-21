@@ -935,7 +935,7 @@
       "label": "Base-Fiber Conservation Principle",
       "stage": "stage_core",
       "cluster": "conservation_and_relativization",
-      "description": "Order-theoretic logical strength conservation; quantitative 5-term Grothendieck-Leray spectral sequence Ext^1 conservation.",
+      "description": "Order-theoretic and cohomological base-fiber strength conservation (4-term Giraud torsor-gerbe / 5-term Leray sequence, Choice-slice and SVC forcing).",
       "monograph_chapter": "Chapter 1 & 4",
       "concepts_covered": [
         "C025",
@@ -1351,7 +1351,7 @@
       "label": "Double-Solvent Theorem for 4-Smoothings",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Radial exotic R^4 smoothings, suspension collapse of light condensed torsor Q_E0, and Connes groupoid G_E0.",
+      "description": "Double-Solvent Theorem on condensed E_0 tail quotient Q_E0 = [2^N // F_2^{<omega}], radial exotic R^4 smoothings, Freedman collapse, and Connes groupoid G_E0.",
       "monograph_chapter": "Chapter 4",
       "concepts_covered": [
         "C066",
@@ -2088,7 +2088,7 @@
     {
       "source": "CORE_BASE_FIBER",
       "target": "ADV_DOUBLE_SOLVENT",
-      "rationale": "Double-Solvent Theorem applies base-fiber conservation to 4-manifold smoothings."
+      "rationale": "Double-Solvent Theorem analyzes the light condensed E_0 tail quotient underlying radial 4-manifold smoothings."
     },
     {
       "source": "CORE_BASE_FIBER",
@@ -2223,7 +2223,7 @@
     {
       "source": "ADV_DOUBLE_SOLVENT",
       "target": "ADV_HOMOTOPY_CRM",
-      "rationale": "Double-Solvent invariants are formally verified in BorelTailResiduum.lean."
+      "rationale": "Double-Solvent core invariants (ZFC splitting, coset density, continuous T1 blindness) are formally verified in BorelTailResiduum.lean."
     },
     {
       "source": "ADV_DOUBLE_SOLVENT",

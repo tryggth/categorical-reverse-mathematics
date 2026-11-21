@@ -5,12 +5,12 @@ scripts/verify_technical_claims.py
 Deterministic Second-Pass verifier for monograph technical claims and foundational grounding.
 Audits docs/categorical_reverse_mathematics.tex, references.bib, blueprint/lean_decls,
 and HomotopyCRM/*.lean against docs/technical_claims_foundations.md, enforcing:
-1. 100% 1-to-1 bijection across all 88 formal post-document environments (51 results + 37 structural/open).
+1. 100% 1-to-1 bijection across all 89 formal post-document environments (51 results + 38 structural/open).
 2. All 174+ distinct inline prose & table technical claims across Preface, Glossary, and Chapters 1-9.
 3. All 12 manuscript xltabular/tabularx tables mapped to valid catalog claim IDs in Part IV.
 4. Canonical grounding categories, valid coordinate axes, non-empty fields, zero placeholders,
    and Summary Ledger (§7) arithmetic consistency.
-5. 100% coverage of blueprint/lean_decls (130 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
+5. 100% coverage of blueprint/lean_decls (124 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
    and 100% valid literature citation keys against references.bib with anti-hallucination guards.
 """
 
@@ -481,13 +481,13 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
     part3 = catalog["part3"]
     part4 = catalog["part4"]
 
-    # 2. Validate Part I & Part II 1-to-1 bijection with all 88 formal LaTeX environments
+    # 2. Validate Part I & Part II 1-to-1 bijection with all 89 formal LaTeX environments
     tex_result_envs = [e for e in tex_envs if e["type"] in RESULT_ENVS]
     tex_struct_envs = [e for e in tex_envs if e["type"] in STRUCTURAL_ENVS]
     if len(tex_result_envs) != 51:
         errors.append(f"Expected 51 formal result environments in LaTeX, found {len(tex_result_envs)}.")
-    if len(tex_struct_envs) != 37:
-        errors.append(f"Expected 37 structural/open environments in LaTeX, found {len(tex_struct_envs)}.")
+    if len(tex_struct_envs) != 38:
+        errors.append(f"Expected 38 structural/open environments in LaTeX, found {len(tex_struct_envs)}.")
     if len(part1) != len(tex_result_envs):
         errors.append(f"Part I row count ({len(part1)}) != LaTeX formal results ({len(tex_result_envs)}).")
     if len(part2) != len(tex_struct_envs):
