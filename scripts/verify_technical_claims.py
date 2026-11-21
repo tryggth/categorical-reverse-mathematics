@@ -10,7 +10,7 @@ and HomotopyCRM/*.lean against docs/technical_claims_foundations.md, enforcing:
 3. All 12 manuscript xltabular/tabularx tables mapped to valid catalog claim IDs in Part IV.
 4. Canonical grounding categories, valid coordinate axes, non-empty fields, zero placeholders,
    and Summary Ledger (§7) arithmetic consistency.
-5. 100% coverage of blueprint/lean_decls (124 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
+5. 100% coverage of blueprint/lean_decls (140 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
    and 100% valid literature citation keys against references.bib with anti-hallucination guards.
 """
 
@@ -209,6 +209,8 @@ def _parse_single_tex_file(
             label = lbl_m.group(1) if lbl_m else ""
             lean_m = re.search(r"\\lean\{([^}]+)\}", blob)
             lean_decls = [d.strip() for d in lean_m.group(1).split(",") if d.strip()] if lean_m else []
+            has_leanok = bool(re.search(r"\\leanok(?![a-zA-Z@])", blob))
+            has_leanwitness = bool(re.search(r"\\leanwitness(?![a-zA-Z@])", blob))
             # Record any tables nested inside or skipped? Formal envs never contain xltabular/tabularx,
             # but check lines inside just in case.
             for k in range(i, end_line):
@@ -224,6 +226,8 @@ def _parse_single_tex_file(
                     "end_line": end_line,
                     "label": label,
                     "lean_decls": lean_decls,
+                    "has_leanok": has_leanok,
+                    "has_leanwitness": has_leanwitness,
                 }
             )
             i = end_line
@@ -527,6 +531,19 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
         nt_md = normalize_title(row["title"])
         if nt_tex and nt_tex != nt_md:
             errors.append(f"{lbl}: title mismatch tex='{nt_tex}' vs md='{nt_md}'.")
+        # Enforce strict Two-Tier Standard (\leanok vs \leanwitness)
+        if env["has_leanok"] and env["has_leanwitness"]:
+            errors.append(f"{lbl}: carries both \\leanok and \\leanwitness.")
+        if env["lean_decls"] and not (env["has_leanok"] or env["has_leanwitness"]):
+            errors.append(f"{lbl}: carries \\lean{{...}} without \\leanok or \\leanwitness.")
+        if (env["has_leanok"] or env["has_leanwitness"]) and not env["lean_decls"]:
+            errors.append(f"{lbl}: carries \\leanok/\\leanwitness without \\lean{{...}} declarations.")
+        if env["type"] in RESULT_ENVS or env["type"] == "remark":
+            is_lean_grounded = row["grounding"] == "Proved by Lean code"
+            if env["has_leanok"] and not is_lean_grounded:
+                errors.append(f"{lbl}: \\leanok environment must have grounding 'Proved by Lean code' (found '{row['grounding']}').")
+            if not env["has_leanok"] and is_lean_grounded:
+                errors.append(f"{lbl}: non-\\leanok (\\leanwitness or prose) environment cannot have grounding 'Proved by Lean code'.")
         # Blueprint Lean decls inside formal env must all appear in row evidence
         for d in env["lean_decls"]:
             if d not in row["evidence"]:
@@ -593,7 +610,7 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
             if g == "Proved by Lean code" and not lean_refs:
                 errors.append(f"{cid}: grounding 'Proved by Lean code' lacks HomotopyCRM.* declaration in evidence.")
 
-    # 5. Validate 89/89 coverage of blueprint/lean_decls in MD_PATH
+    # 5. Validate 100% coverage of blueprint/lean_decls in MD_PATH
     missing_bp = sorted(blueprint_decls - set(re.findall(r"(?:HomotopyCRM|Checks)\.[A-Za-z0-9_.']+", md_text)))
     if missing_bp:
         errors.append(f"blueprint/lean_decls declarations missing from catalog ({len(missing_bp)}): {missing_bp[:5]}")

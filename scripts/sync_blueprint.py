@@ -123,7 +123,7 @@ def replace_macro_calls(text: str, macro: str, nargs: int, replacer) -> str:
 
 
 def extract_lean_decls(content: str) -> str:
-    """Extract all `\\lean{...}` declarations inside `\\leanok`-verified environments of content.tex."""
+    """Extract all `\\lean{...}` declarations inside `\\leanok`- or `\\leanwitness`-verified environments of content.tex."""
     decls = set()
     env_pat = re.compile(
         r"\\begin\{(theorem|proposition|lemma|definition|remark|conjecture|principle|problem)\}(.*?)\\end\{\1\}",
@@ -131,7 +131,7 @@ def extract_lean_decls(content: str) -> str:
     )
     for m in env_pat.finditer(content):
         block = m.group(2)
-        if not re.search(r"\\leanok(?![a-zA-Z@])", block):
+        if not re.search(r"\\(?:leanok|leanwitness)(?![a-zA-Z@])", block):
             continue
         i = 0
         n = len(block)
@@ -207,7 +207,7 @@ def transform_content(body: str) -> str:
             r"\begin{theorem}[Pure Axiom-of-Infinity Residua in $\mathbf{FinSet}$]\label{thm:finset-infinity-residua}%"
             "\n"
             f"\\lean{{{decls}}}%\n"
-            r"\leanok%"
+            r"\leanwitness%"
             "\n"
             r"\uses{def:comparison-triple,def:residuum}%"
             "\n"
@@ -269,6 +269,12 @@ def build_outputs() -> dict[pathlib.Path, str]:
     bib = extract_bib(body)
     content = transform_content(body)
     lean_decls = extract_lean_decls(content)
+    # Strip \leanwitness from blueprint/src/content.tex so only Tier-1 full formalizations carry \leanok.
+    content = re.sub(
+        r"[ \t]*\\leanwitness(?![a-zA-Z@])%[ \t]*\r?\n|\\leanwitness(?![a-zA-Z@])[ \t]*",
+        "",
+        content,
+    )
     return {
         LEAN_DECLS_PATH: lean_decls,
         BIB_PATH: bib,

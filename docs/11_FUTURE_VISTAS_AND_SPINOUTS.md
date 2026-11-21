@@ -237,7 +237,7 @@ To bypass these six obstructions, Volume II organizes admissibility by doctrinal
 ## 9. Two-Level Leray Transgression Carrier on $\pi_{\mathrm{Set}}$ Without Model Fibrations (`prob:open-17`)
 
 ### 9.1 Three Model-Space Breakdowns & Three Homological Traps
-Because `naive_pullback_breaks_subclass_separation` (`HomotopyCRM/SetsResiduum.lean`, Definition 7.1.1) shows $\pi_{\mathrm{Set}} : \mathbf{Mod}(\mathsf{GB}_0) \twoheadrightarrow \mathbf{Mod}(\mathsf{Z})$ is *not* a model-space Grothendieck fibration, naive model-level Leray spectral sequences fail along six distinct fault lines:
+Because naive pullback fails Subclass Separation---proved at the two-sorted `ClassSetModel` level by `naive_pullback_breaks_subclass_separation` (`finOmegaModel` $\hookrightarrow$ `powOmegaModel` on `evenPowClass` in `HomotopyCRM/SetsResiduum.lean`) and instantiated for $\pi_{\mathrm{Set}} : \mathbf{Mod}(\mathsf{GB}_0) \twoheadrightarrow \mathbf{Mod}(\mathsf{Z})$ over $M \prec V_\kappa$ with **G4** in Definition 7.1.1(i)---naive model-level Leray spectral sequences fail along six distinct fault lines:
 - **Three Model-Space Breakdowns:**
   1. *Naive Class Pullback Breaks Subclass Separation:* Along $f : M \prec V_\kappa$, any $r \in \mathcal{P}(\omega)^{V_\kappa} \setminus M$ yields $f^{-1}[r] = r \notin M$ and fails **G4** domain projection on $\{(n, r) \mid n \in r\}$.
   2. *Height Collapse ($\mathrm{Ord}^M = \omega + \omega$):* Below $\mathsf{ZFC}$ (e.g., $V_{\omega+\omega} \models \mathsf{ZC}$), von Neumann cardinals $\aleph_n$ vanish and must be recoded inside $\mathcal{P}^{n+3}(\omega)$, breaking literal $\mathbf{Card} \hookrightarrow \mathbf{Set}$ base-change.

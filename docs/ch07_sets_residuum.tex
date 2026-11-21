@@ -17,7 +17,7 @@ The catch is that \textbf{first-order conservativity is strictly weaker than bi-
 
 \begin{definition}[Class-Set Model Spaces and the Baseline Adjunction $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$]\label{def:set-projection-fibration}%
 \lean{HomotopyCRM.SetsResiduum.defSetProjAdjunction, HomotopyCRM.SetsResiduum.naive_pullback_breaks_subclass_separation}%
-\leanok%
+\leanwitness%
 \uses{def:comparison-triple,def:residuum}%
 Let $\mathsf{GB}_0$\index{GB0@$\mathsf{GB}_0$ (Replacement-free class theory)} denote \emph{Replacement-free Bernays--G\"odel class theory}: the two-sorted $(\mathcal{L}_\in, \mathcal{C})$-theory over Zermelo set theory $\mathsf{Z}$ (Empty Set, Pairing, Union, Power Set, Infinity, Foundation, and Extensionality) whose class sort $\mathcal{C}$ is closed under G\"odel's eight finite predicative class operations \textbf{G1--G8} together with Subclass Separation ($C \subseteq A \in \mathcal{S} \implies C \in \mathcal{S}$, inducing full $\mathcal{L}_\in$-Separation on sets), \emph{omitting} Bernays--G\"odel Axiom~D (Class Replacement). Write:
 \[
@@ -52,7 +52,7 @@ Recall how Choice appears categorically at the small scale: complementing Chapte
 
 \begin{proposition}[Large Equivalence-Splitting Calibrates Global Choice]\label{prop:large-equiv-splitting}%
 \lean{HomotopyCRM.SetsResiduum.card_split_iff_global_choice, HomotopyCRM.SetsResiduum.type_equiv_splitting_global_choice}%
-\leanok%
+\leanwitness%
 \uses{def:set-projection-fibration}%
 Work over $\mathsf{GBC}$\index{Global Choice ($\mathsf{GC}$)} in a class-set model $(M, \mathcal{C})$, and let $I : \mathbf{Card} \hookrightarrow \mathbf{Set}$ denote the full inclusion in $\mathbf{Cat}(\mathcal{C})$ of the skeletal subcategory of small von Neumann cardinals into small sets. Then:
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
@@ -241,7 +241,7 @@ Where Stratum~II manufactures residua by over-compressing proper-class construct
 
 \begin{theorem}[Axis~VII Comparison: Foundation vs.\ Anti-Foundation as $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$]\label{thm:axis-vii-foundation}%
 \lean{HomotopyCRM.SetsResiduum.pset_equiv_iff_bisimilar, HomotopyCRM.SetsResiduum.quine_atom_outside_wf}%
-\leanok%
+\leanwitness%
 \uses{def:small-map-ambient,def:axis-vi-replacement}%
 Let $(\mathcal{C}, \mathcal{S})$ be a Barr-exact class-set ambient with $\mathbb{N} \in \mathcal{S}$, Small Union, and Axis~VI image descent (Definition~\ref{def:axis-vi-replacement}), so that $\mathcal{P}_{\mathcal{S}} : \mathcal{C} \to \mathcal{C}$ acts covariantly by direct image $\exists_g$, and assume $\mathcal{P}_{\mathcal{S}}$ admits both an initial algebra $(\mu \mathcal{P}_{\mathcal{S}}, \mathrm{sup})$ and a terminal coalgebra $(\nu \mathcal{P}_{\mathcal{S}}, \mathrm{des})$. Let $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$ denote the full subdoctrine of well-founded $\mathcal{P}_{\mathcal{S}}$-coalgebras $(X, \gamma : X \to \mathcal{P}_{\mathcal{S}}(X))$ (satisfying internal $\in_\gamma$-induction). Then:
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
@@ -259,7 +259,7 @@ For~(ii) and~(iii), any accessible pointed small-branching graph $(G, \to, r)$ d
 
 \begin{proposition}[Boffa Hypersets and Rieger--Bernays Slice vs.\ Global Torsors]\label{prop:boffa-torsors}%
 \lean{HomotopyCRM.SetsResiduum.quineAPG_bisimilar_and_nonIso_twoCycle, HomotopyCRM.SetsResiduum.boffa_twin_torsor, HomotopyCRM.SetsResiduum.boffa_twin_addTorsor}%
-\leanok%
+\leanwitness%
 \uses{thm:axis-vii-foundation}%
 Weakening Aczel's $\mathsf{AFA}$ (which quotients coalgebras by maximum bisimulation) to Maurice Boffa's Anti-Foundation Axiom ($\mathsf{BAFA}$\index{BAFA@$\mathsf{BAFA}$ (Boffa Anti-Foundation Axiom)}~\cite{Boffa69}, requiring every injective decoration of a transitive subgraph of an extensional accessible pointed graph to extend to an injective decoration of the supergraph) lifts $\nu \mathcal{P}_{\mathcal{S}}$ to a universe $V_{\mathsf{BAFA}}$ admitting a proper class of distinct Quine atoms $a = \{a\} \neq b = \{b\}$. Then:
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
@@ -280,7 +280,7 @@ Proposition~\ref{prop:boffa-torsors} acquires an illuminating homotopy-theoretic
 
 \begin{proposition}[{External Benchmark: Material Extensionality, Quotient Elimination, and Hereditary Truncation; Friedman~1973~\cite{Friedman73}, Gylterud~2018~\cite[Thm.~3.9]{Gylterud18}}]\label{prop:extensionality-truncation}%
 \lean{HomotopyCRM.SetsResiduum.zfset_ext_quot_gate}%
-\leanok%
+\leanwitness%
 \uses{thm:axis-vii-foundation,prop:boffa-torsors}%
 Material Extensionality ($\forall z\,(z \in X \leftrightarrow z \in Y) \implies X = Y$) enforces both constructive quotient collapse and homotopical symmetry truncation:
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=1.8em]
@@ -369,7 +369,7 @@ To separate all three kernel primitives cleanly under the monograph's \textbf{4-
 \toprule
 \textbf{Lean 4 Declaration} & \textbf{Calibrated Universe Clamp / Residuum} & \textbf{\texttt{\#print axioms} Gate} \\
 \midrule
-\texttt{defSetProjAdjunction} \& \texttt{naive\_\allowbreak pullback\_\allowbreak breaks\_\allowbreak subclass\_\allowbreak separation} & Definition~\ref{def:set-projection-fibration}: definable-class coreflection $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ and counterexample showing naive pullback breaks Subclass Separation & \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound} \\
+\texttt{defSetProjAdjunction} \& \texttt{naive\_\allowbreak pullback\_\allowbreak breaks\_\allowbreak subclass\_\allowbreak separation} & Definition~\ref{def:set-projection-fibration}: two-sorted \texttt{ClassSetModel} coreflection $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ and $8$-part pullback Subclass-Separation counterexample (\texttt{finOmegaModel} $\hookrightarrow$ \texttt{powOmegaModel}, \texttt{evenPowClass}) & \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound} \\
 \texttt{card\_\allowbreak split\_\allowbreak iff\_\allowbreak global\_\allowbreak choice} & Proposition~\ref{prop:large-equiv-splitting}: pointwise homotopy-functor splitting of skeletal $\mathbf{Card} \hookrightarrow \mathbf{Set}$ is equivalent to uniform small-set choice $G(X)=\eta_X^{-1}(\emptyset)$ & \texttt{(axiom-free)} \\
 \texttt{type\_\allowbreak equiv\_\allowbreak splitting\_\allowbreak global\_\allowbreak choice} & Proposition~\ref{prop:large-equiv-splitting} + \texttt{CategoryTheory.Functor}: global functorial skeleton splitting of \texttt{Type u} via \texttt{Classical.choice} & \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound} \\
 \texttt{pset\_\allowbreak equiv\_\allowbreak iff\_\allowbreak bisimilar} \& \texttt{quine\_\allowbreak atom\_\allowbreak outside\_\allowbreak wf} & Theorem~\ref{thm:axis-vii-foundation}: \texttt{PSet.Equiv} embeds faithfully into \texttt{APG} bisimulation while \texttt{quineAPG} ($q=\{q\}$) lies outside the image of \texttt{PSet} & \texttt{(axiom-free)} \\
@@ -386,7 +386,7 @@ Above all, dissecting ``$\mathbf{Sets}$'' closes the constructive and topos-theo
   \item \textbf{Axis~VI (Quotient-Image Descent and Borel Proof Unwinding):} Calibrates small-indexed image descent separating $\mathsf{ETCS} \simeq \mathsf{Mac}$ and $\mathsf{ZC}$ ($V_{\omega+\omega}$) from $\mathsf{ZFC}$, extracting the explicit strategy-descent residuum $\mathrm{Res}(\kappa_{\mathrm{Det}})$ on Martin's proper-class unraveling coalgebra in $\mathcal{C} \setminus \mathcal{S}$ at $\boldsymbol{\Sigma}^0_{\omega+1}$~\cite{Friedman71,Martin75} (Remark~\ref{rem:martin-borel-coalgebra}).
   \item \textbf{Axis~VII (Coalgebraic and Univalent Universe Fixed Points):} Develops the full spectrum between $V_{\mathsf{ZF}} = \mu \mathcal{P}_{\mathcal{S}}$, Aczel's $V_{\mathsf{AFA}} = \nu \mathcal{P}_{\mathcal{S}}$, Boffa's Rieger--Bernays torsors over $V_{\mathsf{BAFA}}$~\cite{Bernays54,Rieger57,Boffa69}, Gylterud's $M = \mu \mathcal{P}_{\mathrm{Anima}}$~\cite{Gylterud18}, and the terminal univalent multiset coalgebra $\nu \mathcal{P}_{\mathrm{Anima}}$ where $\Omega(\nu \mathcal{P}_{\mathrm{Anima}}, [q, q]) \cong \mathbb{Z}/2\mathbb{Z}$ unites Axes~V and~VII (Remark~\ref{rem:nu-anima-fossil}).
   \item \textbf{$2$-Categorical Calibration of the $(\infty, \infty)$-Ladder Without Universes:} Replaces Grothendieck universes ($V_\kappa$) across Chapter~\ref{ch:higher-crm}'s four-tier hierarchy $\mathrm{Cat}^L_{(\infty,\infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty,\infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \subsetneq \mathrm{Cat}^R_{(\infty,\infty)}$~\cite{ORW26} with exact class calibrations across $\mathsf{GBC} \subsetneq \mathsf{NBG} \subsetneq \mathsf{NBG}+\mathsf{ETR}_{\mathrm{Ord}} \subsetneq \mathsf{KM}$ (and $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$)~\cite{Gitman20}---testing where $\alpha = 0$ stabilization on $\mathrm{Cat}_{\le \omega}$ (Theorem~\ref{thm:ordinal-rank-completeness}, including $\mathcal{Q}$) drops transfinite $\mathsf{ETR}_{\mathrm{Ord}}$ recursion down to $\mathsf{GBC}$, separating the $\mathrm{Con}(\mathsf{ZFC})$ threshold crossed already at $\mathsf{ETR}_{\mathrm{Ord}}$ from impredicative $\mathsf{KM}$ comprehension ($\mathrm{Con}(\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}})$).
-  \item \textbf{Non-Conservative Base-Change Transgression:} Formulates a quantitative Leray-style transgression map along $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ (mirroring Chapter~\ref{ch:base-fiber}, Theorem~\ref{thm:quantitative-conservation}); because raw model-space pullbacks fail (\texttt{naive\_pullback\_breaks\_subclass\_separation}), a rigorous transgression carrier operates via Macro $\Sigma^1_0$-Morleyized classifying topoi $\gamma_I : \mathcal{E}[T_{\mathrm{Class}}] \to \mathcal{E}[T_{\mathrm{Set}}]$ coupled to Micro internal AST class-forcing sheaves $\gamma_\Sigma$, separating predicative $\mathcal{S}$-distributivity leaks (Glazer over $\mathsf{ZC}$~\cite{Glazer23}, Felgner over $\mathsf{ZFC}_{\neg\mathrm{Reg}}$~\cite{Felgner76}) from excision/reflection leaks ($H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ for $\mathsf{ETR}_{\mathrm{Ord}}$ and $\mathsf{KM}$), while vanishing under Replacement + Foundation over $\mathsf{ZFC}$.
+  \item \textbf{Non-Conservative Base-Change Transgression:} Formulates a quantitative Leray-style transgression map along $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$ (mirroring Chapter~\ref{ch:base-fiber}, Theorem~\ref{thm:quantitative-conservation}); because raw model-space pullbacks fail (\texttt{naive\_pullback\_breaks\_subclass\_separation} on \texttt{ClassSetModel}, mirrored on $M \prec V_\kappa$ in Definition~\ref{def:set-projection-fibration}(i)), a rigorous transgression carrier operates via Macro $\Sigma^1_0$-Morleyized classifying topoi $\gamma_I : \mathcal{E}[T_{\mathrm{Class}}] \to \mathcal{E}[T_{\mathrm{Set}}]$ coupled to Micro internal AST class-forcing sheaves $\gamma_\Sigma$, separating predicative $\mathcal{S}$-distributivity leaks (Glazer over $\mathsf{ZC}$~\cite{Glazer23}, Felgner over $\mathsf{ZFC}_{\neg\mathrm{Reg}}$~\cite{Felgner76}) from excision/reflection leaks ($H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ for $\mathsf{ETR}_{\mathrm{Ord}}$ and $\mathsf{KM}$), while vanishing under Replacement + Foundation over $\mathsf{ZFC}$.
 \end{itemize}
 
 The scare quotes around ``$\mathbf{Sets}$'' may now come off---not because a single monolithic foundation has prevailed, but because its hidden joints lie fully in view. What once appeared to be an unanalyzable meta-theoretic floor is simply the double-clamped locus inside Joyal--Moerdijk ambients $(\mathcal{C}, \mathcal{S})$---bridging to univalent $(\infty, 1)$-topos universes $(\mathcal{X}, \mathcal{U})$ and the Volume~II horizon of elementary class-anima ambients $(\mathcal{C}_\infty, \mathcal{S}_\infty)$---where existence-compression from above meets hereditary symmetry-truncation from below, and where every turn of the class kaleidoscope overhead obeys the exact same laws of necessity that govern the mathematics within.

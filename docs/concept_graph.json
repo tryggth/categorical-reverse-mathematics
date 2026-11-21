@@ -2183,7 +2183,7 @@
     {
       "source": "ADV_SITE_REALIZABILITY",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "Atomic choice and Fraïssé topoi open Horizons III and IV (Problems 8.5-8.8)."
+      "rationale": "Atomic choice and Fraïssé topoi open Horizons III and IV (Problems 9.5-9.8)."
     },
     {
       "source": "ADV_INFTY_INFTY_LADDER",
@@ -2193,12 +2193,12 @@
     {
       "source": "ADV_INFTY_INFTY_LADDER",
       "target": "ADV_HOMOTOPY_CRM",
-      "rationale": "The 4-tier ladder and step-product are formalized in StepProductPhantom.lean."
+      "rationale": "State-coalgebraic rank separation and the step-product phantom witness are formalized in OrdinalRankCompleteness.lean and StepProductPhantom.lean."
     },
     {
       "source": "ADV_INFTY_INFTY_LADDER",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "The four-tier (inf, inf)-localization ladder directly grounds Open Problems 8.11 (Horizon VI) and 8.16 (Horizon VIII class calibration)."
+      "rationale": "The four-tier (inf, inf)-localization ladder directly grounds Open Problems 9.11 (Horizon VI) and 9.16 (Horizon VIII class calibration)."
     },
     {
       "source": "ADV_CUBICAL_AMALGAMATION",
@@ -2208,7 +2208,7 @@
     {
       "source": "ADV_CUBICAL_AMALGAMATION",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "Cubical phase transitions open Open Problems 8.7 and 8.8."
+      "rationale": "Cubical phase transitions open Open Problems 9.7 and 9.8."
     },
     {
       "source": "ADV_CORE_CONJECTURES",
@@ -2218,7 +2218,7 @@
     {
       "source": "ADV_CATSP_SPECTRA",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "CatSp stabilization barriers lead directly to Open Problem 8.12."
+      "rationale": "CatSp stabilization barriers lead directly to Open Problem 9.12."
     },
     {
       "source": "ADV_DOUBLE_SOLVENT",
@@ -2228,7 +2228,7 @@
     {
       "source": "ADV_DOUBLE_SOLVENT",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "Double-Solvent bounds lead directly to Open Problem 8.13 (exotic R^4 moduli)."
+      "rationale": "Double-Solvent bounds lead directly to Open Problem 9.13 (exotic R^4 moduli)."
     },
     {
       "source": "ADV_CLASS_FIBRATION_GC",
@@ -2238,7 +2238,7 @@
     {
       "source": "ADV_CLASS_FIBRATION_GC",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "Vertical class hierarchies and pi_Set non-conservativity pose Open Problems 8.16 and 8.17 in Horizon VIII."
+      "rationale": "Vertical class hierarchies and pi_Set non-conservativity pose Open Problems 9.16 and 9.17 in Horizon VIII."
     },
     {
       "source": "ADV_BOFFA_ANIMA_TORSORS",
@@ -2248,7 +2248,7 @@
     {
       "source": "ADV_BOFFA_ANIMA_TORSORS",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "Decalage from terminal univalent multisets nu P_Anima to Rieger-Bernays permutation topoi forms Open Problem 8.17."
+      "rationale": "Decalage from terminal univalent multisets nu P_Anima to Rieger-Bernays permutation topoi forms Open Problem 9.17."
     },
     {
       "source": "ADV_DOUBLE_CLAMPED_SETS",
@@ -2258,7 +2258,7 @@
     {
       "source": "ADV_DOUBLE_CLAMPED_SETS",
       "target": "ADV_OPEN_HORIZONS",
-      "rationale": "Martin's proper-class Borel unraveling coalgebra and double-clamped scale-invariance launch Horizon VIII (Problems 8.15-8.17)."
+      "rationale": "Martin's proper-class Borel unraveling coalgebra and double-clamped scale-invariance launch Horizon VIII (Problems 9.15-9.17)."
     },
     {
       "source": "ADV_HOMOTOPY_CRM",
