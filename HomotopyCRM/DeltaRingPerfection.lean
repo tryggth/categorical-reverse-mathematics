@@ -3,14 +3,17 @@ Copyright (c) 2026 HomotopyCRM Project. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: HomotopyCRM Formalization Team
 -/
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Algebra.Category.Ring.Basic
 import Mathlib.CategoryTheory.Comma.Over.Basic
 import Mathlib.CategoryTheory.Endofunctor.Algebra
 import Mathlib.CategoryTheory.Functor.OfSequence
 import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 import Mathlib.Data.Int.Cast.Lemmas
+import Mathlib.Data.Nat.Choose.Basic
 import Mathlib.Data.Nat.Prime.Defs
 import Mathlib.Data.ZMod.Basic
+import Mathlib.Order.Interval.Finset.Nat
 import Mathlib.RingTheory.Ideal.Maps
 import Mathlib.RingTheory.Ideal.Operations
 import Mathlib.RingTheory.Ideal.Span
@@ -589,6 +592,10 @@ structure DeltaStructure (p : ℕ) [Fact (Nat.Prime p)] (A : Type u) [CommRing A
   delta_zero : delta 0 = 0
   /-- `δ(1) = 0`. -/
   delta_one : delta 1 = 0
+  /-- Additive `p`-derivation identity with integral binomial cofactor `(p.choose k) / p`. -/
+  delta_add : ∀ x y : A,
+    delta (x + y) = delta x + delta y -
+      ∑ k ∈ Finset.Ioo 0 p, ((p.choose k / p : ℕ) : A) * x ^ k * y ^ (p - k)
   /-- Leibniz-like product rule for `δ`. -/
   delta_mul : ∀ x y : A,
     delta (x * y) = x ^ p * delta y + y ^ p * delta x + (p : A) * delta x * delta y
@@ -686,6 +693,11 @@ def DeltaRing2.toDeltaStructure (R : Type u) [CommRing R] [DeltaRing2 R] :
   phi_spec x := by simp [frobeniusLift]
   delta_zero := delta_zero
   delta_one := delta_one
+  delta_add x y := by
+    have hIoo : Finset.Ioo 0 2 = ({1} : Finset ℕ) := by decide
+    have hchoose : Nat.choose 2 1 / 2 = 1 := by decide
+    rw [hIoo, Finset.sum_singleton, hchoose]
+    simp [pow_one, DeltaRing2.delta_add]
   delta_mul x y := by simpa using delta_mul x y
 
 /-- A `p = 2` `δ`-ring `R` is **perfect** when its Frobenius lift `frobeniusLift : R → R` is
@@ -1957,22 +1969,30 @@ theorem dualInt_frobeniusLift_idem (x : DualInt) :
   rw [DualInt.frobeniusLift_eq, DualInt.frobeniusLift_mk]
 
 /-- Derived boundary lemma 5: non-trivial Nygaard filtration separation on `DualInt` at ideal
-`I = Ideal.span {ε}`: `ε ∈ N^{≥ 1} DualInt` whereas `1 ∉ N^{≥ 1} DualInt`. -/
+`I = Ideal.span {ε}` and level `i = 2`: `ε ∈ N^{≥ 2} DualInt` whereas `ε ∉ I^2` (since `ε² = 0`
+collapses `I^2 = ⊥` while `φ(ε) = 0 ∈ I^2`) and `1 ∉ N^{≥ 2} DualInt`. -/
 theorem dualInt_nygaard_separation :
     DualInt.eps ∈ nygaardLevel (DeltaRing2.toDeltaStructure DualInt)
-        (Ideal.span {DualInt.eps}) 1 ∧
+        (Ideal.span {DualInt.eps}) 2 ∧
+      DualInt.eps ∉ (Ideal.span {DualInt.eps} : Ideal DualInt) ^ 2 ∧
       (1 : DualInt) ∉ nygaardLevel (DeltaRing2.toDeltaStructure DualInt)
-        (Ideal.span {DualInt.eps}) 1 := by
-  constructor
-  · rw [nygaardLevel, pow_one, Ideal.mem_comap]
-    change frobeniusLift DualInt.eps ∈ Ideal.span {DualInt.eps}
+        (Ideal.span {DualInt.eps}) 2 := by
+  refine ⟨?_, ?_, ?_⟩
+  · rw [nygaardLevel, Ideal.mem_comap]
+    change frobeniusLift DualInt.eps ∈ (Ideal.span {DualInt.eps} : Ideal DualInt) ^ 2
     rw [dualInt_frobeniusLift_eps]
     exact Ideal.zero_mem _
+  · intro heps
+    rw [Ideal.span_singleton_pow, dualInt_eps_sq, Ideal.mem_span_singleton] at heps
+    rcases heps with ⟨c, hc⟩
+    rw [zero_mul] at hc
+    exact absurd hc (by decide)
   · intro h1
-    rw [nygaardLevel, pow_one, Ideal.mem_comap, map_one, Ideal.mem_span_singleton] at h1
+    rw [nygaardLevel, Ideal.mem_comap, map_one, Ideal.span_singleton_pow,
+      dualInt_eps_sq, Ideal.mem_span_singleton] at h1
     rcases h1 with ⟨c, hc⟩
-    have hfst := congrArg DualInt.fst hc
-    simp [DualInt.eps] at hfst
+    rw [zero_mul] at hc
+    exact absurd hc (by decide)
 
 /-! ### Layer 4: Kernel Axiom Gate (`#guard_msgs in #print axioms`) -/
 
@@ -2043,6 +2063,14 @@ set_option linter.hashCommand false
 /-- info: 'HomotopyCRM.DualInt.not_isPerfectDeltaRing' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.DualInt.not_isPerfectDeltaRing
+
+/-- info: 'HomotopyCRM.DeltaRing2.toDeltaStructure' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.DeltaRing2.toDeltaStructure
+
+/-- info: 'HomotopyCRM.Checks.dualInt_nygaard_separation' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.Checks.dualInt_nygaard_separation
 
 /-- info: 'HomotopyCRM.DualInt.perfectionCommRingCocone_isColimit' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in

@@ -18,14 +18,15 @@ import Mathlib.Algebra.Category.Grp.Basic
 import Mathlib.Algebra.Group.TypeTags.Basic
 import Mathlib.Algebra.Group.TypeTags.Finite
 import Mathlib.Algebra.Group.TypeTags.Hom
-import Mathlib.Algebra.GroupWithZero.WithZero
 import Mathlib.CategoryTheory.Adjunction.Mates
 import Mathlib.CategoryTheory.Adjunction.Reflective
+import Mathlib.CategoryTheory.Category.Preorder
 import Mathlib.CategoryTheory.FiberedCategory.Fiber
 import Mathlib.CategoryTheory.FiberedCategory.Fibered
 import Mathlib.CategoryTheory.Functor.TwoSquare
 import Mathlib.CategoryTheory.MorphismProperty.Composition
 import Mathlib.CategoryTheory.MorphismProperty.IsInvertedBy
+import Mathlib.CategoryTheory.SingleObj
 import Mathlib.Data.Fintype.Units
 import Mathlib.GroupTheory.Commutator.Basic
 import Mathlib.GroupTheory.QuotientGroup.Basic
@@ -36,7 +37,7 @@ import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 # Doctrinal Fibrations, Tri-Modal Obstructions, and the Formal Philosophy `𝔓 = (𝔻, 𝒫)`
 
 This root module formalizes the unifying architectural backbone of *Categorical Reverse Mathematics*
-(Wave 47A, Proposals 1 & 3 Tier A):
+(Waves 47A & R2):
 
 1. **Master Square `Def(α)` & Tri-Modal Factorization Core (`Section 1`):**
    - `DoctrinalFibration` wrapping stock `Mathlib` fibered categories (`Functor.IsFibered`) and
@@ -56,22 +57,31 @@ This root module formalizes the unifying architectural backbone of *Categorical 
    - Proves the **Inquisitor's Impossibility Lemma (`inquisitor_impossibility_casuistry`)** via
      `S4` interiors `s4Interior`, demonstrating why purely apophatic product/closure axioms collapse
      and kataphatic probe suites `𝒫` are mathematically necessary.
-   - Certifies the **Finite, Choice-Free Pareto Schism (`pareto_incomparable_projSub_localic`)**:
-     - `monoid_proj1_iff_rightZero` and `m1_projSub_and_not_localic` on `AbsorbingMonoidCarrier 1`
-       (`ℳ₁ = ({e₁, 1₁}, ∧)`),
+   - Defines genuine uniform presheaf predicates (`CatPresheafAC`, `CatPresheafIAC`,
+     `CatPresheafProjSub`, `CatPresheafProj1`, `CatPresheafLocalic`) over any small category `C`
+     using Choice-free `NatTrans` and `coyonedaPresheaf` combinators, and certifies the **Finite
+     Pareto Schism (`pareto_incomparable_projSub_localic`)** comparing `IAC ∩ · ⊆ AC` across
+     `PUnitCat`, `TwoGroupCat`, `M1Cat`, and `VPosetOpCat` (with `Classical.choice` confined to
+     positive `Set ⊨ AC`, `Set^{ℤ/2ℤ} ⊨ IAC`, and `ℳ₁ ⊨ ProjSub` witnesses over `Type`, while all
+     finite negative witnesses and `freydCover_dogma_banishment` on the genuine 2-object Freyd cover
+     `(B(ℤ/2ℤ))_⊥` (`BZ2BotObj`) remain Choice-free):
+     - `monoid_proj1_iff_rightZero` and `m1_projSub_and_not_localic` on `M1Monoid`
+       (`ℳ₁ = ({e₁, 1₁}, ∧) ≃* AbsorbingMonoidCarrier 1`),
      - `vPoset_localic_not_proj1` on the 3-element V-poset `VPoset = {a > c < b}`,
      - `diamond_proj1_not_projSub` on the 4-element diamond poset `DiamondPoset`,
-     - `freydCover_dogma_banishment` on `(B(ℤ/2ℤ))_⊥`, and
+     - `freydCover_dogma_banishment` on the 2-object category `BZ2BotObj = (B(ℤ/2ℤ))_⊥`, and
      - **Lawvere–Tierney topology enumeration (`m1_slice_lt_count`):** `3^k * 2^m` total slice
        topologies splitting into `2^(k + m)` localic and `(3^k - 2^k) * 2^m` non-localic /
        non-Boolean topologies.
 
-3. **Mode (iii) 3-Stage `δ`-Ring Obstruction Tower & Finite Leray Transgression (`Section 3`):**
-   - `delta_mul_p_eq_frob_sub` and Stage-1 torsion annihilation `frob_annihilates_p_torsion`, with
-     empty Stage-1 fibers (`empty_deltaLift_R3`, `isEmpty_deltaRing2_zmod4`) and empty Stage-2
-     cocycle fibers (`empty_deltaLift_R220`, `empty_deltaLift_R2Idemp`).
-   - Stage-3 lift counts: `r2_lift_card_eq_two`, `r2_lifts_non_iso`, `r22_lift_card_eq_sixteen`,
-     and `r22_iso_orbits_eq_six` (`GL₂(𝔽₂)` conjugation orbits on `M₂(𝔽₂)`).
+3. **Mode (iii) 2-Stage `δ`-Ring Tower (`FrobLiftRing2`) & Leray Transgression (`Section 3`):**
+   - `FrobLiftRing2` (`(R, φ)` satisfying `φ(x) - x² ∈ 2R`) and `DeltaLift F`:
+     - Stage-1 empty fibers over genuine `FrobLiftRing2` instances: `(ZMod 2, id)`
+       (`empty_deltaLift_zmod2`), `(ZMod 4, id)` (`empty_deltaLift_zmod4`), and `(R2IdempRing, id)`
+       (`empty_deltaLift_R2Idemp`).
+     - Stage-2 torsor lift counts & orbit quotients: `r2_lift_card_eq_two`, `r2_lifts_non_iso`,
+       `r22_lift_card_eq_sixteen`, and `r22_iso_orbits_eq_six` (`GL₂(𝔽₂)` conjugation orbits on
+       `M₂(𝔽₂)`).
    - Finite group-cohomology Leray transgression witness (`sl2_f5_leray_transgression_injective`) on
      `1 → {±1} → SL(2, ZMod 5) → PSL(2, ZMod 5) → 1`.
 
@@ -79,7 +89,7 @@ This root module formalizes the unifying architectural backbone of *Categorical 
    - Clean tri-modal adapters across all existing `HomotopyCRM` witness modules (`InfinityResiduum`,
      `DeltaRingPerfection`, `BorelTailResiduum`, `StepProductPhantom`, `NominalSimplicity`,
      `CubicalAmalgamation`, `NominalICaTT`, `OrdinalRankCompleteness`, `SetsResiduum`).
-   - Mandatory 4-Layer check gate (`namespace Checks`) with `25+` `#guard_msgs in #print axioms`
+   - Mandatory 4-Layer check gate (`namespace Checks`) with `30+` `#guard_msgs in #print axioms`
      checks, zero `sorry`, zero custom `axiom`, zero `opaque`.
 -/
 
@@ -550,7 +560,41 @@ theorem inquisitor_impossibility_casuistry {D : Type u} [SemilatticeInf D] [Orde
   · intro C hCT hCsig x hx σ hσ
     exact hCT (hCsig σ hσ hx)
 
-/-! ### Choice-Free Presheaf Combinatorics & Finite Pareto Schism -/
+/-! ### Choice-Free Presheaf Combinatorics, Genuine Presheaf Probes, & Pareto Schism -/
+
+/-- Choice-free 2-element absorbing monoid `ℳ₁ = ({e₁, 1₁}, ∧)` (`false = e₁`, `true = 1₁`). -/
+@[ext]
+structure M1Monoid : Type where
+  /-- Underlying toggle (`false` = absorbing zero `e₁`, `true` = identity `1₁`). -/
+  val : Bool
+  deriving DecidableEq
+
+instance : CommMonoid M1Monoid where
+  one := ⟨true⟩
+  mul x y := ⟨x.val && y.val⟩
+  mul_assoc a b c := by
+    cases a
+    cases b
+    cases c
+    exact congrArg M1Monoid.mk (Bool.and_assoc _ _ _)
+  one_mul a := by
+    cases a
+    exact congrArg M1Monoid.mk (Bool.true_and _)
+  mul_one a := by
+    cases a
+    exact congrArg M1Monoid.mk (Bool.and_true _)
+  mul_comm a b := by
+    cases a
+    cases b
+    exact congrArg M1Monoid.mk (Bool.and_comm _ _)
+
+/-- Canonical monoid isomorphism identifying `M1Monoid` with `AbsorbingMonoidCarrier 1`. -/
+def m1MonoidMulEquiv : M1Monoid ≃* AbsorbingMonoidCarrier 1 where
+  toFun x := ⟨x.val⟩
+  invFun y := ⟨y.val⟩
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_mul' _ _ := rfl
 
 /-- External projectivity of `1` (`Proj₁`) in the category `Set^M` of left `M`-sets: every
 non-empty left `M`-set has a fixed point. -/
@@ -601,18 +645,17 @@ theorem monoid_subterminalsGenerate_iff_subsingleton (M : Type u) [Monoid M] :
     refine ⟨fun _ ↦ x, fun m ↦ ?_, rfl⟩
     rw [Subsingleton.elim m 1, one_smul]
 
-/-- Helper for choice-free equality on `AbsorbingMonoidCarrier 1`: any nonempty `ℳ₁`-set has a
-right-zero section `x₀ ↦ ⟨false⟩ • x₀`. -/
-theorem m1_proj1 : MonoidProj1 (AbsorbingMonoidCarrier 1) :=
-  (monoid_proj1_iff_rightZero (AbsorbingMonoidCarrier 1)).mpr
-    ⟨⟨false⟩, fun m ↦ AbsorbingMonoidCarrier.ext (Bool.and_false m.val)⟩
+/-- Helper for choice-free equality on `M1Monoid`: any nonempty `ℳ₁`-set has a right-zero
+section `x₀ ↦ ⟨false⟩ • x₀`. -/
+theorem m1_proj1 : MonoidProj1 M1Monoid :=
+  (monoid_proj1_iff_rightZero M1Monoid).mpr
+    ⟨⟨false⟩, fun m ↦ M1Monoid.ext (Bool.and_false m.val)⟩
 
-/-- **Constructive `ℳ₁ ∈ ProjSub \ Localic` Separation:** Presheaves on `AbsorbingMonoidCarrier 1`
-satisfy Supports Split (`ProjSub`) constructively via `u ↦ e₁ • x₀`, yet fail localicity because
-`⟨false⟩ ≠ ⟨true⟩`. -/
+/-- **Constructive `ℳ₁ ∈ ProjSub \ Localic` Separation:** Presheaves on `M1Monoid` satisfy Supports
+Split (`ProjSub`) constructively via `u ↦ e₁ • x₀`, yet fail localicity because `⟨false⟩ ≠ ⟨true⟩`.
+Zero `Classical.choice`! -/
 theorem m1_projSub_and_not_localic :
-    MonoidProjSub (AbsorbingMonoidCarrier 1) ∧
-      ¬ MonoidSubterminalsGenerate (AbsorbingMonoidCarrier 1) := by
+    MonoidProjSub M1Monoid ∧ ¬ MonoidSubterminalsGenerate M1Monoid := by
   constructor
   · intro X _ U p hp
     cases U
@@ -620,16 +663,14 @@ theorem m1_projSub_and_not_localic :
         fun u ↦ False.elim (Bool.false_ne_true u.2),
         fun _ u ↦ False.elim (Bool.false_ne_true u.2)⟩
     · obtain ⟨x₀, _⟩ := hp ⟨(), rfl⟩
-      refine ⟨fun _ ↦ (⟨false⟩ : AbsorbingMonoidCarrier 1) • x₀,
-        fun u ↦ Subtype.ext rfl, fun m u ↦ ?_⟩
+      refine ⟨fun _ ↦ (⟨false⟩ : M1Monoid) • x₀,
+        fun u ↦ Subtype.ext rfl, fun m _ ↦ ?_⟩
       rw [← mul_smul]
-      have hz : m * (⟨false⟩ : AbsorbingMonoidCarrier 1) = ⟨false⟩ :=
-        AbsorbingMonoidCarrier.ext (Bool.and_false m.val)
+      have hz : m * (⟨false⟩ : M1Monoid) = ⟨false⟩ := M1Monoid.ext (Bool.and_false m.val)
       rw [hz]
   · rw [monoid_subterminalsGenerate_iff_subsingleton]
     intro hSub
-    exact Bool.false_ne_true (congrArg AbsorbingMonoidCarrier.val
-      (hSub.elim ⟨false⟩ ⟨true⟩))
+    exact Bool.false_ne_true (congrArg M1Monoid.val (hSub.elim ⟨false⟩ ⟨true⟩))
 
 /-- Contravariant presheaves `P^op → Type` on a preorder `P`. -/
 structure PosetPresheaf (P : Type) [Preorder P] : Type 1 where
@@ -888,21 +929,392 @@ theorem twoGroup_not_proj1_not_localic :
     intro hSub
     exact Bool.false_ne_true (congrArg TwoGroup.val (hSub.elim ⟨false⟩ ⟨true⟩))
 
-/-- The Freyd-cover / cone-adjoined monoid `(B(ℤ/2ℤ))_⊥ = WithZero TwoGroup`. -/
-abbrev BZ2Bot : Type := WithZero TwoGroup
+/-! #### Uniform Categorical Presheaf Predicates on `(C : Type) [SmallCategory C]` -/
+
+/-- Terminal presheaf `1 : C ⥤ Type` sending every object to `PUnit` (Choice-free). -/
+def terminalPresheaf (C : Type) [SmallCategory C] : C ⥤ Type where
+  obj _ := PUnit
+  map _ _ := ()
+  map_id _ := rfl
+  map_comp _ _ := rfl
+
+/-- Explicit Choice-free product `F × G : C ⥤ Type` of presheaves over `C`. -/
+def prodPresheaf {C : Type} [SmallCategory C] (F G : C ⥤ Type) : C ⥤ Type where
+  obj d := F.obj d × G.obj d
+  map f p := (F.map f p.1, G.map f p.2)
+  map_id d := funext fun p ↦ Prod.ext (congrFun (F.map_id d) p.1) (congrFun (G.map_id d) p.2)
+  map_comp f g := funext fun p ↦
+    Prod.ext (congrFun (F.map_comp f g) p.1) (congrFun (G.map_comp f g) p.2)
+
+/-- Explicit Choice-free covariant representable presheaf `Hom_C(c, -) : C ⥤ Type`. -/
+def coyonedaPresheaf (C : Type) [SmallCategory C] (c : C) : C ⥤ Type where
+  obj d := c ⟶ d
+  map f g := g ≫ f
+  map_id _ := funext fun g ↦ Category.comp_id g
+  map_comp f g := funext fun h ↦ (Category.assoc h f g).symm
+
+/-- Bridge identifying `coyonedaPresheaf C c` with Mathlib's `coyoneda.obj (Opposite.op c)`. -/
+theorem coyonedaPresheaf_eq_coyoneda (C : Type) [SmallCategory C] (c : C) :
+    coyonedaPresheaf C c = coyoneda.obj (Opposite.op c) :=
+  rfl
+
+/-- Bridge equating pointwise composition of `NatTrans` with `≫` in `C ⥤ Type`. -/
+theorem natTrans_pointwise_comp_iff {C : Type} [SmallCategory C] {F G H : C ⥤ Type}
+    (α : F ⟶ G) (β : G ⟶ H) (γ : F ⟶ H) :
+    (∀ c x, β.app c (α.app c x) = γ.app c x) ↔ α ≫ β = γ := by
+  constructor
+  · intro h
+    exact NatTrans.ext (funext fun c ↦ funext fun x ↦ h c x)
+  · intro h c x
+    exact congrFun (congrFun (congrArg NatTrans.app h) c) x
+
+/-- Pointwise epimorphism (`Surjective`) of a natural transformation `e : NatTrans X Y` in
+`C ⥤ Type`. -/
+def IsPointwiseSurjective {C : Type} [SmallCategory C] {X Y : C ⥤ Type} (e : NatTrans X Y) : Prop :=
+  ∀ c : C, Function.Surjective (e.app c)
+
+/-- Subterminal presheaf predicate (`∀ c, Subsingleton (U.obj c)`) in `C ⥤ Type`. -/
+def IsSubterminalPresheaf {C : Type} [SmallCategory C] (U : C ⥤ Type) : Prop :=
+  ∀ c : C, Subsingleton (U.obj c)
+
+/-- External Axiom of Choice (`AC`) in the presheaf topos `C ⥤ Type`: every pointwise-surjective
+morphism admits a natural section. -/
+def CatPresheafAC (C : Type) [SmallCategory C] : Prop :=
+  ∀ ⦃X Y : C ⥤ Type⦄ (e : NatTrans X Y), IsPointwiseSurjective e →
+    ∃ s : NatTrans Y X, ∀ c y, e.app c (s.app c y) = y
+
+/-- Internal Axiom of Choice (`IAC`) in `C ⥤ Type`: for every presheaf `Z` and pointwise-surjective
+`e : X ↠ Y`, the exponential `e^Z : X^Z ⟶ Y^Z` is pointwise surjective, formulated via the Yoneda
+correspondence `(Y^Z)(c) ≅ NatTrans (y(c) × Z) Y`. -/
+def CatPresheafIAC (C : Type) [SmallCategory C] : Prop :=
+  ∀ ⦃X Y : C ⥤ Type⦄ (Z : C ⥤ Type) (e : NatTrans X Y), IsPointwiseSurjective e →
+    ∀ (c : C) (g : NatTrans (prodPresheaf (coyonedaPresheaf C c) Z) Y),
+      ∃ f : NatTrans (prodPresheaf (coyonedaPresheaf C c) Z) X,
+        ∀ d p, e.app d (f.app d p) = g.app d p
+
+/-- Supports Split (`ProjSub`) in `C ⥤ Type`: every pointwise-surjective map onto a subterminal
+admits a section. -/
+def CatPresheafProjSub (C : Type) [SmallCategory C] : Prop :=
+  ∀ ⦃U X : C ⥤ Type⦄, IsSubterminalPresheaf U → ∀ (e : NatTrans X U),
+    IsPointwiseSurjective e → ∃ s : NatTrans U X, ∀ c u, e.app c (s.app c u) = u
+
+/-- External projectivity of `1` (`Proj₁`) in `C ⥤ Type`. -/
+def CatPresheafProj1 (C : Type) [SmallCategory C] : Prop :=
+  ∀ ⦃X : C ⥤ Type⦄ (e : NatTrans X (terminalPresheaf C)), IsPointwiseSurjective e →
+    ∃ s : NatTrans (terminalPresheaf C) X, ∀ c u, e.app c (s.app c u) = u
+
+/-- Localicity in `C ⥤ Type`: subterminals generate every presheaf `X : C ⥤ Type`. -/
+def CatPresheafLocalic (C : Type) [SmallCategory C] : Prop :=
+  ∀ (X : C ⥤ Type) (c : C) (x : X.obj c),
+    ∃ (U : C ⥤ Type), IsSubterminalPresheaf U ∧
+      ∃ (f : NatTrans U X) (u : U.obj c), f.app c u = x
+
+theorem catPresheafAC_imp_iac {C : Type} [SmallCategory C] (hAC : CatPresheafAC C) :
+    CatPresheafIAC C := by
+  intro X Y Z e he c g
+  rcases hAC e he with ⟨s, hs⟩
+  refine ⟨
+    { app := fun d p ↦ s.app d (g.app d p)
+      naturality := fun _ _ h ↦ funext fun p ↦
+        (congrArg (s.app _) (congrFun (g.naturality h) p)).trans
+          (congrFun (s.naturality h) (g.app _ p)) },
+    fun d p ↦ hs d (g.app d p)⟩
+
+theorem catPresheafAC_imp_projSub {C : Type} [SmallCategory C] (hAC : CatPresheafAC C) :
+    CatPresheafProjSub C :=
+  fun _ _ _ e he ↦ hAC e he
+
+theorem catPresheafProjSub_imp_proj1 {C : Type} [SmallCategory C] (hSub : CatPresheafProjSub C) :
+    CatPresheafProj1 C :=
+  fun _ e he ↦ hSub (fun _ ↦ ⟨fun _ _ ↦ rfl⟩) e he
+
+theorem catPresheafLocalic_imp_separating {C : Type} [SmallCategory C]
+    (hLoc : CatPresheafLocalic C) {X Y : C ⥤ Type} (g₁ g₂ : NatTrans X Y)
+    (hEq : ∀ U : C ⥤ Type, IsSubterminalPresheaf U → ∀ f : NatTrans U X, ∀ c u,
+      g₁.app c (f.app c u) = g₂.app c (f.app c u)) :
+    g₁ = g₂ := by
+  apply NatTrans.ext
+  funext c x
+  rcases hLoc X c x with ⟨U, hU, f, u, rfl⟩
+  exact hEq U hU f c u
+
+/-- Choice-free terminal 1-object category representing `Set`. -/
+inductive PUnitCat : Type
+  | star
+  deriving DecidableEq
+
+instance : SmallCategory PUnitCat where
+  Hom _ _ := PUnit
+  id _ := ()
+  comp _ _ := ()
+  id_comp _ := rfl
+  comp_id _ := rfl
+  assoc _ _ _ := rfl
+
+/-- Single-object category `B(ℤ/2ℤ)` whose presheaves are `Set^{ℤ/2ℤ}`. -/
+abbrev TwoGroupCat : Type := SingleObj TwoGroup
+
+/-- Single-object category `B(ℳ₁)` whose presheaves are `Set^{ℳ₁}`. -/
+abbrev M1Cat : Type := SingleObj M1Monoid
+
+/-- Opposite category `VPosetᵒᵖ` whose covariant functors `VPosetᵒᵖ ⥤ Type` are `Set^{V^op}`. -/
+abbrev VPosetOpCat : Type := Opposite VPoset
+
+/-! #### Genuine 2-Object Freyd Cover Category `(B(ℤ/2ℤ))_⊥` (`BZ2BotObj`) -/
+
+/-- Objects of the genuine 2-object Freyd cover / cone-adjoined category `(B(ℤ/2ℤ))_⊥`: a new
+initial cone vertex `bot` adjoined to the single object `star` of `B(ℤ/2ℤ)`. -/
+inductive BZ2BotObj : Type
+  | bot
+  | star
+  deriving DecidableEq
+
+/-- Hom-sets of `(B(ℤ/2ℤ))_⊥`: unique morphism `bot ⟶ star` and `bot ⟶ bot`, `PEmpty` for
+`star ⟶ bot`, and `TwoGroup ≅ ℤ/2ℤ` for `star ⟶ star`. -/
+@[reducible]
+def BZ2BotHom : BZ2BotObj → BZ2BotObj → Type
+  | .bot, .bot => PUnit
+  | .bot, .star => PUnit
+  | .star, .bot => PEmpty
+  | .star, .star => TwoGroup
+
+private def bz2BotComp :
+    ∀ {X Y Z : BZ2BotObj}, BZ2BotHom X Y → BZ2BotHom Y Z → BZ2BotHom X Z
+  | .bot, .bot, .bot, _, _ => ()
+  | .bot, .bot, .star, _, _ => ()
+  | .bot, .star, .star, _, _ => ()
+  | .star, .star, .star, (f : TwoGroup), (g : TwoGroup) => g * f
+  | .bot, .star, .bot, _, h => PEmpty.elim h
+  | .star, .bot, _, f, _ => PEmpty.elim f
+  | .star, .star, .bot, _, g => PEmpty.elim g
+
+instance : SmallCategory BZ2BotObj where
+  Hom := BZ2BotHom
+  id
+    | .bot => ()
+    | .star => (1 : TwoGroup)
+  comp := bz2BotComp
+  id_comp {X Y} f := by
+    cases X <;> cases Y
+    · rcases f with ⟨⟩; rfl
+    · rcases f with ⟨⟩; rfl
+    · exact PEmpty.elim f
+    · exact mul_one (f : TwoGroup)
+  comp_id {X Y} f := by
+    cases X <;> cases Y
+    · rcases f with ⟨⟩; rfl
+    · rcases f with ⟨⟩; rfl
+    · exact PEmpty.elim f
+    · exact one_mul (f : TwoGroup)
+  assoc {W X Y Z} f g h := by
+    cases W <;> cases X <;> cases Y <;> cases Z
+    all_goals
+      first
+      | rfl
+      | exact PEmpty.elim f
+      | exact PEmpty.elim g
+      | exact PEmpty.elim h
+      | exact (mul_assoc (h : TwoGroup) (g : TwoGroup) (f : TwoGroup)).symm
+
+/-- Open subterminal `U_⋆ : BZ2BotObj ⥤ Type` (`U_⋆(.bot) = PEmpty`, `U_⋆(.star) = PUnit`),
+whose open slice is equivalent to `Set^{ℤ/2ℤ}`. -/
+def bz2BotOpenSubterminal : BZ2BotObj ⥤ Type where
+  obj
+    | .bot => PEmpty
+    | .star => PUnit
+  map {X Y} f x :=
+    match X, Y with
+    | .bot, _ => PEmpty.elim x
+    | .star, .bot => PEmpty.elim f
+    | .star, .star => ()
+  map_id X := funext fun x ↦ by
+    cases X
+    · exact PEmpty.elim x
+    · rcases x with ⟨⟩; rfl
+  map_comp {X Y Z} f g := funext fun x ↦ by
+    cases X <;> cases Y <;> cases Z <;>
+      first | exact PEmpty.elim x | exact PEmpty.elim f | exact PEmpty.elim g | rfl
+
+theorem isSubterminalPresheaf_bz2BotOpenSubterminal :
+    IsSubterminalPresheaf bz2BotOpenSubterminal := by
+  intro c
+  cases c
+  · exact ⟨fun x ↦ PEmpty.elim x⟩
+  · exact ⟨fun _ _ ↦ rfl⟩
+
+/-- Extend a `ℤ/2ℤ`-set `A : TwoGroupCat ⥤ Type` by empty fiber at `.bot` into `BZ2BotObj ⥤ Type`,
+identifying `Set^{ℤ/2ℤ}` with the open slice over `bz2BotOpenSubterminal`. -/
+def bz2BotExtendFromStar (A : TwoGroupCat ⥤ Type) : BZ2BotObj ⥤ Type where
+  obj
+    | .bot => PEmpty
+    | .star => A.obj (SingleObj.star TwoGroup)
+  map {X Y} f x :=
+    match X, Y with
+    | .bot, _ => PEmpty.elim x
+    | .star, .bot => PEmpty.elim f
+    | .star, .star => A.map (f : SingleObj.star TwoGroup ⟶ SingleObj.star TwoGroup) x
+  map_id X := funext fun x ↦ by
+    cases X
+    · exact PEmpty.elim x
+    · exact congrFun (A.map_id (SingleObj.star TwoGroup)) x
+  map_comp {X Y Z} f g := funext fun x ↦ by
+    cases X <;> cases Y <;> cases Z <;>
+      first
+      | exact PEmpty.elim x
+      | exact PEmpty.elim f
+      | exact PEmpty.elim g
+      | exact congrFun
+          (A.map_comp (f : SingleObj.star TwoGroup ⟶ SingleObj.star TwoGroup)
+            (g : SingleObj.star TwoGroup ⟶ SingleObj.star TwoGroup)) x
+
+/-- Restriction functor from `BZ2BotObj ⥤ Type` to the open subtopos `TwoGroupCat ⥤ Type`
+(`Set^{ℤ/2ℤ}`). -/
+def bz2BotRestrictToStar (F : BZ2BotObj ⥤ Type) : TwoGroupCat ⥤ Type where
+  obj _ := F.obj .star
+  map {X Y} f x := F.map (f : BZ2BotObj.star ⟶ BZ2BotObj.star) x
+  map_id _ := funext fun x ↦ congrFun (F.map_id .star) x
+  map_comp {X Y Z} f g := funext fun x ↦ by
+    let f' : BZ2BotObj.star ⟶ BZ2BotObj.star := f
+    let g' : BZ2BotObj.star ⟶ BZ2BotObj.star := g
+    exact congrFun (F.map_comp f' g') x
+
+theorem bz2BotRestrictToStar_extend (A : TwoGroupCat ⥤ Type) :
+    bz2BotRestrictToStar (bz2BotExtendFromStar A) = A :=
+  CategoryTheory.Functor.hext
+    (fun X ↦ by rcases X with ⟨⟩; rfl)
+    (fun X Y _ ↦ by rcases X with ⟨⟩; rcases Y with ⟨⟩; rfl)
+
+/-- Global sections over `BZ2BotObj` evaluate via the unique arrow `.bot ⟶ .star`, so `Proj₁`
+holds constructively! -/
+theorem catPresheafProj1_bz2Bot : CatPresheafProj1 BZ2BotObj := by
+  intro X _ he
+  obtain ⟨x₀, _⟩ := he .bot ()
+  let toStar : BZ2BotObj.bot ⟶ BZ2BotObj.star := ()
+  refine ⟨
+    { app := fun c _ ↦ match c with
+        | .bot => x₀
+        | .star => X.map toStar x₀
+      naturality := fun c d h ↦ funext fun _ ↦ by
+        cases c <;> cases d
+        · rcases h with ⟨⟩
+          exact (congrFun (X.map_id .bot) x₀).symm
+        · rcases h with ⟨⟩
+          rfl
+        · exact PEmpty.elim h
+        · exact congrFun (X.map_comp toStar h) x₀ },
+    fun _ _ ↦ rfl⟩
+
+/-- `Set^{ℤ/2ℤ}` (`TwoGroupCat`) fails `Proj₁` via the regular `ℤ/2ℤ`-torsor (Choice-free!). -/
+theorem not_catPresheafProj1_twoGroupCat : ¬ CatPresheafProj1 TwoGroupCat := by
+  intro hP
+  let star : TwoGroupCat := SingleObj.star TwoGroup
+  let X := coyonedaPresheaf TwoGroupCat star
+  let e : NatTrans X (terminalPresheaf TwoGroupCat) :=
+    { app := fun _ _ ↦ (), naturality := fun _ _ _ ↦ rfl }
+  have he : IsPointwiseSurjective e := fun _ _ ↦ ⟨(1 : TwoGroup), rfl⟩
+  rcases hP e he with ⟨s, _⟩
+  let neg : star ⟶ star := (⟨true⟩ : TwoGroup)
+  let y : TwoGroup := s.app star ()
+  have hnat := (congrFun (s.naturality neg) ()).symm
+  change (⟨true⟩ : TwoGroup) * y = y at hnat
+  rcases y with ⟨_ | _⟩
+  · exact absurd hnat (by decide)
+  · exact absurd hnat (by decide)
+
+theorem not_catPresheafProjSub_twoGroupCat : ¬ CatPresheafProjSub TwoGroupCat :=
+  fun h ↦ not_catPresheafProj1_twoGroupCat (catPresheafProjSub_imp_proj1 h)
+
+theorem not_catPresheafAC_twoGroupCat : ¬ CatPresheafAC TwoGroupCat :=
+  fun h ↦ not_catPresheafProjSub_twoGroupCat (catPresheafAC_imp_projSub h)
+
+/-- Over `(B(ℤ/2ℤ))_⊥`, the open subterminal `U_⋆` recovers the regular `ℤ/2ℤ`-torsor with no
+section, refuting `ProjSub` (`CatPresheafProjSub BZ2BotObj`). Choice-free! -/
+theorem not_catPresheafProjSub_bz2Bot : ¬ CatPresheafProjSub BZ2BotObj := by
+  intro hSub
+  let X := bz2BotExtendFromStar (coyonedaPresheaf TwoGroupCat (SingleObj.star TwoGroup))
+  let e : NatTrans X bz2BotOpenSubterminal :=
+    { app := fun c x ↦ match c with
+        | .bot => PEmpty.elim x
+        | .star => ()
+      naturality := fun c d h ↦ funext fun x ↦ by
+        cases c <;> cases d <;> first | exact PEmpty.elim x | exact PEmpty.elim h | rfl }
+  have he : IsPointwiseSurjective e := by
+    intro c u
+    cases c
+    · exact PEmpty.elim u
+    · exact ⟨(1 : TwoGroup), rfl⟩
+  rcases hSub isSubterminalPresheaf_bz2BotOpenSubterminal e he with ⟨s, _⟩
+  let neg : BZ2BotObj.star ⟶ BZ2BotObj.star := (⟨true⟩ : TwoGroup)
+  let y : TwoGroup := s.app .star ()
+  have hnat := (congrFun (s.naturality neg) ()).symm
+  change (⟨true⟩ : TwoGroup) * y = y at hnat
+  rcases y with ⟨_ | _⟩
+  · exact absurd hnat (by decide)
+  · exact absurd hnat (by decide)
+
+/-- Diaconescu pushout over `U_⋆` refutes internal choice `CatPresheafIAC BZ2BotObj`:
+`(B(ℤ/2ℤ))_⊥` is non-Boolean (`∅ < U_⋆ < 1`) and drops `IAC`. Choice-free! -/
+theorem not_catPresheafIAC_bz2Bot : ¬ CatPresheafIAC BZ2BotObj := by
+  intro hIAC
+  let X : BZ2BotObj ⥤ Type :=
+    { obj := fun _ ↦ Bool, map := fun _ x ↦ x, map_id := fun _ ↦ rfl, map_comp := fun _ _ ↦ rfl }
+  let Y : BZ2BotObj ⥤ Type :=
+    { obj := fun c ↦ match c with | .bot => Bool | .star => PUnit
+      map := fun {c d} h x ↦ match c, d with
+        | .bot, .bot => x
+        | .bot, .star => ()
+        | .star, .bot => PEmpty.elim h
+        | .star, .star => ()
+      map_id := fun c ↦ funext fun x ↦ by
+        cases c
+        · rfl
+        · rcases x with ⟨⟩; rfl
+      map_comp := fun {c d e'} h₁ h₂ ↦ funext fun x ↦ by
+        cases c <;> cases d <;> cases e' <;>
+          first | exact PEmpty.elim h₁ | exact PEmpty.elim h₂ | rfl }
+  let e : NatTrans X Y :=
+    { app := fun c x ↦ match c with | .bot => x | .star => ()
+      naturality := fun c d h ↦ funext fun x ↦ by
+        cases c <;> cases d <;> first | exact PEmpty.elim h | rfl }
+  have he : IsPointwiseSurjective e := fun c y ↦ by
+    cases c
+    · exact ⟨y, rfl⟩
+    · exact ⟨false, rfl⟩
+  let g : NatTrans (prodPresheaf (coyonedaPresheaf BZ2BotObj .bot) Y) Y :=
+    { app := fun _ p ↦ p.2, naturality := fun _ _ _ ↦ rfl }
+  rcases hIAC Y e he .bot g with ⟨f, hf⟩
+  have hFalseEq := hf .bot ((𝟙 BZ2BotObj.bot, false) :
+    (prodPresheaf (coyonedaPresheaf BZ2BotObj .bot) Y).obj .bot)
+  have hTrueEq := hf .bot ((𝟙 BZ2BotObj.bot, true) :
+    (prodPresheaf (coyonedaPresheaf BZ2BotObj .bot) Y).obj .bot)
+  let toStar : BZ2BotObj.bot ⟶ BZ2BotObj.star := ()
+  have hnatF := (congrFun (f.naturality toStar) (𝟙 BZ2BotObj.bot, false)).symm
+  have hnatT := (congrFun (f.naturality toStar) (𝟙 BZ2BotObj.bot, true)).symm
+  change f.app .bot (𝟙 BZ2BotObj.bot, false) = f.app .star ((), ()) at hnatF
+  change f.app .bot (𝟙 BZ2BotObj.bot, true) = f.app .star ((), ()) at hnatT
+  have hfbot : f.app .bot (𝟙 BZ2BotObj.bot, false) = f.app .bot (𝟙 BZ2BotObj.bot, true) :=
+    hnatF.trans hnatT.symm
+  have hft : (false : Bool) = true := hFalseEq.symm.trans (by rw [hfbot]; exact hTrueEq)
+  exact Bool.false_ne_true hft
 
 /-- **Freyd-Cover Dogma-Banishment Witness (`freydCover_dogma_banishment`):**
-Global projectivity `Proj₁` holds on the Freyd cover `(B(ℤ/2ℤ))_⊥` (since `⊥ = 0` is a right zero),
-yet fails on its open subtopos `Set^{ℤ/2ℤ}`, separating raw global splitting from
-open-subtopos-stable `ProjSub`. Choice-free! -/
+On the genuine 2-object Freyd cover `(B(ℤ/2ℤ))_⊥` (`BZ2BotObj`):
+- `Proj₁` holds globally (`CatPresheafProj1 BZ2BotObj`),
+- `ProjSub` fails over the open subterminal `U_⋆` (`¬ CatPresheafProjSub BZ2BotObj`),
+- `IAC` fails (`¬ CatPresheafIAC BZ2BotObj`), so `(B(ℤ/2ℤ))_⊥ ∈ Mod(IAC → AC)` vacuously while its
+  open slice `Set^{ℤ/2ℤ}` (`TwoGroupCat`) satisfies `IAC` yet fails `Proj₁` and `AC`.
+Zero `Classical.choice`! -/
 theorem freydCover_dogma_banishment :
-    MonoidProj1 BZ2Bot ∧ ¬ MonoidProj1 TwoGroup := by
-  refine ⟨(monoid_proj1_iff_rightZero BZ2Bot).mpr ⟨0, fun m ↦ mul_zero m⟩,
-    twoGroup_not_proj1_not_localic.1⟩
+    CatPresheafProj1 BZ2BotObj ∧
+      ¬ CatPresheafProjSub BZ2BotObj ∧
+      ¬ CatPresheafIAC BZ2BotObj ∧
+      ¬ CatPresheafProj1 TwoGroupCat :=
+  ⟨catPresheafProj1_bz2Bot, not_catPresheafProjSub_bz2Bot, not_catPresheafIAC_bz2Bot,
+    not_catPresheafProj1_twoGroupCat⟩
 
-/-! ### Finite, Axiom-Free Pareto Schism on Actual Presheaf Topoi -/
+/-! ### Finite Pareto Schism on Genuine Presheaf Topoi -/
 
-/-- Finite witness suite of four canonical presheaf topoi grounding the `IAC ⇒ ExtAC` split. -/
+/-- Finite witness suite of four canonical presheaf topoi grounding the `IAC ∩ · ⊆ AC` split. -/
 inductive TestTopos : Type
   | setTopos
   | setZ2
@@ -910,75 +1322,412 @@ inductive TestTopos : Type
   | setVPoset
   deriving DecidableEq
 
-/-- The three mathematical probes comparing `IAC`, `ProjSub` (`= SS`), and `Localic`. -/
+/-- The three kataphatic probes `𝒫` comparing `IAC`, `ProjSub` (`= SS`), and `Localic`. -/
 inductive ChoiceProbe : Type
   | IAC
   | ProjSub
   | Localic
   deriving DecidableEq
 
-/-- Internal Choice (`IAC`) holds on presheaves over a finite site iff every morphism in the site
-is invertible (groupoid site: `PUnit` and `TwoGroup` satisfy this, `ℳ₁` and `VPoset` fail). -/
-def MonoidIsGroupoid (M : Type u) [Monoid M] : Prop :=
-  ∀ m : M, ∃ n : M, m * n = 1 ∧ n * m = 1
+/-- Underlying small site category of each witness presheaf topos. -/
+def testSite : TestTopos → Type
+  | .setTopos => PUnitCat
+  | .setZ2 => TwoGroupCat
+  | .setM1 => M1Cat
+  | .setVPoset => VPosetOpCat
 
-def PosetIsDiscrete (P : Type) [PartialOrder P] : Prop :=
-  ∀ p q : P, p ≤ q → p = q
+instance (t : TestTopos) : SmallCategory (testSite t) :=
+  match t with
+  | .setTopos => inferInstanceAs (SmallCategory PUnitCat)
+  | .setZ2 => inferInstanceAs (SmallCategory TwoGroupCat)
+  | .setM1 => inferInstanceAs (SmallCategory M1Cat)
+  | .setVPoset => inferInstanceAs (SmallCategory VPosetOpCat)
 
-theorem punit_isGroupoid : MonoidIsGroupoid PUnit.{1} := fun _ ↦ ⟨(), rfl, rfl⟩
-theorem twoGroup_isGroupoid : MonoidIsGroupoid TwoGroup := by
-  intro m
-  rcases m with ⟨_ | _⟩
-  · exact ⟨1, rfl, rfl⟩
-  · exact ⟨⟨true⟩, rfl, rfl⟩
-theorem m1_not_isGroupoid : ¬ MonoidIsGroupoid (AbsorbingMonoidCarrier 1) := by
-  intro h
-  rcases h ⟨false⟩ with ⟨n, hn, _⟩
-  exact Bool.false_ne_true (congrArg AbsorbingMonoidCarrier.val hn)
-theorem vPoset_not_isDiscrete : ¬ PosetIsDiscrete VPoset := by
-  intro h
-  have : VPoset.c = VPoset.a := h .c .a trivial
-  cases this
+/-! #### 4-Element V-Maker Cover Refuting `IAC` on `M1Cat` (`Set^{ℳ₁}`) -/
 
-theorem punit_projSub : MonoidProjSub PUnit.{1} := by
-  intro X _ U p hp
-  cases U
-  · exact ⟨fun u ↦ False.elim (Bool.false_ne_true u.2),
-      fun u ↦ False.elim (Bool.false_ne_true u.2),
-      fun _ u ↦ False.elim (Bool.false_ne_true u.2)⟩
-  · obtain ⟨x₀, _⟩ := hp ⟨(), rfl⟩
-    exact ⟨fun _ ↦ x₀, fun u ↦ Subtype.ext rfl, fun _ _ ↦ one_smul PUnit.{1} x₀⟩
+private inductive M1VBase : Type
+  | x1
+  | x2
+  | y
+  deriving DecidableEq
 
-theorem punit_localic : MonoidSubterminalsGenerate PUnit.{1} :=
-  (monoid_subterminalsGenerate_iff_subsingleton PUnit.{1}).mpr inferInstance
+private def m1VBaseAct : M1Monoid → M1VBase → M1VBase
+  | ⟨true⟩, s => s
+  | ⟨false⟩, _ => .y
 
-/-- Truth pairing `testToposSat t p` grounded directly in the actual proved presheaf theorems. -/
-def testToposSat : TestTopos → ChoiceProbe → Prop
-  | .setTopos, .IAC => MonoidIsGroupoid PUnit.{1}
-  | .setZ2, .IAC => MonoidIsGroupoid TwoGroup
-  | .setM1, .IAC => MonoidIsGroupoid (AbsorbingMonoidCarrier 1)
-  | .setVPoset, .IAC => PosetIsDiscrete VPoset
-  | .setTopos, .ProjSub => MonoidProjSub PUnit.{1}
-  | .setZ2, .ProjSub => MonoidProjSub TwoGroup
-  | .setM1, .ProjSub => MonoidProjSub (AbsorbingMonoidCarrier 1)
-  | .setVPoset, .ProjSub => PosetProjSub VPoset
-  | .setTopos, .Localic => MonoidSubterminalsGenerate PUnit.{1}
-  | .setZ2, .Localic => MonoidSubterminalsGenerate TwoGroup
-  | .setM1, .Localic => MonoidSubterminalsGenerate (AbsorbingMonoidCarrier 1)
-  | .setVPoset, .Localic => PosetSubterminalsGenerate VPoset
+private inductive M1VTotal : Type
+  | x1_0
+  | x2_1
+  | y0
+  | y1
+  deriving DecidableEq
+
+private def m1VTotalAct : M1Monoid → M1VTotal → M1VTotal
+  | ⟨true⟩, s => s
+  | ⟨false⟩, .x1_0 => .y0
+  | ⟨false⟩, .y0 => .y0
+  | ⟨false⟩, .x2_1 => .y1
+  | ⟨false⟩, .y1 => .y1
+
+private def m1VProj : M1VTotal → M1VBase
+  | .x1_0 => .x1
+  | .x2_1 => .x2
+  | .y0 => .y
+  | .y1 => .y
+
+private def m1VBaseFunctor : M1Cat ⥤ Type where
+  obj _ := M1VBase
+  map m s := m1VBaseAct m s
+  map_id _ := rfl
+  map_comp m₁ m₂ := funext fun s ↦ by
+    rcases m₁ with ⟨_ | _⟩ <;> rcases m₂ with ⟨_ | _⟩ <;> cases s <;> rfl
+
+private def m1VTotalFunctor : M1Cat ⥤ Type where
+  obj _ := M1VTotal
+  map m s := m1VTotalAct m s
+  map_id _ := rfl
+  map_comp m₁ m₂ := funext fun s ↦ by
+    rcases m₁ with ⟨_ | _⟩ <;> rcases m₂ with ⟨_ | _⟩ <;> cases s <;> rfl
+
+/-- Constructive 4-element V-maker counterexample proving `¬ CatPresheafIAC M1Cat`. Zero
+`Classical.choice`! -/
+theorem not_catPresheafIAC_m1Cat : ¬ CatPresheafIAC M1Cat := by
+  intro hIAC
+  let star : M1Cat := SingleObj.star M1Monoid
+  let e : NatTrans m1VTotalFunctor m1VBaseFunctor :=
+    { app := fun _ t ↦ m1VProj t
+      naturality := fun _ _ m ↦ funext fun t ↦ by
+        rcases m with ⟨_ | _⟩ <;> cases t <;> rfl }
+  have he : IsPointwiseSurjective e := by
+    intro _ b
+    cases b
+    · exact ⟨.x1_0, rfl⟩
+    · exact ⟨.x2_1, rfl⟩
+    · exact ⟨.y0, rfl⟩
+  let g : NatTrans (prodPresheaf (coyonedaPresheaf M1Cat star) m1VBaseFunctor) m1VBaseFunctor :=
+    { app := fun _ p ↦ p.2, naturality := fun _ _ _ ↦ rfl }
+  rcases hIAC m1VBaseFunctor e he star g with ⟨f, hf⟩
+  let e0 : star ⟶ star := (⟨false⟩ : M1Monoid)
+  have hn1 := (congrFun (f.naturality e0) ((𝟙 star, M1VBase.x1) :
+    (prodPresheaf (coyonedaPresheaf M1Cat star) m1VBaseFunctor).obj star)).symm
+  have hn2 := (congrFun (f.naturality e0) ((𝟙 star, M1VBase.x2) :
+    (prodPresheaf (coyonedaPresheaf M1Cat star) m1VBaseFunctor).obj star)).symm
+  change m1VTotalAct e0 (f.app star (𝟙 star, .x1)) = f.app star (e0, .y) at hn1
+  change m1VTotalAct e0 (f.app star (𝟙 star, .x2)) = f.app star (e0, .y) at hn2
+  have hp1 : m1VProj (f.app star (𝟙 star, .x1)) = .x1 := hf star (𝟙 star, .x1)
+  have hp2 : m1VProj (f.app star (𝟙 star, .x2)) = .x2 := hf star (𝟙 star, .x2)
+  have hf1 : m1VTotalAct e0 (f.app star (𝟙 star, .x1)) = .y0 := by
+    cases h : f.app star (𝟙 star, .x1)
+    · rfl
+    all_goals rw [h] at hp1; cases hp1
+  have hf2 : m1VTotalAct e0 (f.app star (𝟙 star, .x2)) = .y1 := by
+    cases h : f.app star (𝟙 star, .x2)
+    · rw [h] at hp2; cases hp2
+    · rfl
+    all_goals rw [h] at hp2; cases hp2
+  have hy : (M1VTotal.y0 : M1VTotal) = .y1 := hf1.symm.trans (hn1.trans (hn2.symm.trans hf2))
+  cases hy
+
+private def vPosetOpBoolObj : VPosetOpCat → Type
+  | .op .a => Bool
+  | .op .b => Bool
+  | .op .c => PUnit
+
+private def vPosetOpBoolMap :
+    ∀ ⦃p q : VPosetOpCat⦄, (p ⟶ q) → vPosetOpBoolObj p → vPosetOpBoolObj q
+  | .op .a, .op .a, _, x => x
+  | .op .b, .op .b, _, x => x
+  | .op .c, .op .c, _, _ => ()
+  | .op .a, .op .c, _, _ => ()
+  | .op .b, .op .c, _, _ => ()
+  | .op .a, .op .b, h, _ => False.elim h.unop.le
+  | .op .b, .op .a, h, _ => False.elim h.unop.le
+  | .op .c, .op .a, h, _ => False.elim h.unop.le
+  | .op .c, .op .b, h, _ => False.elim h.unop.le
+
+private def vPosetOpBoolFunctor : VPosetOpCat ⥤ Type where
+  obj := vPosetOpBoolObj
+  map {p q} h x := vPosetOpBoolMap h x
+  map_id p := funext fun x ↦ by
+    rcases p with ⟨_ | _ | _⟩
+    · rcases x with ⟨⟩; rfl
+    · rfl
+    · rfl
+  map_comp {p q r} f g := funext fun x ↦ by
+    rcases p with ⟨_ | _ | _⟩ <;> rcases q with ⟨_ | _ | _⟩ <;> rcases r with ⟨_ | _ | _⟩ <;>
+      first | exact False.elim f.unop.le | exact False.elim g.unop.le | rfl
+
+/-- Constructive Diaconescu pushout proving `¬ CatPresheafIAC VPosetOpCat`. Zero `Classical.choice`!
+-/
+theorem not_catPresheafIAC_vPosetOpCat : ¬ CatPresheafIAC VPosetOpCat := by
+  intro hIAC
+  let X : VPosetOpCat ⥤ Type :=
+    { obj := fun _ ↦ Bool, map := fun _ x ↦ x, map_id := fun _ ↦ rfl, map_comp := fun _ _ ↦ rfl }
+  let e : NatTrans X vPosetOpBoolFunctor :=
+    { app := fun p x ↦ match p with | .op .c => () | .op .a => x | .op .b => x
+      naturality := fun p q h ↦ funext fun x ↦ by
+        rcases p with ⟨_ | _ | _⟩ <;> rcases q with ⟨_ | _ | _⟩ <;>
+          first | exact False.elim h.unop.le | rfl }
+  have he : IsPointwiseSurjective e := fun p y ↦ by
+    rcases p with ⟨_ | _ | _⟩
+    · exact ⟨false, rfl⟩
+    · exact ⟨y, rfl⟩
+    · exact ⟨y, rfl⟩
+  let c₀ : VPosetOpCat := .op .a
+  let g : NatTrans (prodPresheaf (coyonedaPresheaf VPosetOpCat c₀) vPosetOpBoolFunctor)
+      vPosetOpBoolFunctor :=
+    { app := fun _ p ↦ p.2, naturality := fun _ _ _ ↦ rfl }
+  rcases hIAC vPosetOpBoolFunctor e he c₀ g with ⟨f, hf⟩
+  have hFalseEq := hf c₀ (𝟙 c₀, false)
+  have hTrueEq := hf c₀ (𝟙 c₀, true)
+  let k : c₀ ⟶ .op .c := Opposite.op (homOfLE (show VPoset.c ≤ .a from trivial))
+  have hnatF := (congrFun (f.naturality k) (𝟙 c₀, false)).symm
+  have hnatT := (congrFun (f.naturality k) (𝟙 c₀, true)).symm
+  change f.app c₀ (𝟙 c₀, false) = f.app (.op .c) (𝟙 c₀ ≫ k, ()) at hnatF
+  change f.app c₀ (𝟙 c₀, true) = f.app (.op .c) (𝟙 c₀ ≫ k, ()) at hnatT
+  have hfbot : f.app c₀ (𝟙 c₀, false) = f.app c₀ (𝟙 c₀, true) := hnatF.trans hnatT.symm
+  have hft : (false : Bool) = true := hFalseEq.symm.trans (by rw [hfbot]; exact hTrueEq)
+  exact Bool.false_ne_true hft
+
+theorem catPresheafLocalic_punitCat : CatPresheafLocalic PUnitCat := by
+  intro X c x
+  refine ⟨coyonedaPresheaf PUnitCat c, fun d ↦ ⟨fun u v ↦ ?_⟩,
+    { app := fun _ h ↦ X.map h x
+      naturality := fun _ _ k ↦ funext fun h ↦ congrFun (X.map_comp h k) x },
+    𝟙 c, congrFun (X.map_id c) x⟩
+  rcases u with ⟨⟩; rcases v with ⟨⟩; rfl
+
+theorem catPresheafLocalic_vPosetOpCat : CatPresheafLocalic VPosetOpCat := by
+  intro X c x
+  refine ⟨coyonedaPresheaf VPosetOpCat c, fun d ↦ ⟨fun u v ↦ ?_⟩,
+    { app := fun _ h ↦ X.map h x
+      naturality := fun _ _ k ↦ funext fun h ↦ congrFun (X.map_comp h k) x },
+    𝟙 c, congrFun (X.map_id c) x⟩
+  cases u
+  cases v
+  congr 1
+  exact Subsingleton.elim _ _
+
+theorem not_catPresheafLocalic_twoGroupCat : ¬ CatPresheafLocalic TwoGroupCat := by
+  intro hLoc
+  let star : TwoGroupCat := SingleObj.star TwoGroup
+  rcases hLoc (coyonedaPresheaf TwoGroupCat star) star (1 : TwoGroup) with ⟨U, hU, f, u, hfu⟩
+  let neg : star ⟶ star := (⟨true⟩ : TwoGroup)
+  let y : TwoGroup := f.app star u
+  have hy : y = 1 := hfu
+  have hnat := congrFun (f.naturality neg) u
+  have hu : U.map neg u = u := (hU star).elim _ u
+  change f.app star (U.map neg u) = (⟨true⟩ : TwoGroup) * y at hnat
+  rw [hu] at hnat
+  change y = (⟨true⟩ : TwoGroup) * y at hnat
+  rw [hy, mul_one] at hnat
+  exact absurd hnat (by decide)
+
+theorem not_catPresheafLocalic_m1Cat : ¬ CatPresheafLocalic M1Cat := by
+  intro hLoc
+  let star : M1Cat := SingleObj.star M1Monoid
+  rcases hLoc (coyonedaPresheaf M1Cat star) star (1 : M1Monoid) with ⟨U, hU, f, u, hfu⟩
+  let e0 : star ⟶ star := (⟨false⟩ : M1Monoid)
+  let y : M1Monoid := f.app star u
+  have hy : y = 1 := hfu
+  have hnat := congrFun (f.naturality e0) u
+  have hu : U.map e0 u = u := (hU star).elim _ u
+  change f.app star (U.map e0 u) = (⟨false⟩ : M1Monoid) * y at hnat
+  rw [hu] at hnat
+  change y = (⟨false⟩ : M1Monoid) * y at hnat
+  rw [hy, mul_one] at hnat
+  exact absurd hnat (by decide)
+
+theorem not_catPresheafProj1_vPosetOpCat : ¬ CatPresheafProj1 VPosetOpCat := by
+  intro hP
+  let F : VPosetOpCat ⥤ Type :=
+    { obj := fun p ↦ vPosetCoprod.obj p.unop
+      map := fun f x ↦ vPosetCoprod.res f.unop.le x
+      map_id := fun p ↦ funext fun x ↦ vPosetCoprod.res_refl p.unop x
+      map_comp := fun {p q r} f g ↦ funext fun x ↦
+        (vPosetCoprod.res_trans g.unop.le f.unop.le x).symm }
+  let e : NatTrans F (terminalPresheaf VPosetOpCat) :=
+    { app := fun _ _ ↦ (), naturality := fun _ _ _ ↦ rfl }
+  have he : IsPointwiseSurjective e := by
+    intro p _
+    rcases p with ⟨_ | _ | _⟩
+    · exact ⟨false, rfl⟩
+    · exact ⟨(), rfl⟩
+    · exact ⟨(), rfl⟩
+  rcases hP e he with ⟨s, _⟩
+  let ka : Opposite.op VPoset.a ⟶ .op .c := Opposite.op (homOfLE (show VPoset.c ≤ .a from trivial))
+  let kb : Opposite.op VPoset.b ⟶ .op .c := Opposite.op (homOfLE (show VPoset.c ≤ .b from trivial))
+  have ha := (congrFun (s.naturality ka) ()).symm
+  have hb := (congrFun (s.naturality kb) ()).symm
+  change false = s.app (.op .c) () at ha
+  change true = s.app (.op .c) () at hb
+  exact Bool.false_ne_true (ha.trans hb.symm)
+
+theorem not_catPresheafProjSub_vPosetOpCat : ¬ CatPresheafProjSub VPosetOpCat :=
+  fun h ↦ not_catPresheafProj1_vPosetOpCat (catPresheafProjSub_imp_proj1 h)
+
+/-- Classical positive witness over `Type`: `Set` (`PUnitCat ⥤ Type`) satisfies `CatPresheafAC`. -/
+theorem catPresheafAC_punitCat : CatPresheafAC PUnitCat := by
+  intro X Y e he
+  refine ⟨
+    { app := fun c y ↦ match c with
+        | .star => Classical.choose (he .star y)
+      naturality := fun c d h ↦ funext fun y ↦ by
+        cases c
+        cases d
+        rcases h with ⟨⟩
+        have hy : Y.map (𝟙 PUnitCat.star) y = y := congrFun (Y.map_id PUnitCat.star) y
+        have hx : ∀ x : X.obj PUnitCat.star, X.map (𝟙 PUnitCat.star) x = x :=
+          congrFun (X.map_id PUnitCat.star)
+        change Classical.choose (he .star (Y.map (𝟙 PUnitCat.star) y)) =
+          X.map (𝟙 PUnitCat.star) (Classical.choose (he .star y))
+        rw [hy, hx] },
+    fun c y ↦ by cases c; exact Classical.choose_spec (he .star y)⟩
+
+theorem catPresheafIAC_punitCat : CatPresheafIAC PUnitCat :=
+  catPresheafAC_imp_iac catPresheafAC_punitCat
+
+theorem catPresheafProjSub_punitCat : CatPresheafProjSub PUnitCat :=
+  catPresheafAC_imp_projSub catPresheafAC_punitCat
+
+private def twoGroupHomInv {a b : TwoGroupCat} (u : a ⟶ b) : b ⟶ a :=
+  @Inv.inv TwoGroup _ u
+
+/-- Classical positive witness over `Type`: `Set^{ℤ/2ℤ}` (`TwoGroupCat ⥤ Type`) satisfies `IAC`
+because every morphism in `TwoGroupCat` is an isomorphism (free transitive equivariant extension
+from `u = 1`). -/
+theorem catPresheafIAC_twoGroupCat : CatPresheafIAC TwoGroupCat := by
+  intro X Y Z e he c g
+  rcases c with ⟨⟩
+  let star : TwoGroupCat := SingleObj.star TwoGroup
+  let s : Z.obj star → X.obj star := fun z ↦
+    Classical.choose (he star (g.app star ((1 : TwoGroup), z)))
+  refine ⟨
+    { app := fun d p ↦ X.map p.1 (s (Z.map (twoGroupHomInv p.1) p.2))
+      naturality := fun {d₁ d₂} k ↦ funext fun p ↦ by
+        rcases d₁ with ⟨⟩
+        rcases d₂ with ⟨⟩
+        rcases p with ⟨u, z⟩
+        let u' : TwoGroup := u
+        let k' : TwoGroup := k
+        have hcomp : twoGroupHomInv (u ≫ k) = k'⁻¹ * u'⁻¹ := by
+          change (k' * u')⁻¹ = k'⁻¹ * u'⁻¹
+          exact (mul_inv_rev k' u').trans (mul_comm u'⁻¹ k'⁻¹)
+        have hkz : Z.map (twoGroupHomInv (u ≫ k)) (Z.map k z) =
+            Z.map (twoGroupHomInv u) z := by
+          let kiui : star ⟶ star := k'⁻¹ * u'⁻¹
+          have hc1 : Z.map (k ≫ kiui) z = Z.map kiui (Z.map k z) := congrFun (Z.map_comp k kiui) z
+          have hkinv : (k ≫ kiui : TwoGroup) = (twoGroupHomInv u : TwoGroup) := by
+            change (k'⁻¹ * u'⁻¹) * k' = u'⁻¹
+            rw [mul_comm k'⁻¹ u'⁻¹, mul_assoc, inv_mul_cancel, mul_one]
+          rw [hcomp]
+          exact hc1.symm.trans (congrArg (fun m : star ⟶ star ↦ Z.map m z) hkinv)
+        change X.map (u ≫ k) (s (Z.map (twoGroupHomInv (u ≫ k)) (Z.map k z))) =
+          X.map k (X.map u (s (Z.map (twoGroupHomInv u) z)))
+        rw [hkz]
+        exact congrFun (X.map_comp u k) (s (Z.map (twoGroupHomInv u) z)) },
+    fun d p ↦ ?_⟩
+  rcases d with ⟨⟩
+  rcases p with ⟨u, z⟩
+  let u' : TwoGroup := u
+  have henat := congrFun (e.naturality (u : star ⟶ star)) (s (Z.map (twoGroupHomInv u) z))
+  have hspec := Classical.choose_spec
+    (he star (g.app star ((1 : TwoGroup), Z.map (twoGroupHomInv u) z)))
+  change e.app star (X.map u (s (Z.map (twoGroupHomInv u) z))) =
+    Y.map u (e.app star (s (Z.map (twoGroupHomInv u) z))) at henat
+  have hgnat := (congrFun (g.naturality (u : star ⟶ star))
+    (((1 : TwoGroup), Z.map (twoGroupHomInv u) z) :
+      (prodPresheaf (coyonedaPresheaf TwoGroupCat star) Z).obj star)).symm
+  change Y.map u (g.app star ((1 : TwoGroup), Z.map (twoGroupHomInv u) z)) =
+    g.app star ((𝟙 star : star ⟶ star) ≫ u, Z.map u (Z.map (twoGroupHomInv u) z)) at hgnat
+  have h1u : (𝟙 star : star ⟶ star) ≫ u = u := Category.id_comp u
+  have huinv : twoGroupHomInv u ≫ u = 𝟙 star := by
+    change u' * u'⁻¹ = 1
+    exact mul_inv_cancel u'
+  have hzu : Z.map u (Z.map (twoGroupHomInv u) z) = z := by
+    have hc := congrFun (Z.map_comp (twoGroupHomInv u) u) z
+    exact hc.symm.trans (by rw [huinv]; exact congrFun (Z.map_id star) z)
+  calc
+    e.app star (X.map u (s (Z.map (twoGroupHomInv u) z)))
+      = Y.map u (e.app star (s (Z.map (twoGroupHomInv u) z))) := henat
+    _ = Y.map u (g.app star ((1 : TwoGroup), Z.map (twoGroupHomInv u) z)) := by rw [hspec]
+    _ = g.app star ((𝟙 star : star ⟶ star) ≫ u, Z.map u (Z.map (twoGroupHomInv u) z)) := hgnat
+    _ = g.app star (u, z) := by rw [h1u, hzu]
+
+/-- Separation of `IAC` and `AC` on `Set^{ℤ/2ℤ}` (`TwoGroupCat`): `IAC` holds while `AC` fails. -/
+theorem twoGroupCat_iac_and_not_ac :
+    CatPresheafIAC TwoGroupCat ∧ ¬ CatPresheafAC TwoGroupCat :=
+  ⟨catPresheafIAC_twoGroupCat, not_catPresheafAC_twoGroupCat⟩
+
+/-- Classical positive witness over `Type`: `Set^{ℳ₁}` (`M1Cat`) satisfies `ProjSub`. -/
+theorem catPresheafProjSub_m1Cat : CatPresheafProjSub M1Cat := by
+  intro U X hU e he
+  let star : M1Cat := SingleObj.star M1Monoid
+  let e0 : ∀ d : M1Cat, d ⟶ d := fun _ ↦ (⟨false⟩ : M1Monoid)
+  let sApp : ∀ d : M1Cat, U.obj d → X.obj d := fun d u ↦
+    X.map (e0 d) (Classical.choose (he d u))
+  refine ⟨
+    { app := sApp
+      naturality := fun d₁ d₂ k ↦ funext fun u ↦ by
+        rcases d₁ with ⟨⟩
+        rcases d₂ with ⟨⟩
+        change sApp star (U.map k u) = X.map k (sApp star u)
+        rw [(hU star).elim (U.map k u) u]
+        dsimp only [sApp]
+        have hc := congrFun (X.map_comp (e0 star) k) (Classical.choose (he star u))
+        have hm : e0 star ≫ k = e0 star := M1Monoid.ext (Bool.and_false k.val)
+        rw [hm] at hc
+        exact hc },
+    fun d u ↦ by
+      dsimp only [sApp]
+      have henat := congrFun (e.naturality (e0 d)) (Classical.choose (he d u))
+      have hspec := Classical.choose_spec (he d u)
+      change e.app d (X.map (e0 d) (Classical.choose (he d u))) =
+        U.map (e0 d) (e.app d (Classical.choose (he d u))) at henat
+      rw [henat, hspec]
+      exact (hU d).elim _ u⟩
+
+/-- Uniform satisfaction relation `testToposSat t p` grounded directly in the categorical
+presheaf properties `CatPresheafIAC`, `CatPresheafProjSub`, and `CatPresheafLocalic`. -/
+def testToposSat (t : TestTopos) : ChoiceProbe → Prop
+  | .IAC => CatPresheafIAC (testSite t)
+  | .ProjSub => CatPresheafProjSub (testSite t)
+  | .Localic => CatPresheafLocalic (testSite t)
+
+/-- Honest conclusion predicate `Mod(AC)` (`CatPresheafAC`), strictly stronger than `ProjSub`
+(`setM1 ∈ Ext(ProjSub) \ Mod(AC)`). -/
+def testToposAC (t : TestTopos) : Prop :=
+  CatPresheafAC (testSite t)
 
 /-- Finite `DoctrinalPhilosophy TestTopos ChoiceProbe` for choice-residuum incomparability. -/
 def choicePhilosophy : DoctrinalPhilosophy TestTopos ChoiceProbe where
   sat := testToposSat
 
-/-- **Finite, Choice-Free Pareto Schism (`pareto_incomparable_projSub_localic`):**
-For the implication `(IAC ∩ · ⊆ ProjSub)` over `TestTopos`, both the Supports-Split class
-`Ext({ProjSub})` and the Localic class `Ext({Localic})` sit on the minimal Pareto frontier
-`paretoFrontier`, and neither is contained in the other (`ℳ₁ ∈ Ext({ProjSub}) \ Ext({Localic})`
-while `V ∈ Ext({Localic}) \ Ext({ProjSub})`). -/
+/-- Strict separation of `concl = Mod(AC)` from `Ext(ProjSub)` on `TestTopos`, witnessed by `ℳ₁`. -/
+theorem choiceConcl_ne_extProj :
+    { t : TestTopos | testToposAC t } ≠ choicePhilosophy.extentOf {ChoiceProbe.ProjSub} := by
+  intro heq
+  have hm1_ext : TestTopos.setM1 ∈ choicePhilosophy.extentOf {ChoiceProbe.ProjSub} := by
+    intro p hp
+    rw [Set.mem_singleton_iff.mp hp]
+    exact catPresheafProjSub_m1Cat
+  rw [← heq] at hm1_ext
+  exact not_catPresheafIAC_m1Cat (catPresheafAC_imp_iac hm1_ext)
+
+/-- **Finite Pareto Schism (`pareto_incomparable_projSub_localic`):**
+For the implication `(IAC ∩ · ⊆ Mod(AC))` over `TestTopos` (`concl = { t | testToposAC t }`,
+strictly distinct from `Ext({ProjSub})`), both the Supports-Split class `Ext({ProjSub})` and the
+Localic class `Ext({Localic})` sit on the minimal Pareto frontier `paretoFrontier`, and neither is
+contained in the other (`ℳ₁ ∈ Ext({ProjSub}) \ Ext({Localic})` while
+`V ∈ Ext({Localic}) \ Ext({ProjSub})`).
+
+*(Axiom note: over `Type`, `catPresheafAC_punitCat`, `catPresheafIAC_twoGroupCat`, and
+`catPresheafProjSub_m1Cat` legitimately invoke `Classical.choice`; all four negative witnesses
+(`not_catPresheafAC_twoGroupCat`, `not_catPresheafIAC_m1Cat`, `not_catPresheafIAC_vPosetOpCat`,
+`not_catPresheafProjSub_vPosetOpCat`) and `freydCover_dogma_banishment` remain Choice-free.)* -/
 theorem pareto_incomparable_projSub_localic :
     let hyp := choicePhilosophy.extentOf {ChoiceProbe.IAC}
-    let concl := choicePhilosophy.extentOf {ChoiceProbe.ProjSub}
+    let concl := { t : TestTopos | testToposAC t }
     let extProj := choicePhilosophy.extentOf {ChoiceProbe.ProjSub}
     let extLoc := choicePhilosophy.extentOf {ChoiceProbe.Localic}
     extProj ∈ choicePhilosophy.paretoFrontier hyp concl ∧
@@ -993,78 +1742,90 @@ theorem pareto_incomparable_projSub_localic :
     · intro x hx p hp
       exact hx p (fun y hy ↦ hy p hp)
     · exact choicePhilosophy.le_mooreClosure _
+  have hAC_iff : ∀ t : TestTopos, testToposAC t ↔ t = .setTopos := fun t ↦ by
+    cases t
+    · exact ⟨fun _ ↦ rfl, fun _ ↦ catPresheafAC_punitCat⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafAC_twoGroupCat h), fun h ↦ by cases h⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafIAC_m1Cat (catPresheafAC_imp_iac h)),
+        fun h ↦ by cases h⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafIAC_vPosetOpCat (catPresheafAC_imp_iac h)),
+        fun h ↦ by cases h⟩
   have hIAC_iff : ∀ t : TestTopos,
       choicePhilosophy.sat t .IAC ↔ (t = .setTopos ∨ t = .setZ2) := fun t ↦ by
     cases t
-    · exact ⟨fun _ ↦ Or.inl rfl, fun _ ↦ punit_isGroupoid⟩
-    · exact ⟨fun _ ↦ Or.inr rfl, fun _ ↦ twoGroup_isGroupoid⟩
-    · exact ⟨fun h ↦ False.elim (m1_not_isGroupoid h), by rintro (h | h) <;> cases h⟩
-    · exact ⟨fun h ↦ False.elim (vPoset_not_isDiscrete h), by rintro (h | h) <;> cases h⟩
+    · exact ⟨fun _ ↦ Or.inl rfl, fun _ ↦ catPresheafIAC_punitCat⟩
+    · exact ⟨fun _ ↦ Or.inr rfl, fun _ ↦ catPresheafIAC_twoGroupCat⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafIAC_m1Cat h), by rintro (h | h) <;> cases h⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafIAC_vPosetOpCat h), by rintro (h | h) <;> cases h⟩
   have hProj_iff : ∀ t : TestTopos,
       choicePhilosophy.sat t .ProjSub ↔ (t = .setTopos ∨ t = .setM1) := fun t ↦ by
     cases t
-    · exact ⟨fun _ ↦ Or.inl rfl, fun _ ↦ punit_projSub⟩
-    · exact ⟨fun h ↦ False.elim (twoGroup_not_proj1_not_localic.2.1 h),
+    · exact ⟨fun _ ↦ Or.inl rfl, fun _ ↦ catPresheafProjSub_punitCat⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafProjSub_twoGroupCat h),
         by rintro (h | h) <;> cases h⟩
-    · exact ⟨fun _ ↦ Or.inr rfl, fun _ ↦ m1_projSub_and_not_localic.1⟩
-    · exact ⟨fun h ↦ False.elim (vPoset_not_projSub h), by rintro (h | h) <;> cases h⟩
+    · exact ⟨fun _ ↦ Or.inr rfl, fun _ ↦ catPresheafProjSub_m1Cat⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafProjSub_vPosetOpCat h),
+        by rintro (h | h) <;> cases h⟩
   have hLoc_iff : ∀ t : TestTopos,
       choicePhilosophy.sat t .Localic ↔ (t = .setTopos ∨ t = .setVPoset) := fun t ↦ by
     cases t
-    · exact ⟨fun _ ↦ Or.inl rfl, fun _ ↦ punit_localic⟩
-    · exact ⟨fun h ↦ False.elim (twoGroup_not_proj1_not_localic.2.2 h),
+    · exact ⟨fun _ ↦ Or.inl rfl, fun _ ↦ catPresheafLocalic_punitCat⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafLocalic_twoGroupCat h),
         by rintro (h | h) <;> cases h⟩
-    · exact ⟨fun h ↦ False.elim (m1_projSub_and_not_localic.2 h), by rintro (h | h) <;> cases h⟩
-    · exact ⟨fun _ ↦ Or.inr rfl, fun _ ↦ vPoset_localic_not_proj1.1⟩
+    · exact ⟨fun h ↦ False.elim (not_catPresheafLocalic_m1Cat h),
+        by rintro (h | h) <;> cases h⟩
+    · exact ⟨fun _ ↦ Or.inr rfl, fun _ ↦ catPresheafLocalic_vPosetOpCat⟩
   have hParetoExt : ∀ E' : Set TestTopos,
       choicePhilosophy.IsClosedExtent E' →
-      (choicePhilosophy.extentOf {ChoiceProbe.IAC} ∩ E' ⊆
-        choicePhilosophy.extentOf {ChoiceProbe.ProjSub}) →
+      (choicePhilosophy.extentOf {ChoiceProbe.IAC} ∩ E' ⊆ { t : TestTopos | testToposAC t }) →
       .setZ2 ∉ E' := by
     intro E' _ hsub hz2
     have hmem : TestTopos.setZ2 ∈ choicePhilosophy.extentOf {ChoiceProbe.IAC} ∩ E' := by
       refine ⟨fun p hp ↦ ?_, hz2⟩
       rw [Set.mem_singleton_iff.mp hp]
       exact (hIAC_iff .setZ2).mpr (Or.inr rfl)
-    have hcon := hsub hmem .ProjSub rfl
-    have hdisj := (hProj_iff .setZ2).mp hcon
-    rcases hdisj with h | h <;> cases h
+    have hcon := hsub hmem
+    have heq := (hAC_iff .setZ2).mp hcon
+    cases heq
   refine ⟨?_, ?_, ?_, ?_⟩
-  · refine ⟨hClosed _, fun t ⟨_, htP⟩ ↦ htP, fun E' hCE' hsubE' hsub ↦ ?_⟩
-    apply Set.Subset.antisymm _ hsub
-    intro t htE'
-    cases t
-    · intro p hp
-      rw [Set.mem_singleton_iff.mp hp]
-      exact (hProj_iff .setTopos).mpr (Or.inl rfl)
-    · exact False.elim (hParetoExt E' hCE' hsubE' htE')
-    · intro p hp
-      rw [Set.mem_singleton_iff.mp hp]
-      exact (hProj_iff .setM1).mpr (Or.inr rfl)
-    · -- Since `VPoset ∈ E'` and `{setTopos, setM1} ⊆ E'`, `Th_𝒫(E') = ∅`, forcing `setZ2 ∈ E'`!
-      exfalso
-      have hm1 : TestTopos.setM1 ∈ E' := hsub (fun p hp ↦ by
-        rw [Set.mem_singleton_iff.mp hp]; exact (hProj_iff .setM1).mpr (Or.inr rfl))
-      have hz2cl : TestTopos.setZ2 ∈ choicePhilosophy.mooreClosure E' := by
-        intro p hp
-        cases p
-        · exfalso
-          have := (hIAC_iff .setM1).mp (hp .setM1 hm1)
-          rcases this with h | h <;> cases h
-        · exfalso
-          have := (hProj_iff .setVPoset).mp (hp .setVPoset htE')
-          rcases this with h | h <;> cases h
-        · exfalso
-          have := (hLoc_iff .setM1).mp (hp .setM1 hm1)
-          rcases this with h | h <;> cases h
-      rw [hCE'] at hz2cl
-      exact hParetoExt E' hCE' hsubE' hz2cl
-  · refine ⟨hClosed _, fun t ⟨htIAC, htLoc⟩ p hp ↦ ?_, fun E' hCE' hsubE' hsub ↦ ?_⟩
-    · rw [Set.mem_singleton_iff.mp hp]
-      have h1 := (hIAC_iff t).mp (htIAC .IAC rfl)
+  · refine ⟨hClosed _, fun t ⟨htIAC, htProj⟩ ↦ ?_, fun E' hCE' hsubE' hsub ↦ ?_⟩
+    · have h1 := (hIAC_iff t).mp (htIAC .IAC rfl)
+      have h2 := (hProj_iff t).mp (htProj .ProjSub rfl)
+      rcases h1 with rfl | rfl
+      · exact (hAC_iff .setTopos).mpr rfl
+      · rcases h2 with h | h <;> cases h
+    · apply Set.Subset.antisymm _ hsub
+      intro t htE'
+      cases t
+      · intro p hp
+        rw [Set.mem_singleton_iff.mp hp]
+        exact (hProj_iff .setTopos).mpr (Or.inl rfl)
+      · exact False.elim (hParetoExt E' hCE' hsubE' htE')
+      · intro p hp
+        rw [Set.mem_singleton_iff.mp hp]
+        exact (hProj_iff .setM1).mpr (Or.inr rfl)
+      · exfalso
+        have hm1 : TestTopos.setM1 ∈ E' := hsub (fun p hp ↦ by
+          rw [Set.mem_singleton_iff.mp hp]; exact (hProj_iff .setM1).mpr (Or.inr rfl))
+        have hz2cl : TestTopos.setZ2 ∈ choicePhilosophy.mooreClosure E' := by
+          intro p hp
+          cases p
+          · exfalso
+            have := (hIAC_iff .setM1).mp (hp .setM1 hm1)
+            rcases this with h | h <;> cases h
+          · exfalso
+            have := (hProj_iff .setVPoset).mp (hp .setVPoset htE')
+            rcases this with h | h <;> cases h
+          · exfalso
+            have := (hLoc_iff .setM1).mp (hp .setM1 hm1)
+            rcases this with h | h <;> cases h
+        rw [hCE'] at hz2cl
+        exact hParetoExt E' hCE' hsubE' hz2cl
+  · refine ⟨hClosed _, fun t ⟨htIAC, htLoc⟩ ↦ ?_, fun E' hCE' hsubE' hsub ↦ ?_⟩
+    · have h1 := (hIAC_iff t).mp (htIAC .IAC rfl)
       have h2 := (hLoc_iff t).mp (htLoc .Localic rfl)
       rcases h1 with rfl | rfl
-      · exact (hProj_iff .setTopos).mpr (Or.inl rfl)
+      · exact (hAC_iff .setTopos).mpr rfl
       · rcases h2 with h | h <;> cases h
     · apply Set.Subset.antisymm _ hsub
       intro t htE'
@@ -1478,7 +2239,7 @@ theorem m1_slice_lt_count {X : Type} [Fintype X] [DecidableEq X]
 
 end M1SliceLTT
 
-/-! ## Section 3: Mode (iii) 3-Stage `δ`-Ring Obstruction Tower & Finite Leray Transgression -/
+/-! ## Section 3: Mode (iii) 2-Stage `δ`-Ring Obstruction Tower & Finite Leray Transgression -/
 
 section DeltaObstructionTower
 
@@ -1497,80 +2258,92 @@ theorem deltaStructure_delta_mul_p {p : ℕ} [Fact (Nat.Prime p)]
     (p : A) * dA.delta (p : A) = dA.phi (p : A) - (p : A) ^ p :=
   delta_mul_p_eq_frob_sub p dA.phi dA.delta dA.phi_spec
 
-/-- **Stage-1 Torsion Annihilation (`frob_annihilates_p_torsion`):** Any candidate Frobenius map
-`φ(x) = x^p + p δ(x)` compatible with Joyal's `0`- and product rules (`δ 0 = 0`) and satisfying
-`φ(p) = p` MUST annihilate `p`-torsion up to `p`: `p a = 0 ⟹ p φ(a) = 0`. -/
-theorem frob_annihilates_p_torsion {p : ℕ} (hp : 1 ≤ p) {A : Type u} [CommRing A]
-    (phi d : A → A)
-    (hphi : ∀ x : A, phi x = x ^ p + (p : A) * d x)
-    (hd0 : d 0 = 0)
-    (hdmul : ∀ x y : A,
-      d (x * y) = x ^ p * d y + y ^ p * d x + (p : A) * d x * d y)
-    (hphi_p : phi (p : A) = (p : A))
-    {a : A} (ha : (p : A) * a = 0) :
-    (p : A) * phi a = 0 := by
-  have hap : (p : A) * a ^ p = 0 := by
-    have hpow : a ^ p = a * a ^ (p - 1) := by
-      conv_lhs => rw [show p = 1 + (p - 1) by omega, pow_add, pow_one]
-    rw [hpow]
-    calc
-      (p : A) * (a * a ^ (p - 1)) = ((p : A) * a) * a ^ (p - 1) := by ring
-      _ = 0 := by rw [ha, zero_mul]
-  have hm := hdmul (p : A) a
-  rw [ha, hd0] at hm
-  have hmul_p := congrArg (fun z : A ↦ (p : A) * z) hm
-  have hdp := delta_mul_p_eq_frob_sub p phi d hphi
-  rw [hphi_p] at hdp
-  have hzero : 0 = (p : A) ^ p * ((p : A) * d a) + ((p : A) * a ^ p) * d (p : A) +
-      ((p : A) * d (p : A)) * ((p : A) * d a) := by
-    calc
-      (0 : A) = (p : A) * 0 := (mul_zero (p : A)).symm
-      _ = (p : A) * ((p : A) ^ p * d a + a ^ p * d (p : A) + (p : A) * d (p : A) * d a) := hmul_p
-      _ = (p : A) ^ p * ((p : A) * d a) + ((p : A) * a ^ p) * d (p : A) +
-            ((p : A) * d (p : A)) * ((p : A) * d a) := by ring
-  rw [hap, zero_mul, add_zero, hdp] at hzero
-  have hpda : (p : A) * ((p : A) * d a) = 0 := by
-    calc
-      (p : A) * ((p : A) * d a) =
-          (p : A) ^ p * ((p : A) * d a) + ((p : A) - (p : A) ^ p) * ((p : A) * d a) := by ring
-      _ = 0 := hzero.symm
-  calc
-    (p : A) * phi a = (p : A) * (a ^ p + (p : A) * d a) := by rw [hphi a]
-    _ = (p : A) * a ^ p + (p : A) * ((p : A) * d a) := by ring
-    _ = 0 + 0 := by rw [hap, hpda]
-    _ = 0 := zero_add 0
+/-- Commutative ring `R` equipped with a Frobenius-lift candidate ring endomorphism `φ : R →+* R`
+satisfying pointwise Fermat congruence `∀ x, ∃ y, φ(x) - x² = 2y` (`p = 2`). -/
+structure FrobLiftRing2 : Type (u + 1) where
+  /-- Underlying commutative ring. -/
+  R : Type u
+  /-- Commutative ring structure on `R`. -/
+  [commRing : CommRing R]
+  /-- Frobenius-lift candidate ring endomorphism `φ : R →+* R`. -/
+  phi : R →+* R
+  /-- Fermat congruence `φ(x) ≡ x² (mod 2R)` (`Stage 0`). -/
+  frob_congr : ∀ x : R, ∃ y : R, phi x - x ^ 2 = 2 * y
 
-/-- Candidate Frobenius set-map `φ₃(a + bη) = a + 2·(b mod 2)` on `R₂`: agrees with `x² mod 2R₂`
-everywhere and fixes `2`, yet maps the `2`-torsion element `η` to `2` (`2 · φ₃(η) = 4 ≠ 0`),
-violating Stage-1 torsion annihilation. -/
-def r3CandMap (x : R2Ring) : R2Ring :=
-  ⟨x.a + 2 * x.b.val, 0⟩
+attribute [instance] FrobLiftRing2.commRing
 
-theorem r3CandMap_fermat_congr (x : R2Ring) :
-    ∃ u : R2Ring, r3CandMap x - x ^ 2 = 2 * u := by
-  refine ⟨⟨intDelta x.a + x.b.val, 0⟩, ?_⟩
-  ext
-  · simp only [r3CandMap, R2Ring.sub_a, R2Ring.mul_a, R2Ring.ofNat_two_a, sq]
-    have h2 := two_mul_intDelta x.a
-    linarith [h2]
-  · simp only [r3CandMap, sq, R2Ring.mul_b, R2Ring.zmod2_add_self, zero_mul,
-      R2Ring.ofNat_two_a, R2Ring.ofNat_two_b, R2Ring.intCast_two_zmod2, R2Ring.sub_b]
-    simp
+/-- **Stage-1 Fiber (`DeltaLift F`):** The type of `p = 2` Joyal `δ`-ring structures on `F.R`
+whose Frobenius lift `x ↦ x² + 2 δ(x)` equals `F.phi` pointwise. -/
+def DeltaLift (F : FrobLiftRing2.{u}) : Type u :=
+  { inst : DeltaRing2 F.R // ∀ x : F.R, x ^ 2 + 2 * inst.delta x = F.phi x }
 
-/-- **Stage-1 Empty Lift Fiber (`empty_deltaLift_R3`):** No `δ`-map satisfying Joyal's zero and
-product laws can lift `r3CandMap` on `R₂`. -/
-theorem empty_deltaLift_R3 :
-    IsEmpty { d : R2Ring → R2Ring //
-      d 0 = 0 ∧
-      (∀ x y : R2Ring, d (x * y) = x ^ 2 * d y + y ^ 2 * d x + 2 * d x * d y) ∧
-      (∀ x : R2Ring, r3CandMap x = x ^ 2 + 2 * d x) } := by
-  refine ⟨fun ⟨d, hd0, hdmul, hphi⟩ ↦ ?_⟩
-  have h2 := frob_annihilates_p_torsion (p := 2) (by decide) r3CandMap d hphi hd0 hdmul
-    (by decide) R2Ring.two_mul_eta
-  have hne : (2 : R2Ring) * r3CandMap R2Ring.eta ≠ 0 := by decide
-  exact hne h2
+/-- Stage-2 torsor difference on `DeltaLift F`: any two lifts in `DeltaLift F` differ by a
+`2`-torsion `φ`-derivation `FrobDerivation2 F.R F.phi`. -/
+def deltaLift_sub_frobDerivation2 {F : FrobLiftRing2.{u}} (L₀ L₁ : DeltaLift F) :
+    FrobDerivation2 F.R F.phi :=
+  deltaRing2_sub_frobDerivation2 L₀.1 L₁.1 L₀.2 L₁.2
 
-/-- No `DeltaRing2` structure exists on `ZMod 4` at all (`0 = δ(2+2) = 2δ(2) - 4 = -2 ≠ 0`). -/
+/-- Stage-2 torsor action on `DeltaLift F`: translating a lift by `D ∈ Der_φ(R, Ann_R(2))`. -/
+def deltaLift_add_frobDerivation2 {F : FrobLiftRing2.{u}} (L₀ : DeltaLift F)
+    (D : FrobDerivation2 F.R F.phi) : DeltaLift F :=
+  ⟨deltaRing2_add_frobDerivation2 L₀.1 D L₀.2,
+   deltaRing2_add_frobDerivation2_lift L₀.1 D L₀.2⟩
+
+/-- `ℤ` with `φ = id` as a canonical `FrobLiftRing2`. -/
+def intFrobLift : FrobLiftRing2.{0} where
+  R := ℤ
+  phi := RingHom.id ℤ
+  frob_congr x := ⟨intDelta x, (two_mul_intDelta x).symm⟩
+
+private lemma int_delta_lift (x : ℤ) : x ^ 2 + 2 * intDelta x = x :=
+  (add_comm (x ^ 2) (2 * intDelta x)).trans (eq_sub_iff_add_eq.mp (two_mul_intDelta x))
+
+theorem nonempty_deltaLift_int : Nonempty (DeltaLift intFrobLift) :=
+  ⟨⟨instDeltaRing2Int, int_delta_lift⟩⟩
+
+/-- `(ZMod 2, id)` as an authentic `FrobLiftRing2`: `x² = x` for all `x : ZMod 2`. -/
+def zmod2FrobLift : FrobLiftRing2.{0} where
+  R := ZMod 2
+  phi := RingHom.id (ZMod 2)
+  frob_congr x := ⟨0, by
+    rcases R2Ring.zmod2_eq_zero_or_one x with rfl | rfl <;> decide⟩
+
+/-- No `DeltaRing2` structure exists on `ZMod 2` (`0 = δ(1 + 1) = 2δ(1) - 1 = 1 ≠ 0`). -/
+theorem isEmpty_deltaRing2_zmod2 : IsEmpty (DeltaRing2 (ZMod 2)) := by
+  refine ⟨fun inst ↦ ?_⟩
+  have h11 := inst.delta_add (1 : ZMod 2) 1
+  have h10 : (1 : ZMod 2) + 1 = 0 := rfl
+  have hmul : (1 : ZMod 2) * 1 = 1 := rfl
+  have hsub : (0 : ZMod 2) + 0 - 1 = 1 := rfl
+  rw [inst.delta_one, hmul, h10, inst.delta_zero, hsub] at h11
+  exact Nat.zero_ne_one (congrArg Fin.val h11)
+
+/-- **Stage-1 Empty Fiber Witness 1 (`empty_deltaLift_zmod2`):** `(ZMod 2, id) : FrobLiftRing2` has
+empty `DeltaLift` fiber (`δ(1 + 1) = -1 ≠ 0`). -/
+theorem empty_deltaLift_zmod2 : IsEmpty (DeltaLift zmod2FrobLift) :=
+  ⟨fun L ↦ isEmpty_deltaRing2_zmod2.false L.1⟩
+
+private lemma zmod4_cases (x : ZMod 4) : x = 0 ∨ x = 1 ∨ x = 2 ∨ x = 3 := by
+  rcases x with ⟨n, hn⟩
+  match n with
+  | 0 => exact Or.inl rfl
+  | 1 => exact Or.inr (Or.inl rfl)
+  | 2 => exact Or.inr (Or.inr (Or.inl rfl))
+  | 3 => exact Or.inr (Or.inr (Or.inr rfl))
+  | n + 4 => exact False.elim (Nat.not_le_of_gt hn (Nat.le_add_left 4 n))
+
+/-- `(ZMod 4, id)` as an authentic `FrobLiftRing2`: `x - x²` is even for all `x : ZMod 4`. -/
+def zmod4FrobLift : FrobLiftRing2.{0} where
+  R := ZMod 4
+  phi := RingHom.id (ZMod 4)
+  frob_congr x := by
+    rcases zmod4_cases x with rfl | rfl | rfl | rfl
+    · exact ⟨0, by decide⟩
+    · exact ⟨0, by decide⟩
+    · exact ⟨1, by decide⟩
+    · exact ⟨1, by decide⟩
+
+/-- No `DeltaRing2` structure exists on `ZMod 4` (`0 = δ(2 + 2) = 2δ(2) - 4 = -2 ≠ 0`). -/
 theorem isEmpty_deltaRing2_zmod4 : IsEmpty (DeltaRing2 (ZMod 4)) := by
   refine ⟨fun inst ↦ ?_⟩
   have h2 : inst.delta (2 : ZMod 4) = -1 := by
@@ -1584,20 +2357,14 @@ theorem isEmpty_deltaRing2_zmod4 : IsEmpty (DeltaRing2 (ZMod 4)) := by
   rw [h4, h2] at hadd
   exact absurd hadd (by decide)
 
-/-- **Stage-2 Empty Fiber on `R₂` for `φ = id` (`empty_deltaLift_R220`):** Attempting to lift
-`RingHom.id R2Ring` (`φ(η) = η`) on `R₂` fails unconditionally (`η² + 2 δ(η) = ⟨2a, 0⟩ ≠ η`). -/
-theorem empty_deltaLift_R220 :
-    IsEmpty { inst : DeltaRing2 R2Ring //
-      ∀ x : R2Ring, x ^ 2 + 2 * inst.delta x = x } := by
-  refine ⟨fun ⟨inst, hphi⟩ ↦ ?_⟩
-  have h := congrArg R2Ring.b (hphi R2Ring.eta)
-  simp only [sq, R2Ring.eta, R2Ring.add_b, R2Ring.mul_b, Int.cast_zero, zero_mul, add_zero,
-    R2Ring.ofNat_two_a, R2Ring.ofNat_two_b, R2Ring.intCast_two_zmod2] at h
-  cases h
+/-- **Stage-1 Empty Fiber Witness 2 (`empty_deltaLift_zmod4`):** `(ZMod 4, id) : FrobLiftRing2` has
+empty `DeltaLift` fiber (`δ(2 + 2) = -2 ≠ 0`). -/
+theorem empty_deltaLift_zmod4 : IsEmpty (DeltaLift zmod4FrobLift) :=
+  ⟨fun L ↦ isEmpty_deltaRing2_zmod4.false L.1⟩
 
 /-- Auxiliary quotient ring `R_{2,2,0}^{\mathrm{id}} = ℤ[η]/(2η, η² - η) ≅ ℤ × 𝔽₂`, where
 `φ = id` IS a ring endomorphism AND satisfies pointwise Fermat congruence `x - x² ∈ 2A`, yet
-STILL admits zero `DeltaRing2` structures via the Stage-2 additive cocycle `δ(2η) = 0`. -/
+STILL admits zero `DeltaRing2` structures via the additive cocycle `δ(2η) = 0`. -/
 @[ext]
 structure R2IdempRing : Type where
   /-- Integer part `a` of `a + bη`. -/
@@ -1683,10 +2450,16 @@ theorem id_fermat_congr (x : R2IdempRing) : ∃ u : R2IdempRing, x - x ^ 2 = 2 *
 
 end R2IdempRing
 
-/-- Stage-2 additive cocycle impossibility on `R2IdempRing`: even though `φ = id` is a ring
-automorphism satisfying Fermat congruence `x ≡ x² (mod 2)` everywhere, `δ(2η) = 0` yields
+/-- `(ℤ × 𝔽₂, id)` (`R2IdempRing`) packaged as a genuine `FrobLiftRing2`. -/
+def r2IdempFrobLift : FrobLiftRing2.{0} where
+  R := R2IdempRing
+  phi := RingHom.id R2IdempRing
+  frob_congr := R2IdempRing.id_fermat_congr
+
+/-- Stage-1 additive cocycle impossibility on `R2IdempRing` (`ℤ × 𝔽₂`): even though `φ = id` is a
+ring automorphism satisfying Fermat congruence `x ≡ x² (mod 2)` everywhere, `δ(2η) = 0` yields
 `2 δ(η) - η² = -η ≠ 0`, making `DeltaRing2 R2IdempRing` empty. -/
-theorem empty_deltaLift_R2Idemp : IsEmpty (DeltaRing2 R2IdempRing) := by
+theorem isEmpty_deltaRing2_r2Idemp : IsEmpty (DeltaRing2 R2IdempRing) := by
   refine ⟨fun inst ↦ ?_⟩
   have h2eta : R2IdempRing.eta + R2IdempRing.eta = 0 := by decide
   have hadd := inst.delta_add R2IdempRing.eta R2IdempRing.eta
@@ -1696,11 +2469,30 @@ theorem empty_deltaLift_R2Idemp : IsEmpty (DeltaRing2 R2IdempRing) := by
     R2IdempRing.eta, R2Ring.zmod2_add_self, zero_add] at hb
   exact absurd hb (by decide)
 
-/-! ### Stage 3: Lift Counts (`|Fib(R₂)| = 2`, `|Fib(R_{2,2})| = 16`, `6` Orbits) -/
+/-- **Stage-1 Empty Fiber Witness 3 (`empty_deltaLift_R2Idemp`):** `r2IdempFrobLift` has empty
+`DeltaLift` fiber (`IsEmpty (DeltaLift r2IdempFrobLift)`). -/
+theorem empty_deltaLift_R2Idemp : IsEmpty (DeltaLift r2IdempFrobLift) :=
+  ⟨fun L ↦ isEmpty_deltaRing2_r2Idemp.false L.1⟩
 
-/-- Type of `DeltaRing2` structures on `R₂` lifting the augmentation Frobenius `r2AugFrob`. -/
+/-! ### Stage 2: Lift Counts (`|Fib(R₂)| = 2`, `|Fib(R_{2,2})| = 16`, `6` Orbits) -/
+
+/-- `(R₂, r2AugFrob)` packaged as a `FrobLiftRing2`. -/
+def r2AugFrobLift : FrobLiftRing2.{0} where
+  R := R2Ring
+  phi := r2AugFrob
+  frob_congr x := ⟨instDeltaRing2R2_zero.delta x, by
+    have h := r2Delta0Map_frobeniusLift x
+    rw [← h]
+    ring⟩
+
+/-- Type of `DeltaRing2` structures on `R₂` lifting the augmentation Frobenius `r2AugFrob`,
+canonically identified with `DeltaLift r2AugFrobLift`. -/
 abbrev R2AugLift : Type :=
   { inst : DeltaRing2 R2Ring // ∀ x : R2Ring, x ^ 2 + 2 * inst.delta x = r2AugFrob x }
+
+/-- Canonical equivalence identifying `R2AugLift` with the Stage-1 fiber
+`DeltaLift r2AugFrobLift`. -/
+def r2AugLiftEquivDeltaLift : R2AugLift ≃ DeltaLift r2AugFrobLift := Equiv.refl _
 
 private lemma deltaRing2_ext {R : Type u} [CommRing R] {d₁ d₂ : DeltaRing2 R}
     (h : d₁.delta = d₂.delta) : d₁ = d₂ := by
@@ -1996,9 +2788,22 @@ private def r22MatDer (M : Matrix (Fin 2) (Fin 2) (ZMod 2)) :
     · simp; ring
     · simp; ring
 
-/-- The `16`-element fiber `{ inst : DeltaRing2 R22Ring // ∀ x, x² + 2 δ(x) = r22AugFrob x }`. -/
+/-- `(R_{2,2}, r22AugFrob)` packaged as a `FrobLiftRing2`. -/
+def r22AugFrobLift : FrobLiftRing2.{0} where
+  R := R22Ring
+  phi := r22AugFrob
+  frob_congr x := ⟨r22BaseDelta.delta x, by
+    have h := r22BaseDelta_lift x
+    rw [← h]
+    ring⟩
+
+/-- The `16`-element fiber `{ inst : DeltaRing2 R22Ring // ∀ x, x² + 2 δ(x) = r22AugFrob x }`,
+canonically identified with `DeltaLift r22AugFrobLift`. -/
 abbrev R22AugLift : Type :=
   { inst : DeltaRing2 R22Ring // ∀ x : R22Ring, x ^ 2 + 2 * inst.delta x = r22AugFrob x }
+
+/-- Canonical equivalence identifying `R22AugLift` with `DeltaLift r22AugFrobLift`. -/
+def r22AugLiftEquivDeltaLift : R22AugLift ≃ DeltaLift r22AugFrobLift := Equiv.refl _
 
 /-- Explicit bijection `R22AugLift ≃ Matrix (Fin 2) (Fin 2) (ZMod 2)`. -/
 def r22AugLiftEquivMatrix : R22AugLift ≃ Matrix (Fin 2) (Fin 2) (ZMod 2) where
@@ -3141,6 +3946,19 @@ instance instNontrivialTwoGroup : Nontrivial TwoGroup :=
 instance instNontrivialTestTopos : Nontrivial TestTopos :=
   ⟨⟨TestTopos.setTopos, TestTopos.setM1, by decide⟩⟩
 
+instance instNontrivialM1Monoid : Nontrivial M1Monoid :=
+  ⟨⟨⟨false⟩, ⟨true⟩, by decide⟩⟩
+
+instance instNontrivialBZ2BotObj : Nontrivial BZ2BotObj :=
+  ⟨⟨BZ2BotObj.bot, BZ2BotObj.star, by decide⟩⟩
+
+instance instNontrivialFrobLiftRing2 : Nontrivial FrobLiftRing2.{0} :=
+  ⟨⟨intFrobLift, zmod2FrobLift, fun h ↦ by
+    have hEq := congrArg (fun F : FrobLiftRing2.{0} ↦ (2 : F.R) = 0) h
+    have hz : (2 : ZMod 2) = 0 := by decide
+    have hint : (2 : ℤ) = 0 := Eq.mpr hEq hz
+    exact absurd hint (by decide)⟩⟩
+
 instance instNontrivialVPoset : Nontrivial VPoset :=
   ⟨⟨VPoset.c, VPoset.a, by decide⟩⟩
 
@@ -3193,6 +4011,30 @@ theorem layer2_sep_towerPhantomMode :
   ⟨⟨profiniteLassoTowerMode_hasPhantom, stepProductTowerMode_hasPhantom⟩,
    not_idTowerMode_hasPhantom⟩
 
+/-- Layer 2 uniform categorical presheaf separation across all 5 probes (`AC`, `IAC`, `ProjSub`,
+`Proj₁`, `Localic`). -/
+theorem layer2_sep_catPresheaf :
+    (CatPresheafAC PUnitCat ∧ ¬ CatPresheafAC TwoGroupCat) ∧
+      (CatPresheafIAC TwoGroupCat ∧ ¬ CatPresheafIAC M1Cat) ∧
+      (CatPresheafProjSub M1Cat ∧ ¬ CatPresheafProjSub BZ2BotObj) ∧
+      (CatPresheafProj1 BZ2BotObj ∧ ¬ CatPresheafProj1 TwoGroupCat) ∧
+      (CatPresheafLocalic VPosetOpCat ∧ ¬ CatPresheafLocalic M1Cat) :=
+  ⟨⟨catPresheafAC_punitCat, not_catPresheafAC_twoGroupCat⟩,
+   ⟨catPresheafIAC_twoGroupCat, not_catPresheafIAC_m1Cat⟩,
+   ⟨catPresheafProjSub_m1Cat, not_catPresheafProjSub_bz2Bot⟩,
+   ⟨catPresheafProj1_bz2Bot, not_catPresheafProj1_twoGroupCat⟩,
+   ⟨catPresheafLocalic_vPosetOpCat, not_catPresheafLocalic_m1Cat⟩⟩
+
+/-- Layer 2 Stage-1 `DeltaLift` separation over `FrobLiftRing2`: `(R₂, φ_aug)` admits lifts while
+`(ZMod 2, id)`, `(ZMod 4, id)`, and `(R2IdempRing, id)` have empty `DeltaLift` fibers. -/
+theorem layer2_sep_deltaLift :
+    Nonempty (DeltaLift r2AugFrobLift) ∧
+      IsEmpty (DeltaLift zmod2FrobLift) ∧
+      IsEmpty (DeltaLift zmod4FrobLift) ∧
+      IsEmpty (DeltaLift r2IdempFrobLift) :=
+  ⟨⟨⟨instDeltaRing2R2_zero, r2Delta0Map_frobeniusLift⟩⟩,
+    empty_deltaLift_zmod2, empty_deltaLift_zmod4, empty_deltaLift_R2Idemp⟩
+
 /-- Layer 2 `M1SliceLTT.IsLocalic` separation on `Fin 1`: `dneg` is localic while `id` is not. -/
 theorem layer2_sep_m1Slice_localic :
     let jLoc : M1SliceLTT (_root_.id : Unit → Unit) :=
@@ -3221,6 +4063,8 @@ def check_doctrinalFibration_proj (B : Type u) [Category.{v} B] :
 def check_mooreClosureOperator {D P : Type*} (Φ : DoctrinalPhilosophy D P) :
     ClosureOperator (Set D) := Φ.mooreClosureOperator
 
+def check_bz2Bot_smallCategory : SmallCategory BZ2BotObj := inferInstance
+def check_m1Monoid_commMonoid : CommMonoid M1Monoid := inferInstance
 def check_r22Ring_commRing : CommRing R22Ring := inferInstance
 def check_r2IdempRing_commRing : CommRing R2IdempRing := inferInstance
 def check_twoGroup_commGroup : CommGroup TwoGroup := inferInstance
@@ -3244,7 +4088,7 @@ theorem derived_m1_slice_one_fixed_one_nonfixed :
   rw [hk, hm] at h
   exact h
 
-/-! ### Layer 4: Kernel Axiom Gate (`#guard_msgs in #print axioms`, `≥ 24` Checks) -/
+/-! ### Layer 4: Kernel Axiom Gate (`#guard_msgs in #print axioms`, `≥ 30` Checks) -/
 
 section KernelAxiomGate
 
@@ -3294,9 +4138,7 @@ info: 'HomotopyCRM.stepProductTowerMode_hasPhantom' depends on axioms: [propext,
 #guard_msgs in
 #print axioms HomotopyCRM.monoid_proj1_iff_rightZero
 
-/--
-info: 'HomotopyCRM.m1_projSub_and_not_localic' depends on axioms: [propext, Classical.choice, Quot.sound]
--/
+/-- info: 'HomotopyCRM.m1_projSub_and_not_localic' depends on axioms: [propext] -/
 #guard_msgs in
 #print axioms HomotopyCRM.m1_projSub_and_not_localic
 
@@ -3308,11 +4150,33 @@ info: 'HomotopyCRM.m1_projSub_and_not_localic' depends on axioms: [propext, Clas
 #guard_msgs in
 #print axioms HomotopyCRM.diamond_proj1_not_projSub
 
-/--
-info: 'HomotopyCRM.freydCover_dogma_banishment' depends on axioms: [propext, Classical.choice, Quot.sound]
--/
+/-- info: 'HomotopyCRM.freydCover_dogma_banishment' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.freydCover_dogma_banishment
+
+/-- info: 'HomotopyCRM.not_catPresheafIAC_m1Cat' depends on axioms: [Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.not_catPresheafIAC_m1Cat
+
+/-- info: 'HomotopyCRM.not_catPresheafIAC_vPosetOpCat' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.not_catPresheafIAC_vPosetOpCat
+
+/-- info: 'HomotopyCRM.not_catPresheafAC_twoGroupCat' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.not_catPresheafAC_twoGroupCat
+
+/--
+info: 'HomotopyCRM.twoGroupCat_iac_and_not_ac' depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs in
+#print axioms HomotopyCRM.twoGroupCat_iac_and_not_ac
+
+/--
+info: 'HomotopyCRM.choiceConcl_ne_extProj' depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs in
+#print axioms HomotopyCRM.choiceConcl_ne_extProj
 
 /--
 info: 'HomotopyCRM.pareto_incomparable_projSub_localic' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -3330,21 +4194,25 @@ info: 'HomotopyCRM.M1SliceLTT.m1_slice_lt_count' depends on axioms: [propext, Cl
 #guard_msgs in
 #print axioms HomotopyCRM.delta_mul_p_eq_frob_sub
 
-/-- info: 'HomotopyCRM.frob_annihilates_p_torsion' depends on axioms: [propext, Quot.sound] -/
+/--
+info: 'HomotopyCRM.isEmpty_deltaRing2_zmod2' depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
 #guard_msgs in
-#print axioms HomotopyCRM.frob_annihilates_p_torsion
+#print axioms HomotopyCRM.isEmpty_deltaRing2_zmod2
 
-/-- info: 'HomotopyCRM.empty_deltaLift_R3' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+/--
+info: 'HomotopyCRM.empty_deltaLift_zmod2' depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
 #guard_msgs in
-#print axioms HomotopyCRM.empty_deltaLift_R3
+#print axioms HomotopyCRM.empty_deltaLift_zmod2
 
 /-- info: 'HomotopyCRM.isEmpty_deltaRing2_zmod4' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.isEmpty_deltaRing2_zmod4
 
-/-- info: 'HomotopyCRM.empty_deltaLift_R220' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+/-- info: 'HomotopyCRM.empty_deltaLift_zmod4' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs in
-#print axioms HomotopyCRM.empty_deltaLift_R220
+#print axioms HomotopyCRM.empty_deltaLift_zmod4
 
 /-- info: 'HomotopyCRM.empty_deltaLift_R2Idemp' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
