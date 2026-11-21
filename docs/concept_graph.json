@@ -1170,7 +1170,7 @@
       "label": "Higher Choice AC_(n,m) & Postnikov Gerbes",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Bigraded higher choice, un-truncated choice collapse, Postnikov gerbe obstructions, and hypercompleteness.",
+      "description": "Bigraded higher choice, un-truncated choice collapse, Postnikov gerbe obstructions, and Postnikov completeness vs. hypercompleteness.",
       "monograph_chapter": "Chapter 5",
       "concepts_covered": [
         "P35",
@@ -1305,7 +1305,7 @@
       "label": "The Five Core Conjectures of CRM",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Five program-defining conjectures: Cohomological Vanishing (proved on top, IBPI, IDC, SVC), Etale omega-Presentability, Etale Zero-Dimensionality, Postnikov Stepwise Effacement (proved for n >= 1, liens, nilpotent & etale bands), and Two-Sorted Big-Five Adjoint/Fixed-Point Hierarchy.",
+      "description": "Five program-defining conjectures: Cohomological Vanishing (proved on top, IBPI, IDC, SVC), Etale omega-Presentability, Stone/Profinite Isotropy, Postnikov Stepwise Effacement (proved for n >= 1, liens, nilpotent bands & etale R(E_1) splitting), and Two-Sorted Big-Five Adjoint/Fixed-Point Hierarchy.",
       "monograph_chapter": "Chapter 2, 5, 8, 9",
       "concepts_covered": [
         "C041",
