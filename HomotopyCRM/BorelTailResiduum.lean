@@ -22,7 +22,7 @@ import Mathlib.Topology.Separation.Hausdorff
 
 This module formalizes Chapter 4, §4.5 (`sec:exotic-r4-e0`, Theorem `thm:double-solvent-r4`)
 of the *Categorical Reverse Mathematics* monograph on the Cantor tail quotient
-$\mathcal{Q}_{E_0} = 2^{\mathbb{N}} / E_0 = (\prod_{\mathbb{N}} \mathbb{F}_2) / (\bigoplus_{\mathbb{N}} \mathbb{F}_2)$:
+$\mathcal{Q}_{E_0} = 2^{\mathbb{N}} / E_0$:
 
 1. **`ZMod 2`-Linear Exact Sequence (`Section 1`):**
    - Formalizes $0 \to (\mathbb{N} \to_0 \mathrm{ZMod}\;2) \to (\mathbb{N} \to \mathrm{ZMod}\;2)
@@ -37,16 +37,22 @@ $\mathcal{Q}_{E_0} = 2^{\mathbb{N}} / E_0 = (\prod_{\mathbb{N}} \mathbb{F}_2) / 
 
 3. **Polish / $T_1$ Blindness via Explicit Even-Flip Coset Density (`Section 3`):**
    - Equips `CantorSpace := ℕ → ZMod 2` with the compact Hausdorff product topology and defines
-     the even-parity submodule `EvenE0Submodule := ker(finFlipParity).map finFlipIncl < E0Submodule`.
-   - Constructs explicit finite-even approximants `evenApproxSeq x y N` converging to `y` in the
-     product topology (`tendsto_evenApproxSeq`), proving **every** `EvenE0Submodule`-coset and
-     every `E0Submodule`-coset is **dense** in Cantor space (`dense_evenE0Coset`, `dense_e0Coset`).
-   - Deduces that every continuous $E_0^{\mathrm{even}}$-invariant (in particular every continuous
-     $E_0$-invariant) map into a `T1Space Y` is constant ($\pi_0^{T_1}(\mathcal{Q}_{E_0}) \simeq 1$).
+     the even-parity submodule `EvenE0Submodule` as
+     `(LinearMap.ker finFlipParity).map finFlipIncl < E0Submodule`.
+   - Constructs basis-free finite-even approximants `evenApproxSeq x y N` converging to `y`
+     in the product topology (`tendsto_evenApproxSeq`), proving **every** `EvenE0Submodule`-coset
+     and every `E0Submodule`-coset is **dense** in Cantor space (`dense_evenE0Coset`,
+     `dense_e0Coset`).
+   - Deduces (basis-free, avoiding Hamel bases / Zorn's Lemma, while inheriting `Classical.choice`
+     solely from `mathlib4`'s `TopologicalSpace`/`Pi`/`Finsupp`/`ZMod` infrastructure) that every
+     continuous $E_0^{\mathrm{even}}$-invariant (or $E_0$-invariant) map into a `T1Space Y` is
+     constant ($\pi_0^{T_1}(\mathcal{Q}_{E_0}) \simeq 1$).
 
 4. **The $E_0^{\mathrm{even}}$ Parity Torsor Dichotomy (`Section 4`):**
-   - Proves without basis extension or Zorn's Lemma that **no continuous** single-flip-alternating
-     parity map `χ : CantorSpace → ZMod 2` exists (`not_exists_continuous_flipAlternating`).
+   - Proves basis-free (without Hamel-basis extension or Zorn's Lemma; inherits `Classical.choice`
+     solely from `mathlib4`'s `TopologicalSpace`/`Pi`/`Finsupp`/`ZMod` infrastructure) that **no
+     continuous** single-flip-alternating parity map exists
+     (`not_exists_continuous_flipAlternating`).
    - Proves via `LinearMap.exists_extend` (`Classical.choice`) that a (necessarily discontinuous)
      `ZMod 2`-linear parity functional `χ : CantorSpace →ₗ[ZMod 2] ZMod 2` exists and splits the
      nontrivial two-sheeted double cover `EvenE0Quotient ↠ E0Quotient`.
@@ -265,7 +271,9 @@ theorem evenDiffFinsupp_mem_evenFlipFinsupp (x y : CantorSpace) (N : ℕ) :
     mul_one]
   exact zmod2_add_self (∑ j ∈ Finset.range N, (y j - x j))
 
-/-- Constructive sequence inside the `EvenE0Submodule`-coset of `x` approximating `y`. -/
+/-- Basis-free explicit sequence inside the `EvenE0Submodule`-coset of `x` approximating `y`
+    (avoids Hamel bases / Zorn's Lemma; inherits `Classical.choice` solely from `mathlib4`'s
+    `Finsupp`/`ZMod` infrastructure). -/
 noncomputable def evenApproxSeq (x y : CantorSpace) (N : ℕ) : CantorSpace :=
   x + finFlipIncl (evenDiffFinsupp x y N)
 
@@ -346,7 +354,9 @@ theorem continuous_evenE0Invariant_const {Y : Type*} [TopologicalSpace Y] [T1Spa
 
 /-- **Polish / Hausdorff Blindness (`π_0^{T_1}(Q_{E_0}) ≃ 1`):** every continuous
     `E_0`-invariant map `f : 2^ℕ → Y` into a `T_1` (or Hausdorff / Polish) space is
-    constant, proved explicitly from `evenApproxSeq` without Hamel-basis extension. -/
+    constant, proved basis-free from `evenApproxSeq` without Hamel-basis extension or Zorn's Lemma
+    (inherits `Classical.choice` solely from `mathlib4`'s `TopologicalSpace`/`Pi`/`Finsupp`/`ZMod`
+    infrastructure). -/
 theorem continuous_e0Invariant_const {Y : Type*} [TopologicalSpace Y] [T1Space Y]
     {f : CantorSpace → Y} (hf : Continuous f)
     (hinv : ∀ z w : CantorSpace, E0Rel z w → f z = f w) :
@@ -390,8 +400,10 @@ theorem isFlipAlternating_evenE0Invariant {χ : CantorSpace → ZMod 2}
   have hp0 : finFlipParity g = 0 := hg_ker
   rw [hp0, add_zero]
 
-/-- **Constructive Parity Obstruction:** since every `E_0^even`-coset is dense and `ZMod 2` is
-    `T_1`, NO continuous single-flip-alternating parity functional exists on Cantor space. -/
+/-- **Basis-Free Topological Parity Obstruction:** since every `E_0^even`-coset is dense and
+    `ZMod 2` is `T_1`, NO continuous single-flip-alternating parity functional exists on Cantor
+    space (avoids Hamel bases / Zorn's Lemma; inherits `Classical.choice` solely from `mathlib4`'s
+    `TopologicalSpace`/`Pi`/`Finsupp`/`ZMod` infrastructure). -/
 theorem not_exists_continuous_flipAlternating :
     ¬ ∃ χ : CantorSpace → ZMod 2, Continuous χ ∧ IsFlipAlternating χ := by
   rintro ⟨χ, hcont, halt⟩
@@ -504,9 +516,12 @@ theorem exists_zfc_linear_section_evenToE0Quotient :
     1. Exactness & nontriviality of `0 → FinFlipSpace → CantorSpace → Q_{E_0} → 0`;
     2. Classical `ZFC` linear section splitting (`Classical.choice`);
     3. Universal coset density of `E_0^even` and `E_0` in Cantor space, forcing all
-       continuous `E_0^even`- and `E_0`-invariant `T_1` maps to be constant (constructive);
-    4. Constructive impossibility of continuous single-flip-alternating parity functionals vs.
-       `ZFC` discontinuous linear parity extensions splitting `(2^ℕ / E_0^even) ↠ Q_{E_0}`. -/
+       continuous `E_0^even`- and `E_0`-invariant `T_1` maps to be constant (basis-free, avoiding
+       Hamel bases / Zorn's Lemma; inherits `Classical.choice` solely from `mathlib4`'s
+       `TopologicalSpace`/`Pi`/`Finsupp`/`ZMod` infrastructure);
+    4. Basis-free topological impossibility of continuous single-flip-alternating parity functionals
+       (same `mathlib4` axiom footprint) vs. `ZFC` discontinuous linear parity extensions splitting
+       `(2^ℕ / E_0^even) ↠ Q_{E_0}`. -/
 theorem chapter4_borel_tail_residuum_summary :
     (LinearMap.range finFlipIncl = LinearMap.ker e0QuotientMk ∧ Nontrivial E0Quotient) ∧
     (∃ s : E0Quotient →ₗ[ZMod 2] CantorSpace, e0QuotientMk.comp s = LinearMap.id) ∧

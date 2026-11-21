@@ -13,10 +13,10 @@ This module mechanizes the core algebraic, coalgebraic, and categorical witnesse
 (*Residuums and "Sets"*), calibrating the double-clamped characterization of `Set_ZFC` and `NBG`
 along Coordinate Axes I, V, VI, and VII:
 
-1. **Baseline Definable-Class Coreflection (`Def ⊣ π_Set`, Definition `def:set-projection-fibration`):**
-   Constructs concrete two-sorted set-and-class structures, verifies that naive class pullback along
-   a proper submodel fails Subclass Separation, and establishes the full coreflective adjunction
-   `defSetProjAdjunction : defFunctor ⊣ piSetFunctor`.
+1. **Baseline Definable-Class Coreflection (`Def ⊣ π_Set`, `def:set-projection-fibration`):**
+   Constructs concrete two-sorted set-and-class structures, proves via an explicit embedding
+   `finOmegaModel ↪ powOmegaModel` that naive class pullback breaks `SatisfiesSubclassSeparation`,
+   and establishes the coreflective adjunction `defSetProjAdjunction : defFunctor ⊣ piSetFunctor`.
 2. **Large Equivalence-Splitting & Global Choice (Proposition `prop:large-equiv-splitting`):**
    * `card_split_iff_global_choice` *(axiom-free)*: proves over an abstract skeletal cardinal base
      that a pointwise homotopy-functorial quasi-inverse splitting of `Card ↪ Set` is equivalent to
@@ -27,9 +27,9 @@ along Coordinate Axes I, V, VI, and VII:
 3. **Axis VII Foundation vs. Anti-Foundation (`μ P_S ↪ ν P_S`, Theorem `thm:axis-vii-foundation`):**
    * Embeds `PSet.{u}` into small accessible pointed graph coalgebras `APG.{u}` via pure structural
      recursion `psetToAPG` (`PSet.rec`), proves `pset_equiv_iff_bisimilar` *(axiom-free)* showing
-     `μ P_S / ~` embeds monomorphically into bisimulation classes, and proves `quine_atom_outside_wf`
-     *(axiom-free)* certifying that the self-loop Quine coalgebra `quineAPG` (`q = {q}`) is not
-     bisimilar to `psetToAPG x` for any well-founded `x : PSet.{u}`.
+     `μ P_S / ~` embeds monomorphically into bisimulation classes, and proves
+     `quine_atom_outside_wf` *(axiom-free)* certifying that the self-loop Quine coalgebra
+     `quineAPG` (`q = {q}`) is not bisimilar to `psetToAPG x` for any well-founded `x : PSet.{u}`.
 4. **Boffa Hyperset Torsors (Proposition `prop:boffa-torsors`):**
    * Separates `APG.Bisimilar` from pointed graph isomorphism `APG.Iso` via `quineAPG` (`|V| = 1`)
      versus the mutual `2`-cycle `quineTwoCycleAPG` (`|V| = 2`).
@@ -39,7 +39,7 @@ along Coordinate Axes I, V, VI, and VII:
      over the quotient unordered-pair orbit (`[propext, Quot.sound]`, without `Classical.choice`).
 5. **Material Extensionality & Quotient Gate (Proposition `prop:extensionality-truncation`):**
    * `zfset_ext_quot_gate`: proves via `Quotient.sound` over `PSet.Equiv` (`[propext, Quot.sound]`,
-     without `Classical.choice`) that passing from intensional trees `PSet` (`μ P_Anima` at `0`-types)
+     no `Classical.choice`) that passing from intensional trees `PSet` (`μ P_Anima` at `0`-types)
      to extensional `ZFSet` collapses both element multiplicity (`[∅, ∅] ~ [∅]`) and arbitrary
      branch permutations `σ : α ≃ α` (killing loop automorphisms `Aut(α)`), while both remain
      strictly distinct in `PSet`.
@@ -136,8 +136,8 @@ instance instCategorySetStructure : Category.{u} SetStructure.{u} where
   id := SetElemHom.id
   comp := SetElemHom.comp
 
-/-- An admissible class expansion `(M, C)` over a `SetStructure`, closed under all parameter-definable
-classes, complements, and intersections. -/
+/-- An admissible class expansion `(M, C)` over a `SetStructure`, closed under all
+parameter-definable classes, complements, and intersections. -/
 structure ClassSetModel : Type (u + 1) where
   base : SetStructure.{u}
   IsClass : Set base.Carrier → Prop
@@ -262,23 +262,246 @@ noncomputable def defSetProjAdjunction : defFunctor.{u} ⊣ piSetFunctor.{u} :=
         (liftFromDef_unique (Y := Y) (defMap h ≫ liftFromDef f)).symm
       homEquiv_naturality_right := fun _ _ => rfl }
 
-/-- Definition `def:set-projection-fibration`(i) obstruction: naive pullback `f⁻¹[D]` along a
-proper subset inclusion `M ⊆ N` fails Subclass Separation whenever an ambient small subset `r ⊆ M`
-exists in `N \ M`. -/
-def IsSubClassClosed {N : Type u} (M : Set N) (C : Set (Set N)) : Prop :=
-  ∀ D ∈ C, ∀ A ∈ M, D ∩ {x | x ∈ M} ⊆ {x | x = A} ∪ {x | x ∈ M} → (D ∩ M) ∈ C
+/-- Subclass Separation (Aussonderung) on a two-sorted `ClassSetModel`: every class `C` in `M`
+bounded by some set `a : M.base.Carrier` (`∀ x ∈ C, M.base.mem x a`) is extensionally
+represented by a set `b : M.base.Carrier` (`∀ x, M.base.mem x b ↔ x ∈ C`). -/
+def SatisfiesSubclassSeparation (M : ClassSetModel.{u}) : Prop :=
+  ∀ C : Set M.base.Carrier, M.IsClass C →
+    (∃ a : M.base.Carrier, ∀ x ∈ C, M.base.mem x a) →
+    ∃ b : M.base.Carrier, ∀ x : M.base.Carrier, M.base.mem x b ↔ x ∈ C
 
+/-- Set carrier for the minimal finite-and-cofinite `ℕ`-submodel (`finOmegaModel`):
+`.atom n` encodes natural numbers `n : Nat`, while `.set S` encodes finite or cofinite subsets
+of `Nat` (needed because `ClassSetModel` is closed under `eqParam` singletons, complements
+`compl_mem`, and intersections `inter_mem`, so the definable Boolean algebra on `ω` consists
+precisely of finite and cofinite subsets, including finite subsets and `ω = Set.univ`). -/
+inductive FinOmegaCarrier : Type where
+  | atom : Nat → FinOmegaCarrier
+  | set : {A : Set Nat // A.Finite ∨ Aᶜ.Finite} → FinOmegaCarrier
+
+/-- Distinguished infinite ordinal set `ω = Set.univ` inside `FinOmegaCarrier`. -/
+def omegaFinSet : FinOmegaCarrier :=
+  .set ⟨Set.univ, Or.inr (Set.compl_univ ▸ Set.finite_empty)⟩
+
+/-- Base membership structure `(FinOmegaCarrier, ∈)`. -/
+def finOmegaBase : SetStructure.{0} where
+  Carrier := FinOmegaCarrier
+  mem x y :=
+    match x, y with
+    | .atom n, .set S => n ∈ S.1
+    | _, _ => False
+
+/-- Minimal definable `ClassSetModel` over `finOmegaBase`. -/
+def finOmegaModel : ClassSetModel.{0} :=
+  defModel finOmegaBase
+
+/-- Set carrier for the ambient powerset model `powOmegaModel`, containing all `A : Set Nat`. -/
+inductive PowOmegaCarrier : Type where
+  | atom : Nat → PowOmegaCarrier
+  | set : Set Nat → PowOmegaCarrier
+
+/-- Base membership structure `(PowOmegaCarrier, ∈)`. -/
+def powOmegaBase : SetStructure.{0} where
+  Carrier := PowOmegaCarrier
+  mem x y :=
+    match x, y with
+    | .atom n, .set S => n ∈ S
+    | _, _ => False
+
+/-- Minimal definable `ClassSetModel` over `powOmegaBase`. -/
+def powOmegaModel : ClassSetModel.{0} :=
+  defModel powOmegaBase
+
+/-- Canonical `∈`-preserving embedding from `FinOmegaCarrier` into `PowOmegaCarrier`. -/
+def finToPow : FinOmegaCarrier → PowOmegaCarrier
+  | .atom n => .atom n
+  | .set S => .set S.1
+
+theorem finToPow_injective : Function.Injective finToPow := by
+  intro x y hxy
+  cases x with
+  | atom m =>
+    cases y with
+    | atom n => exact congrArg FinOmegaCarrier.atom (PowOmegaCarrier.atom.inj hxy)
+    | set T => cases hxy
+  | set S =>
+    cases y with
+    | atom n => cases hxy
+    | set T => exact congrArg FinOmegaCarrier.set (Subtype.ext (PowOmegaCarrier.set.inj hxy))
+
+theorem finToPow_mem_iff (x y : FinOmegaCarrier) :
+    finOmegaBase.mem x y ↔ powOmegaBase.mem (finToPow x) (finToPow y) := by
+  cases x <;> cases y <;> rfl
+
+theorem evalClassFormula_finOmega_atom_finCofin :
+    ∀ φ : ParamClassFormula FinOmegaCarrier,
+      ({n : Nat | FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase φ}).Finite ∨
+        ({n : Nat | FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase φ})ᶜ.Finite
+  | .eqParam p => by
+    cases p with
+    | atom m =>
+      refine Or.inl ((Set.finite_singleton m).subset ?_)
+      intro n hn
+      exact FinOmegaCarrier.atom.inj hn
+    | set S =>
+      refine Or.inl (Set.finite_empty.subset ?_)
+      intro n hn
+      cases hn
+  | .memParam p => by
+    cases p with
+    | atom m =>
+      refine Or.inl (Set.finite_empty.subset ?_)
+      intro n hn
+      cases hn
+    | set S => exact S.2
+  | .compl φ => by
+    rcases evalClassFormula_finOmega_atom_finCofin φ with h | h
+    · refine Or.inr (h.subset fun n hn => ?_)
+      simpa [evalClassFormula] using hn
+    · exact Or.inl h
+  | .inter φ ψ => by
+    rcases evalClassFormula_finOmega_atom_finCofin φ with hφ | hφ
+    · exact Or.inl (hφ.subset fun _ hx => hx.1)
+    · rcases evalClassFormula_finOmega_atom_finCofin ψ with hψ | hψ
+      · exact Or.inl (hψ.subset fun _ hx => hx.2)
+      · refine Or.inr ?_
+        have hsub :
+            ({n : Nat | FinOmegaCarrier.atom n ∈
+              evalClassFormula finOmegaBase (.inter φ ψ)})ᶜ ⊆
+              ({n : Nat | FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase φ})ᶜ ∪
+                ({n : Nat | FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase ψ})ᶜ := by
+          intro n hn
+          change ¬ (FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase φ ∧
+            FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase ψ) at hn
+          by_cases h1 : FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase φ
+          · exact Or.inr fun h2 => hn ⟨h1, h2⟩
+          · exact Or.inl h1
+        exact (hφ.union hψ).subset hsub
+
+theorem satisfiesSubclassSeparation_finOmegaModel :
+    SatisfiesSubclassSeparation finOmegaModel := by
+  rintro C ⟨φ, rfl⟩ ⟨a, hbound⟩
+  let A : Set Nat := {n : Nat | FinOmegaCarrier.atom n ∈ evalClassFormula finOmegaBase φ}
+  refine ⟨.set ⟨A, evalClassFormula_finOmega_atom_finCofin φ⟩, ?_⟩
+  intro x
+  cases x with
+  | atom n => rfl
+  | set S =>
+    constructor
+    · intro hmem
+      cases hmem
+    · intro hx
+      have hba := hbound (.set S) hx
+      cases a <;> cases hba
+
+theorem satisfiesSubclassSeparation_powOmegaModel :
+    SatisfiesSubclassSeparation powOmegaModel := by
+  rintro D _ ⟨a, hbound⟩
+  refine ⟨.set {n : Nat | PowOmegaCarrier.atom n ∈ D}, ?_⟩
+  intro x
+  cases x with
+  | atom n => rfl
+  | set S =>
+    constructor
+    · intro hmem
+      cases hmem
+    · intro hx
+      have hba := hbound (.set S) hx
+      cases a <;> cases hba
+
+/-- The set `{n | n % 2 = 0}` of even natural numbers. -/
+def evenNatSet : Set Nat := {n : Nat | n % 2 = 0}
+
+theorem evenNatSet_infinite : Set.Infinite evenNatSet := by
+  refine Set.infinite_of_injective_forall_mem (f := fun k : Nat => 2 * k) ?_ ?_
+  · intro a b hab; dsimp at hab; omega
+  · intro k; change (2 * k) % 2 = 0; omega
+
+theorem oddNatSet_infinite : Set.Infinite evenNatSetᶜ := by
+  refine Set.infinite_of_injective_forall_mem (f := fun k : Nat => 2 * k + 1) ?_ ?_
+  · intro a b hab; dsimp at hab; omega
+  · intro k; change ¬ ((2 * k + 1) % 2 = 0); omega
+
+/-- Definable class in `powOmegaModel` representing all even natural numbers. -/
+def evenPowClass : Set PowOmegaCarrier :=
+  evalClassFormula powOmegaBase (.memParam (.set evenNatSet))
+
+theorem evalClassFormula_finOmega_eq_preimage :
+    ∀ φ : ParamClassFormula FinOmegaCarrier,
+      evalClassFormula finOmegaBase φ =
+        finToPow ⁻¹' evalClassFormula powOmegaBase (φ.map finToPow)
+  | .eqParam p => by
+    ext x
+    simp [evalClassFormula, ParamClassFormula.map, finToPow_injective.eq_iff]
+  | .memParam p => by
+    ext x
+    exact finToPow_mem_iff x p
+  | .compl φ => by
+    ext x
+    simp [evalClassFormula, ParamClassFormula.map, evalClassFormula_finOmega_eq_preimage φ]
+  | .inter φ ψ => by
+    ext x
+    simp [evalClassFormula, ParamClassFormula.map,
+      evalClassFormula_finOmega_eq_preimage φ, evalClassFormula_finOmega_eq_preimage ψ]
+
+/-- Naive pullback class expansion of `finOmegaBase` adjoining `finToPow ⁻¹' D` for every
+class `D` of `powOmegaModel`. -/
+def naivePullbackModel : ClassSetModel.{0} where
+  base := finOmegaBase
+  IsClass S := ∃ D : Set PowOmegaCarrier, powOmegaModel.IsClass D ∧ S = finToPow ⁻¹' D
+  def_mem φ := ⟨evalClassFormula powOmegaBase (φ.map finToPow),
+    powOmegaModel.def_mem (φ.map finToPow), evalClassFormula_finOmega_eq_preimage φ⟩
+  compl_mem := fun ⟨D, hD, hS⟩ => ⟨Dᶜ, powOmegaModel.compl_mem hD, by simp [hS]⟩
+  inter_mem := fun ⟨D₁, hD₁, hS₁⟩ ⟨D₂, hD₂, hS₂⟩ =>
+    ⟨D₁ ∩ D₂, powOmegaModel.inter_mem hD₁ hD₂, by simp [hS₁, hS₂]⟩
+
+/-- Definition `def:set-projection-fibration`(i) obstruction: naive pullback `f⁻¹[D]` of a
+definable class `D` from a `SatisfiesSubclassSeparation` ambient model `powOmegaModel` along an
+`∈`-preserving embedding `finToPow : finOmegaModel ↪ powOmegaModel` yields a bounded subclass of
+`omegaFinSet` with no representing set in `finOmegaModel`, so `naivePullbackModel` refutes
+`SatisfiesSubclassSeparation`. -/
 theorem naive_pullback_breaks_subclass_separation :
-    let M : Set (Set Nat) := {s | s.Finite}
-    let r : Set Nat := {n | n % 2 = 0}
-    r ⊆ ⋃₀ {({n} : Set Nat) | n : Nat} ∧ r ∉ M := by
-  refine ⟨fun n _ => Set.mem_sUnion.2 ⟨{n}, ⟨n, rfl⟩, rfl⟩, ?_⟩
-  intro hr
-  have h_inf : Set.Infinite {n : Nat | n % 2 = 0} := by
-    refine Set.infinite_of_injective_forall_mem (f := fun k : Nat => 2 * k) ?_ ?_
-    · intro a b hab; dsimp at hab; omega
-    · intro k; simp
-  exact h_inf hr
+    SatisfiesSubclassSeparation finOmegaModel ∧
+      SatisfiesSubclassSeparation powOmegaModel ∧
+      Function.Injective finToPow ∧
+      (∀ x y : FinOmegaCarrier,
+        finOmegaBase.mem x y ↔ powOmegaBase.mem (finToPow x) (finToPow y)) ∧
+      powOmegaModel.IsClass evenPowClass ∧
+      (∀ x ∈ finToPow ⁻¹' evenPowClass, finOmegaBase.mem x omegaFinSet) ∧
+      (¬ ∃ b : FinOmegaCarrier,
+        ∀ x : FinOmegaCarrier, finOmegaBase.mem x b ↔ x ∈ finToPow ⁻¹' evenPowClass) ∧
+      ¬ SatisfiesSubclassSeparation naivePullbackModel := by
+  have hEvenClass : powOmegaModel.IsClass evenPowClass :=
+    powOmegaModel.def_mem (.memParam (.set evenNatSet))
+  have hBound : ∀ x ∈ finToPow ⁻¹' evenPowClass, finOmegaBase.mem x omegaFinSet := by
+    intro x hx
+    cases x with
+    | atom n => exact Set.mem_univ n
+    | set S => cases hx
+  have hNoSet : ¬ ∃ b : FinOmegaCarrier,
+      ∀ x : FinOmegaCarrier, finOmegaBase.mem x b ↔ x ∈ finToPow ⁻¹' evenPowClass := by
+    rintro ⟨b, hb⟩
+    cases b with
+    | atom m =>
+      have h0 : FinOmegaCarrier.atom 0 ∈ finToPow ⁻¹' evenPowClass := by
+        change (0 : Nat) % 2 = 0
+        omega
+      have hf := (hb (.atom 0)).2 h0
+      cases hf
+    | set S =>
+      have hEq : S.1 = evenNatSet := by
+        ext n
+        exact hb (.atom n)
+      rcases S.2 with hfin | hcofin
+      · rw [hEq] at hfin
+        exact evenNatSet_infinite hfin
+      · rw [hEq] at hcofin
+        exact oddNatSet_infinite hcofin
+  refine ⟨satisfiesSubclassSeparation_finOmegaModel, satisfiesSubclassSeparation_powOmegaModel,
+    finToPow_injective, finToPow_mem_iff, hEvenClass, hBound, hNoSet, ?_⟩
+  intro hSep
+  exact hNoSet (hSep (finToPow ⁻¹' evenPowClass) ⟨evenPowClass, hEvenClass, rfl⟩
+    ⟨omegaFinSet, hBound⟩)
 
 /-! ## Section 2: Large Equivalence-Splitting & Global Choice (`prop:large-equiv-splitting`) -/
 
@@ -309,7 +532,8 @@ structure CardQuasiInverse (M : SkeletalCardBase.{u, v}) : Type (max (u + 1) v) 
 def HomotopyCardSplitting (M : SkeletalCardBase.{u, v}) : Prop :=
   Nonempty (CardQuasiInverse M)
 
-/-- Uniform small-set Global Choice on `Type u`, selecting an element of every nonempty `X : Type u`. -/
+/-- Uniform small-set Global Choice on `Type u`, selecting an element of every nonempty
+`X : Type u`. -/
 def UniformSmallChoice : Prop :=
   Nonempty (∀ X : Type u, Nonempty X → X)
 
@@ -364,7 +588,8 @@ theorem type_equiv_splitting_global_choice :
   refine ⟨skeleton_isSkeleton (Type u), ?_, (card_split_iff_global_choice _).2 hChoice, hChoice⟩
   exact ⟨toSkeletonFunctor (Type u), ⟨(skeletonEquivalence (Type u)).counitIso.symm⟩⟩
 
-/-! ## Section 3: Accessible Pointed Graphs (`APG`), `PSet` Monomorphism, & `quine_atom_outside_wf` -/
+/-! ## Section 3: Accessible Pointed Graphs (`APG`), `PSet` Monomorphism, & `quine_atom_outside_wf`
+-/
 
 /-- A small pointed directed graph `(V, →, root)` modeling an `S`-small coalgebra for the covariant
 powerset functor `P_S` in Aczel's Anti-Foundation semantics (`thm:axis-vii-foundation`). -/
@@ -462,7 +687,8 @@ theorem quine_atom_outside_wf (x : PSet.{u}) :
         cases hzEdge with
         | child_step _ heChild => exact ⟨_, heChild, hzRel⟩
 
-/-- Inductive node-level bisimulation witnessing `PSet.Equiv x y → APG.Bisimilar (psetToAPG x) (psetToAPG y)`. -/
+/-- Inductive node-level bisimulation witnessing
+`PSet.Equiv x y → APG.Bisimilar (psetToAPG x) (psetToAPG y)`. -/
 inductive PSetEquivBisimRel :
     ∀ {x y : PSet.{u}}, (psetToAPG x).V → (psetToAPG y).V → Prop
   | roots {α β : Type u} {A : α → PSet.{u}} {B : β → PSet.{u}}
@@ -716,7 +942,8 @@ theorem boffa_twin_addTorsor :
   refine ⟨⟨inferInstance⟩, Quotient.sound ⟨1, rfl⟩, rfl, fun s hs => ?_⟩
   exact boffa_twin_torsor.2.2.2.2 ⟨s (Quotient.mk twinOrbitSetoid twinAB), hs⟩
 
-/-! ## Section 5: Material Extensionality & `ZFSet` Quotient Gate (`prop:extensionality-truncation`) -/
+/-! ## Section 5: Material Extensionality & `ZFSet` Quotient Gate (`prop:extensionality-truncation`)
+-/
 
 /-- Empty pre-set `∅ : PSet.{0}`. -/
 def psetEmpty0 : PSet.{0} := PSet.mk PEmpty PEmpty.elim
@@ -727,7 +954,8 @@ def psetSingleEmpty : PSet.{0} := PSet.mk PUnit (fun _ => psetEmpty0)
 /-- Multiplicity-two empty pre-set `[∅, ∅]` (`X₂ = sup(2, const_∅)`). -/
 def psetDoubleEmpty : PSet.{0} := PSet.mk Bool (fun _ => psetEmpty0)
 
-/-- Asymmetric two-branch family `false ↦ ∅, true ↦ {∅}` testing branch-swap sensitivity in `PSet`. -/
+/-- Asymmetric two-branch family `false ↦ ∅, true ↦ {∅}` testing branch-swap sensitivity in
+`PSet`. -/
 def twoPointBranch : Bool → PSet.{0}
   | false => psetEmpty0
   | true => psetSingleEmpty
@@ -879,13 +1107,15 @@ theorem layer2_sep_vertical_class_fiber :
   rintro ⟨φ, hφ⟩
   rcases evalClassFormula_natTrivial_finite_or_cofinite φ with hfin | hcofin
   · rw [← hφ] at hfin
-    exact naive_pullback_breaks_subclass_separation.2 hfin
+    exact evenNatSet_infinite hfin
   · rw [← hφ] at hcofin
-    have h_odd_inf : Set.Infinite ({n : Nat | n % 2 = 0}ᶜ) := by
-      refine Set.infinite_of_injective_forall_mem (f := fun k : Nat => 2 * k + 1) ?_ ?_
-      · intro a b hab; dsimp at hab; omega
-      · intro k; change ¬ ((2 * k + 1) % 2 = 0); omega
-    exact h_odd_inf hcofin
+    exact oddNatSet_infinite hcofin
+
+theorem layer2_sep_subclass_separation :
+    SatisfiesSubclassSeparation finOmegaModel ∧
+      ¬ SatisfiesSubclassSeparation naivePullbackModel :=
+  ⟨satisfiesSubclassSeparation_finOmegaModel,
+    naive_pullback_breaks_subclass_separation.2.2.2.2.2.2.2⟩
 
 /-! ### Layer 3: `mathlib4` Typeclass Projections & Derived Sanity Lemmas -/
 
@@ -958,6 +1188,14 @@ info: 'HomotopyCRM.SetsResiduum.naive_pullback_breaks_subclass_separation' depen
 -/
 #guard_msgs in
 #print axioms HomotopyCRM.SetsResiduum.naive_pullback_breaks_subclass_separation
+
+/--
+info: 'HomotopyCRM.SetsResiduum.Checks.layer2_sep_subclass_separation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+-/
+#guard_msgs in
+#print axioms HomotopyCRM.SetsResiduum.Checks.layer2_sep_subclass_separation
 
 /-- info: 'HomotopyCRM.SetsResiduum.Checks.layer2_sep_inWFImage' does not depend on any axioms -/
 #guard_msgs in

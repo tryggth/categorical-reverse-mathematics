@@ -8,29 +8,36 @@ import HomotopyCRM.OrdinalRankCompleteness
 import Mathlib.Data.Fintype.Pigeonhole
 
 /-!
-# Choice Calibration of Internal Coinductive Invertibility Streams (`Theorem 9B`)
+# Choice Calibration of Coinductive Invertibility Streams (`Theorem 9B`)
 
-This module formalizes **Theorem 9B** (Chapter 6, §6.8, Theorem 6.8.1) of the *Categorical Reverse
-Mathematics* monograph, calibrating the internal Dependent Choice (`IDC_ω ≡ DC_ω`, Kihara Rung 0 →
-Rung 1) threshold separating relational coinductive greatest fixed points `E_rel = νΦ` from
-inhabited coinductive witness streams `im(InvStr)` for internal weak `ω`-category / clan models
-`Clan(S_CaTT, E)` (`arXiv:2602.16602`, `arXiv:2610.38698`):
+This module formalizes the combinatorial and set-theoretic Lean witness companion to **Theorem 9B**
+(Chapter 6, §6.8, Theorem 6.8.1). Scope note: rather than internalizing `IDC_ω` directly inside a
+weak `ω`-category / clan model `Clan(S_CaTT, E)` or typing `Free_CaTT(E[𝔸])` (`q_n`, `wt_k`,
+proved in Chapter 6 §6.8 prose), this module mechanizes:
+(a) the combinatorial fresh-atom spine surrogate (`FreshCell`, `FreshComputadStep`,
+    `FreshRootStream`), using ambient `Classical.choice` in `Type u` (`Nat.rec` +
+    `Classical.choose`) for the classical surjectivity direction (`surjective_toRel_of_stepSound`);
+(b) `Classical.choice`-free relational soundness (`pureInvStream_sound_coindStepRel`,
+    `globularInvTree_isCoindEquiv`) and nominal finite-support emptiness (`Nom`); and
+(c) the two-sided exact finite-support lemma (`cattTerm_exact_support`) for untyped finitary syntax
+    trees (`CaTTTerm G`):
 
-1. **Relational Coinduction & Classical `DC_ω` Surjectivity (`Section 1`):**
+1. **Relational Coinduction & Classical Surjectivity of `InvStream` (`Section 1`):**
    - Formalizes step-sound relations `IsStepSound Step R`, reflexive step transitions
      `IsReflStep Step`, the relational greatest fixed point `CoindStepRel Step`, and the witness
      stream type `InvStream Step R x y` with underlying-pair projection `InvStream.toRel`.
-   - Proves constructively (**zero `Classical.choice`**) that every pure witness stream lands inside
-     the relational greatest fixed point (`pureInvStream_sound_coindStepRel` : `im(InvStr) ⊆ E_rel`).
-   - Proves via `Classical.choice` (`DC_ω`) that `InvStream.toRel` is **surjective** onto any
-     step-sound relation `R` (`surjective_toRel_of_stepSound`), yielding
+   - Proves constructively (**zero `Classical.choice`**) that every pure witness stream lands in
+     the relational greatest fixed point
+     (`pureInvStream_sound_coindStepRel` : `im(InvStr) ⊆ E_rel`).
+   - Proves via ambient `Classical.choice` (`Type u` surrogate for `DC_ω`) that `InvStream.toRel`
+     is **surjective** onto any step-sound relation `R` (`surjective_toRel_of_stepSound`), yielding
      `coindStepRel_iff_nonempty_pureInvStream`.
 
 2. **Globular Witness Trees for `GlobularInfSystem` (`Section 2`):**
    - Connects directly to `HomotopyCRM.GlobularInfSystem` and `HomotopyCRM.IsCoindEquiv`
      (`OrdinalRankCompleteness.lean`) via infinite binary cancellation trees `GlobularInvTree f`.
    - Proves constructively (**zero `Classical.choice`**) that `GlobularInvTree f → IsCoindEquiv f`
-     (`globularInvTree_isCoindEquiv`), and via `Classical.choice` that
+     (`globularInvTree_isCoindEquiv`), and via ambient `Classical.choice` that
      `IsCoindEquiv f ↔ Nonempty (GlobularInvTree f)`.
 
 3. **Nominal Finite-Support Algebra, `FreshChain n`, and `FreshStream` in `Nom` (`Section 3`):**
@@ -41,20 +48,25 @@ inhabited coinductive witness streams `im(InvStr)` for internal weak `ω`-catego
      `n + 1`) from infinite fresh streams `FreshStream`, which fail `HasFiniteSupport` universally
      by explicit atom-swapping transpositions (`exists_swap_stabilizer_ne_on_freshStream`).
 
-4. **Fresh-Atom Computad Spine `E[𝔸]` & Theorem 9B (`Section 4`):**
-   - Models the internal fresh-atom computad spine `FreshCell` (`Nodup` atom lists, globally
+4. **Combinatorial Fresh-Atom Spine `FreshCell` & Theorem 9B Surrogate (`Section 4`):**
+   - Models the combinatorial fresh-atom spine `FreshCell` (`Nodup` atom lists, globally
      equivariant at `FreshCell.root = []`) and `Equiv.Perm ℕ`-equivariant step relation
      `FreshComputadStep`, proving step-soundness `isStepSound_freshDiagRel` on `FreshDiagRel`.
-   - Shows in **Theorem 9B** (`theorem9B_choice_calibration_of_coinductive_streams`) that while
-     `Set` (`DC_ω`) surjectively realizes `FreshRootStream` (`Nonempty FreshRootStream`) and every
-     finite depth `n < ω` splits locally in `Nom`, the nominal object of finitely supported witness
-     streams over `FreshCell.root` is **empty** (`IsEmpty {s : FreshRootStream // HasFiniteSupport s}`).
+   - Shows in `theorem9B_choice_calibration_of_coinductive_streams` that while `Type`
+     (`Classical.choice`) realizes `FreshRootStream` (`Nonempty FreshRootStream`) and every finite
+     depth `n < ω` splits locally in `Nom`, the nominal object of finitely supported streams over
+     `FreshCell.root` is **empty** (`IsEmpty {s : FreshRootStream // HasFiniteSupport s}`).
+
+4b. **Untyped Finitary `CaTTTerm` Polygraphs (`Section 4b`):**
+   - Proves the two-sided exact finite-support lemma `cattTerm_exact_support` for untyped finitary
+     trees `CaTTTerm G` (while full typed `Free_CaTT(E[𝔸])` strictification (`q_n`, `wt_k`) is
+     proved in Chapter 6 §6.8 prose).
 
 5. **Mandatory 4-Layer Definition Check Gate (`namespace Checks`):**
    - Certifies Carrier Inhabitation (Layer 1), Bidirectional Separation (Layer 2), Mathlib
      projections & derived boundary lemmas (Layer 3), and `#guard_msgs in #print axioms`
-     confirming exact axiom footprints (including `choice`-free constructive soundness vs.
-     `Classical.choice`-dependent `DC_ω` surjectivity) with `0` `sorry`, `0` `axiom`, `0` `opaque`.
+     confirming exact axiom footprints (including `choice`-free soundness vs.
+     `Classical.choice`-dependent surjectivity) with `0` `sorry`, `0` `axiom`, `0` `opaque`.
 -/
 
 namespace HomotopyCRM
@@ -166,8 +178,8 @@ noncomputable def buildInvStreamOfStepSound {α : Type u} {Step : α → α → 
     rel_mem := fun n ↦ (seq n).2
     step_valid := fun n ↦ nextWitnessPair_step hSound (seq n) }
 
-/-- **Classical `DC_ω` Surjectivity (`E_rel ⊆ im(InvStr)`):** For every step-sound relation `R`,
-the underlying-pair projection `InvStream.toRel` is surjective onto `{xy : α × α // R xy.1 xy.2}`. -/
+/-- **Classical Surjectivity (`E_rel ⊆ im(InvStr)` via ambient `Classical.choice`):** For every
+step-sound relation `R`, `InvStream.toRel` is surjective onto `{xy : α × α // R xy.1 xy.2}`. -/
 theorem surjective_toRel_of_stepSound {α : Type u} {Step : α → α → α → α → Prop}
     {R : α → α → Prop} (hSound : IsStepSound Step R) :
     Function.Surjective (InvStream.toRel (Step := Step) (R := R)) := by
@@ -565,8 +577,8 @@ theorem not_isEquivariant_freshChain_succ (n : ℕ) (c : FreshChain (n + 1)) :
 structure FreshStream : Type where
   /-- Infinite sequence of atoms. -/
   atoms : ℕ → ℕ
-  /-- Freshness condition: `atoms k` avoids all previously chosen atoms `{atoms 0, ..., atoms (k-1)}`.
-  -/
+  /-- Freshness condition: `atoms k` avoids all previously chosen atoms
+  `{atoms 0, ..., atoms (k-1)}`. -/
   fresh : ∀ k j : ℕ, j < k → atoms k ≠ atoms j
 
 /-- Every `FreshStream` is an injective sequence of atoms. -/
@@ -654,10 +666,11 @@ theorem isEmpty_finitelySupported_freshStream :
     IsEmpty {ξ : FreshStream // HasFiniteSupport ξ} :=
   ⟨fun ⟨ξ, hξ⟩ ↦ not_hasFiniteSupport_freshStream ξ hξ⟩
 
-/-! ## Section 4: Fresh-Atom Computad Spine `E[𝔸]` & Unified Theorem 9B -/
+/-! ## Section 4: Combinatorial Fresh-Atom Spine Surrogate & Theorem 9B Witness -/
 
-/-- Cell spine in the internal fresh-atom computad `Free_CaTT(E[𝔸])`: a finite duplicate-free
-list of atoms encoding the accumulated cancellation context. -/
+/-- Combinatorial fresh-atom spine modeling an atom context along a cancellation branch (surrogate
+for cells of `Free_CaTT(E[𝔸])`; full typed `q_n` / `wt_k` strictification is proved in Ch. 6
+§6.8 prose). -/
 @[ext]
 structure FreshCell : Type where
   /-- Accumulated finite sequence of fresh atoms along the cancellation branch. -/
@@ -705,7 +718,8 @@ private theorem list_map_eq_self_of_forall {α : Type*} (f : α → α) :
   | [], _ => rfl
   | hd :: tl, h => by
     have hhd : f hd = hd := h hd List.mem_cons_self
-    have htl : tl.map f = tl := list_map_eq_self_of_forall f tl (fun a ha ↦ h a (List.mem_cons_of_mem hd ha))
+    have htl : tl.map f = tl :=
+      list_map_eq_self_of_forall f tl (fun a ha ↦ h a (List.mem_cons_of_mem hd ha))
     simp [hhd, htl]
 
 /-- Every `FreshCell` has finite support `c.spine.toFinset` in `Nom`. -/
@@ -725,8 +739,9 @@ theorem not_isEquivariant_freshCell_singleton (a : ℕ) :
   have hfix := congrArg FreshCell.spine (hEq (Equiv.swap a (a + 1)) hmem)
   simp [FreshCell.singleton, Equiv.swap_apply_left] at hfix
 
-/-- Equivariant 1-step fresh cancellation transition `FreshComputadStep` on `FreshCell`: advances
-the diagonal pair `(x, x)` to `(p, p)` by appending a fresh atom `a ∉ x.spine`. -/
+/-- Combinatorial `Equiv.Perm ℕ`-equivariant 1-step transition `FreshComputadStep` on `FreshCell`:
+advances `(x, x)` to `(p, p)` by appending a fresh atom `a ∉ x.spine` (combinatorial spine
+surrogate for Chapter 6 §6.8's internal computad step). -/
 def FreshComputadStep (x y p q : FreshCell) : Prop :=
   x = y ∧ p = q ∧ ∃ a : ℕ, a ∉ x.spine ∧ p.spine = x.spine ++ [a]
 
@@ -773,7 +788,8 @@ theorem isStepSound_freshDiagRel : IsStepSound FreshComputadStep FreshDiagRel :=
   let p : FreshCell := ⟨x.spine ++ [a], hnodup⟩
   exact ⟨p, p, ⟨rfl, rfl, a, ha_not, rfl⟩, rfl⟩
 
-/-- Internal coinductive witness streams rooted at `FreshCell.root` over `E[𝔸]`. -/
+/-- Combinatorial coinductive witness streams rooted at `FreshCell.root` (spine surrogate for
+internal streams over `E[𝔸]`). -/
 abbrev FreshRootStream :=
   InvStream FreshComputadStep FreshDiagRel FreshCell.root FreshCell.root
 
@@ -878,15 +894,18 @@ theorem isEmpty_nominal_freshRootStream :
     IsEmpty {s : FreshRootStream // HasFiniteSupport s} :=
   ⟨fun ⟨s, hs⟩ ↦ not_hasFiniteSupport_freshRootStream s hs⟩
 
-/-- **Theorem 9B (`Choice Calibration of Internal Coinductive Invertibility Streams`, Ch. 6 §6.8):**
-1. **Classical `DC_ω` Adequacy (`Rung ≥ 1`):** For any step-sound relation, `InvStream.toRel` is
-   surjective, and `FreshRootStream` is inhabited over `FreshCell.root`.
-2. **Equivariant Fixed-Point Inhabitation (`Nom`, `Rung 0`):** `FreshCell.root` is globally
-   equivariant inside the step-sound diagonal fixed point `FreshDiagRel`.
+/-- **Theorem 9B Combinatorial Surrogate (`Ch. 6 §6.8`):**
+Mechanizes the combinatorial fresh-atom spine counterpart of Theorem `thm:coinductive-stream-choice`
+(while internal `IDC_ω` in `Clan(S_CaTT, E)` and typed `Free_CaTT(E[𝔸])` strictification `q_n`,
+`wt_k` are proved in Ch. 6 §6.8 prose):
+1. **Ambient Classical Adequacy (`Classical.choice` in `Type u`):** For `FreshComputadStep`,
+   `InvStream.toRel` is surjective and `FreshRootStream` is inhabited over `FreshCell.root`.
+2. **Equivariant Fixed-Point Inhabitation (`Nom`):** `FreshCell.root` is globally equivariant
+   inside the step-sound diagonal fixed point `FreshDiagRel`.
 3. **Finite-Depth Nominal Splitting (`n < ω`):** Every finite truncation `FreshChain n` splits
    locally over `Finset.range n`.
-4. **Global Nominal Stream Failure (`E[𝔸]`):** No `FreshRootStream` has finite support, so
-   `InvStr_1(Free_CaTT(E[𝔸]))_root = ∅` while `root ∈ Γ(E_rel,1)`. -/
+4. **Global Nominal Stream Failure (`FreshRootStream`):** No `FreshRootStream` has finite support,
+   so `{s : FreshRootStream // HasFiniteSupport s}` is empty (`IsEmpty`). -/
 theorem theorem9B_choice_calibration_of_coinductive_streams :
     Function.Surjective
         (InvStream.toRel (Step := FreshComputadStep) (R := FreshDiagRel)) ∧
@@ -902,7 +921,7 @@ theorem theorem9B_choice_calibration_of_coinductive_streams :
   · exact fun n ↦ ⟨canonicalFreshChain n, supports_canonicalFreshChain_range n⟩
   · exact isEmpty_nominal_freshRootStream
 
-/-! ## Section 4b: Finitary `CaTTTerm` Polygraphs & Two-Sided Polygraphic Support Lemma -/
+/-! ## Section 4b: Untyped Finitary `CaTTTerm` Trees & Two-Sided Polygraphic Support Lemma -/
 
 section PolygraphicSupport
 
@@ -961,9 +980,10 @@ instance instExactNominalGenFreshCell : ExactNominalGen FreshCell where
       Equiv.coe_toEmbedding]
   supports_iff_genSupp_subset S c := supports_freshCell_iff S c
 
-/-- Finitary inductive `CaTT` syntax tree over a generator cell alphabet `G`: either a generator
-cell `.gen g` or an `arity`-ary coherence operation `.coh ruleId arity args` indexed by the finite
-telescope `Fin arity`. -/
+/-- Untyped finitary inductive `CaTT` syntax tree over a generator cell alphabet `G`: either a
+generator cell `.gen g` or an `arity`-ary node `.coh ruleId arity args` indexed by `Fin arity`
+(syntactic finite-support core behind `lem:polygraphic-support`; typed `Free_CaTT` strictification
+`q_n`, `wt_k` lives in Ch. 6 §6.8 prose). -/
 inductive CaTTTerm (G : Type u) : Type u
   | gen (g : G) : CaTTTerm G
   | coh (ruleId : ℕ) (arity : ℕ) (args : Fin arity → CaTTTerm G) : CaTTTerm G
@@ -1098,9 +1118,9 @@ private theorem supports_cattTerm_iff_termSupp {G : Type u} [ExactNominalGen G]
         (Finset.subset_biUnion_of_mem (fun j : Fin n ↦ (args j).termSupp) (Finset.mem_univ i))
         hsub) σ hσ
 
-/-- **Polygraphic Support Lemma (`lem:polygraphic-support`):** A finite atom set `S` supports a
-finitary `CaTT`-term `t` iff `S` contains the union `⋃ g ∈ Gen(t), supp(g)` of its generator
-supports. -/
+/-- **Untyped Polygraphic Support Lemma (`lem:polygraphic-support` witness):** A finite atom set
+`S` supports an untyped finitary syntax tree `t : CaTTTerm G` iff `S` contains the union
+`⋃ g ∈ Gen(t), supp(g)` of its generator supports. -/
 theorem cattTerm_exact_support {G : Type u} [DecidableEq G] [ExactNominalGen G]
     (S : Finset ℕ) (t : CaTTTerm G) :
     Supports S t ↔ t.genFinset.biUnion ExactNominalGen.genSupp ⊆ S := by

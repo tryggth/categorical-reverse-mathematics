@@ -47,17 +47,20 @@ Gepner–Heine `arXiv:2603.09903`).
    - `CoindWalkState` models the gaunt walking coinductive equivalence `E_coind`, separating
      `IsCoindEquiv` from `IsEquiv` outside `RankedInfCat`.
 
-4. **Proposition 11A — Inductive Lali Split-Idempotent Ceiling `max K_x K_y + 2`:**
+4. **Proposition 11A — Cell-Height Stabilization Above `max K_x K_y + 2`:**
    - Formalizes coalgebraic `GlobularSimulation`, `LaliRetraction`, grounded higher cell boundaries
      `HomBoundary r t`, and local `(K, K)`-cell height `HasHomCellHeight K t`.
-   - **Proposition 11A Part 1 (`prop11A_lali_stabilization_above_ceiling`):** Above ambient
-     dimension `max K_x K_y + 2` (`m = r + 3`, `max K_x K_y ≤ r`), all grounded ambient `m`-cell
-     spaces are contractible, every ambient `m`-cell satisfies `IsEquiv`, and the Lali
-     split-idempotent endofunctor `E = L ∘ R` induces a bijection on ambient `m`-cells.
-   - **Proposition 11A Part 2 (`prop11A_ceiling_sharp_at_max_add_two`):** On
-     `JoinSuspState.joinCone K` (`{a} ⋆ Σ^{K+1}(S⁰)`), every hom-state has cell height `K`
-     (`max K_x K_y + 2 = K + 2`), yet `E = const_a` fails to be bijective on ambient `(K + 2)`-cells
-     (`Empty → Unit`) for **every** `K : ℕ`.
+   - **General Cell-Height Stabilization (`globularSim_stabilization_above_height`) & Lali
+     Specialization (`prop11A_lali_stabilization_above_ceiling`):** For *any* `GlobularSimulation`
+     preserving finite local heights (`max K_x K_y ≤ r`), all grounded ambient `m`-cell spaces
+     (`m = r + 3 > max K_x K_y + 2`) are contractible, every ambient `m`-cell satisfies `IsEquiv`,
+     and `mapHomCell` is `Function.Bijective` between contractible types; `prop11A` specializes this
+     to `lali.endoSim`. Gray-enriched lax-counit coherence and Proposition `prop:lali-ceiling`(2)
+     (Cartesian-vs.-Gray naturality obstruction) are proved in Chapter 5 prose rather than in Lean.
+   - **Sharpness at `K + 2` (`prop11A_ceiling_sharp_at_max_add_two`):** On
+     `JoinSuspState.joinCone K` (`{a} ⋆ Σ^{K+1}(S⁰)`), every hom-state has cell height `K`, yet
+     `E = const_a` fails to be bijective on ambient `(K + 2)`-cells (`Empty → Unit`) for **every**
+     `K : ℕ`.
 
 5. **Mandatory 4-Layer Definition Check Gate (`namespace Checks`):**
    - Verifies Inhabitation (Layer 1), Bidirectional Separation across all rank thresholds,
@@ -911,7 +914,7 @@ theorem coindArrow_not_isEquiv : ¬ IsEquiv coindArrow := by
         exact ihη ⟨rfl, rfl⟩
   exact fun hf ↦ hinv coindArrow hf ⟨rfl, rfl⟩
 
-/-! ## Section 4: Proposition 11A — Inductive Lali Split-Idempotent Ceiling `max K_x K_y + 2` -/
+/-! ## Section 4: Proposition 11A — Cell-Height Stabilization Above `max K_x K_y + 2` -/
 
 /-- A coalgebraic globular functor/simulation between `GlobularInfSystem` state spaces `S₁` and
 `S₂`, witnessed by `Rel : S₁ → S₂ → Type (max u₁ u₂)` acting on `0`-cells and inductively on all
@@ -952,10 +955,13 @@ abbrev GlobularSimulation.comp {S₁ S₂ S₃ : Type u}
     ⟨hom (F.mapObj φF x) (F.mapObj φF y), F.mapHom φF x y,
       G.mapHom φG (F.mapObj φF x) (F.mapObj φF y)⟩
 
-/-- A Lali (*left-adjoint-left-inverse*) split-idempotent retraction `l : aState ⇄ dState : r`
-inside a `GlobularInfSystem S`, splitting the idempotent globular endofunctor `E = L ∘ R` on
-`dState` with a directed counit `1`-morphism `counit x : E(x) → x` that is an inductive equivalence
-on the retract image `L(u)`. -/
+/-- Split-retract data `(L, R)` between `aState` and `dState` inside a `GlobularInfSystem S`,
+carrying `r (l u) = u` on `0`-cells and a directed `1`-cell counit `ε_x : E(x) → x` (`E = L ∘ R`)
+that is an inductive equivalence on `L(u)`. Notice that Gray-enriched lax-counit coherence and
+Proposition `prop:lali-ceiling`(2) (the Cartesian-vs.-Gray naturality obstruction) live in the
+monograph prose rather than as fields in `LaliRetraction`, while
+`prop11A_lali_stabilization_above_ceiling` depends only on `globularSim_stabilization_above_height`.
+-/
 structure LaliRetraction {S : Type u} [GlobularInfSystem S] (aState dState : S) where
   /-- Left inclusion simulation `l : aState → dState`. -/
   L : GlobularSimulation S S
@@ -1144,31 +1150,35 @@ private theorem bijective_of_contractible_types {α : Type u₁} {β : Type u₂
   ⟨fun a₁ a₂ _ ↦ Subsingleton.elim a₁ a₂,
     fun b ↦ let ⟨a⟩ := ‹Nonempty α›; ⟨a, Subsingleton.elim (f a) b⟩⟩
 
-/-- **Proposition 11A Part 1 — Inductive Lali Split-Idempotent Stabilization Above
-`max K_x K_y + 2` (`prop11A_lali_stabilization_above_ceiling`):**
-Let `lali : LaliRetraction aState dState` split `E = L ∘ R` on `dState : S`, and suppose
-`x, y : Obj dState` satisfy `HasHomCellHeight K_x (hom x y)` and
-`HasHomCellHeight K_y (hom (E x) (E y))`. For every ambient cell dimension `m > max K_x K_y + 2`
-(indexed as `m = r + 3` with `max K_x K_y ≤ r`, i.e., `B : HomBoundary (r + 1) (hom x y)`):
-1. Both ambient `m`-cell hom-states (`hom Φ Ψ` and `hom (E Φ) (E Ψ)`) satisfy `IsContractibleState`,
-2. Every ambient `m`-cell `α : Obj (hom Φ Ψ)` and `β : Obj (hom (E Φ) (E Ψ))` satisfies `IsEquiv`,
-3. The map `mapHomCell lali.endoSim _ B` induced by `E` on ambient `m`-cells is
-   `Function.Bijective`.
--/
-theorem prop11A_lali_stabilization_above_ceiling {S : Type u} [GlobularInfSystem S]
-    {aState dState : S} (lali : LaliRetraction aState dState)
-    {x y : Obj dState} {K_x K_y r : ℕ}
+/-- **General Globular Simulation Cell-Height Stabilization
+(`globularSim_stabilization_above_height`):**
+For *any* `GlobularSimulation S₁ S₂` `E`, state correspondence `φ : E.Rel s₁ s₂`, and `0`-cells
+`x, y : Obj s₁` satisfying `HasHomCellHeight K_x (hom x y)` and
+`HasHomCellHeight K_y (hom (E.mapObj φ x) (E.mapObj φ y))`, at every ambient cell dimension
+`m = r + 3 > max K_x K_y + 2` (`max K_x K_y ≤ r`, `B : HomBoundary (r + 1) (hom x y)`):
+1. Both ambient `m`-cell hom-states (`hom Φ Ψ` and `hom (E Φ) (E Ψ)`) satisfy
+   `IsContractibleState`,
+2. Every ambient `m`-cell in source and target satisfies `IsEquiv`,
+3. `mapHomCell E (E.mapHom φ x y) B` is `Function.Bijective` between contractible types.
+Lean mechanizes this cell-height threshold for any globular simulation preserving finite local
+heights (plus the sharp `m = K + 2` boundary witness `JoinSuspState.joinCone K`); Gray-enriched
+lax-counit coherence and Proposition `prop:lali-ceiling`(2) (the Cartesian-vs.-Gray naturality
+obstruction) are proved in Chapter 5 prose rather than in Lean. -/
+theorem globularSim_stabilization_above_height {S₁ : Type u₁} {S₂ : Type u₂}
+    [GlobularInfSystem S₁] [GlobularInfSystem S₂]
+    (E : GlobularSimulation S₁ S₂) {s₁ : S₁} {s₂ : S₂} (φ : E.Rel s₁ s₂)
+    {x y : Obj s₁} {K_x K_y r : ℕ}
     (hKx : HasHomCellHeight K_x (hom x y))
-    (hKy : HasHomCellHeight K_y (hom (lali.endoObj x) (lali.endoObj y)))
+    (hKy : HasHomCellHeight K_y (hom (E.mapObj φ x) (E.mapObj φ y)))
     (hr : max K_x K_y ≤ r)
     (B : HomBoundary (r + 1) (hom x y)) :
-    let φxy := lali.endoSim.mapHom lali.endoRel x y
-    let EB := mapHomBoundary lali.endoSim φxy B
+    let φxy := E.mapHom φ x y
+    let EB := mapHomBoundary E φxy B
     IsContractibleState (hom (homBoundarySrc B) (homBoundaryTgt B)) ∧
       IsContractibleState (hom (homBoundarySrc EB) (homBoundaryTgt EB)) ∧
       (∀ α : Obj (hom (homBoundarySrc B) (homBoundaryTgt B)), IsEquiv α) ∧
       (∀ β : Obj (hom (homBoundarySrc EB) (homBoundaryTgt EB)), IsEquiv β) ∧
-      Function.Bijective (mapHomCell lali.endoSim φxy B) := by
+      Function.Bijective (mapHomCell E φxy B) := by
   intro φxy EB
   have hpar₁ : IsMinusOneTruncated (homBoundaryParent B) :=
     hKx.homBoundaryParent_minusOne_of_le (le_trans (le_max_left K_x K_y) hr) B
@@ -1183,7 +1193,29 @@ theorem prop11A_lali_stabilization_above_ceiling {S : Type u} [GlobularInfSystem
   haveI : Nonempty (Obj (hom (homBoundarySrc EB) (homBoundaryTgt EB))) := hc₂.nonempty_obj
   haveI : Subsingleton (Obj (hom (homBoundarySrc EB) (homBoundaryTgt EB))) := hc₂.subsingleton_obj
   exact ⟨hc₁, hc₂, hpar₁.isEquiv_mor, hpar₂.isEquiv_mor,
-    bijective_of_contractible_types (mapHomCell lali.endoSim φxy B)⟩
+    bijective_of_contractible_types (mapHomCell E φxy B)⟩
+
+/-- **Proposition 11A Cell-Height Specialization (`prop11A_lali_stabilization_above_ceiling`):**
+Two-line specialization of `globularSim_stabilization_above_height` to `E := lali.endoSim`
+(`L ∘ R`) and `φ := lali.endoRel` (without invoking the Lali counit). Together with
+`prop11A_ceiling_sharp_at_max_add_two` on `JoinSuspState.joinCone K`, this mechanizes the
+dimensional cell-height ceiling `max K_x K_y + 2` in Lean, while Gray-enriched lax-counit
+coherence and Proposition `prop:lali-ceiling`(2) live in Chapter 5 prose. -/
+theorem prop11A_lali_stabilization_above_ceiling {S : Type u} [GlobularInfSystem S]
+    {aState dState : S} (lali : LaliRetraction aState dState)
+    {x y : Obj dState} {K_x K_y r : ℕ}
+    (hKx : HasHomCellHeight K_x (hom x y))
+    (hKy : HasHomCellHeight K_y (hom (lali.endoObj x) (lali.endoObj y)))
+    (hr : max K_x K_y ≤ r)
+    (B : HomBoundary (r + 1) (hom x y)) :
+    let φxy := lali.endoSim.mapHom lali.endoRel x y
+    let EB := mapHomBoundary lali.endoSim φxy B
+    IsContractibleState (hom (homBoundarySrc B) (homBoundaryTgt B)) ∧
+      IsContractibleState (hom (homBoundarySrc EB) (homBoundaryTgt EB)) ∧
+      (∀ α : Obj (hom (homBoundarySrc B) (homBoundaryTgt B)), IsEquiv α) ∧
+      (∀ β : Obj (hom (homBoundarySrc EB) (homBoundaryTgt EB)), IsEquiv β) ∧
+      Function.Bijective (mapHomCell lali.endoSim φxy B) :=
+  globularSim_stabilization_above_height lali.endoSim lali.endoRel hKx hKy hr B
 
 /-- Explicit `Equiv` promotion of `mapHomCell lali.endoSim` on ambient `m`-cells above
 `max K_x K_y + 2`. -/
@@ -1726,6 +1758,10 @@ set_option linter.hashCommand false
 /-- info: 'HomotopyCRM.apexArrow_not_isCoindEquiv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.apexArrow_not_isCoindEquiv
+
+/-- info: 'HomotopyCRM.globularSim_stabilization_above_height' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.globularSim_stabilization_above_height
 
 /-- info: 'HomotopyCRM.prop11A_lali_stabilization_above_ceiling' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
