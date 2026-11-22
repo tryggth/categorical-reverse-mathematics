@@ -42,3 +42,11 @@
 | OPUS-05 | R9 | DONE (Wave R9) | Fix Ch. 4 `thm:quantitative-conservation` $\mathcal{O}(\partial\Delta^2) \not\cong \mathcal{O}(S^1)$ (`L1516, L1531`): link $6$-element Alexandroff locale $P$ to $S^1$ via McCord's weak homotopy equivalence `[McCord66]` (`Theorem 1`) inducing $H^1(\mathbf{Sh}(\mathcal{O}(\partial\Delta^2)); \underline{\mathbb{Z}}) \cong H^1(S^1; \mathbb{Z}) \cong \mathbb{Z}$. |
 | OPUS-06 | R9 | DONE (Wave R9) | Fix Ch. 7 slips (`docs/ch07_sets_residuum.tex` `L22` & `L175/179`): include Separation in Zermelo set theory $\mathsf{Z}$ and replace `= V_{\omega+\omega}` with `\subsetneq V_{\omega+\omega} = \bigcup_n \mathcal{P}^n(V_\omega)`. |
 | OPUS-07 | R9 | DONE (Wave R9) | Align prose vs. Lean (`DoctrinalFibration` non-cloven `Functor.IsFibered`, mutually inverse `mateEquiv`, literal `\leanwitness` at `sec:finset-infinity`, `prop:lali-ceiling(1)` filler contractibility vs. Gray Lali height preservation, `OrientedGradedPoset` non-covering superclass & `instFintypeCubicalAmalgam`) and fix `/` & `\texttt` line breaks in `scripts/render_technical_claims_pdf.py` (`0` overfulls). |
+
+---
+
+## Section 3: Wave R10 Editorial Scalpel Pass (`R10-PROSE`)
+
+| ID | Wave | Status | Target Scope & Concrete Fix |
+| :--- | :---: | :---: | :--- |
+| R10-PROSE | R10 | DONE (Wave R10) | De-congested all 22 scanner-verified fortress sentences across Preface, Chs. 1–7, Ch. 9, and Epilogue (`docs/categorical_reverse_mathematics.tex`, `docs/ch07_sets_residuum.tex`) with zero formal-statement regressions; updated §1.2 heading (`L620`) to match rebuilt doctrinal comparisons; smoothed all 4 zero-prose Ch. 8 section openings (§8.2–§8.5) and 3 abrupt `< 25`-word openings (§3.2, §3.3, §4.3); synced blueprint, claims catalog/XLSX/PDF, and curriculum for Release `v2.0`. |
