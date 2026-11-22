@@ -1,3 +1,4 @@
+HomotopyCRM.Checks.dualInt_frobeniusLift_idem
 HomotopyCRM.Checks.dualInt_nygaard_separation
 HomotopyCRM.DeltaRing2.toDeltaStructure
 HomotopyCRM.DoctrinalFibration
@@ -61,6 +62,7 @@ HomotopyCRM.globularInvTree_isCoindEquiv
 HomotopyCRM.globularSim_stabilization_above_height
 HomotopyCRM.hasCubicalNDAP_iff_isIntersective
 HomotopyCRM.homQ_card_eq
+HomotopyCRM.initFixedPointCoalgebraUnder
 HomotopyCRM.inquisitor_impossibility_casuistry
 HomotopyCRM.instAddTorsorEvenFinsetTOdd
 HomotopyCRM.instDeltaRing2Int
@@ -143,3 +145,4 @@ HomotopyCRM.theoremB_perfectionSliceAlg_isInitial
 HomotopyCRM.twoGroupCat_iac_and_not_ac
 HomotopyCRM.vPoset_localic_not_proj1
 HomotopyCRM.zHatToProfiniteLasso_neg_one_not_mem_range_nat
+HomotopyCRM.ι_comp_shiftIso_hom

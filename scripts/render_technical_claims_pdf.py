@@ -57,6 +57,8 @@ def escape_inline_code(code: str) -> str:
             out.append("\\ensuremath{\\mathbb{Z}}")
         elif ch == "ε":
             out.append("\\ensuremath{\\varepsilon}")
+        elif ch == "ι":
+            out.append("\\ensuremath{\\iota}")
         elif ch == "²":
             out.append("\\textsuperscript{2}")
         elif ch == "₁":

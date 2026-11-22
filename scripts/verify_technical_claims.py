@@ -10,7 +10,7 @@ and HomotopyCRM/*.lean against docs/technical_claims_foundations.md, enforcing:
 3. All 13 manuscript xltabular/tabularx tables mapped to valid catalog claim IDs in Part IV.
 4. Canonical grounding categories, valid coordinate axes, non-empty fields, zero placeholders,
    and Summary Ledger (§7) arithmetic consistency.
-5. 100% coverage of blueprint/lean_decls (140 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
+5. 100% coverage of blueprint/lean_decls (148 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
    and 100% valid literature citation keys against references.bib with anti-hallucination guards.
 """
 
@@ -267,7 +267,7 @@ def get_available_lean_decls() -> Tuple[Set[str], Set[str]]:
                 bp_decls.add(line)
 
     lean_decls = set(bp_decls)
-    decl_pat = re.compile(r"^(?:@\[[^\]]*\]\s*)*(?:private\s+|protected\s+)?(?:noncomputable\s+)?(?:def|theorem|lemma|instance|class|structure|inductive|abbrev)\s+([A-Za-z0-9_.']+)")
+    decl_pat = re.compile(r"^(?:@\[[^\]]*\]\s*)*(?:private\s+|protected\s+)?(?:noncomputable\s+)?(?:def|theorem|lemma|instance|class|structure|inductive|abbrev)\s+([\w.']+)")
     ns_pat = re.compile(r"^namespace\s+([A-Za-z0-9_.]+)")
     sec_pat = re.compile(r"^section(?:\s+([A-Za-z0-9_.]+))?\s*$")
     end_pat = re.compile(r"^end(?:\s+([A-Za-z0-9_.]+))?\s*$")
@@ -441,7 +441,7 @@ def _check_citations_and_lean(
         if key not in all_bib_keys:
             errors.append(f"{cid}: unknown citation key [{key}] (not in references.bib / tex).")
 
-    lean_refs = re.findall(r"(?:HomotopyCRM|Checks)\.[A-Za-z0-9_.']+", evidence)
+    lean_refs = re.findall(r"(?:HomotopyCRM|Checks)\.[\w.']+", evidence)
     for decl in lean_refs:
         if decl not in available_decls:
             errors.append(f"{cid}: unknown Lean declaration '{decl}'.")
@@ -611,7 +611,7 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
                 errors.append(f"{cid}: grounding 'Proved by Lean code' lacks HomotopyCRM.* declaration in evidence.")
 
     # 5. Validate 100% coverage of blueprint/lean_decls in MD_PATH
-    missing_bp = sorted(blueprint_decls - set(re.findall(r"(?:HomotopyCRM|Checks)\.[A-Za-z0-9_.']+", md_text)))
+    missing_bp = sorted(blueprint_decls - set(re.findall(r"(?:HomotopyCRM|Checks)\.[\w.']+", md_text)))
     if missing_bp:
         errors.append(f"blueprint/lean_decls declarations missing from catalog ({len(missing_bp)}): {missing_bp[:5]}")
 

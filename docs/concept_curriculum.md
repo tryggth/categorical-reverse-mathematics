@@ -4,7 +4,7 @@
 > **Monograph:** *Categorical Reverse Mathematics — Volume I: Obstructions, Residuums, and the Geometry of Necessity*  
 > **Author:** James F. Walters, *Port Townsend, Washington*  
 > **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
-> **Source:** `docs/categorical_reverse_mathematics.tex` (Lines 603–3191) & `docs/ch07_sets_residuum.tex` (Lines 1–392, included at Line 2659)  
+> **Source:** `docs/categorical_reverse_mathematics.tex` (Lines 603–3193) & `docs/ch07_sets_residuum.tex` (Lines 1–392, included at Line 2661)  
 > **Text Boundary Constraint:** Strictly Chapter 1 onward (`docs/categorical_reverse_mathematics.tex` Line 603+). Zero concepts from frontmatter/preface/glossary (Lines 1–602).  
 
 ---
@@ -24,7 +24,7 @@ This document establishes the definitive, pedagogically ordered curriculum of **
    - **Axis II (Constructive Logic):** Geometry of the subobject classifier $\Omega$ (De Morgan Stone lattices, Gödel--Dummett linearity, Boolean collapse $\Omega \simeq 1+1$, and $\mathsf{CZF}$ $\Omega^X / 2^X$ separation).
    - **Axis III (Arithmetic Infinity):** Finitary vs. infinitary doctrines, dynamical lassos $\widehat{\mathbb{N}}_{\mathrm{lasso}}$, Dedekind finiteness vs. Kuratowski infinity, and the biproduct-tail cokernel $\prod_I A / \bigoplus_I A$.
    - **Axis IV (Characteristic / $p$-Torsion / Directions):** Joyal $\delta$-rings, $2$-torsion lift torsors, relative slice perfection $A_{\mathrm{perf}}$, and oriented cubical amalgamation.
-   - **Axis V (Directional Invertibility / Homotopy / Moduli):** 4-tier $(\infty,\infty)$-ladder, categorical spectra $\mathrm{CatSp}$, and light condensed smooth-end moduli $\mathcal{Q}_{E_0} = 2^\mathbb{N} \sslash E_0$.
+   - **Axis V (Directional Invertibility / Homotopy / Moduli):** 4-tier $(\infty,\infty)$-ladder, categorical spectra $\mathrm{CatSp}$, and light condensed Cantor tail moduli $\mathcal{Q}_{E_0} = 2^\mathbb{N} \sslash E_0$.
    - **Axis VI (Quotient-Image Descent / Replacement):** Small-indexed image descent $\kappa_{\mathrm{Rep}} : \mathrm{im}(f) \in \mathcal{S}$ in $(\mathcal{C}, \mathcal{S})$, separating $\mathsf{ETCS} \simeq \mathsf{Mac}$ and $\mathsf{ZC}$ ($V_{\omega+\omega}$ colimit escape & $\boldsymbol{\Sigma}^0_{\omega+1}$ Borel Determinacy $\mathsf{ZC}$-unprovability) from $\mathsf{ZFC}$.
    - **Axis VII (Universe Fixed Points & Hereditary Truncation):** Well-founded vs. unrestricted coalgebra-doctrine comparison $\mathbf{Coalg}_{\mathrm{wf}}(\mathcal{P}_{\mathcal{S}}) \hookrightarrow \mathbf{Coalg}(\mathcal{P}_{\mathcal{S}})$ inducing strict $\kappa_{\mathrm{Reg}} : \nu^{\mathrm{wf}}\mathcal{P}_{\mathcal{S}} \simeq \mu\mathcal{P}_{\mathcal{S}} \hookrightarrow \nu\mathcal{P}_{\mathcal{S}}$ ($V_{\mathsf{ZF}}$ vs. Aczel $V_{\mathsf{AFA}}$, Boffa Quine torsors) and Gylterud's hereditary fiberwise $(-1)$-truncation $V_0 \hookrightarrow \mu\mathcal{P}_{\mathrm{Anima}}$.
 4. **The Five Anchor Witnesses:** Every high-altitude abstraction across the monograph is anchored by five concrete mathematical witnesses:
@@ -1057,7 +1057,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **Intuitive Motivation & Concrete Example:**
   In classical measure theory, non-measurable sets (like the Vitali set) arise from quotienting by $E_0$. In operator algebras, non-smooth quotient spaces are represented by non-commutative $C^*$-algebras.
 - **Direct Role in CRM Progression:**
-  Governs **Anchor Witness V**: the light condensed smooth-end quotient $\mathcal{Q}_{E_0} = 2^\mathbb{N} \sslash E_0$ (Concept C091, C092), connecting Borel complexity to exotic $\mathbb{R}^4$ smoothings via the **Double-Solvent Theorem**.
+  Governs **Anchor Witness V**: the light condensed Cantor tail quotient $\mathcal{Q}_{E_0} = 2^\mathbb{N} \sslash E_0$ (Concept C091, C092), proved independently and bridged by Borel coding to radial exotic $\mathbb{R}^4$ announcements via the **Double-Solvent Theorem**.
 
 
 ### Module 1G: Class-Set Foundations, Coalgebras & Univalent Truncation (P51–P55)
@@ -1203,51 +1203,51 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 65 | **Iterated Geometric Morphisms and Tower Conservation** | Chapter 4, Section 4.1 | `1601` | Chapter 4 |
 | 66 | **Compact Manifolds ($=_{\mathbb{N}}$) vs. Radial Exotic $\mathbb{R}^4$'s ($E_0$ Tail Equivalence)** | Chapter 4, Section 5.1 | `1613` | Chapter 4 |
 | 67 | **The Double-Solvent Theorem for the $E_0$ Tail Quotient** | Chapter 4, Section 5.2, Thm 4.5.1 (`thm:double-solvent-r4`) & Rem 4.5.2 (`rem:exotic-r4-application`) | `1627` | Chapter 4 |
-| 68 | **Noncommutative $C^*$-Modulus $\mathrm{UHF}(2^\infty)$ and Connes Groupoid $\mathcal{G}_{E_0}$** | Chapter 4, Section 5.3 | `1678` | Chapter 4 |
-| 69 | **Pauli-$Z$ Parity Grading ($E_0^{\mathrm{even}}$) and Anchor Witness $\mathcal{T}_{\mathrm{odd}}$** | Chapter 4, Section 5.3, Rem 4.5.3 (`rem:pauli-z-parity`) | `1702` | Chapter 4 |
-| 70 | **Five-Rung CRM--Borel Complexity Dictionary** | Chapter 4, Section 5.4, Table 4.1 | `1719` | Chapter 4 |
-| 71 | **$(\infty, 1)$-Topos $\mathcal{X}$ and Truncation Stratification** | Chapter 5, §5.1, Line 1718 | `1772` | Chapter 5 |
-| 72 | **Bigraded Higher Choice ($\mathrm{AC}_{n, m}$)** | Chapter 5, §5.2, Definition 5.2.1 (`def:bigraded-choice`), Line 1742 | `1796` | Chapter 5 |
-| 73 | **Degeneracy of Un-Truncated Choice** | Chapter 5, §5.2, Proposition 5.2.2 (`prop:untruncated-degeneracy`), Line 1750 | `1804` | Chapter 5 |
-| 74 | **Higher Choice Spine and Slice Classifying-Space Models** | Chapter 5, §5.2, Paragraph, Line 1760 | `1814` | Chapter 5 |
-| 75 | **Global Infinity-Choice Residuum** | Chapter 5, §5.2, Theorem 5.2.3 (`thm:global-inf-choice`), Line 1780 | `1834` | Chapter 5 |
-| 76 | **Postnikov Factorization, $0$-Truncated Effacement, and Representation $1$-Gerbes** | Chapter 5, §5.3, Paragraph, Line 1797 | `1851` | Chapter 5 |
-| 77 | **Stepwise Generator Bridge and Unconditional Abelian $k$-Invariant Effacement ($n \ge 1$)** | Chapter 5, Section 5.3, Thm 5.3.1 (`thm:postnikov-stepwise-proved`) | `1859` | Chapter 5 |
-| 78 | **Postnikov Stepwise Residuum (`conj:postnikov-stepwise`)** | Chapter 5, §5.3, Conjecture 5.3.2 (`conj:postnikov-stepwise`), Line 1823 | `1877` | Chapter 5 |
-| 79 | **$\infty$-Connected Morphisms and Whitehead's Principle** | Chapter 5, §5.4, Paragraph, Line 1854 | `1908` | Chapter 5 |
-| 80 | **Hypercompleteness and Postnikov Completeness** | Chapter 5, §5.4, Definition 5.4.1 (`def:hypercomplete`), Line 1856 | `1910` | Chapter 5 |
-| 81 | **Postnikov-Complete Sufficiency and $1$-Localic Hypercomplete Necessity for Infinity-Choice** | Chapter 5, §5.4, Theorem 5.4.2 (`thm:limit-residuum`), Line 1872 | `1926` | Chapter 5 |
-| 82 | **Methodological Residuum Bridges in $(\infty,\infty)$-Category Theory** | Chapter 5, §5.5, Table 5.1 & Subsections (1)–(4), Line 1926 | `1980` | Chapter 5 |
-| 83 | **Four-Tier Reflective Localization Ladder of $(\infty, \infty)$-Categories** | Chapter 5, §5.6, Line 1941 | `1995` | Chapter 5 |
-| 84 | **Inductive Lali Split-Idempotent Ceiling and Cartesian-vs.-Gray Obstruction** | Chapter 5, §5.7, Proposition 5.7.1 (`prop:lali-ceiling`), Line 1975 | `2029` | Chapter 5 |
-| 85 | **Recursive Ordinal Hom-Rank and the Class $\mathrm{Cat}_{\le \omega}$** | Chapter 5, §5.7, Line 2002 | `2056` | Chapter 5 |
-| 86 | **Ordinal-Rank Completeness and Immediate $\alpha = 0$ Stabilization** | Chapter 5, §5.7, Theorem 5.7.2 (`thm:ordinal-rank-completeness`), Line 2008 | `2065` | Chapter 5 |
-| 87 | **Local Finite-Dimensionality of $\mathrm{Cat}_{\le \omega}$ and Colimit Non-Closure of $\mathrm{Cat}^L_{(\infty,\infty)}$** | Chapter 5, §5.7, Proposition 5.7.3 (`prop:cat-le-omega-lfd`), Line 2027 | `2084` | Chapter 5 |
-| 88 | **$[1]$-Classifier SCC Trapping and Grading Rigidity** | Chapter 5, §5.7, Theorem 5.7.4 (`thm:classifier-scc-trapping`), Line 2035 | `2092` | Chapter 5 |
-| 89 | **Automatic Full Faithfulness and $1$-Acyclic Completeness on $\mathrm{Cat}_{\le \omega}$** | Chapter 5, §5.7, Theorem 5.7.5 (`thm:ff-acyclic-completeness`), Line 2054 | `2111` | Chapter 5 |
-| 90 | **Gaunt Noetherian Rank-$\omega$ Step-Product Counterexample $\mathcal{Q}$ Disproving Conjecture C1** | Chapter 5, §5.7, Theorem 5.7.6 (`thm:step-product-counterexample`), Line 2070 | `2127` | Chapter 5 |
-| 91 | **Step-Product Phantom as the $(\infty,\infty)$-Categorical Twin of $\mathcal{Q}_{E_0}$** | Chapter 5, §5.7, Remark 5.7.7 (`rem:step-product-e0-twin`), Line 2101 | `2158` | Chapter 5 |
-| 92 | **$\mathbf{ICaTT}$ Clan Semantics and Coinductive Witness Streams** | Chapter 5, §5.7, Line 2166 | `2223` | Chapter 5 |
-| 93 | **Relative Slice-Algebra Perfection and $\delta$-Ring Torsion Separation** | Chapter 5, §5.7, Line 2168 | `2225` | Chapter 5 |
-| 94 | **Partial Combinatory Algebra (PCA) and Canonical PCAs ($\mathcal{K}_1, \mathcal{K}_1^O, \mathcal{K}_2$)** | Chapter 6, §6.1, Line 2189 | `2246` | Chapter 6 |
-| 95 | **Tripos-to-Topos Construction and Realizability Topos $\mathbf{RT}(\mathcal{A})$** | Chapter 6, §6.1, Line 2208 | `2265` | Chapter 6 |
-| 96 | **Effective Topos ($\mathbf{Eff} = \mathbf{RT}(\mathcal{K}_1)$)** | Chapter 6, §6.1, Line 2210 | `2267` | Chapter 6 |
-| 97 | **Kleene Tree Obstruction and Failure of $\mathrm{WKL}_0$ and $\mathrm{FAN}$ in $\mathbf{Eff}$** | Chapter 6, §6.2.1, Line 2228 | `2285` | Chapter 6 |
-| 98 | **Realizability Residuums for $\mathrm{FAN}$, $\mathrm{EVT}$, and $\mathrm{WKL}$** | Chapter 6, §6.2.1, Theorem 6.2.1 (`thm:realizability-fan-wkl`), Line 2236 | `2293` | Chapter 6 |
-| 99 | **Weihrauch Reducibility** | Chapter 6, §6.2.2, Line 2257 | `2314` | Chapter 6 |
-| 100 | **Lawvere--Tierney Subtopos Residuum Principle** | Chapter 6, §6.2.2, Theorem 6.2.2 (`thm:ltt-residuum`), Line 2261 | `2318` | Chapter 6 |
-| 101 | **Site-Level Combinatorial Residuum Dictionary** | Chapter 6, §6.3, Theorem 6.3.1 (`thm:site-dictionary`), Line 2308 | `2365` | Chapter 6 |
-| 102 | **Group-Action Topoi ($\mathbf{Set}^G$) vs. Non-Discrete Fraïssé Permutation Topoi ($\mathbf{Cont}(\mathcal{G})$)** | Chapter 6, §6.4, Line 2335 | `2392` | Chapter 6 |
-| 103 | **Permutation-Topos Residuum Atlas in $\mathbf{Cont}(\mathcal{G})$** | Chapter 6, §6.4, Theorem 6.4.1 (`thm:permutation-topos`), Line 2353 | `2410` | Chapter 6 |
-| 104 | **Fraïssé Atomic-Topology Escape from Presheaf Groupoidification** | Chapter 6, §6.5, Theorem 6.5.1 (`thm:fraisse-atomic-escape`), Line 2383 | `2440` | Chapter 6 |
-| 105 | **Kihara's Five-Rung Atomic Choice Spectrum** | Chapter 6, §6.6, Line 2403, Figure 6.1 | `2460` | Chapter 6 |
-| 106 | **Nominal Parity Cohomology and the Odd-Finset Parity Torsor $\mathcal{T}_{\mathrm{odd}}$** | Chapter 6, §6.6, Line 2450 | `2507` | Chapter 6 |
-| 107 | **Internal Matching Criterion for $n$-Amalgamation** | Chapter 6, §6.7, Proposition 6.7.1 (`prop:matching-amalgamation`), Line 2460 | `2517` | Chapter 6 |
-| 108 | **$2 \times 2$ Classification of Galois Stability vs. Higher $n$-Amalgamation** | Chapter 6, §6.7, Line 2475, Table | `2532` | Chapter 6 |
-| 109 | **Two-Clause Flow-Convex Embeddings (`IsFlowConvex`)** | Chapter 6, §6.7, Line 2488 | `2545` | Chapter 6 |
-| 110 | **Cubical Disjoint $n$-Amalgamation Dichotomy** | Chapter 6, §6.7, Theorem 6.7.2 (`thm:directed-cubical-amalgamation`), Line 2490, Figure 6.2 | `2547` | Chapter 6 |
-| 111 | **Polygraphic Finite-Support Equality on $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$** | Chapter 6, Section 6.8, Lem 6.8.1 (`lem:polygraphic-support`) | `2624` | Chapter 6 |
-| 112 | **Choice Calibration of Internal Coinductive Invertibility Streams** | Chapter 6, §6.8, Theorem 6.8.2 (`thm:coinductive-stream-choice`), Line 2581 | `2638` | Chapter 6 |
+| 68 | **Noncommutative $C^*$-Modulus $\mathrm{UHF}(2^\infty)$ and Connes Groupoid $\mathcal{G}_{E_0}$** | Chapter 4, Section 5.3 | `1683` | Chapter 4 |
+| 69 | **Pauli-$Z$ Parity Grading ($E_0^{\mathrm{even}}$) and Anchor Witness $\mathcal{T}_{\mathrm{odd}}$** | Chapter 4, Section 5.3, Rem 4.5.3 (`rem:pauli-z-parity`) | `1707` | Chapter 4 |
+| 70 | **Five-Rung CRM--Borel Complexity Dictionary** | Chapter 4, Section 5.4, Table 4.1 | `1724` | Chapter 4 |
+| 71 | **$(\infty, 1)$-Topos $\mathcal{X}$ and Truncation Stratification** | Chapter 5, §5.1, Line 1718 | `1777` | Chapter 5 |
+| 72 | **Bigraded Higher Choice ($\mathrm{AC}_{n, m}$)** | Chapter 5, §5.2, Definition 5.2.1 (`def:bigraded-choice`), Line 1742 | `1801` | Chapter 5 |
+| 73 | **Degeneracy of Un-Truncated Choice** | Chapter 5, §5.2, Proposition 5.2.2 (`prop:untruncated-degeneracy`), Line 1750 | `1809` | Chapter 5 |
+| 74 | **Higher Choice Spine and Slice Classifying-Space Models** | Chapter 5, §5.2, Paragraph, Line 1760 | `1819` | Chapter 5 |
+| 75 | **Global Infinity-Choice Residuum** | Chapter 5, §5.2, Theorem 5.2.3 (`thm:global-inf-choice`), Line 1780 | `1839` | Chapter 5 |
+| 76 | **Postnikov Factorization, $0$-Truncated Effacement, and Representation $1$-Gerbes** | Chapter 5, §5.3, Paragraph, Line 1797 | `1856` | Chapter 5 |
+| 77 | **Stepwise Generator Bridge and Unconditional Abelian $k$-Invariant Effacement ($n \ge 1$)** | Chapter 5, Section 5.3, Thm 5.3.1 (`thm:postnikov-stepwise-proved`) | `1864` | Chapter 5 |
+| 78 | **Postnikov Stepwise Residuum (`conj:postnikov-stepwise`)** | Chapter 5, §5.3, Conjecture 5.3.2 (`conj:postnikov-stepwise`), Line 1823 | `1882` | Chapter 5 |
+| 79 | **$\infty$-Connected Morphisms and Whitehead's Principle** | Chapter 5, §5.4, Paragraph, Line 1854 | `1913` | Chapter 5 |
+| 80 | **Hypercompleteness and Postnikov Completeness** | Chapter 5, §5.4, Definition 5.4.1 (`def:hypercomplete`), Line 1856 | `1915` | Chapter 5 |
+| 81 | **Postnikov-Complete Sufficiency and $\tau_{\le 0}$-Generated Hypercomplete Necessity for Infinity-Choice** | Chapter 5, §5.4, Theorem 5.4.2 (`thm:limit-residuum`), Line 1872 | `1931` | Chapter 5 |
+| 82 | **Methodological Residuum Bridges in $(\infty,\infty)$-Category Theory** | Chapter 5, §5.5, Table 5.1 & Subsections (1)–(4), Line 1926 | `1985` | Chapter 5 |
+| 83 | **Four-Tier Reflective Localization Ladder of $(\infty, \infty)$-Categories** | Chapter 5, §5.6, Line 1941 | `2000` | Chapter 5 |
+| 84 | **Inductive Lali Split-Idempotent Ceiling and Cartesian-vs.-Gray Obstruction** | Chapter 5, §5.7, Proposition 5.7.1 (`prop:lali-ceiling`), Line 1975 | `2034` | Chapter 5 |
+| 85 | **Recursive Ordinal Hom-Rank and the Class $\mathrm{Cat}_{\le \omega}$** | Chapter 5, §5.7, Line 2002 | `2061` | Chapter 5 |
+| 86 | **Ordinal-Rank Completeness and Immediate $\alpha = 0$ Stabilization** | Chapter 5, §5.7, Theorem 5.7.2 (`thm:ordinal-rank-completeness`), Line 2008 | `2070` | Chapter 5 |
+| 87 | **Bounded Directed Hom-Depth of $\mathrm{Cat}_{\le \omega}$, Noetherianity, and Colimit Non-Closure of $\mathrm{Cat}^L_{(\infty,\infty)}$** | Chapter 5, §5.7, Proposition 5.7.3 (`prop:cat-le-omega-lfd`), Line 2027 | `2089` | Chapter 5 |
+| 88 | **$[1]$-Classifier SCC Trapping** | Chapter 5, §5.7, Theorem 5.7.4 (`thm:classifier-scc-trapping`), Line 2097 | `2097` | Chapter 5 |
+| 89 | **Automatic Full Faithfulness and $1$-Acyclic Completeness on $\mathrm{Cat}_{\le \omega}$** | Chapter 5, §5.7, Theorem 5.7.5 (`thm:ff-acyclic-completeness`), Line 2054 | `2113` | Chapter 5 |
+| 90 | **Gaunt Noetherian Rank-$\omega$ Step-Product Counterexample $\mathcal{Q}$ Disproving Conjecture C1** | Chapter 5, §5.7, Theorem 5.7.6 (`thm:step-product-counterexample`), Line 2070 | `2129` | Chapter 5 |
+| 91 | **Step-Product Phantom as the $(\infty,\infty)$-Categorical Twin of $\mathcal{Q}_{E_0}$** | Chapter 5, §5.7, Remark 5.7.7 (`rem:step-product-e0-twin`), Line 2101 | `2160` | Chapter 5 |
+| 92 | **$\mathbf{ICaTT}$ Clan Semantics and Coinductive Witness Streams** | Chapter 5, §5.7, Line 2166 | `2225` | Chapter 5 |
+| 93 | **Relative Slice-Algebra Perfection and $\delta$-Ring Torsion Separation** | Chapter 5, §5.7, Line 2168 | `2227` | Chapter 5 |
+| 94 | **Partial Combinatory Algebra (PCA) and Canonical PCAs ($\mathcal{K}_1, \mathcal{K}_1^O, \mathcal{K}_2$)** | Chapter 6, §6.1, Line 2189 | `2248` | Chapter 6 |
+| 95 | **Tripos-to-Topos Construction and Realizability Topos $\mathbf{RT}(\mathcal{A})$** | Chapter 6, §6.1, Line 2208 | `2267` | Chapter 6 |
+| 96 | **Effective Topos ($\mathbf{Eff} = \mathbf{RT}(\mathcal{K}_1)$)** | Chapter 6, §6.1, Line 2210 | `2269` | Chapter 6 |
+| 97 | **Kleene Tree Obstruction and Failure of $\mathrm{WKL}_0$ and $\mathrm{FAN}$ in $\mathbf{Eff}$** | Chapter 6, §6.2.1, Line 2228 | `2287` | Chapter 6 |
+| 98 | **Realizability Residuums for $\mathrm{FAN}$, $\mathrm{EVT}$, and $\mathrm{WKL}$** | Chapter 6, §6.2.1, Theorem 6.2.1 (`thm:realizability-fan-wkl`), Line 2236 | `2295` | Chapter 6 |
+| 99 | **Weihrauch Reducibility** | Chapter 6, §6.2.2, Line 2257 | `2316` | Chapter 6 |
+| 100 | **Lawvere--Tierney Subtopos Residuum Principle** | Chapter 6, §6.2.2, Theorem 6.2.2 (`thm:ltt-residuum`), Line 2261 | `2320` | Chapter 6 |
+| 101 | **Site-Level Combinatorial Residuum Dictionary** | Chapter 6, §6.3, Theorem 6.3.1 (`thm:site-dictionary`), Line 2308 | `2367` | Chapter 6 |
+| 102 | **Group-Action Topoi ($\mathbf{Set}^G$) vs. Non-Discrete Fraïssé Permutation Topoi ($\mathbf{Cont}(\mathcal{G})$)** | Chapter 6, §6.4, Line 2335 | `2394` | Chapter 6 |
+| 103 | **Permutation-Topos Residuum Atlas in $\mathbf{Cont}(\mathcal{G})$** | Chapter 6, §6.4, Theorem 6.4.1 (`thm:permutation-topos`), Line 2353 | `2412` | Chapter 6 |
+| 104 | **Fraïssé Atomic-Topology Escape from Presheaf Groupoidification** | Chapter 6, §6.5, Theorem 6.5.1 (`thm:fraisse-atomic-escape`), Line 2383 | `2442` | Chapter 6 |
+| 105 | **Kihara's Five-Rung Atomic Choice Spectrum** | Chapter 6, §6.6, Line 2403, Figure 6.1 | `2462` | Chapter 6 |
+| 106 | **Nominal Parity Cohomology and the Odd-Finset Parity Torsor $\mathcal{T}_{\mathrm{odd}}$** | Chapter 6, §6.6, Line 2450 | `2509` | Chapter 6 |
+| 107 | **Internal Matching Criterion for $n$-Amalgamation** | Chapter 6, §6.7, Proposition 6.7.1 (`prop:matching-amalgamation`), Line 2460 | `2519` | Chapter 6 |
+| 108 | **$2 \times 2$ Classification of Galois Stability vs. Higher $n$-Amalgamation** | Chapter 6, §6.7, Line 2475, Table | `2534` | Chapter 6 |
+| 109 | **Two-Clause Flow-Convex Embeddings (`IsFlowConvex`)** | Chapter 6, §6.7, Line 2488 | `2547` | Chapter 6 |
+| 110 | **Cubical Disjoint $n$-Amalgamation Dichotomy** | Chapter 6, §6.7, Theorem 6.7.2 (`thm:directed-cubical-amalgamation`), Line 2490, Figure 6.2 | `2549` | Chapter 6 |
+| 111 | **Polygraphic Finite-Support Equality on $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$** | Chapter 6, Section 6.8, Lem 6.8.1 (`lem:polygraphic-support`) | `2626` | Chapter 6 |
+| 112 | **Choice Calibration of Internal Coinductive Invertibility Streams** | Chapter 6, §6.8, Theorem 6.8.2 (`thm:coinductive-stream-choice`), Line 2581 | `2640` | Chapter 6 |
 | 113 | **Class-Set Model Spaces and Baseline Adjunction $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$** | Chapter 7, §7.1, Definition 7.1.1 (`def:set-projection-fibration`), `ch07_sets_residuum.tex` lines 18–40 | `ch07_sets_residuum.tex:18` | Chapter 7 |
 | 114 | **Fixed-Set Class Kaleidoscope** | Chapter 7, §7.1, Theorem 7.1.2 (`thm:williams-kaleidoscope`), `ch07_sets_residuum.tex` lines 44–47 | `ch07_sets_residuum.tex:44` | Chapter 7 |
 | 115 | **Large Equivalence-Splitting ($\mathbf{Card} \hookrightarrow \mathbf{Set}$) Calibrates Global Choice** | Chapter 7, §7.1, Proposition 7.1.3 (`prop:large-equiv-splitting`), `ch07_sets_residuum.tex` lines 53–75 | `ch07_sets_residuum.tex:53` | Chapter 7 |
@@ -1266,65 +1266,65 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 128 | **Non-Well-Founded Univalent Multisets ($\nu\mathcal{P}_{\mathrm{Anima}}$) and Master AST Residuum Ledger** | Chapter 7, §7.4, Remark 7.4.4 (`rem:nu-anima-fossil`) & Table 7.2 (`tab:master-ast-ledger`), `ch07_sets_residuum.tex` lines 296–320 | `ch07_sets_residuum.tex:296` | Chapter 7 |
 | 129 | **Reflexive Scale-Invariance of Double-Clamped $\mathbf{Set}_{\mathsf{ZFC}}$ and $\mathsf{NBG}$** | Chapter 7, §7.5, Theorem 7.5.1 (`thm:scale-invariance`), `ch07_sets_residuum.tex` lines 326–355 | `ch07_sets_residuum.tex:326` | Chapter 7 |
 | 130 | **Kernel Axiom Separation in `HomotopyCRM.SetsResiduum`** | Chapter 7, §7.5.1, Subsection (`subsec:sets-residuum-kernel-gate`) & Table 7.3 (`tab:sets-residuum-audit`), `ch07_sets_residuum.tex` lines 357–380 | `ch07_sets_residuum.tex:357` | Chapter 7 |
-| 131 | **Programmatic Panorama Genre Separation: External Benchmark Syntheses vs. Proved Spine** | Chapter 8, Section 8.1, Rem 8.1.1 (`rem:panorama-genre-signpost`) | `2670` | Chapter 8 |
-| 132 | **Internal Continuum Trichotomy ($\mathbb{Q} \rightarrowtail \mathbb{R}_C \rightarrowtail \mathbb{R}_D \rightarrowtail \mathbb{R}_M$)** | Chapter 8, Section 8.1.1, Paras 2–3 | `2679` | Chapter 8 |
-| 133 | **Cauchy-to-Dedekind Continuum Collapse ($\mathbb{R}_C \Rightarrow \mathbb{R}_D$)** | Chapter 8, Section 8.1.1, Para 4(1) | `2691` | Chapter 8 |
-| 134 | **Approximate vs. Exact Intermediate Value Theorem ($\varepsilon\text{-}\mathrm{IVT} \Rightarrow \mathrm{IVT}$)** | Chapter 8, Section 8.1.1, Para 4(2) | `2699` | Chapter 8 |
-| 135 | **Sequential Compactness to Extreme Value Theorem and Cantor Locale Compactness** | Chapter 8, Section 8.1.1, Para 4(3) | `2707` | Chapter 8 |
-| 136 | **Pointfree vs. Spatial Duality Lattice ($\mathbf{Loc}(\mathcal{E}) = \mathbf{Frm}(\mathcal{E})^{\mathrm{op}}$)** | Chapter 8, Section 8.1.2, Paras 1–2 | `2713` | Chapter 8 |
-| 137 | **Localic vs. Spatial Tychonoff Theorem** | Chapter 8, Section 8.1.2, Item 1 | `2721` | Chapter 8 |
-| 138 | **Localic vs. Spatial Hahn--Banach Theorem** | Chapter 8, Section 8.1.2, Item 2 | `2723` | Chapter 8 |
-| 139 | **Finitary Coherence vs. Supercompactness Shift in Spatiality** | Chapter 8, Section 8.1.2, Para 3 | `2727` | Chapter 8 |
-| 140 | **$\Omega$-Geometry Dictionary for Intermediate Logics** | Chapter 8, Section 8.2.1, Thm 8.2.1 (`thm:omega-dictionary`) | `2737` | Chapter 8 |
-| 141 | **Internal Real Order Invariants: Weak Order Linearity vs. Geometric Field Dichotomy** | Chapter 8, Section 8.2.1, Paras 2–3 | `2754` | Chapter 8 |
-| 142 | **Two-Dimensional Homological Exactness Bifurcation Lattice** | Chapter 8, Section 8.2.2, Paras 1–2 & Fig 8.1 (`fig:homological-lattice`) | `2801` | Chapter 8 |
-| 143 | **Orthogonality of Barr-Exactness and Bourn Protomodularity** | Chapter 8, Section 8.2.2, Item 1 | `2808` | Chapter 8 |
-| 144 | **Semi-Abelian Categories and the Snake Lemma Residuum** | Chapter 8, Section 8.2.2, Item 2 | `2814` | Chapter 8 |
-| 145 | **Divergence of Infinite Abelian Exactness ($\mathbf{AB5}$ vs. $\mathbf{AB4}^*$)** | Chapter 8, Section 8.2.2, Item 3 | `2823` | Chapter 8 |
-| 146 | **Categorical "Big Five" Calibration: Constructive Pretopoi vs. Two-Sorted Hyperdoctrines** | Chapter 8, Section 8.3.1, Paras 1–2 | `2840` | Chapter 8 |
-| 147 | **Primitive Recursion to Arithmetical Comprehension ($\mathrm{RCA}_0 / \mathrm{WKL}_0 \to \mathrm{ACA}_0$)** | Chapter 8, Section 8.3.1, Item 1 | `2850` | Chapter 8 |
-| 148 | **Arithmetical Comprehension to Transfinite Recursion ($\mathrm{ACA}_0 \Rightarrow \mathrm{ATR}_0$ vs. $\Pi W$-Pretopoi)** | Chapter 8, Section 8.3.1, Item 2 | `2852` | Chapter 8 |
-| 149 | **Tree Induction to Impredicative Comprehension ($\mathrm{ATR}_0 \Rightarrow \Pi^1_1\text{-}\mathrm{CA}_0$ vs. $\mathbf{ElemTopos}$)** | Chapter 8, Section 8.3.1, Item 3 | `2863` | Chapter 8 |
-| 150 | **Higher Inductive Types (HITs) and the Homotopical Recursion Lattice** | Chapter 8, §8.3.2, Line 2806 | `2867` | Chapter 8 |
-| 151 | **Voevodsky Univalence Axiom and the Universe Lattice** | Chapter 8, §8.4.1, Line 2814 | `2877` | Chapter 8 |
-| 152 | **Excision Lattice, Categorical Spectra $\mathrm{CatSp}$, and Masuda 3-Periodic Lax/Bifiber Triad** | Chapter 8, §8.4.2, Line 2820 | `2883` | Chapter 8 |
-| 153 | **Synthetic Differential Geometry (SDG), Line Object $R$, and Infinitesimal Disk $D$** | Chapter 8, Section 8.5.1, Paras 1–2 | `2901` | Chapter 8 |
-| 154 | **Kock--Lawvere Axiom and Classical Refutation** | Chapter 8, Section 8.5.1, Paras 2–3 | `2903` | Chapter 8 |
-| 155 | **Microlinearity Residuum** | Chapter 8, Section 8.5.1, Item 1 | `2915` | Chapter 8 |
-| 156 | **Global Smooth Cohomology Regimes: Cohesion vs. Tinyness** | Chapter 8, Section 8.5.1, Item 2 | `2924` | Chapter 8 |
-| 157 | **Differential Cohesion and Higher Gauge Theory** | Chapter 8, §8.5.2, Line 2877 | `2942` | Chapter 8 |
-| 158 | **Unified CRM Residuum Operator Across Doctrinal Triples** | Chapter 9, Section 9.1, Paragraph 1, line 2906 | `2961` | Chapter 9 |
-| 159 | **Categorical Residuum as Relative Pseudocomplement** | Chapter 9, Section 9.1, Paragraph 1, line 2910 | `2965` | Chapter 9 |
-| 160 | **Admissibility Criterion (Four Structural Invariant Families)** | Chapter 9, Section 9.1, Paragraph 2 and Itemize, line 2918 | `2973` | Chapter 9 |
-| 161 | **Five-Step CRM Residuum Computation Protocol** | Chapter 9, Section 9.2, Protocol List, line 2934 | `2989` | Chapter 9 |
-| 162 | **Absolute vs. Relative Residua & Contravariant Fiber Strengthening** | Chapter 9, Section 9.2, Paragraph 2, line 2950 | `3005` | Chapter 9 |
-| 163 | **Cohomological Vanishing Conjecture (Core Conjecture 1)** | Chapter 9, Section 9.3, Enumerate Item 1, line 2962 | `3017` | Chapter 9 |
-| 164 | **Sequential Presentability Conjecture (Core Conjecture 2)** | Chapter 9, Section 9.3, Enumerate Item 2, line 2964 | `3019` | Chapter 9 |
-| 165 | **Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)** | Chapter 9, Section 9.3, Enumerate Item 3, line 2966 | `3021` | Chapter 9 |
-| 166 | **Postnikov Stepwise Vanishing Conjecture (Core Conjecture 4) & Graded Choice Tower** | Chapter 9, Section 9.3, Enumerate Item 4 & Tower Synthesis, line 2979 & 2891 | `3023` | Chapter 9 |
-| 167 | **Adjoint-Closure and Fixed-Point Hierarchy Conjecture (Core Conjecture 5)** | Chapter 9, Section 9.3, Enumerate Item 5, line 2970 | `3025` | Chapter 9 |
-| 168 | **Pareto Residuum Frontiers in Non-Linear Topos Lattices (Open Problem 9.1)** | Chapter 9, Section 9.4, Problem 9.1 (`prob:open-1`, Horizon I), line 2982 | `3037` | Chapter 9 |
-| 169 | **Iterated Tower Conservation Across Composite Geometric Morphisms (Open Problem 9.2)** | Chapter 9, Section 9.4, Problem 9.2 (`prob:open-2`, Horizon I), line 2987 | `3042` | Chapter 9 |
-| 170 | **Weihrauch-Degree and Lawvere--Tierney Topology Duality (Open Problem 9.3)** | Chapter 9, Section 9.4, Problem 9.3 (`prob:open-3`, Horizon II), line 2993 | `3048` | Chapter 9 |
-| 171 | **Minimal Intermediate Oracle Modalities Beyond $j_{\mathrm{Lif}}$ (Open Problem 9.4)** | Chapter 9, Section 9.4, Problem 9.4 (`prob:open-4`, Horizon II), line 2997 | `3052` | Chapter 9 |
-| 172 | **Higher-Cardinal Stability and Oligomorphic Collapse on Kihara's Spectrum (Open Problem 9.5)** | Chapter 9, Section 9.4, Problem 9.5 (`prob:open-5`, Horizon III), line 3003 | `3058` | Chapter 9 |
-| 173 | **Nominal Non-Constant Sheaf Cohomology & Site-Level Ore Bridges (Open Problem 9.6)** | Chapter 9, Section 9.4, Problem 9.6 (`prob:open-6`, Horizon III), line 3007 | `3062` | Chapter 9 |
-| 174 | **Directed Cubical Phase Transition Beyond $F_n$ (Open Problem 9.7)** | Chapter 9, Section 9.4, Problem 9.7 (`prob:open-7`, Horizon IV), line 3013 | `3068` | Chapter 9 |
-| 175 | **Galois-Stable vs. Unstable Higher $n$-Amalgamation Matching Calculus (Open Problem 9.8)** | Chapter 9, Section 9.4, Problem 9.8 (`prob:open-8`, Horizon IV), line 3017 | `3072` | Chapter 9 |
-| 176 | **Postnikov Stepwise Gerbe and $k$-Invariant Vanishing Thresholds (Open Problem 9.9)** | Chapter 9, Section 9.4, Problem 9.9 (`prob:open-9`, Horizon V), line 3023 | `3078` | Chapter 9 |
-| 177 | **Cohesive Gauge Bridges and Differential Cohomological Descent (Open Problem 9.10)** | Chapter 9, Section 9.4, Problem 9.10 (`prob:open-10`, Horizon V), line 3027 | `3082` | Chapter 9 |
-| 178 | **Reflective Localization Boundaries Across Four-Tier $(\infty,\infty)$-Ladder (Open Problem 9.11)** | Chapter 9, Section 9.4, Problem 9.11 (`prob:open-11`, Horizon VI), line 3033 | `3088` | Chapter 9 |
-| 179 | **Directed Stabilization in $\mathrm{CatSp}$ Without Group-Completion Collapse (Open Problem 9.12)** | Chapter 9, Section 9.4, Problem 9.12 (`prob:open-12`, Horizon VI), line 3041 | `3096` | Chapter 9 |
-| 180 | **Light Condensed $\mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$ vs. Definable $\varprojlim^1_{\mathrm{def}}$ on Exotic $\mathbb{R}^4$'s (Open Problem 9.13)** | Chapter 9, Section 9.4, Problem 9.13 (`prob:open-13`, Horizon VII), line 3047 | `3102` | Chapter 9 |
-| 181 | **Pro-Oligomorphic Blindness and Turbulent Classifiers Beyond $E_{S_\infty}$ (Open Problem 9.14)** | Chapter 9, Section 9.4, Problem 9.14 (`prob:open-14`, Horizon VII), line 3051 | `3106` | Chapter 9 |
-| 182 | **Explicit Class-Coalgebra Residuum of Borel Determinacy (Open Problem 9.15)** | Chapter 9, Section 9.4, Problem 9.15 (`prob:open-15`, Horizon VIII), line 3057 | `3112` | Chapter 9 |
-| 183 | **Class-Theoretic Calibration of the Four-Tier $(\infty, \infty)$-Localization Ladder (Open Problem 9.16)** | Chapter 9, Section 9.4, Problem 9.16 (`prob:open-16`, Horizon VIII), line 3061 | `3116` | Chapter 9 |
-| 184 | **Leray Transgression for $\pi_{\mathrm{Set}}$ and Univalent Coalgebras $\nu\mathcal{P}_{\mathrm{Anima}}$ (Open Problem 9.17)** | Chapter 9, Section 9.4, Problem 9.17 (`prob:open-17`, Horizon VIII), line 3065 | `3120` | Chapter 9 |
-| 185 | **The `HomotopyCRM` Production Verification Ledger** | Chapter 9, Section 9.5, Ledger Itemize, line 3069 | `3124` | Chapter 9 |
-| 186 | **Four-Layer Kernel Verification Gate Protocol** | Chapter 9, Section 9.5, Paragraph 1, line 3071 | `3126` | Chapter 9 |
-| 187 | **Master Reference Atlas Matrix of Categorical Reverse Mathematics** | Chapter 9, Section 9.6, Table / Xltabular, line 3088 | `3143` | Chapter 9 |
-| 188 | **Mathematical Truth as Obstruction Invariant (Epilogue Thesis)** | Chapter 9, Section 9.7 (Epilogue), Paragraph 1, line 3132 | `3187` | Chapter 9 |
-| 189 | **The Five Foundational Anchor Witnesses** | Chapter 9, Section 9.7 (Epilogue), Paragraphs 2–3, line 3134 | `3189` | Chapter 9 |
+| 131 | **Programmatic Panorama Genre Separation: External Benchmark Syntheses vs. Proved Spine** | Chapter 8, Section 8.1, Rem 8.1.1 (`rem:panorama-genre-signpost`) | `2672` | Chapter 8 |
+| 132 | **Internal Continuum Trichotomy ($\mathbb{Q} \rightarrowtail \mathbb{R}_C \rightarrowtail \mathbb{R}_D \rightarrowtail \mathbb{R}_M$)** | Chapter 8, Section 8.1.1, Paras 2–3 | `2681` | Chapter 8 |
+| 133 | **Cauchy-to-Dedekind Continuum Collapse ($\mathbb{R}_C \Rightarrow \mathbb{R}_D$)** | Chapter 8, Section 8.1.1, Para 4(1) | `2693` | Chapter 8 |
+| 134 | **Approximate vs. Exact Intermediate Value Theorem ($\varepsilon\text{-}\mathrm{IVT} \Rightarrow \mathrm{IVT}$)** | Chapter 8, Section 8.1.1, Para 4(2) | `2701` | Chapter 8 |
+| 135 | **Sequential Compactness to Extreme Value Theorem and Cantor Locale Compactness** | Chapter 8, Section 8.1.1, Para 4(3) | `2709` | Chapter 8 |
+| 136 | **Pointfree vs. Spatial Duality Lattice ($\mathbf{Loc}(\mathcal{E}) = \mathbf{Frm}(\mathcal{E})^{\mathrm{op}}$)** | Chapter 8, Section 8.1.2, Paras 1–2 | `2715` | Chapter 8 |
+| 137 | **Localic vs. Spatial Tychonoff Theorem** | Chapter 8, Section 8.1.2, Item 1 | `2723` | Chapter 8 |
+| 138 | **Localic vs. Spatial Hahn--Banach Theorem** | Chapter 8, Section 8.1.2, Item 2 | `2725` | Chapter 8 |
+| 139 | **Finitary Coherence vs. Supercompactness Shift in Spatiality** | Chapter 8, Section 8.1.2, Para 3 | `2729` | Chapter 8 |
+| 140 | **$\Omega$-Geometry Dictionary for Intermediate Logics** | Chapter 8, Section 8.2.1, Thm 8.2.1 (`thm:omega-dictionary`) | `2739` | Chapter 8 |
+| 141 | **Internal Real Order Invariants: Weak Order Linearity vs. Geometric Field Dichotomy** | Chapter 8, Section 8.2.1, Paras 2–3 | `2756` | Chapter 8 |
+| 142 | **Two-Dimensional Homological Exactness Bifurcation Lattice** | Chapter 8, Section 8.2.2, Paras 1–2 & Fig 8.1 (`fig:homological-lattice`) | `2803` | Chapter 8 |
+| 143 | **Orthogonality of Barr-Exactness and Bourn Protomodularity** | Chapter 8, Section 8.2.2, Item 1 | `2810` | Chapter 8 |
+| 144 | **Semi-Abelian Categories and the Snake Lemma Residuum** | Chapter 8, Section 8.2.2, Item 2 | `2816` | Chapter 8 |
+| 145 | **Divergence of Infinite Abelian Exactness ($\mathbf{AB5}$ vs. $\mathbf{AB4}^*$)** | Chapter 8, Section 8.2.2, Item 3 | `2825` | Chapter 8 |
+| 146 | **Categorical "Big Five" Calibration: Constructive Pretopoi vs. Two-Sorted Hyperdoctrines** | Chapter 8, Section 8.3.1, Paras 1–2 | `2842` | Chapter 8 |
+| 147 | **Primitive Recursion to Arithmetical Comprehension ($\mathrm{RCA}_0 / \mathrm{WKL}_0 \to \mathrm{ACA}_0$)** | Chapter 8, Section 8.3.1, Item 1 | `2852` | Chapter 8 |
+| 148 | **Arithmetical Comprehension to Transfinite Recursion ($\mathrm{ACA}_0 \Rightarrow \mathrm{ATR}_0$ vs. $\Pi W$-Pretopoi)** | Chapter 8, Section 8.3.1, Item 2 | `2854` | Chapter 8 |
+| 149 | **Tree Induction to Impredicative Comprehension ($\mathrm{ATR}_0 \Rightarrow \Pi^1_1\text{-}\mathrm{CA}_0$ vs. $\mathbf{ElemTopos}$)** | Chapter 8, Section 8.3.1, Item 3 | `2865` | Chapter 8 |
+| 150 | **Higher Inductive Types (HITs) and the Homotopical Recursion Lattice** | Chapter 8, §8.3.2, Line 2806 | `2869` | Chapter 8 |
+| 151 | **Voevodsky Univalence Axiom and the Universe Lattice** | Chapter 8, §8.4.1, Line 2814 | `2879` | Chapter 8 |
+| 152 | **Excision Lattice, Categorical Spectra $\mathrm{CatSp}$, and Masuda 3-Periodic Lax/Bifiber Triad** | Chapter 8, §8.4.2, Line 2820 | `2885` | Chapter 8 |
+| 153 | **Synthetic Differential Geometry (SDG), Line Object $R$, and Infinitesimal Disk $D$** | Chapter 8, Section 8.5.1, Paras 1–2 | `2903` | Chapter 8 |
+| 154 | **Kock--Lawvere Axiom and Classical Refutation** | Chapter 8, Section 8.5.1, Paras 2–3 | `2905` | Chapter 8 |
+| 155 | **Microlinearity Residuum** | Chapter 8, Section 8.5.1, Item 1 | `2917` | Chapter 8 |
+| 156 | **Global Smooth Cohomology Regimes: Cohesion vs. Tinyness** | Chapter 8, Section 8.5.1, Item 2 | `2926` | Chapter 8 |
+| 157 | **Differential Cohesion and Higher Gauge Theory** | Chapter 8, §8.5.2, Line 2877 | `2944` | Chapter 8 |
+| 158 | **Unified CRM Residuum Operator Across Doctrinal Triples** | Chapter 9, Section 9.1, Paragraph 1, line 2906 | `2963` | Chapter 9 |
+| 159 | **Categorical Residuum as Relative Pseudocomplement** | Chapter 9, Section 9.1, Paragraph 1, line 2910 | `2967` | Chapter 9 |
+| 160 | **Admissibility Criterion (Four Structural Invariant Families)** | Chapter 9, Section 9.1, Paragraph 2 and Itemize, line 2918 | `2975` | Chapter 9 |
+| 161 | **Five-Step CRM Residuum Computation Protocol** | Chapter 9, Section 9.2, Protocol List, line 2934 | `2991` | Chapter 9 |
+| 162 | **Absolute vs. Relative Residua & Contravariant Fiber Strengthening** | Chapter 9, Section 9.2, Paragraph 2, line 2950 | `3007` | Chapter 9 |
+| 163 | **Cohomological Vanishing Conjecture (Core Conjecture 1)** | Chapter 9, Section 9.3, Enumerate Item 1, line 2962 | `3019` | Chapter 9 |
+| 164 | **Sequential Presentability Conjecture (Core Conjecture 2)** | Chapter 9, Section 9.3, Enumerate Item 2, line 2964 | `3021` | Chapter 9 |
+| 165 | **Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)** | Chapter 9, Section 9.3, Enumerate Item 3, line 2966 | `3023` | Chapter 9 |
+| 166 | **Postnikov Stepwise Vanishing Conjecture (Core Conjecture 4) & Graded Choice Tower** | Chapter 9, Section 9.3, Enumerate Item 4 & Tower Synthesis, line 2979 & 2891 | `3025` | Chapter 9 |
+| 167 | **Adjoint-Closure and Fixed-Point Hierarchy Conjecture (Core Conjecture 5)** | Chapter 9, Section 9.3, Enumerate Item 5, line 2970 | `3027` | Chapter 9 |
+| 168 | **Pareto Residuum Frontiers in Non-Linear Topos Lattices (Open Problem 9.1)** | Chapter 9, Section 9.4, Problem 9.1 (`prob:open-1`, Horizon I), line 2982 | `3039` | Chapter 9 |
+| 169 | **Iterated Tower Conservation Across Composite Geometric Morphisms (Open Problem 9.2)** | Chapter 9, Section 9.4, Problem 9.2 (`prob:open-2`, Horizon I), line 2987 | `3044` | Chapter 9 |
+| 170 | **Weihrauch-Degree and Lawvere--Tierney Topology Duality (Open Problem 9.3)** | Chapter 9, Section 9.4, Problem 9.3 (`prob:open-3`, Horizon II), line 2993 | `3050` | Chapter 9 |
+| 171 | **Minimal Intermediate Oracle Modalities Beyond $j_{\mathrm{Lif}}$ (Open Problem 9.4)** | Chapter 9, Section 9.4, Problem 9.4 (`prob:open-4`, Horizon II), line 2997 | `3054` | Chapter 9 |
+| 172 | **Higher-Cardinal Stability and Oligomorphic Collapse on Kihara's Spectrum (Open Problem 9.5)** | Chapter 9, Section 9.4, Problem 9.5 (`prob:open-5`, Horizon III), line 3003 | `3060` | Chapter 9 |
+| 173 | **Nominal Non-Constant Sheaf Cohomology & Site-Level Ore Bridges (Open Problem 9.6)** | Chapter 9, Section 9.4, Problem 9.6 (`prob:open-6`, Horizon III), line 3007 | `3064` | Chapter 9 |
+| 174 | **Directed Cubical Phase Transition Beyond $F_n$ (Open Problem 9.7)** | Chapter 9, Section 9.4, Problem 9.7 (`prob:open-7`, Horizon IV), line 3013 | `3070` | Chapter 9 |
+| 175 | **Galois-Stable vs. Unstable Higher $n$-Amalgamation Matching Calculus (Open Problem 9.8)** | Chapter 9, Section 9.4, Problem 9.8 (`prob:open-8`, Horizon IV), line 3017 | `3074` | Chapter 9 |
+| 176 | **Postnikov Stepwise Gerbe and $k$-Invariant Vanishing Thresholds (Open Problem 9.9)** | Chapter 9, Section 9.4, Problem 9.9 (`prob:open-9`, Horizon V), line 3023 | `3080` | Chapter 9 |
+| 177 | **Cohesive Gauge Bridges and Differential Cohomological Descent (Open Problem 9.10)** | Chapter 9, Section 9.4, Problem 9.10 (`prob:open-10`, Horizon V), line 3027 | `3084` | Chapter 9 |
+| 178 | **Reflective Localization Boundaries Across Four-Tier $(\infty,\infty)$-Ladder (Open Problem 9.11)** | Chapter 9, Section 9.4, Problem 9.11 (`prob:open-11`, Horizon VI), line 3033 | `3090` | Chapter 9 |
+| 179 | **Directed Stabilization in $\mathrm{CatSp}$ Without Group-Completion Collapse (Open Problem 9.12)** | Chapter 9, Section 9.4, Problem 9.12 (`prob:open-12`, Horizon VI), line 3041 | `3098` | Chapter 9 |
+| 180 | **Light Condensed $\mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$ vs. Definable $\varprojlim^1_{\mathrm{def}}$ on Exotic $\mathbb{R}^4$'s (Open Problem 9.13)** | Chapter 9, Section 9.4, Problem 9.13 (`prob:open-13`, Horizon VII), line 3047 | `3104` | Chapter 9 |
+| 181 | **Pro-Oligomorphic Blindness and Turbulent Classifiers Beyond $E_{S_\infty}$ (Open Problem 9.14)** | Chapter 9, Section 9.4, Problem 9.14 (`prob:open-14`, Horizon VII), line 3051 | `3108` | Chapter 9 |
+| 182 | **Explicit Class-Coalgebra Residuum of Borel Determinacy (Open Problem 9.15)** | Chapter 9, Section 9.4, Problem 9.15 (`prob:open-15`, Horizon VIII), line 3057 | `3114` | Chapter 9 |
+| 183 | **Class-Theoretic Calibration of the Four-Tier $(\infty, \infty)$-Localization Ladder (Open Problem 9.16)** | Chapter 9, Section 9.4, Problem 9.16 (`prob:open-16`, Horizon VIII), line 3061 | `3118` | Chapter 9 |
+| 184 | **Leray Transgression for $\pi_{\mathrm{Set}}$ and Univalent Coalgebras $\nu\mathcal{P}_{\mathrm{Anima}}$ (Open Problem 9.17)** | Chapter 9, Section 9.4, Problem 9.17 (`prob:open-17`, Horizon VIII), line 3065 | `3122` | Chapter 9 |
+| 185 | **The `HomotopyCRM` Production Verification Ledger** | Chapter 9, Section 9.5, Ledger Itemize, line 3069 | `3126` | Chapter 9 |
+| 186 | **Four-Layer Kernel Verification Gate Protocol** | Chapter 9, Section 9.5, Paragraph 1, line 3071 | `3128` | Chapter 9 |
+| 187 | **Master Reference Atlas Matrix of Categorical Reverse Mathematics** | Chapter 9, Section 9.6, Table / Xltabular, line 3088 | `3145` | Chapter 9 |
+| 188 | **Mathematical Truth as Obstruction Invariant (Epilogue Thesis)** | Chapter 9, Section 9.7 (Epilogue), Paragraph 1, line 3132 | `3189` | Chapter 9 |
+| 189 | **The Five Foundational Anchor Witnesses** | Chapter 9, Section 9.7 (Epilogue), Paragraphs 2–3, line 3134 | `3191` | Chapter 9 |
 
 ---
 
@@ -1428,7 +1428,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `758`
 - **Monograph Section:** Chapter 1
 - **Concise Definition / Context Summary:**
-  Five concrete, self-contained mathematical **Touchstones** grounding the five axes: Parity torsor $\mathcal{T}_{\mathrm{odd}}$ in $\mathbf{Nom} \not\models \mathrm{IAC}$ (contrasted with discrete $\mathbf{Set}^{A_5}, \mathbf{Set}^{\mathrm{Alt}_{\mathrm{fin}}(\mathbb{N})^\delta} \models \mathrm{IAC} \wedge \neg\mathrm{AC}$; Axes I & II); $2$-torsion $\delta$-ring $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ & `DualInt` (Axis IV); Step-product $\mathcal{Q}$ on $[1]=\{0<1\}$ (Axes III & V); Facet-supported directed triangle $F_3 = \partial\Delta^2$ (Axis V); Cantor smooth-end quotient $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}/E_0$ and $\mathrm{UHF}(2^\infty)$ (Axes I, III, & V).
+  Five concrete, self-contained mathematical **Touchstones** grounding the five axes: Parity torsor $\mathcal{T}_{\mathrm{odd}}$ in $\mathbf{Nom} \not\models \mathrm{IAC}$ (contrasted with discrete $\mathbf{Set}^{A_5}, \mathbf{Set}^{\mathrm{Alt}_{\mathrm{fin}}(\mathbb{N})^\delta} \models \mathrm{IAC} \wedge \neg\mathrm{AC}$; Axes I & II); $2$-torsion $\delta$-ring $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ & `DualInt` (Axis IV); Step-product $\mathcal{Q}$ on $[1]=\{0<1\}$ (Axes III & V); Facet-supported directed triangle $F_3 = \partial\Delta^2$ (Axis V); light condensed Cantor tail quotient $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}/E_0$ and $\mathrm{UHF}(2^\infty)$ (Borel-coded on radial exotic $\mathbb{R}^4$'s; Axes I, III, & V).
 
 ##### Concept 13: Triviality Trap (Dogma), Admissibility Criterion, & Doctrinal Philosophies
 
@@ -1764,7 +1764,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1406`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Dropping exponentials destroys the internal formulation of $\mathrm{IAC}$; external choice bifurcates into $\mathrm{AC}_{\mathrm{reg}}$ vs $\mathrm{AC}_{\mathrm{epi}}$, with the gap isolating balancedness / Barr-exactness.
+  Dropping exponentials destroys the internal formulation of $\mathrm{IAC}$; external choice bifurcates into $\mathrm{AC}_{\mathrm{reg}}$ vs $\mathrm{AC}_{\mathrm{epi}}$, with the gap isolating strictly balancedness ($\mathrm{Mono}\cap\mathrm{Epi}=\mathrm{Iso}$).
 
 ##### Concept 54: Finitary Topos Deformations without $\mathrm{NNO}$ ($\mathbf{FinSet}, \mathbf{FinSet}^G$)
 
@@ -1798,13 +1798,13 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **Concise Definition / Context Summary:**
   Absolute residuums (internal to $\mathcal{E}$, e.g. $\mathrm{IAC} \implies \Omega \simeq 1+1$) hold regardless of base metatheory; relative residuums (external, involving global sections or spatial points) vary with base axioms.
 
-##### Concept 58: Internal Presentation Axiom ($\mathrm{ICOSHEP}$) and Retract-Bounded $\mathrm{ISVC}_{\mathrm{ret}}$
+##### Concept 58: Internal Presentation Axiom ($\mathrm{ICOSHEP}$), $\mathrm{IAC}_{\gamma^*}$, and Relative Retract-Bounded $\mathrm{ISVC}_{\mathrm{ret}}^\gamma$
 
 - **Location Reference:** Chapter 4, Section 3.1, Para 4
 - **LaTeX Source Line:** `1448`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Purely internal versions of $\mathrm{COSHEP}$ and $\mathrm{SVC}_{\mathrm{ret}}$ using internally projective objects ($(-)^Q$ preserves epis), yielding the absolute base-invariant equivalence $\mathrm{ICOSHEP} + (\mathrm{ISVC}_{\mathrm{ret}} \wedge \Omega_{\mathcal{E}} \simeq 1+1) \iff \mathrm{IAC}$ over any base $\mathcal{S}$.
+  Internalizing over $\gamma : \mathcal{E} \to \mathcal{S}$ via internally projective objects ($Q$ with $(-)^Q$ epi-preserving) and base pullback projectivity $\mathrm{IAC}_{\gamma^*}$ yields a non-tautological characterization of $\mathrm{IAC}$ by combining $\mathrm{ICOSHEP}$, $\Omega_{\mathcal{E}} \simeq 1+1$, $\mathrm{IAC}_{\gamma^*}$, $\mathrm{ISVC}_{\mathrm{ret}}^\gamma(S)$, and universal internal splitting ($\underline{\mathrm{Sect}}(q)\twoheadrightarrow 1_{\mathcal{E}}$) of every internally projective cover $q : P \twoheadrightarrow S$.
 
 ##### Concept 59: Connected-Base Reflection Obstruction
 
@@ -1828,7 +1828,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1464`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Proved three-part relativization: (a) connected $\gamma$ reflects $\mathrm{AC}$; (b) over a choice slice $\mathcal{S}/U \models \mathrm{AC}$, bounded $\mathcal{E} \models \mathrm{AC}$ holds iff $\mathcal{E}$ is Boolean and localic over $\mathcal{S}/U$ (no atomicity required); (c) over $M \models \mathsf{ZF}$, a non-degenerate complete Boolean algebra $\mathbb{B} \in M$ satisfies $\mathbf{Sh}_M(\mathbb{B}) \models \mathrm{AC}$ iff $M \models \mathsf{SVC}$ (Blass 1979 / Usuba 2021, using $\mathrm{RO}(\mathrm{Col}(\omega, S))$).
+  Proved three-part relativization: (a) connected $\gamma$ reflects $\mathrm{AC}$; (b) over a general choice slice $\mathcal{S}/U \models \mathrm{AC}$ (via partial-map classifier $\widetilde{G}$ and non-two-valued support locus $W \rightarrowtail 1_{\mathcal{S}/U}$ in Zorn), bounded $\mathcal{E} \models \mathrm{AC}$ holds iff $\mathcal{E}$ is Boolean and localic over $\mathcal{S}/U$; (c) over $M \models \mathsf{ZF}$, a non-degenerate complete Boolean algebra $\mathbb{B} \in M$ satisfies $\mathbf{Sh}_M(\mathbb{B}) \models \mathrm{AC}$ iff $M \models \mathsf{SVC}$ (MP-free Fourman 1980 internalization without Maximum Principle, Blass 1979 / Usuba 2021 using $\mathrm{RO}(\mathrm{Col}(\omega, S))$).
 
 ##### Concept 62: Constructive Sufficiency of Supercompact Generation Without Base $\mathrm{BPI}$
 
@@ -1852,7 +1852,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1543`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Over arbitrary Grothendieck topoi (avoiding Blass 1979 lack of injectives), Giraud torsors and gerbes yield $0 \to H^1(\mathcal{S}; \gamma_* A) \to H^1(\mathcal{E}; A) \to \Gamma_{\mathcal{S}}(R^1\gamma_* A) \xrightarrow{d_2} H^2(\mathcal{S}; \gamma_* A)$ (extending to 5 terms when enough injectives exist). Hence $H^1(\mathcal{E}; A) = 0$ iff $H^1(\mathcal{S}; \gamma_* A) = 0$ and $\ker(d_2) = 0$ ($d_2$ injective); the $6$-element finite Alexandroff locale $\mathcal{O}(\partial\Delta^2) \not\cong \mathcal{O}(S^1)$, linked to $S^1$ via McCord's 1966 weak homotopy equivalence, shows supercompactness does not kill $H^1$. Rem 4.4.3 (`rem:leray-transgressive-cancellation`, line 1578, mechanized in `DoctrinalFibration.lean`) exhibits transgressive cancellation along $\mathrm{SL}_2(\mathbb{F}_5) \twoheadrightarrow A_5$.
+  Over arbitrary Grothendieck topoi (avoiding Blass 1979 lack of injectives), Giraud torsors and gerbes yield $0 \to H^1(\mathcal{S}; \gamma_* A) \to H^1(\mathcal{E}; A) \to \Gamma_{\mathcal{S}}(R^1\gamma_* A) \xrightarrow{d_2} H^2(\mathcal{S}; \gamma_* A)$ (extending to 5 terms when enough injectives exist). Hence $H^1(\mathcal{E}; A) = 0$ iff $H^1(\mathcal{S}; \gamma_* A) = 0$ and $\ker(d_2) = 0$ ($d_2$ injective); the $18$-open finite Alexandroff locale $\mathcal{O}(\partial\Delta^2) \not\cong \mathcal{O}(S^1)$ of the $6$-element face poset, linked to $S^1$ via McCord's 1966 weak homotopy equivalence, shows supercompactness does not kill $H^1$. Rem 4.4.3 (`rem:leray-transgressive-cancellation`, line 1578, mechanized in `DoctrinalFibration.lean`) exhibits transgressive cancellation along $\mathrm{SL}_2(\mathbb{F}_5) \twoheadrightarrow A_5$.
 
 ##### Concept 65: Iterated Geometric Morphisms and Tower Conservation
 
@@ -1868,7 +1868,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1613`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Diffeomorphism of compact smooth manifolds is Borel equivalent to equality on $\mathbb{N}$ ($=_{\mathbb{N}}$); for radial exotic $\mathbb{R}^4$'s, diffeomorphism is Borel equivalent to tail equality $E_0$ on $2^{\mathbb{N}}$ ($E_0 \le_B \mathrm{Diff}(\mathcal{R}^4)$), unclassifiable by Polish invariants via Harrington--Kechris--Louveau dichotomy.
+  Diffeomorphism of compact smooth manifolds is Borel equivalent to equality on $\mathbb{N}$ ($=_{\mathbb{N}}$); under seminar announcements (`GompfPanagiotopoulos26` building on `DeMichelisFreedman92`), radial exotic $\mathbb{R}^4$ diffeomorphism encodes Borel tail equality $E_0$ on $2^{\mathbb{N}}$ ($E_0 \le_B \mathrm{Diff}(\mathcal{R}^4)$), ruled out of Polish invariants by the Harrington--Kechris--Louveau dichotomy.
 
 ##### Concept 67: The Double-Solvent Theorem for the $E_0$ Tail Quotient
 
@@ -1876,12 +1876,12 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1627`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  In $\mathbf{CondAb}_{\mathrm{light}} = \mathbf{Ab}(\mathbf{Sh}(\mathrm{Prof}_{\aleph_0}))$, the quotient $\mathcal{Q}_{E_0} = \underline{2^{\mathbb{N}}} / \underline{\mathbb{F}_2^{<\omega}}$ satisfies (i) Cantor coset density, continuous $T_1$ blindness ($\pi_0^{\mathrm{Pol}}(\mathcal{Q}_{E_0}) \cong *$), and Baire generic constancy (Kechris Thm 8.46), (ii) discrete $\mathsf{ZFC}$ Hamel splitting, and (iii) compact-probe Yoneda non-splitting $[q] \neq 0 \in \mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}(\mathcal{Q}_{E_0}, \underline{\mathbb{F}_2^{<\omega}})$ from compactness of $2^{\mathbb{N}}$; Rem 4.5.2 (`rem:exotic-r4-application`, line 1597) presents the external radial exotic $\mathbb{R}^4$ application (Freedman Casson-handle collapse $M_x \cong_{\mathrm{Top}} \mathbb{R}^4$ and $\varprojlim^1_{\mathrm{def}}$).
+  On the site $\mathbf{Prof}_{\aleph_0}$ of light (second-countable / metrizable) profinite sets in $\mathbf{CondAb}_{\mathrm{light}}$, the quotient $\mathcal{Q}_{E_0} = \underline{2^{\mathbb{N}}} \sslash \underline{\mathbb{F}_2^{<\omega}}$ satisfies (i) Cantor coset density, continuous $T_1$ blindness on partial Polish corepresenter $\pi_0^{\mathrm{Pol}}(\mathcal{Q}_{E_0}) \cong *$, and Baire selector contradiction against meager $E_0$-cosets (Kechris Thm 8.46), (ii) discrete $\mathsf{ZFC}$ Hamel splitting, and (iii) compact-probe Yoneda non-splitting of the algebraic-presentation class $[q] \neq 0 \in \mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}(\mathcal{Q}_{E_0}, \underline{\mathbb{F}_2^{<\omega}})$ from compactness of $2^{\mathbb{N}}$; Rem 4.5.2 (`rem:exotic-r4-application`, line 1667) scopes the external radial exotic $\mathbb{R}^4$ Borel-coding bridge (seminar announcements, algebraic-presentation vs. intrinsic smooth $\varprojlim^1_{\mathrm{def}}$ invariants, and Freedman topological collapse).
 
 ##### Concept 68: Noncommutative $C^*$-Modulus $\mathrm{UHF}(2^\infty)$ and Connes Groupoid $\mathcal{G}_{E_0}$
 
 - **Location Reference:** Chapter 4, Section 5.3
-- **LaTeX Source Line:** `1678`
+- **LaTeX Source Line:** `1683`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
   Groupoid $C^*$-algebra $C^*(\mathcal{G}_{E_0}) = C(2^{\mathbb{N}}) \rtimes \bigoplus_{\mathbb{N}} \mathbb{F}_2 \cong \mathrm{UHF}(2^\infty) = \bigotimes_{n=0}^\infty M_2(\mathbb{C})$, with $K_0 \cong \mathbb{Z}[\frac{1}{2}]$, GNS tracial completion to hyperfinite $\mathrm{II}_1$ factor $\mathcal{R}$, and Glimm non-Type-I boundary.
@@ -1889,15 +1889,15 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 69: Pauli-$Z$ Parity Grading ($E_0^{\mathrm{even}}$) and Anchor Witness $\mathcal{T}_{\mathrm{odd}}$
 
 - **Location Reference:** Chapter 4, Section 5.3, Rem 4.5.3 (`rem:pauli-z-parity`)
-- **LaTeX Source Line:** `1702`
+- **LaTeX Source Line:** `1707`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Finite flips of even cardinality define $E_0^{\mathrm{even}}$ and exact sequence $0 \to \mathbb{F}_2 \to 2^{\mathbb{N}}/E_0^{\mathrm{even}} \to \mathcal{Q}_{E_0} \to 0$. In condensed/Baire topos, no continuous flip-alternating functional exists (dense cosets); $\mathrm{BPI}$ / $\mathsf{ZFC}$ splits $\pi$. Diagonal Pauli-$Z$ action $\alpha_{-1} = \bigotimes \mathrm{Ad}\bigl(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\bigr)$ has fixed-point algebra $C^*(\mathcal{G}_{E_0^{\mathrm{even}}})$ and $-1$ odd eigenspace, operator-algebraic twin of $\mathcal{T}_{\mathrm{odd}}$ in $\mathbf{Nom}$.
+  Finite flips of even cardinality define $E_0^{\mathrm{even}}$ and exact sequence $0 \to \mathbb{F}_2 \to 2^{\mathbb{N}}/E_0^{\mathrm{even}} \to \mathcal{Q}_{E_0} \to 0$. In condensed/Baire topos, no continuous flip-alternating functional exists (dense cosets); $\mathrm{BPI}$ / $\mathsf{ZFC}$ splits $\pi$. Diagonal Pauli-$Z$ action $\alpha_{-1} = \bigotimes \mathrm{Ad}\bigl(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\bigr)$ has fixed-point algebra $C^*(\mathcal{G}_{E_0^{\mathrm{even}}})$ and $-1$ odd eigenspace, operator-algebraic twin of $\mathcal{T}_{\mathrm{odd}}$ in $\mathbf{Nom}$ (`BorelTailResiduum.lean` mechanizes the continuous vs. $\mathsf{ZFC}$ linear separation on $2^{\mathbb{N}}$, while $E_0^{\mathrm{even}}$ Borel-reducibility and Pauli-$Z$ $C^*$-grading remain external).
 
 ##### Concept 70: Five-Rung CRM--Borel Complexity Dictionary
 
 - **Location Reference:** Chapter 4, Section 5.4, Table 4.1
-- **LaTeX Source Line:** `1719`
+- **LaTeX Source Line:** `1724`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
   Rung 1 (Countable $=_{\mathbb{N}}$: compact smooth manifolds), Rung 2 (Smooth $\le_B =_{\mathbb{R}}$: finite-type hyperbolic 2-manifolds), Rung 3 (Hyperfinite $E_0$: radial exotic $\mathbb{R}^4$'s, $\mathcal{Q}_{E_0}$, $\mathrm{UHF}(2^\infty)$), Rung 4 (Countable Structures $\le_B E_{S_\infty}$: complete hyperbolic $n$-manifolds, noncompact 2-manifolds, nominal quotient stacks over $\mathbf{Nom}$), Rung 5 (Turbulent $\not\le_B E_{S_\infty}$: complex $n$-manifolds up to biholomorphism, pro-oligomorphic blindness).
@@ -1909,7 +1909,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 71: $(\infty, 1)$-Topos $\mathcal{X}$ and Truncation Stratification
 
 - **Location Reference:** Chapter 5, §5.1, Line 1762
-- **LaTeX Source Line:** `1772`
+- **LaTeX Source Line:** `1777`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   A locally presentable (or elementary) $(\infty, 1)$-category with homotopy limits/colimits, universal colimits, descent, and object classifiers $\mathcal{U}$, whose internal language is HoTT / Univalent Foundations. Objects are homotopy types ($\infty$-groupoids) stratified by truncation level: $(-2)$-truncated (contractible), $(-1)$-truncated (propositions, classifying $\Omega = \mathcal{U}_{\le -1}$), $0$-truncated (discrete sets forming 1-topos $\tau_{\le 0}\mathcal{X}$), and $n$-truncated ($n$-types with $\pi_k = 0$ for $k > n$). A morphism $e: X \twoheadrightarrow Y$ is an effective epimorphism if $\tau_{\le -1}(e)$ is an equivalence in $\mathcal{X}/Y$.
@@ -1917,7 +1917,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 72: Bigraded Higher Choice ($\mathrm{AC}_{n, m}$)
 
 - **Location Reference:** Chapter 5, §5.2, Definition 5.2.1 (`def:bigraded-choice`), Line 1786
-- **LaTeX Source Line:** `1796`
+- **LaTeX Source Line:** `1801`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   For $-1 \le n, m \le \infty$, $\mathcal{X}$ satisfies $\mathrm{AC}_{n, m}$ if every $n$-truncated effective epimorphism $e: X \twoheadrightarrow Y$ onto an $m$-truncated codomain $Y$ admits a section ($e \circ s \simeq \mathrm{id}_Y$).
@@ -1925,15 +1925,15 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 73: Degeneracy of Un-Truncated Choice
 
 - **Location Reference:** Chapter 5, §5.2, Proposition 5.2.2 (`prop:untruncated-degeneracy`), Line 1794
-- **LaTeX Source Line:** `1804`
+- **LaTeX Source Line:** `1809`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Proves that if $\mathrm{AC}_{0, 1}$ holds in $\mathcal{X}$, every connected 1-groupoid is contractible ($BG \simeq 1 \implies G \simeq 1$), collapsing higher homotopy types into discrete sets. This forces the genuine higher choice spine to calibrate over $0$-truncated sets ($m = 0$): $\mathrm{AC}_n := \mathrm{AC}_{n, 0}$ and $\mathrm{AC}_\infty := \mathrm{AC}_{\infty, 0}$.
+  Proves that if $\mathrm{AC}_{0, 1}$ holds in $\mathcal{X}$, splitting $1 \twoheadrightarrow \mathbf{B}(\Delta(\mathbb{Z}/2\mathbb{Z}))$ forces $\emptyset \simeq 1$ and collapses $\mathcal{X} \simeq *$ completely by Giraud strict initiality. This forces the genuine higher choice spine to calibrate over $0$-truncated sets ($m = 0$): $\mathrm{AC}_n := \mathrm{AC}_{n, 0}$ and $\mathrm{AC}_\infty := \mathrm{AC}_{\infty, 0}$.
 
 ##### Concept 74: Higher Choice Spine and Slice Classifying-Space Models
 
 - **Location Reference:** Chapter 5, §5.2, Paragraph, Line 1804
-- **LaTeX Source Line:** `1814`
+- **LaTeX Source Line:** `1819`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   The chain $\mathrm{AC}_\infty \implies \cdots \implies \mathrm{AC}_{n+1} \implies \mathrm{AC}_n \implies \cdots \implies \mathrm{AC}_0$, separated over $\mathbf{Set}_{\mathrm{ZFC}}$ by slice $(\infty,1)$-topoi $\mathcal{X}^{(n)} := \mathcal{S}_{/K(\mathbb{Z}/2\mathbb{Z}, n+2)}$: $K_{n+2}$ is $(n+1)$-connected, so constant-functor embedding preserves/reflects $n$-truncated surjections, validating $\mathrm{AC}_n$ while the basepoint map $* \twoheadrightarrow K_{n+2}$ has $(n+1)$-truncated fiber without section, refuting $\mathrm{AC}_{n+1}$ (matching $\mathbf{Mod}(\mathrm{AC}_\infty) = \bigcap_{n < \infty} \mathbf{Mod}(\mathrm{AC}_n)$ on Postnikov-complete $(\infty,1)$-topoi).
@@ -1941,7 +1941,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 75: Global Infinity-Choice Residuum
 
 - **Location Reference:** Chapter 5, §5.2, Theorem 5.2.3 (`thm:global-inf-choice`), Line 1824
-- **LaTeX Source Line:** `1834`
+- **LaTeX Source Line:** `1839`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   In any $(\infty, 1)$-topos $\mathcal{X}$, the categorical residuum bridging set-level choice ($\mathrm{AC}_0$) to full infinity-choice ($\mathrm{AC}_\infty$) is the geometric condition that $0$-truncated objects (sets) cover $\mathcal{X}$: $\mathrm{AC}_0 + (\forall X \in \mathcal{X},\, \exists S \in \tau_{\le 0}\mathcal{X} \text{ with } S \twoheadrightarrow X) \iff \mathrm{AC}_\infty$.
@@ -1949,31 +1949,31 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 76: Postnikov Factorization, $0$-Truncated Effacement, and Representation $1$-Gerbes
 
 - **Location Reference:** Chapter 5, §5.3, Paragraph, Line 1841
-- **LaTeX Source Line:** `1851`
+- **LaTeX Source Line:** `1856`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Proves the all-$n \ge 0$ generator bridge ($\tau_{\le n}\mathcal{X}$ covers $\tau_{\le n+1}\mathcal{X}$) and analyzes $E_{n+1} = 1_{\mathcal{X}/Y} \times_{\tau_{\le n}(X/Y)} \tau_{\le n+1}(X/Y)$ via *$0$-truncated effacement*: for $n \ge 1$, $1$-connectivity descends $\Pi_{n+1} \in \mathbf{Ab}(\tau_{\le 0}(\mathcal{X}/Y))$ classified by $K(\Pi_{n+1}, n+2)$ unconditionally; at $n = 0$, $0$-connected $E_1$ carries a Giraud *lien* $\mathfrak{L}(E_1)$ and representation $1$-gerbe $R(E_1)$ (fiber $B\mathrm{Inn}(G_x)$), proving unconditional sufficiency for locally bounded-nilpotent bands ($R^{(c)}(E_1) \simeq 1$) and étale $R(E_1)$-splitting on $\mathbf{Sh}_\infty(B)_{/W}$ topoi (while $\mathcal{S}_{/K(\mathbb{Z}/2\mathbb{Z},2)}$ blocks direct $E_1$ splitting).
+  Proves the all-$n \ge 0$ generator bridge ($\tau_{\le n}\mathcal{X}$ covers $\tau_{\le n+1}\mathcal{X}$) and analyzes $E_{n+1} = 1_{\mathcal{X}/Y} \times_{\tau_{\le n}(X/Y)} \tau_{\le n+1}(X/Y)$ via *$0$-truncated effacement*: for $n \ge 1$, $1$-connectivity descends $\Pi_{n+1} \in \mathbf{Ab}(\tau_{\le 0}(\mathcal{X}/Y))$ classified by $K(\Pi_{n+1}, n+2)$ unconditionally; at $n = 0$, $0$-connected $E_1$ carries a Giraud *lien* $\mathfrak{L}(E_1)$ and representation $1$-gerbe $R(E_1)$ (fiber $B\mathrm{Inn}(G_x)$), proving unconditional sufficiency for uniformly nilpotent bands ($\exists c \in \mathbb{N}$, $R^{(c)}(E_1) \simeq 1$) and étale $R(E_1)$-splitting on $\mathbf{Sh}_\infty(B)_{/W}$ topoi (while $\mathcal{S}_{/K(\mathbb{Z}/2\mathbb{Z},2)}$ blocks direct $E_1$ splitting).
 
 ##### Concept 77: Stepwise Generator Bridge and Unconditional Abelian $k$-Invariant Effacement ($n \ge 1$)
 
 - **Location Reference:** Chapter 5, Section 5.3, Thm 5.3.1 (`thm:postnikov-stepwise-proved`)
-- **LaTeX Source Line:** `1859`
+- **LaTeX Source Line:** `1864`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Separates the unconditionally proved core prior to Conjecture 5.3.2 (`conj:postnikov-stepwise`): the all-$n \ge 0$ generator-level bridge, unconditional $0$-truncated effacement of $H^{n+2}(\mathcal{X}/Y; A)$ for all abelian rungs $n \ge 1$ via $1$-connectivity of $E_{n+1}$, and $n=0$ Giraud band equivalence, global-group necessity, locally bounded-nilpotent $R^{(k)}(E_1)$ sufficiency, and étale $R(E_1) \twoheadrightarrow 1_{\mathcal{X}/Y}$ splitting into global $L(G)$ on $\mathbf{Sh}_\infty(B)_{/W}$ (showing $H^2_{\mathrm{gerbe}}$ effacement suffices for $\mathrm{AC}_1$).
+  Separates the unconditionally proved core prior to Conjecture 5.3.2 (`conj:postnikov-stepwise`): the all-$n \ge 0$ generator-level bridge, unconditional $0$-truncated effacement of $H^{n+2}(\mathcal{X}/Y; A)$ for all abelian rungs $n \ge 1$ via $1$-connectivity of $E_{n+1}$, and $n=0$ Giraud band equivalence, global-group necessity, uniformly nilpotent ($\exists c \in \mathbb{N}$) $R^{(k)}(E_1)$ sufficiency, and étale $R(E_1) \twoheadrightarrow 1_{\mathcal{X}/Y}$ splitting into global $L(G)$ on $\mathbf{Sh}_\infty(B)_{/W}$ (showing $H^2_{\mathrm{gerbe}}$ effacement suffices for $\mathrm{AC}_1$).
 
 ##### Concept 78: Postnikov Stepwise Residuum (`conj:postnikov-stepwise`)
 
 - **Location Reference:** Chapter 5, §5.3, Conjecture 5.3.2 (`conj:postnikov-stepwise`), Line 1867
-- **LaTeX Source Line:** `1877`
+- **LaTeX Source Line:** `1882`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Characterizes $(\mathrm{AC}_n \Rightarrow \mathrm{AC}_{n+1})$ via $0$-truncated effacement over $Y \in \tau_{\le 0}\mathcal{X}$ (collapsing under $\mathrm{AC}_0$ to global slice vanishing): unconditionally proved for all $n \ge 1$ via $H^{n+2}(\mathcal{X}/Y; A)$ and at $n = 0$ for Giraud *liens*, bounded-nilpotent bands, and via $R(E_1)$-splitting into global $L(G)$ on $1$-localic and étale $\mathbf{Sh}_\infty(B)_{/W}$ topoi, isolating non-étale non-nilpotent $R(E_1)$ band-representability over global $G \in \mathbf{Grp}(\tau_{\le 0}(\mathcal{X}/Y))$ as the open core.
+  Characterizes $(\mathrm{AC}_n \Rightarrow \mathrm{AC}_{n+1})$ via $0$-truncated effacement over $Y \in \tau_{\le 0}\mathcal{X}$ (collapsing under $\mathrm{AC}_0$ to global slice vanishing): unconditionally proved for all $n \ge 1$ via $H^{n+2}(\mathcal{X}/Y; A)$ and at $n = 0$ for Giraud *liens*, uniformly nilpotent bands, and via $R(E_1)$-splitting into global $L(G)$ on $1$-localic and étale $\mathbf{Sh}_\infty(B)_{/W}$ topoi, isolating non-étale non-nilpotent $R(E_1)$ band-representability over global $G \in \mathbf{Grp}(\tau_{\le 0}(\mathcal{X}/Y))$ as the open core.
 
 ##### Concept 79: $\infty$-Connected Morphisms and Whitehead's Principle
 
 - **Location Reference:** Chapter 5, §5.4, Paragraph, Line 1898
-- **LaTeX Source Line:** `1908`
+- **LaTeX Source Line:** `1913`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   A morphism $f: X \to Z$ in $\mathcal{X}$ is $\infty$-connected if all homotopy group sheaves vanish ($\tau_{\le n}(f)$ is an equivalence for all $n < \infty$). Whitehead's principle asserts that every $\infty$-connected morphism is an equivalence.
@@ -1981,23 +1981,23 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 80: Hypercompleteness and Postnikov Completeness
 
 - **Location Reference:** Chapter 5, §5.4, Definition 5.4.1 (`def:hypercomplete`), Line 1900
-- **LaTeX Source Line:** `1910`
+- **LaTeX Source Line:** `1915`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   An $(\infty, 1)$-topos $\mathcal{X}$ is hypercomplete if every $\infty$-connected map is an equivalence, and Postnikov-complete if $\mathcal{X} \xrightarrow{\sim} \varprojlim_{n \in \omega^{\mathrm{op}}} \tau_{\le n}\mathcal{X}$ (every object is the homotopy limit of its Postnikov tower and compatible truncations converge). Postnikov completeness implies hypercompleteness, whereas hypercomplete atomic $\mathbf{Sh}_\infty^{\mathrm{hyp}}(\mathcal{O}_G, J_{\mathrm{at}})$ fails Postnikov completeness; over $\mathbf{Set}_{\mathrm{ZFC}}$, $1$-localic $\mathbf{Sh}_\infty(L) \models \mathrm{AC}_0$ is automatically Postnikov-complete.
 
-##### Concept 81: Postnikov-Complete Sufficiency and $1$-Localic Hypercomplete Necessity for Infinity-Choice
+##### Concept 81: Postnikov-Complete Sufficiency and $\tau_{\le 0}$-Generated Hypercomplete Necessity for Infinity-Choice
 
 - **Location Reference:** Chapter 5, §5.4, Theorem 5.4.2 (`thm:limit-residuum`), Line 1916
-- **LaTeX Source Line:** `1926`
+- **LaTeX Source Line:** `1931`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Over $\mathbf{Set} \models \mathsf{ZF}+\mathrm{DC}$ / $\mathbf{Set}_{\mathrm{ZFC}}$: (i) if $\mathcal{X}$ is Postnikov-complete and $\forall n < \infty,\, \mathcal{X} \models \mathrm{AC}_n$, then $\mathcal{X} \models \mathrm{AC}_\infty$ (via $n$-connected transition fibers of $M_{n+1} \to M_n$, metatheoretic $\mathrm{DC}$ basepoint lifting, and Mittag--Leffler Milnor $\varprojlim^1 = *$); (ii) if $\mathcal{X}$ is $1$-localic (generated under small colimits by $\tau_{\le 0}\mathcal{X}$) and $\mathcal{X} \models \mathrm{AC}_\infty$, then $\forall n < \infty,\, \mathcal{X} \models \mathrm{AC}_n$ and $\mathcal{X}$ is hypercomplete.
+  Over $\mathbf{Set} \models \mathsf{ZF}+\mathrm{DC}$ / $\mathbf{Set}_{\mathrm{ZFC}}$: (i) if $\mathcal{X}$ is Postnikov-complete and $\forall n < \infty,\, \mathcal{X} \models \mathrm{AC}_n$, then $\mathcal{X} \models \mathrm{AC}_\infty$ (via $n$-connected transition fibers of $M_{n+1} \to M_n$, metatheoretic $\mathrm{DC}$ basepoint lifting, and Mittag--Leffler Milnor $\varprojlim^1 = *$); (ii) if $\mathcal{X}$ is generated under small colimits by $\tau_{\le 0}\mathcal{X}$ (in particular if $\mathcal{X}$ is $1$-localic, Lurie HTT §6.4.5 & Prop 5.5.6.28) and $\mathcal{X} \models \mathrm{AC}_\infty$, then $\forall n < \infty,\, \mathcal{X} \models \mathrm{AC}_n$ and $\mathcal{X}$ is hypercomplete.
 
 ##### Concept 82: Methodological Residuum Bridges in $(\infty,\infty)$-Category Theory
 
 - **Location Reference:** Chapter 5, §5.5, Table 5.1 & Subsections (1)–(4), Line 1970
-- **LaTeX Source Line:** `1980`
+- **LaTeX Source Line:** `1985`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   Four CRM discovery arenas: (1) $\mathrm{IDC}_\omega$ and coinductive stream adequacy in $\mathbf{ICaTT}$; (2) pure Postnikov phantoms without homotopy spheres disproving Conjecture C1; (3) directed delooping tameness vs. $\pi_{\le 0}$ group-completion and smooth 4-manifold stabilization; (4) oriented convexity (`cell_mem` + `inter_mem`) and the $n = 2$ vs. $n \ge 3$ cubical amalgamation wall.
@@ -2005,7 +2005,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 83: Four-Tier Reflective Localization Ladder of $(\infty, \infty)$-Categories
 
 - **Location Reference:** Chapter 5, §5.6, Line 1985
-- **LaTeX Source Line:** `1995`
+- **LaTeX Source Line:** `2000`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   Inside the right-truncation tower limit $\mathrm{Cat}^R_{(\infty, \infty)} := \varprojlim_\kappa \mathrm{Cat}_{(\infty, n)}$ (inductive equivalences $W_{\mathrm{ind}}$ and Goldthorpe's Adámek initial algebra of $\mathrm{Enr}$ on $\mathrm{SymMon}^{\mathrm{Pres}}_\infty$), the verified landscape of $(\infty, \infty)$-categories organizes into a strict four-tier chain of reflective localizations: $\mathrm{Cat}^L_{(\infty, \infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty, \infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)} \subsetneq \mathrm{Cat}^R_{(\infty, \infty)}$, where $\mathrm{Cat}^L$ is the smallest Postnikov-complete reflective tier (localized at $W_{\mathrm{Post}}$), $\mathrm{Cat}^\omega$ is complicial / Street--Verity, $\mathrm{Cat}^{\mathrm{coind}}$ is localized at coinductive equivalences, and $\mathrm{Cat}^R$ is the inductive-equivalence right-truncation limit. Noetherian hypercompleteness ($\mathrm{Cat}^{\mathrm{Noeth}}_{(\infty,\infty)} \subseteq \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)}$) and separation by Postnikov-complete $S^2 \in \mathrm{Cat}^L \setminus \mathrm{Cat}^{\mathrm{Noeth}}$ and $\mathrm{Cob}_\infty \in \mathrm{Cat}^R \setminus \mathrm{Cat}^{\mathrm{coind}}$ calibrate the directed Whitehead residuum.
@@ -2013,15 +2013,15 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 84: Inductive Lali Split-Idempotent Ceiling and Cartesian-vs.-Gray Obstruction
 
 - **Location Reference:** Chapter 5, §5.7, Proposition 5.7.1 (`prop:lali-ceiling`), Line 2019
-- **LaTeX Source Line:** `2029`
+- **LaTeX Source Line:** `2034`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  For a Gray-enriched left-adjoint-left-inverse (Lali) adjunction $l \dashv r$ with idempotent $E = l \circ r$, ambient $m$-cell animae stabilize at $m > \max(K_x, K_y) + 2$ (sharp at $+2$ on the oriented join cone $\{a\} \star \Sigma^{K+1}(S^0)$). Cartesian functor categories $\mathrm{Fun}^\times(E^{(n)}, E^{(n)})$ cannot contract walking $n$-equivalences ($n \ge 2$) because cylinder cells have $\dim(\mathbf{D}^{n-1} \times \mathbf{D}^1) = n-1 < n$, whereas lax Gray categories supply the additive prism $\mathbf{D}^{n-1} \boxtimes \mathbf{D}^1$ of dimension $n$.
+  For a Gray-enriched left-adjoint-left-inverse (Lali) adjunction $l \dashv r$ with idempotent $E = l \circ r$, ambient $m$-cell animae stabilize at $m > \max(K_x, K_y) + 2$ (sharp at $+2$ on the oriented join cone $\{a\} \star \Sigma^{K+1}(S^0)$). Cartesian functor categories $\mathrm{Fun}^\times(E^{(n)}, E^{(n)})$ cannot invert walking $n$-equivalences ($n \ge 2$) across $\mathbf{D}^n \to E^{(n)}$ because $\mathbf{D}^{n-1} \times \mathbf{D}^1 \in \mathrm{Cat}_{(\infty, n-1)}$ contains no non-invertible $n$-cells, whereas lax Gray categories supply the additive prism $\mathbf{D}^{n-1} \boxtimes \mathbf{D}^1$ with a non-invertible $n$-cell.
 
 ##### Concept 85: Recursive Ordinal Hom-Rank and the Class $\mathrm{Cat}_{\le \omega}$
 
 - **Location Reference:** Chapter 5, §5.7, Line 2046
-- **LaTeX Source Line:** `2056`
+- **LaTeX Source Line:** `2061`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   Defined recursively by $\mathrm{rank}(\mathcal{D}) := 0$ if $\mathcal{D} \simeq \mathcal{D}^{\simeq}$ is an $\infty$-groupoid, and $\sup_{x,y \in \mathrm{Ob}(\mathcal{D})}(\mathrm{rank}(\mathcal{D}(x,y)) + 1) \in \mathbf{Ord} \cup \{\infty\}$ otherwise. $\mathrm{Cat}_{\le \omega}$ denotes the class of $(\infty,\infty)$-categories whose hom-objects have finite ordinal rank ($\mathrm{rank}(\mathcal{C}(x,y)) < \omega$).
@@ -2029,31 +2029,31 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 86: Ordinal-Rank Completeness and Immediate $\alpha = 0$ Stabilization
 
 - **Location Reference:** Chapter 5, §5.7, Theorem 5.7.2 (`thm:ordinal-rank-completeness`), Line 2055
-- **LaTeX Source Line:** `2065`
+- **LaTeX Source Line:** `2070`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  For any ranked $(\infty,\infty)$-category with $\mathrm{rank}(\mathcal{D}) \le \theta$, transfinite $\theta$-inductive invertibility coincides with genuine equivalence: $\mathrm{IsOrdinalInv}_\theta(\mathcal{D}) = \mathrm{IsEquiv}(\mathcal{D})$. For $\theta = \omega$, every $\mathcal{C} \in \mathrm{Cat}_{\le \omega}$ satisfies $\mathrm{IsOmegaInv}(\mathcal{C}) = \mathrm{IsEquiv}(\mathcal{C})$, so ORW Question 5.58 / 5.60 / 5.62 stabilizes at $\alpha = 0$ ($\mathrm{Cat}_{\le \omega} \subseteq \mathrm{Cat}^\omega_{(\infty,\infty)}$), isolating Conjecture C1 ($\mathrm{Cat}_{\le \omega} \stackrel{?}{\subseteq} \mathrm{Cat}^L_{(\infty,\infty)}$) strictly as Postnikov Phantom-Freeness.
+  For any ranked $(\infty,\infty)$-category with $\mathrm{rank}(\mathcal{D}) \le \theta$, both transfinite $\theta$-inductive invertibility and coinductive bi-invertibility (`ranked_coindEquiv_iff_isEquiv`) coincide with genuine equivalence ($\mathrm{IsOrdinalInv}_\theta = \mathrm{IsCoindEquiv} = \mathrm{IsEquiv}$), with wide pushout $E^{(\omega)}$ matching `OmegaTowerState.apex`. For $\theta = \omega$, every $\mathcal{C} \in \mathrm{Cat}_{\le \omega}$ satisfies $\mathrm{IsOmegaInv}(\mathcal{C}) = \mathrm{IsEquiv}(\mathcal{C})$, so ORW Question 5.58 / 5.60 / 5.62 stabilizes at $\alpha = 0$ ($\mathrm{Cat}_{\le \omega} \subseteq \mathrm{Cat}^\omega_{(\infty,\infty)}$), isolating Conjecture C1 ($\mathrm{Cat}_{\le \omega} \stackrel{?}{\subseteq} \mathrm{Cat}^L_{(\infty,\infty)}$) strictly as Postnikov Phantom-Freeness.
 
-##### Concept 87: Local Finite-Dimensionality of $\mathrm{Cat}_{\le \omega}$ and Colimit Non-Closure of $\mathrm{Cat}^L_{(\infty,\infty)}$
+##### Concept 87: Bounded Directed Hom-Depth of $\mathrm{Cat}_{\le \omega}$, Noetherianity, and Colimit Non-Closure of $\mathrm{Cat}^L_{(\infty,\infty)}$
 
 - **Location Reference:** Chapter 5, §5.7, Proposition 5.7.3 (`prop:cat-le-omega-lfd`), Line 2074
-- **LaTeX Source Line:** `2084`
+- **LaTeX Source Line:** `2089`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  $\mathcal{C} \in \mathrm{Cat}^R_{(\infty,\infty)}$ lies in $\mathrm{Cat}_{\le \omega}$ if and only if it is locally finite-dimensional ($\mathrm{Hom}_{\mathcal{C}}(x,y) \in \mathrm{Cat}_{(\infty, d(x,y))}$ for finite $d(x,y)$). Ozornova--Rovelli--Walde's category $W = \varinjlim W(d)$ exits $\mathrm{Cat}_{\le \omega}$ because non-fully-faithful bonding maps inject unbounded hub loops $f_{1,n} \in W(1,1)$, giving $\mathrm{rank}(W) \ge \omega + 1$.
+  $\mathcal{C} \in \mathrm{Cat}^R_{(\infty,\infty)}$ lies in $\mathrm{Cat}_{\le \omega}$ when its hom-objects have bounded finite directed hom-rank ($\mathrm{rank}(\mathrm{Hom}_{\mathcal{C}}(x,y)) < \omega$, permitting infinite $\pi_m(\mathbb{RP}^2)$ inside invertible $\infty$-groupoids $\mathbf{B}\mathbb{RP}^2$ without Noetherianity, distinct from locally finite-dimensional $\mathrm{Cat}_{\le\omega}^{\mathrm{strict}}$). Ozornova--Rovelli--Walde's category $W = \varinjlim W(d)$ exits $\mathrm{Cat}_{\le \omega}$ because non-fully-faithful bonding maps inject unbounded hub loops $f_{1,n} \in W(1,1)$, giving $\mathrm{rank}(W) \ge \omega + 1$.
 
-##### Concept 88: $[1]$-Classifier SCC Trapping and Grading Rigidity
+##### Concept 88: $[1]$-Classifier SCC Trapping
 
-- **Location Reference:** Chapter 5, §5.7, Theorem 5.7.4 (`thm:classifier-scc-trapping`), Line 2082
-- **LaTeX Source Line:** `2092`
+- **Location Reference:** Chapter 5, §5.7, Theorem 5.7.4 (`thm:classifier-scc-trapping`), Line 2097
+- **LaTeX Source Line:** `2097`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  For $\mathcal{C} \in \mathrm{Cat}^R_{(\infty,\infty)}$, $1$-cell reachability $a \preceq_1 b$ ($\mathrm{Hom}(a,b) \neq \emptyset$) maps to $[1] = \{0 < 1\}$. Any Postnikov-compatible tower $X_\bullet \in RL(\mathcal{C})$ is trapped inside a single strongly connected component (SCC) of $\preceq_1$. On an infinite $1$-SCC lacking absorbing morphisms, local hom-dimensions cannot grow unboundedly; thus any counterexample in $\mathrm{Cat}_{\le \omega} \setminus \mathrm{Cat}^L$ must decouple objects via an absorbing hierarchy.
+  For $\mathcal{C} \in \mathrm{Cat}^R_{(\infty,\infty)}$, $1$-cell reachability $a \preceq_1 b$ ($\mathrm{Hom}(a,b) \neq \emptyset$) maps to $[1] = \{0 < 1\}$. Any Postnikov-compatible tower $X_\bullet \in RL(\mathcal{C})$ is trapped inside a single strongly connected component (SCC) of $\preceq_1$ (while whiskering fixes higher cells along $1$-morphisms, leaving open whether an infinite non-absorbing $1$-SCC can host a phantom).
 
 ##### Concept 89: Automatic Full Faithfulness and $1$-Acyclic Completeness on $\mathrm{Cat}_{\le \omega}$
 
 - **Location Reference:** Chapter 5, §5.7, Theorem 5.7.5 (`thm:ff-acyclic-completeness`), Line 2101
-- **LaTeX Source Line:** `2111`
+- **LaTeX Source Line:** `2113`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   For $\mathcal{C} \in \mathrm{Cat}_{\le \omega}$: (1) Postnikov unit $\eta_{\mathcal{C}}: \mathcal{C} \hookrightarrow RL(\mathcal{C})$ is fully faithful; (2) constant-tower $\varprojlim^1$ twists vanish ($X_\bullet \simeq \eta_{\mathcal{C}}(x)$); (3) if $\preceq_1$ is $1$-acyclic (antisymmetric up to equivalence), then $\mathcal{C} \in \mathrm{Cat}^L_{(\infty,\infty)}$.
@@ -2061,23 +2061,23 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 90: Gaunt Noetherian Rank-$\omega$ Step-Product Counterexample $\mathcal{Q}$ Disproving Conjecture C1
 
 - **Location Reference:** Chapter 5, §5.7, Theorem 5.7.6 (`thm:step-product-counterexample`), Line 2117
-- **LaTeX Source Line:** `2127`
+- **LaTeX Source Line:** `2129`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Constructs finite gaunt commutative absorbing monoids $\mathcal{M}_k \in \mathrm{Cat}_{(0,k)}$ and coordinate factors $\mathcal{A}_k = \mathcal{M}_{k+1} \in \mathrm{Cat}_{(0,k+1)}$. The step-product $\mathcal{Q} \subseteq \prod_{k \ge 1}\mathcal{A}_k$ is spanned by finite-prefix indicators $e^{(m)} = (1_1, \dots, 1_m, 0_{m+1}, \dots)$ with $\mathrm{rk}\,\mathrm{Hom}_{\mathcal{Q}}(e^{(m)}, e^{(r)}) = \min(m, r)$. $\mathcal{Q}$ is gaunt, Noetherian, and locally finite-dimensional ($\mathrm{rk}_S(\mathcal{Q}) = \omega$), but admits a pure Postnikov phantom $X_\bullet = (\ell_n(e^{(n-1)}))_{n \ge 1} \in RL(\mathcal{Q}) \setminus \mathcal{Q}$, proving $\mathcal{Q} \in (\mathrm{Cat}_{\le \omega} \cap \mathrm{Cat}^{\mathrm{Noeth}} \cap \mathrm{Cat}^\omega) \setminus \mathrm{Cat}^L_{(\infty,\infty)}$ and resolving Conjecture C1 negatively.
+  Constructs finite gaunt commutative absorbing monoids $\mathcal{M}_k \in \mathrm{Cat}_{(0,k)}$ and coordinate factors $\mathcal{A}_k = \mathcal{M}_{k+1} \in \mathrm{Cat}_{(0,k+1)}$. The step-product $\mathcal{Q} \subseteq \prod_{k \ge 1}\mathcal{A}_k$ is spanned by finite-prefix indicators $e^{(m)} = (1_1, \dots, 1_m, 0_{m+1}, \dots)$ with $\mathrm{rk}\,\mathrm{Hom}_{\mathcal{Q}}(e^{(m)}, e^{(r)}) = \min(m, r)$. $\mathcal{Q}$ is gaunt, Noetherian, and locally finite-dimensional ($\mathrm{rank}(\mathcal{Q}) = \omega$), but admits a pure Postnikov phantom $X_\bullet = (\ell_n(e^{(n-1)}))_{n \ge 1} \in RL(\mathcal{Q}) \setminus \mathcal{Q}$, proving $\mathcal{Q} \in (\mathrm{Cat}_{\le \omega} \cap \mathrm{Cat}^{\mathrm{Noeth}} \cap \mathrm{Cat}^\omega) \setminus \mathrm{Cat}^L_{(\infty,\infty)}$ and resolving Conjecture C1 negatively.
 
 ##### Concept 91: Step-Product Phantom as the $(\infty,\infty)$-Categorical Twin of $\mathcal{Q}_{E_0}$
 
 - **Location Reference:** Chapter 5, §5.7, Remark 5.7.7 (`rem:step-product-e0-twin`), Line 2148
-- **LaTeX Source Line:** `2158`
+- **LaTeX Source Line:** `2160`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Structural duality between $\mathcal{Q} \subset \prod_{k \ge 1}\mathcal{A}_k$ and smooth-4-manifold modulus $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}\sslash E_0$: individual objects have finite prefixes, while asymptotic limits collapse them into a coherent phantom ($X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ vs. non-splitting light condensed class $[q] \in \mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$).
+  Structural duality between $\mathcal{Q} \subset \prod_{k \ge 1}\mathcal{A}_k$ and light condensed Cantor tail modulus $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}\sslash E_0$: individual objects have finite prefixes, while asymptotic limits collapse them into a coherent phantom ($X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ vs. non-splitting light condensed class $[q] \in \mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$).
 
 ##### Concept 92: $\mathbf{ICaTT}$ Clan Semantics and Coinductive Witness Streams
 
 - **Location Reference:** Chapter 5, §5.7, Line 2213
-- **LaTeX Source Line:** `2223`
+- **LaTeX Source Line:** `2225`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   Syntactic clans $\mathcal{S}_{\mathbf{CaTT}} \hookrightarrow \mathcal{S}_{\mathbf{ICaTT}}$ modeled by Grothendieck--Maltsiniotis weak $\omega$-category clan models $\mathbf{Clan}(\mathcal{S}_{\mathbf{CaTT}}, \mathcal{E})$. Finite walking-equivalence context $\Gamma_E \equiv \mathcal{E}_1$ evaluates to ORW walking coinductive equivalence computad $\mathcal{E}_1^{\mathrm{OR}}$. $\mathcal{E}_1$-localness cuts out exact Tier 3 ($\mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)}$), and $\mathrm{IDC}_\omega$ is the exact choice threshold for witness-stream adequacy.
@@ -2085,7 +2085,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 93: Relative Slice-Algebra Perfection and $\delta$-Ring Torsion Separation
 
 - **Location Reference:** Chapter 5, §5.7, Line 2215
-- **LaTeX Source Line:** `2225`
+- **LaTeX Source Line:** `2227`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
   Sequential perfection colimit $A_{\mathrm{perf}} = \varinjlim(A \xrightarrow{\phi} A \cdots)$ of a Joyal $\delta$-ring realized as the initial slice algebra in $\mathbf{Under}(A)$. Shift chirality sets Lambek isomorphism $\psi_\infty = s$ and $\phi_{A_{\mathrm{perf}}} = s^{-1}$. Joyal polynomial cofactor $C_p(x, y)$ ($C_2(x, y) = -xy$) separates $2$-torsion witness $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ (admitting two $\delta$-structures $\delta_0, \delta_1$ lifting $\phi(a+b\eta)=a$) and torsion-free $\mathbf{DualInt} = \mathbb{Z}[\varepsilon]/(\varepsilon^2)$ from absolute prisms $(A,I)$ where inverting $\phi$ destroys the Nygaard filtration.
@@ -2095,7 +2095,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 94: Partial Combinatory Algebra (PCA) and Canonical PCAs ($\mathcal{K}_1, \mathcal{K}_1^O, \mathcal{K}_2$)
 
 - **Location Reference:** Chapter 6, §6.1, Line 2236
-- **LaTeX Source Line:** `2246`
+- **LaTeX Source Line:** `2248`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Set $A$ with partial binary application $(a, b) \mapsto a \cdot b$ and combinators $\mathsf{k}, \mathsf{s}$ satisfying functional completeness. Kleene strong equality $\simeq$. Canonical PCAs: $\mathcal{K}_1$ (Turing machines over $\mathbb{N}$), $\mathcal{K}_1^O$ (oracle Turing machines), $\mathcal{K}_2$ (Baire space $\mathbb{N}^\mathbb{N}$ with continuous tracking application).
@@ -2103,7 +2103,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 95: Tripos-to-Topos Construction and Realizability Topos $\mathbf{RT}(\mathcal{A})$
 
 - **Location Reference:** Chapter 6, §6.1, Line 2255
-- **LaTeX Source Line:** `2265`
+- **LaTeX Source Line:** `2267`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Hyland--Johnstone--Pitts construction producing an elementary realizability topos $\mathbf{RT}(\mathcal{A})$ whose objects are sets with $\mathcal{P}(\mathcal{A})$-valued partial equivalence relations.
@@ -2111,7 +2111,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 96: Effective Topos ($\mathbf{Eff} = \mathbf{RT}(\mathcal{K}_1)$)
 
 - **Location Reference:** Chapter 6, §6.1, Line 2257
-- **LaTeX Source Line:** `2267`
+- **LaTeX Source Line:** `2269`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Martin Hyland's topos over $\mathcal{K}_1$. Key invariants: two-valued ($\mathrm{Sub}(1)=\{0,1\}$) yet strongly non-Boolean; non-Grothendieck (no points over $\mathbf{Set}$); validates internal Church's Thesis ($\mathrm{CT}$) and Markov's Principle ($\mathrm{MP}$); validates Countable and Dependent Choice ($\mathrm{CC}_{\mathbb{N}}, \mathrm{DC}_{\mathbb{N}}$) while refuting full $\mathrm{AC}$ (by Diaconescu).
@@ -2119,7 +2119,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 97: Kleene Tree Obstruction and Failure of $\mathrm{WKL}_0$ and $\mathrm{FAN}$ in $\mathbf{Eff}$
 
 - **Location Reference:** Chapter 6, §6.2.1, Line 2275
-- **LaTeX Source Line:** `2285`
+- **LaTeX Source Line:** `2287`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Infinite computable binary tree $T_{\mathrm{Kleene}} \subseteq 2^{<\mathbb{N}}$ without computable infinite paths blocks $\mathrm{WKL}_0$ in $\mathbf{Eff}$. Contrapositive Fan Theorem $\mathrm{FAN}$ (compactness of $2^{\mathbb{N}}$) also fails in $\mathbf{Eff}$, while holding in $\mathbf{RT}(\mathcal{K}_2)$ and $\mathbf{Sh}(\mathbb{N}^\mathbb{N})$.
@@ -2127,7 +2127,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 98: Realizability Residuums for $\mathrm{FAN}$, $\mathrm{EVT}$, and $\mathrm{WKL}$
 
 - **Location Reference:** Chapter 6, §6.2.1, Theorem 6.2.1 (`thm:realizability-fan-wkl`), Line 2283
-- **LaTeX Source Line:** `2293`
+- **LaTeX Source Line:** `2295`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   $\mathrm{RCA}_0 \Rightarrow \mathrm{FAN}$ isolates Baire-continuity / fan-functional structure ($\mathcal{K}_2$ or $\mathbf{Sh}(\mathbb{N}^{\mathbb{N}})$), where $\mathrm{CONT}+\mathrm{FAN}$ yields uniform continuity and existence of the supremum value $\sup f$, whereas full $\mathrm{EVT}$ point attainment entails $\mathrm{LLPO}$ and fails in $\mathbf{RT}(\mathcal{K}_2)$. Both $\mathbf{Sh}_{j_{\mathrm{Lif}}}(\mathbf{Eff})$ (which validates functional $\mathrm{CT}!$ via $a_{j_{\mathrm{Lif}}}(\mathbb{N}_{\mathbf{Eff}})\cong\mathbb{N}_{\mathbf{Eff}}$) and every single-oracle $\mathbf{RT}(\mathcal{K}_1^O)$ (validating $\mathrm{CT}_0^O$) refute $\mathrm{WKL}$ on $T_{\mathrm{Kleene}}$ / $T_{\mathrm{Kleene}}^O$; non-Boolean $\mathrm{WKL}$ realizability requires van Oosten's compact-set Lifschitz realizability over $\mathcal{K}_2$.
@@ -2135,7 +2135,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 99: Weihrauch Reducibility
 
 - **Location Reference:** Chapter 6, §6.2.2, Line 2304
-- **LaTeX Source Line:** `2314`
+- **LaTeX Source Line:** `2316`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Multi-valued problem $f: \subseteq X \rightrightarrows Y$ is Weihrauch reducible to $g: \subseteq Z \rightrightarrows W$ ($f \le_W g$) if there exist computable pre- and post-processors $\Phi, \Psi$ such that $f(x)$ is solved by $g(\Phi(x))$.
@@ -2143,7 +2143,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 100: Lawvere--Tierney Subtopos Residuum Principle
 
 - **Location Reference:** Chapter 6, §6.2.2, Theorem 6.2.2 (`thm:ltt-residuum`), Line 2308
-- **LaTeX Source Line:** `2318`
+- **LaTeX Source Line:** `2320`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   In $\mathbf{SubTopos}(\mathcal{E}) \simeq \mathbf{LTT}(\mathcal{E})^{\mathrm{op}}$, a unique minimum $j_{(A \Rightarrow B)}: \Omega \to \Omega$ exists for upward-closed $\mathcal{V}(A\to B)$ iff $\mathcal{V}(A\to B)$ is closed under arbitrary meets (automatic for $j$-density/$j$-sheafhood operators $j_O, j_{\mathrm{Lif}}, j_{\neg\neg}$). Conversely, two-valued join-irreducibility of $1$ on dense subtopoi yields the Pareto Schism $\{j_{O_1}, j_{O_2}\}$ ($O_1 \perp_T O_2$), while Kihara's no-minimal-operator theorem solving Lee--van Oosten makes $\{j > \mathrm{id}_\Omega\}$ an **Evanescent Residuum**; meanwhile $j_{\mathrm{Lif}}$ forces $\mathrm{LLPO}+\mathrm{CT}!+\neg\mathrm{CT}_0+\neg\mathrm{WKL}$, $j_O$ gives $\mathbf{RT}(\mathcal{K}_1^O)\models \mathrm{CT}_0^O+\neg\mathrm{WKL}$, and $j_{\neg\neg}$ collapses to $\mathbf{Set}$.
@@ -2151,7 +2151,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 101: Site-Level Combinatorial Residuum Dictionary
 
 - **Location Reference:** Chapter 6, §6.3, Theorem 6.3.1 (`thm:site-dictionary`), Line 2355
-- **LaTeX Source Line:** `2365`
+- **LaTeX Source Line:** `2367`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   For $\mathcal{E} \simeq \mathbf{Sh}(\mathbb{C}, J)$: (1) De Morgan lattice ($\mathrm{WLEM}$) $\iff$ Right Ore condition on cospans in $\mathbb{C}$ (J-amalgamation); (2) Gödel--Dummett linearity $\iff$ directedness / tree condition (poset site is a forest of trees); (3) Booleanness ($\mathrm{LEM}$) $\iff$ dense-covering collapse ($J = J_{\neg\neg}$) / $\mathbb{C}$ is a groupoid; (4) Global choice ($\mathrm{AC}$) $\iff$ Morita equivalence to complete Boolean algebra with split covers.
@@ -2159,7 +2159,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 102: Group-Action Topoi ($\mathbf{Set}^G$) vs. Non-Discrete Fraïssé Permutation Topoi ($\mathbf{Cont}(\mathcal{G})$)
 
 - **Location Reference:** Chapter 6, §6.4, Line 2382
-- **LaTeX Source Line:** `2392`
+- **LaTeX Source Line:** `2394`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Continuous $G$-sets $\mathbf{Cont}(\mathcal{G})$ form atomic Boolean topoi. Discrete $\mathbf{Set}^G$ has minimal open subgroup $\{1\}$, so principal torsor $G$ is an internally projective generator, validating $\mathrm{IAC}$ and $\mathrm{COSHEP}$, but failing external choice ($\mathrm{EAC}$) since $\Gamma(G) = \emptyset$. Non-discrete Fraïssé topoi $\mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ (like $\mathbf{Nom}$) have no minimal open subgroup; hence $1$ is not externally projective and $\mathrm{EAC}$, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, and $\mathrm{AC}$ all fail unless $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$.
@@ -2167,7 +2167,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 103: Permutation-Topos Residuum Atlas in $\mathbf{Cont}(\mathcal{G})$
 
 - **Location Reference:** Chapter 6, §6.4, Theorem 6.4.1 (`thm:permutation-topos`), Line 2400
-- **LaTeX Source Line:** `2410`
+- **LaTeX Source Line:** `2412`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   (1) Blass's Small Violations of Choice ($\mathrm{SVC}(S)$) holds unconditionally via universal orbit generator $S = \coprod_{U\in\mathcal{B}} \mathcal{G}/U$; (2) $\mathrm{COSHEP}$ and $\mathrm{IAC}$ hold iff $\mathcal{U}(\mathcal{G})$ has a minimal open subgroup; $\mathrm{EAC}$, $\mathrm{AC}$, and localicity hold iff $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$; (3) external Finite $k$-Choice ($\mathrm{FAC}_k$) holds iff no open subgroup $U \in \mathcal{U}(\mathcal{G})$ admits a fixed-point-free continuous action $\rho : U \to S_k$ ($\mathrm{Fix}(\rho(U))\neq\emptyset$, resolving the $\mathbb{Z}/2\mathbb{Z}\times\mathrm{Sym}(\mathbb{N})$ $k=4$ non-transitive and $k=3$ non-trivial-$H^1$ obstructions).
@@ -2175,7 +2175,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 104: Fraïssé Atomic-Topology Escape from Presheaf Groupoidification
 
 - **Location Reference:** Chapter 6, §6.5, Theorem 6.5.1 (`thm:fraisse-atomic-escape`), Line 2430
-- **LaTeX Source Line:** `2440`
+- **LaTeX Source Line:** `2442`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Bare presheaves $\mathbf{Set}^{\mathcal{K}}$ are Boolean iff $\mathcal{K}$ is a groupoid (forcing embeddings into isos). Fraïssé Amalgamation ($\mathrm{AP}$) on $\mathcal{K}$ is the Right Ore condition on cospans in $\mathbb{C} = \mathcal{K}^{\mathrm{op}}$, validating $\mathrm{WLEM}$. Passing to atomic sheaf subtopos $\mathbf{Sh}(\mathcal{K}^{\mathrm{op}}, J_{\mathrm{at}}) \simeq \mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ achieves $\mathrm{LEM}$ without inverting non-invertible embeddings.
@@ -2183,7 +2183,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 105: Kihara's Five-Rung Atomic Choice Spectrum
 
 - **Location Reference:** Chapter 6, §6.6, Line 2450, Figure 6.1
-- **LaTeX Source Line:** `2460`
+- **LaTeX Source Line:** `2462`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Strict choice hierarchy on Boolean atomic topoi $\mathbf{Sh}(\mathcal{K}_\lambda^{\mathrm{op}}, J_{\mathrm{at}})$:
@@ -2196,7 +2196,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 106: Nominal Parity Cohomology and the Odd-Finset Parity Torsor $\mathcal{T}_{\mathrm{odd}}$
 
 - **Location Reference:** Chapter 6, §6.6, Line 2497
-- **LaTeX Source Line:** `2507`
+- **LaTeX Source Line:** `2509`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   In $\mathbf{Nom}$, all open normal subgroups of $\mathrm{Sym}(\mathbb{N})$ are improper, so constant-coefficient Galois cohomology vanishes ($H^1(\mathbf{Nom}; \Delta(\mathbb{Z}/2\mathbb{Z})) = 0$, Pro-Discrete Blindness). The short exact sequence $0 \to \mathrm{EvenFinset} \to \mathrm{Finset}_\Delta(\mathbb{N}) \to \Delta(\mathbb{Z}/2\mathbb{Z}) \to 0$ yields a non-trivial connecting cohomology class $[\mathcal{T}_{\mathrm{odd}}] = \delta(1) \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$, represented by the odd-finset torsor fiber $\mathcal{T}_{\mathrm{odd}}$.
@@ -2204,7 +2204,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 107: Internal Matching Criterion for $n$-Amalgamation
 
 - **Location Reference:** Chapter 6, §6.7, Proposition 6.7.1 (`prop:matching-amalgamation`), Line 2507
-- **LaTeX Source Line:** `2517`
+- **LaTeX Source Line:** `2519`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   A punctured $n$-cube $D: \mathcal{P}^-(n) \to \mathcal{K}_\lambda$ admits an amalgam iff $\mathrm{Match}_n(D) \to \mathbf{y}_{D(\emptyset)}$ is an epimorphism in $\mathcal{E} = \mathbf{Sh}(\mathcal{K}_\lambda^{\mathrm{op}}, J_{\mathrm{at}})$, and Disjoint $n$-Amalgamation ($n$-$\mathrm{DAP}$) iff disjoint matching $\mathrm{Match}_n^{\mathrm{disj}}(D) \twoheadrightarrow \mathbf{y}_{D(\emptyset)}$ is epimorphic.
@@ -2212,7 +2212,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 108: $2 \times 2$ Classification of Galois Stability vs. Higher $n$-Amalgamation
 
 - **Location Reference:** Chapter 6, §6.7, Line 2522, Table
-- **LaTeX Source Line:** `2532`
+- **LaTeX Source Line:** `2534`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Orthogonal grid separating: $\mathrm{ACF}_0$ (Galois stable, all-$n$ $\mathrm{DAP}$); Goodrick--Kim--Kolesnikov covers $T_m$ (Galois stable, fails $m$-$\mathrm{AP}$ on $S^{m-2}$); Rado graph $\mathrm{RG}$ (Galois unstable, all-$n$ $\mathrm{DAP}$); Henson $K_m$-free graphs $\mathcal{H}_m$ (Galois unstable, fails $m$-$\mathrm{AP}$ on $K_{m-1}$ facets).
@@ -2220,7 +2220,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 109: Two-Clause Flow-Convex Embeddings (`IsFlowConvex`)
 
 - **Location Reference:** Chapter 6, §6.7, Line 2535
-- **LaTeX Source Line:** `2545`
+- **LaTeX Source Line:** `2547`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Combines cell membership (`cell_mem`) and path-interval vertex closure (`inter_mem`). Blocks Steiner cycle obstructions, ensures binary pushouts stay flow-acyclic (`sap_flowConvex`), and keeps Marcus Nicolas's pinched 2-cube flow-acyclic under equal-dimension steps.
@@ -2228,7 +2228,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 110: Cubical Disjoint $n$-Amalgamation Dichotomy
 
 - **Location Reference:** Chapter 6, §6.7, Theorem 6.7.2 (`thm:directed-cubical-amalgamation`), Line 2537, Figure 6.2
-- **LaTeX Source Line:** `2547`
+- **LaTeX Source Line:** `2549`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   (1) All-$n$ disjoint $n$-amalgamation ($n$-$\mathrm{DAP}$) holds on finite oriented graded posets with closed cellular embeddings ($\mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$) via minimal-support carrier `CubicalAmalgam`; (2) For every $n \ge 3$, the facet-supported directed $n$-cycle $F_n = \partial\Delta^{n-1}$ has flow-acyclic proper faces and flow-convex maps, yet admits no flow-acyclic cocone, closing a global directed cycle.
@@ -2236,7 +2236,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 111: Polygraphic Finite-Support Equality on $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$
 
 - **Location Reference:** Chapter 6, Section 6.8, Lem 6.8.1 (`lem:polygraphic-support`)
-- **LaTeX Source Line:** `2624`
+- **LaTeX Source Line:** `2626`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   Prose proof in `lem:polygraphic-support` (`\leanwitness` via untyped rose-tree syntax-tree surrogate `cattTerm_exact_support` and `cattTerm_freshCell_exact_support` in `NominalICaTT.lean`): proves the exact two-sided nominal support equality $\mathrm{supp}(t) = \bigcup_{g \in \mathrm{Gen}(t)} \mathrm{supp}(g)$ in the free Grothendieck--Maltsiniotis weak $\omega$-category on the fresh-atom computad $E[\mathbb{A}]$ via structural induction under finitary $\mathbf{CaTT}$ constructors ($\subseteq$) and atom-swapping transpositions $(a\;b) \in \mathrm{Fix}(S)$ over rigid syntax trees ($\supseteq$).
@@ -2244,7 +2244,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 112: Choice Calibration of Internal Coinductive Invertibility Streams
 
 - **Location Reference:** Chapter 6, §6.8, Theorem 6.8.2 (`thm:coinductive-stream-choice`), Line 2628
-- **LaTeX Source Line:** `2638`
+- **LaTeX Source Line:** `2640`
 - **Monograph Section:** Chapter 6
 - **Concise Definition / Context Summary:**
   In Grothendieck 1-topos $\mathcal{E}$, relational coinduction $E_{\mathrm{rel}} = \nu\Phi$ is bridged to witness-stream image $\mathrm{im}(\mathrm{InvStr})$ by internal Dependent Choice $\mathrm{IDC}_\omega$ ($\mathrm{DC}_\omega$): at Rung $\ge 1$, $\mathrm{IDC}_\omega$ ensures $E_{\mathrm{rel}} = \mathrm{im}(\mathrm{InvStr})$; at Rung 0 in $\mathbf{Nom}$, on $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$, $u \in E_{\mathrm{rel},1}$ by Knaster--Tarski, but any witness stream requires selecting infinite fresh atoms $\mathbb{A}^{\#(\omega)}$ without finite support, emptying $\mathrm{InvStr}_1$.
@@ -2402,7 +2402,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 131: Programmatic Panorama Genre Separation: External Benchmark Syntheses vs. Proved Spine
 
 - **Location Reference:** Chapter 8, Section 8.1, Rem 8.1.1 (`rem:panorama-genre-signpost`)
-- **LaTeX Source Line:** `2670`
+- **LaTeX Source Line:** `2672`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Establishes the structural boundary between Chapters 1--7 (where all 41 novel theorems, propositions, and lemmas carry complete proofs in the text alongside Two-Tier `\leanok` and `\leanwitness` Lean 4 declarations, and the 3 historical Chapter 7 pillars carry explicit External Benchmark tags) and the consolidated external benchmark synthesis panorama of Chapter 8 across constructive analysis, pointfree topology, homological exactness, arithmetic pretopoi, univalent excision, and differential cohesion.
@@ -2410,7 +2410,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 132: Internal Continuum Trichotomy ($\mathbb{Q} \rightarrowtail \mathbb{R}_C \rightarrowtail \mathbb{R}_D \rightarrowtail \mathbb{R}_M$)
 
 - **Location Reference:** Chapter 8, Section 8.1.1, Paras 2–3
-- **LaTeX Source Line:** `2679`
+- **LaTeX Source Line:** `2681`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   In elementary topos with $\mathrm{NNO}$, the real numbers split into Cauchy reals $\mathbb{R}_C$, Dedekind reals $\mathbb{R}_D$, and MacNeille reals $\mathbb{R}_M$. The canonical map $\mathbb{R}_D \rightarrowtail \mathbb{R}_M$ is unconditionally monic, becoming an isomorphism $\mathbb{R}_D \simeq \mathbb{R}_M$ iff $\mathrm{WLEM}$ holds (De Morgan/Stone $\Omega$).
@@ -2418,7 +2418,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 133: Cauchy-to-Dedekind Continuum Collapse ($\mathbb{R}_C \Rightarrow \mathbb{R}_D$)
 
 - **Location Reference:** Chapter 8, Section 8.1.1, Para 4(1)
-- **LaTeX Source Line:** `2691`
+- **LaTeX Source Line:** `2693`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   In $\mathbf{Sh}(\mathbb{C}, J)$ without Countable Choice $\mathrm{CC}$, the categorical residuum bridging $\mathbb{R}_C \to \mathbb{R}_D$ to an isomorphism is countable open-cover refinement ($\omega$-completeness) of the site.
@@ -2426,7 +2426,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 134: Approximate vs. Exact Intermediate Value Theorem ($\varepsilon\text{-}\mathrm{IVT} \Rightarrow \mathrm{IVT}$)
 
 - **Location Reference:** Chapter 8, Section 8.1.1, Para 4(2)
-- **LaTeX Source Line:** `2699`
+- **LaTeX Source Line:** `2701`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   $\varepsilon\text{-}\mathrm{IVT}$ holds constructively; exact $\mathrm{IVT}$ fails in general $\mathbf{Sh}(X)$. Bridging residuum is zero-dimensionality / local connectedness of the site (or internal $\mathrm{WLEM}$ + cut-completeness).
@@ -2434,7 +2434,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 135: Sequential Compactness to Extreme Value Theorem and Cantor Locale Compactness
 
 - **Location Reference:** Chapter 8, Section 8.1.1, Para 4(3)
-- **LaTeX Source Line:** `2707`
+- **LaTeX Source Line:** `2709`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Bridging pointwise continuity to uniform continuity and existence of the supremum value $\sup_{x\in[0,1]} f(x)$ isolates internal compactness of the Cantor locale $2^{\mathbb{N}}_{\mathcal{E}}$ (Fan Theorem $\mathrm{FAN}$), whereas exact supremum attainment (full point-set $\mathrm{EVT}$) additionally requires $\mathrm{LLPO}$ (failing in $\mathbf{RT}(\mathcal{K}_2)$), contrasting with the non-compact Baire locale $\mathbb{N}^{\mathbb{N}}_{\mathcal{E}}$.
@@ -2442,7 +2442,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 136: Pointfree vs. Spatial Duality Lattice ($\mathbf{Loc}(\mathcal{E}) = \mathbf{Frm}(\mathcal{E})^{\mathrm{op}}$)
 
 - **Location Reference:** Chapter 8, Section 8.1.2, Paras 1–2
-- **LaTeX Source Line:** `2713`
+- **LaTeX Source Line:** `2715`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Frames $L$ satisfy infinite distributivity; internal locales are formal duals. A point is a frame hom $L \to \Omega$; spatiality means points separate distinct elements.
@@ -2450,7 +2450,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 137: Localic vs. Spatial Tychonoff Theorem
 
 - **Location Reference:** Chapter 8, Section 8.1.2, Item 1
-- **LaTeX Source Line:** `2721`
+- **LaTeX Source Line:** `2723`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Johnstone's localic Tychonoff theorem holds choice-free in any elementary topos; elevating to spatial point-set Tychonoff isolates spatiality of compact product locales ($\mathrm{IBPI}$ / logical compactness of $\Omega$).
@@ -2458,7 +2458,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 138: Localic vs. Spatial Hahn--Banach Theorem
 
 - **Location Reference:** Chapter 8, Section 8.1.2, Item 2
-- **LaTeX Source Line:** `2723`
+- **LaTeX Source Line:** `2725`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Mulvey--Pelletier localic Hahn--Banach holds choice-free; elevating to point-set Hahn--Banach requires existence of global points in compact regular locales.
@@ -2466,7 +2466,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 139: Finitary Coherence vs. Supercompactness Shift in Spatiality
 
 - **Location Reference:** Chapter 8, Section 8.1.2, Para 3
-- **LaTeX Source Line:** `2727`
+- **LaTeX Source Line:** `2729`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   When ultrafilter strength is absent in base $\mathcal{S}$, supercompact generation (every cover refines to a single generating element) provides a constructive sufficient spatiality residuum, though $\mathcal{O}(2^{\mathbb{N}})$ shows necessity fails in pure $\mathsf{ZF}$.
@@ -2474,7 +2474,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 140: $\Omega$-Geometry Dictionary for Intermediate Logics
 
 - **Location Reference:** Chapter 8, Section 8.2.1, Thm 8.2.1 (`thm:omega-dictionary`)
-- **LaTeX Source Line:** `2737`
+- **LaTeX Source Line:** `2739`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Structural classification of intermediate logics: $\mathrm{WLEM}$ (De Morgan) $\iff \Omega$ Stone lattice $\iff X$ extremally disconnected; Gödel–Dummett linearity $\iff \Omega$ linearly ordered $\iff$ forest of trees (principal down-sets $\downarrow p$ linearly ordered for $\mathbf{Set}^{\mathcal{P}^{\mathrm{op}}}$, upward cones $\uparrow p$ for $\mathbf{Set}^{\mathcal{P}}$); $\mathrm{LEM}$ (Boolean) $\iff \Omega \simeq 1+1 \iff X$ discrete.
@@ -2482,7 +2482,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 141: Internal Real Order Invariants: Weak Order Linearity vs. Geometric Field Dichotomy
 
 - **Location Reference:** Chapter 8, Section 8.2.1, Paras 2–3
-- **LaTeX Source Line:** `2754`
+- **LaTeX Source Line:** `2756`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Weak linearity $x \le 0 \vee x \ge 0$ and $\mathbb{R}_D \simeq \mathbb{R}_M$ reverse to $\mathrm{WLEM}$ (extremal disconnectedness); geometric field dichotomy ($x=0 \vee x \text{ invertible}$) requires $P$-space topology (open zero-sets).
@@ -2490,7 +2490,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 142: Two-Dimensional Homological Exactness Bifurcation Lattice
 
 - **Location Reference:** Chapter 8, Section 8.2.2, Paras 1–2 & Fig 8.1 (`fig:homological-lattice`)
-- **LaTeX Source Line:** `2801`
+- **LaTeX Source Line:** `2803`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Exactness hierarchy bifurcating from $\mathbf{RegCat}$ into orthogonal branches $\mathbf{BarrExact}$ and $\mathbf{PointedProtomodular}$, meeting at $\mathbf{SemiAbelian}$, ascending through $\mathbf{Abelian}$ to infinite exactness axes $\mathbf{AB5}$ and $\mathbf{AB4}^*$.
@@ -2498,7 +2498,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 143: Orthogonality of Barr-Exactness and Bourn Protomodularity
 
 - **Location Reference:** Chapter 8, Section 8.2.2, Item 1
-- **LaTeX Source Line:** `2808`
+- **LaTeX Source Line:** `2810`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Barr-exactness (effective equivalence relations; e.g. $\mathbf{Set}, \mathbf{Set}_*, \mathbf{CMon}$, failing Split Short Five); Bourn protomodularity (Split Short Five Lemma; e.g. $\mathbf{Grp}, \mathbf{TFAB}, \mathbf{HausGrp}$, failing Barr-exactness).
@@ -2506,7 +2506,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 144: Semi-Abelian Categories and the Snake Lemma Residuum
 
 - **Location Reference:** Chapter 8, Section 8.2.2, Item 2
-- **LaTeX Source Line:** `2814`
+- **LaTeX Source Line:** `2816`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   $\mathbf{SemiAbelian} = \mathbf{BarrExact} \cap \mathbf{Protomodular} \cap \mathbf{Pointed} \cap \mathbf{FinCoproducts}$. Short Five holds in protomodular; connecting homomorphism $\delta$ in Snake Lemma requires semi-abelianness for naturality, and additivity ($\mathbf{Ab}$-enrichment) for abelian exactness.
@@ -2514,7 +2514,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 145: Divergence of Infinite Abelian Exactness ($\mathbf{AB5}$ vs. $\mathbf{AB4}^*$)
 
 - **Location Reference:** Chapter 8, Section 8.2.2, Item 3
-- **LaTeX Source Line:** `2823`
+- **LaTeX Source Line:** `2825`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Grothendieck's higher exactness axioms: $\mathbf{AB5}$ (exact filtered colimits, enough injectives; holds in $\mathbf{Sh}(X,\mathbf{Ab})$); $\mathbf{AB4}^*$ (exact products, vanishing of $\varprojlim^1$; fails in non-discrete $\mathbf{Sh}(X,\mathbf{Ab})$).
@@ -2522,7 +2522,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 146: Categorical "Big Five" Calibration: Constructive Pretopoi vs. Two-Sorted Hyperdoctrines
 
 - **Location Reference:** Chapter 8, Section 8.3.1, Paras 1–2
-- **LaTeX Source Line:** `2840`
+- **LaTeX Source Line:** `2842`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Separates single-sorted *constructive* universes ($\mathbf{ArithUniv} \subsetneq \Pi\text{-}\mathbf{Pretopos} \subsetneq \Pi W\text{-}\mathbf{Pretopos} \subsetneq \mathbf{ElemTopos}$) from Johnstone\'s single-sorted Boolean collapse ($\mathbf{Bool}\text{-}\Pi\text{-}\mathbf{Pretopos} = \mathbf{BoolElemTopos}$ via $\Omega := 1+1 \models \mathsf{Mac} \simeq \mathsf{ETCS}$), routing classical $\mathrm{LEM}$-bearing "Big Five" calibrations through two-sorted Lawvere hyperdoctrines $p : \mathcal{P} \to \mathbb{B}$.
@@ -2530,7 +2530,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 147: Primitive Recursion to Arithmetical Comprehension ($\mathrm{RCA}_0 / \mathrm{WKL}_0 \to \mathrm{ACA}_0$)
 
 - **Location Reference:** Chapter 8, Section 8.3.1, Item 1
-- **LaTeX Source Line:** `2850`
+- **LaTeX Source Line:** `2852`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Separates Cantor-locale compactness ($\mathrm{RCA}_0 \Rightarrow \mathrm{WKL}_0$, ordinal $\omega^\omega$) from Maietti--Joyal predicative Arithmetic Universes, calibrating the climb to $\mathrm{ACA}_0$ (ordinal $\varepsilon_0$) constructively via local Cartesian closure ($\Pi_f$, $\mathsf{HA}^\omega \equiv_{\mathrm{Con}} \mathsf{PA}$) and classically via two-sorted first-order quantifier comprehension $\exists_{\mathbb{N}} \dashv \pi^* \dashv \forall_{\mathbb{N}}$.
@@ -2538,7 +2538,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 148: Arithmetical Comprehension to Transfinite Recursion ($\mathrm{ACA}_0 \Rightarrow \mathrm{ATR}_0$ vs. $\Pi W$-Pretopoi)
 
 - **Location Reference:** Chapter 8, Section 8.3.1, Item 2
-- **LaTeX Source Line:** `2852`
+- **LaTeX Source Line:** `2854`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Distinguishes unrestricted $W$-type subobject induction in a $\Pi W$-pretopos—which interprets Aczel's $\mathsf{CZF} \equiv_{\mathrm{Con}} \mathsf{KP}\omega$ (Bachmann--Howard ordinal, overshooting $\Gamma_0$)—from Core Conjecture 5's restriction of polynomial $P_f$-initial-algebra recursion to *predicative arithmetical fibers* calibrating $\mathrm{ATR}_0$ ($\Gamma_0$).
@@ -2546,7 +2546,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 149: Tree Induction to Impredicative Comprehension ($\mathrm{ATR}_0 \Rightarrow \Pi^1_1\text{-}\mathrm{CA}_0$ vs. $\mathbf{ElemTopos}$)
 
 - **Location Reference:** Chapter 8, Section 8.3.1, Item 3
-- **LaTeX Source Line:** `2863`
+- **LaTeX Source Line:** `2865`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Distinguishes full subobject classifiers $\Omega$ and iterated power objects $\Omega^{\cdots\Omega^X}$—which jump past $\Pi^1_1\text{-}\mathrm{CA}_0$ into $\mathsf{Z}_2$ and $\mathsf{Mac} \simeq \mathsf{ETCS}$—from *monotone arithmetical Knaster--Tarski fixed points* $\mu\Phi, \nu\Phi$ on $\mathcal{P}(\mathbb{N})$ calibrating $\Pi^1_1\text{-}\mathrm{CA}_0$ (ordinal $\psi_0(\Omega_\omega) \equiv_{\mathrm{Con}} \mathsf{ID}_{<\omega}$).
@@ -2554,7 +2554,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 150: Higher Inductive Types (HITs) and the Homotopical Recursion Lattice
 
 - **Location Reference:** Chapter 8, §8.3.2, Line 2853
-- **LaTeX Source Line:** `2867`
+- **LaTeX Source Line:** `2869`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Ordinary $W$-types produce $0$-truncated trees. HITs (universal homotopy pushouts and initial algebras enriched with path constructors) form the exact categorical residuum bridging $0$-truncated $W$-type recursion to synthetic homotopy theory ($\pi_1(S^1) \simeq \mathbb{Z}$, Seifert--van Kampen).
@@ -2562,7 +2562,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 151: Voevodsky Univalence Axiom and the Universe Lattice
 
 - **Location Reference:** Chapter 8, §8.4.1, Line 2861
-- **LaTeX Source Line:** `2877`
+- **LaTeX Source Line:** `2879`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Object classifier $\mathcal{U}$ with universal fibration $\widetilde{\mathcal{U}} \to \mathcal{U}$. Univalence asserts that $\mathrm{Id}_{\mathcal{U}}(X, Y) \xrightarrow{\sim} \mathrm{Equiv}(X, Y)$ is an equivalence. Residuum elevating weak classification to univalence is Colimit Universality and Descent (Giraud $\infty$-axioms).
@@ -2570,7 +2570,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 152: Excision Lattice, Categorical Spectra $\mathrm{CatSp}$, and Masuda 3-Periodic Lax/Bifiber Triad
 
 - **Location Reference:** Chapter 8, §8.4.2, Line 2867
-- **LaTeX Source Line:** `2883`
+- **LaTeX Source Line:** `2885`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Colimit universality and modality descent bridge pushouts to Blakers--Massey and Freudenthal. Initial object strictness collapses any "stable $(\infty,1)$-topos" to $*$. Directed stabilization on pointed $(\infty,\infty)$-categories forms categorical spectra $\mathrm{CatSp} := \mathrm{Sp}(\mathrm{Cat}^R_*)$ across lifted four-tier chain $\mathrm{CatSp}^L \subsetneq \mathrm{CatSp}^\omega \subsetneq \mathrm{CatSp}^{\mathrm{coind}} \subsetneq \mathrm{CatSp}^R$. Masuda v2 Steiner correction (pinched 2-cube) retains monoidal total dual $(-)^{\circ} = (-)^{\mathrm{coop}}$ and 3-periodic lax/bifiber triad: $\overrightarrow{\mathrm{cof}}(f) \to \text{bifiber} \to \overrightarrow{\mathrm{fib}}(\Sigma_{\mathrm{dir}} f)$. Geiß oriented Freudenthal suspension proves unit $\mathcal{C} \to \Omega_{\mathrm{dir}}\Sigma_{\mathrm{red}}\mathcal{C}$ is $2n$-connected without inverting $1$-cells ($\tau_0(\Sigma^\infty_{\mathrm{dir}} S^0) \cong \mathbb{N}$).
@@ -2578,7 +2578,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 153: Synthetic Differential Geometry (SDG), Line Object $R$, and Infinitesimal Disk $D$
 
 - **Location Reference:** Chapter 8, Section 8.5.1, Paras 1–2
-- **LaTeX Source Line:** `2901`
+- **LaTeX Source Line:** `2903`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Differential geometry in smooth topoi with line object $R$ and first-order nilpotent infinitesimals $D = \{x \in R \mid x^2 = 0\}$.
@@ -2586,7 +2586,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 154: Kock--Lawvere Axiom and Classical Refutation
 
 - **Location Reference:** Chapter 8, Section 8.5.1, Paras 2–3
-- **LaTeX Source Line:** `2903`
+- **LaTeX Source Line:** `2905`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Isomorphism $\alpha : R \times R \xrightarrow{\sim} R^D, (a, b) \mapsto (d \mapsto a + bd)$. Because $D$ contains non-zero indistinguishables, refutes $\mathrm{LEM}$ and $\mathrm{AC}$ by Diaconescu's theorem.
@@ -2594,7 +2594,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 155: Microlinearity Residuum
 
 - **Location Reference:** Chapter 8, Section 8.5.1, Item 1
-- **LaTeX Source Line:** `2915`
+- **LaTeX Source Line:** `2917`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Functor $M^{(-)}$ sends colimits of infinitesimal Weil varieties to limits (e.g. $M^{D(2)} \cong M^D \times_M M^D$); bridges single-variable derivatives to tangent bundles, Lie brackets, connections, and curvature.
@@ -2602,7 +2602,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 156: Global Smooth Cohomology Regimes: Cohesion vs. Tinyness
 
 - **Location Reference:** Chapter 8, Section 8.5.1, Item 2
-- **LaTeX Source Line:** `2924`
+- **LaTeX Source Line:** `2926`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Separating local infinitesimal duality from global Stokes' Theorem and de Rham cohomology: across both algebraic smooth presheaf topoi $\mathbf{Set}^{\mathbb{L}^{\mathrm{op}}}$ and Weil-closed open-cover smooth topoi such as the Cahiers topos and Dubuc's $\mathcal{G}$, localness of Weil spectra implies $M^D = TM$ preserves open covers, so $D$ is tiny ($(-)^D \dashv (-)_D$); global Stokes' and de Rham theorems additionally require the Integration Axiom, Archimedean glueing, and Lawvere's cohesive adjoint quadruple $\Pi \dashv \mathrm{Disc} \dashv \Gamma \dashv \mathrm{Codisc}$.
@@ -2610,7 +2610,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 157: Differential Cohesion and Higher Gauge Theory
 
 - **Location Reference:** Chapter 8, §8.5.2, Line 2924
-- **LaTeX Source Line:** `2942`
+- **LaTeX Source Line:** `2944`
 - **Monograph Section:** Chapter 8
 - **Concise Definition / Context Summary:**
   Cohesive adjoint quadruple $\Pi \dashv \mathrm{Disc} \dashv \Gamma \dashv \mathrm{Codisc}$ + infinitesimal shape $\mathrm{Im} \dashv \mathrm{Inf}$ on an $(\infty,1)$-topos. Bridges local Lie $\infty$-algebra differential forms to global principal $\infty$-bundles ($B^2 U(1)$ bundle gerbes) and the Simons--Sullivan differential cohomology hexagon.
@@ -2620,7 +2620,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 158: Unified CRM Residuum Operator Across Doctrinal Triples
 
 - **Location Reference:** Chapter 9, Section 9.1, Paragraph 1, line 2906
-- **LaTeX Source Line:** `2961`
+- **LaTeX Source Line:** `2963`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Synthesizes Categorical Reverse Mathematics across Chapters 1–8—spanning Grothendieck/localic topoi, $(\infty,1)$-topoi and $(\infty,\infty)$-categories, realizability and Fraïssé permutation topoi, and Joyal--Moerdijk algebraic set-theoretic small-map ambients $(\mathcal{C}, \mathcal{S})$ alongside univalent $(\infty, 1)$-topos universes $(\mathcal{X}, \mathcal{U})$—via universal obstructions $\mathrm{Res}(\kappa)$ on $\mathfrak{T} = (\mathcal{D}_0 \supseteq \mathcal{D}_1, \kappa : \Phi \Rightarrow \Psi) \in \mathrm{Dom}(\mathrm{Res})$.
@@ -2628,7 +2628,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 159: Categorical Residuum as Relative Pseudocomplement
 
 - **Location Reference:** Chapter 9, Section 9.1, Paragraph 1, line 2910
-- **LaTeX Source Line:** `2965`
+- **LaTeX Source Line:** `2967`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   In the topos-theoretic doctrine $\mathcal{D}_0 = \mathbf{Topos}$, for theorems $A$ and $B$ with $\mathbf{Mod}(B) \subsetneq \mathbf{Mod}(A)$, the categorical residuum $\mathcal{R} = (A \Rightarrow_{\mathbf{Topos}} B)$ is defined as the relative pseudocomplement satisfying $\mathbf{Mod}(A) \cap \mathbf{Mod}(\mathcal{R}) = \mathbf{Mod}(B)$. It represents the weakest orthogonal structural invariant on a topos $\mathcal{E}$ validating the Fundamental Equivalence $A + \mathcal{R}(\mathcal{E}) \iff B$.
@@ -2636,7 +2636,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 160: Admissibility Criterion (Four Structural Invariant Families)
 
 - **Location Reference:** Chapter 9, Section 9.1, Paragraph 2 and Itemize, line 2918
-- **LaTeX Source Line:** `2973`
+- **LaTeX Source Line:** `2975`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The structural honesty condition preventing the Triviality Trap (tautological assertion of $A \to B$) by requiring every valid categorical residuum $\mathcal{R}(\mathcal{E})$ to belong to one of four orthogonal families:
@@ -2648,7 +2648,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 161: Five-Step CRM Residuum Computation Protocol
 
 - **Location Reference:** Chapter 9, Section 9.2, Protocol List, line 2934
-- **LaTeX Source Line:** `2989`
+- **LaTeX Source Line:** `2991`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The standard five-stage analytical protocol for resolving a categorical reversal $A + \mathcal{R}(\mathcal{E}) \iff B$:
@@ -2661,7 +2661,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 162: Absolute vs. Relative Residua & Contravariant Fiber Strengthening
 
 - **Location Reference:** Chapter 9, Section 9.2, Paragraph 2, line 2950
-- **LaTeX Source Line:** `3005`
+- **LaTeX Source Line:** `3007`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Categorizes residua along bounded geometric morphisms $\gamma : \mathcal{E} \to \mathcal{S}$ into *absolute* (base-invariant, e.g. Diaconescu's $\mathrm{IAC} \implies \mathrm{LEM}$) and *relative* (base-sensitive, e.g. Deligne--BPI). When base axioms weaken from $\mathcal{M}_1(\mathcal{S})$ to $\mathcal{M}_2(\mathcal{S})$ ($\mathbf{Mod}(\mathcal{M}_1) \subsetneq \mathbf{Mod}(\mathcal{M}_2)$), the Order-Theoretic Base-Fiber Conservation Principle mandates contravariant strengthening of the fiber residuum: $\mathbf{Mod}(\mathcal{R}_2(\mathcal{E}/\mathcal{S})) \subsetneq \mathbf{Mod}(\mathcal{R}_1(\mathcal{E}/\mathcal{S}))$.
@@ -2669,7 +2669,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 163: Cohomological Vanishing Conjecture (Core Conjecture 1)
 
 - **Location Reference:** Chapter 9, Section 9.3, Enumerate Item 1, line 2962
-- **LaTeX Source Line:** `3017`
+- **LaTeX Source Line:** `3019`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Seeks to extend the unconditionally proved slice-group reductions $\mathcal{G}_A(Y) \subseteq \mathbf{Grp}(\mathcal{E}/Y)$ for $A \in \{\top, \mathrm{IBPI}, \mathrm{IDC}, \mathrm{SVC}\}$ to intermediate choice axioms ($\mathrm{WISC}$, $\mathrm{OP}$, $\mathrm{AC}_\lambda$), reducing $(A \Rightarrow_{\mathbf{Topos}} \mathrm{AC})$ to Booleanness, external projectivity of $1_{\mathcal{E}}$, and $H^1(\mathcal{E}/Y, G) = 0$.
@@ -2677,7 +2677,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 164: Sequential Presentability Conjecture (Core Conjecture 2)
 
 - **Location Reference:** Chapter 9, Section 9.3, Enumerate Item 2, line 2964
-- **LaTeX Source Line:** `3019`
+- **LaTeX Source Line:** `3021`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Conjectures that étale $\omega$-presentability of Joyal--Tierney localic groupoid isotropy (extending the proved subcountable-step epimorphism bridge and normal pro-discrete $\mathbf{Cont}(\mathcal{G})$ collapse) is the minimal intrinsic residuum bridging $\mathrm{IDC}$ to $\mathrm{IAC}$ in Boolean Grothendieck topoi with an $\mathrm{NNO}$ over $\mathbf{Set}_{\mathrm{AC}}$.
@@ -2685,7 +2685,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 165: Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)
 
 - **Location Reference:** Chapter 9, Section 9.3, Enumerate Item 3, line 2966
-- **LaTeX Source Line:** `3021`
+- **LaTeX Source Line:** `3023`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Conjectures that Booleanness plus étale Stone/profinite Joyal--Tierney localic groupoid isotropy (proved on profinite $\mathbf{Cont}(\mathcal{G})$, separating $\mathbf{Cont}(\mathbb{Z}_2)$ via $\mathrm{IBPI}$ failure and Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathcal{T}))$ via non-Stone isotropy) is the minimal residuum elevating $\mathrm{IBPI}$ to $\mathrm{IAC}$ in coherent Grothendieck topoi over $\mathbf{Set}_{\mathrm{AC}}$ (and to external $\mathrm{AC}$ when $1_{\mathcal{E}}$ is externally projective, killing $H^1(\mathcal{E}/Y, K_X)$).
@@ -2693,7 +2693,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 166: Postnikov Stepwise Vanishing Conjecture (Core Conjecture 4) & Graded Choice Tower
 
 - **Location Reference:** Chapter 9, Section 9.3, Enumerate Item 4 & Tower Synthesis, line 2979 & 2891
-- **LaTeX Source Line:** `3023`
+- **LaTeX Source Line:** `3025`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Complements the proved abelian rungs ($n \ge 1$) and Giraud *lien* / nilpotent / étale $R(E_1)$-splitting cases at $n = 0$ by testing whether $0$-truncated effacement of $H^2_{\mathrm{gerbe}}(\mathcal{X}/Y, L(G))$ over global $G \in \mathbf{Grp}(\tau_{\le 0}(\mathcal{X}/Y))$ suffices for $(\mathrm{AC}_0 \Rightarrow \mathrm{AC}_1)$, completing the unified 5-level graded choice obstruction tower from degree $0$ ($\Omega \simeq 1+1$, ext. proj. $1_{\mathcal{E}}$) through degree $1$ ($BG$), degree $2$ ($\mathfrak{L}, R(E_1)$), degrees $n+2 \ge 3$ ($K(A, n+2)$), to degree $\omega$ (Postnikov completeness + metatheoretic $\mathrm{DC}$ and $1$-localic hypercomplete necessity).
@@ -2701,7 +2701,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 167: Adjoint-Closure and Fixed-Point Hierarchy Conjecture (Core Conjecture 5)
 
 - **Location Reference:** Chapter 9, Section 9.3, Enumerate Item 5, line 2970
-- **LaTeX Source Line:** `3025`
+- **LaTeX Source Line:** `3027`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Formulates two-sorted Lawvere hyperdoctrine and constructive pretopos comparison triples calibrating all four adjacent "Big Five" transitions—Cantor-locale compactness ($\mathrm{WKL}_0$), quantifier adjoints $\exists_{\mathbb{N}} \dashv \pi^* \dashv \forall_{\mathbb{N}}$ ($\mathrm{ACA}_0$), arithmetical-fiber $W$-recursion ($\mathrm{ATR}_0$ at $\Gamma_0$, below $\mathsf{CZF}/\mathsf{KP}\omega$), and monotone Knaster--Tarski fixed points ($\Pi^1_1\text{-}\mathrm{CA}_0$, below $\Omega/\mathsf{Mac}$)—avoiding Johnstone\'s single-sorted Boolean collapse.
@@ -2709,7 +2709,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 168: Pareto Residuum Frontiers in Non-Linear Topos Lattices (Open Problem 9.1)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.1 (`prob:open-1`, Horizon I), line 2982
-- **LaTeX Source Line:** `3037`
+- **LaTeX Source Line:** `3039`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Building on Doctrinal Philosophies $\mathfrak{P} = (\mathbb{D}, \mathcal{P})$ (Def 1.3.1) and the constructive finite Pareto Schism $\{\mathrm{Proj}_{\mathrm{sub}}, \mathrm{Localic}\}$ (Prop 1.3.2), the problem of characterizing: (a) mixed-variance Chu conversions $(F, G)$ in $\mathbf{Phil}$ preserving minimal Pareto frontiers $\mathrm{Res}_{\mathcal{P}}^{\min}$ against Dogma, Blindness, and non-topos axes; (b) general small-site characterizations of Supports Split $\mathrm{SS} = \mathrm{Proj}_{\mathrm{sub}}$ beyond monoid right-zero ideals and its $3^k 2^m$ slice strata over $\mathbf{Set}^{\mathcal{M}_1}/X$; and (c) deformations of the $\{\mathrm{Proj}_{\mathrm{sub}}, \mathrm{Localic}\}$ frontier over choiceless base topoi $\mathcal{S}$.
@@ -2717,7 +2717,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 169: Iterated Tower Conservation Across Composite Geometric Morphisms (Open Problem 9.2)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.2 (`prob:open-2`, Horizon I), line 2987
-- **LaTeX Source Line:** `3042`
+- **LaTeX Source Line:** `3044`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The problem of generalizing the Base-Fiber Conservation Principle and quantitative 5-term Leray sequence to arbitrary $n$-stage towers of bounded geometric morphisms $\mathcal{E}_n \xrightarrow{\gamma_n} \mathcal{E}_{n-1} \to \cdots \xrightarrow{\gamma_1} \mathcal{S}$, classifying the exact transfer of metamathematical strength into iterated fiber invariants.
@@ -2725,7 +2725,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 170: Weihrauch-Degree and Lawvere--Tierney Topology Duality (Open Problem 9.3)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.3 (`prob:open-3`, Horizon II), line 2993
-- **LaTeX Source Line:** `3048`
+- **LaTeX Source Line:** `3050`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Given Kihara's (2023) lattice isomorphism $\mathbf{LTT}(\mathbf{Eff}) \cong \mathcal{W}_{\mathrm{gen,ext}}$ and Maschio--Trotta's (2026) extended Weihrauch tripos $\mathsf{eW}$ recovering relative realizability topoi as $\mathbf{Sh}_j$, the open problem of determining which single-call classical Weihrauch cones in $\mathcal{W}$ correspond to $j$-hereditary subtopos conditions and characterizing the explicit PCA-oracle, $\cap$-preserving, and $(\cup, \cap)$-preserving sublattices of $\mathbf{LTT}(\mathbf{Eff})$.
@@ -2733,7 +2733,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 171: Minimal Intermediate Oracle Modalities Beyond $j_{\mathrm{Lif}}$ (Open Problem 9.4)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.4 (`prob:open-4`, Horizon II), line 2997
-- **LaTeX Source Line:** `3052`
+- **LaTeX Source Line:** `3054`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The explicit characterization of meet-closed minimal Lawvere--Tierney topologies $j_{(A \Rightarrow B)} : \Omega \to \Omega$ (and finite Pareto frontiers) in $\mathbf{LTT}(\mathbf{Eff})$ realizing intermediate semi-classical and combinatorial principles strictly between $\mathrm{CT} + \mathrm{MP}$ and $\mathrm{ACA}_0$ ($\mathrm{WWKL}$, $\mathrm{WKL}$ beyond single-oracle $\mathbf{RT}(\mathcal{K}_1^O)$, $\mathrm{RT}^2_2$, $\Pi^1_1$-avoidance) over relative realizability topoi $\mathbf{RT}(\mathcal{K}_1^O)$ and higher-type Kleene realizability.
@@ -2741,7 +2741,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 172: Higher-Cardinal Stability and Oligomorphic Collapse on Kihara's Spectrum (Open Problem 9.5)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.5 (`prob:open-5`, Horizon III), line 3003
-- **LaTeX Source Line:** `3058`
+- **LaTeX Source Line:** `3060`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Calibration of choice thresholds across Boolean atomic Grothendieck topoi $\mathbf{Sh}(\mathcal{K}_\lambda^{\mathrm{op}}, J_{\mathrm{at}}) \simeq \mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ along Kihara's five-rung spectrum for singular and higher regular cardinals $\lambda$, separating discrete $\mathbf{Set}^G$ ($G \neq \{1\}$ at Rung 3) from non-discrete oligomorphic topoi where external projectivity, localicity, $\mathrm{COSHEP}$, $\mathrm{IAC}$, and $\mathrm{AC}$ collapse to $\mathcal{U}(\mathcal{G}) = \{\mathcal{G}\}$.
@@ -2749,7 +2749,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 173: Nominal Non-Constant Sheaf Cohomology & Site-Level Ore Bridges (Open Problem 9.6)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.6 (`prob:open-6`, Horizon III), line 3007
-- **LaTeX Source Line:** `3062`
+- **LaTeX Source Line:** `3064`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Computation of higher sheaf cohomology $H^k(\mathbf{Nom}; \mathcal{F})$ and non-abelian $S_k$-torsor classes $H^1_{\mathrm{cont}}(U, S_k)$ (contrasted with fixed-point $\mathrm{FAC}_k$ obstructions $\mathrm{Fix}(\rho(U)) = \emptyset$) for non-constant sheaves in $\mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ beyond the parity torsor $[\mathcal{T}_{\mathrm{odd}}] = \delta(1) \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$, and classification of small sites bridging Right Ore $\mathrm{WLEM}$ to atomic $\mathrm{LEM}$.
@@ -2757,7 +2757,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 174: Directed Cubical Phase Transition Beyond $F_n$ (Open Problem 9.7)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.7 (`prob:open-7`, Horizon IV), line 3013
-- **LaTeX Source Line:** `3068`
+- **LaTeX Source Line:** `3070`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Determination of the minimal structural relaxation of flow-acyclicity or two-clause flow-convexity on $\mathbf{Poset}_{\mathrm{og,fin}}^{\mathrm{closed}}$ that restores all-$n$ ($n \ge 3$) cubical $n$-amalgamation beyond binary $n = 2$ while circumventing the facet-supported directed $n$-cycle obstruction $F_n = \partial\Delta^{n-1}$ and maintaining pinched-$2$-cube acyclicity under equal-dimension steps.
@@ -2765,7 +2765,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 175: Galois-Stable vs. Unstable Higher $n$-Amalgamation Matching Calculus (Open Problem 9.8)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.8 (`prob:open-8`, Horizon IV), line 3017
-- **LaTeX Source Line:** `3072`
+- **LaTeX Source Line:** `3074`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Development of a unified internal obstruction invariant governing the epimorphicity of disjoint matching projections $\mathrm{Match}_m^{\mathrm{disj}}(D) \twoheadrightarrow \mathbf{y}_{D(\emptyset)}$ across the $2 \times 2$ classification square separating $\omega$-stable theories ($\mathrm{ACF}_0$), Goodrick--Kim--Kolesnikov $(m-2)$-cocycle covers $T_m$ on $\partial\Delta^{m-1} \simeq S^{m-2}$, Rado graph $\mathrm{RG}$, and Henson's $K_m$-free graphs $\mathcal{H}_m$.
@@ -2773,15 +2773,15 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 176: Postnikov Stepwise Gerbe and $k$-Invariant Vanishing Thresholds (Open Problem 9.9)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.9 (`prob:open-9`, Horizon V), line 3023
-- **LaTeX Source Line:** `3078`
+- **LaTeX Source Line:** `3080`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
-  Resolution of the remaining non-étale, non-nilpotent strata of Conjecture 5.3.2 (`conj:postnikov-stepwise`): determining whether the representation $1$-gerbe $R(E_1) = 1_{\mathcal{X}/Y} \times_{\mathbf{Lien}^\kappa} \mathcal{M}_* \twoheadrightarrow 1_{\mathcal{X}/Y}$ splits beyond locally bounded-nilpotent bands and étale $\mathbf{Sh}_\infty(B)_{/W}$ topoi, characterizing $0$-truncated effacement via $(n+1)$-localic modalities, and classifying hypercomplete non-Postnikov-complete / non-$1$-localic $(\infty,1)$-topoi testing $(\forall n < \infty,\, \mathrm{AC}_n) \Rightarrow \mathrm{AC}_\infty$ outside Postnikov-complete regimes in Theorem 5.4.2 (`thm:limit-residuum`).
+  Resolution of the remaining non-étale, non-nilpotent strata of Conjecture 5.3.2 (`conj:postnikov-stepwise`): determining whether the representation $1$-gerbe $R(E_1) = 1_{\mathcal{X}/Y} \times_{\mathbf{Lien}^\kappa} \mathcal{M}_* \twoheadrightarrow 1_{\mathcal{X}/Y}$ splits beyond uniformly nilpotent bands and étale $\mathbf{Sh}_\infty(B)_{/W}$ topoi, characterizing $0$-truncated effacement via $(n+1)$-localic modalities, and classifying hypercomplete non-Postnikov-complete / non-$1$-localic $(\infty,1)$-topoi testing $(\forall n < \infty,\, \mathrm{AC}_n) \Rightarrow \mathrm{AC}_\infty$ outside Postnikov-complete regimes in Theorem 5.4.2 (`thm:limit-residuum`).
 
 ##### Concept 177: Cohesive Gauge Bridges and Differential Cohomological Descent (Open Problem 9.10)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.10 (`prob:open-10`, Horizon V), line 3027
-- **LaTeX Source Line:** `3082`
+- **LaTeX Source Line:** `3084`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Application of Schreiber's differential cohesive modality structure $(\Pi \dashv \mathrm{Disc} \dashv \Gamma \dashv \mathrm{Codisc}, \mathrm{Im} \dashv \mathrm{Inf})$ in $(\infty, 1)$-topoi to extract exact CRM residuums linking local Lie $\infty$-connections to global Chern--Weil classes, $B^n U(1)$ bundle gerbes, and the Simons--Sullivan differential cohomology fracture square.
@@ -2789,7 +2789,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 178: Reflective Localization Boundaries Across Four-Tier $(\infty,\infty)$-Ladder (Open Problem 9.11)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.11 (`prob:open-11`, Horizon VI), line 3033
-- **LaTeX Source Line:** `3088`
+- **LaTeX Source Line:** `3090`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Completing the residuum atlas across Ozornova--Rovelli--Walde and Gepner--Heine's strict four-tier chain $\mathrm{Cat}^L_{(\infty, \infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty, \infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty, \infty)} \subsetneq \mathrm{Cat}^R_{(\infty, \infty)} := \varprojlim_\kappa \mathrm{Cat}_{(\infty, n)}$; characterizing $\mathbf{ICaTT}$ clan localness at Tier 3 with $\mathrm{IDC}_\omega$ stream adequacy; and identifying natural non-abelian conditions weakening $1$-acyclicity that force $\mathcal{C} \in \mathrm{Cat}^L_{(\infty, \infty)}$ inside $\mathrm{Cat}_{\le \omega}$.
@@ -2797,7 +2797,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 179: Directed Stabilization in $\mathrm{CatSp}$ Without Group-Completion Collapse (Open Problem 9.12)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.12 (`prob:open-12`, Horizon VI), line 3041
-- **LaTeX Source Line:** `3096`
+- **LaTeX Source Line:** `3098`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Classification of $\pi_{\le 0}$-induced group-completion and $\Sigma_{\mathrm{red}} \dashv \Omega_{\mathrm{dir}}$ stabilization residuums in categorical spectra $\mathrm{CatSp} = \mathrm{Sp}(\mathrm{Cat}^R_*)$ across the four tiers, extending non-collapsing deloopings $\mathbf{B}^\infty(\mathbf{FinSet}^\simeq)$ and $\mathbf{B}^\infty(M_4^\#)$ to 4-manifold cobordism categorical spectra without Wall stable diffeomorphism collapse or Giraud strict-initiality collapse.
@@ -2805,7 +2805,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 180: Light Condensed $\mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$ vs. Definable $\varprojlim^1_{\mathrm{def}}$ on Exotic $\mathbb{R}^4$'s (Open Problem 9.13)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.13 (`prob:open-13`, Horizon VII), line 3047
-- **LaTeX Source Line:** `3102`
+- **LaTeX Source Line:** `3104`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Comparison between the non-splitting light condensed torsor class $[q] \neq 0 \in \mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}(\mathcal{Q}_{E_0}, \underline{\mathbb{F}_2^{<\omega}})$ from the Double-Solvent Theorem (`rem:exotic-r4-application`) and Gompf--Panagiotopoulos's definable derived limit $\varprojlim^1_{\mathrm{def}}$ along compact exhaustions of exotic $\mathbb{R}^4$'s, testing whether condensed $\mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$ yields a complete invariant distinguishing radial from non-radial exotic $\mathbb{R}^4$'s.
@@ -2813,7 +2813,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 181: Pro-Oligomorphic Blindness and Turbulent Classifiers Beyond $E_{S_\infty}$ (Open Problem 9.14)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.14 (`prob:open-14`, Horizon VII), line 3051
-- **LaTeX Source Line:** `3106`
+- **LaTeX Source Line:** `3108`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Calibration of the Borel complexity boundary separating countably classifiable moduli ($E \le_B E_{S_\infty}$, reducible via $S_\infty$ logic actions to $\mathbf{Nom}$) from turbulent moduli ($E \not\le_B E_{S_\infty}$), determining what condensed, cohesive, or $(\infty, 1)$-topos invariants replace continuous $\mathbf{Cont}(\mathrm{Aut}(\mathcal{M}))$ classifying functors once pro-oligomorphic blindness collapses every definable nominal invariant.
@@ -2821,7 +2821,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 182: Explicit Class-Coalgebra Residuum of Borel Determinacy (Open Problem 9.15)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.15 (`prob:open-15`, Horizon VIII), line 3057
-- **LaTeX Source Line:** `3112`
+- **LaTeX Source Line:** `3114`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Extraction of the explicit class-level obstruction invariant $\mathrm{Res}(\kappa_{\mathrm{Det}})$ blocking small strategy descent on Tony Martin's proper-class inductive unraveling coalgebras inside Joyal--Moerdijk $(\mathcal{C}, \mathcal{S})$, calibrating the sharp pincer between Power-Set-free $\mathsf{ZFC}^-$ (whose provability of Borel Determinacy breaks at $\boldsymbol{\Sigma}^0_4$ in minimal or non-standard $\beta$-models lacking $\mathcal{P}(\mathbb{N})$, in contrast to full ambient $H(\aleph_1) \subset V \models \mathsf{ZFC}$) and Replacement-free $\mathsf{ZC}$ / $\mathsf{ETCS} \simeq \mathsf{Mac}$ (whose provability breaks at $\boldsymbol{\Sigma}^0_{\omega+1}$ in non-standard or minimal models, while true ambient $V_{\omega+\omega} \subset V \models \mathsf{ZFC}$ inherits Borel Determinacy even as $\{\mathcal{P}^n(\mathbb{N})\}_{n \in \mathbb{N}} \notin \mathcal{S}$ blocks Martin's unraveling inside $(V_{\omega+\omega}, \mathrm{Def}(V_{\omega+\omega}))$).
@@ -2829,7 +2829,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 183: Class-Theoretic Calibration of the Four-Tier $(\infty, \infty)$-Localization Ladder (Open Problem 9.16)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.16 (`prob:open-16`, Horizon VIII), line 3061
-- **LaTeX Source Line:** `3116`
+- **LaTeX Source Line:** `3118`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Calibration of Ozornova--Rovelli--Walde and Gepner--Heine's four-tier reflective localization chain $\mathrm{Cat}^L_{(\infty,\infty)} \subsetneq \mathrm{Cat}^\omega_{(\infty,\infty)} \subsetneq \mathrm{Cat}^{\mathrm{coind}}_{(\infty,\infty)} \subsetneq \mathrm{Cat}^R_{(\infty,\infty)}$ and Goldthorpe's inductive $\Lambda$-iterated enrichment initial algebras along $\mathsf{GBC} \subsetneq \mathsf{NBG} \subsetneq \mathsf{NBG}+\mathsf{ETR}_{\mathrm{Ord}} \subsetneq \mathsf{KM}$ (and $\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}}$) without Grothendieck universes, testing whether $\alpha = 0$ stabilization on $\mathrm{Cat}_{\le \omega}$ drops $\mathsf{ETR}_{\mathrm{Ord}}$ down to $\mathsf{GBC}$ and separating the $\mathrm{Con}(\mathsf{ZFC})$ threshold crossed already at $\mathsf{ETR}_{\mathrm{Ord}}$ from impredicative $\mathsf{KM}$ comprehension ($\mathrm{Con}(\mathsf{GBC}+\mathsf{ETR}_{\mathrm{Ord}})$).
@@ -2837,7 +2837,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 184: Leray Transgression for $\pi_{\mathrm{Set}}$ and Univalent Coalgebras $\nu\mathcal{P}_{\mathrm{Anima}}$ (Open Problem 9.17)
 
 - **Location Reference:** Chapter 9, Section 9.4, Problem 9.17 (`prob:open-17`, Horizon VIII), line 3065
-- **LaTeX Source Line:** `3120`
+- **LaTeX Source Line:** `3122`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   Construction of a quantitative transgression differential on $\pi_{\mathrm{Set}}$ governing when vertical class torsors ($\mathbf{Card} \hookrightarrow \mathbf{Set}$ splitting) remain $\mathcal{L}_\in$-conservative (Felgner 1971) versus leaking small-set theorems over $\mathsf{ZC}$ (Glazer 2023) and $\mathsf{ZFC}_{\neg\mathrm{Reg}}$ (Felgner 1976)—operating, because naive model-space pullbacks fail, via Macro $\Sigma^1_0$-Morleyized classifying topoi $\gamma_I : \mathcal{E}[T_{\mathrm{Class}}] \to \mathcal{E}[T_{\mathrm{Set}}]$ and excision $H^0_c(U_{\mathrm{leak}}; \mathbb{Z})$ coupled to Micro internal AST class-forcing sheaves $\gamma_\Sigma$ separating $\mathcal{S}$-distributivity leaks from $\mathsf{ETR}_{\mathrm{Ord}}/\mathsf{KM}$ reflection leaks—paired with a décalage functor from $\nu\mathcal{P}_{\mathrm{Anima}}$ ($\Omega(\nu\mathcal{P}_{\mathrm{Anima}}, [q,q]) \cong \mathbb{Z}/2\mathbb{Z}$) to Rieger--Bernays permutation topoi $\mathbf{Cont}(\mathrm{Sym}(Q_0))$.
@@ -2845,15 +2845,15 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 185: The `HomotopyCRM` Production Verification Ledger
 
 - **Location Reference:** Chapter 9, Section 9.5, Ledger Itemize, line 3069
-- **LaTeX Source Line:** `3124`
+- **LaTeX Source Line:** `3126`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
-  The formal ledger recording 22,016 lines of machine-checked Lean 4 code across eleven production modules audited under 234 `#guard_msgs in #print axioms` checks and the Two-Tier Blueprint Standard (2 strict `\leanok` theorems + 24 `\leanwitness` nodes across 145 declarations):
+  The formal ledger recording 22,016 lines of machine-checked Lean 4 code across eleven production modules audited under 234 `#guard_msgs in #print axioms` checks and the Two-Tier Blueprint Standard (2 strict `\leanok` theorems + 24 `\leanwitness` nodes across 148 declarations):
   1. `InfinityResiduum.lean`: 949 lines, 20 checks (combinatorial `Fintype`/`PointedDynSys`/`HasFiniteSupportMap`/`TailCokernel` core for §1.6: finite lassos, Dedekind gap, $\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$).
   2. `DeltaRingPerfection.lean`: 2,141 lines, 28 checks (full `\leanok` formalization of Theorem 3.3.1 `thm:slice-perfection-chirality`: slice endofunctors, Lambek isomorphism, relative perfection $A_{\mathrm{perf}}$, `DualInt` 1-step collapse; plus $C_2(x,y) = -xy$, `DualInt` vs. $R_2$, `DeltaRing2.toDeltaStructure`, `nygaardLevel`/`nygaard_antitone`, and $i=2$ Nygaard separation witness).
   3. `BorelTailResiduum.lean`: 697 lines, 19 checks (witness core for $E_0$ Cantor tail exact sequence, ZFC linear splitting, basis-free product coset density / $T_1$ blindness, and $E_0^{\mathrm{even}}$ continuous-vs-ZFC parity torsor dichotomy; inheriting `Classical.choice` from `mathlib4` infrastructure).
   4. `OrdinalRankCompleteness.lean`: 1,828 lines, 20 checks (state-coalgebraic globular surrogate: ordinal invertibility, rank completeness $0 < 1 < 2 < \omega < \omega+1$ with associative apex composition `OmegaTowerState.apexComp_assoc`, and `globularSim_stabilization_above_height` / `prop11A_lali_stabilization_above_ceiling` + $+2$ join-cone boundary; Gray lax-counit coherence & Part (2) prose-only).
-  5. `StepProductPhantom.lean`: 3,505 lines, 22 checks (state-coalgebraic globular surrogate: $[1]$-classifier reachability reflection, single-SCC tower trapping, $1$-acyclic completeness, and `StepState.qFull` phantom non-realization; Grading Rigidity & Noetherian $RL(\mathcal{Q})$ prose-only).
+  5. `StepProductPhantom.lean`: 3,505 lines, 22 checks (state-coalgebraic globular surrogate: $[1]$-classifier reachability reflection, single-SCC tower trapping, $1$-acyclic completeness, and `StepState.qFull` phantom non-realization; Noetherian $RL(\mathcal{Q})$ prose-only).
   6. `DirectedFraisseSAP.lean`: 2,125 lines, 13 checks (oriented graded posets, `FlowStep.dim_eq` equal-dimension step invariance, $1$-dimensional Steiner cycle obstructions, three-tier `IsFlowConvex` separation, 1-sided cobase-change, and binary SAP; pinched 2-cube acyclicity prose-only).
   7. `NominalSimplicity.lean`: 1,276 lines, 20 checks ($\mathrm{Sym}(\mathbb{N})$ witness core: open-normal simplicity, non-projectivity of $1_{\mathbf{Nom}}$, odd-finset parity torsor $[\mathcal{T}_{\mathrm{odd}}] \neq 0 \in H^1(\mathbf{Nom}; \mathrm{EvenFinset})$).
   8. `CubicalAmalgamation.lean`: 2,117 lines, 20 checks (full `\leanok` formalization of Theorem 6.7.2 `thm:directed-cubical-amalgamation`: punctured $n$-cubes, minimal-support amalgams `CubicalAmalgam`, covering-graded transfer `isCoveringGraded_cubicalAmalgam`, facet-cycle obstruction $F_n = \partial\Delta^{n-1}$ for $n \ge 3$ with `FacetCycleFace` size $\le 2$ classification; plus intersectivity witness for Prop 6.7.1).
@@ -2864,7 +2864,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 186: Four-Layer Kernel Verification Gate Protocol
 
 - **Location Reference:** Chapter 9, Section 9.5, Paragraph 1, line 3071
-- **LaTeX Source Line:** `3126`
+- **LaTeX Source Line:** `3128`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The mandatory four-tier honesty and consistency certification gate enforcing Lean 4 mathematical formalization integrity:
@@ -2876,7 +2876,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 187: Master Reference Atlas Matrix of Categorical Reverse Mathematics
 
 - **Location Reference:** Chapter 9, Section 9.6, Table / Xltabular, line 3088
-- **LaTeX Source Line:** `3143`
+- **LaTeX Source Line:** `3145`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   A 27-row master classification matrix correlating foundational reversals across all 8 chapters (Chapters 1–8 synthesized in Chapter 9): specifies the Chapter origin, Universe Class, Weak Principle $A$, Strong Theorem $B$, and Admissible Categorical Residuum $\mathcal{R}$ across all seven foundational coordinate axes (Axes I–V plus universe-scale Axes VI–VII).
@@ -2884,7 +2884,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 188: Mathematical Truth as Obstruction Invariant (Epilogue Thesis)
 
 - **Location Reference:** Chapter 9, Section 9.7 (Epilogue), Paragraph 1, line 3132
-- **LaTeX Source Line:** `3187`
+- **LaTeX Source Line:** `3189`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The overarching thesis of Categorical Reverse Mathematics: deductive necessity is never an accident of formal syntax, but the universal geometry of the obstructions that vanish when universes align—culminating in dissecting "$\mathbf{Sets}$" itself as a double-clamped locus inside $(\mathcal{C}, \mathcal{S})$ (bridging to univalent universes $(\mathcal{X}, \mathcal{U})$ and a Volume II higher-AST horizon $(\mathcal{C}_\infty, \mathcal{S}_\infty)$) and launching Volume II (*Universes, Classes, and Higher Fixed Points*).
@@ -2892,7 +2892,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 ##### Concept 189: The Five Foundational Anchor Witnesses
 
 - **Location Reference:** Chapter 9, Section 9.7 (Epilogue), Paragraphs 2–3, line 3134
-- **LaTeX Source Line:** `3189`
+- **LaTeX Source Line:** `3191`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
   The five concrete mathematical objects anchoring the high-altitude categorical machinery across all nine chapters of Volume I:
@@ -2900,7 +2900,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
   2. *Axis II / IV ($\delta$-Rings & Infinitesimals)*: $2$-torsion $\delta$-ring $R_2 = \mathbb{Z}[\eta]/(2\eta, \eta^2)$ ($\mathbb{Z}\oplus\mathbb{F}_2$ additively) and `DualInt` ($\mathbb{Z}[\varepsilon]/(\varepsilon^2)$) pinning relative slice perfection $A_{\mathrm{perf}}$.
   3. *Axis III / V (Infinity & Higher Cells)*: Gaunt Noetherian rank-$\omega$ step-product $\mathcal{Q} \subset \prod_{k \ge 1} \mathcal{A}_k$ with pure Postnikov phantom $X_\bullet \in RL(\mathcal{Q}) \setminus \mathcal{Q}$ refuting Conjecture C1.
   4. *Axis IV / V (Combinatorial Direction)*: Directed facet-cycle complexes $F_3 = \partial\Delta^2$ and $F_n = \partial\Delta^{n-1}$ erecting an uncrossable $n \ge 3$ cubical amalgamation wall.
-  5. *Axis III / V (Smooth Moduli)*: Light condensed Cantor smooth-end quotient $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}\sslash E_0$ with CAR algebra $\mathrm{UHF}(2^\infty)$ ($K_0 \cong \mathbb{Z}[\tfrac{1}{2}]$) and exotic $\mathbb{R}^4$ tail class $[q] \neq 0 \in \mathrm{Ext}^1_{\mathrm{CondAb}}$.
+  5. *Axis III / V (Smooth Moduli)*: Light condensed Cantor tail quotient $\mathcal{Q}_{E_0} = 2^{\mathbb{N}}\sslash E_0$ with CAR algebra $\mathrm{UHF}(2^\infty)$ ($K_0 \cong \mathbb{Z}[\tfrac{1}{2}]$) and presentation class $[q] \neq 0 \in \mathrm{Ext}^1_{\mathbf{CondAb}_{\mathrm{light}}}$ (Borel-coded on radial exotic $\mathbb{R}^4$ announcements).
 ---
 
 ## Recommended Self-Study Regimen & Learning Tracks
@@ -2922,7 +2922,7 @@ To master the material of the monograph systematically, learners are advised to 
 ### Track C: Base-Topos Variation, Conservation, & Exotic 4-Manifolds (Concepts 51–70)
 - **Stage 0 Foundations:** `UG_TOPOLOGY` (P04), `UG_ANALYSIS` (P05), `UG_ALGEBRA` (P08).
 - **Stage 1 Prerequisite Bridges:** `GRAD_GROTH_TOPOS` (P25, P26), `GRAD_DERIVED_CAT` (P33, P36), `WITNESS_5_Q_E0_UHF` (P50).
-- **Core Monograph Focus:** Two-axis relativization (ambient universe deformation vs. metamathematical base deformation); absolute vs. relative residuums; the Order-Theoretic Base-Fiber Conservation Principle; quantitative conservation via the 5-term Grothendieck--Leray sequence; exotic radial $\mathbb{R}^4$'s and the $E_0$ tail equivalence; the Double-Solvent Theorem; and the noncommutative $C^*$-modulus $\mathrm{UHF}(2^\infty)$.
+- **Core Monograph Focus:** Two-axis relativization (ambient universe deformation vs. metamathematical base deformation); absolute vs. relative residuums; the Order-Theoretic Base-Fiber Conservation Principle; quantitative conservation via the 5-term Grothendieck--Leray sequence; light condensed tail quotient $\mathcal{Q}_{E_0}$ and Borel-coding bridge to radial exotic $\mathbb{R}^4$ announcements; the Double-Solvent Theorem; and the noncommutative $C^*$-modulus $\mathrm{UHF}(2^\infty)$.
 - **Key Milestones:** Proving that weakening base axioms contravariantly strengthens fiber residua (Concept 63), and visualizing the Double-Solvent suspension of $\mathcal{Q}_{E_0}$ (Concept 67).
 
 ### Track D: Higher Topoi, $(\infty,\infty)$-Categories, & Phantom Obstructions (Concepts 71–93)
