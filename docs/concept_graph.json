@@ -1452,7 +1452,7 @@
       "label": "Lean 4 HomotopyCRM Production Ledger",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (21,166 lines, 225 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
+      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (22,016 lines, 234 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
       "monograph_chapter": "Chapter 7 & 9",
       "concepts_covered": [
         "C185",
@@ -2253,7 +2253,7 @@
     {
       "source": "ADV_DOUBLE_CLAMPED_SETS",
       "target": "ADV_HOMOTOPY_CRM",
-      "rationale": "Chapter 7's universe clamps are machine-checked in the tenth production module HomotopyCRM/SetsResiduum.lean (1,232 lines, 17 checks)."
+      "rationale": "Chapter 7's universe clamps are machine-checked in the tenth production module HomotopyCRM/SetsResiduum.lean (1,401 lines, 19 checks)."
     },
     {
       "source": "ADV_DOUBLE_CLAMPED_SETS",

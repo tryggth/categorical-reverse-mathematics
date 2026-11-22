@@ -588,6 +588,60 @@ theorem hasCubicalNDAP_iff_isIntersective {n : ℕ} (D : CubicalPosetDiagram.{u}
     HasCubicalNDAP D ↔ D.IsIntersective :=
   ⟨HasCubicalNDAP.isIntersective, fun hInt ↦ (cubical_ndap_closed_oriented_poset hInt).2.2.2.2.2⟩
 
+/-- A graded poset `P` is **covering-graded** when every order cover `a ⋖ b` (`CovBy a b`) has
+codimension `1` (`IsFacet a b`, i.e. `dim b = dim a + 1`). -/
+def IsCoveringGraded (P : Type u) [OrientedGradedPoset P] : Prop :=
+  ∀ ⦃a b : P⦄, a ⋖ b → IsFacet a b
+
+/-- Every closed cellular embedding `f : P → Q` preserves and reflects covering relations
+`a ⋖ b`. -/
+theorem IsClosedEmbedding.map_covBy_iff {P : Type*} {Q : Type*}
+    [OrientedGradedPoset P] [OrientedGradedPoset Q]
+    {f : P → Q} (hf : IsClosedEmbedding f) {a b : P} :
+    f a ⋖ f b ↔ a ⋖ b := by
+  constructor
+  · rintro ⟨hab, hbtw⟩
+    have hle_ab : a ≤ b := by
+      rcases hf.downward_closed hab.le with ⟨a', ha'b, ha'⟩
+      exact (hf.injective ha').symm ▸ ha'b
+    have hlt_ab : a < b := lt_of_le_of_ne hle_ab (fun h ↦ hab.ne (h ▸ rfl))
+    refine ⟨hlt_ab, fun {c} hac hcb ↦ @hbtw (f c) ?_ ?_⟩
+    · exact lt_of_le_of_ne (hf.mono hac.le) (fun h ↦ hac.ne (hf.injective h))
+    · exact lt_of_le_of_ne (hf.mono hcb.le) (fun h ↦ hcb.ne (hf.injective h))
+  · rintro ⟨hab, hbtw⟩
+    refine ⟨lt_of_le_of_ne (hf.mono hab.le) (fun h ↦ hab.ne (hf.injective h)), fun {z} hfz hzf ↦ ?_⟩
+    rcases hf.downward_closed hzf.le with ⟨c, hcb, rfl⟩
+    have hac_le : a ≤ c := by
+      rcases hf.downward_closed hfz.le with ⟨a', ha'c, ha'⟩
+      exact (hf.injective ha').symm ▸ ha'c
+    have hac : a < c := lt_of_le_of_ne hac_le (fun h ↦ hfz.ne (h ▸ rfl))
+    have hcb_lt : c < b := lt_of_le_of_ne hcb (fun h ↦ hzf.ne (h ▸ rfl))
+    exact hbtw hac hcb_lt
+
+/-- Closed cellular embeddings reflect `IsCoveringGraded` downward from codomain to domain. -/
+theorem IsClosedEmbedding.isCoveringGraded {P : Type*} {Q : Type*}
+    [OrientedGradedPoset P] [OrientedGradedPoset Q]
+    {f : P → Q} (hf : IsClosedEmbedding f) (hQ : IsCoveringGraded Q) :
+    IsCoveringGraded P := fun _ _ hab ↦
+  hf.map_isFacet_iff.mp (hQ (hf.map_covBy_iff.mpr hab))
+
+/-- **Covering-Graded Transfer for `CubicalAmalgam D` (`isCoveringGraded_cubicalAmalgam`):**
+if every face `D.obj S` is covering-graded, then the quotient-free cubical amalgamation
+`CubicalAmalgam D` is covering-graded. -/
+theorem isCoveringGraded_cubicalAmalgam {n : ℕ} {D : CubicalPosetDiagram.{u} n}
+    (hInt : D.IsIntersective) (hCov : ∀ S : PuncturedCube n, IsCoveringGraded (D.obj S)) :
+    IsCoveringGraded (CubicalAmalgam D) := by
+  intro p q hpq
+  let S : PuncturedCube n := q.1.1
+  let j := amalgamLeg hInt S
+  have hj := amalgamLeg_isClosedEmbedding hInt S
+  have hle : p ≤ q := hpq.1.le
+  have hp_eq : j (D.map hle.1 p.1.2) = p :=
+    (amalgamLeg_comm hInt hle.1 p.1.2).trans (amalgamLeg_self hInt p)
+  have hq_eq : j q.1.2 = q := amalgamLeg_self hInt q
+  rw [← hp_eq, ← hq_eq] at hpq ⊢
+  exact hj.map_isFacet_iff.mpr (hCov S (hj.map_covBy_iff.mp hpq))
+
 /-! ## Section 4: Theorem 10B Part 2 — All-`n ≥ 3` Obstruction via `facetCycleDiagram` -/
 
 /-- Cyclic successor `i ↦ (i + 1) mod n` on `Fin n` (defined without `[NeZero n]` assumptions). -/
@@ -981,6 +1035,334 @@ theorem flowReach_iff_flowStep {n : ℕ} (hn : 2 ≤ n) {S : PuncturedCube n}
     | single hs => exact hs
     | tail _ hs ih => exact False.elim (not_step_step hn ih hs)
   · exact Relation.TransGen.single
+
+/-- Every face `FacetCycleFace n S` is `IsCoveringGraded` (all cells have dimension `0` or `1`). -/
+theorem isCoveringGraded_facetCycleFace {n : ℕ} (S : PuncturedCube n) :
+    IsCoveringGraded (FacetCycleFace n S) := by
+  intro x y hcov
+  have hlt : x < y := hcov.1
+  have hdim_lt : OrientedGradedPoset.dim x < OrientedGradedPoset.dim y :=
+    OrientedGradedPoset.dim_strictMono hlt
+  have hdx : OrientedGradedPoset.dim x = 0 := by
+    change DirectedCycleCell.cycleDim x.1 = 0
+    have hdy : DirectedCycleCell.cycleDim y.1 ≤ 1 := by
+      cases y.1 <;> simp [DirectedCycleCell.cycleDim]
+    change DirectedCycleCell.cycleDim x.1 < DirectedCycleCell.cycleDim y.1 at hdim_lt
+    omega
+  have hdy : OrientedGradedPoset.dim y = 1 := by
+    change DirectedCycleCell.cycleDim y.1 = 1
+    have hle : DirectedCycleCell.cycleDim y.1 ≤ 1 := by
+      cases y.1 <;> simp [DirectedCycleCell.cycleDim]
+    change DirectedCycleCell.cycleDim x.1 < DirectedCycleCell.cycleDim y.1 at hdim_lt
+    omega
+  exact ⟨hlt.le, by rw [hdx, hdy]⟩
+
+/-- Every face `FacetCycleFace n S` contains **at most two** `0`-cells (`dim = 0`): fixing any
+omitted coordinate `k₀ ∉ S.1`, any vertex `v_i ∈ FacetCycleFace n S` must satisfy `i = k₀` or
+`finSucc i = k₀`, yielding an injection into `Bool`. -/
+theorem facetCycleFace_zeroCells_card_le_two {n : ℕ} (S : PuncturedCube n) :
+    Fintype.card {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 0} ≤ 2 := by
+  classical
+  rcases S.exists_not_mem with ⟨k₀, hk₀⟩
+  let cls : {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 0} → Bool :=
+    fun x ↦ decide (x.1.1 = Sum.inl k₀)
+  have hinj : Function.Injective cls := by
+    intro x y hxy
+    have hx_dim : DirectedCycleCell.cycleDim x.1.1 = 0 := x.2
+    have hy_dim : DirectedCycleCell.cycleDim y.1.1 = 0 := y.2
+    cases hx : x.1.1 with
+    | inr e => simp [hx, DirectedCycleCell.cycleDim] at hx_dim
+    | inl i =>
+      cases hy : y.1.1 with
+      | inr e => simp [hy, DirectedCycleCell.cycleDim] at hy_dim
+      | inl j =>
+        have hi_not : k₀ ∉ cycleCellSupport n (Sum.inl i) := fun h ↦ hk₀ (x.1.2 (hx ▸ h))
+        have hj_not : k₀ ∉ cycleCellSupport n (Sum.inl j) := fun h ↦ hk₀ (y.1.2 (hy ▸ h))
+        rw [mem_cycleCellSupport_inl, not_and_or, not_not, not_not] at hi_not hj_not
+        have hij : i = j := by
+          by_cases hik : i = k₀
+          · have hcx : cls x = true := by simp [cls, hx, hik]
+            rw [hxy] at hcx
+            have hjk : j = k₀ := by
+              have hd := of_decide_eq_true (by simpa [cls, hy] using hcx)
+              exact Sum.inl.inj hd
+            exact hik.trans hjk.symm
+          · have hcx : cls x = false := by
+              simp only [cls, hx]
+              exact decide_eq_false (fun h ↦ hik (Sum.inl.inj h))
+            rw [hxy] at hcx
+            have hjk : j ≠ k₀ := by
+              intro hEq
+              simp [cls, hy, hEq] at hcx
+            have hsi : finSucc i = k₀ := (hi_not.resolve_right (Ne.symm hik)).symm
+            have hsj : finSucc j = k₀ := (hj_not.resolve_right (Ne.symm hjk)).symm
+            exact finSucc_injective (hsi.trans hsj.symm)
+        exact Subtype.ext (FacetCycleFace.ext (hx.trans (congrArg Sum.inl hij |>.trans hy.symm)))
+  calc
+    Fintype.card {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 0}
+        ≤ Fintype.card Bool := Fintype.card_le_of_injective cls hinj
+    _ = 2 := by decide
+
+/-- Every face `FacetCycleFace n S` contains **at most one** `1`-cell (`dim = 1`). -/
+theorem facetCycleFace_edgeCells_card_le_one {n : ℕ} (S : PuncturedCube n) :
+    Fintype.card {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 1} ≤ 1 := by
+  classical
+  have hsub : Subsingleton {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 1} := by
+    constructor
+    intro x y
+    have hx_dim : DirectedCycleCell.cycleDim x.1.1 = 1 := x.2
+    have hy_dim : DirectedCycleCell.cycleDim y.1.1 = 1 := y.2
+    cases hx : x.1.1 with
+    | inl _ => simp [hx, DirectedCycleCell.cycleDim] at hx_dim
+    | inr e₁ =>
+      cases hy : y.1.1 with
+      | inl _ => simp [hy, DirectedCycleCell.cycleDim] at hy_dim
+      | inr e₂ =>
+        have he : e₁ = e₂ := edge_unique (hx ▸ x.1.2) (hy ▸ y.1.2)
+        exact Subtype.ext (FacetCycleFace.ext (hx.trans (congrArg Sum.inr he |>.trans hy.symm)))
+  exact Fintype.card_le_one_iff_subsingleton.mpr hsub
+
+/-- When `3 ≤ n` and `S` contains no `1`-cell support `M_e`, `FacetCycleFace n S` has size
+**at most one** (`0` or `1` vertices). -/
+theorem facetCycleFace_noEdge_card_le_one {n : ℕ} (hn : 3 ≤ n) {S : PuncturedCube n}
+    (hNoEdge : ∀ e : Fin n, ¬ cycleCellSupport n (Sum.inr e) ⊆ S.1) :
+    Fintype.card (FacetCycleFace n S) ≤ 1 := by
+  classical
+  rcases S.exists_not_mem with ⟨k₀, hk₀⟩
+  have hk₁ : ∃ k₁ : Fin n, k₁ ∉ S.1 ∧ k₁ ≠ k₀ := by
+    by_contra hnone
+    push_neg at hnone
+    let e : Fin n := ⟨(k₀.1 + (n - 1)) % n, Nat.mod_lt _ k₀.pos⟩
+    have hse : finSucc e = k₀ := by
+      apply Fin.ext
+      change ((k₀.1 + (n - 1)) % n + 1) % n = k₀.1
+      rw [Nat.mod_add_mod]
+      have hklt := k₀.2
+      have hsum : k₀.1 + (n - 1) + 1 = k₀.1 + n := by omega
+      rw [hsum, Nat.add_mod_right, Nat.mod_eq_of_lt hklt]
+    refine hNoEdge e (fun k hk ↦ ?_)
+    rw [mem_cycleCellSupport_inr, hse] at hk
+    by_contra hkS
+    exact hk (hnone k hkS)
+  rcases hk₁ with ⟨k₁, hk₁, hne⟩
+  have hmiss : ∀ {i k : Fin n}, cycleCellSupport n (Sum.inl i) ⊆ S.1 → k ∉ S.1 →
+      k = finSucc i ∨ k = i := by
+    intro i k hiS hkS
+    by_contra hc
+    push_neg at hc
+    exact hkS (hiS (mem_cycleCellSupport_inl.mpr hc))
+  have hsub : Subsingleton (FacetCycleFace n S) := by
+    constructor
+    intro x y
+    cases hx : x.1 with
+    | inr e => exact False.elim (hNoEdge e (hx ▸ x.2))
+    | inl i =>
+      cases hy : y.1 with
+      | inr e => exact False.elim (hNoEdge e (hy ▸ y.2))
+      | inl j =>
+        have hi₀ : k₀ = finSucc i ∨ k₀ = i := hmiss (hx ▸ x.2) hk₀
+        have hi₁ : k₁ = finSucc i ∨ k₁ = i := hmiss (hx ▸ x.2) hk₁
+        have hj₀ : k₀ = finSucc j ∨ k₀ = j := hmiss (hy ▸ y.2) hk₀
+        have hj₁ : k₁ = finSucc j ∨ k₁ = j := hmiss (hy ▸ y.2) hk₁
+        have hij : i = j := by
+          rcases hi₀ with hi₀ | hi₀ <;> rcases hi₁ with hi₁ | hi₁
+          · exact False.elim (hne (hi₁.trans hi₀.symm))
+          · rcases hj₀ with hj₀ | hj₀ <;> rcases hj₁ with hj₁ | hj₁
+            · exact False.elim (hne (hj₁.trans hj₀.symm))
+            · exact finSucc_injective (hi₀.symm.trans hj₀)
+            · have h2 : finSucc (finSucc i) = i := by
+                have hA : finSucc i = j := hi₀.symm.trans hj₀
+                have hB : finSucc j = i := hj₁.symm.trans hi₁
+                simpa [hA] using hB
+              exact False.elim (finSucc_finSucc_ne_self hn i h2)
+            · exact False.elim (hne (hj₁.trans hj₀.symm))
+          · rcases hj₀ with hj₀ | hj₀ <;> rcases hj₁ with hj₁ | hj₁
+            · exact False.elim (hne (hj₁.trans hj₀.symm))
+            · have h2 : finSucc (finSucc i) = i := by
+                have hA : finSucc j = i := hj₀.symm.trans hi₀
+                have hB : finSucc i = j := hi₁.symm.trans hj₁
+                simpa [hB] using hA
+              exact False.elim (finSucc_finSucc_ne_self hn i h2)
+            · exact hi₀.symm.trans hj₀
+            · exact False.elim (hne (hj₁.trans hj₀.symm))
+          · exact False.elim (hne (hi₁.trans hi₀.symm))
+        exact FacetCycleFace.ext (hx.trans (congrArg Sum.inl hij |>.trans hy.symm))
+  exact Fintype.card_le_one_iff_subsingleton.mpr hsub
+
+private theorem facetCycleFace_mem_cases_of_edge {n : ℕ} {S : PuncturedCube n} {e : Fin n}
+    (heS : cycleCellSupport n (Sum.inr e) ⊆ S.1) (x : FacetCycleFace n S) :
+    x.1 = Sum.inl e ∨ x.1 = Sum.inl (finSucc e) ∨ x.1 = Sum.inr e := by
+  have hS_sub : S.1 ⊆ Finset.univ.erase (finSucc e) := by
+    intro k hk
+    exact Finset.mem_erase.mpr ⟨fun hEq ↦ by
+      subst hEq
+      exact S.2 (Finset.eq_univ_iff_forall.mpr fun m ↦ by
+        by_cases hm : m = finSucc e
+        · exact hm ▸ hk
+        · exact heS (mem_cycleCellSupport_inr.mpr hm)), Finset.mem_univ k⟩
+  cases hx : x.1 with
+  | inl i =>
+    have hmiss : finSucc e ∉ cycleCellSupport n (Sum.inl i) :=
+      fun h ↦ (Finset.mem_erase.mp (hS_sub (x.2 (hx ▸ h)))).1 rfl
+    rw [mem_cycleCellSupport_inl, not_and_or, not_not, not_not] at hmiss
+    rcases hmiss with hEq | hEq
+    · exact Or.inl (congrArg Sum.inl (finSucc_injective hEq).symm)
+    · exact Or.inr (Or.inl (congrArg Sum.inl hEq.symm))
+  | inr e' =>
+    exact Or.inr (Or.inr (congrArg Sum.inr (edge_unique (hx ▸ x.2) heS)))
+
+/-- **Explicit `FacetCycleFace` Size & Cell Classification Theorem (`3 ≤ n`):**
+every proper face `FacetCycleFace n S` has at most `2` vertices (`0`-cells), at most `1` directed
+edge (`1`-cell), cardinality in `{0, 1, 3}`, and whenever it is not of cardinality `≤ 1` (`Empty`
+or a `0`-cell point) it is isomorphic as an `OrientedGradedPoset` (`Hom` in both directions) to
+`WalkingArrow = (0 → 1)`. -/
+theorem facetCycleFace_classification {n : ℕ} (hn : 3 ≤ n) (S : PuncturedCube n) :
+    Fintype.card {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 0} ≤ 2 ∧
+      Fintype.card {x : FacetCycleFace n S // OrientedGradedPoset.dim x = 1} ≤ 1 ∧
+      ((IsEmpty (FacetCycleFace n S)) ∨
+        (Fintype.card (FacetCycleFace n S) = 1 ∧
+          ∀ x : FacetCycleFace n S, OrientedGradedPoset.dim x = 0) ∨
+        (Fintype.card (FacetCycleFace n S) = 3 ∧
+          ∃ (f : OrientedGradedPoset.Hom (FacetCycleFace n S) WalkingArrow)
+            (g : OrientedGradedPoset.Hom WalkingArrow (FacetCycleFace n S)),
+            (∀ x, g (f x) = x) ∧ (∀ w, f (g w) = w))) := by
+  classical
+  refine ⟨facetCycleFace_zeroCells_card_le_two S, facetCycleFace_edgeCells_card_le_one S, ?_⟩
+  by_cases hEdge : ∃ e : Fin n, cycleCellSupport n (Sum.inr e) ⊆ S.1
+  · rcases hEdge with ⟨e, heS⟩
+    have hn2 : 2 ≤ n := by omega
+    have hSne : finSucc e ≠ e := finSucc_ne_self hn2 e
+    let v0 : FacetCycleFace n S :=
+      ⟨Sum.inl e, Finset.Subset.trans (cycleCellSupport_inl_subset_inr e) heS⟩
+    let v1 : FacetCycleFace n S :=
+      ⟨Sum.inl (finSucc e), Finset.Subset.trans (cycleCellSupport_inl_finSucc_subset_inr e) heS⟩
+    let ed : FacetCycleFace n S := ⟨Sum.inr e, heS⟩
+    let toW : FacetCycleFace n S → WalkingArrow := fun x ↦
+      match x.1 with
+      | Sum.inl i => if i = e then .v0 else .v1
+      | Sum.inr _ => .edge
+    let ofW : WalkingArrow → FacetCycleFace n S
+      | .v0 => v0
+      | .v1 => v1
+      | .edge => ed
+    have ht0 : ∀ {x : FacetCycleFace n S}, x.1 = Sum.inl e → toW x = .v0 := fun {x} hx ↦ by
+      dsimp [toW]; rw [hx]; exact if_pos rfl
+    have ht1 : ∀ {x : FacetCycleFace n S}, x.1 = Sum.inl (finSucc e) → toW x = .v1 :=
+      fun {x} hx ↦ by dsimp [toW]; rw [hx]; exact if_neg hSne
+    have htE : ∀ {x : FacetCycleFace n S}, x.1 = Sum.inr e → toW x = .edge :=
+      fun {x} hx ↦ by dsimp [toW]; rw [hx]
+    have hfg : ∀ w : WalkingArrow, toW (ofW w) = w := by
+      intro w
+      cases w with
+      | v0 => exact ht0 (x := v0) rfl
+      | v1 => exact ht1 (x := v1) rfl
+      | edge => exact htE (x := ed) rfl
+    have hgf : ∀ x : FacetCycleFace n S, ofW (toW x) = x := by
+      intro x
+      rcases facetCycleFace_mem_cases_of_edge heS x with h0 | h1 | h2
+      · rw [ht0 h0]; exact FacetCycleFace.ext h0.symm
+      · rw [ht1 h1]; exact FacetCycleFace.ext h1.symm
+      · rw [htE h2]; exact FacetCycleFace.ext h2.symm
+    have hdim_ofW : ∀ w : WalkingArrow,
+        OrientedGradedPoset.dim (ofW w) = OrientedGradedPoset.dim w := by
+      intro w; cases w <;> rfl
+    have hdim_toW : ∀ x : FacetCycleFace n S,
+        OrientedGradedPoset.dim (toW x) = OrientedGradedPoset.dim x := by
+      intro x
+      rcases facetCycleFace_mem_cases_of_edge heS x with h0 | h1 | h2
+      · rw [ht0 h0]; change 0 = DirectedCycleCell.cycleDim x.1; rw [h0]; rfl
+      · rw [ht1 h1]; change 0 = DirectedCycleCell.cycleDim x.1; rw [h1]; rfl
+      · rw [htE h2]; change 1 = DirectedCycleCell.cycleDim x.1; rw [h2]; rfl
+    have hmono_ofW : Monotone ofW := by
+      intro w₁ w₂ hw
+      cases w₁ <;> cases w₂
+      · exact le_refl _
+      · exact False.elim (by revert hw; decide)
+      · change e = e ∨ e = finSucc e; exact Or.inl rfl
+      · exact False.elim (by revert hw; decide)
+      · exact le_refl _
+      · change finSucc e = e ∨ finSucc e = finSucc e; exact Or.inr rfl
+      · exact False.elim (by revert hw; decide)
+      · exact False.elim (by revert hw; decide)
+      · exact le_refl _
+    have hmono_toW : Monotone toW := by
+      intro x y hxy
+      have hxy' : x.1 ≤ y.1 := hxy
+      rcases facetCycleFace_mem_cases_of_edge heS x with hx | hx | hx <;>
+        rcases facetCycleFace_mem_cases_of_edge heS y with hy | hy | hy
+      · rw [ht0 hx, ht0 hy]
+      · exfalso; rw [hx, hy] at hxy'; change e = finSucc e at hxy'; exact hSne hxy'.symm
+      · rw [ht0 hx, htE hy]; decide
+      · exfalso; rw [hx, hy] at hxy'; change finSucc e = e at hxy'; exact hSne hxy'
+      · rw [ht1 hx, ht1 hy]
+      · rw [ht1 hx, htE hy]; decide
+      · exfalso; rw [hx, hy] at hxy'; exact hxy'
+      · exfalso; rw [hx, hy] at hxy'; exact hxy'
+      · rw [htE hx, htE hy]
+    have hsign_ofW : ∀ ⦃a b : WalkingArrow⦄,
+        IsFacet a b → OrientedGradedPoset.sign (ofW a) (ofW b) = OrientedGradedPoset.sign a b := by
+      intro a b hab
+      cases a <;> cases b
+      all_goals
+        first
+        | (cases hab with
+          | intro _ hd =>
+            change walkingArrowDim _ = walkingArrowDim _ + 1 at hd
+            simp [walkingArrowDim] at hd)
+        | (change DirectedCycleCell.cycleSign (Sum.inl e) (Sum.inr e) = false
+           simp [DirectedCycleCell.cycleSign, hSne.symm])
+        | (change DirectedCycleCell.cycleSign (Sum.inl (finSucc e)) (Sum.inr e) = true
+           simp [DirectedCycleCell.cycleSign])
+    have hsign_toW : ∀ ⦃x y : FacetCycleFace n S⦄,
+        IsFacet x y → OrientedGradedPoset.sign (toW x) (toW y) = OrientedGradedPoset.sign x y := by
+      intro x y hxy
+      rcases hxy with ⟨hle, hd⟩
+      rcases facetCycleFace_mem_cases_of_edge heS x with hx | hx | hx <;>
+        rcases facetCycleFace_mem_cases_of_edge heS y with hy | hy | hy
+      all_goals
+        change DirectedCycleCell.cycleDim y.1 = DirectedCycleCell.cycleDim x.1 + 1 at hd
+        simp only [hx, hy, DirectedCycleCell.cycleDim] at hd
+        try (exfalso; omega)
+      · rw [ht0 hx, htE hy]
+        change walkingArrowSign .v0 .edge = DirectedCycleCell.cycleSign x.1 y.1
+        rw [hx, hy]
+        simp [walkingArrowSign, DirectedCycleCell.cycleSign, hSne.symm]
+      · rw [ht1 hx, htE hy]
+        change walkingArrowSign .v1 .edge = DirectedCycleCell.cycleSign x.1 y.1
+        rw [hx, hy]
+        simp [walkingArrowSign, DirectedCycleCell.cycleSign]
+    let fHom : OrientedGradedPoset.Hom (FacetCycleFace n S) WalkingArrow :=
+      ⟨toW, hmono_toW, hdim_toW, fun _ _ h ↦ hsign_toW h⟩
+    let gHom : OrientedGradedPoset.Hom WalkingArrow (FacetCycleFace n S) :=
+      ⟨ofW, hmono_ofW, hdim_ofW, fun _ _ h ↦ hsign_ofW h⟩
+    have heq : Equiv (FacetCycleFace n S) WalkingArrow := ⟨toW, ofW, hgf, hfg⟩
+    let wEquivFin3 : Equiv WalkingArrow (Fin 3) :=
+      { toFun := fun | .v0 => 0 | .v1 => 1 | .edge => 2
+        invFun := fun
+          | ⟨0, _⟩ => .v0
+          | ⟨1, _⟩ => .v1
+          | ⟨_ + 2, _⟩ => .edge
+        left_inv := fun | .v0 => rfl | .v1 => rfl | .edge => rfl
+        right_inv := fun i ↦ by
+          rcases i with ⟨_ | _ | _ | k, hk⟩
+          · rfl
+          · rfl
+          · rfl
+          · omega }
+    have hcard : Fintype.card (FacetCycleFace n S) = 3 := by
+      rw [Fintype.card_congr (heq.trans wEquivFin3), Fintype.card_fin]
+    exact Or.inr (Or.inr ⟨hcard, fHom, gHom, hgf, hfg⟩)
+  · push_neg at hEdge
+    have hle1 := facetCycleFace_noEdge_card_le_one hn hEdge
+    by_cases hEmpty : IsEmpty (FacetCycleFace n S)
+    · exact Or.inl hEmpty
+    · rw [not_isEmpty_iff] at hEmpty
+      have hpos : 0 < Fintype.card (FacetCycleFace n S) := Fintype.card_pos
+      have hcard1 : Fintype.card (FacetCycleFace n S) = 1 := by omega
+      refine Or.inr (Or.inl ⟨hcard1, fun x ↦ ?_⟩)
+      cases hx : x.1 with
+      | inl _ => simp [OrientedGradedPoset.dim, hx, DirectedCycleCell.cycleDim]
+      | inr e => exact False.elim (hEdge e (hx ▸ x.2))
 
 end FacetCycleFace
 
@@ -1563,6 +1945,81 @@ theorem derived_card_cubicalAmalgam_facetCycle (n : ℕ) (hn : 3 ≤ n) :
     omega
   exact ⟨hcard n hn, hcard 3 (by decide)⟩
 
+/-- `2`-element graded poset `GapPoset` (`bot < top` with `dim bot = 0`, `dim top = 2`), providing a
+negative `IsCoveringGraded` witness. -/
+inductive GapPoset : Type
+  | bot
+  | top
+  deriving DecidableEq, Repr
+
+instance instOrientedGradedPosetGapPoset : OrientedGradedPoset GapPoset where
+  le a b := a = .bot ∨ b = .top
+  le_refl a := by cases a <;> simp
+  le_trans a b c hab hbc := by cases a <;> cases b <;> cases c <;> simp_all
+  le_antisymm a b hab hba := by cases a <;> cases b <;> simp_all
+  dim
+    | .bot => 0
+    | .top => 2
+  dim_strictMono a b h := by
+    rcases h with ⟨hab, hba⟩
+    cases a <;> cases b <;> simp_all
+  sign _ _ := false
+
+/-- Layer 2 `IsCoveringGraded` separation: `PointPoset`, `WalkingArrow`, `FacetCycleFace n S`,
+and `CubicalAmalgam (puncturedEmptyApexDiagram 2)` satisfy `IsCoveringGraded`, whereas `GapPoset`
+violates `IsCoveringGraded`. -/
+theorem layer2_sep_isCoveringGraded :
+    IsCoveringGraded PointPoset ∧
+      IsCoveringGraded WalkingArrow ∧
+      IsCoveringGraded (CubicalAmalgam (puncturedEmptyApexDiagram 2)) ∧
+      ¬ IsCoveringGraded GapPoset := by
+  have hPt : IsCoveringGraded PointPoset := fun a b h ↦ by
+    rcases a with ⟨⟩; rcases b with ⟨⟩
+    exact False.elim (lt_irrefl PointPoset.pt h.1)
+  have hWalk : IsCoveringGraded WalkingArrow := by
+    intro a b hcov
+    have hlt := hcov.1
+    cases a <;> cases b
+    · exact False.elim (lt_irrefl _ hlt)
+    · exfalso
+      have h1 : ¬ (WalkingArrow.v0 ≤ WalkingArrow.v1) := by decide
+      exact h1 hlt.le
+    · exact ⟨hlt.le, rfl⟩
+    · exfalso
+      have h1 : ¬ (WalkingArrow.v1 ≤ WalkingArrow.v0) := by decide
+      exact h1 hlt.le
+    · exact False.elim (lt_irrefl _ hlt)
+    · exact ⟨hlt.le, rfl⟩
+    · exact False.elim ((by decide : ¬ (WalkingArrow.edge ≤ WalkingArrow.v0)) hlt.le)
+    · exact False.elim ((by decide : ¬ (WalkingArrow.edge ≤ WalkingArrow.v1)) hlt.le)
+    · exact False.elim (lt_irrefl WalkingArrow.edge hlt)
+  have hInt2 : (puncturedEmptyApexDiagram 2).IsIntersective := by
+    have haux : ∀ S T U : PuncturedCube 2, S ≤ U → T ≤ U → S.1 ≠ ∅ → T.1 ≠ ∅ → (S ⊓ T).1 ≠ ∅ := by
+      decide
+    intro S T U hSU hTU x y _
+    refine ⟨⟨.pt, haux S T U hSU hTU x.2 y.2⟩, ?_, ?_⟩ <;> · cases x; cases y; rfl
+  have hFaceCov :
+      ∀ S : PuncturedCube 2, IsCoveringGraded ((puncturedEmptyApexDiagram 2).obj S) := by
+    intro S a b hcov
+    have heq : a = b := by
+      rcases a with ⟨⟨⟩, _⟩; rcases b with ⟨⟨⟩, _⟩; rfl
+    exact False.elim (hcov.1.ne heq)
+  have hNeg : ¬ IsCoveringGraded GapPoset := by
+    intro hCov
+    have hcov : GapPoset.bot ⋖ GapPoset.top := by
+      refine ⟨⟨Or.inl rfl, fun h ↦ ?_⟩, fun c hbc hct ↦ ?_⟩
+      · cases h with
+        | inl h => cases h
+        | inr h => cases h
+      · cases c
+        · exact hbc.ne rfl
+        · exact hct.ne rfl
+    have hfac := hCov hcov
+    have hd := hfac.2
+    change (2 : ℕ) = 0 + 1 at hd
+    omega
+  exact ⟨hPt, hWalk, isCoveringGraded_cubicalAmalgam hInt2 hFaceCov, hNeg⟩
+
 /-! ### Layer 4: Kernel Axiom Gate (`#guard_msgs in #print axioms`) -/
 
 section KernelAxiomGate
@@ -1628,6 +2085,30 @@ set_option linter.hashCommand false
 /-- info: 'HomotopyCRM.Checks.derived_card_cubicalAmalgam_facetCycle' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.Checks.derived_card_cubicalAmalgam_facetCycle
+
+/-- info: 'HomotopyCRM.isCoveringGraded_cubicalAmalgam' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.isCoveringGraded_cubicalAmalgam
+
+/-- info: 'HomotopyCRM.FacetCycleFace.isCoveringGraded_facetCycleFace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.FacetCycleFace.isCoveringGraded_facetCycleFace
+
+/--
+info: 'HomotopyCRM.FacetCycleFace.facetCycleFace_zeroCells_card_le_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+-/
+#guard_msgs in
+#print axioms HomotopyCRM.FacetCycleFace.facetCycleFace_zeroCells_card_le_two
+
+/-- info: 'HomotopyCRM.FacetCycleFace.facetCycleFace_classification' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.FacetCycleFace.facetCycleFace_classification
+
+/-- info: 'HomotopyCRM.Checks.layer2_sep_isCoveringGraded' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.Checks.layer2_sep_isCoveringGraded
 
 end KernelAxiomGate
 

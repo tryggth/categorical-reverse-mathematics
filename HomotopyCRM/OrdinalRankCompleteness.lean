@@ -522,15 +522,29 @@ def apexId : ∀ b : Bool, omegaObj (apexHom b b)
   | false => ()
   | true => none
 
-/-- Composition of `1`-morphisms in `apex`: `compMor (d : true → false) apexArrow = some d`. -/
+/-- Composition of `1`-morphisms in `apex`: `compMor (d : true → false) apexArrow = some d`,
+while `true --(a)--> true --(d)--> false` returns `a.getD d` to preserve associativity across
+`apexEndoMul` (`none` = strict unit, `some k` = left-absorbing). -/
 def apexComp : ∀ {x y z : Bool},
     omegaObj (apexHom x y) → omegaObj (apexHom y z) → omegaObj (apexHom x z)
   | false, _, false, _, _ => ()
   | false, _, true, _, _ => ()
   | true, false, false, d, _ => d
-  | true, true, false, _, d => d
+  | true, true, false, a, d => a.getD d
   | true, false, true, d, _ => some d
   | true, true, true, a, b => apexEndoMul a b
+
+/-- Associativity of `1`-morphism composition `apexComp` across all `16` object quadruples in
+`apex`. -/
+theorem apexComp_assoc : ∀ {w x y z : Bool}
+    (f : omegaObj (apexHom w x)) (g : omegaObj (apexHom x y)) (h : omegaObj (apexHom y z)),
+    apexComp (apexComp f g) h = apexComp f (apexComp g h) := by
+  intro w x y z f g h
+  cases w <;> cases x <;> cases y <;> cases z
+  all_goals first
+    | rfl
+    | (cases f <;> rfl)
+    | (cases f <;> cases g <;> cases h <;> rfl)
 
 /-- Unified identity `1`-morphism `omegaId` across `OmegaTowerState`. -/
 def omegaId : ∀ {s : OmegaTowerState} (x : omegaObj s), omegaObj (omegaHom x x)
@@ -1802,6 +1816,10 @@ set_option linter.hashCommand false
 /-- info: 'HomotopyCRM.Checks.strict_four_tier_equivalence_separation' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.Checks.strict_four_tier_equivalence_separation
+
+/-- info: 'HomotopyCRM.OmegaTowerState.apexComp_assoc' does not depend on any axioms -/
+#guard_msgs in
+#print axioms HomotopyCRM.OmegaTowerState.apexComp_assoc
 
 end KernelAxiomGate
 

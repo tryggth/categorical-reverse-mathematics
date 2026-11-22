@@ -145,8 +145,10 @@ structure ClassSetModel : Type (u + 1) where
   compl_mem : ∀ {S}, IsClass S → IsClass Sᶜ
   inter_mem : ∀ {S T}, IsClass S → IsClass T → IsClass (S ∩ T)
 
-/-- Two-sorted morphisms `(f, F) : (M, C) ⟶ (N, D)` preserving underlying set embeddings and
-transporting parameter-definable classes canonically via `φ(x, p) ↦ φ(x, f(p))`. -/
+/-- Two-sorted morphisms `(f, F) : (M, C) ⟶ (N, D)` whose first coordinate `baseHom` is a
+`ParamClassFormula`-elementary embedding (`SetElemHom M N`, preserving `∈` and extensional
+equalities of first-order parameter-definable Boolean combinations) and whose class map transports
+parameter-definable classes canonically via `φ(x, p) ↦ φ(x, f(p))`. -/
 structure ClassSetHom (X Y : ClassSetModel.{u}) : Type u where
   baseHom : X.base ⟶ Y.base
   classMap : {S : Set X.base.Carrier // X.IsClass S} → {T : Set Y.base.Carrier // Y.IsClass T}
@@ -443,6 +445,165 @@ theorem evalClassFormula_finOmega_eq_preimage :
     ext x
     simp [evalClassFormula, ParamClassFormula.map,
       evalClassFormula_finOmega_eq_preimage φ, evalClassFormula_finOmega_eq_preimage ψ]
+
+private def finFormulaParamList : ParamClassFormula FinOmegaCarrier → List (Set Nat)
+  | .eqParam (.set S) => [S.1]
+  | .eqParam (.atom _) => []
+  | .memParam _ => []
+  | .compl φ => finFormulaParamList φ
+  | .inter φ ψ => finFormulaParamList φ ++ finFormulaParamList ψ
+
+private noncomputable def finFormulaSingletonBound : List (Set Nat) → Nat
+  | [] => 0
+  | T :: ts =>
+    letI := Classical.propDecidable
+    Nat.max (if h : ∃ n : Nat, T = {n} then h.choose + 1 else 0) (finFormulaSingletonBound ts)
+
+private theorem singleton_lt_bound_of_mem :
+    ∀ {L : List (Set Nat)} {n : Nat}, ({n} : Set Nat) ∈ L → n < finFormulaSingletonBound L
+  | [], _, h => by cases h
+  | T :: ts, n, h => by
+    rcases List.mem_cons.mp h with hEq | hTail
+    · have hex : ∃ k : Nat, T = {k} := ⟨n, hEq.symm⟩
+      dsimp only [finFormulaSingletonBound]
+      rw [dif_pos hex]
+      have hkn : hex.choose = n := by
+        have h1 : ({hex.choose} : Set Nat) = {n} := hex.choose_spec.symm.trans hEq.symm
+        exact Set.mem_singleton_iff.mp (h1 ▸ Set.mem_singleton hex.choose)
+      rw [← hkn]
+      exact Nat.lt_of_lt_of_le (Nat.lt_succ_self _) (Nat.le_max_left _ _)
+    · dsimp only [finFormulaSingletonBound]
+      have hlt := singleton_lt_bound_of_mem hTail
+      exact Nat.lt_of_lt_of_le hlt (Nat.le_max_right _ _)
+
+private def evalUnmatchedSet : ParamClassFormula FinOmegaCarrier → Bool
+  | .eqParam _ => false
+  | .memParam _ => false
+  | .compl φ => !evalUnmatchedSet φ
+  | .inter φ ψ => evalUnmatchedSet φ && evalUnmatchedSet ψ
+
+private theorem set_mem_finOmega_iff_evalUnmatched (φ : ParamClassFormula FinOmegaCarrier)
+    (T : {A : Set Nat // A.Finite ∨ Aᶜ.Finite}) (hT : T.1 ∉ finFormulaParamList φ) :
+    FinOmegaCarrier.set T ∈ evalClassFormula finOmegaBase φ ↔ evalUnmatchedSet φ = true := by
+  induction φ with
+  | eqParam p =>
+    cases p with
+    | atom _ => simp [evalClassFormula, evalUnmatchedSet]
+    | set S =>
+      simp only [evalClassFormula, evalUnmatchedSet, Bool.false_eq_true, iff_false]
+      intro h
+      exact hT (List.mem_singleton.mpr (congrArg Subtype.val (FinOmegaCarrier.set.inj h)))
+  | memParam p =>
+    cases p <;> simp [evalClassFormula, evalUnmatchedSet, finOmegaBase]
+  | compl φ ih =>
+    simpa [evalClassFormula, evalUnmatchedSet] using not_congr (ih hT)
+  | inter φ ψ ih₁ ih₂ =>
+    have h₁ : T.1 ∉ finFormulaParamList φ := fun h => hT (List.mem_append_left _ h)
+    have h₂ : T.1 ∉ finFormulaParamList ψ := fun h => hT (List.mem_append_right _ h)
+    simp [evalClassFormula, evalUnmatchedSet, ih₁ h₁, ih₂ h₂]
+
+private theorem set_mem_powOmega_iff_evalUnmatched (φ : ParamClassFormula FinOmegaCarrier)
+    (T : Set Nat) (hT : T ∉ finFormulaParamList φ) :
+    PowOmegaCarrier.set T ∈ evalClassFormula powOmegaBase (φ.map finToPow) ↔
+      evalUnmatchedSet φ = true := by
+  induction φ with
+  | eqParam p =>
+    cases p with
+    | atom _ => simp [evalClassFormula, ParamClassFormula.map, finToPow, evalUnmatchedSet]
+    | set S =>
+      simp only [evalClassFormula, ParamClassFormula.map, finToPow, evalUnmatchedSet,
+        Bool.false_eq_true, iff_false]
+      intro h
+      exact hT (List.mem_singleton.mpr (PowOmegaCarrier.set.inj h))
+  | memParam p =>
+    cases p <;> simp [evalClassFormula, ParamClassFormula.map, finToPow, powOmegaBase,
+      evalUnmatchedSet]
+  | compl φ ih =>
+    simpa [evalClassFormula, ParamClassFormula.map, evalUnmatchedSet] using not_congr (ih hT)
+  | inter φ ψ ih₁ ih₂ =>
+    have h₁ : T ∉ finFormulaParamList φ := fun h => hT (List.mem_append_left _ h)
+    have h₂ : T ∉ finFormulaParamList ψ := fun h => hT (List.mem_append_right _ h)
+    simp [evalClassFormula, ParamClassFormula.map, evalUnmatchedSet, ih₁ h₁, ih₂ h₂]
+
+private theorem exists_finOmega_witness_for_formula_eq (φ : ParamClassFormula FinOmegaCarrier)
+    {T : Set Nat} (hT : T ∈ finFormulaParamList φ) :
+    ∃ x : FinOmegaCarrier, finToPow x = PowOmegaCarrier.set T := by
+  induction φ with
+  | eqParam p =>
+    cases p with
+    | atom _ => simp [finFormulaParamList] at hT
+    | set S =>
+      rw [finFormulaParamList, List.mem_singleton] at hT
+      exact ⟨.set S, by simp [finToPow, hT]⟩
+  | memParam _ => simp [finFormulaParamList] at hT
+  | compl φ ih => exact ih hT
+  | inter φ ψ ih₁ ih₂ =>
+    rw [finFormulaParamList, List.mem_append] at hT
+    rcases hT with h | h
+    · exact ih₁ h
+    · exact ih₂ h
+
+/-- Upgrade of `finToPow : finOmegaBase → powOmegaBase` to a full `SetElemHom`, proving
+extensional `ParamClassFormula` elementarity (`elem_ext`) between `finOmegaBase` and `powOmegaBase`.
+Note: only parameters `φ, ψ` coming from `FinOmegaCarrier` (finite/cofinite sets of atoms) are
+permitted in `SetElemHom`, so any new infinite-coinfinite subset of `ℕ` satisfies the same unmatched
+Boolean parity `evalUnmatchedSet` as an unmentioned singleton `{N} ∈ finOmegaBase`. -/
+noncomputable def finToPowElemHom : SetElemHom finOmegaBase powOmegaBase where
+  toFun := finToPow
+  mem_iff := finToPow_mem_iff
+  elem_ext φ ψ hEq := by
+    let N : Nat := finFormulaSingletonBound (finFormulaParamList φ ++ finFormulaParamList ψ)
+    have hNNotMem : ({N} : Set Nat) ∉ finFormulaParamList φ ++ finFormulaParamList ψ := by
+      intro hmem
+      have hlt := singleton_lt_bound_of_mem hmem
+      omega
+    have hNPhi : ({N} : Set Nat) ∉ finFormulaParamList φ :=
+      fun h => hNNotMem (List.mem_append_left _ h)
+    have hNPsi : ({N} : Set Nat) ∉ finFormulaParamList ψ :=
+      fun h => hNNotMem (List.mem_append_right _ h)
+    let z₀ : FinOmegaCarrier := .set ⟨{N}, Or.inl (Set.finite_singleton N)⟩
+    have hUnmatched : evalUnmatchedSet φ = evalUnmatchedSet ψ := by
+      have hz := congrArg (fun S : Set FinOmegaCarrier => z₀ ∈ S) hEq
+      have hL :=
+        (set_mem_finOmega_iff_evalUnmatched φ ⟨{N}, Or.inl (Set.finite_singleton N)⟩ hNPhi).mp
+      have hR :=
+        (set_mem_finOmega_iff_evalUnmatched ψ ⟨{N}, Or.inl (Set.finite_singleton N)⟩ hNPsi).mp
+      have hEquiv : evalUnmatchedSet φ = true ↔ evalUnmatchedSet ψ = true := by
+        constructor
+        · intro h
+          exact hR (hz.mp
+            ((set_mem_finOmega_iff_evalUnmatched φ
+              ⟨{N}, Or.inl (Set.finite_singleton N)⟩ hNPhi).mpr h))
+        · intro h
+          exact hL (hz.mpr
+            ((set_mem_finOmega_iff_evalUnmatched ψ
+              ⟨{N}, Or.inl (Set.finite_singleton N)⟩ hNPsi).mpr h))
+      cases hb₁ : evalUnmatchedSet φ <;> cases hb₂ : evalUnmatchedSet ψ <;> simp_all
+    have hPreimage :
+        finToPow ⁻¹' evalClassFormula powOmegaBase (φ.map finToPow) =
+          finToPow ⁻¹' evalClassFormula powOmegaBase (ψ.map finToPow) := by
+      simpa [← evalClassFormula_finOmega_eq_preimage] using hEq
+    ext y
+    cases y with
+    | atom n =>
+      exact iff_of_eq (congrArg (fun S => FinOmegaCarrier.atom n ∈ S) hPreimage)
+    | set T =>
+      by_cases hT : T ∈ finFormulaParamList φ ∨ T ∈ finFormulaParamList ψ
+      · have hex : ∃ x : FinOmegaCarrier, finToPow x = PowOmegaCarrier.set T := by
+          rcases hT with h | h
+          · exact exists_finOmega_witness_for_formula_eq φ h
+          · exact exists_finOmega_witness_for_formula_eq ψ h
+        rcases hex with ⟨x, hx⟩
+        rw [← hx]
+        exact iff_of_eq (congrArg (fun S => x ∈ S) hPreimage)
+      · rw [not_or] at hT
+        rw [set_mem_powOmega_iff_evalUnmatched φ T hT.1,
+          set_mem_powOmega_iff_evalUnmatched ψ T hT.2, hUnmatched]
+
+/-- Induced `ClassSetModel` morphism `finOmegaModel ⟶ powOmegaModel` over `finToPowElemHom` via
+`Def : SetStructure ⥤ ClassSetModel`. -/
+noncomputable def finToPowClassHom : finOmegaModel ⟶ powOmegaModel :=
+  defMap finToPowElemHom
 
 /-- Naive pullback class expansion of `finOmegaBase` adjoining `finToPow ⁻¹' D` for every
 class `D` of `powOmegaModel`. -/
@@ -1180,6 +1341,14 @@ section KernelAxiomGate
 /-- info: 'HomotopyCRM.SetsResiduum.defSetProjAdjunction' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms HomotopyCRM.SetsResiduum.defSetProjAdjunction
+
+/-- info: 'HomotopyCRM.SetsResiduum.finToPowElemHom' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.SetsResiduum.finToPowElemHom
+
+/-- info: 'HomotopyCRM.SetsResiduum.finToPowClassHom' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms HomotopyCRM.SetsResiduum.finToPowClassHom
 
 /--
 info: 'HomotopyCRM.SetsResiduum.naive_pullback_breaks_subclass_separation' depends on axioms: [propext,

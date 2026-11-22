@@ -173,14 +173,28 @@ def beckChevalleyLocus
     (S : MateDoubleSquare G H L₁ R₁ L₂ R₂) : Set D :=
   { X : D | IsIso (S.beckChevalleyMate.natTrans.app X) }
 
-/-- Morphism-property defect class of morphisms in `E` inverted under `H` / pulled back from
-`MorphismProperty.isomorphisms`. -/
+/-- Morphism-property defect class of morphisms `f : X ⟶ Y` in `D` whose source and target
+Beck–Chevalley mate components `(S.beckChevalleyMate.natTrans.app X)` and
+`(S.beckChevalleyMate.natTrans.app Y)` are isomorphisms. Equaling `⊤` coincides with global
+Beck–Chevalley exactness (`S.IsBeckChevalley`). -/
 def defectMorphismProperty
     {C : Type u₁} {D : Type u₂} {E : Type u₃} {F : Type u₄}
     [Category.{v₁} C] [Category.{v₂} D] [Category.{v₃} E] [Category.{v₄} F]
     {G : C ⥤ E} {H : D ⥤ F} {L₁ : C ⥤ D} {R₁ : D ⥤ C} {L₂ : E ⥤ F} {R₂ : F ⥤ E}
-    (_ : MateDoubleSquare G H L₁ R₁ L₂ R₂) : CategoryTheory.MorphismProperty D :=
-  (CategoryTheory.MorphismProperty.isomorphisms F).inverseImage H
+    (S : MateDoubleSquare G H L₁ R₁ L₂ R₂) : CategoryTheory.MorphismProperty D :=
+  fun {X Y} _f ↦
+    IsIso (S.beckChevalleyMate.natTrans.app X) ∧ IsIso (S.beckChevalleyMate.natTrans.app Y)
+
+/-- Global Beck–Chevalley exactness holds iff every morphism `f` in `D` lies in
+`S.defectMorphismProperty`. -/
+theorem isBeckChevalley_iff_defectMorphismProperty_all
+    {C : Type u₁} {D : Type u₂} {E : Type u₃} {F : Type u₄}
+    [Category.{v₁} C] [Category.{v₂} D] [Category.{v₃} E] [Category.{v₄} F]
+    {G : C ⥤ E} {H : D ⥤ F} {L₁ : C ⥤ D} {R₁ : D ⥤ C} {L₂ : E ⥤ F} {R₂ : F ⥤ E}
+    (S : MateDoubleSquare G H L₁ R₁ L₂ R₂) :
+    S.IsBeckChevalley ↔ ∀ {X Y : D} (f : X ⟶ Y), S.defectMorphismProperty f := by
+  rw [IsBeckChevalley, CategoryTheory.NatTrans.isIso_iff_isIso_app]
+  exact ⟨fun h _ _ _ ↦ ⟨h _, h _⟩, fun h X ↦ (h (𝟙 X)).1⟩
 
 end MateDoubleSquare
 
@@ -601,8 +615,11 @@ non-empty left `M`-set has a fixed point. -/
 def MonoidProj1 (M : Type u) [Monoid M] : Prop :=
   ∀ (X : Type u) [MulAction M X], Nonempty X → ∃ x : X, ∀ m : M, m • x = x
 
-/-- Subterminal-splitting (`ProjSub` = `SS`) in `Set^M`: for every subterminal `U ∈ {∅, 1}`
-(`Bool`) and `M`-equivariant surjection `p : X → U`, `p` admits an `M`-equivariant section. -/
+/-- Subterminal-splitting (`ProjSub` = `SS`, Freyd–Ščedrov Supports Split) in the Boolean
+presheaf topos `Set^M` (whose subobject classifier `Sub(1)` is externally two-valued
+`Bool = {⊥, ⊤}`, reflecting the classical `Type` base): for every subterminal `U ∈ {∅, 1}`
+(`Bool`) and `M`-equivariant surjection `p : X → U`, `p` admits an `M`-equivariant section.
+(Constructively inside non-Boolean topoi, quantify over all internal subterminals `U ∈ Ω`.) -/
 def MonoidProjSub (M : Type u) [Monoid M] : Prop :=
   ∀ (X : Type u) [MulAction M X] (U : Bool) (p : X → { _u : Unit // U = true }),
     Function.Surjective p → ∃ s : { _u : Unit // U = true } → X,
@@ -1115,6 +1132,143 @@ instance : SmallCategory BZ2BotObj where
       | exact PEmpty.elim g
       | exact PEmpty.elim h
       | exact (mul_assoc (h : TwoGroup) (g : TwoGroup) (f : TwoGroup)).symm
+
+/-- Unique terminal projection functor `! : E ⥤ PUnitCat` from any category `E` to the
+terminal 1-object category `PUnitCat`. -/
+def toPUnitCatFunctor (E : Type u₁) [Category.{v₁} E] : E ⥤ PUnitCat where
+  obj _ := PUnitCat.star
+  map _ := ()
+
+/-- Non-trivial doctrinal fibration `! : E ⥤ PUnitCat` induced by the terminal functor on any
+category `E` (specializing e.g. to `BZ2BotObj` and `TwoGroupCat`, whose object/morphism structure
+does not collapse to `PUnitCat`). -/
+def DoctrinalFibration.toTerminal (E : Type u₁) [Category.{v₁} E] :
+    DoctrinalFibration E PUnitCat where
+  proj := toPUnitCatFunctor E
+  isFibered := Functor.IsFibered.of_exists_isStronglyCartesian fun a R f ↦ by
+    cases R
+    cases f
+    refine ⟨a, 𝟙 a, { toIsHomLift := .map (𝟙 a), universal_property' := fun {a'} g φ' _ ↦ ?_ }⟩
+    cases g
+    exact ⟨φ', ⟨.map φ', Category.comp_id φ'⟩, fun χ ⟨_, hχ⟩ ↦ (Category.comp_id χ).symm.trans hχ⟩
+
+/-- Inclusion `PUnitCat ⥤ BZ2BotObj` sending `.star ↦ .star`. -/
+def bz2BotStarIncl : PUnitCat ⥤ BZ2BotObj where
+  obj _ := .star
+  map _ := (1 : TwoGroup)
+  map_id _ := rfl
+  map_comp _ _ := (mul_one (1 : TwoGroup)).symm
+
+/-- Negative `Functor.IsFibered` witness: `bz2BotStarIncl : PUnitCat ⥤ BZ2BotObj` fails to be
+fibered because `.bot ⟶ .star` admits no domain lift over `.bot` (and `BZ2BotHom .star .bot` is
+empty). -/
+theorem not_isFibered_bz2BotStarIncl : ¬ bz2BotStarIncl.IsFibered := by
+  intro hFib
+  let f : BZ2BotObj.bot ⟶ bz2BotStarIncl.obj PUnitCat.star := ()
+  rcases @CategoryTheory.Functor.IsPreFibered.exists_isCartesian'
+      BZ2BotObj PUnitCat _ _ bz2BotStarIncl hFib.toIsPreFibered PUnitCat.star .bot f with
+    ⟨b, φ, hCart⟩
+  haveI := hCart.toIsHomLift
+  have hb : bz2BotStarIncl.obj b = BZ2BotObj.bot :=
+    CategoryTheory.IsHomLift.domain_eq bz2BotStarIncl f φ
+  cases hb
+
+/-- Non-trivial vs. negative `DoctrinalFibration` separation on `BZ2BotObj`. -/
+theorem doctrinalFibration_nontrivial_sep :
+    Nontrivial BZ2BotObj ∧
+      Nonempty (DoctrinalFibration BZ2BotObj PUnitCat) ∧
+      ¬ bz2BotStarIncl.IsFibered :=
+  ⟨⟨⟨.bot, .star, fun h ↦ by cases h⟩⟩, ⟨DoctrinalFibration.toTerminal BZ2BotObj⟩,
+    not_isFibered_bz2BotStarIncl⟩
+
+/-- Terminal projection functor `Bool ⥤ PUnitCat` from the preorder category `(Bool, ≤)`. -/
+def boolBangFunctor : Bool ⥤ PUnitCat :=
+  toPUnitCatFunctor Bool
+
+/-- Constant `true : PUnitCat ⥤ Bool` functor picking the top object of `(Bool, ≤)`. -/
+def punitTrueFunctor : PUnitCat ⥤ Bool where
+  obj _ := true
+  map _ := CategoryTheory.homOfLE le_rfl
+
+/-- Canonical non-identity adjunction `boolBangFunctor ⊣ punitTrueFunctor` (`Bool ⇄ PUnitCat`),
+exhibiting `.star ⟶ .star` against `b ⟶ true` in `(Bool, ≤)`. -/
+def boolBangAdjTrue : boolBangFunctor ⊣ punitTrueFunctor where
+  unit :=
+    { app := fun b ↦ CategoryTheory.homOfLE (by cases b <;> decide)
+      naturality := fun _ _ _ ↦ Subsingleton.elim _ _ }
+  counit :=
+    { app := fun _ ↦ ()
+      naturality := fun _ _ _ ↦ rfl }
+  left_triangle_components _ := rfl
+  right_triangle_components _ := Subsingleton.elim _ _
+
+/-- Constant `false : Bool ⥤ Bool` endofunctor, breaking `punitTrueFunctor` compatibility on
+Beck–Chevalley mates. -/
+def boolConstFalseFunctor : Bool ⥤ Bool where
+  obj _ := false
+  map _ := CategoryTheory.homOfLE le_rfl
+
+/-- Non-identity `MateDoubleSquare` witness with `adjTop = adjBot = boolBangAdjTrue` and
+vertical functors `(𝟭 Bool, 𝟭 PUnitCat)`, satisfying `IsBeckChevalley`. -/
+def nonIdBeckChevalleyPosSq :
+    MateDoubleSquare (𝟭 Bool) (𝟭 PUnitCat)
+      boolBangFunctor punitTrueFunctor boolBangFunctor punitTrueFunctor where
+  adjTop := boolBangAdjTrue
+  adjBot := boolBangAdjTrue
+  alpha := CategoryTheory.TwoSquare.mk _ _ _ _ { app := fun _ ↦ () }
+
+/-- Non-identity `MateDoubleSquare` witness with `adjTop = adjBot = boolBangAdjTrue` and
+`G = boolConstFalseFunctor`: `alpha` is a natural isomorphism, yet its Beck–Chevalley mate
+`(false ⟶ true)` in `(Bool, ≤)` is non-invertible. -/
+def nonIdBeckChevalleyNegSq :
+    MateDoubleSquare boolConstFalseFunctor (𝟭 PUnitCat)
+      boolBangFunctor punitTrueFunctor boolBangFunctor punitTrueFunctor where
+  adjTop := boolBangAdjTrue
+  adjBot := boolBangAdjTrue
+  alpha := CategoryTheory.TwoSquare.mk _ _ _ _ { app := fun _ ↦ () }
+
+/-- Strict separation on non-identity `MateDoubleSquare` witnesses (`boolBangAdjTrue`):
+the compatible square is Beck–Chevalley with `defectMorphismProperty (𝟙 PUnitCat.star)`,
+whereas `nonIdBeckChevalleyNegSq` has invertible primary `alpha` yet refutes both
+`IsBeckChevalley` and `defectMorphismProperty (𝟙 PUnitCat.star)`. -/
+theorem nonId_mateDoubleSquare_beckChevalley_sep :
+    (nonIdBeckChevalleyPosSq.IsBeckChevalley ∧
+        nonIdBeckChevalleyPosSq.defectMorphismProperty (𝟙 PUnitCat.star)) ∧
+      (IsIso nonIdBeckChevalleyNegSq.alpha.natTrans ∧
+        ¬ nonIdBeckChevalleyNegSq.IsBeckChevalley ∧
+        ¬ nonIdBeckChevalleyNegSq.defectMorphismProperty (𝟙 PUnitCat.star)) := by
+  have hPosApp : IsIso (nonIdBeckChevalleyPosSq.beckChevalleyMate.natTrans.app PUnitCat.star) := by
+    have hEq :
+        nonIdBeckChevalleyPosSq.beckChevalleyMate.natTrans.app PUnitCat.star = 𝟙 (true : Bool) :=
+      Subsingleton.elim _ _
+    rw [hEq]
+    infer_instance
+  have hPosAll : nonIdBeckChevalleyPosSq.IsBeckChevalley := by
+    change IsIso nonIdBeckChevalleyPosSq.beckChevalleyMate.natTrans
+    rw [CategoryTheory.NatTrans.isIso_iff_isIso_app]
+    intro X
+    cases X
+    exact hPosApp
+  have hAlphaIso : IsIso nonIdBeckChevalleyNegSq.alpha.natTrans := by
+    rw [CategoryTheory.NatTrans.isIso_iff_isIso_app]
+    intro b
+    exact ⟨(), rfl, rfl⟩
+  have hNegApp :
+      ¬ IsIso (nonIdBeckChevalleyNegSq.beckChevalleyMate.natTrans.app PUnitCat.star) := by
+    intro hIso
+    have hle : (true : Bool) ≤ false :=
+      CategoryTheory.leOfHom
+        (@CategoryTheory.inv _ _ _ _
+          (nonIdBeckChevalleyNegSq.beckChevalleyMate.natTrans.app PUnitCat.star) hIso)
+    exact (by decide : ¬ ((true : Bool) ≤ false)) hle
+  refine ⟨⟨hPosAll, ⟨hPosApp, hPosApp⟩⟩, ⟨hAlphaIso, ?_, ?_⟩⟩
+  · intro hBC
+    have hApp : IsIso (nonIdBeckChevalleyNegSq.beckChevalleyMate.natTrans.app PUnitCat.star) := by
+      haveI : IsIso nonIdBeckChevalleyNegSq.beckChevalleyMate.natTrans := hBC
+      infer_instance
+    exact hNegApp hApp
+  · intro hDef
+    exact hNegApp hDef.1
 
 /-- Open subterminal `U_⋆ : BZ2BotObj ⥤ Type` (`U_⋆(.bot) = PEmpty`, `U_⋆(.star) = PUnit`),
 whose open slice is equivalent to `Set^{ℤ/2ℤ}`. -/
@@ -3995,6 +4149,25 @@ theorem layer2_sep_isBeckChevalley :
     let eIso := CategoryTheory.asIso emptySq.beckChevalleyMate.natTrans
     exact PEmpty.elim ((eIso.inv.app PUnit) PUnit.unit)
 
+/-- Layer 2 `DoctrinalFibration` & non-identity `MateDoubleSquare` separation:
+`! : BZ2BotObj ⥤ PUnitCat` is fibered while `PUnitCat ⥤ BZ2BotObj` is not; the non-identity
+`Bool ⇄ PUnitCat` squares separate `IsBeckChevalley` and `defectMorphismProperty` even when
+`alpha` is an isomorphism. -/
+theorem layer2_sep_fibration_and_nonId_mateSquare :
+    (Nontrivial BZ2BotObj ∧ Nonempty (DoctrinalFibration BZ2BotObj PUnitCat) ∧
+        ¬ bz2BotStarIncl.IsFibered) ∧
+      ((nonIdBeckChevalleyPosSq.IsBeckChevalley ∧
+          ∀ {X Y : PUnitCat} (f : X ⟶ Y),
+            nonIdBeckChevalleyPosSq.defectMorphismProperty f) ∧
+        (IsIso nonIdBeckChevalleyNegSq.alpha.natTrans ∧
+          ¬ nonIdBeckChevalleyNegSq.IsBeckChevalley ∧
+          ¬ nonIdBeckChevalleyNegSq.defectMorphismProperty (𝟙 PUnitCat.star))) :=
+  ⟨doctrinalFibration_nontrivial_sep,
+    ⟨⟨nonId_mateDoubleSquare_beckChevalley_sep.1.1,
+      (MateDoubleSquare.isBeckChevalley_iff_defectMorphismProperty_all
+        nonIdBeckChevalleyPosSq).mp nonId_mateDoubleSquare_beckChevalley_sep.1.1⟩,
+     nonId_mateDoubleSquare_beckChevalley_sep.2⟩⟩
+
 /-- Layer 2 Mode (i) separation: `intToZMod2TypeMode` is inhabited yet non-contractible, while
 `intToZMod2AbMode` is un-inhabited. -/
 theorem layer2_sep_sectionObstructionMode :
@@ -4243,6 +4416,14 @@ info: 'HomotopyCRM.sl2_f5_leray_transgression_injective' depends on axioms: [pro
 -/
 #guard_msgs in
 #print axioms HomotopyCRM.sl2_f5_leray_transgression_injective
+
+/--
+info: 'HomotopyCRM.Checks.layer2_sep_fibration_and_nonId_mateSquare' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+-/
+#guard_msgs in
+#print axioms HomotopyCRM.Checks.layer2_sep_fibration_and_nonId_mateSquare
 
 end KernelAxiomGate
 

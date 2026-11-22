@@ -1,6 +1,7 @@
 HomotopyCRM.Checks.dualInt_nygaard_separation
 HomotopyCRM.DeltaRing2.toDeltaStructure
 HomotopyCRM.DoctrinalFibration
+HomotopyCRM.DoctrinalFibration.toTerminal
 HomotopyCRM.DoctrinalPhilosophy
 HomotopyCRM.DualInt.instDeltaRing2
 HomotopyCRM.DualInt.not_isPerfectDeltaRing
@@ -15,6 +16,8 @@ HomotopyCRM.SetsResiduum.boffa_twin_addTorsor
 HomotopyCRM.SetsResiduum.boffa_twin_torsor
 HomotopyCRM.SetsResiduum.card_split_iff_global_choice
 HomotopyCRM.SetsResiduum.defSetProjAdjunction
+HomotopyCRM.SetsResiduum.finToPowClassHom
+HomotopyCRM.SetsResiduum.finToPowElemHom
 HomotopyCRM.SetsResiduum.naive_pullback_breaks_subclass_separation
 HomotopyCRM.SetsResiduum.pset_equiv_iff_bisimilar
 HomotopyCRM.SetsResiduum.quineAPG_bisimilar_and_nonIso_twoCycle
@@ -83,6 +86,7 @@ HomotopyCRM.monoid_proj1_iff_rightZero
 HomotopyCRM.nat_succ_mem_dedekindResiduum
 HomotopyCRM.no_flowAcyclic_cubical_amalgam_of_three_le
 HomotopyCRM.nominalDedekindResiduum_eq_empty
+HomotopyCRM.nonId_mateDoubleSquare_beckChevalley_sep
 HomotopyCRM.nonempty_linearEquiv_cantor_prod_e0Quotient
 HomotopyCRM.nonempty_t_odd_sections_singleton
 HomotopyCRM.nontrivial_tailCokernel_nat
@@ -93,6 +97,7 @@ HomotopyCRM.not_exists_continuous_t1_e0Separator
 HomotopyCRM.not_hasFiniteSupportMap_nat_succ
 HomotopyCRM.not_hasFiniteSupport_freshStream
 HomotopyCRM.not_intToZMod2TypeMode_contractible
+HomotopyCRM.not_isFibered_bz2BotStarIncl
 HomotopyCRM.nygaardLevel
 HomotopyCRM.nygaard_antitone
 HomotopyCRM.open_finiteIndex_eq_top
