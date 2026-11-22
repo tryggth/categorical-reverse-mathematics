@@ -51,6 +51,8 @@ def escape_inline_code(code: str) -> str:
             out.append(":\\allowbreak{}")
         elif ch == "-":
             out.append("-\\allowbreak{}")
+        elif ch == "/":
+            out.append("/\\allowbreak{}")
         elif ch == "ℤ":
             out.append("\\ensuremath{\\mathbb{Z}}")
         elif ch == "ε":
@@ -72,6 +74,7 @@ def convert_plain_segment(seg: str) -> str:
     seg = seg.replace("#", "\\#")
     seg = seg.replace("&", "\\&")
     seg = seg.replace("_", "\\_")
+    seg = re.sub(r"(?<![:/])/(?!/)", "/\\\\allowbreak{}", seg)
     seg = re.sub(r'"([^"\n]+)"', lambda m: "``" + m.group(1) + "''", seg)
     seg = re.sub(r"\*\*([^*]+)\*\*", lambda m: "\\textbf{" + m.group(1) + "}", seg)
     seg = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", lambda m: "\\emph{" + m.group(1) + "}", seg)
@@ -96,7 +99,11 @@ def md_inline_to_latex(text: str) -> str:
             staged.append(f"\x00TOK{idx}\x00")
         elif part.startswith("\\texttt{") and part.endswith("}"):
             idx = len(saved)
-            saved.append(part)
+            inner = part[len("\\texttt{"):-1]
+            inner = re.sub(r"\\_(?!\\allowbreak)", r"\_\\allowbreak{}", inner)
+            inner = re.sub(r"(?<!\\)\.(?!\\allowbreak)", r".\\allowbreak{}", inner)
+            inner = re.sub(r"(?<![:/])/(?!/)", r"/\\allowbreak{}", inner)
+            saved.append("\\texttt{" + inner + "}")
             staged.append(f"\x00TOK{idx}\x00")
         else:
             staged.append(part)
@@ -368,7 +375,7 @@ def build_tex_document(body_tex: str) -> str:
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\scriptsize\textcolor{CRMBlue}{Master Catalog of Technical Claims \& Foundational Grounding}}
-\fancyhead[R]{\scriptsize\textcolor{CRMBlue}{\textit{Categorical Reverse Mathematics with Applications} --- James F. Walters}}
+\fancyhead[R]{\scriptsize\textcolor{CRMBlue}{\textit{Categorical Reverse Mathematics --- Volume~I} --- James F. Walters}}
 \fancyfoot[C]{\scriptsize\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}

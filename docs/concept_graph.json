@@ -4,7 +4,7 @@
     "title": "Categorical Reverse Mathematics: Directed Concept Dependency Graph",
     "author": "James F. Walters",
     "location": "Port Townsend, Washington",
-    "monograph": "Categorical Reverse Mathematics with Applications: The Structure of Necessity",
+    "monograph": "Categorical Reverse Mathematics --- Volume I: Obstructions, Residuums, and the Geometry of Necessity",
     "version": "1.1.0",
     "total_nodes": 61,
     "total_edges": 147,
@@ -667,7 +667,7 @@
       "label": "Doctrinal Comparison Triple (T)",
       "stage": "stage_core",
       "cluster": "crm_foundations",
-      "description": "Tuple T = (D_0 >= D_1, kappa: Phi => Psi) induced by a comparison square alpha and its involutive Beck-Chevalley mate mu_alpha in a cloven doctrinal fibration p : E -> B.",
+      "description": "Tuple T = (D_0 >= D_1, kappa: Phi => Psi) induced by a comparison square alpha and its mutually inverse Beck-Chevalley mate mu_alpha in a Grothendieck doctrinal fibration p : E -> B.",
       "monograph_chapter": "Chapter 1",
       "concepts_covered": [
         "C006",

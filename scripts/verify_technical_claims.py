@@ -7,7 +7,7 @@ Audits docs/categorical_reverse_mathematics.tex, references.bib, blueprint/lean_
 and HomotopyCRM/*.lean against docs/technical_claims_foundations.md, enforcing:
 1. 100% 1-to-1 bijection across all 89 formal post-document environments (51 results + 38 structural/open).
 2. All 174+ distinct inline prose & table technical claims across Preface, Glossary, and Chapters 1-9.
-3. All 12 manuscript xltabular/tabularx tables mapped to valid catalog claim IDs in Part IV.
+3. All 13 manuscript xltabular/tabularx tables mapped to valid catalog claim IDs in Part IV.
 4. Canonical grounding categories, valid coordinate axes, non-empty fields, zero placeholders,
    and Summary Ledger (§7) arithmetic consistency.
 5. 100% coverage of blueprint/lean_decls (140 declarations), namespace-aware Lean declaration verification across HomotopyCRM/*.lean,
@@ -615,7 +615,7 @@ def verify_technical_claims() -> Tuple[bool, List[str], Dict[str, Any]]:
     if missing_bp:
         errors.append(f"blueprint/lean_decls declarations missing from catalog ({len(missing_bp)}): {missing_bp[:5]}")
 
-    # 6. Validate Part IV table matrix (all 17 tables)
+    # 6. Validate Part IV table matrix (all 13 tables)
     if len(part4) != len(tex_tables):
         errors.append(f"Part IV table count ({len(part4)}) != LaTeX tables ({len(tex_tables)}).")
     else:

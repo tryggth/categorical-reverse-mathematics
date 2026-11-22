@@ -196,7 +196,7 @@ def transform_content(body: str) -> str:
     # Promote the section-level Ch. 1 §1.6 Lean annotation to a formal theorem node for leanblueprint.
     sec_pat = re.compile(
         r"\\section\{(?:\\texorpdfstring\{Pure Axiom-of-Infinity Residua in \$\\mathbf\{FinSet\}\$\}\{Pure Axiom-of-Infinity Residua in FinSet\}|Pure Axiom-of-Infinity Residua in \$\\mathbf\{FinSet\}\$)\}"
-        r"\\label\{sec:finset-infinity\}%?\s*\\lean\{([^}]+)\}%?"
+        r"\\label\{sec:finset-infinity\}%?\s*\\lean\{([^}]+)\}%?(?:\s*\\leanwitness%?)?"
     )
 
     def _promote_finset(m: re.Match[str]) -> str:
