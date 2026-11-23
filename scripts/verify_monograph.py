@@ -126,10 +126,21 @@ def check_tex() -> list[str]:
             errs.append(f"{label} ({len(hits)}): {hits[:5]}")
 
     if not errs:
-        if (ROOT / TEX.name).exists():
-            shutil.copy2(TEX, ROOT / TEX.name)
-        if (ROOT / PDF.name).exists():
+        shutil.copy2(TEX, ROOT / TEX.name)
+        if PDF.exists():
             shutil.copy2(PDF, ROOT / PDF.name)
+        stamp_res = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "stamp_cover.py")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        if stamp_res.stdout.strip():
+            print(stamp_res.stdout.strip())
+        if stamp_res.returncode != 0:
+            errs.append(
+                "Cover stamper failed:\n" + (stamp_res.stdout + stamp_res.stderr).strip()
+            )
     return errs
 
 def check_lean(run_build: bool = True) -> list[str]:

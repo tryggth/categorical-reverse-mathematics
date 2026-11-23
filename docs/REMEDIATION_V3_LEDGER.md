@@ -1,6 +1,6 @@
 # Remediation v3 Execution Ledger
 
-This ledger tracks the 24 remediation tickets (`V3-01`–`V3-24`) across Waves S1–S4 following v2.0 (`1866ff4`).
+This ledger tracks the 24 remediation tickets (`V3-01`–`V3-24`) across Waves S1–S4 following v2.0 (`1866ff4`). **Status: `24/24` `DONE` (`0` `OPEN`, Waves S1–S4 complete, Release `v2.1`).**
 
 **Invariant:** `grep -c '^| V3-' docs/REMEDIATION_V3_LEDGER.md` MUST remain `24` across all waves.
 
@@ -26,7 +26,7 @@ This ledger tracks the 24 remediation tickets (`V3-01`–`V3-24`) across Waves S
 | V3-18 | S3 | DONE (Wave S3) | Ch. 7 P0s (`ch07_sets_residuum.tex`): full Levy-Montague Reflection Schema (`Sigma_n` for all `n < omega`, `L235`); `KM` Freyd theorem vs. Grothendieck universes + `Th_{L_in}(KM)` in Table 7.1 (`L80, L165`). |
 | V3-19 | S3 | DONE (Wave S3) | Ch. 7 P1s: Joyal-Moerdijk Powerclass Axiom `(P1)` + monomorphisms in `def:small-map-ambient` (`L191-230`); `omega_1` Borel iterates (`L182`); `L_{omega_omega^L}` in `prop:los-smuggles-gc` (`L149`); `ETR_omega` vs. `ETR_{Ord}` & `[Gitman20]` (`L79, L164`). |
 | V3-20 | S3 | DONE (Wave S3) | Ch. 7 P2s: surjections `omega ->> X_n` & unbounded Subclass Separation in Glazer (`L118-124`); `CZF` `Pi^0_2`-conservativity over `KP omega` (`L223`); `Sigma^0_omega` Borel rank + `V_{omega+1}/V_{omega+2}` ranks synced across Preface/Ch. 7/Ch. 9; Rieger-Bernays `V_{ZF}(Q_0)` (`L276`); classical Scott's trick (`L287`); internal `C |=` (`L339`). |
-| V3-21 | S4 | OPEN | Ch. 8 S8.1 P0s & P1s: `R_C ~= R_D` ultraparacompact / locally compact zero-dim (`2^N, N^N`) vs. P-spaces (`L2681`); `2^N_{pt}` vs. `2^N_{loc}` for `FAN` (`L2697`); compact regular locales vs. compact Hausdorff spaces for `BPI` vs. Kelley Tychonoff `AC` (`L2711`); `IVT` F-spaces / extremally disconnected (`L2689`); Boolean `R_D ~= R_M` (`L2675`). |
-| V3-22 | S4 | OPEN | Ch. 8 SS8.2-8.5 P1s & P2s: non-Alexandroff `AB4*` (`L2818`); Snake Lemma vs. semi-abelian `Grp` & `Set_*` pullback typing (`L2787, L2800`); `Pi W`-pretopos NNO + `|ID_{<omega}|` + untruncated `(infty,1)` `W`-types (`L2836-2861`); Univalence & ABFJ directional scoping (`L2871, L2877`); Ch. 8 P2s (`L2713, L2736, L2899, L2905`). |
-| V3-23 | S4 | OPEN | Ch. 9 SS9.1-9.6 mirrors & P2 hygiene: sync `L2955` Pareto frontier, `L2997` non-strict `<=`, `L3011` `conj:bpi-ac` non-coherent scope, Master Atlas rows `L3146, L3152-3154`, `not_catPresheafAC_twoGroupCat` Choice-free grouping in S9.5 (`L3128`), `140+ unique` wording, `\label` hygiene. |
-| V3-24 | S4 | OPEN | Final V3 audit (`24/24 DONE`), full blueprint/catalog/curriculum verification, and annotated tag `v2.1`. |
+| V3-21 | S4 | DONE (Wave S4) | Ch. 8 S8.1 P0s & P1s: `R_C ~= R_D` ultraparacompact / locally compact zero-dim (`2^N, N^N`) vs. P-spaces (`L2681`); `2^N_{pt}` vs. `2^N_{loc}` for `FAN` (`L2697`); compact regular locales vs. compact Hausdorff spaces for `BPI` vs. Kelley Tychonoff `AC` (`L2711`); `IVT` F-spaces / extremally disconnected (`L2689`); Boolean `R_D ~= R_M` (`L2675`). |
+| V3-22 | S4 | DONE (Wave S4) | Ch. 8 SS8.2-8.5 P1s & P2s: non-Alexandroff `AB4*` (`L2818`); Snake Lemma vs. semi-abelian `Grp` & `Set_*` pullback typing (`L2787, L2800`); `Pi W`-pretopos NNO + `|ID_{<omega}|` + untruncated `(infty,1)` `W`-types (`L2836-2861`); Univalence & ABFJ directional scoping (`L2871, L2877`); Ch. 8 P2s (`L2713, L2736, L2899, L2905`). |
+| V3-23 | S4 | DONE (Wave S4) | Ch. 9 SS9.1-9.6 mirrors & P2 hygiene: sync `L2955` Pareto frontier, `L2997` non-strict `<=`, `L3011` `conj:bpi-ac` non-coherent scope, Master Atlas rows `L3146, L3152-3154`, `not_catPresheafAC_twoGroupCat` Choice-free grouping in S9.5 (`L3128`), `140+ unique` wording, `\label` hygiene. |
+| V3-24 | S4 | DONE (Wave S4) | Final V3 audit (`24/24 DONE`), full blueprint/catalog/curriculum verification, zero-`.tex`-touch cover stamper, and annotated tag `v2.1`. |

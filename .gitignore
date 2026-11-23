@@ -44,6 +44,9 @@ build/
 !/docs/concept_curriculum.md
 !/docs/REMEDIATION_V2_LEDGER.md
 !/docs/REMEDIATION_V3_LEDGER.md
+!/scripts/stamp_cover.py
+!/docs/assets/
+!/docs/assets/cover.jpg
 /docs/preface_invitation.tex
 /docs/reviews/
 
