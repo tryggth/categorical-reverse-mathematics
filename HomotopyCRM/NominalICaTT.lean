@@ -11,7 +11,7 @@ import Mathlib.Data.Fintype.Pigeonhole
 # Choice Calibration of Coinductive Invertibility Streams (`Theorem 9B`)
 
 This module formalizes the combinatorial and set-theoretic Lean witness companion to **Theorem 9B**
-(Chapter 6, §6.8, Theorem 6.8.1). Scope note: rather than internalizing `IDC_ω` directly inside a
+(Chapter 6, §6.8, Theorem 6.8.2). Scope note: rather than internalizing `IDC_ω` directly inside a
 weak `ω`-category / clan model `Clan(S_CaTT, E)` or typing `Free_CaTT(E[𝔸])` (`q_n`, `wt_k`,
 proved in Chapter 6 §6.8 prose), this module mechanizes:
 (a) the combinatorial fresh-atom spine surrogate (`FreshCell`, `FreshComputadStep`,

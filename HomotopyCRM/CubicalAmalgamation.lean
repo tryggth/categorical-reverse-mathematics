@@ -58,7 +58,7 @@ Gepner–Heine `arXiv:2603.09903`; atomic-topos amalgamation calibration followi
    - Verifies Inhabitation (Layer 1), Bidirectional Separation across `IsIntersective`,
      `HasCubicalNDAP`, `IsMinimalCell`, `IsDisjointCubicalAmalgamation`, `IsFlowAcyclic` on
      `CubicalAmalgam`, and the `n = 2` vs. `n ≥ 3` dimension dichotomy (Layer 2), Mathlib
-     projections & cardinality/isomorphism sanity checks (Layer 3), and `#print axioms` (Layer 4).
+     projections & cardinality/isomorphism sanity checks (Layer 3), plus Layer 4 axiom checks.
 -/
 
 universe u v
@@ -2020,7 +2020,7 @@ theorem layer2_sep_isCoveringGraded :
     omega
   exact ⟨hPt, hWalk, isCoveringGraded_cubicalAmalgam hInt2 hFaceCov, hNeg⟩
 
-/-! ### Layer 4: Kernel Axiom Gate (`#guard_msgs in #print axioms`) -/
+/-! ### Layer 4: Kernel Axiom Gate (20 Axiom Checks) -/
 
 section KernelAxiomGate
 

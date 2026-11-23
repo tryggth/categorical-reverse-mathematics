@@ -1305,7 +1305,7 @@
       "label": "The Five Core Conjectures of CRM",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Five program-defining conjectures: Cohomological Vanishing (proved on top, IBPI, IDC, SVC), Etale omega-Presentability, Stone/Profinite Isotropy, Postnikov Stepwise Effacement (proved for n >= 1, liens, nilpotent bands & etale R(E_1) splitting), and Two-Sorted Big-Five Adjoint/Fixed-Point Hierarchy.",
+      "description": "Five program-defining conjectures: Cohomological Vanishing (proved on top, IBPI, IDC, SVC), Etale omega-Presentability, Locally Stone/Profinite Isotropy, Postnikov Stepwise Effacement (proved for n >= 1, liens, nilpotent bands & etale R(E_1) splitting on Boolean B), and Two-Sorted Big-Five Adjoint/Fixed-Point Hierarchy.",
       "monograph_chapter": "Chapter 2, 5, 8, 9",
       "concepts_covered": [
         "C041",
@@ -1452,7 +1452,7 @@
       "label": "Lean 4 HomotopyCRM Production Ledger",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (22,016 lines, 234 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
+      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (22,024 lines, 234 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
       "monograph_chapter": "Chapter 7 & 9",
       "concepts_covered": [
         "C185",

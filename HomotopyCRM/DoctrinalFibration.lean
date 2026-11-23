@@ -501,12 +501,13 @@ def IsSufficientProbeSet {D : Type u} {P : Type v} (Φ : DoctrinalPhilosophy D P
 def IsClosedExtent {D : Type u} {P : Type v} (Φ : DoctrinalPhilosophy D P) (E : Set D) : Prop :=
   Φ.mooreClosure E = E
 
-/-- Minimal Pareto frontier of Moore-closed extents `E` resolving `hyp ∩ E ⊆ concl`: no strictly
-larger (deductively weaker) Moore-closed extent `E' ⊇ E` also resolves `hyp ∩ E' ⊆ concl`. -/
+/-- Minimal Pareto frontier of Moore-closed extents `E` resolving `hyp ∩ E ⊆ concl` above the
+non-vacuity core `hyp ∩ concl ⊆ E`: no strictly larger (deductively weaker) Moore-closed extent
+`E' ⊇ E` also resolves `hyp ∩ E' ⊆ concl`. -/
 def paretoFrontier {D : Type u} {P : Type v} (Φ : DoctrinalPhilosophy D P)
     (hyp concl : Set D) : Set (Set D) :=
-  { E : Set D | Φ.IsClosedExtent E ∧ hyp ∩ E ⊆ concl ∧
-    ∀ E' : Set D, Φ.IsClosedExtent E' → hyp ∩ E' ⊆ concl → E ⊆ E' → E' = E }
+  { E : Set D | Φ.IsClosedExtent E ∧ hyp ∩ concl ⊆ E ∧ hyp ∩ E ⊆ concl ∧
+    ∀ E' : Set D, Φ.IsClosedExtent E' → hyp ∩ concl ⊆ E' → hyp ∩ E' ⊆ concl → E ⊆ E' → E' = E }
 
 end DoctrinalPhilosophy
 
@@ -615,11 +616,12 @@ non-empty left `M`-set has a fixed point. -/
 def MonoidProj1 (M : Type u) [Monoid M] : Prop :=
   ∀ (X : Type u) [MulAction M X], Nonempty X → ∃ x : X, ∀ m : M, m • x = x
 
-/-- Subterminal-splitting (`ProjSub` = `SS`, Freyd–Ščedrov Supports Split) in the Boolean
-presheaf topos `Set^M` (whose subobject classifier `Sub(1)` is externally two-valued
-`Bool = {⊥, ⊤}`, reflecting the classical `Type` base): for every subterminal `U ∈ {∅, 1}`
-(`Bool`) and `M`-equivariant surjection `p : X → U`, `p` admits an `M`-equivariant section.
-(Constructively inside non-Boolean topoi, quantify over all internal subterminals `U ∈ Ω`.) -/
+/-- External `Bool`-indexed empty/terminal subterminal-splitting surrogate on left `M`-sets `Set^M`:
+for every `U ∈ {∅, 1}` (`Bool`) and `M`-equivariant surjection `p : X → U`, `p` admits an
+`M`-equivariant section. Note that for a non-group monoid `M` (such as `M1Monoid`, whose internal
+classifier `Ω_{ℳ₁}` has 3 left ideals `{∅ < {e₁} < ℳ₁}`), `Set^M` is non-Boolean; full internal
+Supports Split (`CatPresheafProjSub`, Freyd–Ščedrov `SS`) quantifies over all internal subterminal
+presheaves `IsSubterminalPresheaf` in Section `Genuine Category-Presheaf Probes` below. -/
 def MonoidProjSub (M : Type u) [Monoid M] : Prop :=
   ∀ (X : Type u) [MulAction M X] (U : Bool) (p : X → { _u : Unit // U = true }),
     Function.Surjective p → ∃ s : { _u : Unit // U = true } → X,
@@ -1942,7 +1944,10 @@ theorem pareto_incomparable_projSub_localic :
     have heq := (hAC_iff .setZ2).mp hcon
     cases heq
   refine ⟨?_, ?_, ?_, ?_⟩
-  · refine ⟨hClosed _, fun t ⟨htIAC, htProj⟩ ↦ ?_, fun E' hCE' hsubE' hsub ↦ ?_⟩
+  · refine ⟨hClosed _, fun t ⟨_, htAC⟩ p hp ↦ ?_, fun t ⟨htIAC, htProj⟩ ↦ ?_,
+      fun E' hCE' _ hsubE' hsub ↦ ?_⟩
+    · rw [(hAC_iff t).mp htAC, Set.mem_singleton_iff.mp hp]
+      exact (hProj_iff .setTopos).mpr (Or.inl rfl)
     · have h1 := (hIAC_iff t).mp (htIAC .IAC rfl)
       have h2 := (hProj_iff t).mp (htProj .ProjSub rfl)
       rcases h1 with rfl | rfl
@@ -1975,7 +1980,10 @@ theorem pareto_incomparable_projSub_localic :
             rcases this with h | h <;> cases h
         rw [hCE'] at hz2cl
         exact hParetoExt E' hCE' hsubE' hz2cl
-  · refine ⟨hClosed _, fun t ⟨htIAC, htLoc⟩ ↦ ?_, fun E' hCE' hsubE' hsub ↦ ?_⟩
+  · refine ⟨hClosed _, fun t ⟨_, htAC⟩ p hp ↦ ?_, fun t ⟨htIAC, htLoc⟩ ↦ ?_,
+      fun E' hCE' _ hsubE' hsub ↦ ?_⟩
+    · rw [(hAC_iff t).mp htAC, Set.mem_singleton_iff.mp hp]
+      exact (hLoc_iff .setTopos).mpr (Or.inl rfl)
     · have h1 := (hIAC_iff t).mp (htIAC .IAC rfl)
       have h2 := (hLoc_iff t).mp (htLoc .Localic rfl)
       rcases h1 with rfl | rfl

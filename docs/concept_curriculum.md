@@ -1154,7 +1154,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 16 | **Barr--Diaconescu--Freyd Residuum** | Chapter 1, Section 4, Para 3(1) | `844` | Chapter 1 |
 | 17 | **Internal-to-External Choice Residuum** | Chapter 1, Section 4, Para 3(2) | `845` | Chapter 1 |
 | 18 | **Rectified $\mathrm{COSHEP}$--$\mathrm{SVC}$ Residuum** | Chapter 1, Section 4, Para 3(3) | `846` | Chapter 1 |
-| 19 | **Coherent Boolean $\prod_k \mathbf{Cont}(\mathcal{G}_k)$ & Non-Coherent Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}/\mathrm{AC}$)** | Chapter 1, Section 4, Para 3(4) | `846` | Chapter 1 |
+| 19 | **Coherent Boolean $\prod_k \mathbf{Cont}(\mathcal{G}_k)$ & Non-Coherent Locally Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}/\mathrm{AC}$)** | Chapter 1, Section 4, Para 3(4) | `847` | Chapter 1 |
 | 20 | **Seven Non-$\mathrm{AC}$ Theorem Lattices** | Chapter 1, Section 5, Items 1–7 | `875` | Chapter 1 |
 | 21 | **Profinite Lasso Initial-Algebra Phantom ($\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$)** | Chapter 1, Section 6, Para 3(1) | `893` | Chapter 1 |
 | 22 | **Dedekind / Pigeonhole Residuum ($\mathrm{Res}_{\mathrm{Ded}}$) and Nominal Crossing Point** | Chapter 1, Section 6, Para 3(2) | `899` | Chapter 1 |
@@ -1171,7 +1171,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 33 | **Small Violations of Choice ($\mathrm{SVC}$) and Retract-Bounded $\mathrm{SVC}_{\mathrm{ret}}$** | Chapter 2, Section 3.1, Para 2 | `1046` | Chapter 2 |
 | 34 | **The Rectified $\mathrm{COSHEP}$--$\mathrm{SVC}$ Residuum Theorem** | Chapter 2, Section 3.1, Thm 2.3.1 | `1048` | Chapter 2 |
 | 35 | **Deligne's Coherent Topos Theorem and $\mathrm{IBPI}$** | Chapter 2, Section 3.2, Para 1 | `1075` | Chapter 2 |
-| 36 | **Coherent Boolean Resolution & Non-Coherent Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}$)** | Chapter 2, Section 3.2, Conj 2.3.2 | `1079` | Chapter 2 |
+| 36 | **Coherent Boolean Resolution & Non-Coherent Locally Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}$)** | Chapter 2, Section 3.2, Conj 2.3.2 | `1079` | Chapter 2 |
 | 37 | **Sequential Choice ($\mathrm{DC}, \mathrm{IDC}, \mathrm{CC}$), Subcountable Refinement, and $\mathrm{CCC}$ Regimes** | Chapter 2, Section 3.3, Paras 1–2 | `1093` | Chapter 2 |
 | 38 | **The Internal $\omega$-Presentability Residuum Conjecture ($\mathrm{IDC} \Rightarrow \mathrm{IAC}$)** | Chapter 2, Section 3.3, Conj 2.3.3 | `1097` | Chapter 2 |
 | 39 | **Sheaf-Cohomological Obstruction Theory for Epimorphism Splitting** | Chapter 2, Section 4, Paras 1–3 | `1111` | Chapter 2 |
@@ -1300,7 +1300,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 | 162 | **Absolute vs. Relative Residua & Non-Strict Contravariant Fiber Strengthening** | Chapter 9, Section 9.2, Paragraph 2 | `3003` | Chapter 9 |
 | 163 | **Cohomological Vanishing Conjecture (Core Conjecture 1)** | Chapter 9, Section 9.3, Enumerate Item 1 | `3015` | Chapter 9 |
 | 164 | **Sequential Presentability Conjecture (Core Conjecture 2)** | Chapter 9, Section 9.3, Enumerate Item 2 | `3017` | Chapter 9 |
-| 165 | **Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)** | Chapter 9, Section 9.3, Enumerate Item 3 | `3019` | Chapter 9 |
+| 165 | **Locally Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)** | Chapter 9, Section 9.3, Enumerate Item 3 | `3019` | Chapter 9 |
 | 166 | **Postnikov Stepwise Vanishing Conjecture (Core Conjecture 4) & Graded Choice Tower** | Chapter 9, Section 9.3, Enumerate Item 4 & Tower Synthesis | `3021` | Chapter 9 |
 | 167 | **Adjoint-Closure and Fixed-Point Hierarchy Conjecture (Core Conjecture 5)** | Chapter 9, Section 9.3, Enumerate Item 5 | `3023` | Chapter 9 |
 | 168 | **Pareto Residuum Frontiers in Non-Linear Topos Lattices (Open Problem 9.1)** | Chapter 9, Section 9.4, Problem 9.1 (`prob:open-1`, Horizon I) | `3035` | Chapter 9 |
@@ -1478,13 +1478,13 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **Concise Definition / Context Summary:**
   Over $\mathbf{Set}_{\mathrm{AC}}$, bridging enough projectives ($\mathrm{COSHEP}$) to external $\mathrm{AC}$ requires Booleanness ($\Omega_{\mathcal{E}} \simeq 1+1$) plus an externally projective seed $S$ validating $\mathrm{SVC}_{\mathrm{ret}}(S)$ (equivalently under $\mathrm{COSHEP}$, every externally projective cover $P \twoheadrightarrow S$ splits), separated in $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$ by $P=\mathbb{Z}/2\mathbb{Z}$ refuting $\mathrm{SVC}_{\mathrm{ret}}$ vs. $S=1 \amalg \mathbb{Z}/2\mathbb{Z}$ failing cover splitting.
 
-##### Concept 19: Coherent Boolean $\prod_k \mathbf{Cont}(\mathcal{G}_k)$ & Non-Coherent Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}/\mathrm{AC}$)
+##### Concept 19: Coherent Boolean $\prod_k \mathbf{Cont}(\mathcal{G}_k)$ & Non-Coherent Locally Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}/\mathrm{AC}$)
 
 - **Location Reference:** Chapter 1, Section 4, Para 3(4)
-- **LaTeX Source Line:** `846`
+- **LaTeX Source Line:** `847`
 - **Monograph Section:** Chapter 1
 - **Concise Definition / Context Summary:**
-  Over $\mathbf{Set}_{\mathrm{AC}}$, the coherent Boolean Grothendieck case decomposes into finite products $\prod_{k=1}^m \mathbf{Cont}(\mathcal{G}_k)$ where Stone/profinite isotropy characterizes $\mathrm{IAC}$; for *non-coherent* Boolean Grothendieck topoi, `conj:bpi-ac` posits *étale Stone/profinite Joyal--Tierney localic groupoid isotropy* (separating profinite $\mathbf{Cont}(\mathbb{Z}_2)$ from Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathbb{Q}, <))$, elevating to external $\mathrm{AC}$ when $1_{\mathcal{E}}$ is externally projective).
+  Over $\mathbf{Set}_{\mathrm{AC}}$, the coherent Boolean Grothendieck case decomposes into finite products $\prod_{k=1}^m \mathbf{Cont}(\mathcal{G}_k)$ where Stone/profinite isotropy characterizes $\mathrm{IAC}$; for *non-coherent* Boolean Grothendieck topoi, `conj:bpi-ac` posits *locally Stone / locally profinite Joyal--Tierney localic groupoid isotropy* (open subgroupoid $U \supseteq e(G_0)$ with Stone fibers on $(s,t)|_U$, separating locally profinite $\mathbf{Cont}(\mathcal{G})$ from Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathbb{Q}, <))$, elevating to external $\mathrm{AC}$ when $1_{\mathcal{E}}$ is externally projective).
 
 ##### Concept 20: Seven Non-$\mathrm{AC}$ Theorem Lattices
 
@@ -1616,13 +1616,13 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **Concise Definition / Context Summary:**
   Deligne's theorem equates $\mathrm{BPI}$ to coherent topoi having enough points; internally, $\mathrm{IBPI}$ asserts that every non-trivial internal Boolean algebra admits an ultrafilter (internal spatiality of internal Stone/coherent locales).
 
-##### Concept 36: Coherent Boolean Resolution & Non-Coherent Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}$)
+##### Concept 36: Coherent Boolean Resolution & Non-Coherent Locally Stone-Isotropy Conjecture ($\mathrm{IBPI} \Rightarrow \mathrm{IAC}$)
 
 - **Location Reference:** Chapter 2, Section 3.2, Conj 2.3.2
 - **LaTeX Source Line:** `1079`
 - **Monograph Section:** Chapter 2
 - **Concise Definition / Context Summary:**
-  Over $\mathbf{Set}_{\mathrm{AC}}$, proves the coherent Boolean Grothendieck case unconditionally: every $\mathrm{Sub}_{\mathcal{E}}(X)$ on a coherent object is finite, yielding $\mathcal{E} \simeq \prod_{k=1}^m \mathbf{Cont}(\mathcal{G}_k)$ via Deligne and Joyal--Tierney where Stone/profinite isotropy + $\mathrm{IBPI}$ characterizes $\mathrm{IAC}$ ($\mathcal{G}_k$ finite discrete). Scopes `conj:bpi-ac` strictly to *non-coherent* Boolean Grothendieck topoi over $\mathbf{Set}_{\mathrm{AC}}$ ($\mathrm{IBPI} + \text{Étale Stone/Profinite Groupoid Isotropy} \iff \mathrm{IAC}$), contrasted with localic $\mathcal{S}/K$ over Halpern--Lévy bases, subobject disjointification, $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$, profinite $\mathbf{Cont}(\mathbb{Z}_2)$, and Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathbb{Q}, <))$.
+  Over $\mathbf{Set}_{\mathrm{AC}}$, proves the coherent Boolean Grothendieck case unconditionally: every $\mathrm{Sub}_{\mathcal{E}}(X)$ on a coherent object is finite, yielding $\mathcal{E} \simeq \prod_{k=1}^m \mathbf{Cont}(\mathcal{G}_k)$ via Deligne, internal $\underline{\mathrm{Hom}}_{\mathbf{BA}}(\mathrm{Clop}(\mathcal{G}_k), 2)$, and Joyal--Tierney where Stone/profinite isotropy + $\mathrm{IBPI}$ characterizes $\mathrm{IAC}$ ($\mathcal{G}_k$ finite discrete). Scopes `conj:bpi-ac` strictly to *non-coherent* Boolean Grothendieck topoi over $\mathbf{Set}_{\mathrm{AC}}$ ($\mathrm{IBPI} + \text{Locally Stone / Locally Profinite Groupoid Isotropy} \iff \mathrm{IAC}$ via open subgroupoid $U \supseteq e(G_0)$), contrasted with localic $\mathcal{S}/K$ ($K \twoheadrightarrow 1_{\mathcal{S}}$) over Halpern--Lévy bases, subobject disjointification, $\mathbf{Set}^{\mathbb{Z}/2\mathbb{Z}}$, profinite $\mathbf{Cont}(\mathbb{Z}_2)$, and Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathbb{Q}, <))$ (which splits unordered pairs via $<$ while refuting $\mathrm{IAC}$ on infinite fibers).
 
 ##### Concept 37: Sequential Choice ($\mathrm{DC}, \mathrm{IDC}, \mathrm{CC}$), Subcountable Refinement, and $\mathrm{CCC}$ Regimes
 
@@ -1678,7 +1678,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1183`
 - **Monograph Section:** Chapter 2
 - **Concise Definition / Context Summary:**
-  Proves exact agreement $[\![\varphi_0(\vec{\sigma})]\!]^{\mathrm{HS}} = [\![\varphi_0(\vec{\sigma})]\!]^{\mathbb{B}}$ on $\Delta_0$ formulas without forcing general unbounded equality with $V^{\mathbb{B}}$ (permitting $[\![\mathsf{AC}]\!]^{\mathrm{HS}} < 1_{\mathbb{B}}$), $\mathcal{G}$-equivariance $\pi([\![\varphi(\vec{\sigma})]\!]^{\mathrm{HS}}) = [\![\varphi(\pi\vec{\sigma})]\!]^{\mathrm{HS}}$, full $\mathsf{ZF}$ soundness in $\mathrm{HS}_{\mathcal{F}}$, and pure-$\mathsf{ZF}$ benchmarks separating $\neg\mathrm{AC}_\omega$ (Cohen), $\neg\mathrm{AC}_\omega + \neg\mathrm{DC}$ (Feferman--Lévy collapse), Jech countably closed $\mathrm{DC}+\neg\mathrm{AC}$ ($\mathrm{RO}(\mathrm{Fn}_{\le\aleph_0}(\omega_1, 2))$), Halpern--Lévy $\mathrm{BPI}+\neg\mathrm{AC}$ ($\mathrm{RO}(\mathrm{Fn}(\omega\times\omega,2))$ under $\mathrm{Sym}(\omega)$, proved via the Halpern--Läuchli binary-tree partition theorem on finite powers of $2^{<\omega}$), and Blass/Usuba $\mathsf{SVC}$ symmetric-extension characterization without urelements.
+  Proves exact agreement $[\![\varphi_0(\vec{\sigma})]\!]^{\mathrm{HS}} = [\![\varphi_0(\vec{\sigma})]\!]^{\mathbb{B}}$ on $\Delta_0$ formulas without forcing general unbounded equality with $V^{\mathbb{B}}$ (permitting $[\![\mathsf{AC}]\!]^{\mathrm{HS}} < 1_{\mathbb{B}}$), $\mathcal{G}$-equivariance $\pi([\![\varphi(\vec{\sigma})]\!]^{\mathrm{HS}}) = [\![\varphi(\pi\vec{\sigma})]\!]^{\mathrm{HS}}$, full $\mathsf{ZF}$ soundness in $\mathrm{HS}_{\mathcal{F}}$, and pure-$\mathsf{ZF}$ benchmarks separating $\neg\mathrm{AC}_\omega$ (Cohen), $\neg\mathrm{AC}_\omega + \neg\mathrm{DC}$ (Feferman--Lévy collapse), Jech countably closed $\mathrm{DC}+\neg\mathrm{AC}$ ($\mathrm{RO}(\mathrm{Fn}_{\le\aleph_0}(\omega_1 \times \omega_1, 2))$ with $\mathrm{Sym}(\omega_1)$ on the first coordinate), Halpern--Lévy $\mathrm{BPI}+\neg\mathrm{AC}$ ($\mathrm{RO}(\mathrm{Fn}(\omega\times\omega,2))$ under $\mathrm{Sym}(\omega)$, proved via the Halpern--Läuchli binary-tree partition theorem on finite powers of $2^{<\omega}$), and Blass/Usuba $\mathsf{SVC}$ symmetric-extension characterization without urelements.
 
 ##### Concept 44: $\mathcal{F}$-Continuous $\mathcal{G}$-Equivariant Boolean Sheaves ($\mathbf{Sh}_{\mathcal{G},\mathcal{F}}(\mathbb{B})$)
 
@@ -1844,7 +1844,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1532`
 - **Monograph Section:** Chapter 4
 - **Concise Definition / Context Summary:**
-  Weakening base axioms from $\mathcal{M}_1(\mathcal{S})$ to $\mathcal{M}_2(\mathcal{S})$ induces an order-reversing strengthening of relative fiber residuum $\mathbf{Mod}(\mathcal{R}_2(\mathcal{E}/\mathcal{S})) \subsetneq \mathbf{Mod}(\mathcal{R}_1(\mathcal{E}/\mathcal{S}))$, transferring strength from pushforward failure to fiber rigidity.
+  Weakening base axioms from $\mathcal{M}_1(\mathcal{S})$ to $\mathcal{M}_2(\mathcal{S})$ induces an order-reversing strengthening of relative fiber residuum $\mathbf{Mod}(\mathcal{R}_2(\mathcal{E}/\mathcal{S})) \subseteq \mathbf{Mod}(\mathcal{R}_1(\mathcal{E}/\mathcal{S}))$, transferring strength from pushforward failure to fiber rigidity.
 
 ##### Concept 64: Quantitative Base--Fiber Conservation via Giraud Torsors and the Leray Sequence
 
@@ -1960,7 +1960,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1864`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Separates the unconditionally proved core prior to Conjecture 5.3.2 (`conj:postnikov-stepwise`): the all-$n \ge 0$ generator-level bridge, unconditional $0$-truncated effacement of $H^{n+2}(\mathcal{X}/Y; A)$ for all abelian rungs $n \ge 1$ via $1$-connectivity of $E_{n+1}$, and $n=0$ Giraud band equivalence, global-group necessity, uniformly nilpotent ($\exists c \in \mathbb{N}$) $R^{(k)}(E_1)$ sufficiency, and étale $R(E_1) \twoheadrightarrow 1_{\mathcal{X}/Y}$ splitting into global $L(G)$ on $\mathbf{Sh}_\infty(B)_{/W}$ (showing $H^2_{\mathrm{gerbe}}$ effacement suffices for $\mathrm{AC}_1$).
+  Separates the unconditionally proved core prior to Conjecture 5.3.2 (`conj:postnikov-stepwise`): the all-$n \ge 0$ generator-level bridge, unconditional $0$-truncated effacement of $H^{n+2}(\mathcal{X}/Y; A)$ for all abelian rungs $n \ge 1$ via $1$-connectivity of $E_{n+1}$, and $n=0$ Giraud band equivalence, global-group necessity, uniformly nilpotent ($\exists c \in \mathbb{N}$) $R^{(k)}(E_1)$ sufficiency, and étale $R(E_1) \twoheadrightarrow 1_{\mathcal{X}/Y}$ splitting into global $L(G)$ on $\mathbf{Sh}_\infty(B)_{/W}$ for complete Boolean algebra $B := L_{{\downarrow}\tau_{\le -1}W}$ (showing $H^2_{\mathrm{gerbe}}$ effacement suffices for $\mathrm{AC}_1$).
 
 ##### Concept 78: Postnikov Stepwise Residuum (`conj:postnikov-stepwise`)
 
@@ -1968,7 +1968,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `1882`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  Characterizes $(\mathrm{AC}_n \Rightarrow \mathrm{AC}_{n+1})$ via $0$-truncated effacement over $Y \in \tau_{\le 0}\mathcal{X}$ (collapsing under $\mathrm{AC}_0$ to global slice vanishing): unconditionally proved for all $n \ge 1$ via $H^{n+2}(\mathcal{X}/Y; A)$ and at $n = 0$ for Giraud *liens*, uniformly nilpotent bands, and via $R(E_1)$-splitting into global $L(G)$ on $1$-localic and étale $\mathbf{Sh}_\infty(B)_{/W}$ topoi, isolating non-étale non-nilpotent $R(E_1)$ band-representability over global $G \in \mathbf{Grp}(\tau_{\le 0}(\mathcal{X}/Y))$ as the open core.
+  Characterizes $(\mathrm{AC}_n \Rightarrow \mathrm{AC}_{n+1})$ via $0$-truncated effacement over $Y \in \tau_{\le 0}\mathcal{X}$ (collapsing under $\mathrm{AC}_0$ to global slice vanishing): unconditionally proved for all $n \ge 1$ via $H^{n+2}(\mathcal{X}/Y; A)$ and at $n = 0$ for Giraud *liens*, uniformly nilpotent bands, and via $R(E_1)$-splitting into global $L(G)$ on $1$-localic and étale $\mathbf{Sh}_\infty(B)_{/W}$ topoi (Boolean $B := L_{{\downarrow}\tau_{\le -1}W}$), isolating non-étale non-nilpotent $R(E_1)$ band-representability over global $G \in \mathbf{Grp}(\tau_{\le 0}(\mathcal{X}/Y))$ as the open core.
 
 ##### Concept 79: $\infty$-Connected Morphisms and Whitehead's Principle
 
@@ -2016,7 +2016,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `2034`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  For a Gray-enriched left-adjoint-left-inverse (Lali) adjunction $l \dashv r$ with idempotent $E = l \circ r$, ambient $m$-cell animae stabilize at $m > \max(K_x, K_y) + 2$ (sharp at $+2$ on the oriented join cone $\{a\} \star \Sigma^{K+1}(S^0)$). Cartesian functor categories $\mathrm{Fun}^\times(E^{(n)}, E^{(n)})$ cannot invert walking $n$-equivalences ($n \ge 2$) across $\mathbf{D}^n \to E^{(n)}$ because $\mathbf{D}^{n-1} \times \mathbf{D}^1 \in \mathrm{Cat}_{(\infty, n-1)}$ contains no non-invertible $n$-cells, whereas lax Gray categories supply the additive prism $\mathbf{D}^{n-1} \boxtimes \mathbf{D}^1$ with a non-invertible $n$-cell.
+  For a Gray-enriched left-adjoint-left-inverse (Lali) adjunction $l \dashv r$ with idempotent $E = l \circ r$, ambient $m$-cell animae stabilize at $m > \max(K_x, K_y) + 2$ (sharp at $+2$ on the oriented join cone $\{a\} \star \Sigma^{K+1}(S^0)$). No directed Cartesian contraction $\mathbf{D}^1 \times E^{(2)} \to E^{(2)}$ can exist between $\mathrm{id}_{E^{(2)}}$ and $\mathrm{const}_*$ because $\mathbf{D}^{n-1} \times \mathbf{D}^1 \in \mathrm{Cat}_{(\infty, n-1)}$ contains no non-invertible $n$-cells, whereas in lax Gray categories $\mathbf{D}^1 \boxtimes \mathbf{D}^1$ supplies the laxator on $1$-cells while $2$-cells use $\mathbf{D}^2 \boxtimes \mathbf{D}^1$.
 
 ##### Concept 85: Recursive Ordinal Hom-Rank and the Class $\mathrm{Cat}_{\le \omega}$
 
@@ -2032,7 +2032,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `2070`
 - **Monograph Section:** Chapter 5
 - **Concise Definition / Context Summary:**
-  For any ranked $(\infty,\infty)$-category with $\mathrm{rank}(\mathcal{D}) \le \theta$, both transfinite $\theta$-inductive invertibility and coinductive bi-invertibility (`ranked_coindEquiv_iff_isEquiv`) coincide with genuine equivalence ($\mathrm{IsOrdinalInv}_\theta = \mathrm{IsCoindEquiv} = \mathrm{IsEquiv}$), with wide pushout $E^{(\omega)}$ matching `OmegaTowerState.apex`. For $\theta = \omega$, every $\mathcal{C} \in \mathrm{Cat}_{\le \omega}$ satisfies $\mathrm{IsOmegaInv}(\mathcal{C}) = \mathrm{IsEquiv}(\mathcal{C})$, so ORW Question 5.58 / 5.60 / 5.62 stabilizes at $\alpha = 0$ ($\mathrm{Cat}_{\le \omega} \subseteq \mathrm{Cat}^\omega_{(\infty,\infty)}$), isolating Conjecture C1 ($\mathrm{Cat}_{\le \omega} \stackrel{?}{\subseteq} \mathrm{Cat}^L_{(\infty,\infty)}$) strictly as Postnikov Phantom-Freeness.
+  For any ranked $(\infty,\infty)$-category with $\mathrm{rank}(\mathcal{D}) \le \theta$, both transfinite $\theta$-inductive invertibility and coinductive bi-invertibility (`ranked_coindEquiv_iff_isEquiv`) coincide with genuine equivalence ($\mathrm{IsOrdinalInv}_\theta = \mathrm{IsCoindEquiv} = \mathrm{IsEquiv}$), sharp at rank $\omega + 1$ on the associative globular $1$-composition skeleton `OmegaTowerState.apex` (without higher $2$-cell whiskering/interchange laws), whereas wide pushout $E^{(\omega)}$ has $\mathrm{rank}(E^{(\omega)}) = \infty$ in genuine $(\infty,\infty)$-categories (separating $\mathrm{IsOmegaInv}$ from $\mathrm{IsEquiv}$ outside ordinal-ranked systems). For $\theta = \omega$, every $\mathcal{C} \in \mathrm{Cat}_{\le \omega}$ satisfies $\mathrm{IsOmegaInv}(\mathcal{C}) = \mathrm{IsEquiv}(\mathcal{C})$, so ORW Question 5.58 / 5.60 / 5.62 stabilizes at $\alpha = 0$ ($\mathrm{Cat}_{\le \omega} \subseteq \mathrm{Cat}^\omega_{(\infty,\infty)}$), isolating Conjecture C1 ($\mathrm{Cat}_{\le \omega} \stackrel{?}{\subseteq} \mathrm{Cat}^L_{(\infty,\infty)}$) strictly as Postnikov Phantom-Freeness.
 
 ##### Concept 87: Bounded Directed Hom-Depth of $\mathrm{Cat}_{\le \omega}$, Noetherianity, and Colimit Non-Closure of $\mathrm{Cat}^L_{(\infty,\infty)}$
 
@@ -2682,13 +2682,13 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **Concise Definition / Context Summary:**
   Conjectures that étale $\omega$-presentability of Joyal--Tierney localic groupoid isotropy (extending the proved subcountable-step epimorphism bridge and normal pro-discrete $\mathbf{Cont}(\mathcal{G})$ collapse) is the minimal intrinsic residuum bridging $\mathrm{IDC}$ to $\mathrm{IAC}$ in Boolean Grothendieck topoi with an $\mathrm{NNO}$ over $\mathbf{Set}_{\mathrm{AC}}$.
 
-##### Concept 165: Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)
+##### Concept 165: Locally Stone-Isotropy / Zero-Dimensionality Residuum Conjecture (Core Conjecture 3)
 
 - **Location Reference:** Chapter 9, Section 9.3, Enumerate Item 3
 - **LaTeX Source Line:** `3019`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
-  Conjectures that Booleanness plus étale Stone/profinite Joyal--Tierney localic groupoid isotropy (proved on profinite $\mathbf{Cont}(\mathcal{G})$, separating $\mathbf{Cont}(\mathbb{Z}_2)$ via $\mathrm{IBPI}$ failure and Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathbb{Q}, <))$ via non-Stone isotropy) is the minimal residuum elevating $\mathrm{IBPI}$ to $\mathrm{IAC}$ in *non-coherent* Boolean Grothendieck topoi over $\mathbf{Set}_{\mathrm{AC}}$ (and to external $\mathrm{AC}$ when $1_{\mathcal{E}}$ is externally projective, killing $H^1(\mathcal{E}/Y, K_X)$; the coherent Boolean case is settled unconditionally in Chapter 2).
+  Conjectures that Booleanness plus locally Stone / locally profinite Joyal--Tierney localic groupoid isotropy (open subgroupoid $U \subseteq G_1$ containing $e(G_0)$ with compact zero-dimensional fibers on $(s,t)|_U$; proved on locally profinite $\mathbf{Cont}(\mathcal{G})$, separating $\mathbf{Cont}(\mathbb{Z}_2)$ via $\mathrm{IBPI}$ failure and Halpern's $\mathbf{Cont}(\mathrm{Aut}(\mathbb{Q}, <))$ via non-locally-Stone isotropy) is the minimal residuum elevating $\mathrm{IBPI}$ to $\mathrm{IAC}$ in *non-coherent* Boolean Grothendieck topoi over $\mathbf{Set}_{\mathrm{AC}}$ (and to external $\mathrm{AC}$ when $1_{\mathcal{E}}$ is externally projective, killing $H^1(\mathcal{E}/Y, K_X)$; the coherent Boolean case is settled unconditionally in Chapter 2).
 
 ##### Concept 166: Postnikov Stepwise Vanishing Conjecture (Core Conjecture 4) & Graded Choice Tower
 
@@ -2848,7 +2848,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
 - **LaTeX Source Line:** `3122`
 - **Monograph Section:** Chapter 9
 - **Concise Definition / Context Summary:**
-  The formal ledger recording 22,016 lines of machine-checked Lean 4 code across eleven production modules audited under 234 `#guard_msgs in #print axioms` checks and the Two-Tier Blueprint Standard (2 strict `\leanok` theorems + 24 `\leanwitness` nodes across 152 unique declarations):
+  The formal ledger recording 22,024 lines of machine-checked Lean 4 code across eleven production modules audited under 234 `#guard_msgs in #print axioms` checks and the Two-Tier Blueprint Standard (2 strict `\leanok` theorems + 24 `\leanwitness` nodes across 152 unique declarations):
   1. `InfinityResiduum.lean`: 949 lines, 20 checks (combinatorial `Fintype`/`PointedDynSys`/`HasFiniteSupportMap`/`TailCokernel` core for §1.6: finite lassos, Dedekind gap, $\widehat{\mathbb{N}}_{\mathrm{lasso}} \twoheadrightarrow \widehat{\mathbb{Z}}$).
   2. `DeltaRingPerfection.lean`: 2,141 lines, 28 checks (full `\leanok` formalization of Theorem 3.3.1 `thm:slice-perfection-chirality`: slice endofunctors, Lambek isomorphism, relative perfection $A_{\mathrm{perf}}$, `DualInt` 1-step collapse; plus $C_2(x,y) = -xy$, `DualInt` vs. $R_2$, `DeltaRing2.toDeltaStructure`, `nygaardLevel`/`nygaard_antitone`, and $i=2$ Nygaard separation witness).
   3. `BorelTailResiduum.lean`: 697 lines, 19 checks (witness core for $E_0$ Cantor tail exact sequence, ZFC linear splitting, basis-free product coset density / $T_1$ blindness, and $E_0^{\mathrm{even}}$ continuous-vs-ZFC parity torsor dichotomy; inheriting `Classical.choice` from `mathlib4` infrastructure).
@@ -2859,7 +2859,7 @@ To understand Categorical Reverse Mathematics, an undergraduate mathematics stud
   8. `CubicalAmalgamation.lean`: 2,117 lines, 20 checks (full `\leanok` formalization of Theorem 6.7.2 `thm:directed-cubical-amalgamation`: punctured $n$-cubes, `IsCoveringGraded`, minimal-support amalgams `CubicalAmalgam`, covering-graded transfer `isCoveringGraded_cubicalAmalgam`, facet-cycle obstruction $F_n = \partial\Delta^{n-1}$ for $n \ge 3$ with `FacetCycleFace.isCoveringGraded_facetCycleFace` and `FacetCycleFace` size $\le 2$ classification; plus intersectivity witness for Prop 6.7.1).
   9. `NominalICaTT.lean`: 1,544 lines, 21 checks (combinatorial fresh-atom spine and untyped syntax-tree surrogate: Choice-free soundness, ambient `Classical.choice` `Type u` surjectivity, untyped `CaTTTerm` support equality, nominal `FreshChain n` vs. empty finite-support `FreshRootStream`; typed $\mathrm{Free}_{\mathbf{CaTT}}(E[\mathbb{A}])$ strictification prose-only).
   10. `SetsResiduum.lean`: 1,401 lines, 19 checks (`ClassSetModel` coreflection $\mathrm{Def} \dashv \pi_{\mathrm{Set}}$, `finToPowElemHom : SetElemHom` / `finToPowClassHom`, and `finOmegaModel ↪ powOmegaModel` pullback Subclass-Separation counterexample, $\mathbf{Card} \hookrightarrow \mathbf{Set}$ choice equivalence, `APG` Quine non-bisimilarity, Boffa 2-cycle & twin `Bool`/`ZMod 2` torsor, and `ZFSet` extensional quotient gate).
-  11. `DoctrinalFibration.lean`: 4,433 lines, 32 checks (1-categorical Grothendieck fibrations wrapping `Functor.IsFibered` without a chosen cleavage, `DoctrinalFibration.toTerminal` and `not_isFibered_bz2BotStarIncl`, mutually inverse `mateEquiv`, faithful `defectMorphismProperty` & `nonId_mateDoubleSquare_beckChevalley_sep`, tri-modal witness carriers on $\mathbb{Z} \twoheadrightarrow \mathbb{Z}/2\mathbb{Z}$ and towers, Doctrinal Philosophies, Apodictic Impossibility of Pure Closure, $2$-object Freyd cover $(\mathbf{B}(\mathbb{Z}/2\mathbb{Z}))_\bot$, Choice-free finite Pareto Touchstone separations and `Classical.choice`-scoped `pareto_incomparable_projSub_localic`, $3^k 2^m$ `M1SliceLTT` count, concrete Stage-1/Stage-2 $\delta$-lift counts on $R_2, R_{2,2}$ over `FrobLiftRing2`, and `SL2F5` Schur transgression injection).
+  11. `DoctrinalFibration.lean`: 4,441 lines, 32 checks (1-categorical Grothendieck fibrations wrapping `Functor.IsFibered` without a chosen cleavage, `DoctrinalFibration.toTerminal` and `not_isFibered_bz2BotStarIncl`, mutually inverse `mateEquiv`, faithful `defectMorphismProperty` & `nonId_mateDoubleSquare_beckChevalley_sep`, tri-modal witness carriers on $\mathbb{Z} \twoheadrightarrow \mathbb{Z}/2\mathbb{Z}$ and towers, Doctrinal Philosophies, Apodictic Impossibility of Pure Closure, $2$-object Freyd cover $(\mathbf{B}(\mathbb{Z}/2\mathbb{Z}))_\bot$, Choice-free finite Pareto Touchstone separations and `Classical.choice`-scoped `pareto_incomparable_projSub_localic`, $3^k 2^m$ `M1SliceLTT` count, concrete Stage-1/Stage-2 $\delta$-lift counts on $R_2, R_{2,2}$ over `FrobLiftRing2`, and `SL2F5` Schur transgression injection).
 
 ##### Concept 186: Four-Layer Kernel Verification Gate Protocol
 
