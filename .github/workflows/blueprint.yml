@@ -48,6 +48,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -107,12 +108,43 @@ jobs:
           test: false
           lint: false
 
-      - name: Compile blueprint, check declarations, build API docs, and deploy Pages
-        uses: leanprover-community/docgen-action@10db47458f91456d87804787d3dfcd914b9a19e3
+      - name: Compile blueprint, check declarations, and build API docs
+        uses: leanprover-community/docgen-action@dacc1acc2a3f532cc577266979ba9c36c7593f7c
         with:
           blueprint: "true"
           api-docs: "true"
           build-page: "false"
           homepage: site
           references: references.bib
-          deploy: "true"
+          deploy: "false"
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site/
+
+  deploy_pages:
+    runs-on: ubuntu-latest
+    name: Deploy GitHub Pages
+    needs: build_project
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Wait for github-pages artifact metadata indexing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+            count=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" --jq '[.artifacts[] | select(.name=="github-pages")] | length')
+            echo "Attempt $i: found $count github-pages artifact(s)"
+            if [ "$count" -ge 1 ]; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Timed out waiting for github-pages artifact metadata" >&2
+          exit 1
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
