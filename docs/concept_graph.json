@@ -579,7 +579,7 @@
       "label": "Weak Set Subsystems & Class Theories (ETCS, ZC, NBG)",
       "stage": "stage_grad",
       "cluster": "doctrines_and_logic",
-      "description": "Two-sorted Bernays-Godel and Kelley-Morse class theories (GB_0, GBC, NBG, ETR_Ord proving Con(ZFC), KM) and CT^-[ZFC] with Godel operations G1-G8, Mac Lane set theory (Mac ~= ETCS) vs. Zermelo ZC vs. ZFC^-, and Gale-Stewart Borel games.",
+      "description": "Two-sorted Bernays-Godel and Kelley-Morse class theories (GB_0, GBC, NBG, ETR_omega proving Con(ZFC), ETR_Ord, KM) and CT^-[ZFC] with Godel operations G1-G8, Mac Lane set theory (Mac ~= ETCS) vs. Zermelo ZC vs. ZFC^-, and Gale-Stewart Borel games.",
       "monograph_chapter": "Graduate Prerequisite",
       "concepts_covered": [
         "P51",
@@ -1425,7 +1425,7 @@
       "label": "Double-Clamped Set_ZFC Scale-Invariance & SetsResiduum",
       "stage": "stage_adv",
       "cluster": "set_foundations",
-      "description": "Borel determinacy pincer (ZFC^- unprovability at Sigma^0_4 in minimal/non-standard beta-models lacking P(N) vs. ZC unprovability at Sigma^0_(omega+1) and colimit escape in V_(omega+omega)), reflexive scale-invariance pinching 1-categorical AST (C, S) into Set_ZFC via Osius pure-set fullness & well-pointedness (bridging to (X, U_0 in U_1)), and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
+      "description": "Borel determinacy pincer (ZFC^- unprovability at Sigma^0_4 in minimal/non-standard beta-models lacking P(N) vs. ZC unprovability at Sigma^0_omega and colimit escape in V_(omega+omega)), reflexive scale-invariance pinching 1-categorical AST (C, S) into Set_ZFC via Osius pure-set fullness & well-pointedness (bridging to (X, U_0 in U_1)), and SetsResiduum.lean kernel separation (propext, choice, Quot.sound).",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
         "C124",
