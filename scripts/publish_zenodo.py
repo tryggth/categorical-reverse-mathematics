@@ -11,7 +11,7 @@ import urllib.error
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DEFAULT_PDF = ROOT / "docs" / "categorical_reverse_mathematics.pdf"
+DEFAULT_PDF = ROOT / "categorical_reverse_mathematics.pdf"
 DRAFT_FILE = ROOT / ".zenodo_draft.json"
 RECORD_FILE = ROOT / ".zenodo.json"
 BASE_URL = "https://zenodo.org/api"
@@ -97,8 +97,8 @@ def build_metadata(version: str = "1.0.0", license_id: str = "cc-by-4.0") -> dic
                 "doctrines. By evaluating Doctrinal Comparison Triples across Five Foundational Coordinate Axes "
                 "(Choice/Splitting, Constructive Logic, Arithmetic Infinity, Characteristic/<em>p</em>-Torsion, and "
                 "Directional Invertibility), the treatise characterizes axiom failure via canonical structural "
-                "residuums and ties the theory to nine kernel-verified Lean 4 / mathlib4 modules "
-                "(<code>HomotopyCRM</code>, 14,583 lines).</p>"
+                "residuums and ties the theory to eleven kernel-verified Lean 4 / mathlib4 modules "
+                "(<code>HomotopyCRM</code>, 22,016 lines).</p>"
                 "<p><em>Research Note:</em> This open-access first edition is an exploratory AI-assisted mathematical "
                 "research experiment accompanied by machine-checked Lean 4 witnesses.</p>"
             ),
