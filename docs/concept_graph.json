@@ -579,7 +579,7 @@
       "label": "Weak Set Subsystems & Class Theories (ETCS, ZC, NBG)",
       "stage": "stage_grad",
       "cluster": "doctrines_and_logic",
-      "description": "Two-sorted Bernays-Godel and Kelley-Morse class theories (GB_0, GBC, NBG, ETR_omega proving Con(ZFC), ETR_Ord, KM) and CT^-[ZFC] with Godel operations G1-G8, Mac Lane set theory (Mac ~= ETCS) vs. Zermelo ZC vs. ZFC^-, and Gale-Stewart Borel games.",
+      "description": "Two-sorted Bernays-Godel and Kelley-Morse class theories (GB_0, GBC, NBG, ETR_omega proving Con(ZFC), length-Ord ETR_Ord, full ETR proving Con(NBG+ETR_Ord), KM) and CT^-[ZFC] with Godel operations G1-G8, Mac Lane set theory (Mac ~= ETCS) vs. Zermelo ZC vs. ZFC^-, and Gale-Stewart Borel games.",
       "monograph_chapter": "Graduate Prerequisite",
       "concepts_covered": [
         "P51",
@@ -1373,7 +1373,7 @@
       "label": "Class Kaleidoscope Def -| pi_Set & GC Non-Conservativity",
       "stage": "stage_adv",
       "cluster": "set_foundations",
-      "description": "Coreflective baseline Def -| pi_Set, Williams's fixed-set class kaleidoscope, skeletal splitting Card -> Set <=> GC, CT^-[ZFC] vs. ETR_Ord (Con(ZFC)) vs. KM, LoS <=> Rep & GC, V_(omega+omega) colimit escape, and Glazer's ZC non-conservativity.",
+      "description": "Coreflective baseline Def -| pi_Set, Williams's fixed-set class kaleidoscope, skeletal splitting Card -> Set <=> GC, CT^-[ZFC] vs. length-Ord ETR_Ord (Con(ZFC)) vs. full ETR vs. KM, LoS <=> Rep & GC, V_(omega+omega) colimit escape, and Glazer's ZC non-conservativity.",
       "monograph_chapter": "Chapter 7",
       "concepts_covered": [
         "C113",
@@ -1452,7 +1452,7 @@
       "label": "Lean 4 HomotopyCRM Production Ledger",
       "stage": "stage_adv",
       "cluster": "synthesis_and_horizons",
-      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (22,024 lines, 234 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
+      "description": "Four-layer Lean 4 honesty gate and eleven-module production verification suite (22,024 lines; 22,043 lines across all 12 .lean files including 19-line Basic.lean; 234 #print axioms checks across InfinityResiduum, DeltaRingPerfection, BorelTailResiduum, OrdinalRankCompleteness, StepProductPhantom, DirectedFraisseSAP, NominalSimplicity, CubicalAmalgamation, NominalICaTT, SetsResiduum, and DoctrinalFibration).",
       "monograph_chapter": "Chapter 7 & 9",
       "concepts_covered": [
         "C185",
