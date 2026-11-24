@@ -78,10 +78,10 @@ def upload_to_bucket(bucket_url: str, pdf_path: pathlib.Path, token: str) -> dic
         raise RuntimeError(f"Zenodo upload HTTP {exc.code}: {detail}") from None
 
 
-def build_metadata(version: str = "1.0.0", license_id: str = "cc-by-4.0") -> dict:
+def build_metadata(version: str = "2.2", license_id: str = "cc-by-4.0") -> dict:
     return {
         "metadata": {
-            "title": "Categorical Reverse Mathematics with Applications: The Structure of Necessity",
+            "title": "Categorical Reverse Mathematics — Volume I: Obstructions, Residuums, and the Geometry of Necessity",
             "upload_type": "publication",
             "publication_type": "book",
             "publication_date": datetime.date.today().isoformat(),
@@ -92,15 +92,13 @@ def build_metadata(version: str = "1.0.0", license_id: str = "cc-by-4.0") -> dic
                 }
             ],
             "description": (
-                "<p><strong>Categorical Reverse Mathematics with Applications: The Structure of Necessity</strong> "
+                "<p><strong>Categorical Reverse Mathematics — Volume I: Obstructions, Residuums, and the Geometry of Necessity</strong> "
                 "develops a structural, geometric theory of deductive strength inside the 2-category of categorical "
-                "doctrines. By evaluating Doctrinal Comparison Triples across Five Foundational Coordinate Axes "
+                "doctrines. Evaluating Doctrinal Comparison Triples across Five Foundational Coordinate Axes "
                 "(Choice/Splitting, Constructive Logic, Arithmetic Infinity, Characteristic/<em>p</em>-Torsion, and "
-                "Directional Invertibility), the treatise characterizes axiom failure via canonical structural "
-                "residuums and ties the theory to eleven kernel-verified Lean 4 / mathlib4 modules "
-                "(<code>HomotopyCRM</code>, 22,016 lines).</p>"
-                "<p><em>Research Note:</em> This open-access first edition is an exploratory AI-assisted mathematical "
-                "research experiment accompanied by machine-checked Lean 4 witnesses.</p>"
+                "Directional Invertibility, extended in Chapter 7 along Axes VI–VII), the treatise establishes a "
+                "tri-modal residuum calculus backed by eleven kernel-verified Lean 4 / mathlib4 modules "
+                "(<code>HomotopyCRM</code>, 22,024 production lines, 152 blueprint declarations).</p>"
             ),
             "access_right": "open",
             "license": license_id,

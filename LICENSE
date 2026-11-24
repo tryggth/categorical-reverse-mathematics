@@ -1,14 +1,14 @@
 # Open Licensing
 
-This repository contains two components—a mathematical monograph (`docs/categorical_reverse_mathematics.tex`) and its accompanying Lean 4 formalization (`HomotopyCRM.lean`, `HomotopyCRM/`, and `scripts/`)—released under the open licenses below.
+This repository contains two components—a mathematical monograph and its companion audit ledgers (`docs/categorical_reverse_mathematics.tex`, `docs/ch07_sets_residuum.tex`, `docs/technical_claims_foundations.md`, and `docs/concept_curriculum.md`) and its accompanying Lean 4 formalization and verification suite (`HomotopyCRM.lean`, `HomotopyCRM/`, `CheckDecls.lean`, and `scripts/`)—released under the open licenses below.
 
 ---
 
-## 1. Monograph Text and Typesetting (`docs/categorical_reverse_mathematics.tex`)
+## 1. Monograph Text, Typesetting, and Companion Ledgers (`docs/categorical_reverse_mathematics.tex`, `docs/ch07_sets_residuum.tex`, `docs/technical_claims_foundations.md`, `docs/concept_curriculum.md`)
 
 Copyright (c) 2026 James F. Walters (Port Townsend, Washington).
 
-*Categorical Reverse Mathematics with Applications: The Structure of Necessity* is licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+*Categorical Reverse Mathematics — Volume I: Obstructions, Residuums, and the Geometry of Necessity* is licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
 
 - **Human-readable summary:** https://creativecommons.org/licenses/by/4.0/
 - **Full legal code:** https://creativecommons.org/licenses/by/4.0/legalcode
@@ -23,7 +23,7 @@ Under the following terms:
 
 ---
 
-## 2. Lean 4 Formalization and Verification Scripts (`HomotopyCRM.lean`, `HomotopyCRM/`, `scripts/`)
+## 2. Lean 4 Formalization and Verification Scripts (`HomotopyCRM.lean`, `HomotopyCRM/`, `CheckDecls.lean`, `scripts/`)
 
 Copyright (c) 2026 James F. Walters (HomotopyCRM Project).
 
